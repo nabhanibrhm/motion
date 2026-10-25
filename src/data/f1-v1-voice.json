@@ -1,0 +1,3431 @@
+{
+ "voice": "en-US-AvaMultilingualNeural",
+ "sections": [
+  {
+   "id": "hook-1",
+   "chapter": "The Hook",
+   "text": "If you look at Formula 1 today, it feels like it's at the center of the universe. It's everywhere. Your friends watch it, it dominates your social media feeds, and the drivers are global cultural icons.",
+   "hash": "ca57339df244",
+   "audio": "voice/f1-v1/hook-1.mp3",
+   "duration": 11.232,
+   "words": [
+    {
+     "text": "If",
+     "start": 0.056,
+     "end": 0.134
+    },
+    {
+     "text": "you",
+     "start": 0.145,
+     "end": 0.223
+    },
+    {
+     "text": "look",
+     "start": 0.234,
+     "end": 0.357
+    },
+    {
+     "text": "at",
+     "start": 0.357,
+     "end": 0.458
+    },
+    {
+     "text": "Formula",
+     "start": 0.458,
+     "end": 0.859
+    },
+    {
+     "text": "1",
+     "start": 0.871,
+     "end": 1.027
+    },
+    {
+     "text": "today",
+     "start": 1.038,
+     "end": 1.429
+    },
+    {
+     "text": "it",
+     "start": 1.808,
+     "end": 1.931
+    },
+    {
+     "text": "feels",
+     "start": 1.931,
+     "end": 2.243
+    },
+    {
+     "text": "like",
+     "start": 2.243,
+     "end": 2.4
+    },
+    {
+     "text": "it's",
+     "start": 2.455,
+     "end": 2.589
+    },
+    {
+     "text": "at",
+     "start": 2.6,
+     "end": 2.69
+    },
+    {
+     "text": "the",
+     "start": 2.701,
+     "end": 2.779
+    },
+    {
+     "text": "center",
+     "start": 2.79,
+     "end": 3.259
+    },
+    {
+     "text": "of",
+     "start": 3.27,
+     "end": 3.382
+    },
+    {
+     "text": "the",
+     "start": 3.393,
+     "end": 3.438
+    },
+    {
+     "text": "universe",
+     "start": 3.449,
+     "end": 4.029
+    },
+    {
+     "text": "It's",
+     "start": 4.375,
+     "end": 4.52
+    },
+    {
+     "text": "everywhere",
+     "start": 4.609,
+     "end": 5.201
+    },
+    {
+     "text": "Your",
+     "start": 5.558,
+     "end": 5.692
+    },
+    {
+     "text": "friends",
+     "start": 5.703,
+     "end": 6.016
+    },
+    {
+     "text": "watch",
+     "start": 6.016,
+     "end": 6.261
+    },
+    {
+     "text": "it",
+     "start": 6.272,
+     "end": 6.44
+    },
+    {
+     "text": "it",
+     "start": 6.518,
+     "end": 6.618
+    },
+    {
+     "text": "dominates",
+     "start": 6.629,
+     "end": 7.098
+    },
+    {
+     "text": "your",
+     "start": 7.109,
+     "end": 7.21
+    },
+    {
+     "text": "social",
+     "start": 7.221,
+     "end": 7.534
+    },
+    {
+     "text": "media",
+     "start": 7.534,
+     "end": 7.801
+    },
+    {
+     "text": "feeds",
+     "start": 7.812,
+     "end": 8.27
+    },
+    {
+     "text": "and",
+     "start": 8.482,
+     "end": 8.683
+    },
+    {
+     "text": "the",
+     "start": 8.694,
+     "end": 8.761
+    },
+    {
+     "text": "drivers",
+     "start": 8.772,
+     "end": 9.286
+    },
+    {
+     "text": "are",
+     "start": 9.297,
+     "end": 9.453
+    },
+    {
+     "text": "global",
+     "start": 9.453,
+     "end": 9.911
+    },
+    {
+     "text": "cultural",
+     "start": 9.922,
+     "end": 10.29
+    },
+    {
+     "text": "icons",
+     "start": 10.301,
+     "end": 10.893
+    }
+   ]
+  },
+  {
+   "id": "hook-2",
+   "chapter": "The Hook",
+   "text": "But if we rewind just fifteen years, Formula 1 was a completely different world. It was known as the ultimate \"old boys' club\" — a highly exclusive, Euro-centric billionaire's playground. You either grew up watching it, or you simply didn't care.",
+   "hash": "1b49d6908cfa",
+   "audio": "voice/f1-v1/hook-2.mp3",
+   "duration": 12.936,
+   "words": [
+    {
+     "text": "But",
+     "start": 0.067,
+     "end": 0.167
+    },
+    {
+     "text": "if",
+     "start": 0.179,
+     "end": 0.279
+    },
+    {
+     "text": "we",
+     "start": 0.29,
+     "end": 0.424
+    },
+    {
+     "text": "rewind",
+     "start": 0.435,
+     "end": 0.915
+    },
+    {
+     "text": "just",
+     "start": 0.926,
+     "end": 1.127
+    },
+    {
+     "text": "fifteen",
+     "start": 1.138,
+     "end": 1.495
+    },
+    {
+     "text": "years",
+     "start": 1.507,
+     "end": 1.931
+    },
+    {
+     "text": "Formula",
+     "start": 2.165,
+     "end": 2.578
+    },
+    {
+     "text": "1",
+     "start": 2.589,
+     "end": 2.79
+    },
+    {
+     "text": "was",
+     "start": 2.79,
+     "end": 2.902
+    },
+    {
+     "text": "a",
+     "start": 2.913,
+     "end": 2.958
+    },
+    {
+     "text": "completely",
+     "start": 2.969,
+     "end": 3.493
+    },
+    {
+     "text": "different",
+     "start": 3.504,
+     "end": 3.739
+    },
+    {
+     "text": "world",
+     "start": 3.739,
+     "end": 4.096
+    },
+    {
+     "text": "It",
+     "start": 4.453,
+     "end": 4.509
+    },
+    {
+     "text": "was",
+     "start": 4.52,
+     "end": 4.643
+    },
+    {
+     "text": "known",
+     "start": 4.654,
+     "end": 4.966
+    },
+    {
+     "text": "as",
+     "start": 4.966,
+     "end": 5.1
+    },
+    {
+     "text": "the",
+     "start": 5.112,
+     "end": 5.234
+    },
+    {
+     "text": "ultimate",
+     "start": 5.301,
+     "end": 5.725
+    },
+    {
+     "text": "old",
+     "start": 5.77,
+     "end": 6.027
+    },
+    {
+     "text": "boys'",
+     "start": 6.038,
+     "end": 6.317
+    },
+    {
+     "text": "club",
+     "start": 6.317,
+     "end": 6.629
+    },
+    {
+     "text": "a",
+     "start": 6.641,
+     "end": 6.663
+    },
+    {
+     "text": "highly",
+     "start": 6.674,
+     "end": 7.121
+    },
+    {
+     "text": "exclusive",
+     "start": 7.132,
+     "end": 7.734
+    },
+    {
+     "text": "Euro-centric",
+     "start": 8.136,
+     "end": 8.761
+    },
+    {
+     "text": "billionaire's",
+     "start": 8.761,
+     "end": 9.263
+    },
+    {
+     "text": "playground",
+     "start": 9.275,
+     "end": 9.888
+    },
+    {
+     "text": "You",
+     "start": 10.201,
+     "end": 10.335
+    },
+    {
+     "text": "either",
+     "start": 10.379,
+     "end": 10.603
+    },
+    {
+     "text": "grew",
+     "start": 10.614,
+     "end": 10.804
+    },
+    {
+     "text": "up",
+     "start": 10.815,
+     "end": 10.926
+    },
+    {
+     "text": "watching",
+     "start": 10.926,
+     "end": 11.239
+    },
+    {
+     "text": "it",
+     "start": 11.25,
+     "end": 11.373
+    },
+    {
+     "text": "or",
+     "start": 11.54,
+     "end": 11.696
+    },
+    {
+     "text": "you",
+     "start": 11.708,
+     "end": 11.775
+    },
+    {
+     "text": "simply",
+     "start": 11.786,
+     "end": 12.098
+    },
+    {
+     "text": "didn't",
+     "start": 12.098,
+     "end": 12.254
+    },
+    {
+     "text": "care",
+     "start": 12.254,
+     "end": 12.612
+    }
+   ]
+  },
+  {
+   "id": "hook-3",
+   "chapter": "The Hook",
+   "text": "So, how did a sport wrapped in elitism and complex engineering suddenly become the most talked-about entertainment brand on the planet?",
+   "hash": "54a53acb1cc6",
+   "audio": "voice/f1-v1/hook-3.mp3",
+   "duration": 7.584,
+   "words": [
+    {
+     "text": "So",
+     "start": 0.1,
+     "end": 0.502
+    },
+    {
+     "text": "how",
+     "start": 1.094,
+     "end": 1.194
+    },
+    {
+     "text": "did",
+     "start": 1.205,
+     "end": 1.295
+    },
+    {
+     "text": "a",
+     "start": 1.306,
+     "end": 1.35
+    },
+    {
+     "text": "sport",
+     "start": 1.362,
+     "end": 1.696
+    },
+    {
+     "text": "wrapped",
+     "start": 1.708,
+     "end": 1.987
+    },
+    {
+     "text": "in",
+     "start": 1.998,
+     "end": 2.109
+    },
+    {
+     "text": "elitism",
+     "start": 2.121,
+     "end": 2.723
+    },
+    {
+     "text": "and",
+     "start": 2.835,
+     "end": 2.969
+    },
+    {
+     "text": "complex",
+     "start": 2.98,
+     "end": 3.594
+    },
+    {
+     "text": "engineering",
+     "start": 3.605,
+     "end": 4.129
+    },
+    {
+     "text": "suddenly",
+     "start": 4.141,
+     "end": 4.498
+    },
+    {
+     "text": "become",
+     "start": 4.509,
+     "end": 4.866
+    },
+    {
+     "text": "the",
+     "start": 4.877,
+     "end": 4.922
+    },
+    {
+     "text": "most",
+     "start": 4.922,
+     "end": 5.179
+    },
+    {
+     "text": "talked-about",
+     "start": 5.19,
+     "end": 5.725
+    },
+    {
+     "text": "entertainment",
+     "start": 5.781,
+     "end": 6.306
+    },
+    {
+     "text": "brand",
+     "start": 6.317,
+     "end": 6.607
+    },
+    {
+     "text": "on",
+     "start": 6.618,
+     "end": 6.674
+    },
+    {
+     "text": "the",
+     "start": 6.685,
+     "end": 6.752
+    },
+    {
+     "text": "planet",
+     "start": 6.763,
+     "end": 7.243
+    }
+   ]
+  },
+  {
+   "id": "liberty-1",
+   "chapter": "The Turning Point",
+   "text": "To understand the boom, we have to talk about 2017. For decades, F1 was run by Bernie Ecclestone. Bernie was brilliant at making F1 rich, but his philosophy was all about exclusivity. The sport relied on expensive TV packages, luxury watch sponsors, and artificial scarcity.",
+   "hash": "ce0714861f40",
+   "audio": "voice/f1-v1/liberty-1.mp3",
+   "duration": 18.024,
+   "words": [
+    {
+     "text": "To",
+     "start": 0.078,
+     "end": 0.19
+    },
+    {
+     "text": "understand",
+     "start": 0.201,
+     "end": 0.692
+    },
+    {
+     "text": "the",
+     "start": 0.692,
+     "end": 0.748
+    },
+    {
+     "text": "boom",
+     "start": 0.759,
+     "end": 1.094
+    },
+    {
+     "text": "we",
+     "start": 1.295,
+     "end": 1.406
+    },
+    {
+     "text": "have",
+     "start": 1.406,
+     "end": 1.574
+    },
+    {
+     "text": "to",
+     "start": 1.574,
+     "end": 1.629
+    },
+    {
+     "text": "talk",
+     "start": 1.641,
+     "end": 1.897
+    },
+    {
+     "text": "about",
+     "start": 1.909,
+     "end": 2.232
+    },
+    {
+     "text": "2017",
+     "start": 2.355,
+     "end": 3.571
+    },
+    {
+     "text": "For",
+     "start": 3.94,
+     "end": 4.051
+    },
+    {
+     "text": "decades",
+     "start": 4.062,
+     "end": 4.654
+    },
+    {
+     "text": "F1",
+     "start": 4.9,
+     "end": 5.257
+    },
+    {
+     "text": "was",
+     "start": 5.257,
+     "end": 5.402
+    },
+    {
+     "text": "run",
+     "start": 5.413,
+     "end": 5.658
+    },
+    {
+     "text": "by",
+     "start": 5.67,
+     "end": 5.804
+    },
+    {
+     "text": "Bernie",
+     "start": 5.815,
+     "end": 6.127
+    },
+    {
+     "text": "Ecclestone",
+     "start": 6.138,
+     "end": 6.73
+    },
+    {
+     "text": "Bernie",
+     "start": 7.076,
+     "end": 7.299
+    },
+    {
+     "text": "was",
+     "start": 7.31,
+     "end": 7.478
+    },
+    {
+     "text": "brilliant",
+     "start": 7.489,
+     "end": 8.036
+    },
+    {
+     "text": "at",
+     "start": 8.047,
+     "end": 8.147
+    },
+    {
+     "text": "making",
+     "start": 8.147,
+     "end": 8.482
+    },
+    {
+     "text": "F1",
+     "start": 8.493,
+     "end": 8.951
+    },
+    {
+     "text": "rich",
+     "start": 8.962,
+     "end": 9.319
+    },
+    {
+     "text": "but",
+     "start": 9.654,
+     "end": 9.766
+    },
+    {
+     "text": "his",
+     "start": 9.766,
+     "end": 9.933
+    },
+    {
+     "text": "philosophy",
+     "start": 9.944,
+     "end": 10.469
+    },
+    {
+     "text": "was",
+     "start": 10.48,
+     "end": 10.658
+    },
+    {
+     "text": "all",
+     "start": 10.703,
+     "end": 10.949
+    },
+    {
+     "text": "about",
+     "start": 10.96,
+     "end": 11.15
+    },
+    {
+     "text": "exclusivity",
+     "start": 11.161,
+     "end": 11.841
+    },
+    {
+     "text": "The",
+     "start": 12.176,
+     "end": 12.232
+    },
+    {
+     "text": "sport",
+     "start": 12.243,
+     "end": 12.567
+    },
+    {
+     "text": "relied",
+     "start": 12.578,
+     "end": 13.013
+    },
+    {
+     "text": "on",
+     "start": 13.025,
+     "end": 13.147
+    },
+    {
+     "text": "expensive",
+     "start": 13.159,
+     "end": 13.784
+    },
+    {
+     "text": "TV",
+     "start": 13.795,
+     "end": 14.096
+    },
+    {
+     "text": "packages",
+     "start": 14.107,
+     "end": 14.721
+    },
+    {
+     "text": "luxury",
+     "start": 14.922,
+     "end": 15.279
+    },
+    {
+     "text": "watch",
+     "start": 15.29,
+     "end": 15.536
+    },
+    {
+     "text": "sponsors",
+     "start": 15.547,
+     "end": 16.127
+    },
+    {
+     "text": "and",
+     "start": 16.339,
+     "end": 16.596
+    },
+    {
+     "text": "artificial",
+     "start": 16.674,
+     "end": 17.143
+    },
+    {
+     "text": "scarcity",
+     "start": 17.143,
+     "end": 17.69
+    }
+   ]
+  },
+  {
+   "id": "liberty-2",
+   "chapter": "The Turning Point",
+   "text": "Social media? Drivers were essentially banned from sharing behind-the-scenes footage in the paddock. The sport was aggressively keeping the modern world out.",
+   "hash": "883e4d4a3f31",
+   "audio": "voice/f1-v1/liberty-2.mp3",
+   "duration": 8.376,
+   "words": [
+    {
+     "text": "Social",
+     "start": 0.078,
+     "end": 0.402
+    },
+    {
+     "text": "media",
+     "start": 0.402,
+     "end": 0.859
+    },
+    {
+     "text": "Drivers",
+     "start": 1.216,
+     "end": 1.663
+    },
+    {
+     "text": "were",
+     "start": 1.674,
+     "end": 1.775
+    },
+    {
+     "text": "essentially",
+     "start": 1.786,
+     "end": 2.299
+    },
+    {
+     "text": "banned",
+     "start": 2.31,
+     "end": 2.667
+    },
+    {
+     "text": "from",
+     "start": 2.679,
+     "end": 2.824
+    },
+    {
+     "text": "sharing",
+     "start": 2.835,
+     "end": 3.259
+    },
+    {
+     "text": "behind-the-scenes",
+     "start": 3.27,
+     "end": 4.029
+    },
+    {
+     "text": "footage",
+     "start": 4.04,
+     "end": 4.375
+    },
+    {
+     "text": "in",
+     "start": 4.453,
+     "end": 4.509
+    },
+    {
+     "text": "the",
+     "start": 4.52,
+     "end": 4.576
+    },
+    {
+     "text": "paddock",
+     "start": 4.576,
+     "end": 5.011
+    },
+    {
+     "text": "The",
+     "start": 5.357,
+     "end": 5.424
+    },
+    {
+     "text": "sport",
+     "start": 5.435,
+     "end": 5.87
+    },
+    {
+     "text": "was",
+     "start": 5.882,
+     "end": 6.038
+    },
+    {
+     "text": "aggressively",
+     "start": 6.06,
+     "end": 6.763
+    },
+    {
+     "text": "keeping",
+     "start": 6.775,
+     "end": 7.109
+    },
+    {
+     "text": "the",
+     "start": 7.121,
+     "end": 7.176
+    },
+    {
+     "text": "modern",
+     "start": 7.188,
+     "end": 7.522
+    },
+    {
+     "text": "world",
+     "start": 7.522,
+     "end": 7.746
+    },
+    {
+     "text": "out",
+     "start": 7.757,
+     "end": 8.047
+    }
+   ]
+  },
+  {
+   "id": "liberty-3",
+   "chapter": "The Turning Point",
+   "text": "Then, Liberty Media bought Formula 1 for 8 billion dollars. They immediately realized something crucial: F1 had a massive branding problem, but it also possessed the greatest untold stories in sports.",
+   "hash": "35803d35766b",
+   "audio": "voice/f1-v1/liberty-3.mp3",
+   "duration": 11.88,
+   "words": [
+    {
+     "text": "Then",
+     "start": 0.067,
+     "end": 0.413
+    },
+    {
+     "text": "Liberty",
+     "start": 0.547,
+     "end": 0.815
+    },
+    {
+     "text": "Media",
+     "start": 0.815,
+     "end": 1.161
+    },
+    {
+     "text": "bought",
+     "start": 1.172,
+     "end": 1.373
+    },
+    {
+     "text": "Formula",
+     "start": 1.384,
+     "end": 1.808
+    },
+    {
+     "text": "1",
+     "start": 1.819,
+     "end": 2.054
+    },
+    {
+     "text": "for",
+     "start": 2.065,
+     "end": 2.255
+    },
+    {
+     "text": "8 billion dollars",
+     "start": 2.4,
+     "end": 3.415
+    },
+    {
+     "text": "They",
+     "start": 3.761,
+     "end": 3.828
+    },
+    {
+     "text": "immediately",
+     "start": 3.828,
+     "end": 4.353
+    },
+    {
+     "text": "realized",
+     "start": 4.364,
+     "end": 4.743
+    },
+    {
+     "text": "something",
+     "start": 4.754,
+     "end": 5.011
+    },
+    {
+     "text": "crucial",
+     "start": 5.022,
+     "end": 5.458
+    },
+    {
+     "text": "F1",
+     "start": 5.971,
+     "end": 6.317
+    },
+    {
+     "text": "had",
+     "start": 6.328,
+     "end": 6.484
+    },
+    {
+     "text": "a",
+     "start": 6.484,
+     "end": 6.529
+    },
+    {
+     "text": "massive",
+     "start": 6.54,
+     "end": 7.098
+    },
+    {
+     "text": "branding",
+     "start": 7.109,
+     "end": 7.377
+    },
+    {
+     "text": "problem",
+     "start": 7.388,
+     "end": 7.79
+    },
+    {
+     "text": "but",
+     "start": 8.136,
+     "end": 8.315
+    },
+    {
+     "text": "it",
+     "start": 8.393,
+     "end": 8.46
+    },
+    {
+     "text": "also",
+     "start": 8.471,
+     "end": 8.772
+    },
+    {
+     "text": "possessed",
+     "start": 8.784,
+     "end": 9.241
+    },
+    {
+     "text": "the",
+     "start": 9.252,
+     "end": 9.353
+    },
+    {
+     "text": "greatest",
+     "start": 9.364,
+     "end": 9.888
+    },
+    {
+     "text": "untold",
+     "start": 9.978,
+     "end": 10.391
+    },
+    {
+     "text": "stories",
+     "start": 10.402,
+     "end": 10.871
+    },
+    {
+     "text": "in",
+     "start": 10.882,
+     "end": 10.982
+    },
+    {
+     "text": "sports",
+     "start": 10.993,
+     "end": 11.551
+    }
+   ]
+  },
+  {
+   "id": "liberty-4",
+   "chapter": "The Turning Point",
+   "text": "Liberty stopped treating Formula 1 like a traditional racing series and started treating it like a global media company. They completely tore down the digital walls. Suddenly, drivers were encouraged to post on YouTube, Instagram, and TikTok. F1 went from being a closed-door society to an always-on reality show.",
+   "hash": "93495fea32d3",
+   "audio": "voice/f1-v1/liberty-4.mp3",
+   "duration": 17.16,
+   "words": [
+    {
+     "text": "Liberty",
+     "start": 0.067,
+     "end": 0.391
+    },
+    {
+     "text": "stopped",
+     "start": 0.402,
+     "end": 0.647
+    },
+    {
+     "text": "treating",
+     "start": 0.658,
+     "end": 0.938
+    },
+    {
+     "text": "Formula",
+     "start": 0.938,
+     "end": 1.362
+    },
+    {
+     "text": "1",
+     "start": 1.373,
+     "end": 1.641
+    },
+    {
+     "text": "like",
+     "start": 1.652,
+     "end": 1.808
+    },
+    {
+     "text": "a",
+     "start": 1.853,
+     "end": 1.897
+    },
+    {
+     "text": "traditional",
+     "start": 1.909,
+     "end": 2.4
+    },
+    {
+     "text": "racing",
+     "start": 2.411,
+     "end": 2.712
+    },
+    {
+     "text": "series",
+     "start": 2.723,
+     "end": 3.158
+    },
+    {
+     "text": "and",
+     "start": 3.17,
+     "end": 3.348
+    },
+    {
+     "text": "started",
+     "start": 3.359,
+     "end": 3.672
+    },
+    {
+     "text": "treating",
+     "start": 3.683,
+     "end": 4.051
+    },
+    {
+     "text": "it",
+     "start": 4.051,
+     "end": 4.163
+    },
+    {
+     "text": "like",
+     "start": 4.163,
+     "end": 4.342
+    },
+    {
+     "text": "a",
+     "start": 4.397,
+     "end": 4.475
+    },
+    {
+     "text": "global",
+     "start": 4.487,
+     "end": 4.866
+    },
+    {
+     "text": "media",
+     "start": 4.877,
+     "end": 5.156
+    },
+    {
+     "text": "company",
+     "start": 5.167,
+     "end": 5.625
+    },
+    {
+     "text": "They",
+     "start": 5.971,
+     "end": 6.038
+    },
+    {
+     "text": "completely",
+     "start": 6.049,
+     "end": 6.551
+    },
+    {
+     "text": "tore",
+     "start": 6.562,
+     "end": 6.92
+    },
+    {
+     "text": "down",
+     "start": 6.931,
+     "end": 7.143
+    },
+    {
+     "text": "the",
+     "start": 7.154,
+     "end": 7.232
+    },
+    {
+     "text": "digital",
+     "start": 7.243,
+     "end": 7.533
+    },
+    {
+     "text": "walls",
+     "start": 7.534,
+     "end": 8.036
+    },
+    {
+     "text": "Suddenly",
+     "start": 8.393,
+     "end": 8.828
+    },
+    {
+     "text": "drivers",
+     "start": 9.029,
+     "end": 9.453
+    },
+    {
+     "text": "were",
+     "start": 9.464,
+     "end": 9.576
+    },
+    {
+     "text": "encouraged",
+     "start": 9.587,
+     "end": 10.078
+    },
+    {
+     "text": "to",
+     "start": 10.089,
+     "end": 10.167
+    },
+    {
+     "text": "post",
+     "start": 10.179,
+     "end": 10.491
+    },
+    {
+     "text": "on",
+     "start": 10.502,
+     "end": 10.58
+    },
+    {
+     "text": "YouTube",
+     "start": 10.591,
+     "end": 11.049
+    },
+    {
+     "text": "Instagram",
+     "start": 11.25,
+     "end": 11.886
+    },
+    {
+     "text": "and",
+     "start": 12.02,
+     "end": 12.187
+    },
+    {
+     "text": "TikTok",
+     "start": 12.243,
+     "end": 12.779
+    },
+    {
+     "text": "F1",
+     "start": 13.125,
+     "end": 13.594
+    },
+    {
+     "text": "went",
+     "start": 13.605,
+     "end": 13.772
+    },
+    {
+     "text": "from",
+     "start": 13.772,
+     "end": 13.906
+    },
+    {
+     "text": "being",
+     "start": 13.917,
+     "end": 14.163
+    },
+    {
+     "text": "a",
+     "start": 14.174,
+     "end": 14.241
+    },
+    {
+     "text": "closed-door",
+     "start": 14.252,
+     "end": 14.777
+    },
+    {
+     "text": "society",
+     "start": 14.788,
+     "end": 15.346
+    },
+    {
+     "text": "to",
+     "start": 15.357,
+     "end": 15.48
+    },
+    {
+     "text": "an",
+     "start": 15.491,
+     "end": 15.603
+    },
+    {
+     "text": "always-on",
+     "start": 15.67,
+     "end": 16.116
+    },
+    {
+     "text": "reality",
+     "start": 16.116,
+     "end": 16.473
+    },
+    {
+     "text": "show",
+     "start": 16.484,
+     "end": 16.819
+    }
+   ]
+  },
+  {
+   "id": "netflix-1",
+   "chapter": "The Netflix Effect",
+   "text": "But the real rocket fuel was a little show you might have heard of: Drive to Survive. Before 2019, if you were a new fan tuning into a race, you just saw twenty identical-looking cars driving in circles. You had to understand aerodynamics and tire degradation to enjoy it.",
+   "hash": "4979d1f4800b",
+   "audio": "voice/f1-v1/netflix-1.mp3",
+   "duration": 15.696,
+   "words": [
+    {
+     "text": "But",
+     "start": 0.078,
+     "end": 0.212
+    },
+    {
+     "text": "the",
+     "start": 0.223,
+     "end": 0.324
+    },
+    {
+     "text": "real",
+     "start": 0.335,
+     "end": 0.714
+    },
+    {
+     "text": "rocket",
+     "start": 0.725,
+     "end": 1.004
+    },
+    {
+     "text": "fuel",
+     "start": 1.016,
+     "end": 1.362
+    },
+    {
+     "text": "was",
+     "start": 1.562,
+     "end": 1.696
+    },
+    {
+     "text": "a",
+     "start": 1.708,
+     "end": 1.752
+    },
+    {
+     "text": "little",
+     "start": 1.763,
+     "end": 1.931
+    },
+    {
+     "text": "show",
+     "start": 1.942,
+     "end": 2.176
+    },
+    {
+     "text": "you",
+     "start": 2.188,
+     "end": 2.288
+    },
+    {
+     "text": "might",
+     "start": 2.299,
+     "end": 2.466
+    },
+    {
+     "text": "have",
+     "start": 2.466,
+     "end": 2.589
+    },
+    {
+     "text": "heard",
+     "start": 2.6,
+     "end": 2.868
+    },
+    {
+     "text": "of",
+     "start": 2.879,
+     "end": 3.147
+    },
+    {
+     "text": "Drive",
+     "start": 3.404,
+     "end": 3.716
+    },
+    {
+     "text": "to",
+     "start": 3.728,
+     "end": 3.795
+    },
+    {
+     "text": "Survive",
+     "start": 3.806,
+     "end": 4.375
+    },
+    {
+     "text": "Before",
+     "start": 4.732,
+     "end": 5.067
+    },
+    {
+     "text": "2019",
+     "start": 5.067,
+     "end": 6.004
+    },
+    {
+     "text": "if",
+     "start": 6.116,
+     "end": 6.228
+    },
+    {
+     "text": "you",
+     "start": 6.239,
+     "end": 6.317
+    },
+    {
+     "text": "were",
+     "start": 6.317,
+     "end": 6.417
+    },
+    {
+     "text": "a",
+     "start": 6.429,
+     "end": 6.462
+    },
+    {
+     "text": "new",
+     "start": 6.473,
+     "end": 6.752
+    },
+    {
+     "text": "fan",
+     "start": 6.752,
+     "end": 7.054
+    },
+    {
+     "text": "tuning",
+     "start": 7.065,
+     "end": 7.355
+    },
+    {
+     "text": "into",
+     "start": 7.366,
+     "end": 7.545
+    },
+    {
+     "text": "a",
+     "start": 7.556,
+     "end": 7.612
+    },
+    {
+     "text": "race",
+     "start": 7.623,
+     "end": 7.991
+    },
+    {
+     "text": "you",
+     "start": 8.382,
+     "end": 8.482
+    },
+    {
+     "text": "just",
+     "start": 8.493,
+     "end": 8.772
+    },
+    {
+     "text": "saw",
+     "start": 8.772,
+     "end": 8.984
+    },
+    {
+     "text": "twenty",
+     "start": 8.984,
+     "end": 9.33
+    },
+    {
+     "text": "identical-looking",
+     "start": 9.341,
+     "end": 10.0
+    },
+    {
+     "text": "cars",
+     "start": 10.011,
+     "end": 10.413
+    },
+    {
+     "text": "driving",
+     "start": 10.424,
+     "end": 10.792
+    },
+    {
+     "text": "in",
+     "start": 10.804,
+     "end": 10.893
+    },
+    {
+     "text": "circles",
+     "start": 10.904,
+     "end": 11.451
+    },
+    {
+     "text": "You",
+     "start": 11.797,
+     "end": 11.864
+    },
+    {
+     "text": "had",
+     "start": 11.864,
+     "end": 12.042
+    },
+    {
+     "text": "to",
+     "start": 12.054,
+     "end": 12.098
+    },
+    {
+     "text": "understand",
+     "start": 12.109,
+     "end": 12.69
+    },
+    {
+     "text": "aerodynamics",
+     "start": 12.746,
+     "end": 13.46
+    },
+    {
+     "text": "and",
+     "start": 13.471,
+     "end": 13.761
+    },
+    {
+     "text": "tire",
+     "start": 13.772,
+     "end": 14.096
+    },
+    {
+     "text": "degradation",
+     "start": 14.107,
+     "end": 14.721
+    },
+    {
+     "text": "to",
+     "start": 14.732,
+     "end": 14.855
+    },
+    {
+     "text": "enjoy",
+     "start": 14.866,
+     "end": 15.201
+    },
+    {
+     "text": "it",
+     "start": 15.212,
+     "end": 15.379
+    }
+   ]
+  },
+  {
+   "id": "netflix-2",
+   "chapter": "The Netflix Effect",
+   "text": "Netflix changed the formula. They focused entirely on the humans inside the machines. Suddenly, you weren't watching cars; you were watching ambition, ego, massive pressure, and bitter rivalries. You learned what was at stake for the guy fighting for tenth place just to keep his job.",
+   "hash": "7510dd754aff",
+   "audio": "voice/f1-v1/netflix-2.mp3",
+   "duration": 16.44,
+   "words": [
+    {
+     "text": "Netflix",
+     "start": 0.067,
+     "end": 0.647
+    },
+    {
+     "text": "changed",
+     "start": 0.658,
+     "end": 1.027
+    },
+    {
+     "text": "the",
+     "start": 1.038,
+     "end": 1.116
+    },
+    {
+     "text": "formula",
+     "start": 1.127,
+     "end": 1.674
+    },
+    {
+     "text": "They",
+     "start": 1.999,
+     "end": 2.144
+    },
+    {
+     "text": "focused",
+     "start": 2.155,
+     "end": 2.613
+    },
+    {
+     "text": "entirely",
+     "start": 2.624,
+     "end": 3.294
+    },
+    {
+     "text": "on",
+     "start": 3.305,
+     "end": 3.417
+    },
+    {
+     "text": "the",
+     "start": 3.428,
+     "end": 3.461
+    },
+    {
+     "text": "humans",
+     "start": 3.461,
+     "end": 3.908
+    },
+    {
+     "text": "inside",
+     "start": 3.963,
+     "end": 4.388
+    },
+    {
+     "text": "the",
+     "start": 4.399,
+     "end": 4.443
+    },
+    {
+     "text": "machines",
+     "start": 4.454,
+     "end": 5.057
+    },
+    {
+     "text": "Suddenly",
+     "start": 5.424,
+     "end": 5.848
+    },
+    {
+     "text": "you",
+     "start": 6.272,
+     "end": 6.35
+    },
+    {
+     "text": "weren't",
+     "start": 6.35,
+     "end": 6.562
+    },
+    {
+     "text": "watching",
+     "start": 6.574,
+     "end": 6.908
+    },
+    {
+     "text": "cars",
+     "start": 6.92,
+     "end": 7.355
+    },
+    {
+     "text": "you",
+     "start": 7.801,
+     "end": 7.879
+    },
+    {
+     "text": "were",
+     "start": 7.891,
+     "end": 8.025
+    },
+    {
+     "text": "watching",
+     "start": 8.036,
+     "end": 8.337
+    },
+    {
+     "text": "ambition",
+     "start": 8.337,
+     "end": 8.817
+    },
+    {
+     "text": "ego",
+     "start": 9.241,
+     "end": 9.587
+    },
+    {
+     "text": "massive",
+     "start": 10.067,
+     "end": 10.402
+    },
+    {
+     "text": "pressure",
+     "start": 10.413,
+     "end": 10.937
+    },
+    {
+     "text": "and",
+     "start": 10.96,
+     "end": 11.094
+    },
+    {
+     "text": "bitter",
+     "start": 11.105,
+     "end": 11.406
+    },
+    {
+     "text": "rivalries",
+     "start": 11.417,
+     "end": 12.076
+    },
+    {
+     "text": "You",
+     "start": 12.411,
+     "end": 12.556
+    },
+    {
+     "text": "learned",
+     "start": 12.556,
+     "end": 12.835
+    },
+    {
+     "text": "what",
+     "start": 12.835,
+     "end": 12.958
+    },
+    {
+     "text": "was",
+     "start": 12.969,
+     "end": 13.08
+    },
+    {
+     "text": "at",
+     "start": 13.091,
+     "end": 13.192
+    },
+    {
+     "text": "stake",
+     "start": 13.203,
+     "end": 13.504
+    },
+    {
+     "text": "for",
+     "start": 13.504,
+     "end": 13.583
+    },
+    {
+     "text": "the",
+     "start": 13.594,
+     "end": 13.661
+    },
+    {
+     "text": "guy",
+     "start": 13.672,
+     "end": 13.906
+    },
+    {
+     "text": "fighting",
+     "start": 13.917,
+     "end": 14.263
+    },
+    {
+     "text": "for",
+     "start": 14.275,
+     "end": 14.397
+    },
+    {
+     "text": "tenth",
+     "start": 14.397,
+     "end": 14.687
+    },
+    {
+     "text": "place",
+     "start": 14.699,
+     "end": 15.078
+    },
+    {
+     "text": "just",
+     "start": 15.19,
+     "end": 15.402
+    },
+    {
+     "text": "to",
+     "start": 15.402,
+     "end": 15.458
+    },
+    {
+     "text": "keep",
+     "start": 15.469,
+     "end": 15.636
+    },
+    {
+     "text": "his",
+     "start": 15.636,
+     "end": 15.759
+    },
+    {
+     "text": "job",
+     "start": 15.759,
+     "end": 16.105
+    }
+   ]
+  },
+  {
+   "id": "netflix-3",
+   "chapter": "The Netflix Effect",
+   "text": "Drive to Survive gave audiences a reason to care. People who had never watched a motorsport in their lives were suddenly canceling their Sunday plans to watch Max Verstappen and Lewis Hamilton battle it out. F1 realized that people don't connect with lap times; they connect with stories.",
+   "hash": "629c1a75437e",
+   "audio": "voice/f1-v1/netflix-3.mp3",
+   "duration": 15.216,
+   "words": [
+    {
+     "text": "Drive",
+     "start": 0.067,
+     "end": 0.391
+    },
+    {
+     "text": "to",
+     "start": 0.402,
+     "end": 0.469
+    },
+    {
+     "text": "Survive",
+     "start": 0.48,
+     "end": 0.926
+    },
+    {
+     "text": "gave",
+     "start": 0.926,
+     "end": 1.15
+    },
+    {
+     "text": "audiences",
+     "start": 1.25,
+     "end": 1.741
+    },
+    {
+     "text": "a",
+     "start": 1.752,
+     "end": 1.808
+    },
+    {
+     "text": "reason",
+     "start": 1.808,
+     "end": 2.143
+    },
+    {
+     "text": "to",
+     "start": 2.143,
+     "end": 2.221
+    },
+    {
+     "text": "care",
+     "start": 2.221,
+     "end": 2.589
+    },
+    {
+     "text": "People",
+     "start": 2.935,
+     "end": 3.181
+    },
+    {
+     "text": "who",
+     "start": 3.192,
+     "end": 3.27
+    },
+    {
+     "text": "had",
+     "start": 3.281,
+     "end": 3.415
+    },
+    {
+     "text": "never",
+     "start": 3.426,
+     "end": 3.75
+    },
+    {
+     "text": "watched",
+     "start": 3.761,
+     "end": 3.996
+    },
+    {
+     "text": "a",
+     "start": 4.007,
+     "end": 4.04
+    },
+    {
+     "text": "motorsport",
+     "start": 4.04,
+     "end": 4.554
+    },
+    {
+     "text": "in",
+     "start": 4.565,
+     "end": 4.654
+    },
+    {
+     "text": "their",
+     "start": 4.654,
+     "end": 4.777
+    },
+    {
+     "text": "lives",
+     "start": 4.788,
+     "end": 5.156
+    },
+    {
+     "text": "were",
+     "start": 5.167,
+     "end": 5.312
+    },
+    {
+     "text": "suddenly",
+     "start": 5.324,
+     "end": 5.725
+    },
+    {
+     "text": "canceling",
+     "start": 5.737,
+     "end": 6.183
+    },
+    {
+     "text": "their",
+     "start": 6.183,
+     "end": 6.317
+    },
+    {
+     "text": "Sunday",
+     "start": 6.328,
+     "end": 6.629
+    },
+    {
+     "text": "plans",
+     "start": 6.641,
+     "end": 7.098
+    },
+    {
+     "text": "to",
+     "start": 7.277,
+     "end": 7.388
+    },
+    {
+     "text": "watch",
+     "start": 7.4,
+     "end": 7.701
+    },
+    {
+     "text": "Max",
+     "start": 7.701,
+     "end": 7.98
+    },
+    {
+     "text": "Verstappen",
+     "start": 7.991,
+     "end": 8.638
+    },
+    {
+     "text": "and",
+     "start": 8.65,
+     "end": 8.806
+    },
+    {
+     "text": "Lewis",
+     "start": 8.817,
+     "end": 9.174
+    },
+    {
+     "text": "Hamilton",
+     "start": 9.185,
+     "end": 9.632
+    },
+    {
+     "text": "battle",
+     "start": 9.643,
+     "end": 9.888
+    },
+    {
+     "text": "it",
+     "start": 9.888,
+     "end": 9.955
+    },
+    {
+     "text": "out",
+     "start": 9.966,
+     "end": 10.245
+    },
+    {
+     "text": "F1",
+     "start": 10.603,
+     "end": 11.083
+    },
+    {
+     "text": "realized",
+     "start": 11.094,
+     "end": 11.596
+    },
+    {
+     "text": "that",
+     "start": 11.607,
+     "end": 11.775
+    },
+    {
+     "text": "people",
+     "start": 11.786,
+     "end": 12.042
+    },
+    {
+     "text": "don't",
+     "start": 12.054,
+     "end": 12.254
+    },
+    {
+     "text": "connect",
+     "start": 12.254,
+     "end": 12.589
+    },
+    {
+     "text": "with",
+     "start": 12.6,
+     "end": 12.69
+    },
+    {
+     "text": "lap",
+     "start": 12.701,
+     "end": 12.969
+    },
+    {
+     "text": "times",
+     "start": 12.969,
+     "end": 13.438
+    },
+    {
+     "text": "they",
+     "start": 13.672,
+     "end": 13.795
+    },
+    {
+     "text": "connect",
+     "start": 13.806,
+     "end": 14.174
+    },
+    {
+     "text": "with",
+     "start": 14.185,
+     "end": 14.297
+    },
+    {
+     "text": "stories",
+     "start": 14.297,
+     "end": 14.9
+    }
+   ]
+  },
+  {
+   "id": "demo-1",
+   "chapter": "The Demographic Revolution",
+   "text": "This storytelling strategy completely rewired who watches Formula 1. In just a few years, the sport experienced one of the fastest demographic shifts in modern history. The average fan age plummeted from 36 to 32. Today, a massive 43 percent of all F1 fans are under 35.",
+   "hash": "626fddf8c079",
+   "audio": "voice/f1-v1/demo-1.mp3",
+   "duration": 17.88,
+   "words": [
+    {
+     "text": "This",
+     "start": 0.056,
+     "end": 0.268
+    },
+    {
+     "text": "storytelling",
+     "start": 0.279,
+     "end": 0.804
+    },
+    {
+     "text": "strategy",
+     "start": 0.804,
+     "end": 1.272
+    },
+    {
+     "text": "completely",
+     "start": 1.284,
+     "end": 1.819
+    },
+    {
+     "text": "rewired",
+     "start": 1.83,
+     "end": 2.366
+    },
+    {
+     "text": "who",
+     "start": 2.377,
+     "end": 2.534
+    },
+    {
+     "text": "watches",
+     "start": 2.545,
+     "end": 2.991
+    },
+    {
+     "text": "Formula",
+     "start": 2.991,
+     "end": 3.359
+    },
+    {
+     "text": "1",
+     "start": 3.359,
+     "end": 3.605
+    },
+    {
+     "text": "In",
+     "start": 3.929,
+     "end": 4.04
+    },
+    {
+     "text": "just",
+     "start": 4.051,
+     "end": 4.286
+    },
+    {
+     "text": "a",
+     "start": 4.297,
+     "end": 4.341
+    },
+    {
+     "text": "few",
+     "start": 4.341,
+     "end": 4.598
+    },
+    {
+     "text": "years",
+     "start": 4.609,
+     "end": 5.089
+    },
+    {
+     "text": "the",
+     "start": 5.312,
+     "end": 5.402
+    },
+    {
+     "text": "sport",
+     "start": 5.413,
+     "end": 5.759
+    },
+    {
+     "text": "experienced",
+     "start": 5.77,
+     "end": 6.429
+    },
+    {
+     "text": "one",
+     "start": 6.44,
+     "end": 6.54
+    },
+    {
+     "text": "of",
+     "start": 6.551,
+     "end": 6.596
+    },
+    {
+     "text": "the",
+     "start": 6.607,
+     "end": 6.674
+    },
+    {
+     "text": "fastest",
+     "start": 6.685,
+     "end": 7.277
+    },
+    {
+     "text": "demographic",
+     "start": 7.277,
+     "end": 7.734
+    },
+    {
+     "text": "shifts",
+     "start": 7.734,
+     "end": 8.114
+    },
+    {
+     "text": "in",
+     "start": 8.181,
+     "end": 8.337
+    },
+    {
+     "text": "modern",
+     "start": 8.348,
+     "end": 8.627
+    },
+    {
+     "text": "history",
+     "start": 8.638,
+     "end": 9.096
+    },
+    {
+     "text": "The",
+     "start": 9.453,
+     "end": 9.542
+    },
+    {
+     "text": "average",
+     "start": 9.587,
+     "end": 9.966
+    },
+    {
+     "text": "fan",
+     "start": 9.966,
+     "end": 10.257
+    },
+    {
+     "text": "age",
+     "start": 10.268,
+     "end": 10.469
+    },
+    {
+     "text": "plummeted",
+     "start": 10.48,
+     "end": 10.837
+    },
+    {
+     "text": "from",
+     "start": 10.848,
+     "end": 11.038
+    },
+    {
+     "text": "36",
+     "start": 11.049,
+     "end": 11.652
+    },
+    {
+     "text": "to",
+     "start": 11.652,
+     "end": 11.73
+    },
+    {
+     "text": "32",
+     "start": 11.741,
+     "end": 12.366
+    },
+    {
+     "text": "Today",
+     "start": 12.723,
+     "end": 13.103
+    },
+    {
+     "text": "a",
+     "start": 13.538,
+     "end": 13.571
+    },
+    {
+     "text": "massive",
+     "start": 13.583,
+     "end": 14.04
+    },
+    {
+     "text": "43 percent",
+     "start": 14.051,
+     "end": 14.955
+    },
+    {
+     "text": "of",
+     "start": 15.034,
+     "end": 15.201
+    },
+    {
+     "text": "all",
+     "start": 15.335,
+     "end": 15.614
+    },
+    {
+     "text": "F1",
+     "start": 15.625,
+     "end": 16.071
+    },
+    {
+     "text": "fans",
+     "start": 16.083,
+     "end": 16.496
+    },
+    {
+     "text": "are",
+     "start": 16.507,
+     "end": 16.696
+    },
+    {
+     "text": "under",
+     "start": 16.708,
+     "end": 16.908
+    },
+    {
+     "text": "35",
+     "start": 16.92,
+     "end": 17.556
+    }
+   ]
+  },
+  {
+   "id": "demo-2",
+   "chapter": "The Demographic Revolution",
+   "text": "But the biggest shift? The female fanbase. Women now make up 42 percent of F1's global audience, driving a cultural evolution.",
+   "hash": "eeed15efe1f3",
+   "audio": "voice/f1-v1/demo-2.mp3",
+   "duration": 8.472,
+   "words": [
+    {
+     "text": "But",
+     "start": 0.067,
+     "end": 0.167
+    },
+    {
+     "text": "the",
+     "start": 0.179,
+     "end": 0.268
+    },
+    {
+     "text": "biggest",
+     "start": 0.268,
+     "end": 0.569
+    },
+    {
+     "text": "shift",
+     "start": 0.569,
+     "end": 1.049
+    },
+    {
+     "text": "The",
+     "start": 1.406,
+     "end": 1.484
+    },
+    {
+     "text": "female",
+     "start": 1.496,
+     "end": 1.975
+    },
+    {
+     "text": "fanbase",
+     "start": 1.975,
+     "end": 2.6
+    },
+    {
+     "text": "Women",
+     "start": 2.946,
+     "end": 3.225
+    },
+    {
+     "text": "now",
+     "start": 3.237,
+     "end": 3.426
+    },
+    {
+     "text": "make",
+     "start": 3.438,
+     "end": 3.616
+    },
+    {
+     "text": "up",
+     "start": 3.627,
+     "end": 3.761
+    },
+    {
+     "text": "42 percent",
+     "start": 3.772,
+     "end": 4.676
+    },
+    {
+     "text": "of",
+     "start": 4.743,
+     "end": 4.877
+    },
+    {
+     "text": "F1's",
+     "start": 5.011,
+     "end": 5.591
+    },
+    {
+     "text": "global",
+     "start": 5.603,
+     "end": 5.937
+    },
+    {
+     "text": "audience",
+     "start": 5.949,
+     "end": 6.406
+    },
+    {
+     "text": "driving",
+     "start": 6.663,
+     "end": 7.031
+    },
+    {
+     "text": "a",
+     "start": 7.042,
+     "end": 7.087
+    },
+    {
+     "text": "cultural",
+     "start": 7.098,
+     "end": 7.6
+    },
+    {
+     "text": "evolution",
+     "start": 7.612,
+     "end": 8.147
+    }
+   ]
+  },
+  {
+   "id": "demo-3",
+   "chapter": "The Demographic Revolution",
+   "text": "F1 is no longer just about engine suppliers; it's embedded in fashion, lifestyle, and pop culture. We are seeing major beauty brands like Charlotte Tilbury and Elemis sponsoring the F1 Academy. The season launches have turned into massive stadium concerts. Formula 1 isn't just a race weekend anymore — it's a lifestyle that Gen Z wants to be a part of.",
+   "hash": "b374cedfe740",
+   "audio": "voice/f1-v1/demo-3.mp3",
+   "duration": 20.136,
+   "words": [
+    {
+     "text": "F1",
+     "start": 0.089,
+     "end": 0.413
+    },
+    {
+     "text": "is",
+     "start": 0.424,
+     "end": 0.536
+    },
+    {
+     "text": "no",
+     "start": 0.547,
+     "end": 0.77
+    },
+    {
+     "text": "longer",
+     "start": 0.781,
+     "end": 1.138
+    },
+    {
+     "text": "just",
+     "start": 1.15,
+     "end": 1.417
+    },
+    {
+     "text": "about",
+     "start": 1.429,
+     "end": 1.652
+    },
+    {
+     "text": "engine",
+     "start": 1.663,
+     "end": 1.886
+    },
+    {
+     "text": "suppliers",
+     "start": 1.886,
+     "end": 2.422
+    },
+    {
+     "text": "it's",
+     "start": 2.846,
+     "end": 2.935
+    },
+    {
+     "text": "embedded",
+     "start": 2.946,
+     "end": 3.315
+    },
+    {
+     "text": "in",
+     "start": 3.315,
+     "end": 3.426
+    },
+    {
+     "text": "fashion",
+     "start": 3.438,
+     "end": 3.929
+    },
+    {
+     "text": "lifestyle",
+     "start": 4.319,
+     "end": 4.933
+    },
+    {
+     "text": "and",
+     "start": 5.067,
+     "end": 5.257
+    },
+    {
+     "text": "pop",
+     "start": 5.379,
+     "end": 5.658
+    },
+    {
+     "text": "culture",
+     "start": 5.659,
+     "end": 6.06
+    },
+    {
+     "text": "We",
+     "start": 6.395,
+     "end": 6.507
+    },
+    {
+     "text": "are",
+     "start": 6.518,
+     "end": 6.607
+    },
+    {
+     "text": "seeing",
+     "start": 6.618,
+     "end": 6.942
+    },
+    {
+     "text": "major",
+     "start": 6.953,
+     "end": 7.21
+    },
+    {
+     "text": "beauty",
+     "start": 7.21,
+     "end": 7.444
+    },
+    {
+     "text": "brands",
+     "start": 7.455,
+     "end": 7.835
+    },
+    {
+     "text": "like",
+     "start": 7.846,
+     "end": 8.025
+    },
+    {
+     "text": "Charlotte",
+     "start": 8.248,
+     "end": 8.65
+    },
+    {
+     "text": "Tilbury",
+     "start": 8.65,
+     "end": 9.129
+    },
+    {
+     "text": "and",
+     "start": 9.141,
+     "end": 9.297
+    },
+    {
+     "text": "Elemis",
+     "start": 9.386,
+     "end": 9.754
+    },
+    {
+     "text": "sponsoring",
+     "start": 9.766,
+     "end": 10.246
+    },
+    {
+     "text": "the",
+     "start": 10.257,
+     "end": 10.312
+    },
+    {
+     "text": "F1",
+     "start": 10.391,
+     "end": 10.815
+    },
+    {
+     "text": "Academy",
+     "start": 10.826,
+     "end": 11.306
+    },
+    {
+     "text": "The",
+     "start": 11.674,
+     "end": 11.741
+    },
+    {
+     "text": "season",
+     "start": 11.752,
+     "end": 12.098
+    },
+    {
+     "text": "launches",
+     "start": 12.098,
+     "end": 12.545
+    },
+    {
+     "text": "have",
+     "start": 12.556,
+     "end": 12.712
+    },
+    {
+     "text": "turned",
+     "start": 12.723,
+     "end": 13.036
+    },
+    {
+     "text": "into",
+     "start": 13.047,
+     "end": 13.248
+    },
+    {
+     "text": "massive",
+     "start": 13.259,
+     "end": 13.772
+    },
+    {
+     "text": "stadium",
+     "start": 13.784,
+     "end": 14.185
+    },
+    {
+     "text": "concerts",
+     "start": 14.196,
+     "end": 14.777
+    },
+    {
+     "text": "Formula",
+     "start": 15.201,
+     "end": 15.603
+    },
+    {
+     "text": "1",
+     "start": 15.614,
+     "end": 15.77
+    },
+    {
+     "text": "isn't",
+     "start": 15.848,
+     "end": 16.071
+    },
+    {
+     "text": "just",
+     "start": 16.083,
+     "end": 16.306
+    },
+    {
+     "text": "a",
+     "start": 16.317,
+     "end": 16.35
+    },
+    {
+     "text": "race",
+     "start": 16.35,
+     "end": 16.574
+    },
+    {
+     "text": "weekend",
+     "start": 16.585,
+     "end": 16.886
+    },
+    {
+     "text": "anymore",
+     "start": 16.897,
+     "end": 17.355
+    },
+    {
+     "text": "it's",
+     "start": 17.556,
+     "end": 17.634
+    },
+    {
+     "text": "a",
+     "start": 17.634,
+     "end": 17.69
+    },
+    {
+     "text": "lifestyle",
+     "start": 17.69,
+     "end": 18.348
+    },
+    {
+     "text": "that",
+     "start": 18.359,
+     "end": 18.504
+    },
+    {
+     "text": "Gen",
+     "start": 18.516,
+     "end": 18.772
+    },
+    {
+     "text": "Z",
+     "start": 18.772,
+     "end": 18.906
+    },
+    {
+     "text": "wants",
+     "start": 18.906,
+     "end": 19.118
+    },
+    {
+     "text": "to",
+     "start": 19.129,
+     "end": 19.196
+    },
+    {
+     "text": "be",
+     "start": 19.208,
+     "end": 19.297
+    },
+    {
+     "text": "a",
+     "start": 19.308,
+     "end": 19.353
+    },
+    {
+     "text": "part",
+     "start": 19.353,
+     "end": 19.576
+    },
+    {
+     "text": "of",
+     "start": 19.576,
+     "end": 19.799
+    }
+   ]
+  },
+  {
+   "id": "usa-1",
+   "chapter": "The American Dream",
+   "text": "And we can't ignore the United States. For decades, F1 tried and failed to crack the American market. Fast forward to today, and the US hosts three of the most glamorous races on the calendar in Austin, Miami, and Vegas.",
+   "hash": "6f5770788085",
+   "audio": "voice/f1-v1/usa-1.mp3",
+   "duration": 13.92,
+   "words": [
+    {
+     "text": "And",
+     "start": 0.078,
+     "end": 0.324
+    },
+    {
+     "text": "we",
+     "start": 0.435,
+     "end": 0.536
+    },
+    {
+     "text": "can't",
+     "start": 0.547,
+     "end": 0.837
+    },
+    {
+     "text": "ignore",
+     "start": 0.848,
+     "end": 1.339
+    },
+    {
+     "text": "the",
+     "start": 1.339,
+     "end": 1.384
+    },
+    {
+     "text": "United",
+     "start": 1.384,
+     "end": 1.73
+    },
+    {
+     "text": "States",
+     "start": 1.741,
+     "end": 2.221
+    },
+    {
+     "text": "For",
+     "start": 2.6,
+     "end": 2.734
+    },
+    {
+     "text": "decades",
+     "start": 2.734,
+     "end": 3.304
+    },
+    {
+     "text": "F1",
+     "start": 3.538,
+     "end": 4.051
+    },
+    {
+     "text": "tried",
+     "start": 4.062,
+     "end": 4.487
+    },
+    {
+     "text": "and",
+     "start": 4.498,
+     "end": 4.62
+    },
+    {
+     "text": "failed",
+     "start": 4.621,
+     "end": 5.033
+    },
+    {
+     "text": "to",
+     "start": 5.045,
+     "end": 5.145
+    },
+    {
+     "text": "crack",
+     "start": 5.156,
+     "end": 5.446
+    },
+    {
+     "text": "the",
+     "start": 5.446,
+     "end": 5.513
+    },
+    {
+     "text": "American",
+     "start": 5.525,
+     "end": 5.915
+    },
+    {
+     "text": "market",
+     "start": 5.926,
+     "end": 6.406
+    },
+    {
+     "text": "Fast",
+     "start": 6.819,
+     "end": 7.087
+    },
+    {
+     "text": "forward",
+     "start": 7.087,
+     "end": 7.366
+    },
+    {
+     "text": "to",
+     "start": 7.377,
+     "end": 7.433
+    },
+    {
+     "text": "today",
+     "start": 7.444,
+     "end": 7.879
+    },
+    {
+     "text": "and",
+     "start": 8.036,
+     "end": 8.181
+    },
+    {
+     "text": "the",
+     "start": 8.192,
+     "end": 8.237
+    },
+    {
+     "text": "US",
+     "start": 8.237,
+     "end": 8.594
+    },
+    {
+     "text": "hosts",
+     "start": 8.605,
+     "end": 9.018
+    },
+    {
+     "text": "three",
+     "start": 9.029,
+     "end": 9.33
+    },
+    {
+     "text": "of",
+     "start": 9.33,
+     "end": 9.409
+    },
+    {
+     "text": "the",
+     "start": 9.42,
+     "end": 9.475
+    },
+    {
+     "text": "most",
+     "start": 9.487,
+     "end": 9.788
+    },
+    {
+     "text": "glamorous",
+     "start": 9.788,
+     "end": 10.301
+    },
+    {
+     "text": "races",
+     "start": 10.312,
+     "end": 10.714
+    },
+    {
+     "text": "on",
+     "start": 10.725,
+     "end": 10.792
+    },
+    {
+     "text": "the",
+     "start": 10.792,
+     "end": 10.848
+    },
+    {
+     "text": "calendar",
+     "start": 10.859,
+     "end": 11.284
+    },
+    {
+     "text": "in",
+     "start": 11.284,
+     "end": 11.451
+    },
+    {
+     "text": "Austin",
+     "start": 11.551,
+     "end": 12.031
+    },
+    {
+     "text": "Miami",
+     "start": 12.254,
+     "end": 12.801
+    },
+    {
+     "text": "and",
+     "start": 12.824,
+     "end": 12.991
+    },
+    {
+     "text": "Vegas",
+     "start": 13.002,
+     "end": 13.594
+    }
+   ]
+  },
+  {
+   "id": "usa-2",
+   "chapter": "The American Dream",
+   "text": "Big tech has noticed, too. Apple recently secured a massive 150-million-dollar-a-year deal to broadcast F1 in the US, and Brad Pitt's mega-budget F1 movie dominated the global box office. The sport has saturated every layer of media.",
+   "hash": "3bfd485224ae",
+   "audio": "voice/f1-v1/usa-2.mp3",
+   "duration": 14.928,
+   "words": [
+    {
+     "text": "Big",
+     "start": 0.045,
+     "end": 0.212
+    },
+    {
+     "text": "tech",
+     "start": 0.223,
+     "end": 0.391
+    },
+    {
+     "text": "has",
+     "start": 0.402,
+     "end": 0.513
+    },
+    {
+     "text": "noticed",
+     "start": 0.525,
+     "end": 0.915
+    },
+    {
+     "text": "too",
+     "start": 0.926,
+     "end": 1.216
+    },
+    {
+     "text": "Apple",
+     "start": 1.551,
+     "end": 1.819
+    },
+    {
+     "text": "recently",
+     "start": 1.83,
+     "end": 2.21
+    },
+    {
+     "text": "secured",
+     "start": 2.221,
+     "end": 2.667
+    },
+    {
+     "text": "a",
+     "start": 2.723,
+     "end": 2.768
+    },
+    {
+     "text": "massive",
+     "start": 2.768,
+     "end": 3.304
+    },
+    {
+     "text": "150-million-dollar-a-year",
+     "start": 3.315,
+     "end": 6.183
+    },
+    {
+     "text": "deal",
+     "start": 6.183,
+     "end": 6.429
+    },
+    {
+     "text": "to",
+     "start": 6.44,
+     "end": 6.529
+    },
+    {
+     "text": "broadcast",
+     "start": 6.529,
+     "end": 7.02
+    },
+    {
+     "text": "F1",
+     "start": 7.098,
+     "end": 7.411
+    },
+    {
+     "text": "in",
+     "start": 7.422,
+     "end": 7.478
+    },
+    {
+     "text": "the",
+     "start": 7.478,
+     "end": 7.511
+    },
+    {
+     "text": "US",
+     "start": 7.511,
+     "end": 7.935
+    },
+    {
+     "text": "and",
+     "start": 8.17,
+     "end": 8.292
+    },
+    {
+     "text": "Brad",
+     "start": 8.304,
+     "end": 8.694
+    },
+    {
+     "text": "Pitt's",
+     "start": 8.705,
+     "end": 8.94
+    },
+    {
+     "text": "mega-budget",
+     "start": 8.951,
+     "end": 9.498
+    },
+    {
+     "text": "F1",
+     "start": 9.587,
+     "end": 10.022
+    },
+    {
+     "text": "movie",
+     "start": 10.034,
+     "end": 10.279
+    },
+    {
+     "text": "dominated",
+     "start": 10.29,
+     "end": 10.781
+    },
+    {
+     "text": "the",
+     "start": 10.781,
+     "end": 10.848
+    },
+    {
+     "text": "global",
+     "start": 10.859,
+     "end": 11.172
+    },
+    {
+     "text": "box",
+     "start": 11.172,
+     "end": 11.417
+    },
+    {
+     "text": "office",
+     "start": 11.429,
+     "end": 11.92
+    },
+    {
+     "text": "The",
+     "start": 12.277,
+     "end": 12.333
+    },
+    {
+     "text": "sport",
+     "start": 12.344,
+     "end": 12.734
+    },
+    {
+     "text": "has",
+     "start": 12.734,
+     "end": 12.891
+    },
+    {
+     "text": "saturated",
+     "start": 12.902,
+     "end": 13.482
+    },
+    {
+     "text": "every",
+     "start": 13.583,
+     "end": 13.828
+    },
+    {
+     "text": "layer",
+     "start": 13.839,
+     "end": 14.085
+    },
+    {
+     "text": "of",
+     "start": 14.085,
+     "end": 14.152
+    },
+    {
+     "text": "media",
+     "start": 14.163,
+     "end": 14.598
+    }
+   ]
+  },
+  {
+   "id": "outro-1",
+   "chapter": "Conclusion",
+   "text": "Fifteen years ago, Formula 1 survived by locking its doors and asking you to pay for a glimpse inside. Today, it's booming because it threw the doors wide open.",
+   "hash": "57c3df595a28",
+   "audio": "voice/f1-v1/outro-1.mp3",
+   "duration": 9.312,
+   "words": [
+    {
+     "text": "Fifteen",
+     "start": 0.145,
+     "end": 0.513
+    },
+    {
+     "text": "years",
+     "start": 0.525,
+     "end": 0.725
+    },
+    {
+     "text": "ago",
+     "start": 0.737,
+     "end": 1.083
+    },
+    {
+     "text": "Formula",
+     "start": 1.462,
+     "end": 1.908
+    },
+    {
+     "text": "1",
+     "start": 1.92,
+     "end": 2.12
+    },
+    {
+     "text": "survived",
+     "start": 2.132,
+     "end": 2.623
+    },
+    {
+     "text": "by",
+     "start": 2.623,
+     "end": 2.768
+    },
+    {
+     "text": "locking",
+     "start": 2.768,
+     "end": 3.125
+    },
+    {
+     "text": "its",
+     "start": 3.136,
+     "end": 3.259
+    },
+    {
+     "text": "doors",
+     "start": 3.27,
+     "end": 3.705
+    },
+    {
+     "text": "and",
+     "start": 3.716,
+     "end": 3.917
+    },
+    {
+     "text": "asking",
+     "start": 3.929,
+     "end": 4.241
+    },
+    {
+     "text": "you",
+     "start": 4.241,
+     "end": 4.364
+    },
+    {
+     "text": "to",
+     "start": 4.375,
+     "end": 4.464
+    },
+    {
+     "text": "pay",
+     "start": 4.475,
+     "end": 4.844
+    },
+    {
+     "text": "for",
+     "start": 4.855,
+     "end": 4.989
+    },
+    {
+     "text": "a",
+     "start": 5.0,
+     "end": 5.056
+    },
+    {
+     "text": "glimpse",
+     "start": 5.067,
+     "end": 5.424
+    },
+    {
+     "text": "inside",
+     "start": 5.435,
+     "end": 5.926
+    },
+    {
+     "text": "Today",
+     "start": 6.272,
+     "end": 6.663
+    },
+    {
+     "text": "it's",
+     "start": 6.674,
+     "end": 6.864
+    },
+    {
+     "text": "booming",
+     "start": 6.864,
+     "end": 7.254
+    },
+    {
+     "text": "because",
+     "start": 7.266,
+     "end": 7.556
+    },
+    {
+     "text": "it",
+     "start": 7.567,
+     "end": 7.667
+    },
+    {
+     "text": "threw",
+     "start": 7.667,
+     "end": 7.824
+    },
+    {
+     "text": "the",
+     "start": 7.824,
+     "end": 7.913
+    },
+    {
+     "text": "doors",
+     "start": 7.913,
+     "end": 8.292
+    },
+    {
+     "text": "wide",
+     "start": 8.304,
+     "end": 8.605
+    },
+    {
+     "text": "open",
+     "start": 8.616,
+     "end": 8.996
+    }
+   ]
+  },
+  {
+   "id": "outro-2",
+   "chapter": "Conclusion",
+   "text": "By focusing on the people beneath the helmets and embracing the digital age, F1 stopped being just a race. It became the greatest traveling circus on Earth — and now, everyone has a front-row seat.",
+   "hash": "57bf411897bf",
+   "audio": "voice/f1-v1/outro-2.mp3",
+   "duration": 11.52,
+   "words": [
+    {
+     "text": "By",
+     "start": 0.078,
+     "end": 0.201
+    },
+    {
+     "text": "focusing",
+     "start": 0.201,
+     "end": 0.681
+    },
+    {
+     "text": "on",
+     "start": 0.692,
+     "end": 0.759
+    },
+    {
+     "text": "the",
+     "start": 0.77,
+     "end": 0.815
+    },
+    {
+     "text": "people",
+     "start": 0.826,
+     "end": 1.083
+    },
+    {
+     "text": "beneath",
+     "start": 1.094,
+     "end": 1.373
+    },
+    {
+     "text": "the",
+     "start": 1.373,
+     "end": 1.429
+    },
+    {
+     "text": "helmets",
+     "start": 1.44,
+     "end": 1.886
+    },
+    {
+     "text": "and",
+     "start": 2.031,
+     "end": 2.254
+    },
+    {
+     "text": "embracing",
+     "start": 2.321,
+     "end": 2.824
+    },
+    {
+     "text": "the",
+     "start": 2.824,
+     "end": 2.902
+    },
+    {
+     "text": "digital",
+     "start": 2.902,
+     "end": 3.225
+    },
+    {
+     "text": "age",
+     "start": 3.237,
+     "end": 3.65
+    },
+    {
+     "text": "F1",
+     "start": 4.051,
+     "end": 4.509
+    },
+    {
+     "text": "stopped",
+     "start": 4.52,
+     "end": 4.855
+    },
+    {
+     "text": "being",
+     "start": 4.866,
+     "end": 5.123
+    },
+    {
+     "text": "just",
+     "start": 5.134,
+     "end": 5.368
+    },
+    {
+     "text": "a",
+     "start": 5.379,
+     "end": 5.413
+    },
+    {
+     "text": "race",
+     "start": 5.424,
+     "end": 5.871
+    },
+    {
+     "text": "It",
+     "start": 6.216,
+     "end": 6.306
+    },
+    {
+     "text": "became",
+     "start": 6.317,
+     "end": 6.674
+    },
+    {
+     "text": "the",
+     "start": 6.685,
+     "end": 6.775
+    },
+    {
+     "text": "greatest",
+     "start": 6.775,
+     "end": 7.288
+    },
+    {
+     "text": "traveling",
+     "start": 7.299,
+     "end": 7.712
+    },
+    {
+     "text": "circus",
+     "start": 7.723,
+     "end": 8.058
+    },
+    {
+     "text": "on",
+     "start": 8.069,
+     "end": 8.192
+    },
+    {
+     "text": "Earth",
+     "start": 8.203,
+     "end": 8.493
+    },
+    {
+     "text": "and",
+     "start": 8.884,
+     "end": 9.04
+    },
+    {
+     "text": "now",
+     "start": 9.051,
+     "end": 9.453
+    },
+    {
+     "text": "everyone",
+     "start": 9.688,
+     "end": 10.1
+    },
+    {
+     "text": "has",
+     "start": 10.112,
+     "end": 10.29
+    },
+    {
+     "text": "a",
+     "start": 10.301,
+     "end": 10.357
+    },
+    {
+     "text": "front-row",
+     "start": 10.368,
+     "end": 10.781
+    },
+    {
+     "text": "seat",
+     "start": 10.792,
+     "end": 11.183
+    }
+   ]
+  }
+ ],
+ "total": 230.712
+}

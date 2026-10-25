@@ -1,0 +1,1170 @@
+You are editing an existing video named:
+
+`f1-explosion.mp4`
+
+VIDEO DURATION:
+247.17 seconds / approximately 4:07.
+
+PRIMARY GOAL:
+Upgrade the existing animated F1 explainer by integrating real Formula 1 photography, official brand/logo assets, and redesigned demographic statistic animations.
+
+DO NOT rebuild the video from scratch.
+
+Keep:
+- Existing narration/audio
+- Existing subtitles
+- Existing chapter timing
+- Existing pacing
+- Existing overall scene order
+- Existing motion-graphics concept
+
+Improve:
+- Visual credibility
+- Photography
+- Image composition
+- Brand imagery
+- Statistic scenes
+- Color palette
+- Transitions between illustrations and real photographs
+
+=====================================
+NEW COLOR THEME
+=====================================
+
+Replace the current purple/orange visual theme with this palette:
+
+CREAM
+#FBF5DD
+
+LIGHT SAGE / BEIGE
+#E7E1B1
+
+PRIMARY GREEN
+#306D29
+
+DARK GREEN
+#0D530E
+
+COLOR USAGE:
+
+#FBF5DD
+Main light background.
+Also use for text placed over dark-green backgrounds.
+
+#E7E1B1
+Secondary panels, cards, charts, subtle backgrounds and muted elements.
+
+#306D29
+Primary accent.
+Use for highlighted words, percentage numbers, lines, progress bars, charts, chapter numbers and important graphical elements.
+
+#0D530E
+Dark background.
+Use for chapter cards, strong contrast sections, image overlays and dark panels.
+
+Do NOT retain the existing purple/orange palette.
+
+Recommended chapter-screen style:
+
+background: #0D530E
+chapter number: #FBF5DD
+chapter title: #FBF5DD
+accent/racing line: #306D29
+secondary decorative line: #E7E1B1
+
+For normal explanatory scenes:
+
+background: #FBF5DD
+primary text: #0D530E
+highlight text: #306D29
+secondary graphics: #E7E1B1
+
+Photography can retain its natural colors.
+
+When putting text over photographs, add a dark-green gradient overlay using #0D530E at approximately 50–75% opacity where necessary.
+
+=====================================
+LOGO RULE
+=====================================
+
+Whenever a logo is used:
+
+1. Download the highest-quality SVG/vector version if available.
+2. Convert it locally to PNG.
+3. PNG MUST have a transparent background.
+4. Preserve the original logo proportions.
+5. Never stretch a logo.
+6. Do not put logos inside white rectangular screenshots unless absolutely necessary.
+7. Save them under:
+
+`assets/logos/`
+
+Recommended names:
+
+formula1.png
+netflix.png
+apple.png
+f1_academy.png
+charlotte_tilbury.png
+liberty_media.png
+
+=====================================
+IMAGE DOWNLOAD STRUCTURE
+=====================================
+
+Create:
+
+assets/
+    archival/
+    people/
+    racing/
+    crowds/
+    lifestyle/
+    circuits/
+    entertainment/
+    logos/
+
+Download the following source assets before rendering.
+
+=====================================
+ASSET 01 — 2010 OLD F1 PADDOCK
+=====================================
+
+SOURCE:
+[2010 Italian GP — Ferrari paddock photograph](https://commons.wikimedia.org/wiki/File:2010_Italian_GP_-_Scuderia_Ferrari_paddock_(1).jpg?utm_source=chatgpt.com)
+
+Save as:
+
+assets/archival/f1_paddock_2010.jpg
+
+PLACEMENT:
+00:08–00:14
+
+CURRENT NARRATION CONTEXT:
+The video is establishing how different Formula 1 felt roughly fifteen years ago.
+
+USE:
+Replace or complement the existing cartoon representation with this real 2010 paddock image.
+
+STYLE:
+- Slight desaturation
+- Very subtle film grain
+- Slow 103% → 110% push-in
+- Dark-green edge vignette
+- Keep subtitle readable
+
+This image should immediately communicate:
+"OLD F1."
+
+=====================================
+ASSET 02 — OLD F1 / EXCLUSIVE ERA
+=====================================
+
+SOURCE:
+[More 2010 Italian Grand Prix imagery](https://commons.wikimedia.org/wiki/Category:2010_Italian_Grand_Prix?utm_source=chatgpt.com)
+
+PLACEMENT:
+00:14–00:23
+
+NARRATION CONTEXT:
+"Old boys' club… highly exclusive… Euro-centric billionaire's playground."
+
+Use one additional paddock/grid/hospitality-looking photograph from this collection.
+
+Do NOT show the photograph completely static.
+
+Use:
+- crop animation
+- pan
+- zoom
+- subtle cream-colored frame
+- #0D530E overlay
+
+Optional on-screen text:
+
+EXCLUSIVE.
+EURO-CENTRIC.
+
+Highlight "EXCLUSIVE" using #306D29.
+
+=====================================
+ASSET 03 — BERNIE ECCLESTONE
+=====================================
+
+SOURCE:
+[Bernie Ecclestone portrait — Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bernie_Ecclestone.jpg?utm_source=chatgpt.com)
+
+Save:
+
+assets/people/bernie_ecclestone.jpg
+
+PLACEMENT:
+00:38–00:46
+
+The current scene says that Formula 1 was run by Bernie Ecclestone.
+
+Replace the generic older-businessman illustration with the real photograph.
+
+Composition:
+Bernie image on right 40–45% of screen.
+
+Left:
+2017
+
+RUN BY ONE
+OLD GUARD
+
+or retain existing textual wording if already synchronized.
+
+Use #FBF5DD background with green graphic elements.
+
+=====================================
+ASSET 04 — LIBERTY MEDIA TAKEOVER
+=====================================
+
+SOURCE ARTICLE:
+[Formula 1 — Liberty completes F1 acquisition](https://www.formula1.com/en/latest/article/liberty-completes-f1-acquisition.3zzGTfOwC4OkEc8EAKMKKw.3zzGTfOwC4OkEc8EAKMKKw?utm_source=chatgpt.com)
+
+LIBERTY CORPORATE SOURCE:
+[Liberty Media official site](https://www.libertymedia.com/?utm_source=chatgpt.com)
+
+PLACEMENT:
+Approximately 01:02–01:11.
+
+Use a visual combination of:
+
+LIBERTY MEDIA
++
+FORMULA 1
+
+Animate the two identities joining together.
+
+If using the Liberty Media logo:
+create a transparent PNG first.
+
+Do NOT use a screenshot with an ugly website background.
+
+Instead extract/crop the actual logo.
+
+Display the Formula 1 logo alongside it.
+
+=====================================
+ASSET 05 — FORMULA 1 LOGO
+=====================================
+
+SOURCE:
+[Current Formula One logo vector](https://commons.wikimedia.org/wiki/File:Formula_One_logo.svg?utm_source=chatgpt.com)
+
+Convert SVG → transparent PNG.
+
+Save:
+
+assets/logos/formula1.png
+
+Use around:
+01:05–01:15
+
+and optionally in later media-collage scenes.
+
+=====================================
+ASSET 06 — MODERN F1 / DIGITAL OPENNESS
+=====================================
+
+SOURCE:
+[2021 United States Grand Prix photo collection](https://commons.wikimedia.org/wiki/Category:2021_United_States_Grand_Prix?utm_source=chatgpt.com)
+
+PLACEMENT:
+01:18–01:31
+
+Narration discusses F1 opening its digital walls and becoming an always-on media product.
+
+Use fast photographic inserts of:
+
+driver parade
+garage
+fans
+cars
+paddock
+
+Photo duration:
+roughly 1.5–2.5 seconds each.
+
+Combine photographs with floating UI labels:
+
+YOUTUBE
+INSTAGRAM
+TIKTOK
+LIVE
+
+Use palette:
+
+UI pill background: #E7E1B1
+UI text: #0D530E
+active pill: #306D29
+active text: #FBF5DD
+
+=====================================
+CHAPTER 03 — NETFLIX EFFECT
+=====================================
+
+Existing chapter begins approximately:
+
+01:32
+
+Keep the chapter card but recolor it using the new palette.
+
+=====================================
+ASSET 07 — DRIVE TO SURVIVE
+=====================================
+
+OFFICIAL SOURCE:
+[Netflix Media Center — Formula 1: Drive to Survive](https://media.netflix.com/en/only-on-netflix/80204890?utm_source=chatgpt.com)
+
+PLACEMENT:
+01:34–01:42
+
+Use official Drive to Survive key art/still.
+
+Do NOT recreate Netflix key art yourself.
+
+Use a cinematic reveal.
+
+Possible composition:
+
+dark green background
+
+small Netflix logo
+
+FORMULA 1:
+DRIVE TO SURVIVE
+
+official artwork to right.
+
+=====================================
+ASSET 08 — NETFLIX LOGO
+=====================================
+
+SOURCE:
+[Netflix transparent vector logo](https://commons.wikimedia.org/wiki/File:Netflix_2015_logo.svg?utm_source=chatgpt.com)
+
+Convert:
+
+SVG → transparent PNG
+
+Save:
+
+assets/logos/netflix.png
+
+Use:
+01:34–01:40
+
+Do not make it enormous.
+
+It should support the Drive to Survive visual instead of becoming the entire scene.
+
+=====================================
+ASSET 09 — DRIVER / MACHINE VISUAL
+=====================================
+
+SOURCE COLLECTION:
+[2021 United States Grand Prix photography](https://commons.wikimedia.org/wiki/Category:2021_United_States_Grand_Prix?utm_source=chatgpt.com)
+
+PLACEMENT:
+01:42–01:51
+
+Narration explains how new viewers previously just saw twenty cars.
+
+Use racing imagery.
+
+Composition idea:
+
+wide photograph
++
+small technical labels
+
+CAR
+TYRES
+AERO
+
+Then fade those technical labels away as the narration shifts toward human stories.
+
+=====================================
+ASSET 10 — VERSTAPPEN + HAMILTON ERA
+=====================================
+
+SOURCE:
+[2021 British Grand Prix — Hamilton and Verstappen era photograph](https://commons.wikimedia.org/wiki/File:2021_British_Grand_Prix_(51349536938).jpg?utm_source=chatgpt.com)
+
+Save:
+
+assets/racing/hamilton_verstappen_2021.jpg
+
+PLACEMENT:
+Approximately 02:05–02:15.
+
+Use when narration discusses rivalry, pressure and why audiences care about the people.
+
+Do a slow horizontal crop or parallax treatment.
+
+Do not cover the central racing action with subtitles.
+
+=====================================
+ASSET 11 — LEWIS HAMILTON IMAGE OPTION
+=====================================
+
+SOURCE COLLECTION:
+[Lewis Hamilton in 2021 photographs](https://commons.wikimedia.org/wiki/Category:Lewis_Hamilton_in_2021?utm_source=chatgpt.com)
+
+Optional placement:
+02:09–02:14.
+
+Use only if additional visual variety is needed.
+
+=====================================
+ASSET 12 — MAX VERSTAPPEN IMAGE OPTION
+=====================================
+
+SOURCE COLLECTION:
+[Max Verstappen in 2021 photographs](https://commons.wikimedia.org/wiki/Category:Max_Verstappen_(racing_driver)_in_2021?utm_source=chatgpt.com)
+
+Optional placement:
+02:06–02:12.
+
+Alternate between Verstappen and Hamilton before revealing the shared/racing photograph.
+
+=====================================
+CHAPTER 04 — DEMOGRAPHIC REVOLUTION
+=====================================
+
+Starts approximately:
+
+02:22 / 142 seconds.
+
+Keep chapter screen.
+
+Recolor:
+
+background #0D530E
+CHAPTER 04 #FBF5DD
+title #FBF5DD
+racing stripe #306D29
+secondary stripe #E7E1B1
+
+=====================================
+ASSET 13 — MODERN YOUNG F1 CROWD
+=====================================
+
+SOURCE:
+[US Grand Prix grandstand crowd photograph](https://commons.wikimedia.org/wiki/File:Grandstand_USGP_2021.jpg?utm_source=chatgpt.com)
+
+Save:
+
+assets/crowds/usgp_modern_fans.jpg
+
+PLACEMENT:
+02:26–02:32 / approximately 146–152 sec.
+
+Narration:
+"This storytelling strategy completely rewired who watches Formula 1."
+
+Use a broad crop showing the scale of modern fandom.
+
+Use subtle Ken Burns movement.
+
+=====================================
+AGE GRAPHIC
+=====================================
+
+Keep the existing average-age concept around:
+
+02:33–02:37 / 153–157 sec.
+
+Restyle it.
+
+Animate:
+
+36
+
+then morph/count downward into:
+
+32
+
+Typography:
+
+36:
+#E7E1B1
+
+32:
+#306D29
+
+Background:
+#FBF5DD
+
+Primary copy:
+#0D530E
+
+Use minimal motion.
+
+=====================================
+NEW CUSTOM GRAPHIC 01
+=====================================
+
+TIME:
+Approximately 02:38–02:42
+158–162 sec.
+
+Replace the existing demographic scene with a clean animated statistic.
+
+TEXT MUST BE EXACTLY:
+
+43%
+
+OF F1 FANS
+
+ARE UNDER 35
+
+Design:
+
+Background:
+#0D530E
+
+43%:
+very large
+#FBF5DD
+
+"OF F1 FANS":
+#E7E1B1
+
+"ARE UNDER 35":
+#FBF5DD
+
+Use #306D29 for a graphical underline or chart accent.
+
+ANIMATION:
+
+1. Background wipes in horizontally.
+2. "43%" counts from 0 → 43.
+3. "OF F1 FANS" fades upward.
+4. "ARE UNDER 35" slides in.
+5. A thin #306D29 progress bar fills to 43%.
+6. Hold completed composition for at least 1.5 seconds.
+
+Do NOT make this graph overly complicated.
+
+Large typography is the visual.
+
+=====================================
+NEW CUSTOM GRAPHIC 02
+=====================================
+
+TIME:
+Approximately 02:43–02:49
+163–169 sec.
+
+TEXT MUST BE EXACTLY:
+
+42%
+
+OF F1'S GLOBAL AUDIENCE
+
+IS FEMALE
+
+Background:
+#FBF5DD
+
+42%:
+#0D530E
+very large
+
+"OF F1'S GLOBAL AUDIENCE":
+#306D29
+
+"IS FEMALE":
+#0D530E
+
+Optional circular ring:
+#E7E1B1 base
+#306D29 fill
+
+ANIMATION:
+
+1. Circular arc animates from 0 → 42%.
+2. Number counts from 0 → 42%.
+3. Supporting text appears line-by-line.
+4. Small silhouettes/dots can appear around the number.
+5. Hold final graphic.
+
+Keep it editorial and modern.
+
+NO stereotypical pink color.
+
+Use only the supplied green/cream palette.
+
+=====================================
+ASSET 14 — LEWIS HAMILTON / FASHION
+=====================================
+
+OFFICIAL F1 SOURCE:
+[Formula 1 — Lewis Hamilton fashion evolution](https://www.formula1.com/en/latest/article/two-decades-of-lewis-hamilton-in-f1-the-evolution-of-a-fashion-icon.2T7y8KocruM8HWV2Jvufkf?utm_source=chatgpt.com)
+
+PLACEMENT:
+Approximately 02:52–02:57 / 172–177 sec.
+
+Narration moves into:
+
+fashion
+lifestyle
+pop culture
+
+Replace the generic cartoon fashion figure with a real Hamilton fashion photograph where rights/source permit.
+
+Use magazine/editorial composition.
+
+Potential typography:
+
+FASHION.
+LIFESTYLE.
+CULTURE.
+
+=====================================
+ASSET 15 — F1 ACADEMY REAL CAR
+=====================================
+
+SOURCE:
+[2026 F1 Academy Silverstone photograph](https://commons.wikimedia.org/wiki/File:Chiara_B%C3%A4ttig_-_2026_F1_Academy_Silverstone.jpg?utm_source=chatgpt.com)
+
+Save:
+
+assets/racing/f1_academy_silverstone.jpg
+
+PLACEMENT:
+02:57–03:03 / approximately 177–183 sec.
+
+Use the photograph as the hero visual when narration mentions F1 Academy and beauty brands.
+
+=====================================
+ASSET 16 — F1 ACADEMY LOGO
+=====================================
+
+SOURCE:
+[F1 Academy 2026 logo vector](https://commons.wikimedia.org/wiki/File:F1_Academy_logo_(2026).svg?utm_source=chatgpt.com)
+
+Convert to transparent PNG.
+
+Save:
+
+assets/logos/f1_academy.png
+
+Use:
+around 02:58–03:03.
+
+=====================================
+ASSET 17 — CHARLOTTE TILBURY LOGO
+=====================================
+
+SOURCE:
+[Charlotte Tilbury logo vector](https://commons.wikimedia.org/wiki/File:Charlotte_Tilbury_logo.svg?utm_source=chatgpt.com)
+
+Convert SVG → transparent PNG.
+
+Save:
+
+assets/logos/charlotte_tilbury.png
+
+=====================================
+ASSET 18 — CHARLOTTE TILBURY × F1 ACADEMY
+=====================================
+
+OFFICIAL SOURCE:
+[Charlotte Tilbury × F1 Academy official partnership page](https://www.charlottetilbury.com/us/secrets/charlotte-tilbury-f1-academy?utm_source=chatgpt.com)
+
+PLACEMENT:
+Approximately 02:58–03:04.
+
+Instead of only displaying text saying Charlotte Tilbury:
+
+use actual partnership imagery when available.
+
+Suggested layout:
+
+F1 Academy photograph occupying 60–65%.
+
+Floating transparent logo:
+
+CHARLOTTE TILBURY
+
++
+
+F1 ACADEMY
+
+Keep this clean and premium.
+
+=====================================
+ASSET 19 — STADIUM / MODERN F1 CROWD
+=====================================
+
+SOURCE:
+[USGP qualifying grandstand photograph](https://commons.wikimedia.org/wiki/File:Quali_Grandstand_USGP_2021.jpg?utm_source=chatgpt.com)
+
+PLACEMENT:
+03:04–03:10.
+
+Narration discusses launch events, spectacle and F1 becoming a lifestyle.
+
+Use this as a transition from demographics into the American expansion chapter.
+
+=====================================
+CHAPTER 05 — THE AMERICAN DREAM
+=====================================
+
+Begins around:
+
+03:11 / 191 sec.
+
+Keep chapter animation but recolor to green/cream palette.
+
+=====================================
+ASSET 20 — CIRCUIT OF THE AMERICAS / AUSTIN
+=====================================
+
+SOURCE:
+[COTA / USGP grandstand photograph](https://commons.wikimedia.org/wiki/File:Grandstand_USGP_2021.jpg?utm_source=chatgpt.com)
+
+PLACEMENT:
+Approximately 03:15–03:20
+195–200 sec.
+
+Add lower-third:
+
+AUSTIN
+
+Use #FBF5DD text over #0D530E pill.
+
+=====================================
+ASSET 21 — MIAMI GRAND PRIX
+=====================================
+
+SOURCE:
+[2024 Miami Grand Prix start/finish photograph](https://commons.wikimedia.org/wiki/File:Start-Finish_Straight_at_the_2024_Miami_Grand_Prix.jpg?utm_source=chatgpt.com)
+
+Save:
+
+assets/circuits/miami_gp.jpg
+
+PLACEMENT:
+Approximately 03:20–03:24
+200–204 sec.
+
+Animate via slow pan.
+
+Small location text:
+
+MIAMI
+
+=====================================
+ASSET 22 — LAS VEGAS GRAND PRIX
+=====================================
+
+SOURCE:
+[2024 Las Vegas Grand Prix at the Sphere](https://commons.wikimedia.org/wiki/File:2024_Las_Vegas_Grand_Prix_at_the_Sphere_-_Saturday,_November_23,_Orbi.jpg?utm_source=chatgpt.com)
+
+Save:
+
+assets/circuits/las_vegas_gp.jpg
+
+PLACEMENT:
+Approximately 03:24–03:29
+204–209 sec.
+
+This should be the most visually spectacular of the three US race shots.
+
+Use nearly full screen.
+
+Small location title:
+
+LAS VEGAS
+
+=====================================
+US RACE MINI-MONTAGE
+=====================================
+
+From roughly:
+
+03:17–03:29
+
+Sequence:
+
+AUSTIN
+→ MIAMI
+→ LAS VEGAS
+
+Each photo approximately 3–4 seconds.
+
+Transitions:
+fast horizontal race-inspired wipes.
+
+Do not dissolve slowly between every image.
+
+=====================================
+ASSET 23 — APPLE LOGO
+=====================================
+
+SOURCE:
+[Apple logo vector](https://commons.wikimedia.org/wiki/File:Apple_Logo.svg?utm_source=chatgpt.com)
+
+Convert SVG → transparent PNG.
+
+Save:
+
+assets/logos/apple.png
+
+PLACEMENT:
+Approximately 03:29–03:34
+209–214 sec.
+
+Use alongside F1 branding when discussing the Apple media deal.
+
+Suggested composition:
+
+APPLE LOGO
+
+×
+
+F1 LOGO
+
+Background:
+#FBF5DD
+
+Do not overdecorate.
+
+=====================================
+ASSET 24 — F1 THE MOVIE / BRAD PITT
+=====================================
+
+OFFICIAL APPLE PRESS SOURCE:
+[Apple TV Press — F1 The Movie images and key art](https://www.apple.com/tv-pr/originals/f1/?utm_source=chatgpt.com)
+
+IMAGE COLLECTION:
+[Apple TV Press — F1 The Movie image gallery](https://images.apple.com/uk/tv-pr/originals/f1/images/?utm_source=chatgpt.com)
+
+PLACEMENT:
+Approximately 03:34–03:39
+214–219 sec.
+
+Download one official promotional still featuring Brad Pitt / APXGP or the official key artwork.
+
+Save:
+
+assets/entertainment/f1_movie_brad_pitt.jpg
+
+Use a cinematic crop.
+
+Optional text:
+
+HOLLYWOOD
+MEETS
+FORMULA 1
+
+Do not place text over Brad Pitt's face.
+
+=====================================
+MEDIA SATURATION COLLAGE
+=====================================
+
+TIME:
+approximately 03:39–03:41
+219–221 sec.
+
+Create a quick layered collage containing:
+
+F1 logo
+Netflix logo
+Apple logo
+Drive to Survive artwork
+F1 Movie artwork
+social-media UI cards
+crowd photography
+
+Animation duration:
+roughly 2 seconds.
+
+The collage should feel intentionally overwhelming because narration says Formula 1 has saturated every layer of media.
+
+=====================================
+CHAPTER 06 — CONCLUSION
+=====================================
+
+Starts around:
+
+03:42 / 222 sec.
+
+Keep existing chapter screen.
+
+Use redesigned palette.
+
+=====================================
+ASSET 25 — OLD F1 CALLBACK
+=====================================
+
+SOURCE:
+reuse:
+
+assets/archival/f1_paddock_2010.jpg
+
+PLACEMENT:
+03:44–03:50.
+
+Narration:
+"Fifteen years ago… locking its doors…"
+
+Make it visually different from the opening:
+
+- crop tighter
+- slightly monochrome
+- #0D530E overlay
+- slower movement
+
+This visually calls back to the beginning.
+
+=====================================
+ASSET 26 — MODERN CROWD / OPEN DOORS
+=====================================
+
+SOURCE:
+[Modern US Grand Prix fan crowd](https://commons.wikimedia.org/wiki/File:Grandstand_USGP_2021.jpg?utm_source=chatgpt.com)
+
+PLACEMENT:
+03:50–03:56.
+
+Narration:
+"Today, it's booming because it threw the doors wide open."
+
+Transition directly:
+
+OLD PADDOCK
+→ MODERN CROWD
+
+Use matching zoom position to make the contrast obvious.
+
+=====================================
+ASSET 27 — PODIUM CELEBRATION
+=====================================
+
+SOURCE:
+[2016 Belgian GP podium celebration](https://commons.wikimedia.org/wiki/File:Podium_Grand_Prix_automobile_de_Belgique_2016.jpg?utm_source=chatgpt.com)
+
+Save:
+
+assets/racing/f1_podium.jpg
+
+PLACEMENT:
+approximately 03:56–04:01.
+
+Use for the emotional climax.
+
+Subtle push-in.
+
+Do not heavily tint photograph.
+
+=====================================
+ASSET 28 — FINAL CROWD / FINALE
+=====================================
+
+SOURCE COLLECTION:
+[2021 United States Grand Prix media collection](https://commons.wikimedia.org/wiki/Category:2021_United_States_Grand_Prix?utm_source=chatgpt.com)
+
+PLACEMENT:
+approximately 04:01–04:07.
+
+Use either:
+
+Podium ceremony USGP 2021
+
+or
+
+large grandstand/crowd photograph.
+
+Final narration:
+
+"the greatest traveling circus on Earth—and now, everyone has a front-row seat."
+
+Finish with a slow zoom out.
+
+Then fade into:
+
+F1 / racing-line graphic
+
+using:
+
+#0D530E background
+#FBF5DD main text
+#306D29 accent
+
+=====================================
+IMAGE PRESENTATION RULES
+=====================================
+
+Real photographs should NOT simply appear as static rectangles.
+
+For each photograph use one or more of:
+
+- Ken Burns zoom
+- parallax
+- masked reveal
+- image crop animation
+- horizontal race wipe
+- foreground/background separation
+- subtle camera movement
+- graphic frame
+- text/image split composition
+
+Typical photograph duration:
+2–5 seconds.
+
+Avoid using the same transition repeatedly.
+
+=====================================
+IMAGE CROPPING
+=====================================
+
+Preserve faces and important subjects.
+
+Never stretch images.
+
+Use:
+
+object-fit: cover
+
+or equivalent.
+
+For vertical photographs:
+use a split layout instead of aggressively cropping the subject.
+
+=====================================
+PHOTOGRAPH + MOTION GRAPHICS BALANCE
+=====================================
+
+Do NOT replace every animated scene with photography.
+
+Target approximately:
+
+55–65% motion graphics
+35–45% real photography / official imagery
+
+The motion graphics explain concepts.
+
+Photography proves that the story is real.
+
+=====================================
+TYPOGRAPHY
+=====================================
+
+Keep the current bold editorial typography if possible.
+
+Typography should remain:
+
+large
+clean
+bold
+easy to read
+documentary/editorial
+
+Important keywords can use #306D29.
+
+Avoid multiple font families.
+
+=====================================
+SUBTITLES
+=====================================
+
+Keep narration subtitles.
+
+Restyle subtitle container if necessary:
+
+background:
+#FBF5DD
+
+text:
+#0D530E
+
+important spoken keyword:
+#306D29
+
+Small border/shadow:
+#0D530E at low opacity.
+
+Do not allow new images to obscure subtitles.
+
+=====================================
+TRANSITIONS
+=====================================
+
+Use F1-inspired transitions:
+
+fast horizontal wipe
+racing-line movement
+speed blur
+mask reveal
+quick photographic cut
+track-line animation
+
+Avoid excessive:
+
+spinning
+3D flipping
+random zooming
+glitch effects
+
+Transitions should feel premium rather than "YouTube template."
+
+=====================================
+FINAL EXPECTATION
+=====================================
+
+The finished piece should feel like:
+
+modern editorial documentary
++
+Formula 1 visual identity
++
+premium sports journalism
++
+simple animated infographic
+
+NOT:
+
+children's cartoon
+generic corporate explainer
+slideshow
+TikTok meme edit
+
+The existing cartoon characters may remain where they efficiently explain abstract concepts, but important real-world claims should increasingly be supported by actual photographs.
+
+The visual progression should itself tell the story:
+
+OLD / CLOSED / EXCLUSIVE
+↓
+MEDIA TRANSFORMATION
+↓
+HUMAN STORIES
+↓
+YOUNGER AUDIENCE
+↓
+FASHION + CULTURE
+↓
+AMERICA + HOLLYWOOD
+↓
+GLOBAL ENTERTAINMENT PHENOMENON
+
+Before rendering:
+
+1. Download all required assets.
+2. Convert logos to transparent PNG.
+3. Validate that image files actually load.
+4. Cache them locally.
+5. Do not hotlink images during final rendering.
+6. Preserve existing audio sync.
+7. Preserve 247.17-second total runtime unless tiny frame-level adjustments are required.
+8. Render at the same dimensions/FPS as the source video.
+9. Check every photograph for subtitle overlap.
+10. Verify the two statistic animations appear at approximately 02:38 and 02:43.
