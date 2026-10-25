@@ -1,0 +1,71 @@
+F1 EXPLOSION — PROJECT SUMMARY (25 Oct 2026)
+=============================================
+
+PROJECT
+- Remotion 4.0.538 (React 19 + TypeScript), Node 22, Windows. Folder: D:\Dev\motion
+- Video: "The F1 Explosion: How a Billionaire's Playground Became a Global Phenomenon"
+- 16:9 YouTube, 1920x1080, composition id F1Explosion
+- Before any change: read ai-routing.md and route work to the cheapest model that fits.
+
+OUTPUTS (out/ folder)
+- f1-explosion.mp4        v1, 4:07, original (kept)
+- f1-explosion-phone.mp4  v1 720p phone copy
+- f1-explosion-v2.mp4     v2, 6:39 (398.98s), 1920x1080, 122 MB  <-- latest
+
+V2 CHANGE LOG (from video-review/VIDEO-UPDATE-PROMPT.md)
+- Narration rewritten as a 3-character dialogue (script: voiceover/f1-v2-script.md)
+    MOG = guide, en-GB-RyanNeural (-4%, -2Hz)
+    WEC = F1 drama fan, en-US-AriaNeural (+4%, +3Hz)
+    BOG = curious newcomer, en-US-AndrewNeural (-2%, +1Hz)
+  The old +12% speed-up is removed, real pauses are added, and stats hold for 2-3s.
+  Runtime is flexible; no need to match the old length.
+- Mascot story across all 6 chapters:
+    tickets question -> closed velvet door -> Liberty opens the door ->
+    "who do I root for?" storyboard -> fan-interest doors + 43% / 42% charts ->
+    US trip map -> ending returns to the door and the "2 tickets" payoff.
+  Only the speaking mascot moves its mouth; the mascots move around the scene.
+- New editorial palette: #000000 / #CB2957 / #DDDDDD / #EEEEEE.
+  Photos, logos, cars and props keep their natural colours; the mascots keep their green.
+- Photos are framed cards with no full-screen shots. The 2010 flashback is sepia.
+- Captions sit above everything, with a MOG/WEC/BOG speaker tag.
+- Synthesized SFX (whoosh, pop, door-open, cash, etc.) play under the voices. No music.
+
+VERIFIED
+- Typecheck clean; no missing word-sync warnings in the render log.
+- Audio peak -4.5 dBFS, no clipping.
+- Contact sheet + spot-check frames look right.
+- NOT done: listening to the audio or watching full playback.
+
+KNOWN ISSUES
+- The "Max Verstappen" photo shows the Red Bull car, not his face (labelled "Red Bull, car 33").
+- Elemis has no logo asset, so it is a plain text mark.
+- Some scenes are sparse (start of the US map, "Apple moves in" before the logos appear).
+- src/compositions/f1/scenes/demo.tsx is a leftover one-line re-export (safe to delete).
+- npm run render:f1 still targets the old filename and has no speed flags.
+
+RENDER (fast: ~12 min instead of 1h+)
+  node scripts/render.mjs F1Explosion out/f1-explosion-v2.mp4 --concurrency=8 --gl=angle
+  Keep the laptop plugged in with Power mode set to Best performance.
+  Remotion cannot resume a stopped render.
+  Check/debug frames go to %TEMP%\motion-stills\, never out/.
+
+KEY FILES
+- voiceover/ (f1.json, f1-v2-script.md, generate.py, sfx.py; v1 kept as f1-v1.json)
+- src/data/f1-voice.json (word timings)
+- public/voice/, public/sfx/, public/assets/ (+ CREDITS.md for the YouTube description)
+- src/theme.ts
+- src/compositions/f1/ (F1Explosion.tsx, timeline.ts, components/, scenes/<chapter>/)
+
+PUT ON GITHUB
+1. https://github.com/new -> name "motion" -> Private or Public.
+   Do NOT add a README, .gitignore or license -> Create repository.
+2. In D:\Dev\motion:
+     git add .
+     git commit -m "F1 Explosion explainer: Remotion project with v2 dialogue, palette and mascots"
+3. Connect and push:
+     git remote add origin https://github.com/nabhanibrhm/motion.git
+     git push -u origin main
+   (the browser opens once to sign in)
+4. Later changes: git add .  ->  git commit -m "..."  ->  git push
+Notes: .gitignore already excludes node_modules/, out/ and build/ (~45 MB is uploaded).
+       Keep public/assets/CREDITS.md (CC BY/BY-SA attribution).
