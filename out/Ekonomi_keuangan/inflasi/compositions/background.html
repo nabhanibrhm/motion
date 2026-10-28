@@ -1,0 +1,16 @@
+﻿<!-- Persistent ground under every scene: calm #EEEEEE with a soft glow and slow floating particles (was CarbonBackground). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="background" data-width="1080" data-height="1920">
+    <div id="background-art" class="f1-layer"></div>
+  </div>
+  <script>
+    window.__timelines["background"] = F1.scene("background", (f) => F1.Ground({}, f), { frames: F1.segments().total });
+  </script>
+</template>

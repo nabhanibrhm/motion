@@ -1,8 +1,8 @@
 node_modules/
-out/
+out/*.mp4
 .stills/
 .venv/
-voiceover/.cache/
+**/voiceover/.cache/
 .hyperframes/
 __pycache__/
 .env

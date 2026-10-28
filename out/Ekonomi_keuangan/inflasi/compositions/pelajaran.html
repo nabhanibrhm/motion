@@ -1,0 +1,104 @@
+<!-- Lesson: coins out from under the mattress into "legal, diawasi OJK"; then BOG pays Rp20.000, KASUS DITUTUP.
+     The last frame mirrors the hook's first frame (receipt above, BOG centred) so the replay loops. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="pelajaran" data-width="1080" data-height="1920">
+    <div id="pelajaran-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.9" id="pelajaran-sfx-coins" class="clip" src="public/sfx/pop.wav" data-at="word:kasur" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.0667" id="pelajaran-sfx-ojk" class="clip" src="public/sfx/ding.wav" data-at="word:OJK" data-track-index="13" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.1333" id="pelajaran-sfx-pay" class="clip" src="public/sfx/cash.wav" data-at="word:bayar" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.4" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/pop.wav" data-at="word:ditutup" data-track-index="15" data-volume="0.4"></audio>
+  </div>
+  <script>
+    window.__timelines["pelajaran"] = F1.scene("pelajaran", (f, { S }) => {
+      const K = F1.kasus;
+      const { editorial, toon } = F1.theme;
+      const n = F1.n;
+      const bogLine = F1.line(S, 1);
+      const wecLine = F1.line(S, 2);
+      const kasur = F1.wordFrame(S, "kasur");
+      const tumbuh = F1.wordFrame(S, "tumbuh");
+      const legal = F1.wordFrame(S, "legal");
+      const ditutup = F1.wordFrame(S, "ditutup");
+      const swap = bogLine.start - 8;
+      const partA = 1 - F1.ramp(f, swap, 10);
+
+      // part A: the mattress, the coins it hides, then the "legal + OJK" shield
+      const shieldIn = F1.ramp(f, legal - 4, 14);
+      const coins = [0, 1, 2, 3].map((i) => {
+        const at = kasur + i * 3;
+        if (f < at) return "";
+        const p = F1.ramp(f, at, 16, F1.expoOut);
+        const to = F1.ramp(f, legal - 4 + i * 2, 16, F1.expoInOut);
+        const x = F1.lerp(380 + i * 110, 540, to);
+        const y = F1.lerp(F1.lerp(620, 470 - (i % 2) * 40, p), 560, to);
+        return `<div style="${F1.css({ position: "absolute", left: n(x - 50), top: n(y - 50), opacity: n(1 - to, 3) })}">${K.Icon("coin", 100)}</div>`;
+      }).join("");
+      const mattress = `<div style="${F1.css({ position: "absolute", left: 540 - 210, top: 520, opacity: n(1 - shieldIn, 3) })}">${K.Icon("mattress", 420)}</div>`;
+      const shield =
+        f < legal - 4
+          ? ""
+          : K.Pop({ x: 540, y: 560, at: legal - 4, frames: 16 }, f, `<div style="text-align:center">${K.Icon("shield", 260)}<div style="${F1.css({ fontFamily: toon.font.display, fontWeight: 800, fontSize: 44, color: "#2d9a52", whiteSpace: "nowrap" })}">LEGAL &amp; DIAWASI OJK</div></div>`);
+      const disclaimer =
+        f < legal
+          ? ""
+          : `<div style="${F1.css({ position: "absolute", left: 60, width: 900, top: 920, textAlign: "center", fontFamily: toon.font.body, fontWeight: 700, fontSize: 26, color: editorial.muted, opacity: n(F1.ramp(f, legal, 12), 3) })}">Bukan saran investasi</div>`;
+      const partAHtml = `<div style="${F1.css({ position: "absolute", inset: 0, opacity: n(partA, 3) })}">${F1.join(
+        K.Kicker({ kicker: "Pelajaran", text: f < tumbuh ? "Jangan simpan di kasur" : "Uang harus tumbuh ≥ inflasi", y: 150, size: 72, at: 0 }, f),
+        mattress,
+        coins,
+        shield,
+        disclaimer,
+      )}</div>`;
+
+      // part B: back to the hook's composition, case closed
+      const partB =
+        f < swap
+          ? ""
+          : F1.join(
+              K.Kicker({ kicker: "Kasus nasi goreng", text: "Rp5.000 → Rp20.000", y: 150, size: 96, at: swap }, f),
+              K.Receipt({ x: 240, y: 420, w: 600, at: swap, price: 20000, oldPrice: 5000, strikeAt: swap - 60 }, f),
+              K.Stamp({ text: "KASUS DITUTUP", x: 540, y: 640, at: ditutup, rot: -8, size: 84 }, f),
+            );
+
+      return F1.join(
+        partAHtml,
+        partB,
+        F1.Mascot(
+          {
+            character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, "viewer"], [legal, "up"], [bogLine.start, { x: 540, y: 1300 }]], talking: F1.isSpeaking(S, "mog", f),
+            gesture: [[0, "idle"], [tumbuh - 4, { gesture: "point", dir: "up-right" }], [legal + 30, "idle"], [wecLine.start, "wave"]],
+            expression: [[0, "neutral"], [bogLine.start, "happy"]],
+            exitAt: swap, exitFrames: 8,
+          },
+          f,
+        ),
+        F1.Mascot({ character: "mog", x: 220, scale: 0.95, at: wecLine.start - 4, enter: "pop", facing: "right", look: { x: 540, y: 1300 }, gesture: "wave", expression: "happy" }, f),
+        F1.Mascot(
+          {
+            character: "wec", x: 790, scale: 1.1, facing: "left", look: [[0, { x: 290, y: 1300 }], [wecLine.start - 4, "viewer"]], talking: F1.isSpeaking(S, "wec", f),
+            gesture: [[0, "listen"], [kasur, "startle"], [kasur + 40, "listen"], [wecLine.start - 4, "cheer"]],
+            expression: [[0, "neutral"], [kasur, "surprised"], [legal, "happy"]],
+            exitAt: swap, exitFrames: 8,
+          },
+          f,
+        ),
+        F1.Mascot({ character: "wec", x: 840, scale: 0.95, at: wecLine.start - 4, enter: "pop", facing: "left", look: "viewer", gesture: "cheer", expression: "happy", talking: F1.isSpeaking(S, "wec", f) }, f),
+        F1.Mascot(
+          {
+            character: "bog", x: 540, scale: 1.3, at: swap + 2, enter: "pop", facing: "front", look: "viewer", talking: F1.isSpeaking(S, "bog", f),
+            gesture: [[0, "shrug"], [bogLine.end, "idle"]], expression: [[0, "neutral"], [bogLine.start + 40, "happy"]],
+          },
+          f,
+        ),
+      );
+    });
+  </script>
+</template>

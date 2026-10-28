@@ -1,0 +1,21 @@
+﻿{
+  "name": "inflasi-short",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Short (9:16): Kenapa Harga Nasi Goreng Naik Terus? HyperFrames, Bahasa Indonesia, MOG/WEC/BOG",
+  "scripts": {
+    "voice": "python voiceover/generate.py voiceover/inflasi.json",
+    "sync": "node scripts/sync.mjs",
+    "preview": "node scripts/hf.mjs preview",
+    "lint": "node scripts/hf.mjs lint",
+    "check": "node scripts/hf.mjs check",
+    "stills": "node scripts/stills.mjs",
+    "render": "node scripts/hf.mjs render -o renders/inflasi-short.mp4"
+  },
+  "devDependencies": {
+    "hyperframes": "0.8.210"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,71 @@
+<!-- Suspect 2, the ingredients: chilli, rice, egg, gas all up; food inflation +6,21% (Dec 2025). Stamp: BERSALAH… SEBAGIAN. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="bahan" data-width="1080" data-height="1920">
+    <div id="bahan-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="bahan-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.2" id="bahan-sfx-cabai" class="clip" src="public/sfx/pop.wav" data-at="word:Cabai" data-track-index="12" data-volume="0.18"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.2667" id="bahan-sfx-beras" class="clip" src="public/sfx/pop.wav" data-at="word:beras" data-track-index="13" data-volume="0.18"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.1667" id="bahan-sfx-telur" class="clip" src="public/sfx/pop.wav" data-at="word:telur" data-track-index="14" data-volume="0.18"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3" id="bahan-sfx-gas" class="clip" src="public/sfx/pop.wav" data-at="word:gas" data-track-index="15" data-volume="0.18"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.8667" id="bahan-sfx-stat" class="clip" src="public/sfx/ding.wav" data-at="word:enam" data-track-index="16" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="11.7667" id="bahan-sfx-stamp" class="clip" src="public/sfx/pop.wav" data-at="word:sebagian" data-track-index="17" data-volume="0.35"></audio>
+  </div>
+  <script>
+    window.__timelines["bahan"] = F1.scene("bahan", (f, { S }) => {
+      const K = F1.kasus;
+      const { editorial, toon } = F1.theme;
+      const n = F1.n;
+      const mogLine = F1.line(S, 1);
+      const enam = F1.wordFrame(S, "enam");
+      const sebagian = F1.wordFrame(S, "sebagian");
+      const ITEMS = [
+        { icon: "chili", label: "Cabai", word: "Cabai" },
+        { icon: "rice", label: "Beras", word: "beras" },
+        { icon: "egg", label: "Telur", word: "telur" },
+        { icon: "gas", label: "Gas", word: "gas" },
+      ];
+      const icons = ITEMS.map((it, i) => {
+        const at = F1.wordFrame(S, it.word);
+        const x = 165 + i * 230;
+        const lab = `<div style="${F1.css({ fontFamily: toon.font.display, fontWeight: 800, fontSize: 36, color: editorial.ink, textAlign: "center", marginTop: 4 })}">${it.label}</div>`;
+        return K.Pop({ x, y: 500, at }, f, `<div style="text-align:center">${K.Icon(it.icon, 170)}${lab}</div>`) + K.Up({ x: x + 70, y: 430, at: at + 6, size: 64 }, f);
+      }).join("");
+
+      const statIn = F1.ramp(f, enam - 4, 16, F1.expoOut);
+      const stat =
+        f < enam - 4
+          ? ""
+          : `<div style="${F1.css({ position: "absolute", left: 60, width: 900, top: 650, textAlign: "center", opacity: n(statIn, 3), transform: `translateY(${n((1 - statIn) * 24)}px)` })}">
+<div style="${F1.css({ fontFamily: toon.font.display, fontWeight: 800, fontSize: 170, lineHeight: 1, color: K.RED })}">+6,21%</div>
+<div style="${F1.css({ fontFamily: toon.font.body, fontWeight: 800, fontSize: 30, letterSpacing: "0.08em", color: editorial.muted, marginTop: 10 })}">INFLASI PANGAN · DESEMBER 2025</div></div>`;
+
+      return F1.join(
+        K.Suspect({ n: 2, title: "Bahan baku", at: 0 }, f),
+        icons,
+        stat,
+        K.Stamp({ text: "BERSALAH… SEBAGIAN", x: 540, y: 950, at: sebagian, rot: -5, size: 60 }, f),
+        F1.Mascot(
+          {
+            character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, { x: 780, y: 1300 }], [mogLine.start - 4, "viewer"]], talking: F1.isSpeaking(S, "mog", f),
+            gesture: [[0, "listen"], [enam - 6, { gesture: "point", dir: "up-right" }], [sebagian, "idle"]], expression: [[0, "neutral"], [sebagian, "smug"]],
+          },
+          f,
+        ),
+        F1.Mascot(
+          {
+            character: "wec", x: 790, scale: 1.1, facing: "left", look: [[0, "up"], [mogLine.start, { x: 290, y: 1300 }]], talking: F1.isSpeaking(S, "wec", f),
+            gesture: [[0, "cheer"], [mogLine.start - 4, "listen"]], expression: [[0, "surprised"], [mogLine.start, "neutral"]],
+          },
+          f,
+        ),
+      );
+    });
+  </script>
+</template>

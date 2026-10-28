@@ -1,0 +1,35 @@
+<!-- Hook: BOG holds the Rp20.000 receipt, the old Rp5.000 crossed out. Frame 0 is fully drawn (thumbnail + loop target). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0.8333" id="hook-sfx-cash" class="clip" src="public/sfx/cash.wav" data-at="word:dua" data-track-index="11" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.3" id="hook-sfx-pop" class="clip" src="public/sfx/pop.wav" data-at="word:Siapa" data-track-index="12" data-volume="0.25"></audio>
+  </div>
+  <script>
+    window.__timelines["hook"] = F1.scene("hook", (f, { S }) => {
+      const K = F1.kasus;
+      const dua = F1.wordFrame(S, "dua");
+      const siapa = F1.wordFrame(S, "Siapa");
+      return F1.join(
+        K.Kicker({ kicker: "Kasus nasi goreng", text: "Rp5.000 → Rp20.000?!", y: 150, size: 96, at: -14 }, f),
+        K.Receipt({ x: 240, y: 420, w: 600, at: -14, price: 20000, oldPrice: 5000, strikeAt: dua }, f),
+        F1.Mascot(
+          {
+            character: "bog", x: 540, scale: 1.3, facing: "front", look: "viewer",
+            gesture: [[0, "startle"], [40, "idle"], [siapa - 4, "shrug"]],
+            expression: [[0, "surprised"], [siapa - 4, "confused"]],
+            talking: F1.isSpeaking(S, "bog", f),
+          },
+          f,
+        ),
+      );
+    });
+  </script>
+</template>
