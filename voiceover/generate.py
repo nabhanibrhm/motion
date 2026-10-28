@@ -10,7 +10,7 @@ silence inside it (the line is synthesised in chunks).
 Pipeline:
   1. every chunk (speaker + text) is synthesised once and cached in voiceover/.cache/ (keyed by
      voice|rate|pitch|text), together with its WordBoundary timings;
-  2. chunks are decoded with the bundled ffmpeg, level-matched, trimmed to the spoken part and placed
+  2. chunks are decoded with ffmpeg, level-matched, trimmed to the spoken part and placed
      on a sample timeline with explicit silence;
   3. each section is encoded as ONE mp3 -> public/voice/<name>/<id>.mp3;
   4. src/data/<name>-voice.json gets sections[] {id, chapter, start, duration, lead, tail, audio,
@@ -22,7 +22,9 @@ Pipeline:
 import asyncio
 import hashlib
 import json
+import os
 import re
+import shutil
 import subprocess
 import sys
 import wave
@@ -32,7 +34,10 @@ import edge_tts
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-FFMPEG = ROOT / "node_modules" / "@remotion" / "compositor-win32-x64-msvc" / "ffmpeg.exe"
+# FFmpeg: the FFMPEG env variable, else the one on PATH (apt on WSL, winget on Windows).
+FFMPEG = os.environ.get("FFMPEG") or shutil.which("ffmpeg")
+if not FFMPEG:
+    sys.exit("generate.py: FFmpeg not found. Install it (WSL: sudo apt install ffmpeg, Windows: winget install Gyan.FFmpeg) or set FFMPEG to its path.")
 CACHE = ROOT / "voiceover" / ".cache"
 SR = 24000  # edge-tts native sample rate
 TARGET_RMS = 0.10  # about -20 dBFS speech level, so the three voices sit together

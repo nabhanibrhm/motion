@@ -1,5 +1,7 @@
 # motion
 
+> **Migration in progress on branch `hyperframes`:** read `HANDOFF.md` first. The notes below still describe the Remotion version on `main`.
+
 Motion animation videos built with Remotion 4 (React + TypeScript), Node 22.
 
 **Before any change request, read `ai-routing.md`** and route to the model it names.
