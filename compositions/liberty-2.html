@@ -1,0 +1,45 @@
+<!-- TEMPORARY placeholder until the "liberty" chapter is ported: shared parts only (photo card, mascots with lip-sync, SFX). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="liberty-2" data-width="1920" data-height="1080">
+    <div id="liberty-2-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0.2" id="liberty-2-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="6" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.2333" id="liberty-2-sfx-line" class="clip" src="public/sfx/pop.wav" data-at="line:0" data-track-index="12" data-volume="0.25"></audio>
+  </div>
+  <script>
+    window.__timelines["liberty-2"] = F1.scene("liberty-2", (f, { S, D }) => {
+      const SPEAKERS = ["mog","bog"];
+      const xs = SPEAKERS.length === 1 ? [470] : SPEAKERS.length === 2 ? [300, 660] : [200, 480, 760];
+      const talker = SPEAKERS.find((sp) => F1.isSpeaking(S, sp, f));
+      const card = F1.PhotoCard(
+        { layout: "card-right", photos: [{ src: "assets/racing/hamilton_verstappen_2021.jpg" }], kicker: F1.chapterTitle(S.chapter), headline: "Bernie was brilliant at making F1 rich.", at: 0, exitAt: D - 12 },
+        f,
+      );
+      const mascots = SPEAKERS.map((sp, k) =>
+        F1.Mascot(
+          {
+            character: sp,
+            x: xs[k],
+            y: 830,
+            scale: 0.85,
+            facing: k === 0 ? "right" : "left",
+            look: talker && talker !== sp ? { x: xs[SPEAKERS.indexOf(talker)], y: 640 } : "viewer",
+            talking: F1.isSpeaking(S, sp, f),
+            gesture: F1.isSpeaking(S, sp, f) ? "idle" : "listen",
+            expression: "happy",
+            at: 4 + k * 4,
+            seed: S.id,
+          },
+          f,
+        ),
+      ).join("");
+      return card + mascots;
+    });
+  </script>
+</template>

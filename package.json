@@ -11,7 +11,13 @@
     "render:f1": "node scripts/render.mjs F1Explosion out/f1-explosion.mp4",
     "voice": "python voiceover/generate.py voiceover/f1.json",
     "typecheck": "tsc --noEmit",
-    "upgrade": "remotion upgrade"
+    "upgrade": "remotion upgrade",
+    "sync": "node scripts/sync.mjs",
+    "preview": "node scripts/hf.mjs preview",
+    "check": "node scripts/hf.mjs check",
+    "lint": "node scripts/hf.mjs lint",
+    "stills": "node scripts/stills.mjs",
+    "render:v3": "node scripts/hf.mjs render -o out/f1-explosion-v3.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.538",
@@ -22,6 +28,7 @@
   "devDependencies": {
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "hyperframes": "0.8.210",
     "typescript": "^7.0.2"
   }
 }

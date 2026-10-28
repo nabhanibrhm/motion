@@ -1,0 +1,107 @@
+<html
+  data-composition-variables='[{"id":"index","type":"number","label":"Chapter number","default":2,"min":1,"max":9,"step":1},{"id":"title","type":"string","label":"Chapter title","default":"The Turning Point"}]'
+>
+  <body>
+    <!--
+      Editorial chapter card (mounted once per chapter by index.html with data-variable-values):
+      black ground, accent chapter number, white title, an accent rule and a little car driving it in.
+      Calm fade in/out over 45 frames. Small text uses the contrast-checked light grey, never small accent on black.
+    -->
+    <template>
+      <link rel="stylesheet" href="lib/f1/f1.css" />
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+        }
+        .cc {
+          position: absolute;
+          inset: 0;
+          background: var(--editorial-ink);
+        }
+        .cc-text {
+          position: absolute;
+          left: 140px;
+          top: 150px;
+          width: 1400px;
+        }
+        .cc-kicker {
+          font-family: var(--font-body);
+          font-weight: 800;
+          font-size: 32px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--editorial-muted-on-dark);
+        }
+        .cc-num {
+          font-family: var(--font-display);
+          font-weight: 800;
+          font-size: 330px;
+          line-height: 0.95;
+          color: var(--editorial-accent); /* 330 px: large text, 4.0:1 on black is fine */
+          letter-spacing: -0.02em;
+          transform-origin: 0% 60%;
+        }
+        .cc-title {
+          font-family: var(--font-display);
+          font-weight: 800;
+          font-size: 112px;
+          line-height: 1.04;
+          letter-spacing: -0.01em;
+          color: var(--editorial-white);
+        }
+      </style>
+      <div id="root" data-composition-id="chapter-card" data-width="1920" data-height="1080">
+        <div class="cc">
+          <div class="cc-text">
+            <div class="cc-kicker">Chapter</div>
+            <div class="cc-num"></div>
+            <div class="cc-title"></div>
+          </div>
+          <div class="f1-layer" data-f1-layer="art"></div>
+        </div>
+      </div>
+      <script>
+        (() => {
+          // This file is mounted once per chapter: the scoped document resolves this selector to this mount's root.
+          const root = document.querySelector('[data-composition-id="chapter-card"]');
+          const { index, title } = window.__hyperframes.getVariables();
+          const { editorial, toon } = F1.theme;
+          const $ = (sel) => root.querySelector(sel);
+          $(".cc-num").textContent = String(index).padStart(2, "0");
+          $(".cc-title").textContent = title;
+
+          const D = 45;
+          const ROAD_Y = 790;
+          const s = (frames) => frames / F1.FPS;
+          const roadEase = F1.Easing.inOut(F1.Easing.quad);
+          const tl = F1.scene(
+            "chapter-card",
+            (f) => {
+              const carX = F1.interpolate(f, [3, 40], [-380, 1920 + 380], { ...F1.clamp, easing: roadEase });
+              const ruleW = Math.max(0, carX - 230);
+              return (
+                `<div style="position:absolute;left:0;top:${ROAD_Y}px;width:${F1.n(ruleW)}px;height:14px;background:${editorial.accent}"></div>` +
+                `<div style="position:absolute;left:0;top:${ROAD_Y + 26}px;width:${F1.n(ruleW)}px;height:4px;background:${editorial.white};opacity:0.85"></div>` +
+                F1.Car({ x: carX, y: ROAD_Y + 4, size: 520, speed: 1, number: index, livery: { main: toon.red, secondary: toon.paper }, shadow: false }, f)
+              );
+            },
+            {
+              root,
+              frames: D,
+              build: (tl) => {
+                tl.fromTo($(".cc"), { opacity: 0 }, { opacity: 1, duration: s(8), ease: "power2.out" }, 0);
+                tl.to($(".cc"), { opacity: 0, duration: s(10), ease: "power2.out" }, s(D - 10));
+                tl.fromTo($(".cc-kicker"), { opacity: 0, x: 26 }, { opacity: 1, x: 0, duration: s(12), ease: "power2.out" }, s(4));
+                tl.fromTo($(".cc-num"), { scale: 0 }, { scale: 1, duration: s(16), ease: "back.out(1.7)" }, s(4));
+                tl.fromTo($(".cc-num"), { opacity: 0 }, { opacity: 1, duration: s(2), ease: "none" }, s(4));
+                tl.fromTo($(".cc-title"), { opacity: 0, x: 26 }, { opacity: 1, x: 0, duration: s(14), ease: "power2.out" }, s(12));
+              },
+            },
+          );
+          window.__timelines["chapter-card"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
