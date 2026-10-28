@@ -1,4 +1,4 @@
-<!-- TEMPORARY placeholder until the "liberty" chapter is ported: shared parts only (photo card, mascots with lip-sync, SFX). -->
+<!-- Liberty 5: branding problem versus untold stories, then MOG pushes the same door open. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -9,37 +9,31 @@
   </style>
   <div id="root" data-composition-id="liberty-5" data-width="1920" data-height="1080">
     <div id="liberty-5-art" class="f1-layer"></div>
-    <audio data-hf-media-start-basis="local" data-start="0.2" id="liberty-5-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="6" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="0.2333" id="liberty-5-sfx-line" class="clip" src="public/sfx/pop.wav" data-at="line:0" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="18.3333" id="liberty-5-sfx-door" class="clip" src="public/sfx/door-open.wav" data-at="word:tore-4" data-track-index="11" data-volume="0.35"></audio>
   </div>
   <script>
-    window.__timelines["liberty-5"] = F1.scene("liberty-5", (f, { S, D }) => {
-      const SPEAKERS = ["mog"];
-      const xs = SPEAKERS.length === 1 ? [470] : SPEAKERS.length === 2 ? [300, 660] : [200, 480, 760];
-      const talker = SPEAKERS.find((sp) => F1.isSpeaking(S, sp, f));
-      const card = F1.PhotoCard(
-        { layout: "card-right", photos: [{ src: "assets/racing/garage_2021.jpg" }], kicker: F1.chapterTitle(S.chapter), headline: "They immediately realized something crucial.", at: 0, exitAt: D - 12 },
-        f,
+    window.__timelines["liberty-5"] = F1.scene("liberty-5", (f, { S }) => {
+      const { editorial, toon } = F1.theme;
+      const { Backdrop, Reveal, Head } = F1.liberty;
+      const card = ({ label, sub, hot = false }) =>
+        `<div style="${F1.css({ width: 800, padding: "22px 32px", borderRadius: 16, background: hot ? editorial.white : editorial.panel, borderLeft: `10px solid ${hot ? editorial.accent : editorial.muted}`, fontFamily: toon.font.display })}">` +
+        `<div style="${F1.css({ fontWeight: 800, fontSize: 54, color: editorial.ink, lineHeight: 1.05 })}">${label}</div>` +
+        `<div style="${F1.css({ fontFamily: toon.font.body, fontWeight: 700, fontSize: 30, color: editorial.muted, marginTop: 6 })}">${sub}</div></div>`;
+      const branding = F1.wordFrame(S, "branding");
+      const stories = F1.wordFrame(S, "stories");
+      const second = F1.line(S, 1).start;
+      const media = F1.wordFrame(S, "media");
+      const tore = F1.wordFrame(S, "tore");
+      const open = tore - 4;
+      return F1.join(
+        Backdrop({}, f),
+        Reveal({ at: branding - 6, exitAt: second - 8, style: { left: 140, top: 170 } }, f, card({ label: "A branding problem", sub: "The weak spot" })),
+        Reveal({ at: stories - 6, exitAt: second - 8, style: { left: 140, top: 350 } }, f, card({ hot: true, label: "The greatest untold stories", sub: "The hidden asset" })),
+        Head({ x: 140, y: 150, w: 820, kicker: "Liberty's plan", headline: "A global media company", at: Math.max(media - 6, second + 6) }, f),
+        F1.VelvetDoor({ x: 1580, y: 830, scale: 1, enter: "slide-left", enterFrames: 22, openAt: open, openFrames: 28 }, f),
+        F1.Mascot({ character: "mog", x: 1200, scale: 1.1, facing: "right", talking: F1.isSpeaking(S, "mog", f), gesture: [[0, "idle"], [tore - 14, { gesture: "point", dir: "right" }], [tore + 50, "idle"]] }, f),
+        F1.Mascot({ character: "bog", x: 880, scale: 0.9, facing: "right", look: [[0, { x: 1200, y: 560 }], [open, { x: 1580, y: 500 }]], gesture: "listen", expression: [[0, "neutral"], [open + 10, "surprised"]] }, f),
       );
-      const mascots = SPEAKERS.map((sp, k) =>
-        F1.Mascot(
-          {
-            character: sp,
-            x: xs[k],
-            y: 830,
-            scale: 0.85,
-            facing: k === 0 ? "right" : "left",
-            look: talker && talker !== sp ? { x: xs[SPEAKERS.indexOf(talker)], y: 640 } : "viewer",
-            talking: F1.isSpeaking(S, sp, f),
-            gesture: F1.isSpeaking(S, sp, f) ? "idle" : "listen",
-            expression: "happy",
-            at: 4 + k * 4,
-            seed: S.id,
-          },
-          f,
-        ),
-      ).join("");
-      return card + mascots;
     });
   </script>
 </template>

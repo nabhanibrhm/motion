@@ -1,4 +1,4 @@
-<!-- TEMPORARY placeholder until the "liberty" chapter is ported: shared parts only (photo card, mascots with lip-sync, SFX). -->
+<!-- Liberty 1: BOG meets the closed door; WEC tiptoes up and peeks through the keyhole while MOG sets the scene. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -9,37 +9,21 @@
   </style>
   <div id="root" data-composition-id="liberty-1" data-width="1920" data-height="1080">
     <div id="liberty-1-art" class="f1-layer"></div>
-    <audio data-hf-media-start-basis="local" data-start="0.2" id="liberty-1-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="6" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="0.1333" id="liberty-1-sfx-line" class="clip" src="public/sfx/pop.wav" data-at="line:0" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="liberty-1-sfx-door" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
   </div>
   <script>
-    window.__timelines["liberty-1"] = F1.scene("liberty-1", (f, { S, D }) => {
-      const SPEAKERS = ["mog"];
-      const xs = SPEAKERS.length === 1 ? [470] : SPEAKERS.length === 2 ? [300, 660] : [200, 480, 760];
-      const talker = SPEAKERS.find((sp) => F1.isSpeaking(S, sp, f));
-      const card = F1.PhotoCard(
-        { layout: "card-right", photos: [{ src: "assets/crowds/usgp_modern_fans.jpg" }], kicker: F1.chapterTitle(S.chapter), headline: "To understand the boom, we have to talk about 2017.", at: 0, exitAt: D - 12 },
-        f,
+    window.__timelines["liberty-1"] = F1.scene("liberty-1", (f, { S }) => {
+      const { Backdrop, Head } = F1.liberty;
+      const bernie = F1.wordFrame(S, "Bernie");
+      const year = F1.wordFrame(S, "2017");
+      return F1.join(
+        Backdrop({}, f),
+        Head({ x: 140, y: 150, w: 760, kicker: "Before 2017", headline: "A door that stayed shut", at: year }, f),
+        F1.VelvetDoor({ x: 1300, y: 830, scale: 1, enter: "slide-right", enterFrames: 22 }, f),
+        F1.Mascot({ character: "mog", x: 330, scale: 1.15, facing: "right", talking: F1.isSpeaking(S, "mog", f), gesture: [[0, "idle"], [bernie - 6, { gesture: "point", dir: "right" }], [bernie + 40, "idle"]] }, f),
+        F1.Mascot({ character: "bog", x: 880, scale: 0.95, at: 14, enter: "walk-right", facing: "right", look: { x: 1300, y: 500 }, gesture: "listen", expression: [[0, "neutral"], [120, "confused"]] }, f),
+        F1.Mascot({ character: "wec", x: 1660, scale: 0.9, at: 60, enter: "pop", facing: "left", look: { x: 1300, y: 600 }, gesture: [[0, "idle"], [100, "peek"]], expression: "happy" }, f),
       );
-      const mascots = SPEAKERS.map((sp, k) =>
-        F1.Mascot(
-          {
-            character: sp,
-            x: xs[k],
-            y: 830,
-            scale: 0.85,
-            facing: k === 0 ? "right" : "left",
-            look: talker && talker !== sp ? { x: xs[SPEAKERS.indexOf(talker)], y: 640 } : "viewer",
-            talking: F1.isSpeaking(S, sp, f),
-            gesture: F1.isSpeaking(S, sp, f) ? "idle" : "listen",
-            expression: "happy",
-            at: 4 + k * 4,
-            seed: S.id,
-          },
-          f,
-        ),
-      ).join("");
-      return card + mascots;
     });
   </script>
 </template>

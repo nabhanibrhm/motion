@@ -1,4 +1,4 @@
-<!-- TEMPORARY placeholder until the "liberty" chapter is ported: shared parts only (photo card, mascots with lip-sync, SFX). -->
+<!-- Liberty 4: stat hold. Liberty Media joined to the F1 logo, then $8 billion settles and stays readable. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -9,37 +9,28 @@
   </style>
   <div id="root" data-composition-id="liberty-4" data-width="1920" data-height="1080">
     <div id="liberty-4-art" class="f1-layer"></div>
-    <audio data-hf-media-start-basis="local" data-start="0.2" id="liberty-4-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="6" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="0.2333" id="liberty-4-sfx-line" class="clip" src="public/sfx/pop.wav" data-at="line:0" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.9333" id="liberty-4-sfx-cash" class="clip" src="public/sfx/cash.wav" data-at="word:8" data-track-index="11" data-volume="0.25"></audio>
   </div>
   <script>
-    window.__timelines["liberty-4"] = F1.scene("liberty-4", (f, { S, D }) => {
-      const SPEAKERS = ["mog"];
-      const xs = SPEAKERS.length === 1 ? [470] : SPEAKERS.length === 2 ? [300, 660] : [200, 480, 760];
-      const talker = SPEAKERS.find((sp) => F1.isSpeaking(S, sp, f));
-      const card = F1.PhotoCard(
-        { layout: "card-right", photos: [{ src: "assets/racing/f1_podium.jpg" }], kicker: F1.chapterTitle(S.chapter), headline: "Then, Liberty Media bought Formula 1 for 8 billion dollars.", at: 0, exitAt: D - 12 },
-        f,
-      );
-      const mascots = SPEAKERS.map((sp, k) =>
-        F1.Mascot(
-          {
-            character: sp,
-            x: xs[k],
-            y: 830,
-            scale: 0.85,
-            facing: k === 0 ? "right" : "left",
-            look: talker && talker !== sp ? { x: xs[SPEAKERS.indexOf(talker)], y: 640 } : "viewer",
-            talking: F1.isSpeaking(S, sp, f),
-            gesture: F1.isSpeaking(S, sp, f) ? "idle" : "listen",
-            expression: "happy",
-            at: 4 + k * 4,
-            seed: S.id,
-          },
+    window.__timelines["liberty-4"] = F1.scene("liberty-4", (f, { S }) => {
+      const { editorial, toon } = F1.theme;
+      const { Backdrop, Reveal } = F1.liberty;
+      const liberty = F1.wordFrame(S, "Liberty");
+      const bought = F1.wordFrame(S, "bought");
+      const eight = F1.wordFrame(S, "8");
+      return F1.join(
+        Backdrop({}, f),
+        Reveal(
+          { at: liberty, style: { left: 140, top: 150, fontFamily: toon.font.display, fontWeight: 800, fontSize: 92, letterSpacing: "-0.02em", color: editorial.ink, lineHeight: 1 } },
           f,
+          `Liberty<span style="${F1.css({ color: editorial.muted, fontWeight: 600 })}"> Media</span>`,
         ),
-      ).join("");
-      return card + mascots;
+        Reveal({ at: bought, style: { left: 760, top: 150, fontFamily: toon.font.display, fontWeight: 800, fontSize: 80, color: editorial.accentOnLight, lineHeight: 1.05 } }, f, "+"),
+        F1.Logo({ src: "assets/logos/formula1.png", width: 380, x: 1010, y: 190, at: bought, enter: "fade" }, f),
+        F1.BigStat({ prefix: "$", value: 8, suffix: " billion", label: "Liberty Media buys Formula 1", at: eight - 10, dur: 40, x: 140, y: 330, fontSize: 270 }, f),
+        F1.Mascot({ character: "mog", x: 1480, scale: 1.15, facing: "left", talking: F1.isSpeaking(S, "mog", f), gesture: [[0, "idle"], [eight, { gesture: "point", dir: "left" }], [eight + 70, "idle"]] }, f),
+        F1.Mascot({ character: "bog", x: 1740, scale: 0.85, enter: "none", facing: "left", look: { x: 1480, y: 560 }, gesture: "listen", expression: [[0, "neutral"], [eight + 20, "surprised"]] }, f),
+      );
     });
   </script>
 </template>

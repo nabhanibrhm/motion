@@ -1,4 +1,4 @@
-<!-- TEMPORARY placeholder until the "liberty" chapter is ported: shared parts only (photo card, mascots with lip-sync, SFX). -->
+<!-- Liberty 2: Bernie portrait card with the three pillars of exclusivity; BOG asks if the door was just closed. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -9,37 +9,33 @@
   </style>
   <div id="root" data-composition-id="liberty-2" data-width="1920" data-height="1080">
     <div id="liberty-2-art" class="f1-layer"></div>
-    <audio data-hf-media-start-basis="local" data-start="0.2" id="liberty-2-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="6" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="0.2333" id="liberty-2-sfx-line" class="clip" src="public/sfx/pop.wav" data-at="line:0" data-track-index="12" data-volume="0.25"></audio>
   </div>
   <script>
-    window.__timelines["liberty-2"] = F1.scene("liberty-2", (f, { S, D }) => {
-      const SPEAKERS = ["mog","bog"];
-      const xs = SPEAKERS.length === 1 ? [470] : SPEAKERS.length === 2 ? [300, 660] : [200, 480, 760];
-      const talker = SPEAKERS.find((sp) => F1.isSpeaking(S, sp, f));
-      const card = F1.PhotoCard(
-        { layout: "card-right", photos: [{ src: "assets/racing/hamilton_verstappen_2021.jpg" }], kicker: F1.chapterTitle(S.chapter), headline: "Bernie was brilliant at making F1 rich.", at: 0, exitAt: D - 12 },
-        f,
+    window.__timelines["liberty-2"] = F1.scene("liberty-2", (f, { S }) => {
+      const { editorial, toon } = F1.theme;
+      const { Backdrop, Reveal, Chip } = F1.liberty;
+      const text = F1.photoLayout("card-left", { aspect: "portrait" }).text;
+      const ask = F1.line(S, 1).start;
+      const tv = F1.wordFrame(S, "TV");
+      const watch = F1.wordFrame(S, "watch");
+      const scarcity = F1.wordFrame(S, "scarcity");
+      const mx = 1010;
+      const bx = 1560;
+      const inner = [
+        `<div style="${F1.css({ fontFamily: toon.font.body, fontWeight: 800, fontSize: 26, letterSpacing: "0.14em", textTransform: "uppercase", color: editorial.accentOnLight, marginBottom: 14 })}">Bernie Ecclestone</div>`,
+        `<div style="${F1.css({ fontFamily: toon.font.display, fontWeight: 800, fontSize: 80, lineHeight: 1.04 })}">Rich, but exclusive</div>`,
+        `<div style="${F1.css({ width: 72, height: 6, borderRadius: 3, background: editorial.accent, margin: "20px 0" })}"></div>`,
+        `<div style="height:190px"></div>`,
+      ].join("");
+      return F1.join(
+        Backdrop({}, f),
+        F1.PhotoCard({ layout: "card-left", options: { aspect: "portrait" }, photos: [{ src: "assets/people/bernie_ecclestone.jpg" }], tone: "light", at: 4, inner }, f),
+        Reveal({ at: tv, style: { left: text.x, top: text.y + 235 } }, f, Chip({ text: "Expensive TV packages" })),
+        Reveal({ at: watch, style: { left: text.x, top: text.y + 305 } }, f, Chip({ text: "Luxury watch sponsors" })),
+        Reveal({ at: scarcity, style: { left: text.x, top: text.y + 375 } }, f, Chip({ text: "Artificial scarcity" })),
+        F1.Mascot({ character: "mog", x: mx, scale: 0.95, facing: "right", look: [[0, "auto"], [ask - 4, { x: bx, y: 600 }]], talking: F1.isSpeaking(S, "mog", f), gesture: [[0, "idle"], [ask - 6, "listen"]] }, f),
+        F1.Mascot({ character: "bog", x: bx, scale: 0.95, facing: "left", look: { x: mx, y: 600 }, talking: F1.isSpeaking(S, "bog", f), gesture: [[0, "listen"], [ask, "shrug"], [ask + 50, "listen"]], expression: "confused" }, f),
       );
-      const mascots = SPEAKERS.map((sp, k) =>
-        F1.Mascot(
-          {
-            character: sp,
-            x: xs[k],
-            y: 830,
-            scale: 0.85,
-            facing: k === 0 ? "right" : "left",
-            look: talker && talker !== sp ? { x: xs[SPEAKERS.indexOf(talker)], y: 640 } : "viewer",
-            talking: F1.isSpeaking(S, sp, f),
-            gesture: F1.isSpeaking(S, sp, f) ? "idle" : "listen",
-            expression: "happy",
-            at: 4 + k * 4,
-            seed: S.id,
-          },
-          f,
-        ),
-      ).join("");
-      return card + mascots;
     });
   </script>
 </template>
