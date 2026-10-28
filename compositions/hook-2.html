@@ -1,4 +1,4 @@
-<!-- TEMPORARY placeholder until the "hook" chapter is ported: shared parts only (photo card, mascots with lip-sync, SFX). -->
+<!-- Hook 2: MOG explains F1 is everywhere (logo with rings, then three cards); BOG shrugs it off. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -9,37 +9,77 @@
   </style>
   <div id="root" data-composition-id="hook-2" data-width="1920" data-height="1080">
     <div id="hook-2-art" class="f1-layer"></div>
-    <audio data-hf-media-start-basis="local" data-start="0.2" id="hook-2-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="6" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="0.2333" id="hook-2-sfx-line" class="clip" src="public/sfx/pop.wav" data-at="line:0" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.8667" id="hook-2-sfx-universe" class="clip" src="public/sfx/pop.wav" data-at="word:universe" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.4667" id="hook-2-sfx-friends" class="clip" src="public/sfx/pop.wav" data-at="word:friends" data-track-index="12" data-volume="0.18"></audio>
+    <audio data-hf-media-start-basis="local" data-start="12.1333" id="hook-2-sfx-feeds" class="clip" src="public/sfx/pop.wav" data-at="word:feeds" data-track-index="13" data-volume="0.18"></audio>
   </div>
   <script>
-    window.__timelines["hook-2"] = F1.scene("hook-2", (f, { S, D }) => {
-      const SPEAKERS = ["mog","bog"];
-      const xs = SPEAKERS.length === 1 ? [470] : SPEAKERS.length === 2 ? [300, 660] : [200, 480, 760];
-      const talker = SPEAKERS.find((sp) => F1.isSpeaking(S, sp, f));
-      const card = F1.PhotoCard(
-        { layout: "card-right", photos: [{ src: "assets/racing/garage_2021.jpg" }], kicker: F1.chapterTitle(S.chapter), headline: "Well, not always.", at: 0, exitAt: D - 12 },
+    window.__timelines["hook-2"] = F1.scene("hook-2", (f, { S }) => {
+      const { editorial, toon } = F1.theme;
+      const n = F1.n;
+      const bogLine = F1.line(S, 1);
+      const universe = F1.wordFrame(S, "universe");
+      const everywhere = F1.wordFrame(S, "everywhere");
+      const friends = F1.wordFrame(S, "friends");
+      const feeds = F1.wordFrame(S, "feeds");
+      const icons = F1.wordFrame(S, "icons");
+
+      const logoOut = 1 - F1.ramp(f, friends - 14, 12);
+      const cardsOut = 1 - F1.ramp(f, bogLine.start - 20, 14);
+
+      // a white card that rises in at `at` (kept in the markup before then so its pictures never reload)
+      const card = ({ x, y, w, h, at, title }, inner) => {
+        const p = F1.ramp(f, at, 16);
+        const style = F1.css({
+          position: "absolute", left: x, top: y, width: w, height: h, borderRadius: 18, background: editorial.white,
+          border: `2px solid ${editorial.rule}`, opacity: f < at ? 0 : n(p, 3), transform: `translateY(${n((1 - p) * 24)}px)`,
+          padding: "16px 24px", boxSizing: "border-box", display: "flex", alignItems: "center", gap: 24,
+          boxShadow: "0 6px 18px rgba(0,0,0,0.10)",
+        });
+        const label = F1.css({ fontFamily: toon.font.display, fontWeight: 800, fontSize: 44, color: editorial.ink });
+        return `<div style="${style}">${inner}<div style="${label}">${title}</div></div>`;
+      };
+      const avatars = ["#4DA3E8", "#F4A93B", "#F08BB4", "#4FC3A1"]
+        .map((c, i) => `<div style="${F1.css({ width: 62, height: 62, borderRadius: 31, background: c, border: `4px solid ${editorial.white}`, marginLeft: i ? -16 : 0 })}"></div>`)
+        .join("");
+      const lines = [110, 80, 95].map((w) => `<div style="${F1.css({ width: w, height: 14, borderRadius: 7, background: editorial.panel })}"></div>`).join("");
+      const face = (src) => `<img src="${F1.asset(src)}" alt="" style="${F1.css({ width: 200, height: 200, objectFit: "cover", objectPosition: "50% 25%", borderRadius: 12 })}">`;
+
+      // "center of the universe": the F1 logo with calm rings
+      const rings = [1, 2, 3]
+        .map((i) => {
+          const p = F1.ramp(f, universe + i * 8, 30);
+          return `<circle cx="1130" cy="440" r="${n(120 + i * 90 * p)}" fill="none" stroke="${editorial.rule}" stroke-width="3" opacity="${n(p, 3)}"/>`;
+        })
+        .join("");
+      const logo = `<div style="position:absolute;inset:0;opacity:${n(logoOut, 3)}"><svg width="1920" height="1080" style="position:absolute;inset:0">${rings}</svg>${F1.Logo({ src: "assets/logos/formula1.png", width: 380, x: 1130, y: 440, at: universe }, f)}</div>`;
+
+      const cards = `<div style="position:absolute;inset:0;opacity:${n(cardsOut, 3)}">${[
+        card({ x: 700, y: 140, w: 860, h: 150, at: friends, title: "Your friends watch it" }, `<div style="display:flex">${avatars}</div>`),
+        card({ x: 700, y: 320, w: 860, h: 150, at: feeds, title: "It floods your feed" }, `<div style="display:flex;flex-direction:column;gap:10px">${lines}</div>`),
+        card({ x: 700, y: 500, w: 860, h: 240, at: icons, title: "Drivers are icons" }, face("assets/people/lewis_hamilton_2021.jpg") + face("assets/people/max_verstappen_2021.jpg")),
+      ].join("")}</div>`;
+
+      const mog = F1.Mascot(
+        {
+          character: "mog", x: 330, y: 830, scale: 1.2, at: 0, enter: "none",
+          facing: "right", look: "right", talking: F1.isSpeaking(S, "mog", f),
+          gesture: [[0, "idle"], [universe - 4, { gesture: "point", dir: "up-right" }], [everywhere + 20, "idle"], [icons - 6, { gesture: "point", dir: "right" }], [icons + 50, "idle"], [bogLine.start - 30, "listen"]],
+          expression: [[0, "neutral"], [bogLine.start, "smug"]],
+        },
         f,
       );
-      const mascots = SPEAKERS.map((sp, k) =>
-        F1.Mascot(
-          {
-            character: sp,
-            x: xs[k],
-            y: 830,
-            scale: 0.85,
-            facing: k === 0 ? "right" : "left",
-            look: talker && talker !== sp ? { x: xs[SPEAKERS.indexOf(talker)], y: 640 } : "viewer",
-            talking: F1.isSpeaking(S, sp, f),
-            gesture: F1.isSpeaking(S, sp, f) ? "idle" : "listen",
-            expression: "happy",
-            at: 4 + k * 4,
-            seed: S.id,
-          },
-          f,
-        ),
-      ).join("");
-      return card + mascots;
+      const bog = F1.Mascot(
+        {
+          character: "bog", x: 1680, y: 830, scale: 0.9, at: 0, enter: "none",
+          facing: "left", look: "left",
+          gesture: [[0, "listen"], [bogLine.start - 6, "shrug"], [bogLine.end, "idle"]],
+          expression: [[0, "confused"], [bogLine.start - 6, "smug"]],
+          talking: F1.isSpeaking(S, "bog", f),
+        },
+        f,
+      );
+      return F1.Solid({ color: editorial.bg }) + logo + cards + mog + bog;
     });
   </script>
 </template>

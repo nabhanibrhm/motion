@@ -1,4 +1,4 @@
-<!-- TEMPORARY placeholder until the "hook" chapter is ported: shared parts only (photo card, mascots with lip-sync, SFX). -->
+<!-- Hook 1: the social feed bursts in on dark ink, BOG walks in confused, WEC arrives waving race tickets. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -9,37 +9,70 @@
   </style>
   <div id="root" data-composition-id="hook-1" data-width="1920" data-height="1080">
     <div id="hook-1-art" class="f1-layer"></div>
-    <audio data-hf-media-start-basis="local" data-start="0.2" id="hook-1-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="6" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="0.5333" id="hook-1-sfx-line" class="clip" src="public/sfx/pop.wav" data-at="line:0" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.1" id="hook-1-sfx-whoosh" class="clip" src="public/sfx/whoosh.wav" data-at="line:1-36" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.0667" id="hook-1-sfx-pop" class="clip" src="public/sfx/pop.wav" data-at="word:tickets" data-track-index="12" data-volume="0.25"></audio>
   </div>
   <script>
-    window.__timelines["hook-1"] = F1.scene("hook-1", (f, { S, D }) => {
-      const SPEAKERS = ["bog","wec"];
-      const xs = SPEAKERS.length === 1 ? [470] : SPEAKERS.length === 2 ? [300, 660] : [200, 480, 760];
-      const talker = SPEAKERS.find((sp) => F1.isSpeaking(S, sp, f));
-      const card = F1.PhotoCard(
-        { layout: "card-right", photos: [{ src: "assets/racing/f1_podium.jpg" }], kicker: F1.chapterTitle(S.chapter), headline: "Okay, quick question.", at: 0, exitAt: D - 12 },
+    window.__timelines["hook-1"] = F1.scene("hook-1", (f, { S }) => {
+      const { editorial } = F1.theme;
+      const CARDS = [
+        { src: "assets/racing/f1_podium.jpg", x: 70, y: 110, rot: -4, avatar: "#4DA3E8" },
+        { src: "assets/people/lewis_hamilton_2021.jpg", x: 380, y: 130, rot: 3, avatar: "#F4A93B" },
+        { src: "assets/racing/sf21_2021.jpg", x: 690, y: 105, rot: -2, avatar: "#4FC3A1" },
+        { src: "assets/people/max_verstappen_2021.jpg", x: 1000, y: 135, rot: 4, avatar: "#F08BB4" },
+        { src: "assets/racing/hamilton_verstappen_2021.jpg", x: 1310, y: 110, rot: -3, avatar: "#8E7BE0" },
+        { src: "assets/people/driver_parade_2021.jpg", x: 1590, y: 140, rot: 3, avatar: "#E5483F" },
+        { src: "assets/racing/usgp_start_2021.jpg", x: 200, y: 400, rot: 3, avatar: "#F4A93B" },
+        { src: "assets/racing/garage_2021.jpg", x: 560, y: 430, rot: -3, avatar: "#4DA3E8" },
+        { src: "assets/racing/usgp_podium_2021.jpg", x: 1180, y: 420, rot: 2, avatar: "#4FC3A1" },
+        { src: "assets/racing/garage_2021_b.jpg", x: 1480, y: 400, rot: -4, avatar: "#F08BB4" },
+      ];
+      const a = F1.line(S, 1);
+      const tickets = F1.wordFrame(S, "tickets");
+      const arrive = a.start - 36;
+
+      // the feed bursts in, then settles into the background as BOG speaks
+      const dim = F1.interpolate(f, [38, 110], [1, 0.22], F1.clamp);
+      const bigTickets = F1.interpolate(f, [tickets, tickets + 14, tickets + 80, tickets + 96], [0, 1, 1, 0], F1.clamp);
+
+      const feed = F1.Solid({ color: editorial.ink }, CARDS.map((c, i) => F1.FeedCard({ ...c, at: i * 4, opacity: dim }, f)).join(""));
+      const bog = F1.Mascot(
+        {
+          character: "bog",
+          x: 640,
+          y: 830,
+          scale: 1.3,
+          at: 8,
+          enter: "walk-left",
+          facing: [[0, "front"], [arrive, "right"]],
+          look: [[0, "viewer"], [arrive + 10, "right"]],
+          gesture: [[0, "idle"], [arrive + 24, "startle"], [arrive + 60, "idle"]],
+          expression: [[0, "confused"], [arrive + 24, "surprised"], [a.start + 70, "neutral"]],
+          talking: F1.isSpeaking(S, "bog", f),
+        },
         f,
       );
-      const mascots = SPEAKERS.map((sp, k) =>
-        F1.Mascot(
-          {
-            character: sp,
-            x: xs[k],
-            y: 830,
-            scale: 0.85,
-            facing: k === 0 ? "right" : "left",
-            look: talker && talker !== sp ? { x: xs[SPEAKERS.indexOf(talker)], y: 640 } : "viewer",
-            talking: F1.isSpeaking(S, sp, f),
-            gesture: F1.isSpeaking(S, sp, f) ? "idle" : "listen",
-            expression: "happy",
-            at: 4 + k * 4,
-            seed: S.id,
-          },
-          f,
-        ),
-      ).join("");
-      return card + mascots;
+      const wec = F1.Mascot(
+        {
+          character: "wec",
+          x: 1330,
+          y: 830,
+          scale: 1.2,
+          at: arrive,
+          enter: "walk-right",
+          enterFrames: 30,
+          facing: "left",
+          look: "left",
+          gesture: "wave",
+          prop: "tickets",
+          expression: "happy",
+          talking: F1.isSpeaking(S, "wec", f),
+        },
+        f,
+      );
+      // the prop the outro revisits: two race tickets, shown big for a moment
+      const big = `<div style="${F1.css({ position: "absolute", inset: 0, opacity: F1.n(bigTickets, 3), transform: `translateY(${F1.n((1 - bigTickets) * 20)}px)` })}">${F1.Tickets({ x: 1330, y: 400, scale: 2.6, count: 2, angle: -8 }, f)}</div>`;
+      return feed + bog + wec + big;
     });
   </script>
 </template>
