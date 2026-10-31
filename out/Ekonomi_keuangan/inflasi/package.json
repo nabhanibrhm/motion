@@ -10,7 +10,7 @@
     "lint": "node scripts/hf.mjs lint",
     "check": "node scripts/hf.mjs check",
     "stills": "node scripts/stills.mjs",
-    "render": "node scripts/hf.mjs render -o renders/inflasi-short.mp4"
+    "render": "node scripts/hf.mjs render -o renders/inflasi-short.mp4 && node scripts/master.mjs renders/inflasi-short.mp4"
   },
   "devDependencies": {
     "hyperframes": "0.8.210"

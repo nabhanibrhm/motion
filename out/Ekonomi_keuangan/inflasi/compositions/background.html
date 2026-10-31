@@ -1,4 +1,4 @@
-﻿<!-- Persistent ground under every scene: calm #EEEEEE with a soft glow and slow floating particles (was CarbonBackground). -->
+<!-- Persistent ground under every scene: warm doodle paper with a soft vignette. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -7,10 +7,14 @@
       inset: 0;
     }
   </style>
-  <div id="root" data-composition-id="background" data-width="1080" data-height="1920">
-    <div id="background-art" class="f1-layer"></div>
+  <div data-hf-id="hf-yw6v" id="root" data-composition-id="background" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-mob1" id="background-art" class="f1-layer"></div>
   </div>
   <script>
-    window.__timelines["background"] = F1.scene("background", (f) => F1.Ground({}, f), { frames: F1.segments().total });
+    window.__timelines["background"] = F1.scene(
+      "background",
+      () => `<div style="${F1.css({ position: "absolute", inset: 0, background: `radial-gradient(ellipse 80% 60% at 50% 40%, ${F1.theme.doodle.paper} 60%, #f3ede5 100%)` })}"></div>`,
+      { frames: F1.segments().total },
+    );
   </script>
 </template>

@@ -31,12 +31,18 @@ The F1 video (Remotion and its HyperFrames port) was deleted on 31 Oct 2026; it 
 | `voiceover/inflasi.json` | Lines and speakers. `"source": "files"` switches from edge-tts to the TTSMaker MP3s |
 | `voiceover/lines.md`, `voiceover/lines/` | Recording checklist; folder for the 11 MP3s (empty now) |
 | `compositions/*.html` | One scene per section, plus `background.html` |
-| `lib/f1/kasus.js` | Episode visuals: receipt, stamps, suspect card, notes, icons |
+| `lib/f1/kasus.js` | Doodle kit: pen/line boil, title, stepper, info card, receipt, stamps, note, icons |
+| `compositions/frame.html` | Persistent title and suspect stepper over every scene |
 | `lib/f1/*` | Shared drawing kit (mascots, toon art, photo cards, timing) inherited from the F1 video. Stage size comes from `F1.STAGE` (vertical layout) |
 | `scripts/sync.mjs` | Regenerates `index.html`, captions and the SFX timing from the voice data |
 | `scripts/stills.mjs` | `node scripts/stills.mjs all\|<section>\|custom --at 1,2` → `.stills/` |
 
-Vertical layout: visuals at y 160–1000, captions at y 1040–1240, mascots with feet at y 1580. Keep the bottom ~15% and the right ~120 px clear for platform buttons.
+Design language (since 31 Oct 2026): doodle look after @Ror_Fly's recipe explainer.
+- **Pen and colour.** One near-black ink pen with a subtle 6 fps line boil (an SVG displacement filter, `K.pen`/`K.sk`); the mascots get an ink contour (`K.inked`). Warm paper `#fbf7f2`, pastel fills and one coral accent `#e2546b`. The tokens are `--doodle-*` in `lib/f1/f1.css`.
+- **Type.** Luckiest Guy for outlined titles and numbers (ASCII only: no `×`, `≥`, `→` or `…`). Patrick Hand for hand-written labels. Nunito Sans for captions.
+- **Layout.** A persistent `compositions/frame.html` holds the "KASUS NASI GORENG" title (y 140–290) and the suspect stepper PENJUAL BAHAN KITA DALANG VONIS (y 350–450). Below that, the evidence object sits at x 60–520 and the info card (`K.Card`: kicker, big number, label, note, progress bar) at x 540–960, both within y 480–1000. Captions sit at y 1040–1240 and the mascots' feet at y 1580.
+- **Dark scene.** Only dalang goes dark; the frame and card invert there.
+- **Safe zones.** Keep the bottom ~15% and the right ~120 px clear.
 
 **Set up on the WSL laptop**
 ```bash

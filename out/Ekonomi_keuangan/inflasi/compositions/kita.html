@@ -1,4 +1,4 @@
-<!-- Suspect 3, all of us: THR week, money piles up while the plates stay the same, so the price rises. -->
+<!-- Suspect 3, all of us: the THR envelope, then coins stack up next to the same three plates; stamp HARGA NAIK. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -10,54 +10,54 @@
   <div id="root" data-composition-id="kita" data-width="1080" data-height="1920">
     <div id="kita-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="kita-sfx-card" class="clip" src="public/sfx/whoosh.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="2.0667" id="kita-sfx-thr" class="clip" src="public/sfx/pop.wav" data-at="word:THR" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.0667" id="kita-sfx-thr" class="clip" src="public/sfx/pop-in.wav" data-at="word:THR" data-track-index="12" data-volume="0.13"></audio>
     <audio data-hf-media-start-basis="local" data-start="5.3" id="kita-sfx-coins" class="clip" src="public/sfx/cash.wav" data-at="word:Uang" data-track-index="13" data-volume="0.2"></audio>
-    <audio data-hf-media-start-basis="local" data-start="7.6" id="kita-sfx-up" class="clip" src="public/sfx/pop.wav" data-at="word:Harga" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.6" id="kita-sfx-up" class="clip" src="public/sfx/pop-in.wav" data-at="word:Harga" data-track-index="14" data-volume="0.13"></audio>
   </div>
   <script>
     window.__timelines["kita"] = F1.scene("kita", (f, { S }) => {
       const K = F1.kasus;
-      const { editorial, toon } = F1.theme;
       const n = F1.n;
+      const pen = K.pen("kita", f);
       const mogLine = F1.line(S, 1);
       const thr = F1.wordFrame(S, "THR");
       const uang = F1.wordFrame(S, "Uang");
       const barang = F1.wordFrame(S, "barangnya");
       const harga = F1.wordFrame(S, "Harga");
 
-      // left column: coins stack up from "Uang"; right column: the same three plates
+      // left: coins stack up from "Uang"; right of it: the same three plates
       const coins = Math.round(F1.interpolate(f, [uang - 4, barang], [1, 8], { ...F1.clamp, easing: F1.easeOut }));
-      const head = (text, x) => `<div style="${F1.css({ position: "absolute", left: x - 160, width: 320, top: 880, textAlign: "center", fontFamily: toon.font.display, fontWeight: 800, fontSize: 44, color: editorial.ink })}">${text}</div>`;
-      const stack =
-        f < uang - 4
-          ? ""
-          : Array.from({ length: coins }, (_, i) => `<div style="${F1.css({ position: "absolute", left: 270 - 60, top: 760 - i * 44 })}">${K.Icon("coin", 120)}</div>`).join("") + head("Uang ↑", 270);
-      const plates =
-        f < barang - 2
-          ? ""
-          : [0, 1, 2].map((i) => K.Pop({ x: 810, y: 820 - i * 70, at: barang - 2 + i * 3 }, f, K.Icon("plate", 140))).join("") + head("Barang =", 810);
-
+      const envelope = K.Pop({ x: 290, y: 660, at: thr - 4 }, f, `<div style="${F1.css({ opacity: n(1 - F1.ramp(f, uang - 8, 10), 3) })}">${K.Icon("envelope", 260)}</div>`);
+      const stack = f < uang - 4 ? "" : Array.from({ length: coins }, (_, i) => `<div style="${F1.css({ position: "absolute", left: 185 - 48, top: 800 - i * 36 })}">${K.Icon("coin", 96)}</div>`).join("");
+      const plates = f < barang - 2 ? "" : [0, 1, 2].map((i) => K.Pop({ x: 405, y: 850 - i * 62 }, f, K.Icon("plate", 130))).join("");
+      const heads =
+        (f < uang - 4 ? "" : `<div style="${F1.css({ position: "absolute", left: 85, width: 200, top: 910 })}">${K.Label("uang naik", { size: 32 })}</div>`) +
+        (f < barang - 2 ? "" : `<div style="${F1.css({ position: "absolute", left: 305, width: 200, top: 910 })}">${K.Label("barang sama", { size: 32 })}</div>`);
       return F1.join(
-        K.Suspect({ n: 3, title: "Kita semua", at: 0 }, f),
-        K.Pop({ x: 540, y: 520, at: thr - 4 }, f, `<div style="${F1.css({ opacity: n(1 - F1.ramp(f, uang - 8, 10), 3) })}">${K.Icon("envelope", 220)}</div>`),
-        stack,
-        plates,
-        K.Up({ x: 540, y: 640, at: harga, size: 120 }, f),
-        K.Pop({ x: 540, y: 735, at: harga + 4 }, f, `<div style="${F1.css({ fontFamily: toon.font.display, fontWeight: 800, fontSize: 40, color: K.RED, whiteSpace: "nowrap" })}">HARGA NAIK</div>`),
-        F1.Mascot(
-          {
-            character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, { x: 780, y: 1300 }], [mogLine.start, "viewer"]], talking: F1.isSpeaking(S, "mog", f),
-            gesture: [[0, "listen"], [mogLine.start, "idle"], [uang - 4, { gesture: "point", dir: "up-left" }], [harga + 20, "idle"]],
-          },
-          f,
-        ),
-        F1.Mascot(
-          {
-            character: "bog", x: 790, scale: 1.15, facing: "left", look: [[0, "viewer"], [mogLine.start, { x: 290, y: 1300 }]], talking: F1.isSpeaking(S, "bog", f),
-            gesture: [[0, "startle"], [mogLine.start, "listen"]], expression: [[0, "surprised"], [mogLine.start + 20, "confused"]],
-          },
-          f,
-        ),
+        pen,
+        K.sk(F1.join(envelope, stack, plates)),
+        heads,
+        K.Card({
+          at: 0, kicker: "TERSANGKA 3 DARI 3", big: "THR", label: "KITA SEMUA", sub: "uang banyak, barangnya sama",
+          bar: { k: f < uang - 4 ? 0 : (coins - 1) / 7, text: "uang beredar" },
+        }, f),
+        K.Stamp({ text: "HARGA NAIK", x: 540, y: 960, at: harga, rot: -6, size: 64 }, f),
+        K.inked(F1.join(
+          F1.Mascot(
+            {
+              character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, { x: 780, y: 1300 }], [mogLine.start, "viewer"]], talking: F1.isSpeaking(S, "mog", f),
+              gesture: [[0, "listen"], [mogLine.start, "idle"], [uang - 4, { gesture: "point", dir: "up-left" }], [harga + 20, "idle"]],
+            },
+            f,
+          ),
+          F1.Mascot(
+            {
+              character: "bog", x: 790, scale: 1.15, facing: "left", look: [[0, "viewer"], [mogLine.start, { x: 290, y: 1300 }]], talking: F1.isSpeaking(S, "bog", f),
+              gesture: [[0, "startle"], [mogLine.start, "listen"]], expression: [[0, "surprised"], [mogLine.start + 20, "confused"]],
+            },
+            f,
+          ),
+        )),
       );
     });
   </script>

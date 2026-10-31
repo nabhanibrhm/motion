@@ -23,12 +23,21 @@
   font-weight: 200 1000;
 }
 
+@font-face {
+  font-family: "Luckiest Guy";
+  src: url("../../public/fonts/LuckiestGuy-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Patrick Hand";
+  src: url("../../public/fonts/PatrickHand-Regular.ttf") format("truetype");
+}
+
 :root {
   /* editorial (colorhunt 000000-cb2957-dddddd-eeeeee) */
   --editorial-ink: #000000;
   --editorial-accent: #cb2957; /* 4.5:1 on bg, 5.3:1 on white, only 4.0:1 on black (large text only) */
   --editorial-panel: #dddddd;
-  --editorial-bg: #eeeeee;
+  --editorial-bg: #fbf7f2; /* warm paper (doodle look) */
   --editorial-white: #ffffff;
   --editorial-accent-on-dark: #e8517a; /* small accent text on ink, 5.9:1 */
   --editorial-accent-on-light: #a81f47; /* small accent text on bg / panel, 6.1:1 */
@@ -37,7 +46,7 @@
   --editorial-rule: #c4c4c4; /* hairlines on bg */
 
   /* mascot artwork */
-  --mascot-ink: #0d530e;
+  --mascot-ink: #2e2a2b; /* doodle ink: the same pen as every prop */
   --mascot-deep: #073d09;
   --mascot-cream: #fbf5dd;
   --mascot-sage: #e7e1b1;
@@ -105,9 +114,25 @@
   --chart-grid: var(--editorial-panel);
   --chart-label: var(--editorial-muted);
 
+  /* doodle look (after @Ror_Fly's recipe explainer): one pen, pastel fills, one coral accent */
+  --doodle-paper: #fbf7f2;
+  --doodle-ink: #2e2a2b;
+  --doodle-coral: #e2546b;
+  --doodle-coral-soft: #f7cfd5; /* card shadow, track tint */
+  --doodle-coral-light: #ff9aaa; /* coral on the dark scene */
+  --doodle-ice: #d6ebf5;
+  --doodle-ice-deep: #8fbfd8;
+  --doodle-butter: #f6cf5a;
+  --doodle-mint: #7cc59a;
+  --doodle-grey: #bdb8b3; /* future steps, empty track */
+  --doodle-muted: #6f6a66; /* hand-written secondary text, 5.3:1 on paper */
+  --doodle-night: #1f1c1d; /* the dark scene's card */
+
   /* type */
   --font-display: "Bricolage Grotesque", sans-serif;
   --font-body: "Nunito Sans", sans-serif;
+  --font-title: "Luckiest Guy", "Bricolage Grotesque", sans-serif; /* chunky outlined titles; ASCII only (no × ≥ → …) */
+  --font-hand: "Patrick Hand", "Nunito Sans", sans-serif; /* hand-written labels */
 }
 
 /* A procedural layer drawn by lib/f1 (mascots, toon art, photo cards). */

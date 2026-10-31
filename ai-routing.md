@@ -53,7 +53,8 @@ Paths are relative to a video project (e.g. `out/Ekonomi_keuangan/inflasi/`) unl
 | `lib/f1/core.js` (`F1.scene`, interpolate/spring, the DOM morph) and `lib/f1/timing.js` (word frames, lip-sync, caption grouping) |
 | `F1.STAGE` and the layout constants: canvas size, the caption band, mascot feet, the safe zones for platform buttons |
 | Structure of `voiceover/<video>.json`: speakers, sections, `"source"`, pause markers (wording inside existing lines is Haiku) |
-| Shared drawing kit used by every scene: `lib/f1/mascot.js`, `toon.js`, `photo.js`, `words.js`, `bits.js`, `f1.css` |
+| Shared drawing kit used by every scene: `lib/f1/mascot.js`, `toon.js`, `photo.js`, `words.js`, `bits.js`, `f1.css`, and the doodle pen/`Card`/`Stepper`/`Title` in `kasus.js` |
+| `compositions/frame.html` (persistent title + stepper over every scene) |
 | `hyperframes.json`, `package.json` `scripts`, `scripts/hf.mjs`, `scripts/stills.mjs` |
 | A new video project under `out/<topic>/<video>/` (copying the kit, voice config, sync settings) |
 
@@ -62,7 +63,7 @@ Paths are relative to a video project (e.g. `out/Ekonomi_keuangan/inflasi/`) unl
 | Path / pattern |
 |---|
 | One scene, `compositions/<section>.html`: its art, its GSAP timeline and its SFX `<audio data-at=…>` anchors |
-| The episode kit `lib/f1/kasus.js`: a new icon, stamp or prop used by one or two scenes |
+| The episode kit `lib/f1/kasus.js`: a new icon, stamp or prop used by one or two scenes (keep the doodle rules: ink pen, pastel fill, coral accent, ASCII-only Luckiest Guy text) |
 | `compositions/background.html` styling |
 | Re-encoding or a new format for audio/images in `public/` |
 

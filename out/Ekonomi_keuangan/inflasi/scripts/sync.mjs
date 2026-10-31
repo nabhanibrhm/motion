@@ -97,6 +97,7 @@ ${LIBS.map((l) => `    <script src="${l}"></script>`).join("\n")}
     <div id="root" data-composition-id="inflasi" data-start="0" data-duration="${sec(total)}" data-fps="${FPS}" data-width="${W}" data-height="${H}">
 ${host({ id: "background", src: "compositions/background.html", start: 0, dur: sec(total), track: 0, z: 0 })}
 ${scenes.join("\n")}
+${host({ id: "frame", src: "compositions/frame.html", start: 0, dur: sec(total), track: 2, z: 2 })}
 ${host({ id: "captions", src: "compositions/captions.html", start: 0, dur: sec(total), track: 3, z: 100, kind: "captions" })}
 ${audio.join("\n")}
     </div>

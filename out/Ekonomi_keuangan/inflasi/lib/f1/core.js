@@ -222,7 +222,8 @@
     grid: editorial.panel,
     label: editorial.muted,
   };
-  const font = { display: cssVar("font-display"), body: cssVar("font-body") };
+  const font = { display: cssVar("font-display"), body: cssVar("font-body"), title: cssVar("font-title"), hand: cssVar("font-hand") };
+  const doodle = group("doodle", ["paper", "ink", "coral", "coral-soft", "coral-light", "ice", "ice-deep", "butter", "mint", "grey", "muted", "night"]);
   // Legacy flat-kit names used throughout the scenes (values come from the groups above).
   const toon = {
     paper: editorial.white,
@@ -252,7 +253,7 @@
     old: { ground: objects.old.ground, groundDeep: objects.old.groundDeep, tan: objects.old.tan, cream: objects.old.cream, red: objects.old.red, amber: objects.old.amber },
     font,
   };
-  F1.theme = { editorial, mascot, objects, brand, chart, toon, font };
+  F1.theme = { editorial, mascot, objects, brand, chart, toon, font, doodle };
   F1.shade = (c, amount = 0.2) => F1.mix(c, toon.groundDeep, amount);
   F1.tint = (c, amount = 0.2) => F1.mix(c, toon.paper, amount);
 

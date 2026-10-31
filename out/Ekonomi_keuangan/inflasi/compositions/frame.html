@@ -1,0 +1,40 @@
+<!-- Persistent frame over every scene (Ror_Fly layout): the "KASUS NASI GORENG" title and the suspect stepper.
+     Global frames; the step lights up when its section starts and is checked when the next one starts. Dark during dalang. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="frame" data-width="1080" data-height="1920">
+    <div id="frame-art" class="f1-layer"></div>
+  </div>
+  <script>
+    (() => {
+      const { list, total } = F1.segments();
+      const seg = (id) => list.find((s) => s.kind === "section" && s.section.id === id);
+      const ORDER = ["penjual", "bahan", "kita", "dalang", "pelajaran"];
+      const starts = ORDER.map((id) => seg(id).from);
+      const dalang = seg("dalang");
+      const pel = seg("pelajaran");
+      const closed = pel.from + F1.wordFrame(pel.section, "ditutup");
+      window.__timelines["frame"] = F1.scene(
+        "frame",
+        (f) => {
+          const K = F1.kasus;
+          const pen = K.pen("frame", f);
+          let active = -1;
+          starts.forEach((s, i) => {
+            if (f >= s) active = i;
+          });
+          const done = f >= closed ? 5 : Math.max(0, active);
+          const dark = f >= dalang.from + 4 && f < dalang.from + dalang.duration - 4;
+          return F1.join(pen, K.Title({ dark }, f), K.Stepper({ active, done, at: active >= 0 ? starts[active] : 0, dark }, f));
+        },
+        { frames: total },
+      );
+    })();
+  </script>
+</template>

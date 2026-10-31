@@ -1,4 +1,4 @@
-<!-- The real culprit (dark scene): the value of money. Rp100.000 shrinks to Rp74.400 of buying power; then the melting ice cube. -->
+<!-- The real culprit (the one dark scene): the value of money. Rp100.000 shrinks to Rp74.400 of buying power; then the melting ice cube. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -10,15 +10,17 @@
   <div id="root" data-composition-id="dalang" data-width="1080" data-height="1920">
     <div id="dalang-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="dalang-sfx-in" class="clip" src="public/sfx/whoosh.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="4.1" id="dalang-sfx-note" class="clip" src="public/sfx/pop.wav" data-at="word:Seratus" data-track-index="12" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="5.6" id="dalang-sfx-shrink" class="clip" src="public/sfx/riser.wav" data-at="word:sepuluh" data-track-index="13" data-volume="0.15"></audio>
-    <audio data-hf-media-start-basis="local" data-start="9.2" id="dalang-sfx-ice" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:Kayak" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="dalang-sfx-sub" class="clip" src="public/sfx/sub-drop.wav" data-at="0" data-track-index="15" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.1" id="dalang-sfx-note" class="clip" src="public/sfx/pop-in.wav" data-at="word:Seratus" data-track-index="12" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.6" id="dalang-sfx-shrink" class="clip" src="public/sfx/fall.wav" data-at="word:sepuluh" data-track-index="13" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.2" id="dalang-sfx-ice" class="clip" src="public/sfx/drip.wav" data-at="word:Kayak" data-track-index="14" data-volume="0.1"></audio>
   </div>
   <script>
-    window.__timelines["dalang"] = F1.scene("dalang", (f, { S, D }) => {
+    window.__timelines["dalang"] = F1.scene("dalang", (f, { S }) => {
       const K = F1.kasus;
-      const { editorial, toon } = F1.theme;
+      const { editorial, doodle: C } = F1.theme;
       const n = F1.n;
+      const pen = K.pen("dalang", f);
       const wecLine = F1.line(S, 1);
       const nilai = F1.wordFrame(S, "nilai");
       const seratus = F1.wordFrame(S, "Seratus");
@@ -27,50 +29,50 @@
       const swap = wecLine.start - 6;
 
       const bg = `<div style="${F1.css({ position: "absolute", inset: 0, background: editorial.ink, opacity: n(F1.ramp(f, 0, 8), 3) })}"></div>`;
-      const spot = `<div style="${F1.css({ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 30% at 50% 30%, rgba(255,255,255,0.16), rgba(255,255,255,0) 70%)", opacity: n(F1.ramp(f, 4, 20), 3) })}"></div>`;
+      const spot = `<div style="${F1.css({ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 30% at 50% 36%, rgba(255,255,255,0.12), rgba(255,255,255,0) 70%)", opacity: n(F1.ramp(f, 4, 20), 3) })}"></div>`;
 
+      // left: a "?" until the note arrives, the note shrinks, then the melting ice cube
+      const ask = f >= seratus ? "" : K.Pop({ x: 290, y: 700, at: 6, frames: 18 }, f, K.outlined("?", { size: 320, color: C.coralLight, stroke: C.paper, width: 0.03 }));
       const noteOut = 1 - F1.ramp(f, swap, 10);
-      const note = `<div style="${F1.css({ position: "absolute", inset: 0, opacity: n(noteOut, 3) })}">${K.Note({ x: 540, y: 560, w: 780, at: seratus, shrink: 0.744, shrinkAt: sepuluh + 6, frames: 50 }, f)}</div>`;
-      const k = F1.ramp(f, tujuh - 4, 30, F1.easeOut);
-      const value = Math.round((100000 - 25600 * k) / 100) * 100;
-      const readout =
-        f < sepuluh
-          ? ""
-          : `<div style="${F1.css({ position: "absolute", left: 60, width: 900, top: 780, textAlign: "center", opacity: n(F1.ramp(f, sepuluh, 12) * noteOut, 3) })}">
-<div style="${F1.css({ fontFamily: toon.font.display, fontWeight: 800, fontSize: 96, lineHeight: 1, color: k > 0 ? "#ff8a9e" : editorial.white })}">${K.rp(value)}</div>
-<div style="${F1.css({ fontFamily: toon.font.body, fontWeight: 800, fontSize: 28, letterSpacing: "0.08em", color: editorial.mutedOnDark, marginTop: 12 })}">DAYA BELI 10 TAHUN LAGI · INFLASI 3%/TAHUN</div></div>`;
-
-      // the ice cube melts through WEC's line
+      const note = `<div style="${F1.css({ position: "absolute", inset: 0, opacity: n(noteOut, 3) })}">${K.Note({ x: 290, y: 700, w: 440, at: seratus, shrink: 0.744, shrinkAt: sepuluh + 6, frames: 50 }, f)}</div>`;
       const melt = F1.ramp(f, wecLine.start + 10, wecLine.end - wecLine.start, F1.Easing.inOut(F1.Easing.quad));
       const ice =
         f < swap
           ? ""
-          : `<div style="${F1.css({ position: "absolute", left: 540, top: 820, opacity: n(F1.ramp(f, swap, 10), 3) })}">
-<div style="${F1.css({ position: "absolute", left: -n(180 + 120 * melt), top: -30, width: n(360 + 240 * melt), height: 60, borderRadius: "50%", background: "#6cc3ea", opacity: n(0.25 + 0.45 * melt, 3) })}"></div>
-<div style="${F1.css({ position: "absolute", left: -170, top: -340, transformOrigin: "50% 100%", transform: `scale(${n(1 - 0.55 * melt, 3)}, ${n(1 - 0.75 * melt, 3)})` })}">${K.Icon("ice", 340)}</div></div>`;
+          : `<div style="${F1.css({ position: "absolute", left: 290, top: 900, opacity: n(F1.ramp(f, swap, 10), 3) })}">
+<div style="${F1.css({ position: "absolute", left: -n(150 + 90 * melt), top: -26, width: n(300 + 180 * melt), height: 52, borderRadius: "50%", background: C.iceDeep, border: `4px solid ${C.paper}`, opacity: n(0.35 + 0.45 * melt, 3) })}"></div>
+<div style="${F1.css({ position: "absolute", left: -140, top: -290, transformOrigin: "50% 100%", transform: `scale(${n(1 - 0.55 * melt, 3)}, ${n(1 - 0.75 * melt, 3)})` })}">${K.Icon("ice", 280)}</div></div>`;
 
+      const k = F1.ramp(f, tujuh - 4, 30, F1.easeOut);
+      const value = Math.round((100000 - 25600 * k) / 100) * 100;
       return F1.join(
         bg,
         spot,
-        K.Kicker({ kicker: "Dalangnya", text: "Nilai uang itu sendiri", y: 150, size: 80, at: nilai, dark: true }, f),
-        note,
-        readout,
-        ice,
-        F1.Mascot(
-          {
-            character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, "viewer"], [seratus, "up"], [wecLine.start, { x: 790, y: 1300 }]], talking: F1.isSpeaking(S, "mog", f),
-            gesture: [[0, "idle"], [nilai, { gesture: "point", dir: "up-right" }], [sepuluh + 40, "idle"], [wecLine.start, "listen"]], expression: [[0, "neutral"], [tujuh, "smug"]],
-          },
-          f,
-        ),
-        F1.Mascot(
-          {
-            character: "wec", x: 790, scale: 1.1, facing: "left", look: [[0, "up"], [wecLine.start - 4, "viewer"]], talking: F1.isSpeaking(S, "wec", f),
-            gesture: [[0, "listen"], [sepuluh + 10, "startle"], [sepuluh + 50, "listen"], [wecLine.start, { gesture: "point", dir: "up-left" }], [wecLine.end - 20, "shrug"]],
-            expression: [[0, "neutral"], [sepuluh + 10, "surprised"], [wecLine.start, "happy"]],
-          },
-          f,
-        ),
+        pen,
+        ask,
+        K.sk(F1.join(note, ice)),
+        K.Card({
+          at: nilai - 4, dark: true, kicker: "DALANG SEBENARNYA", big: K.rp(value), bigSize: 64,
+          label: f < swap ? "NILAI UANG" : "KAYAK ES BATU", sub: f < swap ? "daya beli 10 tahun lagi (inflasi 3%/thn)" : "nggak kelihatan mencair, tapi lama-lama habis",
+          bar: { k: value / 100000, text: `${(value / 1000).toFixed(1).replace(".", ",")}%` },
+        }, f),
+        K.inked(F1.join(
+          F1.Mascot(
+            {
+              character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, "viewer"], [seratus, "up"], [wecLine.start, { x: 790, y: 1300 }]], talking: F1.isSpeaking(S, "mog", f),
+              gesture: [[0, "idle"], [nilai, { gesture: "point", dir: "up-right" }], [sepuluh + 40, "idle"], [wecLine.start, "listen"]], expression: [[0, "neutral"], [tujuh, "smug"]],
+            },
+            f,
+          ),
+          F1.Mascot(
+            {
+              character: "wec", x: 790, scale: 1.1, facing: "left", look: [[0, "up"], [wecLine.start - 4, "viewer"]], talking: F1.isSpeaking(S, "wec", f),
+              gesture: [[0, "listen"], [sepuluh + 10, "startle"], [sepuluh + 50, "listen"], [wecLine.start, { gesture: "point", dir: "up-left" }], [wecLine.end - 20, "shrug"]],
+              expression: [[0, "neutral"], [sepuluh + 10, "surprised"], [wecLine.start, "happy"]],
+            },
+            f,
+          ),
+        )),
       );
     });
   </script>

@@ -1,4 +1,4 @@
-<!-- Suspect 1, the seller: his cost sheet shows the margin barely moved. Stamp: TIDAK BERSALAH. -->
+<!-- Suspect 1, the seller: the cart on the left, the card shows his profit per plate (Modal Rp13.000 + Untung Rp7.000, ilustrasi). Stamp: TIDAK BERSALAH. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -10,46 +10,36 @@
   <div id="root" data-composition-id="penjual" data-width="1080" data-height="1920">
     <div id="penjual-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="penjual-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="4.5333" id="penjual-sfx-stamp" class="clip" src="public/sfx/pop.wav" data-at="word:Bukan" data-track-index="12" data-volume="0.35"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.5333" id="penjual-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Bukan" data-track-index="12" data-volume="0.4"></audio>
   </div>
   <script>
     window.__timelines["penjual"] = F1.scene("penjual", (f, { S }) => {
       const K = F1.kasus;
-      const { editorial, toon } = F1.theme;
-      const n = F1.n;
+      const { doodle: C } = F1.theme;
+      const pen = K.pen("penjual", f);
       const untung = F1.wordFrame(S, "Untungnya");
       const bukan = F1.wordFrame(S, "Bukan");
-
-      // cost bar for one plate (ilustrasi): modal Rp13.000 + untung Rp7.000
       const g = F1.ramp(f, untung - 6, 22, F1.expoOut);
-      const BAR = { x: 90, y: 760, w: 900, h: 70 };
-      const modalW = BAR.w * (13 / 20) * g;
-      const untungW = BAR.w * (7 / 20) * F1.ramp(f, untung + 8, 18, F1.expoOut);
-      const label = (text, x, color, align = "left") =>
-        `<div style="${F1.css({ position: "absolute", left: x, top: BAR.y + BAR.h + 14, width: 420, textAlign: align, transform: align === "right" ? "translateX(-100%)" : "none", fontFamily: toon.font.body, fontWeight: 800, fontSize: 32, color })}">${text}</div>`;
-      const bar =
-        f < untung - 6
-          ? ""
-          : `<div style="${F1.css({ position: "absolute", inset: 0, opacity: n(F1.ramp(f, untung - 6, 10), 3) })}">
-<div style="${F1.css({ position: "absolute", left: BAR.x, top: BAR.y - 52, fontFamily: toon.font.body, fontWeight: 800, fontSize: 28, letterSpacing: "0.1em", color: editorial.muted })}">SATU PIRING (ILUSTRASI)</div>
-<div style="${F1.css({ position: "absolute", left: BAR.x, top: BAR.y, width: BAR.w, height: BAR.h, borderRadius: 16, background: editorial.panel })}"></div>
-<div style="${F1.css({ position: "absolute", left: BAR.x, top: BAR.y, width: n(modalW), height: BAR.h, borderRadius: "16px 0 0 16px", background: editorial.muted })}"></div>
-<div style="${F1.css({ position: "absolute", left: BAR.x + BAR.w * (13 / 20), top: BAR.y, width: n(untungW), height: BAR.h, borderRadius: "0 16px 16px 0", background: editorial.accent })}"></div>
-${label(`Modal ${K.rp(13000)}`, BAR.x, editorial.ink)}${label(`Untung ${K.rp(7000)}`, BAR.x + BAR.w, editorial.accentOnLight, "right")}</div>`;
-
+      const u = F1.ramp(f, untung + 8, 18, F1.expoOut);
       return F1.join(
-        K.Suspect({ n: 1, title: "Penjual", at: 0 }, f),
-        K.Pop({ x: 540, y: 520, at: 6, frames: 16 }, f, K.Icon("cart", 260)),
-        bar,
-        K.Stamp({ text: "TIDAK BERSALAH", x: 540, y: 540, at: bukan, color: "#2d9a52", rot: -7, size: 76 }, f),
-        F1.Mascot(
-          {
-            character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, "viewer"], [untung, "up"]], talking: F1.isSpeaking(S, "mog", f),
-            gesture: [[0, "think"], [untung - 4, { gesture: "point", dir: "up-right" }], [bukan + 30, "idle"]], expression: [[0, "neutral"], [bukan, "smug"]],
-          },
-          f,
-        ),
-        F1.Mascot({ character: "bog", x: 780, scale: 1.05, facing: "left", look: { x: 540, y: 600 }, gesture: [[0, "listen"], [bukan + 10, "shrug"]], expression: [[0, "confused"], [bukan + 10, "neutral"]] }, f),
+        pen,
+        K.sk(K.Pop({ x: 290, y: 660, at: 6, frames: 16 }, f, K.Icon("cart", 330))),
+        K.Pop({ x: 290, y: 860, at: 10 }, f, K.Label("gerobak Pak Ujang", { size: 34 })),
+        K.Card({
+          at: 0, kicker: "TERSANGKA 1 DARI 3", big: f < untung + 8 ? "?" : K.rp(Math.round((7000 * u) / 500) * 500), bigSize: 76, label: "PENJUAL", sub: "untung per piring (ilustrasi)",
+          bar: { k: 1, split: [{ k: (13 / 20) * g, color: C.grey }, { k: (7 / 20) * u, color: C.coral }], text: "13rb + 7rb" },
+        }, f),
+        K.Stamp({ text: "TIDAK BERSALAH", x: 320, y: 690, at: bukan, color: "#2f8f5b", rot: -7, size: 60 }, f),
+        K.inked(F1.join(
+          F1.Mascot(
+            {
+              character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, "viewer"], [untung, "up"]], talking: F1.isSpeaking(S, "mog", f),
+              gesture: [[0, "think"], [untung - 4, { gesture: "point", dir: "up-right" }], [bukan + 30, "idle"]], expression: [[0, "neutral"], [bukan, "smug"]],
+            },
+            f,
+          ),
+          F1.Mascot({ character: "bog", x: 780, scale: 1.05, facing: "left", look: { x: 540, y: 600 }, gesture: [[0, "listen"], [bukan + 10, "shrug"]], expression: [[0, "confused"], [bukan + 10, "neutral"]] }, f),
+        )),
       );
     });
   </script>
