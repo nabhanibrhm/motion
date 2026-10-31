@@ -2,24 +2,27 @@
 
 > **AI AGENT INSTRUCTION:** Whenever a new change request is received, you must first read this file, identify the target files for the request, and switch to the cheapest approved model listed below before writing any code.
 
-This is a Remotion project: videos are React components rendered frame by frame to
-MP4. There is no server and no stored data. What *can* go wrong is quieter and only
-shows up at render time: a Remotion package drifting off the shared exact version, an
-animation that depends on wall-clock time or `Math.random()` instead of the frame (it
-previews fine and flickers in the render), or a shared timing helper that shifts every
-scene after it. The tiers below are weighted for that: the toolchain and the shared
-timing / layout plumbing route high regardless of how small the diff is; copy, colours
-and one scene's styling route low.
+This repo makes faceless short videos in Bahasa Indonesia with HyperFrames: HTML
+scenes animated by GSAP timelines, rendered frame by frame to MP4 in headless
+Chrome. Each video is a self-contained project in `out/<topic>/<video>/`; the current
+one is `out/Ekonomi_keuangan/inflasi/`. There is no server and no stored data.
+
+What *can* go wrong is quiet and only shows up at render time:
+- An animation that depends on wall-clock time, CSS transitions or `Math.random()` instead of the timeline. It previews fine and flickers in the render.
+- A change to the voice alignment or to the shared timing helpers that shifts every caption, lip-sync and SFX after it.
+- Facts that are wrong. This is a finance channel, so a wrong number is a credibility problem, not a typo.
+
+The tiers below are weighted for that. The toolchain, the voice pipeline and the shared timing and layout plumbing route high however small the diff is. Copy wording, colours and one scene's art route low. Facts get checked against a source at every tier.
 
 ## Models and effort
 
 | Model | Effort | Use for |
 |---|---|---|
-| **Haiku 5.5** | default | Docs, `defaultProps` copy in `Root.tsx`, theme token values, static assets in `public/` |
-| **Sonnet 5.5** · medium | medium | One scene or one component, its markup, springs and interpolations |
-| **Sonnet 5.5** · high | high | Composition timing (`Sequence` offsets, durations, `explainerDuration`), shared components used by every scene, `Root.tsx` composition setup, render config, anything spanning three or more files |
-| **Opus 5.5** · high | high | Dependencies and the lockfile, `npm audit` handling, a render that fails with no known cause |
-| **Opus 5.5** · max | xhigh / max | A Remotion major upgrade, adding Lambda / cloud rendering, a stack or architecture change |
+| **Haiku 5.5** | default | Docs, caption/line wording that keeps the facts, SFX swaps, colour values |
+| **Sonnet 5.5** · medium | medium | One scene (`compositions/<section>.html`) and its art, a new icon or prop in the episode kit |
+| **Sonnet 5.5** · high | high | Shared timing and layout (`lib/f1/core.js`, `timing.js`, `F1.STAGE`), `scripts/sync.mjs`, voice config structure, a new video project, anything spanning three or more files |
+| **Opus 5.5** · high | high | The voice generator and word alignment (`voiceover/generate.py`), dependencies and lockfiles, a render that fails with no known cause, new facts or figures in a script |
+| **Opus 5.5** · max | xhigh / max | A HyperFrames major upgrade, switching the TTS engine, cloud rendering, a stack or architecture change |
 
 **How to switch.**
 - **Session:** if the current model or effort is higher than needed, say so in one line and ask the user to switch with `/model`. If it's lower, stop and ask for the higher one before writing code.
@@ -29,78 +32,84 @@ and one scene's styling route low.
 
 ## Routing map
 
-Paths are relative to the repo root. Where several rows match a file, the first one wins.
+Paths are relative to a video project (e.g. `out/Ekonomi_keuangan/inflasi/`) unless they start at the repo root. Where several rows match a file, the first one wins.
 
 ### Opus 5.5
 
 | Path / pattern | Effort | Why |
 |---|---|---|
-| `package.json` `dependencies` / `devDependencies` / `overrides`, `package-lock.json` | high | Every `remotion` and `@remotion/*` package must sit on the **same exact version** (no `^`). A mismatch installs fine and fails at bundle or render time. |
-| `npm audit` triage, any advisory fix | high | `npm audit fix --force` can bump Remotion or React to a version the other packages don't match. |
-| A render (`remotion render` / `still`) that fails or hangs with no known cause | high | Usually a browser download, version mismatch or a non-deterministic component, not the line in the stack trace. |
-| Remotion major upgrade, React major upgrade | max | |
-| Adding `@remotion/lambda` / cloud rendering, replacing a stack piece | max | |
+| `package.json` `dependencies` / `devDependencies`, `package-lock.json`, the Python packages in `.venv` | high | `hyperframes` is pinned to an **exact version** (no `^`). The CLI, its bundled GSAP and the render engine move together, and a bump can change how every frame renders. |
+| `voiceover/generate.py`: alignment, onset snapping, loudness, the cache key | high | Every word timing comes from here, so captions, lip-sync and SFX all shift with it. Changing the alignment logic needs a bump to the cache salt, or stale timings get reused. |
+| New facts, figures or claims in `script*.md`, `voiceover/*.json` or on-screen text | high | This is financial content. Every number needs a source in the script's sources table, and investment wording keeps the "Bukan saran investasi" disclaimer. |
+| A render or snapshot that fails or hangs with no known cause | high | Usually Chrome or FFmpeg, memory (WSL's low-memory mode) or a non-deterministic scene, not the line in the stack trace. |
+| HyperFrames major upgrade, a new TTS engine | max | |
+| Cloud rendering, replacing a stack piece | max | |
 
 ### Sonnet 5.5 · high
 
 | Path / pattern |
 |---|
-| `src/Root.tsx` — composition ids, sizes, `fps`, `durationInFrames`, `calculateMetadata` |
-| Scene timing constants and `explainerDuration` in `src/compositions/*.tsx` (they shift every scene after them) |
-| `src/components/Background.tsx`, `src/components/AnimatedText.tsx` (shared by every scene) |
-| `src/theme.ts` structure — adding/removing tokens, `FPS` |
-| `remotion.config.ts`, `tsconfig.json`, `package.json` `scripts` |
-| `src/index.ts` (`registerRoot`) |
+| `scripts/sync.mjs`: generates `index.html`, `compositions/captions.html`, `lib/f1/voice.js` and the SFX `data-start` values |
+| `lib/f1/core.js` (`F1.scene`, interpolate/spring, the DOM morph) and `lib/f1/timing.js` (word frames, lip-sync, caption grouping) |
+| `F1.STAGE` and the layout constants: canvas size, the caption band, mascot feet, the safe zones for platform buttons |
+| Structure of `voiceover/<video>.json`: speakers, sections, `"source"`, pause markers (wording inside existing lines is Haiku) |
+| Shared drawing kit used by every scene: `lib/f1/mascot.js`, `toon.js`, `photo.js`, `words.js`, `bits.js`, `f1.css` |
+| `hyperframes.json`, `package.json` `scripts`, `scripts/hf.mjs`, `scripts/stills.mjs` |
+| A new video project under `out/<topic>/<video>/` (copying the kit, voice config, sync settings) |
 
 ### Sonnet 5.5 · medium
 
 | Path / pattern |
 |---|
-| One scene inside a composition (`TitleScene`, `PointScene`, `CtaScene` …) without changing its duration |
-| A new self-contained component used by one scene |
-| A new composition file that reuses existing components, registered in `Root.tsx` (registration alone is Sonnet · high if it changes existing ones) |
-| Audio / video / image usage via `<Audio>`, `<OffthreadVideo>`, `<Img>` in one scene |
+| One scene, `compositions/<section>.html`: its art, its GSAP timeline and its SFX `<audio data-at=…>` anchors |
+| The episode kit `lib/f1/kasus.js`: a new icon, stamp or prop used by one or two scenes |
+| `compositions/background.html` styling |
+| Re-encoding or a new format for audio/images in `public/` |
 
 ### Haiku 5.5
 
 | Path / pattern |
 |---|
-| `**/*.md` — `README.md`, `CLAUDE.md`, this file |
-| Copy in `defaultProps` (titles, points, CTA text) using fields that already exist |
-| Theme token **values** in `src/theme.ts` (a new token or a change to how tokens are wired is Sonnet · high) |
-| `public/**` asset swaps — images, music, logos (re-encoding or a new format is Sonnet · medium) |
-| `.gitignore`, a `package.json` `version` bump on its own |
+| `**/*.md`: `CLAUDE.md`, `HANDOFF.md`, this file, `voiceover/lines.md` (or regenerate it with `--list`) |
+| Wording of an existing line or caption that keeps every fact and number the same |
+| Swapping a file in `public/sfx/` or `public/fonts/` for one of the same kind |
+| Colour values in `lib/f1/f1.css` (a new variable or a change to how colours are wired is Sonnet · high) |
+| `.gitignore`, `.gitattributes`, a `package.json` `version` bump on its own |
 
-**Generated, don't edit:** `out/` (renders) and `node_modules/`.
+**Generated, don't edit by hand:** `index.html`, `compositions/captions.html`, `lib/f1/voice.js`, `src/data/<video>-voice.json`, `public/voice/**`, `voiceover/.cache/`, `.stills/`, `renders/`, `node_modules/`, `.venv/`. Change the source (voice config, `generate.py`, `sync.mjs`) and regenerate.
 
 ---
 
 ## Cross-tier rules
 
 1. **Highest wins.** A request touching several rows runs at the highest model and effort among them.
-2. **Route on files, not wording.** List the target files first. "Make the number bounce more" is Sonnet · medium (one scene); "make every scene half a second longer" is Sonnet · high (timing constants, `Root.tsx`).
+2. **Route on files, not wording.** List the target files first. "Make the stamp bounce more" is Sonnet · medium (one scene). "Make captions show 3 words instead of 5" is Sonnet · high (`timing.js`, every scene).
 3. **The kind of change can only raise the level.**
-   - Anything that changes **what npm installs** — a version range, an `overrides` entry, the lockfile, the Node version: **Opus**.
-   - Anything that changes **timing for more than one scene** — `fps`, durations, `Sequence` offsets, transitions between scenes: at least **Sonnet · high**.
-   - Anything that could make rendering **non-deterministic** — `Date`, `Math.random()` (use `random(seed)` from `remotion`), CSS animations/transitions, timers, un-awaited fonts or data (use `delayRender`): at least **Sonnet · high**.
-   - Anything that changes **output size or format** — width/height, codec, image format, aspect ratio: at least **Sonnet · high**.
-4. **Paired files go together.** A prop in `defaultProps` and the component that renders it; a token in `theme.ts` and the scenes that use it; `package.json` and `package-lock.json` — one batch, at the higher of the two rows.
+   - Anything that changes **what gets installed** (a version, the lockfile, a Python package, the Node version): **Opus**.
+   - Anything that changes **voice timing or timing for more than one scene** (alignment, `sync.mjs`, caption grouping, section order, pause markers): at least **Sonnet · high**.
+   - Anything that could make rendering **non-deterministic** (`Date`, `Math.random()`, CSS animations or transitions, timers, fonts or media not loaded before capture): at least **Sonnet · high**.
+   - Anything that changes **output size or format** (canvas size, aspect ratio, fps, codec, the platform safe zones): at least **Sonnet · high**.
+   - Any **new fact or number** shown or spoken: **Opus · high**, with the source added to the script's sources table.
+4. **Paired files go together.** A line in `voiceover/<video>.json` and the scene whose `data-at` anchors use its words; a kit piece in `kasus.js` and the scenes that draw it; `package.json` and `package-lock.json`. Do them in one batch, at the higher of the two rows.
 5. **Scope grows, stop.** If the work needs a higher row mid-task, say so and continue only at that level.
 6. **Read-only work drops one level.** Questions, searches and explanations: Haiku, or Sonnet · medium for Opus areas. No code written.
-7. **Reviews match the code**, one level up for Opus areas (high -> xhigh).
+7. **Reviews match the code**, one level up for Opus areas (high → xhigh).
 8. **Unsure, go one level up** and say why in one line.
 
 ## Rules that outrank this file
 
 These apply at every tier:
 
-- **Never run `npm audit fix --force`.** Upgrade Remotion with `npm run upgrade` (`remotion upgrade`), which moves every Remotion package together.
-- **Remotion packages are pinned exactly** and always share one version. React stays on the major Remotion supports.
-- **Animate from the frame only:** `useCurrentFrame()`, `interpolate`, `spring`. No CSS transitions/animations, timers or wall-clock time.
-- **Colours and fonts are tokens only** from `src/theme.ts`; scene copy lives in props, not hard-coded in scenes.
-- **`npm run typecheck` clean and a test still renders** before handing off. A dependency change also needs a fresh install (delete `node_modules`, then `npm install`) followed by a render.
-- **Check frames go to the temp folder, never `out/`.** Write them to `%TEMP%\motion-stills\` (e.g. `npx remotion still F1Explosion "$env:TEMP\motion-stills\netflix-3300.png" --frame=3300`). `out/` holds finished videos only.
+- **`hyperframes` stays pinned exactly.** Upgrade it on purpose, then re-check stills and do a full render. Never run `npm audit fix --force`.
+- **Animate from the timeline only.** Scenes draw from the frame through `F1.scene` and GSAP timelines. No CSS transitions or animations, timers, wall-clock time or unseeded randomness.
+- **Never hand-edit generated files.** After any voice change, run the generator, then `node scripts/sync.mjs`, then check stills.
+- **Voice files come from TTSMaker** (`"source": "files"`, one MP3 per line in `voiceover/lines/`). Each mascot keeps the same voice across episodes. edge-tts is only a placeholder.
+- **Keep the platform safe zones clear:** the bottom ~15% and the right ~120 px of the 1080×1920 frame.
+- **Facts carry sources.** Each figure (BI, BPS, OJK …) is listed in the script's sources table. Investment talk keeps "Bukan saran investasi".
+- **Before handing off:** `npm run lint` with no errors, and stills checked (`node scripts/stills.mjs all`). A dependency change also needs a fresh install and a full render.
+- **Check frames go to `.stills/` or `%TEMP%\motion-stills\`.** Finished videos go to the project's `renders/` only.
+- **Commit only when the user asks**, and never add a Claude co-author line.
 
 ---
 
-_Adapted on 23 Oct 2026 from the portfolio repo's `ai-routing.md`; tiers and paths re-derived for this Remotion project._
+_Re-derived on 31 Oct 2026 for the HyperFrames short-video projects. It replaces the Remotion version written on 23 Oct 2026._

@@ -1,27 +1,18 @@
 # motion
 
-> **Migration in progress on branch `hyperframes`:** read `HANDOFF.md` first. The notes below still describe the Remotion version on `main`.
-
-Motion animation videos built with Remotion 4 (React + TypeScript), Node 22.
+Faceless short videos in Bahasa Indonesia, built with HyperFrames (HTML/GSAP rendered to video), Node 22. **Read `HANDOFF.md` first.**
 
 **Before any change request, read `ai-routing.md`** and route to the model it names.
 
-## Commands
+Each video is a self-contained project under `out/<topic>/<video>/` with its own `package.json`, `.venv` and `lib/f1/` drawing kit. The current one is `out/Ekonomi_keuangan/inflasi/`: a 9:16 short about inflation with the mascots MOG, WEC and BOG.
 
-- `npm run dev` — open Remotion Studio (live preview, prop editing)
-- `npm run render:explainer` — 1920×1080 MP4 → `out/explainer.mp4`
-- `npm run render:short` — 1080×1920 vertical MP4 → `out/short.mp4`
-- `npm run still` — single frame PNG, quick render check
-- `npm run typecheck`
-- `npm run render:f1` — the F1 video → `out/f1-explosion.mp4` (serves the bundle on 127.0.0.1 to avoid the Windows localhost/IPv6 issue)
+## Commands (run inside the video's folder)
 
-Check/debug frames go to `%TEMP%\motion-stills\`, not `out/` — `out/` is for finished videos only.
-- `npm run upgrade` — upgrade all Remotion packages together
+- `.venv/bin/python voiceover/generate.py voiceover/inflasi.json` (Windows: `.venv\Scripts\python`): builds the voice. Set `"source": "files"` to use TTSMaker MP3s from `voiceover/lines/`
+- `node scripts/sync.mjs`: re-times the scenes, captions and SFX from the voice data
+- `npm run preview`: HyperFrames Studio
+- `node scripts/stills.mjs all|<section>|custom --at 1,2`: still frames → `.stills/`
+- `npm run lint` / `npm run check`
+- `npm run render`: → `renders/inflasi-short.mp4`
 
-## Layout
-
-- `src/Root.tsx` — registers compositions (`Explainer` 16:9, `Short` 9:16) and their default props
-- `src/compositions/` — one file per video; scenes are `Sequence`s inside it
-- `src/components/` — reusable animated pieces shared by scenes
-- `src/theme.ts` — colour and font tokens, `FPS`
-- `public/` — images, audio, video (load with `staticFile()`)
+Debug frames go to `.stills/` or `%TEMP%\motion-stills\`. `renders/` is for finished videos only.
