@@ -4,7 +4,7 @@
 
 Before changing files, identify the targets and use the lowest approved tier covering their actual responsibility. Raise the tier if scope or risk expands.
 
-The repository uses one shared HyperFrames application. Episode authoring is in `episodes/<id>/`; shared media is in `assets/shared/`; engine source is under `src/`; generated projects and stills are under `.cache/`; finished videos are in `out/result/`. The old projects under `out/Ekonomi_keuangan/<id>/` are retained legacy/import material, not the active authoring workflow.
+The repository uses one shared HyperFrames application. Episode authoring is in `episodes/<id>/`; shared media is in `assets/shared/`; engine source is under `src/`; generated projects and stills are under `.cache/`; finished videos are in `out/`. The old `out/Ekonomi_keuangan/` projects are retired; their leftover renders are archived under `.cache/migration-baseline/legacy-out/`.
 
 Rendering is timeline-driven. Avoid wall-clock animation, CSS transitions, timers, and unseeded randomness. Voice timing, captions, lip-sync, and SFX share timing data. Financial claims require sourcing in `episodes/<id>/script-short.md`.
 
@@ -101,5 +101,5 @@ Assignment tiers remain: inventory and workflow documentation C1; architecture C
 - Add a source in the episode script for each financial figure or claim. Investment topics retain “Bukan saran investasi”.
 - The current output format is fixed at 1080×1920, 30 fps. Profiles are `modern` and `legacy-inflasi`; arbitrary palettes are not configurable.
 - `render` ensures missing or stale voice is generated/reused. `sync`, `preview`, `stills`, `lint`, and `check` never synthesize and require a valid voice cache. `clean` is dry-run by default; voice caches cannot be cleaned, including through an explicit target.
-- Finished outputs are `out/result/<NN>-<id>-short.mp4`; diagnostic frames are under `.cache/stills/<id>/`. Old per-episode `renders/` folders are legacy.
+- Finished outputs are `out/<NN>-<id>-short.mp4`; diagnostic frames are under `.cache/stills/<id>/`. Old per-episode `renders/` folders are legacy.
 - Commit only when the user asks, and never add a Claude co-author line.

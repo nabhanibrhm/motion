@@ -2,7 +2,7 @@ node_modules/
 .venv/
 .venv/**
 /.cache/
-/out/result/
+/out/
 .stills/
 **/voiceover/.cache/
 .hyperframes/

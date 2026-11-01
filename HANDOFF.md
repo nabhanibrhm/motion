@@ -18,9 +18,9 @@ Read [CLAUDE.md](CLAUDE.md), the **Claude** routing section of [ai-routing.md](a
 | Shared fonts, sound, cast, music | `assets/shared/` |
 | Disposable served projects and snapshots | `.cache/build/<id>/`, `.cache/stills/<id>/` |
 | Preserved speech and migration recovery | `.cache/voice/`, `.cache/migration-baseline/` |
-| Finished mastered videos | `out/result/<NN>-<id>-short.mp4` |
+| Finished mastered videos | `out/<NN>-<id>-short.mp4` |
 
-The active IDs are `inflasi`, `rupiah`, `ihsg`, `paylater`, `judol`, `emas`, and `kelas`, each directly under `episodes/`. Category is manifest metadata, not a parent directory. The old `out/Ekonomi_keuangan/` application sources and duplicate installations have been retired; remaining files there are historical renders/debug material, not runnable projects.
+The active IDs are `inflasi`, `rupiah`, `ihsg`, `paylater`, `judol`, `emas`, and `kelas`, each directly under `episodes/`. Category is manifest metadata, not a parent directory. The old `out/Ekonomi_keuangan/` application sources and duplicate installations have been retired and the folder is gone: its four historical renders and `inflasi/debug.log` now live under `.cache/migration-baseline/legacy-out/Ekonomi_keuangan/`, and the editorial board moved to `episodes/PIPELINE.md`.
 
 Keep HyperFrames pinned to **0.8.210** and preserve the HTML/GSAP/F1 stack. Generated projects include local GSAP and referenced assets within the served root. Edit authored source and rebuild; do not patch generated HTML or staged assets. New episodes need configuration, narration, and unique artwork, without copied engines or separate dependency installations.
 
@@ -35,7 +35,7 @@ Use the CLI's scoped dry run for routine cleanup. Never delete all of `.cache/`:
 
 ## Finished episodes and outputs
 
-The seven mastered outputs remain in `out/result/`:
+The seven mastered outputs remain in `out/`:
 
 | File | Episode | Length |
 |---|---|---:|
@@ -69,7 +69,7 @@ From the repository root, the workflow is:
 2. `node scripts/motion.mjs voice <id>` to generate or reuse voice when needed (`--force` explicitly regenerates)
 3. `node scripts/motion.mjs sync <id>` (requires a valid voice cache; never synthesizes)
 4. `node scripts/motion.mjs preview <id>`, `lint <id>`, and `stills <id> all` for review
-5. `node scripts/motion.mjs render <id>` for a fresh mastered output at `out/result/<NN>-<id>-short.mp4`
+5. `node scripts/motion.mjs render <id>` for a fresh mastered output at `out/<NN>-<id>-short.mp4`
 
 `voice` prepares or reuses speech; title-only or unrelated visual changes do not require regeneration. `render` ensures missing or stale voice is generated/reused automatically before building. `sync`, `preview`, `stills`, `lint`, and `check` require a valid voice cache and never synthesize. For files mode, episode recordings go under `episodes/<id>/voice-lines/`. Use the root CLI and environments; retirement of the old per-episode applications is complete.
 
@@ -85,7 +85,7 @@ node scripts/motion.mjs render --all
 node scripts/motion.mjs clean inflasi --dry-run
 ```
 
-Episode manifests currently validate a fixed 1080×1920, 30 fps format and runtime profile `modern` or `legacy-inflasi`. Category is descriptive and does not filter the episode list. A named theme file under `config/themes/` can set supported runtime/case/audio/voice defaults; arbitrary palettes are not configurable. Output names derive from episode number and id. `out/result/` contains finished mastered videos only; diagnostics go to `.cache/stills/<id>/`.
+Episode manifests currently validate a fixed 1080×1920, 30 fps format and runtime profile `modern` or `legacy-inflasi`. Category is descriptive and does not filter the episode list. A named theme file under `config/themes/` can set supported runtime/case/audio/voice defaults; arbitrary palettes are not configurable. Output names derive from episode number and id. `out/` contains finished mastered videos only; diagnostics go to `.cache/stills/<id>/`.
 
 ## Compatibility rules future changes must preserve
 
@@ -132,7 +132,7 @@ Fresh online installation and Linux/WSL execution have not been verified. Browse
 ## Earlier production notes retained
 
 - The previous handoff recorded no commit since `43d6376`; its detailed captured working-tree state is preserved in `.cache/migration-baseline/git-status.txt`. That snapshot predates the shared-pipeline refactor and is not a statement of the current tree.
-- The earlier question about whether to ignore `out/result/` is resolved in the current root `.gitignore`. The four legacy per-episode renders remain preserved after retirement.
-- The prior `PIPELINE.md` status said cases #2–#6 were still marked “in production” pending approval to change their board state. That editorial update remains a separate user-review decision.
+- The earlier question about whether to ignore `out/` is resolved in the current root `.gitignore`. The four legacy per-episode renders remain preserved after retirement.
+- The prior `PIPELINE.md` (now `episodes/PIPELINE.md`) status said cases #2–#6 were still marked “in production” pending approval to change their board state. That editorial update remains a separate user-review decision.
 - An audio pass was proposed but not started: Openverse was available for episode-specific SFX and licensed music; the “Real SFX Claude Skill” was not found; the installed Earshot plugin was for Claude Code event sounds rather than video sound effects. If that work resumes, confirm the intended SFX tool before proceeding.
 - The previous planning list included PHK/emergency fund, UMP 2027, cabai prices, and BI Rate. The next available case number remains #08; confirm the current production queue before starting a new episode because the list predates this handoff.

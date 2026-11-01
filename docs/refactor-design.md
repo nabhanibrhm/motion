@@ -26,7 +26,7 @@ There is one repository application, one Node dependency installation, one Pytho
 | `.cache/voice/chunks/` | Shared synthesis and alignment cache |
 | `.cache/stills/<id>/` | Diagnostic snapshots |
 | `.cache/migration-baseline/` | Migration evidence and preserved original material |
-| `out/result/` | Finished videos only |
+| `out/` | Finished videos only |
 
 The generated project preserves the current URL layout: `index.html`, `hyperframes.json`, `compositions/*.html`, `lib/f1/*.js`, `lib/f1/f1.css` and `public/**`. This keeps existing scene URLs and the CSS font paths working. Source scenes are never rewritten during synchronization; their generated copies receive updated SFX timing attributes.
 
@@ -195,7 +195,7 @@ The installed HyperFrames package supplies GSAP 3.15.0 at `dist/vendor/npm/gsap@
 
 ## Rendering and mastering
 
-Render a fresh raw file under the build directory. Master that file once into a temporary final file and publish to `out/result/<NN>-<id>-short.mp4` only after FFmpeg succeeds. Never use an already mastered finished video as input, and reject identical input/output paths. A failed render or master leaves the previous finished video intact.
+Render a fresh raw file under the build directory. Master that file once into a temporary final file and publish to `out/<NN>-<id>-short.mp4` only after FFmpeg succeeds. Never use an already mastered finished video as input, and reject identical input/output paths. A failed render or master leaves the previous finished video intact.
 
 The six modern episodes retain the original mix graph: 48 kHz resampling, bed gain 0.3, trim to the video, 1.5-second fade-out, voice/SFX sidechain compression with threshold 0.015, ratio 5, attack 40 ms and release 400 ms, then unnormalized summing. All seven retain the current two-pass loudness target of -14 LUFS, -1 dBTP and LRA 11, video stream copy, 48 kHz AAC at 192 kb/s. Episode 01 skips bed mixing.
 
@@ -203,7 +203,7 @@ The six modern episodes retain the original mix graph: 48 kHz resampling, bed ga
 
 The common entry point is `node scripts/motion.mjs <command> [episode-id]`. Root npm aliases may forward to it. Commands are `list`, `new`, `validate`, `voice`, `sync`, `preview`, `lint`, `check`, `stills`, `render` and `clean`; applicable batch commands accept `--all`. `new` accepts `--title`, optional `--number`, and optional descriptive `--category`. `clean` is a dry run by default; `--execute` performs the listed cleanup and `--dry-run` explicitly requests the preview. Process expensive synthesis and render batches sequentially by default.
 
-`sync` builds generated artifacts; `preview`, `lint`, `check`, `stills` and `render` build first and share the same episode context. `voice` is the explicit synthesis/import command; `render` also generates or reuses voice when the cache is missing or stale. `sync`, `preview`, `lint`, `check`, and `stills` require a valid voice cache and never synthesize. `stills` supports section selection and explicit timestamps and writes diagnostics outside `out/result`. `clean` reports its exact managed paths and does not select legacy source trees or finished outputs.
+`sync` builds generated artifacts; `preview`, `lint`, `check`, `stills` and `render` build first and share the same episode context. `voice` is the explicit synthesis/import command; `render` also generates or reuses voice when the cache is missing or stale. `sync`, `preview`, `lint`, `check`, and `stills` require a valid voice cache and never synthesize. `stills` supports section selection and explicit timestamps and writes diagnostics outside `out/`. `clean` reports its exact managed paths and does not select legacy source trees or finished outputs.
 
 ## Migration ownership and gates
 

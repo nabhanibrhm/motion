@@ -57,5 +57,5 @@ export function loadEpisode(id,{repoRoot=REPO_ROOT}={}) {
   if(config.id!==id) throw new Error(`Manifest id must equal directory: ${id}`);
   const narration=narrationDefaults(readJSON(within(episodeDir,config.narration || 'narration.json')),config.voice || {});
   const buildDir=within(repoRoot,`.cache/build/${id}`), voiceDir=within(repoRoot,`.cache/voice/${id}`);
-  return {repoRoot,episodeDir,id,config,narration,paths:{buildDir,voiceDir,voiceManifest:join(voiceDir,'manifest.json'),voiceState:join(voiceDir,'state.json'),chunkCacheDir:join(repoRoot,'.cache/voice/chunks'),sharedAssetsDir:within(repoRoot,'assets/shared'),episodeAssetsDir:within(episodeDir,'assets'),stillsDir:join(repoRoot,'.cache/stills',id),rawRenderFile:join(buildDir,'render.raw.mp4'),resultFile:join(repoRoot,'out/result',`${String(config.number).padStart(2,'0')}-${id}-short.mp4`)}};
+  return {repoRoot,episodeDir,id,config,narration,paths:{buildDir,voiceDir,voiceManifest:join(voiceDir,'manifest.json'),voiceState:join(voiceDir,'state.json'),chunkCacheDir:join(repoRoot,'.cache/voice/chunks'),sharedAssetsDir:within(repoRoot,'assets/shared'),episodeAssetsDir:within(episodeDir,'assets'),stillsDir:join(repoRoot,'.cache/stills',id),rawRenderFile:join(buildDir,'render.raw.mp4'),resultFile:join(repoRoot,'out',`${String(config.number).padStart(2,'0')}-${id}-short.mp4`)}};
 }

@@ -17,7 +17,7 @@ The seven episodes now use one root Node application, one root Python environmen
 | `.cache/build/<id>/` | Disposable served HyperFrames project, with only referenced assets |
 | `.cache/voice/<id>/` | Imported or regenerated speech, timing and cache provenance |
 | `.cache/migration-baseline/` | Protected recovery archive and regression baselines |
-| `out/result/` | Existing and future successfully mastered final videos |
+| `out/` | Existing and future successfully mastered final videos |
 
 HyperFrames remains pinned to **0.8.210**. GSAP **3.15.0** is staged locally from that package. Inflation retains its older cinematic/caption profile and no music bed; the other six retain their modern profile and music mix. Authored speaker records remain authoritative, including deliberately omitted processing options.
 

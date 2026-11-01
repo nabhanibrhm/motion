@@ -75,7 +75,7 @@ Usage: node scripts/motion.mjs <command> <episode> [options]
   stills <id> [scene|all]         Capture representative section frames
            [--at 1.2,3.4]        Or capture explicit seconds
   lint|check <id>|--all           Run pinned HyperFrames validation
-  render <id>|--all              Render and master into out/result
+  render <id>|--all              Render and master into out/
   clean <id>|--all               Show disposable build/still paths (dry run)
         [--target build|stills|voice|all] [--execute]
 Voice caches are retained by clean. Diagnostic frames use .cache/stills.

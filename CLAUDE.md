@@ -2,7 +2,7 @@
 
 Faceless short videos in Bahasa Indonesia, generated with HyperFrames 0.8.210, GSAP, Node.js 22+, and Python 3.12. **Read `HANDOFF.md` first.** For changes, read `ai-routing.md` and follow its provider-specific routing guidance.
 
-One shared application and runtime serve all episodes. Authored episode data lives in `episodes/<id>/`; shared assets are in `assets/shared/`; generated projects and stills are under `.cache/`; mastered finished videos are in `out/result/`.
+One shared application and runtime serve all episodes. Authored episode data lives in `episodes/<id>/`; shared assets are in `assets/shared/`; generated projects and stills are under `.cache/`; mastered finished videos are in `out/`.
 
 ## Commands
 

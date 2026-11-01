@@ -1,6 +1,6 @@
 # motion
 
-Seven Bahasa Indonesia short videos, generated through one shared HyperFrames application. Episode source lives in `episodes/<id>/`; generated HyperFrames projects and diagnostic stills live under `.cache/`; finished mastered videos go to `out/result/`.
+Seven Bahasa Indonesia short videos, generated through one shared HyperFrames application. Episode source lives in `episodes/<id>/`; generated HyperFrames projects and diagnostic stills live under `.cache/`; finished mastered videos go to `out/`.
 
 ## Setup
 
@@ -54,7 +54,7 @@ node scripts/motion.mjs stills <id> all
 node scripts/motion.mjs render <id>
 ```
 
-`voice` explicitly generates or reuses speech. `render` automatically ensures missing or stale voice before building. `sync`, preview, lint, still capture, and check require a valid voice cache and never synthesize. `sync` builds the disposable `.cache/build/<id>/` project. Stills go under `.cache/stills/<id>/`. Render produces a fresh raw video in the build cache and masters it into `out/result/<NN>-<id>-short.mp4`. Existing finished outputs are replaced only after a successful render/master operation.
+`voice` explicitly generates or reuses speech. `render` automatically ensures missing or stale voice before building. `sync`, preview, lint, still capture, and check require a valid voice cache and never synthesize. `sync` builds the disposable `.cache/build/<id>/` project. Stills go under `.cache/stills/<id>/`. Render produces a fresh raw video in the build cache and masters it into `out/<NN>-<id>-short.mp4`. Existing finished outputs are replaced only after a successful render/master operation.
 
 For batch commands that support it, use `--all`, for example `node scripts/motion.mjs validate --all` or `node scripts/motion.mjs render --all`. Inspect cleanup targets before executing cleanup:
 
@@ -68,4 +68,4 @@ Build and still caches can be removed explicitly. Voice caches are valuable gene
 
 ## Current production set
 
-The seven finished outputs are `01-inflasi-short.mp4` through `07-kelas-short.mp4` under `out/result/`. Review status and episode-specific notes are in [HANDOFF.md](HANDOFF.md). Before publishing, include the full sources list from the episode's `script-short.md` in the video description.
+The seven finished outputs are `01-inflasi-short.mp4` through `07-kelas-short.mp4` under `out/`. Review status and episode-specific notes are in [HANDOFF.md](HANDOFF.md). Before publishing, include the full sources list from the episode's `script-short.md` in the video description.
