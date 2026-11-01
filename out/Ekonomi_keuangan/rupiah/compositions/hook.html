@@ -1,56 +1,60 @@
-<!-- Hook: a konter HP at night. Extras walk past the lit shop window; on "sejuta" a red "+Rp1 JUTA" sticker slaps onto the dream phone's tag and the camera moves to it; on "Siapa" the street freezes, the neon stutters and the camera cuts in on Beni. Frame 0 is fully drawn (thumbnail). -->
+<!-- Hook: a konter HP on a sunny street. Extras walk past the shop window; on "sejuta" the dream phone's price tag counts Rp8.000.000 -> Rp9.000.000 (ilustrasi: US$500 at Rp16.000 -> Rp18.000, the same phone as in "kalau"), a red "+Rp1 JUTA" sticker slaps on and the camera moves in; on "Siapa" the street freezes, a red flash and the camera cuts in on Beni. Frame 0 is fully drawn (thumbnail). -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
     #root {
       position: absolute;
       inset: 0;
-      background: #1f2129;
+      background: #f1e7d3;
       overflow: hidden;
     }
   </style>
   <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
     <div id="hook-art" class="f1-layer"></div>
-    <audio data-hf-media-start-basis="local" data-start="1.5667" id="hook-sfx-cash" class="clip" src="public/sfx/cash.wav" data-at="word:sejuta" data-track-index="11" data-volume="0.3"></audio>
-    <audio data-hf-media-start-basis="local" data-start="2.3333" id="hook-sfx-pop" class="clip" src="public/sfx/pop-in.wav" data-at="word:Siapa" data-track-index="12" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.1667" id="hook-sfx-cash" class="clip" src="public/sfx/cash.wav" data-at="word:sejuta" data-track-index="11" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.8667" id="hook-sfx-pop" class="clip" src="public/sfx/pop-in.wav" data-at="word:Siapa" data-track-index="12" data-volume="0.13"></audio>
   </div>
   <script>
     (() => {
       const n = F1.n;
       const W = F1.world;
-      // a phone on the display shelf: body, screen with a soft gradient, a small price tag under it
-      const PHONE = (x, y, s, screen) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-38" y="-78" width="76" height="156" rx="14" fill="#16171c" stroke="#2a2a2e" stroke-width="4"/><rect x="-31" y="-68" width="62" height="134" rx="8" fill="${screen}"/></g>`;
-      // neon: 0..1 brightness of the sign and the window glow; sticker: the "+Rp1 JUTA" slap (p 0..1)
-      const BG = (f, { neon, sticker, freeze }) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
-<rect width="1080" height="1920" fill="#23252e"/>
-<g style="filter:blur(3px)"><rect x="-40" y="300" width="300" height="1000" fill="#30313a"/><rect x="820" y="260" width="320" height="1040" fill="#2c2d35"/>
-<g fill="#f2b35b"><rect x="20" y="420" width="90" height="120" opacity="${n(0.35 * neon, 3)}"/><rect x="140" y="420" width="90" height="120" opacity="${n(0.18 * neon, 3)}"/><rect x="870" y="380" width="110" height="140" opacity="${n(0.3 * neon, 3)}"/></g>
-<g opacity="0.7">${W.row(f, { y: 1000, s: 0.6, count: 9, seed: 21, speed: 1.1, freeze })}</g></g>
-<rect x="150" y="520" width="780" height="110" rx="14" fill="#191a20" stroke="#3ad1c4" stroke-width="6" opacity="${n(0.4 + 0.6 * neon, 3)}"/>
-<text x="540" y="595" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="58" letter-spacing="8" fill="#3ad1c4" opacity="${n(0.35 + 0.65 * neon, 3)}">KONTER HP MAJU</text>
-<rect x="150" y="650" width="780" height="520" rx="10" fill="#2d3a45"/>
-<rect x="170" y="670" width="740" height="480" fill="#bfe3e8" opacity="${n(0.16 + 0.12 * neon, 3)}"/>
-<rect x="170" y="830" width="740" height="16" fill="#5b4636"/><rect x="170" y="1000" width="740" height="16" fill="#5b4636"/>
+      // a phone on the display shelf: body, screen with a soft gradient
+      const PHONE = (x, y, s, screen) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-38" y="-78" width="76" height="156" rx="14" fill="#2a2a2e" stroke="#2a2a2e" stroke-width="4"/><rect x="-31" y="-68" width="62" height="134" rx="8" fill="${screen}"/></g>`;
+      // sign: 0..1 brightness of the shop sign; sticker: the "+Rp1 JUTA" slap (p 0..1); price: the tag's rupiah
+      const BG = (f, { sign, sticker, price, freeze }) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+<g style="filter:blur(3px)"><rect x="-40" y="300" width="300" height="1000" fill="#ddd0b8"/><rect x="820" y="260" width="320" height="1040" fill="#d3c4a8"/>
+<g fill="#9fc3c8"><rect x="20" y="420" width="90" height="120"/><rect x="140" y="420" width="90" height="120"/><rect x="870" y="380" width="110" height="140"/></g>
+<g opacity="0.75">${W.row(f, { y: 1000, s: 0.6, count: 9, seed: 21, speed: 1.1, freeze })}</g></g>
+<rect x="150" y="520" width="780" height="110" rx="14" fill="#fffaf0" stroke="#2a8f86" stroke-width="6"/>
+<text x="540" y="595" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="58" letter-spacing="8" fill="#2a8f86" opacity="${n(0.35 + 0.65 * sign, 3)}">KONTER HP MAJU</text>
+<rect x="150" y="650" width="780" height="520" rx="10" fill="#4a5a66"/>
+<rect x="170" y="670" width="740" height="480" fill="#e4f1f0"/>
+<rect x="170" y="830" width="740" height="16" fill="#8a6a4f"/><rect x="170" y="1000" width="740" height="16" fill="#8a6a4f"/>
 ${PHONE(260, 750, 0.85, "#4b5b73")}${PHONE(380, 750, 0.85, "#6b5b8a")}${PHONE(700, 750, 0.85, "#3f6f6a")}${PHONE(820, 750, 0.85, "#4b5b73")}
 ${PHONE(300, 920, 0.85, "#7a5a43")}${PHONE(780, 920, 0.85, "#6b5b8a")}
-<g transform="translate(540 760)"><rect x="-70" y="-150" width="140" height="290" rx="22" fill="#16171c" stroke="#f6efe1" stroke-width="5"/><rect x="-58" y="-134" width="116" height="256" rx="12" fill="url(#hook-scr)"/></g>
+<g transform="translate(540 760)"><rect x="-70" y="-150" width="140" height="290" rx="22" fill="#2a2a2e" stroke="#2a2a2e" stroke-width="5"/><rect x="-58" y="-134" width="116" height="256" rx="12" fill="url(#hook-scr)"/></g>
 <defs><linearGradient id="hook-scr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2b35b"/><stop offset="1" stop-color="#c2463b"/></linearGradient></defs>
-<g transform="translate(540 935)"><rect x="-120" y="-30" width="240" height="64" rx="8" fill="#f6efe1" stroke="#1a1b20" stroke-width="5"/><text x="0" y="14" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="36" fill="#1a1b20">HP IMPIAN</text></g>
-${sticker > 0 ? `<g transform="translate(640 690) rotate(-10) scale(${n(2 - sticker, 3)})" opacity="${n(Math.min(1, sticker * 2), 3)}"><rect x="-130" y="-42" width="260" height="84" rx="10" fill="#d0413a" stroke="#1a1b20" stroke-width="5"/><text x="0" y="16" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="46" fill="#fff">+Rp1 JUTA</text></g>` : ""}
-<rect x="0" y="1170" width="1080" height="750" fill="#34302d"/>
+<g transform="translate(540 960)"><rect x="-150" y="-46" width="300" height="104" rx="10" fill="#fffaf0" stroke="#2a2a2e" stroke-width="5"/><text x="0" y="-8" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="30" fill="#2a2a2e">HP IMPIAN</text>
+<text x="0" y="38" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="36" fill="${sticker > 0 ? "#c0392b" : "#2a2a2e"}">Rp${price.toLocaleString("id-ID")}</text></g>
+${sticker > 0 ? `<g transform="translate(660 690) rotate(-10) scale(${n(2 - sticker, 3)})" opacity="${n(Math.min(1, sticker * 2), 3)}"><rect x="-130" y="-42" width="260" height="84" rx="10" fill="#d0413a" stroke="#2a2a2e" stroke-width="5"/><text x="0" y="16" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="46" fill="#fff">+Rp1 JUTA</text></g>` : ""}
+<rect x="0" y="1170" width="1080" height="750" fill="#cdb898"/>
 ${W.row(f, { y: 1250, s: 0.95, count: 5, seed: 8, speed: 1.7, freeze })}</svg>`;
       window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
         const C = F1.cine;
         const sejuta = F1.wordFrame(S, "sejuta");
         const siapa = F1.wordFrame(S, "Siapa");
         const sticker = F1.ramp(f, sejuta, 8, F1.expoOut);
-        // on "Siapa" the street goes quiet: everyone stops, the neon stutters and dims
-        const stutter = f >= siapa && f < siapa + 6 ? ((f - siapa) % 3 === 1 ? 0.15 : 0.7) : 1;
-        const neon = (f < siapa ? 0.85 + 0.15 * Math.sin(f / 5) * Math.sin(f / 2.3) : 0.6) * stutter;
+        // ilustrasi: US$500 x Rp16.000 = Rp8 jt -> x Rp18.000 = Rp9 jt (S15), counted up in steps of Rp1.000
+        const price = 8000000 + 1000 * Math.round(1000 * F1.ramp(f, sejuta, 16, F1.easeOut));
+        // on "Siapa" the street goes quiet: everyone stops, the sign flickers, a red flash
+        const sign = f >= siapa && f < siapa + 6 ? ((f - siapa) % 3 === 1 ? 0.2 : 0.8) : 1;
+        const flash = f >= siapa ? 0.16 * Math.exp(-(f - siapa) / 5) : 0;
         const shake = f >= siapa && f < siapa + 8 ? 6 * Math.sin(f * 2.1) * (1 - (f - siapa) / 8) : 0;
         return F1.join(
           `<div style="position:absolute;inset:0;transform:translate(${n(shake)}px,0)">`,
-          C.stage(f, D, BG(f, { neon, sticker, freeze: siapa }), {
+          C.stage(f, D, BG(f, { sign, sticker, price, freeze: siapa }), {
+            whip: false,
             zoom: 0.05,
             shots: [
               { at: 0, scale: 1, ox: 50, oy: 55 },
@@ -58,10 +62,11 @@ ${W.row(f, { y: 1250, s: 0.95, count: 5, seed: 8, speed: 1.7, freeze })}</svg>`;
               { at: siapa, scale: 1.4, ox: 50, oy: 64 },
             ],
           }),
-          `<div style="position:absolute;inset:0;background:rgba(58,209,196,${n(0.04 * neon, 3)})"></div>`,
-          C.vignette(f < siapa ? 0.55 : 0.75, "50% 58%", 40),
+          `<div style="position:absolute;inset:0;background:rgba(208,65,58,${n(flash, 3)})"></div>`,
+          C.vignette(f < siapa ? 0.25 : 0.45, "50% 58%", 45),
           C.cast(S, f, [{ src: C.CAST.beniKaget, x: 540, y: 1200, w: 420, at: -14 }]),
-          C.hud(f, { at: -14, kicker: "KASUS #02", big: f < sejuta ? "21:15" : "+Rp1 JT", sub: "KASUS RUPIAH · EPISODE 2", src: f < sejuta ? "" : "gadget naik Rp500 rb–1 jt, detikInet (Jun 2026)" }),
+          C.progress(f, { step: 1, label: "LAPORAN MASUK" }),
+          C.hud(f, { at: -14, kicker: "LAPORAN", big: f < sejuta ? "10:15" : "+Rp1 JT", sub: f < sejuta ? "KONTER HP · PAGI" : "ILUSTRASI · HP US$500", src: f < sejuta ? "" : "gadget naik Rp500 rb–1 jt, detikInet (Jun 2026)" }),
           `</div>`,
         );
       });

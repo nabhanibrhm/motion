@@ -137,16 +137,16 @@ for (const s of segments.filter((x) => x.kind === "section")) {
       .map((w, wi) => `<span id="${id}-w${wi}"${key[wi] ? ' class="cap-key"' : ""}>${esc(w.word)}</span>${wi < g.words.length - 1 ? " " : ""}`)
       .join("");
     capClips.push(
-      `  <div id="${id}" class="clip cap" data-start="${start.toFixed(3)}" data-duration="${(end - start).toFixed(3)}" data-track-index="0"><div class="cap-text" id="${id}-text">${words}</div></div>`,
+      `  <div id="${id}" class="clip cap" data-start="${start.toFixed(3)}" data-duration="${(end - start).toFixed(3)}" data-track-index="0"><div class="cap-text" id="${id}-text"><span class="cap-box">${words}</span></div></div>`,
     );
-    capData.push({ id, start: +start.toFixed(3), out: linger ? null : +(t0 + lastEnd + 0.35).toFixed(3), words: g.words.map((w, wi) => [+(t0 + w.start).toFixed(3), key[wi] ? 1 : 0]) });
+    capData.push({ id, start: +start.toFixed(3), out: linger ? null : +(t0 + lastEnd + 0.35).toFixed(3), words: g.words.map((w, wi) => [+(t0 + w.start).toFixed(3), key[wi] ? 1 : 0, +(t0 + (g.words[wi + 1] ? g.words[wi + 1].start : w.end + 0.15)).toFixed(3)]) });
   });
 }
 
 write(
   "compositions/captions.html",
   `${HEADER}
-<!-- Cinematic karaoke captions, band y 960..1240 (over the scene, above the actor's head, clear of the platform buttons on the right): up to 4 words in heavy caps with a black outline. Words still to come are grey; each lights up white as it is spoken, the keyword (a number, else the last word) in lime. -->
+<!-- Karaoke captions, band y 1496..1632 (over the speaker's torso, below the face, clear of the bottom 15% and the platform buttons on the right): up to 6 words in sentence case on a dark box. Words still to come are dimmed; a lime box sits behind the word being spoken; a keyword (a number, else the last word) stays lime once said. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -159,26 +159,32 @@ write(
       position: absolute;
       left: 0;
       right: 0;
-      top: 960px;
-      height: 280px;
+      top: 1496px;
+      height: 136px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 120px 0 60px;
+      padding: 0 130px 0 70px;
     }
     .cap-text {
-      max-width: 900px;
+      max-width: 820px;
       font-family: "Montserrat", sans-serif;
-      font-weight: 900;
-      font-size: 86px;
-      line-height: 1.08;
-      letter-spacing: -1px;
-      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 46px;
+      line-height: 1.46;
       text-align: center;
-      color: #a3a3a3;
-      -webkit-text-stroke: 11px #111111;
-      paint-order: stroke fill;
-      text-shadow: 0 7px 0 rgba(0, 0, 0, 0.35);
+    }
+    .cap-box {
+      padding: 6px 14px;
+      border-radius: 12px;
+      background: rgba(16, 16, 20, 0.84);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    .cap-box span {
+      padding: 0 6px;
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.62);
     }
   </style>
   <div id="root" data-composition-id="captions" data-width="${W}" data-height="${H}">
@@ -190,10 +196,14 @@ ${capClips.join("\n")}
       const tl = gsap.timeline({ paused: true });
       for (const g of GROUPS) {
         const text = document.getElementById(g.id + "-text");
-        // pops in over 5 frames, out over 0.2 s unless the next caption follows right away
-        tl.fromTo(text, { opacity: 0, scale: 0.82 }, { opacity: 1, scale: 1, duration: 5 / 30, ease: "back.out(2)" }, g.start);
-        // karaoke: each word turns from grey to white (keyword: lime) as it is spoken
-        g.words.forEach(([t, key], wi) => tl.fromTo(document.getElementById(g.id + "-w" + wi), { color: "#a3a3a3" }, { color: key ? "#c6f432" : "#ffffff", duration: 0.06, ease: "none" }, t));
+        // rises in over 5 frames, out over 0.2 s unless the next caption follows right away
+        tl.fromTo(text, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 5 / 30, ease: "power2.out" }, g.start);
+        // karaoke: a lime box sits behind the word being spoken; once said a word is white (keyword: lime)
+        g.words.forEach(([t, key, next], wi) => {
+          const el = document.getElementById(g.id + "-w" + wi);
+          tl.set(el, { color: "#111111", backgroundColor: "#c6f432" }, t);
+          tl.set(el, { color: key ? "#c6f432" : "#ffffff", backgroundColor: "rgba(198,244,50,0)" }, next);
+        });
         if (g.out !== null) {
           tl.to(text, { opacity: 0, duration: 0.2, ease: "none" }, g.out);
           tl.set(text, { opacity: 0, visibility: "hidden" }, g.out + 0.2);

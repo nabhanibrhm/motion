@@ -1,4 +1,4 @@
-<!-- Pelajaran: a bedroom in morning light; a checklist card ticks one item per tip ("panik", "Tunda", "pilih", "siapkan"); Muklis, then Beni puts the phone wish on hold, then Nisa closes the case: black end card with the KASUS DITUTUP stamp on "ditutup". -->
+<!-- Pelajaran: a bedroom in morning light; a checklist card ticks one item per tip ("panik", "Tunda", "pilih", "siapkan"); Muklis, then Beni puts the phone wish on hold, then Nisa closes the case: a paper end card with the KASUS DITUTUP stamp on "ditutup", then the comment question on "Menurutmu"; Nisa stays in front of it. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -12,11 +12,11 @@
   <div id="root" data-composition-id="pelajaran" data-width="1080" data-height="1920">
     <div id="pelajaran-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="1.5333" id="pelajaran-sfx-1" class="clip" src="public/sfx/click.wav" data-at="word:panik" data-track-index="12" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="4.2667" id="pelajaran-sfx-2" class="clip" src="public/sfx/click.wav" data-at="word:Tunda" data-track-index="13" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="6.7667" id="pelajaran-sfx-3" class="clip" src="public/sfx/click.wav" data-at="word:pilih" data-track-index="14" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="8.6" id="pelajaran-sfx-4" class="clip" src="public/sfx/click.wav" data-at="word:siapkan" data-track-index="15" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="12.8667" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="16" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.1333" id="pelajaran-sfx-1" class="clip" src="public/sfx/click.wav" data-at="word:panik" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.7667" id="pelajaran-sfx-2" class="clip" src="public/sfx/click.wav" data-at="word:Tunda" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.9" id="pelajaran-sfx-3" class="clip" src="public/sfx/click.wav" data-at="word:pilih" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6.4667" id="pelajaran-sfx-4" class="clip" src="public/sfx/click.wav" data-at="word:siapkan" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.3333" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="16" data-volume="0.45"></audio>
   </div>
   <script>
     (() => {
@@ -42,14 +42,18 @@ ${LIST(f, ticks)}</svg>`;
         const ticks = [w("panik"), w("Tunda"), w("pilih"), w("siapkan")];
         const oke = F1.line(S, 1).start;
         const ditutup = w("ditutup");
-        // end card: black over everything from "ditutup", the stamp slams in a beat later
-        const black = F1.ramp(f, ditutup - 6, 8);
+        // end card: warm paper over the room from "ditutup", the stamp slams in a beat later; the comment question
+        // rises in on "Menurutmu"
+        const menurut = w("Menurutmu");
+        const paper = F1.ramp(f, ditutup - 6, 8);
         const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
-        const end = black <= 0 ? "" : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#070708", opacity: n(black, 3) })}"></div>
-<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 560, display: "flex", flexDirection: "column", alignItems: "center", gap: 40, opacity: n(black, 3) })}">
-<div style="${F1.css({ padding: "14px 30px", border: "6px solid #ff5a5f", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#ff5a5f" })}">KASUS DITUTUP</div>
-<div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:26px;letter-spacing:2px;color:#8d8a84">KASUS #02 · RUPIAH</div>
-<div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:20px;letter-spacing:1px;color:#5f5c57">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
+        const ask = F1.ramp(f, menurut, 12, F1.expoOut);
+        const end = paper <= 0 ? "" : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#f6efe1", opacity: n(paper, 3) })}"></div>
+<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 300, display: "flex", flexDirection: "column", alignItems: "center", gap: 34, opacity: n(paper, 3) })}">
+<div style="${F1.css({ padding: "14px 30px", border: "6px solid #c0392b", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#c0392b" })}">KASUS DITUTUP</div>
+<div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:26px;letter-spacing:2px;color:#6f6a66">KASUS #02 · RUPIAH</div>
+<div style="${F1.css({ marginTop: 30, padding: "26px 40px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(ask, 3), transform: `translateY(${n(30 * (1 - ask))}px)` })}"><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:24px;letter-spacing:2px;color:#ff5a5f">● MENURUTMU</div><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:64px;line-height:1.15;color:#fff">RUPIAH TEMBUS<br><span style="color:${C.ACCENT}">Rp20.000?</span></div><div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:24px;letter-spacing:1px;color:#c9c6c0;margin-top:10px">TULIS DI KOMENTAR</div></div>
+<div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:20px;letter-spacing:1px;color:#6f6a66">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
         return F1.join(
           C.stage(f, D, BG(f, ticks), {
             zoom: 0.05,
@@ -61,13 +65,14 @@ ${LIST(f, ticks)}</svg>`;
             ],
           }),
           C.vignette(0.3, "50% 50%", 55),
-          C.chip(f, { at: 4, text: "VONIS · BUKAN SARAN INVESTASI" }),
+          C.chip(f, { at: 4, text: "BUKAN SARAN INVESTASI" }),
+          C.progress(f, { step: 6, label: "VONIS" }),
+          end,
           C.cast(S, f, [
             { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380, at: 0 },
             { src: C.CAST.beni, x: 540, y: 1210, w: 380 },
             { src: C.CAST.nisa, x: 540, y: 1210, w: 380 },
           ]),
-          end,
         );
       });
     })();

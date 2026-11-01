@@ -8,7 +8,7 @@
    "pitch": "-4Hz",
    "supertonic": {
     "voice": "M1",
-    "speed": 0.8,
+    "speed": 1.0,
     "range": 1.5
    }
   },
@@ -18,7 +18,7 @@
    "pitch": "+2Hz",
    "supertonic": {
     "voice": "F2",
-    "speed": 0.9,
+    "speed": 1.0,
     "range": 1.4
    }
   },
@@ -28,7 +28,7 @@
    "pitch": "+10Hz",
    "supertonic": {
     "voice": "M4",
-    "speed": 0.9,
+    "speed": 1.0,
     "range": 1.4
    }
   }
@@ -42,8 +42,8 @@
  "defaults": {
   "lead": 0.15,
   "tail": 0.1,
-  "gapSameSpeaker": 0.15,
-  "gapNewSpeaker": 0.25,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
   "firstLead": 0.2,
   "chapterLead": 0.1,
   "chapterEndTail": 0.1
@@ -55,8 +55,8 @@
    "lines": [
     {
      "speaker": "bog",
-     "text": "HP impianku naik sejuta?! [pause 0.2] Siapa pelakunya?",
-     "after": 0.25
+     "text": "HP impianku naik sejuta?! [pause 0.15] Siapa pelakunya?",
+     "after": 0.2
     }
    ]
   },
@@ -66,8 +66,16 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Pelakunya: [pause 0.2] dolar. Akhir Oktober, satu dolar tembus delapan belas ribu. [pause 0.15] Terlemah sepanjang sejarah.",
-     "after": 0.25
+     "text": "Pelakunya: [pause 0.15] dolar. Akhir Oktober, satu dolar tembus delapan belas ribu."
+    },
+    {
+     "speaker": "bog",
+     "text": "Hah? Setahun lalu kan masih enam belas ribuan?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Betul. Sekarang terlemah sepanjang sejarah.",
+     "after": 0.2
     }
    ]
   },
@@ -77,8 +85,16 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Bukan cuma HP. Kedelai buat tahu tempe hampir semuanya impor. [pause 0.15] Bahan baku obat juga.",
-     "after": 0.25
+     "text": "Korbannya bukan cuma HP. Kedelai buat tahu dan tempe, hampir semuanya impor."
+    },
+    {
+     "speaker": "wec",
+     "text": "Bahan baku obat juga?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Juga. Delapan puluh lima persen impor.",
+     "after": 0.2
     }
    ]
   },
@@ -88,13 +104,16 @@
    "lines": [
     {
      "speaker": "bog",
-     "text": "Terus, siapa yang untung?",
-     "after": 0.2
+     "text": "Terus, siapa yang untung?"
     },
     {
      "speaker": "mog",
-     "text": "Yang dapat dolar. Eksportir sawit dan batu bara, juga pekerja migran. [pause 0.15] Dolarnya jadi lebih banyak rupiah.",
-     "after": 0.25
+     "text": "Yang dapat dolar. Eksportir sawit dan batu bara, juga pekerja migran."
+    },
+    {
+     "speaker": "wec",
+     "text": "Dolarnya jadi lebih banyak rupiah!",
+     "after": 0.2
     }
    ]
   },
@@ -104,13 +123,20 @@
    "lines": [
     {
      "speaker": "wec",
-     "text": "Kalau tembus dua puluh ribu?",
-     "after": 0.2
+     "text": "Kalau tembus dua puluh ribu?"
     },
     {
      "speaker": "mog",
-     "text": "HP sembilan juta jadi sepuluh juta. Pemerintah dan BI memperkirakan rupiah menguat tahun depan. [pause 0.15] Tapi perkiraan bukan janji.",
-     "after": 0.25
+     "text": "HP sembilan juta jadi sepuluh juta."
+    },
+    {
+     "speaker": "bog",
+     "text": "Waduh!"
+    },
+    {
+     "speaker": "mog",
+     "text": "Pemerintah dan Bank Indonesia memperkirakan rupiah menguat tahun depan. [pause 0.15] Tapi perkiraan bukan janji.",
+     "after": 0.2
     }
    ]
   },
@@ -121,7 +147,7 @@
     {
      "speaker": "mog",
      "text": "Jadi, jangan panik borong dolar. Tunda belanja impor yang belum perlu, pilih produk lokal, siapkan dana darurat.",
-     "after": 0.2
+     "after": 0.1
     },
     {
      "speaker": "bog",
@@ -130,8 +156,8 @@
     },
     {
      "speaker": "wec",
-     "text": "Kasus ditutup! Follow buat kasus berikutnya!",
-     "after": 0.6
+     "text": "Kasus ditutup! Menurutmu, rupiah bakal tembus dua puluh ribu? Tulis di komentar!",
+     "after": 0.3
     }
    ]
   }

@@ -1,4 +1,4 @@
-<!-- Rekor: dark spotlight on a balance scale. One dollar note sits on the left pan; from "dolar" rupiah notes stack on the right pan and the beam tips; the HUD counts Rp16.631 (a year ago) up to the record Rp18.183 from "delapan"; on "Terlemah" a red tag slams in and the camera punches in. Muklis in the shadow. -->
+<!-- Rekor (the one dark beat): spotlight on a balance scale. One dollar note sits on the left pan; from "dolar" rupiah notes stack on the right pan and the beam tips; the HUD counts Rp16.631 up to the record Rp18.183 from "delapan". Beni asks about last year: the HUD and the wall calendar flip back to OKT 2025 (Rp16.631); on "terlemah" both flip forward, a red tag slams in and the camera punches in. Muklis, Beni, Muklis. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -12,9 +12,9 @@
   <div id="root" data-composition-id="rekor" data-width="1080" data-height="1920">
     <div id="rekor-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="rekor-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="1.1" id="rekor-sfx-dolar" class="clip" src="public/sfx/pop-in.wav" data-at="word:dolar" data-track-index="12" data-volume="0.12"></audio>
-    <audio data-hf-media-start-basis="local" data-start="4.8667" id="rekor-sfx-num" class="clip" src="public/sfx/ding-num.wav" data-at="word:delapan" data-track-index="13" data-volume="0.07"></audio>
-    <audio data-hf-media-start-basis="local" data-start="6.7" id="rekor-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Terlemah" data-track-index="14" data-volume="0.4"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.0333" id="rekor-sfx-dolar" class="clip" src="public/sfx/pop-in.wav" data-at="word:dolar" data-track-index="12" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.9333" id="rekor-sfx-num" class="clip" src="public/sfx/ding-num.wav" data-at="word:delapan" data-track-index="13" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.2667" id="rekor-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:terlemah" data-track-index="14" data-volume="0.4"></audio>
   </div>
   <script>
     (() => {
@@ -32,12 +32,20 @@
 <line x1="${n(L.x)}" y1="${n(L.y)}" x2="${n(R.x)}" y2="${n(R.y)}" stroke="#c9a24a" stroke-width="18" stroke-linecap="round"/><circle cx="540" cy="640" r="22" fill="#c9a24a" stroke="#111" stroke-width="5"/>
 ${pan(L)}${pan(R)}${pop > 0 ? `<g transform="translate(${n(L.x)} ${n(L.y + 122)}) scale(${n(pop, 3)})">${NOTE(0, 0, "#9ccf9a", "#1f4d2a", "US$1")}</g>` : ""}${notes}`;
       };
+      // a wall calendar page; flip 0..1 squashes the old page away and the new one in around the top binding
+      const CAL = (label, flip) => `<g transform="translate(800 330)"><rect x="-110" y="-20" width="220" height="190" rx="12" fill="#f6efe1" stroke="#111" stroke-width="5"/><rect x="-110" y="-20" width="220" height="54" rx="12" fill="#c0392b" stroke="#111" stroke-width="5"/><circle cx="-60" cy="-20" r="9" fill="#111"/><circle cx="60" cy="-20" r="9" fill="#111"/>
+<g transform="translate(0 34) scale(1 ${n(Math.abs(Math.cos(Math.PI * flip)), 3)}) translate(0 -34)"><text x="0" y="110" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="52" fill="#111">${label}</text></g></g>`;
       window.__timelines["rekor"] = F1.scene("rekor", (f, { S, D }) => {
         const C = F1.cine;
         const dolar = F1.wordFrame(S, "dolar");
         const akhir = F1.wordFrame(S, "Akhir");
         const delapan = F1.wordFrame(S, "delapan");
-        const terlemah = F1.wordFrame(S, "Terlemah");
+        const terlemah = F1.wordFrame(S, "terlemah");
+        const setahun = F1.wordFrame(S, "Setahun");
+        // the calendar page flips over 10 frames at each change; the label swaps at the half-way point
+        const flipAt = f < setahun + 5 ? null : f < terlemah + 5 ? setahun : terlemah;
+        const flip = flipAt === null ? 0 : F1.ramp(f, flipAt, 10);
+        const calLabel = f < setahun + 5 ? "OKT 2026" : f < terlemah + 5 ? "OKT 2025" : "OKT 2026";
         // the spotlight stutters on, then sways a little on its wire
         const light = F1.ramp(f, 0, 18) * (f > 3 && f < 9 && f % 2 ? 0.4 : 1);
         const sway = 24 * Math.sin(f / 37);
@@ -52,7 +60,7 @@ ${pan(L)}${pan(R)}${pop > 0 ? `<g transform="translate(${n(L.x)} ${n(L.y + 122)}
 <path d="M440 0 L640 0 L${n(920 + sway)} 1160 L${n(160 + sway)} 1160 Z" fill="#2c2b2f" opacity="${n(0.8 * light, 3)}"/>
 <g opacity="${n(light, 3)}">${F1.world.dust(f, { x: 240, y: 80, w: 600, h: 1000, count: 34, seed: 11, alpha: 0.45 })}</g>
 <ellipse cx="540" cy="1160" rx="400" ry="60" fill="#2f2e33" opacity="${n(light, 3)}"/>
-<g opacity="${n(light, 3)}">${SCALE(tilt, stack, pop)}</g></svg>`;
+<g opacity="${n(light, 3)}">${SCALE(tilt, stack, pop)}${CAL(calLabel, flip)}</g></svg>`;
         return F1.join(
           C.stage(f, D, BG, {
             zoom: 0.05,
@@ -60,21 +68,29 @@ ${pan(L)}${pan(R)}${pop > 0 ? `<g transform="translate(${n(L.x)} ${n(L.y + 122)}
               { at: 0, scale: 1.12, ox: 50, oy: 40 },
               { at: dolar, scale: 1, ox: 50, oy: 45 },
               { at: delapan, scale: 1.18, ox: 62, oy: 45, ease: 16 },
+              { at: setahun, scale: 1.12, ox: 72, oy: 30, ease: 12 },
               { at: terlemah, scale: 1.32, ox: 60, oy: 42 },
             ],
           }),
           C.vignette(0.75, "50% 42%", 30),
-          C.hud(f, {
-            at: 6,
-            kicker: f < terlemah ? "KURS RUPIAH" : "REKOR TERLEMAH",
-            big: f < delapan ? "Rp16.631" : "Rp" + rate.toLocaleString("id-ID"),
-            sub: f < delapan ? "PER US$ · 31 OKT 2025" : "PER US$ · 28 OKT 2026",
-            src: f < delapan ? "Kontan" : "BI JISDOR, Bloomberg Technoz",
-            w: 520,
-          }),
+          C.progress(f, { step: 2, label: "BUKTI 1 · REKOR" }),
+          f >= setahun && f < terlemah
+            ? C.hud(f, { at: setahun, kicker: "SETAHUN LALU", big: "Rp16.631", sub: "PER US$ · 31 OKT 2025", src: "Kontan", w: 520 })
+            : C.hud(f, {
+                at: f < setahun ? 6 : terlemah,
+                kicker: f < terlemah ? "KURS RUPIAH" : "REKOR TERLEMAH",
+                big: f < delapan ? "Rp16.631" : f < terlemah ? "Rp" + rate.toLocaleString("id-ID") : "Rp18.183",
+                sub: f < delapan ? "PER US$ · 31 OKT 2025" : "PER US$ · 28 OKT 2026",
+                src: f < delapan ? "Kontan" : "BI JISDOR, Bloomberg Technoz",
+                w: 520,
+              }),
           C.tag(f, { at: terlemah, x: 300, y: 820, rot: -5, light: true, size: 40, text: `<span style="color:#c0392b">TERLEMAH SEPANJANG SEJARAH</span>` }),
           C.tag(f, { at: terlemah + 10, x: 330, y: 905, rot: 2, size: 26, text: "SETAHUN: DOLAR +9% LEBIH MAHAL" }),
-          C.cast(S, f, [{ src: C.CAST.muklis, x: 860, y: 1320, w: 320, at: 0, dim: 0.6 }]),
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0, dim: 0.75 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, dim: 0.75 },
+          ]),
         );
       });
     })();

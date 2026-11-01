@@ -1,8 +1,8 @@
 # Rupiah Tembus Rp18.000: Siapa yang Untung? (Short)
 
-Episode #1 from `../PIPELINE.md`, in the "Kasus" format of episode 01. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **98 spoken words**. With the Supertonic voices it runs **58,8 s** (under the 60 s Shorts limit).
+Episode #1 from `../PIPELINE.md`, in the "Kasus" format of episode 01. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **127 spoken words** at about 2,8 words a second. With the Supertonic voices it runs **59,3 s** (under the 60 s Shorts limit), over a quiet original music bed (`voiceover/bed.py`).
 
-Cast and voices are the same as in episode 01: **Muklis** (`mog`, Supertonic M1, speed 0.8), **Nisa** (`wec`, F2, 0.9) and **Beni** (`bog`, M4, 0.9).
+Cast and voices are the same as in episode 01: **Muklis** (`mog`, Supertonic M1), **Nisa** (`wec`, F2) and **Beni** (`bog`, M4), all at speed 1.0 with a widened pitch range (`range` 1.5 / 1.4 / 1.4).
 
 Lines in *[brackets]* are on-screen notes, not spoken. **(ilustrasi)** marks invented example figures. Each on-screen figure carries a small "Sumber: …" line on its HUD card. **[S#]** refers to the sources table at the bottom.
 
@@ -18,26 +18,40 @@ Facts checked on 1 Nov 2026. The figures for October 2026 inflation (BPS, about 
 ### 2 · The record (4–11 s)
 *[Dark spotlight. HUD: "REKOR TERLEMAH · Rp18.183 / US$ · 28 Okt 2026 [S1]". Under it, a small line: "Setahun lalu: Rp16.631 [S3] → dolar 9% lebih mahal".]*
 
-**MUKLIS:** Pelakunya: dolar. Akhir Oktober, satu dolar tembus delapan belas ribu. Terlemah sepanjang sejarah.
+**MUKLIS:** Pelakunya: dolar. Akhir Oktober, satu dolar tembus delapan belas ribu.
+
+**BENI:** Hah? Setahun lalu kan masih enam belas ribuan? *[S3]*
+
+**MUKLIS:** Betul. Sekarang terlemah sepanjang sejarah.
 
 ### 3 · Side effects (11–19 s)
 *[Market stall. A tahu-tempe block, a sack labelled "KEDELAI IMPOR" and a medicine strip hop up as they are named. Tags: "Kedelai: hampir 100% impor [S9]", "Bahan baku obat: ±85% impor [S11]".]*
 
-**MUKLIS:** Bukan cuma HP. Kedelai buat tahu tempe hampir semuanya impor. Bahan baku obat juga.
+**MUKLIS:** Korbannya bukan cuma HP. Kedelai buat tahu dan tempe, hampir semuanya impor.
+
+**NISA:** Bahan baku obat juga?
+
+**MUKLIS:** Juga. Delapan puluh lima persen impor. *[S11]*
 
 ### 4 · Who gains (19–30 s)
 *[Beni, arms crossed. Then a port at dusk: a palm-oil truck and a coal barge; a dollar bill drops into a wallet and turns into a thicker stack of rupiah. HUD: "Kiriman pekerja migran · US$9,16 miliar · Semester I 2026 [S14]".]*
 
 **BENI:** Terus, siapa yang untung?
 
-**MUKLIS:** Yang dapat dolar. Eksportir sawit dan batu bara, juga pekerja migran. Dolarnya jadi lebih banyak rupiah.
+**MUKLIS:** Yang dapat dolar. Eksportir sawit dan batu bara, juga pekerja migran.
+
+**NISA:** Dolarnya jadi lebih banyak rupiah!
 
 ### 5 · What if (30–41 s)
 *[Nisa holds up a phone calculator. Three price tags in a row (ilustrasi, HP US$500): "Rp16.000 → Rp8 jt", "Rp18.000 → Rp9 jt", "Rp20.000 → Rp10 jt". Then a HUD: "Asumsi APBN 2027: Rp17.500 [S16] · Proyeksi BI 2027: Rp16.800–17.500 [S17]".]*
 
 **NISA:** Kalau tembus dua puluh ribu?
 
-**MUKLIS:** HP sembilan juta jadi sepuluh juta. Pemerintah dan BI memperkirakan rupiah menguat tahun depan. Tapi perkiraan bukan janji.
+**MUKLIS:** HP sembilan juta jadi sepuluh juta.
+
+**BENI:** Waduh!
+
+**MUKLIS:** Pemerintah dan Bank Indonesia memperkirakan rupiah menguat tahun depan. Tapi perkiraan bukan janji.
 
 ### 6 · What we can do and close (41–58 s)
 *[Bedroom. Four check items tick in as they are spoken: "Jangan panik beli dolar [S18]", "Tunda belanja yang belum perlu [S19]", "Pilih produk lokal [S20]", "Dana darurat 3–6 bulan [S21]". Small disclaimer: "Bukan saran investasi".]*
@@ -46,9 +60,9 @@ Facts checked on 1 Nov 2026. The figures for October 2026 inflation (BPS, about 
 
 **BENI:** Oke… HP-nya nunggu dulu.
 
-**NISA:** Kasus ditutup! Follow buat kasus berikutnya!
+**NISA:** Kasus ditutup! Menurutmu, rupiah bakal tembus dua puluh ribu? Tulis di komentar!
 
-*[Stamp: "KASUS DITUTUP". The last frame mirrors the konter HP of the first frame for a seamless loop.]*
+*[Paper end card: stamp "KASUS DITUTUP", then the comment question "RUPIAH TEMBUS Rp20.000? TULIS DI KOMENTAR" and "Sumber lengkap di deskripsi". Nisa stays in front of it.]*
 
 ---
 

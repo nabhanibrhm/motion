@@ -1,4 +1,4 @@
-<!-- Dampak: market stalls with swaying awnings and shoppers walking past. The HP box hops on "HP", the KEDELAI IMPOR sack on "Kedelai", tahu and tempe on "tahu", the medicine strip on "obat"; fact tags pop beside them; cuts on "Kedelai" and "Bahan". Muklis talks. -->
+<!-- Dampak: market stalls with swaying awnings and shoppers walking past. The HP box hops on "HP", the KEDELAI IMPOR sack on "Kedelai", tahu and tempe on "tahu", the medicine strip on "obat"; fact tags pop beside them and an IMPOR stamp slams onto the sack on "impor"; cuts on "Kedelai" and "Bahan". Muklis, Nisa asks about medicine, Muklis. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -12,11 +12,11 @@
   <div id="root" data-composition-id="dampak" data-width="1080" data-height="1920">
     <div id="dampak-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="dampak-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="1.0333" id="dampak-sfx-hp" class="clip" src="public/sfx/pop-in.wav" data-at="word:HP" data-track-index="12" data-volume="0.09"></audio>
-    <audio data-hf-media-start-basis="local" data-start="2.1333" id="dampak-sfx-kedelai" class="clip" src="public/sfx/pop-in.wav" data-at="word:Kedelai" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.1667" id="dampak-sfx-hp" class="clip" src="public/sfx/pop-in.wav" data-at="word:HP" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.0667" id="dampak-sfx-kedelai" class="clip" src="public/sfx/pop-in.wav" data-at="word:Kedelai" data-track-index="13" data-volume="0.09"></audio>
     <audio data-hf-media-start-basis="local" data-start="2.6333" id="dampak-sfx-tahu" class="clip" src="public/sfx/pop-in.wav" data-at="word:tahu" data-track-index="14" data-volume="0.09"></audio>
-    <audio data-hf-media-start-basis="local" data-start="4.7" id="dampak-sfx-impor" class="clip" src="public/sfx/ding-num.wav" data-at="word:impor" data-track-index="15" data-volume="0.07"></audio>
-    <audio data-hf-media-start-basis="local" data-start="6.2" id="dampak-sfx-obat" class="clip" src="public/sfx/pop-in.wav" data-at="word:obat" data-track-index="16" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.6667" id="dampak-sfx-impor" class="clip" src="public/sfx/stamp.wav" data-at="word:impor" data-track-index="15" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.9" id="dampak-sfx-obat" class="clip" src="public/sfx/pop-in.wav" data-at="word:obat" data-track-index="16" data-volume="0.09"></audio>
   </div>
   <script>
     (() => {
@@ -63,14 +63,20 @@ ${W.row(f, { y: 1215, s: 1.05, count: 5, seed: 14, speed: 1.9 })}</svg>`;
           C.hud(f, {
             at: 4,
             kicker: "DAMPAK",
-            big: f < kedelai ? "IMPOR ▲" : f < bahan ? "±100%" : "±85%",
+            big: f < kedelai ? "IMPOR ▲" : f < bahan ? "±100%" : "85%",
             sub: f < kedelai ? "BAYARNYA PAKAI DOLAR" : f < bahan ? "KEDELAI DARI IMPOR" : "BAHAN BAKU OBAT DARI IMPOR",
             src: f < kedelai ? "" : f < bahan ? "Menko Pangan via Kompas TV (Jun 2026)" : "Menperin via IDX Channel (Nov 2025)",
             w: 500,
           }),
-          C.tag(f, { at: w("impor"), x: 600, y: 900, rot: -4, text: "TAHU TEMPE ▲" }),
+          C.stamp(f, { at: w("impor"), x: 560, y: 660, rot: -10, text: "IMPOR" }),
+          C.tag(f, { at: w("impor") + 8, x: 600, y: 900, rot: -4, text: "TAHU TEMPE ▲" }),
           C.tag(f, { at: w("obat"), x: 120, y: 900, rot: 3, text: "OBAT ▲" }),
-          C.cast(S, f, [{ src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 }]),
+          C.progress(f, { step: 3, label: "BUKTI 2 · KORBAN" }),
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
         );
       });
     })();

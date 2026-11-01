@@ -1,21 +1,21 @@
-<!-- Kalau: a desk by the window at night; Nisa asks with her phone. Two price cards (ilustrasi, HP US$500) flip in on "sembilan" (kurs Rp18.000) and "sepuluh" (kurs Rp20.000); on "Pemerintah" the 2027 forecast HUD; on "janji" a BUKAN JANJI tag and the city lights flicker. Nisa, then Muklis. -->
+<!-- Kalau: a desk by the window at dusk (warm room, city lights coming on); Nisa asks with her phone. Two price cards (ilustrasi, HP US$500) flip in on "sembilan" (kurs Rp18.000) and "sepuluh" (kurs Rp20.000); on "Pemerintah" the 2027 forecast HUD; on "janji" a BUKAN JANJI tag and the city lights flicker. Nisa, Muklis, Beni ("Waduh!"), Muklis. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
     #root {
       position: absolute;
       inset: 0;
-      background: #262a36;
+      background: #eadcc4;
       overflow: hidden;
     }
   </style>
   <div id="root" data-composition-id="kalau" data-width="1080" data-height="1920">
     <div id="kalau-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="kalau-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="2.2333" id="kalau-sfx-9" class="clip" src="public/sfx/tick.wav" data-at="word:sembilan" data-track-index="12" data-volume="0.2"></audio>
-    <audio data-hf-media-start-basis="local" data-start="4.0333" id="kalau-sfx-10" class="clip" src="public/sfx/cash.wav" data-at="word:sepuluh" data-track-index="13" data-volume="0.25"></audio>
-    <audio data-hf-media-start-basis="local" data-start="5.9" id="kalau-sfx-proj" class="clip" src="public/sfx/ding-num.wav" data-at="word:Pemerintah" data-track-index="14" data-volume="0.07"></audio>
-    <audio data-hf-media-start-basis="local" data-start="11.3333" id="kalau-sfx-janji" class="clip" src="public/sfx/stamp.wav" data-at="word:janji" data-track-index="15" data-volume="0.35"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.9333" id="kalau-sfx-9" class="clip" src="public/sfx/tick.wav" data-at="word:sembilan" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.8" id="kalau-sfx-10" class="clip" src="public/sfx/cash.wav" data-at="word:sepuluh" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.6667" id="kalau-sfx-proj" class="clip" src="public/sfx/ding-num.wav" data-at="word:Pemerintah" data-track-index="14" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.2333" id="kalau-sfx-janji" class="clip" src="public/sfx/stamp.wav" data-at="word:janji" data-track-index="15" data-volume="0.35"></audio>
   </div>
   <script>
     (() => {
@@ -47,12 +47,13 @@
         const fade = 1 - F1.ramp(f, pemerintah - 4, 10);
         const arrow = F1.ramp(f, sepuluh + 4, 12, F1.expoOut);
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
-<rect width="1080" height="1920" fill="#2b2f3c"/>
-<rect x="100" y="300" width="880" height="560" rx="10" fill="#1b2030" stroke="#5b4636" stroke-width="22"/>
-<path d="M140 720 L240 600 L300 650 L420 520 L520 640 L620 560 L760 660 L940 580 L940 840 L140 840 Z" fill="#141826"/>
+<defs><linearGradient id="kalau-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a6f9a"/><stop offset="0.55" stop-color="#e98a6a"/><stop offset="1" stop-color="#f2b36f"/></linearGradient></defs>
+<rect width="1080" height="1920" fill="#eadcc4"/>
+<rect x="100" y="300" width="880" height="560" rx="10" fill="url(#kalau-sky)" stroke="#8a6a4f" stroke-width="22"/>
+<path d="M140 720 L240 600 L300 650 L420 520 L520 640 L620 560 L760 660 L940 580 L940 840 L140 840 Z" fill="#5d4a6a"/>
 ${CITY(f, dim)}
-<path d="M540 300 V860 M100 580 H980" stroke="#5b4636" stroke-width="16"/>
-<rect x="0" y="980" width="1080" height="40" fill="#7a5a43"/><rect x="0" y="1020" width="1080" height="900" fill="#3a3530"/>
+<path d="M540 300 V860 M100 580 H980" stroke="#8a6a4f" stroke-width="16"/>
+<rect x="0" y="980" width="1080" height="40" fill="#9a7656"/><rect x="0" y="1020" width="1080" height="900" fill="#cdb391"/>
 <g transform="translate(860 960)"><rect x="-60" y="-80" width="120" height="80" rx="8" fill="#e9e2d3"/><path d="M-40 -80 Q0 -150 40 -80" fill="#f2c96b" opacity="0.6"/></g>
 <g opacity="${n(fade, 3)}">${CARD(300, 700, c9, "Rp18.000", "Rp9 jt", false)}${CARD(760, 700, c10, "Rp20.000", "Rp10 jt", true)}
 ${arrow > 0 ? `<path d="M470 700 H${n(470 + 110 * arrow)}" stroke="#c0392b" stroke-width="14" stroke-linecap="round"/><path d="M${n(470 + 110 * arrow)} 700 l-26 -22 M${n(470 + 110 * arrow)} 700 l-26 22" stroke="#c0392b" stroke-width="14" stroke-linecap="round"/>` : ""}</g></svg>`;
@@ -67,13 +68,16 @@ ${arrow > 0 ? `<path d="M470 700 H${n(470 + 110 * arrow)}" stroke="#c0392b" stro
               { at: janji, scale: 1.2, ox: 50, oy: 52, ease: 10 },
             ],
           }),
-          C.vignette(0.55, "50% 45%", 40),
+          C.vignette(0.3, "50% 45%", 50),
+          C.progress(f, { step: 5, label: "SKENARIO" }),
           f < pemerintah
             ? C.hud(f, { at: 4, kicker: "KALAU...", big: "Rp20.000?", sub: f < sembilan ? "PER US$" : "ILUSTRASI · BELUM PAJAK &amp; MARGIN", w: 500 })
-            : C.hud(f, { at: pemerintah, kicker: "PERKIRAAN 2027", big: "Rp17.500", sub: "ASUMSI APBN 2027 · BI: Rp16.800–17.500", src: "Banggar DPR (Sep 2026), BI (Jun 2026)", w: 560 }),
+            : C.hud(f, { at: pemerintah, kicker: "PERKIRAAN 2027", big: "Rp17.500", sub: "ASUMSI APBN 2027 · BI: Rp16.800–17.500", src: "Banggar DPR (Sep 2026), BI (Jun 2026)", w: 640 }),
           C.tag(f, { at: janji, x: 330, y: 760, rot: -5, light: true, size: 44, text: `<span style="color:#c0392b">BUKAN JANJI</span>` }),
           C.cast(S, f, [
             { src: C.CAST.nisa, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
             { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
           ]),
         );

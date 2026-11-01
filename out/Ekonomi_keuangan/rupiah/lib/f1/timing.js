@@ -171,8 +171,8 @@
 
   /* ---------------------------------------------------------------- captions (was Captions.tsx) */
 
-  const MAX_WORDS = 4; // karaoke captions: up to 4 words, lit one by one
-  const MERGE_WORDS = 4;
+  const MAX_WORDS = 6; // karaoke captions: up to 6 words (two short lines), lit one by one
+  const MERGE_WORDS = 6;
   const endsClause = (w) => /[.!?,;:—–]["”']?$/.test(w.word);
   const endsSentence = (w) => /[.!?]["”']?$/.test(w.word);
 
