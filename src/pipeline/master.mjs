@@ -15,7 +15,9 @@ export async function masterVideo({ input, output, bedPath = null, bedGain = .3,
   const m = JSON.parse(log.slice(log.lastIndexOf('{'),log.lastIndexOf('}')+1));
   const ln = `loudnorm=${target}:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`;
   await fs.mkdir(path.dirname(output), { recursive: true });
-  const tmp = path.join(path.dirname(output), `.${path.basename(output, path.extname(output))}-${process.pid}-${Date.now()}.mp4`);
-  try { ff(['-y',...inputs,'-filter_complex',`${mix}${ln}[out]`,'-map','0:v','-map','[out]','-c:v','copy','-ar','48000','-c:a','aac','-b:a','192k',tmp]); await fs.rename(tmp, output); } finally { await fs.rm(tmp, { force: true }); }
+  // Stage beside the raw render so a synced output folder (e.g. Google Drive) only ever sees finished files.
+  const tmp = path.join(path.dirname(input), `.${path.basename(output, path.extname(output))}-${process.pid}-${Date.now()}.mp4`);
+  const publish = async () => { try { await fs.rename(tmp, output); } catch (e) { if (e.code !== 'EXDEV') throw e; await fs.copyFile(tmp, output); } };
+  try { ff(['-y',...inputs,'-filter_complex',`${mix}${ln}[out]`,'-map','0:v','-map','[out]','-c:v','copy','-ar','48000','-c:a','aac','-b:a','192k',tmp]); await publish(); } finally { await fs.rm(tmp, { force: true }); }
   return { output, inputLoudness: Number(m.input_i), bed: Boolean(bedPath) };
 }
