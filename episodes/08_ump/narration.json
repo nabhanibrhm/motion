@@ -1,0 +1,183 @@
+{
+ "comment": "Short 'Gaji Naik 8%, Kok Tetap Kurang?' (script-short.md, sources there). Non-political: no party, minister or union is praised or blamed; the 8% raise is a labelled simulation. Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "say": {
+  "UMP": "u em pe"
+ },
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Gaji Naik"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Katanya UMP tahun depan naik delapan persen! [pause 0.15] Akhirnya aku kaya!"
+    },
+    {
+     "speaker": "wec",
+     "text": "Tunggu dulu, Ben. Gaji naik delapan persen, belum tentu kamu delapan persen lebih kaya.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kabar",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Faktanya, UMP dua ribu dua puluh tujuh belum diputuskan. Kemnaker menargetkan paling lambat akhir November."
+    },
+    {
+     "speaker": "mog",
+     "text": "Serikat buruh minta naik tujuh setengah sampai sembilan setengah persen."
+    },
+    {
+     "speaker": "bog",
+     "text": "Rumusnya gimana?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Menghitung inflasi, pertumbuhan ekonomi, dan satu indeks bernama alfa. Keputusan akhirnya di gubernur.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "hitung",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kita simulasi. Rata-rata UMP tahun ini sekitar tiga setengah juta. Kalau naik delapan persen, tambahnya dua ratus delapan puluh ribu."
+    },
+    {
+     "speaker": "bog",
+     "text": "Lumayan banget!",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "inflasi",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Tapi harga juga naik. Inflasi September tiga koma dua delapan persen."
+    },
+    {
+     "speaker": "wec",
+     "text": "Belanjaan yang setahun lalu tiga setengah juta, sekarang sekitar seratus lima belas ribu lebih mahal. Tambahanmu kepotong duluan.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "riil",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Itu namanya gaji riil: kenaikan gaji dikurangi kenaikan harga. Naik delapan persen, riilnya cuma sekitar empat koma tujuh persen."
+    },
+    {
+     "speaker": "mog",
+     "text": "Padahal harga makanan naik lebih cepat, empat koma empat persen.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "gaya",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Tapi kenapa tetap kerasa kurang?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Karena begitu gaji naik, pengeluaran ikut naik. Ngopi tiap hari, cicilan baru, langganan baru."
+    },
+    {
+     "speaker": "mog",
+     "text": "Kata perencana keuangan di seminar OJK: gaji naik, tapi pengeluaran naik lebih cepat.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Jadi: hitung kenaikan riil, bukan angka di slip gaji. Begitu gajian, sisihkan sebagian kenaikan buat tabungan duluan."
+    },
+    {
+     "speaker": "mog",
+     "text": "Sisanya baru buat gaya hidup.",
+     "after": 0.1
+    },
+    {
+     "speaker": "bog",
+     "text": "Oke, nanti separuh kenaikanku langsung masuk tabungan.",
+     "after": 0.15
+    },
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup! Gajimu tahun ini naik berapa, dan riilnya berapa? Tulis di komentar!",
+     "after": 0.3
+    }
+   ]
+  }
+ ]
+}

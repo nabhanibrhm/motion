@@ -15,12 +15,12 @@ There is one repository application, one Node dependency installation, one Pytho
 | `src/pipeline/` | Build, staging, voice and mastering orchestration |
 | `tools/voice/` | Shared Python synthesis, alignment and music tools |
 | `assets/shared/` | Shared fonts, sound effects, cast artwork and music |
-| `episodes/<id>/episode.json` | Episode manifest |
-| `episodes/<id>/narration.json` | Existing narration JSON, preserving its data |
-| `episodes/<id>/scenes/` | Authored HTML scene extensions |
-| `episodes/<id>/script-short.md` | Original script and source attribution |
-| `episodes/<id>/assets/` | Optional assets overriding matching shared relative paths |
-| `episodes/<id>/voice-lines/` | Optional recorded lines for files mode |
+| `episodes/<NN>_<id>/episode.json` | Episode manifest |
+| `episodes/<NN>_<id>/narration.json` | Existing narration JSON, preserving its data |
+| `episodes/<NN>_<id>/scenes/` | Authored HTML scene extensions |
+| `episodes/<NN>_<id>/script-short.md` | Original script and source attribution |
+| `episodes/<NN>_<id>/assets/` | Optional assets overriding matching shared relative paths |
+| `episodes/<NN>_<id>/voice-lines/` | Optional recorded lines for files mode |
 | `.cache/build/<id>/` | Generated and staged HyperFrames project |
 | `.cache/voice/<id>/` | Verified narration manifest, section audio and state |
 | `.cache/voice/chunks/` | Shared synthesis and alignment cache |

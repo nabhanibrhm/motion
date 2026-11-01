@@ -4,9 +4,9 @@
 
 Before changing files, identify the targets and use the lowest approved tier covering their actual responsibility. Raise the tier if scope or risk expands.
 
-The repository uses one shared HyperFrames application. Episode authoring is in `episodes/<id>/`; shared media is in `assets/shared/`; engine source is under `src/`; generated projects and stills are under `.cache/`; finished videos are in `out/`. The old `out/Ekonomi_keuangan/` projects are retired; their leftover renders are archived under `.cache/migration-baseline/legacy-out/`.
+The repository uses one shared HyperFrames application. Episode authoring is in `episodes/<NN>_<id>/`; shared media is in `assets/shared/`; engine source is under `src/`; generated projects and stills are under `.cache/`; finished videos are in `out/`. The old `out/Ekonomi_keuangan/` projects are retired; their leftover renders are archived under `.cache/migration-baseline/legacy-out/`.
 
-Rendering is timeline-driven. Avoid wall-clock animation, CSS transitions, timers, and unseeded randomness. Voice timing, captions, lip-sync, and SFX share timing data. Financial claims require sourcing in `episodes/<id>/script-short.md`.
+Rendering is timeline-driven. Avoid wall-clock animation, CSS transitions, timers, and unseeded randomness. Voice timing, captions, lip-sync, and SFX share timing data. Financial claims require sourcing in `episodes/<NN>_<id>/script-short.md`.
 
 ## Claude models and effort
 
@@ -25,7 +25,7 @@ Use the host's model controls for Claude. If a required tier is unavailable, exp
 | Responsibility / paths | Model / effort |
 |---|---|
 | Routine docs, `README.md`, `CLAUDE.md`, `HANDOFF.md`, this file, `.gitignore`, unchanged-fact copy | Haiku / default |
-| One authored scene `episodes/<id>/scenes/<scene>.html`, local art or styling | Sonnet / medium |
+| One authored scene `episodes/<NN>_<id>/scenes/<scene>.html`, local art or styling | Sonnet / medium |
 | Shared browser runtime `src/runtime/**`; templates `src/templates/**`; CLI, config/schema, staging/build orchestration in `scripts/motion.mjs`, `src/config/**`, `src/pipeline/build.mjs` | Sonnet / high |
 | Voice tools/cache/alignment, mastering/audio, dependencies, Python environment, storage and cleanup safety: `tools/voice/**`, `src/pipeline/voice.mjs`, `master.mjs`, `storage.mjs`, root manifests and lockfiles | Opus / high |
 | New financial facts or claims in episode scripts, narration, captions or scenes; unexplained preview/render failures | Opus / high |
@@ -37,7 +37,7 @@ These are historical paths inside retained episode folders. Use them for read-on
 
 | Historical responsibility | Legacy path | Current location |
 |---|---|---|
-| Scene HTML | `out/Ekonomi_keuangan/<id>/compositions/` | `episodes/<id>/scenes/` |
+| Scene HTML | `out/Ekonomi_keuangan/<id>/compositions/` | `episodes/<NN>_<id>/scenes/` |
 | Drawing kit and timing | `out/Ekonomi_keuangan/<id>/lib/f1/` | `src/runtime/` |
 | Voice generator and cache | `out/Ekonomi_keuangan/<id>/voiceover/` | `tools/voice/` and `.cache/voice/` |
 | Sync/master scripts | `out/Ekonomi_keuangan/<id>/scripts/` | Root CLI and `src/pipeline/` |
@@ -60,7 +60,7 @@ The model IDs and tiers below describe this repository's routing policy. They do
 | Responsibility / paths | Tier |
 |---|---|
 | Routine docs, `README.md`, `CLAUDE.md`, `HANDOFF.md`, this file, `.gitignore`, unchanged-fact copy | C1 |
-| One `episodes/<id>/scenes/<scene>.html`, local art or styling | C2 |
+| One `episodes/<NN>_<id>/scenes/<scene>.html`, local art or styling | C2 |
 | `src/runtime/**`, `src/templates/**`, root CLI, config/schema, episode manifests and migrations, build orchestration | C3 |
 | `tools/voice/**`, voice/cache/alignment, audio mastering, root dependency manifests/locks, storage/cleanup safety, new factual claims | C4 |
 | Architecture, cross-module contracts, engine or TTS changes, cutover/rollback, final integration and fidelity review | C5 |

@@ -1,6 +1,6 @@
 # Paylater: Gratis Bunga atau Jebakan? (Short)
 
-Episode #3 from `../PIPELINE.md` (KASUS #04), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **210 spoken words**. With the Supertonic voices it runs **about 99 s**, over the quiet music bed (`voiceover/bed.py`).
+Episode #3 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #04), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **210 spoken words**. With the Supertonic voices it runs **about 99 s**, over the quiet music bed (`voiceover/bed.py`).
 
 Cast and voices as in every episode: **Muklis** (`mog`, Supertonic M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), all at speed 1.0 with a widened pitch range. The voice says "paylater" as "pei leiter" (`"say"` in `voiceover/paylater.json`); captions keep "paylater".
 

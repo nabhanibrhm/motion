@@ -2,7 +2,7 @@
 
 Faceless short videos in Bahasa Indonesia, generated with HyperFrames 0.8.210, GSAP, Node.js 22+, and Python 3.12. **Read `HANDOFF.md` first.** For changes, read `ai-routing.md` and follow its provider-specific routing guidance.
 
-One shared application and runtime serve all episodes. Authored episode data lives in `episodes/<id>/`; shared assets are in `assets/shared/`; generated projects and stills are under `.cache/`; mastered finished videos are in `out/`.
+One shared application and runtime serve all episodes. Authored episode data lives in `episodes/<NN>_<id>/`; shared assets are in `assets/shared/`; generated projects and stills are under `.cache/`; mastered finished videos are in `out/`.
 
 ## Commands
 
@@ -20,9 +20,9 @@ node scripts/motion.mjs render <id>
 node scripts/motion.mjs clean <id>
 ```
 
-See [README.md](README.md) for setup and the episode workflow. Create a starter episode with `node scripts/motion.mjs new <id> --title "Title" --category <category> [--number <n>]`. The manifest's `category` is currently descriptive; episode listing is not filtered by category. The CLI owns output naming from the episode number and id.
+See [README.md](README.md) for setup and the episode workflow. Create a starter episode with `node scripts/motion.mjs new <id> --title "Title" --category <category> [--number <n>]`. The manifest's `category` is currently descriptive; episode listing is not filtered by category. The CLI owns output naming from the episode number and id. Episode folders are named `<NN>_<id>` (e.g. `01_inflasi`); the prefix must match the manifest `number`, and commands, caches and outputs use the bare id (`render inflasi`, `.cache/voice/inflasi/`, `out/01-inflasi-short.mp4`).
 
-Source data belongs in `episodes/<id>/episode.json`, `narration.json`, `script-short.md`, and `scenes/`. Shared runtime and orchestration live under `src/runtime/`, `src/pipeline/`, `src/config/`, and `src/templates/`. Generated HyperFrames files under `.cache/build/<id>/` are disposable output; do not hand-edit generated copies.
+Source data belongs in `episodes/<NN>_<id>/episode.json`, `narration.json`, `script-short.md`, and `scenes/`. Shared runtime and orchestration live under `src/runtime/`, `src/pipeline/`, `src/config/`, and `src/templates/`. Generated HyperFrames files under `.cache/build/<id>/` are disposable output; do not hand-edit generated copies.
 
 The only supported video format is 1080×1920 at 30 fps. Runtime profiles are `modern` and `legacy-inflasi`; named config themes may set supported runtime/case/audio/voice values, but arbitrary palettes and output dimensions are not supported. See [docs/refactor-design.md](docs/refactor-design.md) for the current contracts and [docs/refactor-inventory.json](docs/refactor-inventory.json) for the captured before-state inventory.
 

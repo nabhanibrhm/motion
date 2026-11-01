@@ -1,6 +1,6 @@
 # Rupiah Tembus Rp18.000: Siapa yang Untung? (Short)
 
-Episode #1 from `../PIPELINE.md`, in the "Kasus" format of episode 01. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **127 spoken words** at about 2,8 words a second. With the Supertonic voices it runs **59,3 s** (under the 60 s Shorts limit), over a quiet original music bed (`voiceover/bed.py`).
+Episode #1 from [PIPELINE.md](../../content_idea/PIPELINE.md), in the "Kasus" format of episode 01. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **127 spoken words** at about 2,8 words a second. With the Supertonic voices it runs **59,3 s** (under the 60 s Shorts limit), over a quiet original music bed (`voiceover/bed.py`).
 
 Cast and voices are the same as in episode 01: **Muklis** (`mog`, Supertonic M1), **Nisa** (`wec`, F2) and **Beni** (`bog`, M4), all at speed 1.0 with a widened pitch range (`range` 1.5 / 1.4 / 1.4).
 

@@ -1,0 +1,191 @@
+<!-- Gaya: lifestyle creep. A paper chart labelled ILUSTRASI (no numbers): the GAJI line rises, the PENGELUARAN line rises faster and crosses it, each of three icons (coffee cup on "Ngopi", instalment card on "cicilan", subscription badge on "langganan") pushing PENGELUARAN up. On Muklis's line a quote card: "Gaji naik, tapi pengeluaran naik lebih cepat." (Rista Maharani, CFP, OJK literacy seminar, via RRI, U6). Beni, Nisa, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #efe6d2;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="gaya" data-width="1080" data-height="1920">
+    <div id="gaya-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="gaya-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3" id="gaya-sfx-ngopi" class="clip" src="public/sfx/pop-in.wav" data-at="word:Ngopi" data-track-index="12" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4" id="gaya-sfx-cicilan" class="clip" src="public/sfx/pop-in.wav" data-at="word:cicilan" data-track-index="13" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5" id="gaya-sfx-langganan" class="clip" src="public/sfx/pop-in.wav" data-at="word:langganan" data-track-index="14" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7" id="gaya-sfx-quote" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:Kata" data-track-index="15" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const RED = "#c0392b";
+      const BLUE = "#2f6aa8";
+      // chart geometry (right 120 px and lower 15% stay clear)
+      const PX = 60;
+      const PY = 280;
+      const PW = 900;
+      const PH = 720;
+      const X0 = 150;
+      const X1 = 910;
+      const AXY = 850;
+      const clamp01 = (v) => Math.max(0, Math.min(1, v));
+      const sm = (v) => {
+        const c = clamp01(v);
+        return c * c * (3 - 2 * c);
+      };
+      const xAt = (t) => X0 + t * (X1 - X0);
+      const gajiY = (t) => 770 - 150 * t;
+      // eased interpolation over [frame, value] keys
+      const keyed = (f, keys) => {
+        if (f <= keys[0][0]) return keys[0][1];
+        for (let i = 1; i < keys.length; i++) {
+          if (f <= keys[i][0]) {
+            const a = keys[i - 1];
+            const b = keys[i];
+            return a[1] + (b[1] - a[1]) * sm((f - a[0]) / Math.max(1, b[0] - a[0]));
+          }
+        }
+        return keys[keys.length - 1][1];
+      };
+      const ICON = {
+        ngopi: `<path d="M-26 -18 H22 V14 Q22 32 4 32 H-8 Q-26 32 -26 14 Z" fill="#fffaf0" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><path d="M22 -8 H32 Q42 -8 42 4 Q42 16 22 16" fill="none" stroke="${INK}" stroke-width="5"/><path d="M-14 -30 q-6 -8 0 -16 M0 -30 q-6 -8 0 -16 M12 -30 q-6 -8 0 -16" fill="none" stroke="#8a6f55" stroke-width="4" stroke-linecap="round"/><rect x="-26" y="-18" width="48" height="10" fill="#8a5a3c"/>`,
+        cicilan: `<rect x="-38" y="-24" width="76" height="52" rx="8" fill="#fffaf0" stroke="${INK}" stroke-width="5"/><rect x="-38" y="-12" width="76" height="12" fill="${BLUE}"/><rect x="-30" y="10" width="26" height="8" rx="3" fill="${INK}"/><path d="M14 8 L28 8 M14 18 L24 18" stroke="${RED}" stroke-width="5" stroke-linecap="round"/>`,
+        langganan: `<rect x="-38" y="-28" width="76" height="56" rx="12" fill="${RED}" stroke="${INK}" stroke-width="5"/><path d="M-10 -14 L18 0 L-10 14 Z" fill="#fff" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>`,
+      };
+      window.__timelines["gaya"] = F1.scene("gaya", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const gaji0 = w("gaji");
+        const naik0 = w("naik");
+        const peng0 = w("pengeluaran");
+        const ngopi = w("Ngopi");
+        const cicilan = w("cicilan");
+        const langganan = w("langganan");
+        const kata = w("Kata");
+        const boosts = [
+          { at: ngopi, t0: 0.26, h: 60, key: "ngopi", label: "NGOPI", tp: 0.34 },
+          { at: cicilan, t0: 0.5, h: 95, key: "cicilan", label: "CICILAN", tp: 0.6 },
+          { at: langganan, t0: 0.72, h: 125, key: "langganan", label: "LANGGANAN", tp: 0.84 },
+        ].map((b) => ({ ...b, g: F1.ramp(f, b.at, 16, F1.backOut) }));
+        const pengY = (t) => {
+          let y = 830 - 90 * t;
+          boosts.forEach((b) => {
+            y -= b.h * clamp01(F1.ramp(f, b.at, 22, F1.easeOut)) * sm((t - b.t0) / 0.14);
+          });
+          return y;
+        };
+        const headG = keyed(f, [[gaji0 - 2, 0], [naik0 + 14, 0.55], [peng0, 0.62], [langganan + 30, 1]]);
+        const headP = keyed(f, [[peng0 - 2, 0], [ngopi, 0.32], [cicilan, 0.58], [langganan, 0.82], [langganan + 30, 1]]);
+        const N = 48;
+        const path = (fn, head) => {
+          let d = "";
+          for (let i = 0; i <= N; i++) {
+            const t = i / N;
+            if (t > head) {
+              if (i > 0) d += ` L${n(xAt(head))} ${n(fn(head))}`;
+              break;
+            }
+            d += `${i === 0 ? "M" : " L"}${n(xAt(t))} ${n(fn(t))}`;
+          }
+          return d;
+        };
+        // first crossing among the drawn part
+        let cross = null;
+        for (let i = 1; i <= N; i++) {
+          const t = i / N;
+          if (t > headP || t > headG) break;
+          if (pengY(t) <= gajiY(t)) {
+            cross = t;
+            break;
+          }
+        }
+        const panelP = F1.ramp(f, 4, 14, F1.expoOut);
+        let crossSvg = "";
+        if (cross !== null) {
+          const cx = xAt(cross);
+          const cy = gajiY(cross);
+          const pulse = 14 + 10 * Math.abs(Math.sin(f / 10));
+          crossSvg = `<circle cx="${n(cx)}" cy="${n(cy)}" r="${n(pulse)}" fill="none" stroke="${RED}" stroke-width="5" opacity="0.8"/><circle cx="${n(cx)}" cy="${n(cy)}" r="9" fill="#fff" stroke="${INK}" stroke-width="5"/>`;
+        }
+        // icons pop in a strip under the plot; a dashed leader pushes up into the PENGELUARAN line
+        let icons = "";
+        boosts.forEach((b) => {
+          if (b.g <= 0) return;
+          const a = clamp01(b.g);
+          const bx = xAt(b.tp);
+          const by = 925;
+          const ly = pengY(b.tp);
+          const sc = 0.6 + 0.4 * b.g;
+          icons += `<line x1="${n(bx)}" y1="${by - 56}" x2="${n(bx)}" y2="${n(ly + 14)}" stroke="${RED}" stroke-width="4" stroke-dasharray="10 9" opacity="${n(a, 3)}"/>
+<path d="M${n(bx - 12)} ${n(ly + 28)} L${n(bx)} ${n(ly + 8)} L${n(bx + 12)} ${n(ly + 28)}" fill="none" stroke="${RED}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="${n(a, 3)}"/>
+<circle cx="${n(bx)}" cy="${n(ly)}" r="9" fill="${RED}" stroke="${INK}" stroke-width="4" opacity="${n(a, 3)}"/>
+<g opacity="${n(a, 3)}" transform="translate(${n(bx)} ${n(by - 4 + 20 * (1 - a))}) scale(${n(sc * 0.78, 3)})"><circle r="52" fill="#fff6e2" stroke="${INK}" stroke-width="6"/>${ICON[b.key]}</g>
+<text x="${n(bx)}" y="${by + 62}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="26" letter-spacing="2" fill="${INK}" opacity="${n(a, 3)}">${b.label}</text>`;
+        });
+        const lineLabelG = clamp01(F1.ramp(f, gaji0 + 12, 10));
+        const lineLabelP = clamp01(F1.ramp(f, peng0 + 12, 10));
+        const gEnd = Math.min(0.99, headG);
+        const pEnd = Math.min(0.99, headP);
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><pattern id="gaya-grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#d9cdb2" stroke-width="2"/></pattern></defs>
+<rect width="1080" height="1920" fill="url(#gaya-grid)" opacity="0.7"/>
+<g opacity="${n(panelP, 3)}" transform="translate(0 ${n(30 * (1 - panelP))})">
+<rect x="${PX}" y="${PY}" width="${PW}" height="${PH}" rx="22" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<path d="M${X0 - 20} 400 V${AXY} H${X1 + 10}" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M${X0 - 32} 416 L${X0 - 20} 396 L${X0 - 8} 416 M${X1 - 6} ${AXY - 12} L${X1 + 14} ${AXY} L${X1 - 6} ${AXY + 12}" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="${X1 - 10}" y="${AXY - 18}" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="20" letter-spacing="2" fill="#6b6556">WAKTU</text>
+<text x="${X0 + 6}" y="396" font-family="JetBrains Mono" font-weight="700" font-size="20" letter-spacing="2" fill="#6b6556">RUPIAH</text>
+<rect x="${PX + 26}" y="${PY + 22}" width="190" height="44" rx="8" fill="#111"/><text x="${PX + 121}" y="${PY + 54}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="28" letter-spacing="4" fill="#f5d27a">ILUSTRASI</text>
+${headG > 0 ? `<path d="${path(gajiY, headG)}" fill="none" stroke="${BLUE}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>` : ""}
+${headP > 0 ? `<path d="${path(pengY, headP)}" fill="none" stroke="${RED}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>` : ""}
+${crossSvg}
+${icons}
+<g opacity="${n(lineLabelG, 3)}"><text x="${n(Math.max(xAt(gEnd) - 8, 280))}" y="${n(gajiY(gEnd) + 46)}" text-anchor="end" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="3" fill="${BLUE}" stroke="#fffaf0" stroke-width="8" paint-order="stroke">GAJI</text></g>
+<g opacity="${n(lineLabelP, 3)}"><text x="${n(Math.max(xAt(pEnd) - 8, 440))}" y="${n(pengY(pEnd) - 26)}" text-anchor="end" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="3" fill="${RED}" stroke="#fffaf0" stroke-width="8" paint-order="stroke">PENGELUARAN</text></g>
+</g>
+</svg>`;
+        const qp = F1.ramp(f, kata - 2, 14, F1.expoOut);
+        const quote =
+          qp <= 0
+            ? ""
+            : `<div style="${F1.css({
+                position: "absolute",
+                left: 60,
+                top: n(1030 + 50 * (1 - qp)),
+                width: 900,
+                padding: "18px 26px 16px",
+                boxSizing: "border-box",
+                borderRadius: 16,
+                background: "#fffaf0",
+                border: "5px solid #111",
+                opacity: n(qp, 3),
+                transform: `rotate(${n(-1.2 * (1 - qp), 2)}deg)`,
+              })}">
+<div style="font-family:Oswald,sans-serif;font-weight:600;font-size:38px;line-height:1.15;color:#111">“Gaji naik, tapi pengeluaran naik lebih cepat.”</div>
+<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;letter-spacing:1px;color:${RED};margin-top:8px">— Rista Maharani, CFP · seminar literasi keuangan OJK</div>
+<div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:17px;color:#6b6556;margin-top:4px">Sumber: RRI</div></div>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 40 },
+              { at: ngopi - 6, scale: 1.04, ox: 52, oy: 44, ease: 16 },
+              { at: kata - 6, scale: 1.02, ox: 50, oy: 52, ease: 16 },
+            ],
+          }),
+          C.vignette(0.16, "50% 50%", 55),
+          C.progress(f, { step: 6, label: "SKENARIO · GAYA HIDUP" }),
+          quote,
+          C.cast(S, f, [
+            { src: C.CAST.beni, x: 540, y: 1230, w: 380, at: 0 },
+            { src: C.CAST.nisa, x: 540, y: 1230, w: 380 },
+            { src: C.CAST.muklis, x: 540, y: 1230, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

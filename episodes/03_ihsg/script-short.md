@@ -1,6 +1,6 @@
 # IHSG Anjlok 10% Sehari: Apa Itu MSCI? (Short)
 
-Episode #2 from `../PIPELINE.md` (KASUS #03), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **205 spoken words**. With the Supertonic voices it runs **about 97 s**, over the quiet music bed (`voiceover/bed.py`). **Bukan saran investasi** is on screen whenever the script talks about buying or selling.
+Episode #2 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #03), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **205 spoken words**. With the Supertonic voices it runs **about 97 s**, over the quiet music bed (`voiceover/bed.py`). **Bukan saran investasi** is on screen whenever the script talks about buying or selling.
 
 Cast and voices as in every episode: **Muklis** (`mog`, Supertonic M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), all at speed 1.0 with a widened pitch range. "BEI" is said as "Bursa Efek Indonesia" (the voice's "BEI" is heard as "BI").
 

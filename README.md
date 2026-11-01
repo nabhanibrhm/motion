@@ -1,6 +1,6 @@
 # motion
 
-Seven Bahasa Indonesia short videos, generated through one shared HyperFrames application. Episode source lives in `episodes/<id>/`; generated HyperFrames projects and diagnostic stills live under `.cache/`; finished mastered videos go to `out/`.
+Seven Bahasa Indonesia short videos, generated through one shared HyperFrames application. Episode source lives in `episodes/<NN>_<id>/`; generated HyperFrames projects and diagnostic stills live under `.cache/`; finished mastered videos go to `out/`.
 
 ## Setup
 
@@ -39,9 +39,9 @@ Create a starter episode with a lowercase id and title. The CLI chooses the next
 node scripts/motion.mjs new umumnya --title "Topik Episode Berikutnya" --category Ekonomi_keuangan --number 8
 ```
 
-The starter manifest uses the selected descriptive category, the shared title-card scene, and the `modern` runtime profile. The category does not filter the episode list. Edit `episodes/<id>/episode.json`, `narration.json`, `script-short.md`, and authored scene files under `scenes/`. Each narration section needs a matching scene entry in the same order. Episode numbers produce output names such as `08-umumnya-short.mp4`.
+The starter manifest uses the selected descriptive category, the shared title-card scene, and the `modern` runtime profile. The category does not filter the episode list. Edit `episodes/<NN>_<id>/episode.json`, `narration.json`, `script-short.md`, and authored scene files under `scenes/`. Each narration section needs a matching scene entry in the same order. Episode numbers produce output names such as `08-umumnya-short.mp4`.
 
-The current renderer supports 1080×1920 at 30 fps, with `modern` and `legacy-inflasi` visual profiles. A manifest may name a theme file under `config/themes/<name>.json`; the loader merges supported config values such as runtime profile/case, audio, and voice defaults. Arbitrary palette controls are not implemented. Add episode-specific assets in `episodes/<id>/assets/`; they override shared assets at matching paths in `assets/shared/`. List additional assets that are not discovered from scene references in the manifest's `assets` array, using paths relative to the asset root.
+The current renderer supports 1080×1920 at 30 fps, with `modern` and `legacy-inflasi` visual profiles. A manifest may name a theme file under `config/themes/<name>.json`; the loader merges supported config values such as runtime profile/case, audio, and voice defaults. Arbitrary palette controls are not implemented. Add episode-specific assets in `episodes/<NN>_<id>/assets/`; they override shared assets at matching paths in `assets/shared/`. List additional assets that are not discovered from scene references in the manifest's `assets` array, using paths relative to the asset root.
 
 ## Voice, build, review, and render
 

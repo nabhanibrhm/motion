@@ -1,6 +1,6 @@
 # Kelas Menengah Hilang ke Mana? (Short)
 
-Episode #6 from `../PIPELINE.md` (KASUS #07), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **215 spoken words**, **about 99 s**, over the quiet music bed. **Non-political:** BPS and World Bank framing only; no party, president, minister or programme named.
+Episode #6 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #07), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **215 spoken words**, **about 99 s**, over the quiet music bed. **Non-political:** BPS and World Bank framing only; no party, president, minister or programme named.
 
 Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 1.0, widened pitch range. Lines in *[brackets]* are on-screen notes. Every on-screen figure carries a "Sumber: …" line. **[K#]** = sources table. Facts checked on 1 Nov 2026.
 

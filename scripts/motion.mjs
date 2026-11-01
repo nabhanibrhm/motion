@@ -3,7 +3,7 @@ import {existsSync,mkdirSync,writeFileSync,readFileSync,statSync,renameSync} fro
 import {join,resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
-import {REPO_ROOT,ID,listEpisodes,loadEpisode,within} from '../src/config/episodes.mjs';
+import {REPO_ROOT,ID,listEpisodes,loadEpisode,within,episodeFolder} from '../src/config/episodes.mjs';
 import {validateEpisode} from '../src/config/validate.mjs';
 import {buildEpisode,hyperframesPackage} from '../src/pipeline/build.mjs';
 import {ensureVoice} from '../src/pipeline/voice.mjs';
@@ -85,11 +85,13 @@ Use -- before extra preview/lint/check/render HyperFrames arguments.
 export function createEpisode(id,{title,number,category='Ekonomi_keuangan',repoRoot=REPO_ROOT}={}) {
   if(!ID.test(id || '')) throw new Error('new requires a lowercase episode id');
   if(!title?.trim()) throw new Error('new requires --title');
-  const dir=within(repoRoot,`episodes/${id}`);
-  if(existsSync(dir)) throw new Error(`Episode already exists: ${id}`);
-  const ids=listEpisodes({repoRoot}), next=number===undefined?Math.max(0,...ids.map(x=>loadEpisode(x,{repoRoot}).config.number))+1:Number(number);
+  const ids=listEpisodes({repoRoot});
+  if(ids.includes(id)) throw new Error(`Episode already exists: ${id}`);
+  const next=number===undefined?Math.max(0,...ids.map(x=>loadEpisode(x,{repoRoot}).config.number))+1:Number(number);
   if(!Number.isSafeInteger(next)||next<1) throw new Error('--number must be a positive integer');
   if(ids.some(x=>loadEpisode(x,{repoRoot}).config.number===next)) throw new Error(`Episode number ${next} already exists`);
+  const dir=within(repoRoot,`episodes/${episodeFolder(id,next)}`);
+  if(existsSync(dir)) throw new Error(`Episode folder already exists: ${dir}`);
   if(!/^[\p{L}\p{N}][\p{L}\p{N}_ -]*$/u.test(category)) throw new Error('Invalid category name');
   const config={schemaVersion:1,id,number:next,title,category,narration:'narration.json',script:'script-short.md',video:{width:1080,height:1920,fps:30},runtime:{profile:'modern',case:{id:`KASUS #${String(next).padStart(2,'0')}`,steps:1}},scenes:[{id:'hook',template:'title-card',props:{title}}],audio:{bed:null,bedGain:.3,loudness:{integrated:-14,truePeak:-1,range:11}}};
   const narration={source:'supertonic',speakers:{mog:{supertonic:{voice:'M1',speed:1,range:1.5}}},chapters:[{id:'kasus',title}],defaults:{lead:.15,tail:.1,gapSameSpeaker:.1,gapNewSpeaker:.1,firstLead:.2,chapterLead:.1,chapterEndTail:.1},sections:[{id:'hook',chapter:'kasus',lines:[{speaker:'mog',text:title}]}]};

@@ -1,0 +1,91 @@
+<!-- Hook: a warm cream desk. Frame 0 is fully drawn (thumbnail): a phone showing the headline "UMP 2027 NAIK 8%?" with a SIMULASI tag and a limp money bag. Beni waves the phone; on "kaya" the money bag inflates and bounces; on "Tunggu" Nisa cuts in and the bag starts to deflate; on "belum" a BELUM TENTU stamp lands and the question mark pulses. Beni, then Nisa. No sourced figures: the 8% is only a question/simulation. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f4e4c8;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-kaya" class="clip" src="public/sfx/pop-in.wav" data-at="word:kaya" data-track-index="12" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-tunggu" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:Tunggu" data-track-index="13" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-belum" class="clip" src="public/sfx/stamp.wav" data-at="word:belum" data-track-index="14" data-volume="0.4"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      // the phone: a news headline posed as a question, tagged SIMULASI
+      const PHONE = (f, { wave, qPulse }) => `<g transform="translate(330 ${n(800 + wave * 0)}) rotate(${n(-6 + wave, 2)})">
+<rect x="-190" y="-300" width="380" height="600" rx="42" fill="#33343a" stroke="${INK}" stroke-width="8"/>
+<rect x="-166" y="-262" width="332" height="524" rx="22" fill="#fffaf0"/>
+<rect x="-40" y="-286" width="80" height="12" rx="6" fill="#111"/>
+<rect x="-166" y="-262" width="332" height="56" rx="22" fill="${INK}"/><rect x="-166" y="-230" width="332" height="24" fill="${INK}"/>
+<text x="-146" y="-222" font-family="JetBrains Mono" font-weight="700" font-size="20" letter-spacing="3" fill="#c6f432">BERITA</text>
+<text x="146" y="-222" text-anchor="end" font-family="JetBrains Mono" font-weight="500" font-size="16" letter-spacing="2" fill="#c9c6c0">KATANYA</text>
+<rect x="-146" y="-184" width="292" height="120" rx="12" fill="#ddd3bf"/>
+<text x="0" y="-92" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="62" letter-spacing="2" fill="#8a7a62">UMP</text>
+<text x="-146" y="-10" font-family="Oswald" font-weight="700" font-size="54" letter-spacing="1" fill="${INK}">UMP 2027</text>
+<text x="-146" y="56" font-family="Oswald" font-weight="700" font-size="54" letter-spacing="1" fill="${INK}">NAIK 8%<tspan fill="#d0413a" font-size="${n(64 * (1 + qPulse), 2)}">?</tspan></text>
+<rect x="-146" y="92" width="240" height="14" rx="7" fill="#ddd3bf"/><rect x="-146" y="120" width="180" height="14" rx="7" fill="#ddd3bf"/>
+<g transform="translate(0 196) rotate(-3)"><rect x="-130" y="-30" width="260" height="60" rx="14" fill="#c6f432" stroke="${INK}" stroke-width="5"/>
+<text x="0" y="12" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="34" letter-spacing="4" fill="${INK}">SIMULASI</text></g></g>`;
+      // a cartoon money bag: inflate = 0..1 (limp to puffed), bounce adds a little squash
+      const BAG = (f, { inflate, bounce, sparkle }) => {
+        const sc = 0.72 + 0.5 * inflate + 0.05 * bounce;
+        const sx = sc * (1 + 0.04 * bounce);
+        const sy = sc * (1 - 0.04 * bounce);
+        const stars = sparkle > 0 ? [[-170, -170], [160, -190], [190, -40], [-190, -20]].map(([x, y], i) => `<path transform="translate(${x} ${n(y - 20 * sparkle)}) scale(${n(sparkle * (0.7 + 0.2 * i % 3), 3)})" d="M0 -22 L6 -6 L22 0 L6 6 L0 22 L-6 6 L-22 0 L-6 -6 Z" fill="#f2c27a" stroke="${INK}" stroke-width="4" opacity="${n(1 - 0.0 * sparkle, 2)}"/>`).join("") : "";
+        return `<g transform="translate(770 ${n(900 - 36 * inflate)}) scale(${n(sx, 3)} ${n(sy, 3)})">
+<path d="M-40 -150 Q-70 -200 -30 -210 Q0 -190 30 -210 Q70 -200 40 -150 Z" fill="#8a6f55" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>
+<path d="M-48 -142 Q-60 -150 -40 -156 H40 Q60 -150 48 -142" fill="#a98a68" stroke="${INK}" stroke-width="6"/>
+<path d="M-50 -142 Q-190 -40 -150 80 Q-120 140 0 140 Q120 140 150 80 Q190 -40 50 -142 Z" fill="#e8c28a" stroke="${INK}" stroke-width="8" stroke-linejoin="round"/>
+<path d="M-120 20 Q-130 90 -70 118" fill="none" stroke="#fff3d6" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+<text x="0" y="62" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="150" fill="#8a5f2e" stroke="${INK}" stroke-width="5" paint-order="stroke">Rp</text>${stars}</g>`;
+      };
+      window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
+        const C = F1.cine;
+        const kaya = F1.wordFrame(S, "kaya");
+        const tunggu = F1.wordFrame(S, "Tunggu");
+        const belum = F1.wordFrame(S, "belum");
+        const inflateIn = F1.ramp(f, kaya - 14, 20, F1.expoOut);
+        const deflate = F1.ramp(f, belum - 6, 26, F1.easeOut);
+        const inflate = inflateIn * (1 - 0.85 * deflate);
+        const bounce = f >= kaya && f < kaya + 22 ? Math.sin((Math.PI * (f - kaya)) / 22) : 0;
+        const sparkle = F1.ramp(f, kaya, 14) * (1 - F1.ramp(f, tunggu, 10));
+        const wave = f < tunggu ? 4 * Math.sin(f / 5) : 4 * Math.sin(tunggu / 5) * (1 - F1.ramp(f, tunggu, 14));
+        const qPulse = f >= belum && f < belum + 16 ? 0.25 * Math.sin((Math.PI * (f - belum)) / 16) : 0;
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="hook-glow" cx="50%" cy="46%" r="58%"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#f1dfbf"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#hook-glow)"/>
+<g fill="#f2c27a" opacity="0.5">${Array.from({ length: 14 }, (_, i) => `<circle cx="${n(80 + 920 * W.hash(i * 3 + 1))}" cy="${n(500 + 640 * W.hash(i * 3 + 2))}" r="${n(10 + 22 * W.hash(i * 3 + 3))}"/>`).join("")}</g>
+<rect x="0" y="1140" width="1080" height="780" fill="#e3c9a0"/><rect x="0" y="1140" width="1080" height="14" fill="#c8ab7c"/>
+${PHONE(f, { wave, qPulse })}${BAG(f, { inflate, bounce, sparkle })}</svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            whip: false,
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 60 },
+              { at: kaya - 4, scale: 1.08, ox: 66, oy: 56, ease: 12 },
+              { at: F1.line(S, 1).start, scale: 1, ox: 50, oy: 60, ease: 12 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 50),
+          C.stamp(f, { at: belum, x: 560, y: 1040, rot: -8, text: "BELUM TENTU", size: 64 }),
+          C.progress(f, { step: 1, label: "LAPORAN MASUK" }),
+          C.hud(f, { at: -14, kicker: "LAPORAN MASUK", big: "UMP 2027 NAIK 8%?", sub: "SIMULASI · BUKAN KEPUTUSAN", bigSize: 48, w: 600 }),
+          C.cast(S, f, [
+            { src: C.CAST.beni, x: 540, y: 1200, w: 420, at: -14 },
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,6 +1,6 @@
 # Emas Katanya Aman, Kok Turun 20%? (Short)
 
-Episode #5 from `../PIPELINE.md` (KASUS #06), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **225 spoken words**, **about 99 s**, over the quiet music bed. Investment topic: **"Bukan saran investasi"** is on screen in the what-if and advice scenes.
+Episode #5 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #06), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **225 spoken words**, **about 99 s**, over the quiet music bed. Investment topic: **"Bukan saran investasi"** is on screen in the what-if and advice scenes.
 
 Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 1.0, widened pitch range. Lines in *[brackets]* are on-screen notes. Every on-screen figure carries a "Sumber: …" line. **[G#]** = sources table. Facts checked on 1 Nov 2026. Prices are Antam 1-gram base prices from the Logam Mulia list unless stated; don't mix them with Pegadaian's list.
 

@@ -1,6 +1,6 @@
 # Judol Lewat QRIS: Kenapa Bandar Selalu Menang (Short)
 
-Episode #4 from `../PIPELINE.md` (KASUS #05), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **200 spoken words**, **about 95 s**, over the quiet music bed. **Strictly educational and anti-gambling:** no site, game, slot, provider or app names; no gambling UI that could be mistaken for a real game (draw a generic "MESIN" box, never a branded slot screen); ends with where to get help.
+Episode #4 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #05), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **200 spoken words**, **about 95 s**, over the quiet music bed. **Strictly educational and anti-gambling:** no site, game, slot, provider or app names; no gambling UI that could be mistaken for a real game (draw a generic "MESIN" box, never a branded slot screen); ends with where to get help.
 
 Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 1.0, widened pitch range. The voice says QRIS as "kiuwris" and Healing as "hilling" (`"say"` in `voiceover/judol.json`); captions keep the real spelling. Lines in *[brackets]* are on-screen notes. Every on-screen figure carries a "Sumber: …" line. **[J#]** = sources table. Facts checked on 1 Nov 2026.
 
