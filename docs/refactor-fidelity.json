@@ -1,0 +1,54 @@
+{
+  "scope": "Procedural HTML/SVG markup, scene source, voice manifest, caption grouping and timeline equality. Does not verify browser pixels or encoded audio.",
+  "results": [
+    {
+      "id": "emas",
+      "pass": true,
+      "sampledFrames": 726,
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "id": "ihsg",
+      "pass": true,
+      "sampledFrames": 640,
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "id": "inflasi",
+      "pass": true,
+      "sampledFrames": 410,
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "id": "judol",
+      "pass": true,
+      "sampledFrames": 624,
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "id": "kelas",
+      "pass": true,
+      "sampledFrames": 671,
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "id": "paylater",
+      "pass": true,
+      "sampledFrames": 664,
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "id": "rupiah",
+      "pass": true,
+      "sampledFrames": 420,
+      "failures": [],
+      "warnings": []
+    }
+  ]
+}

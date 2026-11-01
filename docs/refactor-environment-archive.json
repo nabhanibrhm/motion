@@ -1,0 +1,44 @@
+[
+  {
+    "Episode": "inflasi",
+    "Source": "D:\\Dev\\motion\\out\\Ekonomi_keuangan\\inflasi\\.venv",
+    "Recovery": "D:\\Dev\\motion\\.cache\\migration-baseline\\environments\\inflasi",
+    "Bytes": 3037845.0
+  },
+  {
+    "Episode": "rupiah",
+    "Source": "D:\\Dev\\motion\\out\\Ekonomi_keuangan\\rupiah\\.venv",
+    "Recovery": "D:\\Dev\\motion\\.cache\\migration-baseline\\environments\\rupiah",
+    "Bytes": 3037839.0
+  },
+  {
+    "Episode": "ihsg",
+    "Source": "D:\\Dev\\motion\\out\\Ekonomi_keuangan\\ihsg\\.venv",
+    "Recovery": "D:\\Dev\\motion\\.cache\\migration-baseline\\environments\\ihsg",
+    "Bytes": 3037837.0
+  },
+  {
+    "Episode": "paylater",
+    "Source": "D:\\Dev\\motion\\out\\Ekonomi_keuangan\\paylater\\.venv",
+    "Recovery": "D:\\Dev\\motion\\.cache\\migration-baseline\\environments\\paylater",
+    "Bytes": 3037841.0
+  },
+  {
+    "Episode": "judol",
+    "Source": "D:\\Dev\\motion\\out\\Ekonomi_keuangan\\judol\\.venv",
+    "Recovery": "D:\\Dev\\motion\\.cache\\migration-baseline\\environments\\judol",
+    "Bytes": 3037838.0
+  },
+  {
+    "Episode": "emas",
+    "Source": "D:\\Dev\\motion\\out\\Ekonomi_keuangan\\emas\\.venv",
+    "Recovery": "D:\\Dev\\motion\\.cache\\migration-baseline\\environments\\emas",
+    "Bytes": 3037837.0
+  },
+  {
+    "Episode": "kelas",
+    "Source": "D:\\Dev\\motion\\out\\Ekonomi_keuangan\\kelas\\.venv",
+    "Recovery": "D:\\Dev\\motion\\.cache\\migration-baseline\\environments\\kelas",
+    "Bytes": 3037838.0
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": "out/Ekonomi_keuangan/kelas",
+  "files": [
+    {
+      "source": "out/Ekonomi_keuangan/kelas/voiceover/kelas.json",
+      "target": "narration.json",
+      "bytes": 4062,
+      "sha256": "b73ef7c882eaa2d19e304161d2ae8e09df6f045d32c66abc6dfbe5ecbe553e9b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/script-short.md",
+      "target": "script-short.md",
+      "bytes": 8770,
+      "sha256": "9c213d72b75a1359fdc56660896422e81dc65b8ec6a7f307ad6fdcbe41721035"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/hook.html",
+      "target": "scenes/hook.html",
+      "bytes": 8757,
+      "sha256": "49c9a1fc6b99a62381204fcb7cc4b2665b73414fa7ebac15b2d0cb510a1adcf2"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/angka.html",
+      "target": "scenes/angka.html",
+      "bytes": 11455,
+      "sha256": "0bebc460dae1a80bc0c52b9207ce57991eff23ed0e1b9a6598b4ab5e19a19249"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/siapa.html",
+      "target": "scenes/siapa.html",
+      "bytes": 8878,
+      "sha256": "01fd6a7ab01ded180a36e15bdbb323f8274679b9f0f514581d0b3f8ee6582d81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/kenapa.html",
+      "target": "scenes/kenapa.html",
+      "bytes": 8825,
+      "sha256": "e42b9a4c3de2b33b23d68a7d3e040859815ec4cd5db8a523dcc85bddc21f2198"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/gaji.html",
+      "target": "scenes/gaji.html",
+      "bytes": 9141,
+      "sha256": "95761f5983f4797420c430e63c96583b1d98f5216805d44096befee26b90e04c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/kalau.html",
+      "target": "scenes/kalau.html",
+      "bytes": 14517,
+      "sha256": "2eb70400f1624a44a32e04119d26ba7a8bc646fb6bf6c67182bc73fa5c360403"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/pelajaran.html",
+      "target": "scenes/pelajaran.html",
+      "bytes": 7786,
+      "sha256": "0d2757bf9c48f18f603c2199eeb52abd33c50b8d7383d1c7c26625dee9728616"
+    }
+  ]
+}

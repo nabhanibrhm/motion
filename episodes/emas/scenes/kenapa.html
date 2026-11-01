@@ -1,0 +1,86 @@
+<!-- Kenapa (the one dark scene): a spotlit seesaw. A gold bar sits on the right end. On "imbal hasil obligasi" the first weight (IMBAL HASIL OBLIGASI AS, red up-arrow) drops onto the left end and the plank tips; on "dolar" the second weight (DOLAR AS, up-arrow) lands and it tips further, lifting the gold. A "KALAH MENARIK" tag pops on "kalah"; "EMAS TIDAK MEMBERI BUNGA" on "bunga". HUD: World Gold Council, Sep 2026 (gold -8,5% over the month). Nisa, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #141416;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="kenapa" data-width="1080" data-height="1920">
+    <div id="kenapa-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.2667" id="kenapa-sfx-imbal" class="clip" src="public/sfx/pop-in.wav" data-at="word:imbal+6" data-track-index="12" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.6333" id="kenapa-sfx-dolar" class="clip" src="public/sfx/pop-in.wav" data-at="word:dolar+4" data-track-index="13" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.5333" id="kenapa-sfx-bunga" class="clip" src="public/sfx/pop-in.wav" data-at="word:bunga" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.4" id="kenapa-sfx-kalah" class="clip" src="public/sfx/sub-drop.wav" data-at="word:kalah" data-track-index="15" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const GOLD = (x, y, s = 1, text = true) => `<g transform="translate(${n(x)} ${n(y)}) scale(${n(s, 3)})" stroke="${INK}" stroke-width="6" stroke-linejoin="round">
+<path d="M-104 -66 L104 -66 L80 -98 L-80 -98 Z" fill="#f5d878"/><path d="M-130 0 L130 0 L104 -66 L-104 -66 Z" fill="#e0b13a"/>
+<path d="M-62 -8 L-34 -8 L-10 -58 L-38 -58 Z" fill="#fff" opacity="0.38" stroke="none"/>
+${text ? `<text x="0" y="-33" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="31" letter-spacing="3" fill="${INK}" stroke="none">1 GRAM</text><text x="0" y="-12" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="17" letter-spacing="2" fill="#7a5a12" stroke="none">999.9</text>` : ""}</g>`;
+      // a weight on the plank (local coords, plank top at y 0): centre x, width, drop offset; badge = red up-arrow
+      const BADGE = (x, y) => `<g transform="translate(${x} ${y})"><circle r="26" fill="#d0413a" stroke="${INK}" stroke-width="5"/><path d="M0 -12 L13 8 L-13 8 Z" fill="#fff"/></g>`;
+      const W1 = (x, drop) => `<g transform="translate(${x} ${n(drop)})"><rect x="-95" y="-138" width="190" height="138" rx="16" fill="#3f78b5" stroke="${INK}" stroke-width="6"/><rect x="-79" y="-122" width="158" height="10" rx="5" fill="#fff" opacity="0.25"/>
+<text x="0" y="-70" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="31" letter-spacing="1" fill="#fff">IMBAL HASIL</text><text x="0" y="-32" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="31" letter-spacing="1" fill="#fff">OBLIGASI AS</text>${BADGE(78, -138)}</g>`;
+      const W2 = (x, drop) => `<g transform="translate(${x} ${n(drop)})"><rect x="-90" y="-138" width="180" height="138" rx="16" fill="#4f9b6a" stroke="${INK}" stroke-width="6"/><rect x="-74" y="-122" width="148" height="10" rx="5" fill="#fff" opacity="0.25"/>
+<text x="0" y="-62" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="76" fill="#fff">$</text><text x="0" y="-22" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="32" letter-spacing="2" fill="#fff">DOLAR AS</text>${BADGE(74, -138)}</g>`;
+      window.__timelines["kenapa"] = F1.scene("kenapa", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const imbal = w("imbal");
+        const dolar = w("dolar");
+        const bunga = w("bunga");
+        const kalah = w("kalah");
+        const land1 = imbal + 6;
+        const land2 = dolar + 4;
+        // blocks fall in (quadratic), then the plank settles with a small wobble
+        const fall = (landAt) => F1.ramp(f, landAt - 10, 10, (t) => t * t);
+        const f1p = fall(land1);
+        const f2p = fall(land2);
+        const wob = (landAt) => (f >= landAt ? 2.6 * Math.exp(-(f - landAt) / 9) * Math.sin((f - landAt) * 0.8) : 0);
+        const tilt = -5 + 11 * F1.ramp(f, land1, 14, F1.expoOut) + 8 * F1.ramp(f, land2, 14, F1.expoOut) + wob(land1) + wob(land2);
+        const lift = 26 * F1.ramp(f, kalah, 18, F1.expoOut) * Math.abs(Math.cos((f - kalah) / 9)) * (f >= kalah ? 1 : 0);
+        const light = F1.ramp(f, 0, 14);
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#141416"/>
+<path d="M430 0 L650 0 L${n(960)} 1100 L${n(120)} 1100 Z" fill="#2c2b2f" opacity="${n(0.8 * light, 3)}"/>
+<g opacity="${n(light, 3)}">${W.dust(f, { x: 200, y: 80, w: 680, h: 1000, count: 34, seed: 14, alpha: 0.4 })}</g>
+<ellipse cx="540" cy="1090" rx="430" ry="46" fill="#2f2e33"/>
+<path d="M470 1086 L610 1086 L560 868 L520 868 Z" fill="#6b5b45" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+<g transform="translate(540 866) rotate(${n(-tilt, 2)})">
+<rect x="-410" y="-4" width="820" height="26" rx="13" fill="#c9a24a" stroke="${INK}" stroke-width="6" transform="translate(0 -22)"/>
+${f >= imbal - 12 ? W1(-300, -24 + -450 * (1 - f1p)) : ""}${f >= dolar - 12 ? W2(-95, -24 + -450 * (1 - f2p)) : ""}
+<circle cx="285" cy="-120" r="150" fill="#e0b13a" opacity="0.16"/>
+<g transform="translate(0 ${n(-lift)})">${GOLD(285, -24, 0.7)}</g></g>
+<circle cx="540" cy="866" r="22" fill="#c9a24a" stroke="${INK}" stroke-width="6"/></svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1.03, ox: 50, oy: 40 },
+              { at: imbal - 6, scale: 1.06, ox: 38, oy: 42, ease: 14 },
+              { at: kalah - 6, scale: 1.06, ox: 66, oy: 40, ease: 14 },
+            ],
+          }),
+          C.vignette(0.6, "50% 48%", 38),
+          C.tag(f, { at: bunga, x: 200, y: 1080, rot: -3, light: true, size: 36, text: `<span style="color:#c0392b">EMAS TIDAK MEMBERI BUNGA</span>` }),
+          C.tag(f, { at: kalah, x: 560, y: 540, rot: 5, light: true, size: 42, text: `<span style="color:#c0392b">KALAH MENARIK</span>` }),
+          C.progress(f, { step: 3, label: "TERSANGKA · BUNGA & DOLAR" }),
+          C.hud(f, { at: 4, kicker: "TERSANGKA · WORLD GOLD COUNCIL", big: "BUNGA & DOLAR", sub: "SEP 2026 · EMAS −8,5% SEBULAN", src: "World Gold Council (Sep 2026)", w: 540, bigSize: 56 }),
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

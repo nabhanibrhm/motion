@@ -1,0 +1,165 @@
+{
+ "comment": "Short 'Kelas Menengah Hilang ke Mana?' (script-short.md, sources there). Non-political. Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "say": {},
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1.0,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Kelas Menengah"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Gajiku naik tiap tahun. [pause 0.15] Kok rasanya makin bokek?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Beni, kamu nggak sendirian.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "angka",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Data BPS: tahun dua ribu sembilan belas, kelas menengah ada lima puluh tujuh juta orang. Tahun dua ribu dua puluh empat, tinggal empat puluh delapan juta."
+    },
+    {
+     "speaker": "bog",
+     "text": "Hilang sembilan setengah juta orang?!"
+    },
+    {
+     "speaker": "mog",
+     "text": "Bukan hilang, turun kelas. Kelompok menuju kelas menengah malah membengkak, sekarang sekitar separuh penduduk.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "siapa",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kelas menengah itu yang kayak gimana?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Versi BPS, pengeluarannya sekitar dua juta sampai sepuluh juta per orang per bulan. Kebanyakan mepet di batas bawah.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kenapa",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Penyebabnya? BPS menyebut luka pandemi. Bank Dunia mencatat pekerja bergaji kelas menengah menyusut dari empat belas jadi delapan persen. Dan delapan dari sepuluh lapangan kerja baru itu informal.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "gaji",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Tapi gajiku kan naik?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Tahun lalu rata-rata upah buruh naik satu koma sembilan persen, harga naik dua koma tiga persen. Gaji naik, daya beli malah turun. Saldo rata-rata rekening kecil juga turun, meski kata LPS totalnya masih tumbuh.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kalau",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kalau kena PHK?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Tahun lalu delapan puluh delapan ribu pekerja kena PHK. Tanpa tabungan, satu PHK atau sakit bisa bikin keluarga turun kelas.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Jadi: siapkan dana darurat minimal tiga kali pengeluaran bulanan. Cicilan maksimal tiga puluh persen penghasilan. Simpan di bank yang dijamin LPS, terus tambah keahlian.",
+     "after": 0.1
+    },
+    {
+     "speaker": "bog",
+     "text": "Oke, mulai bulan ini aku nabung dulu.",
+     "after": 0.15
+    },
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup! Kamu merasa masih kelas menengah? Tulis di komentar!",
+     "after": 0.3
+    }
+   ]
+  }
+ ]
+}

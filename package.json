@@ -1,0 +1,27 @@
+{
+  "name": "motion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "motion": "node scripts/motion.mjs",
+    "list": "node scripts/motion.mjs list",
+    "new": "node scripts/motion.mjs new",
+    "validate": "node scripts/motion.mjs validate",
+    "voice": "node scripts/motion.mjs voice",
+    "sync": "node scripts/motion.mjs sync",
+    "preview": "node scripts/motion.mjs preview",
+    "stills": "node scripts/motion.mjs stills",
+    "lint": "node scripts/motion.mjs lint",
+    "check": "node scripts/motion.mjs check",
+    "render": "node scripts/motion.mjs render",
+    "clean": "node scripts/motion.mjs clean",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "hyperframes": "0.8.210"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

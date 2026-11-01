@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "emas",
+  "number": 6,
+  "title": "Emas Katanya Aman, Kok Turun 20%?",
+  "category": "Ekonomi_keuangan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #06",
+      "steps": 7
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "harga",
+      "file": "scenes/harga.html"
+    },
+    {
+      "id": "kenapa",
+      "file": "scenes/kenapa.html"
+    },
+    {
+      "id": "spread",
+      "file": "scenes/spread.html"
+    },
+    {
+      "id": "kalau",
+      "file": "scenes/kalau.html"
+    },
+    {
+      "id": "jangka",
+      "file": "scenes/jangka.html"
+    },
+    {
+      "id": "pelajaran",
+      "file": "scenes/pelajaran.html"
+    }
+  ],
+  "audio": {
+    "bed": "music/bed.mp3",
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

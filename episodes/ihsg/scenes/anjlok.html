@@ -1,0 +1,156 @@
+<!-- Anjlok (the one dark beat): a trading-floor board at 08:58; on "dihentikan" the status flips to DIHENTIKAN, the siren glows and a TRADING HALT stamp slams in. On "Sorenya" a chart panel replaces the board and draws the verified path 5.863,78 -> halt 5.393,92 -> close 5.185,10 (HUD: -11,57%); on "Sebelas" (Beni) the camera punches in on the close. On "Nilai" a pile of notes appears and lifts off on "menguap"; the HUD counts Rp760 T on "tujuh". Muklis, Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #141416;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="anjlok" data-width="1080" data-height="1920">
+    <div id="anjlok-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="anjlok-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.2667" id="anjlok-sfx-tick" class="clip" src="public/sfx/tick.wav" data-at="word:menit" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.0667" id="anjlok-sfx-halt" class="clip" src="public/sfx/stamp.wav" data-at="word:dihentikan" data-track-index="13" data-volume="0.4"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.6" id="anjlok-sfx-close" class="clip" src="public/sfx/ding-num.wav" data-at="word:ditutup" data-track-index="14" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13.0667" id="anjlok-sfx-cash" class="clip" src="public/sfx/cash.wav" data-at="word:menguap" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.8" id="anjlok-sfx-num" class="clip" src="public/sfx/ding-num.wav" data-at="word:tujuh#1" data-track-index="16" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const mono = "JetBrains Mono";
+      // verified path of 16 Okt 2026: previous close 5.863,78 -> halt 5.393,92 (-8,01%) -> close 5.185,10 (-11,57%)
+      const P0 = { x: 150, y: 640 };
+      const P1 = { x: 470, y: 910 };
+      const P2 = { x: 850, y: 1030 };
+      const lerp = (a, b, t) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+      // the exchange board: date, the 08:58 clock, the trading status
+      const BOARD = (f, { halted, pulse, alpha }) => {
+        const colon = Math.floor(f / 15) % 2 ? "0.25" : "1";
+        const edge = halted ? `rgba(255,90,95,${n(0.55 + 0.45 * Math.sin(f / 4), 3)})` : "#3a3a42";
+        return `<g opacity="${n(alpha, 3)}"><rect x="100" y="530" width="840" height="470" rx="22" fill="#1d1d22" stroke="${edge}" stroke-width="8"/>
+<text x="140" y="592" font-family="${mono}" font-weight="700" font-size="26" letter-spacing="3" fill="#9a968f">BURSA EFEK INDONESIA · JUM 16 OKT 2026</text>
+<g transform="translate(520 800) scale(${n(1 + pulse * 0.05, 3)}) translate(-520 -800)"><text x="520" y="800" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="220" fill="${halted ? "#ff5a5f" : "#f5d27a"}">08<tspan opacity="${colon}">:</tspan>58</text></g>
+<rect x="140" y="860" width="760" height="3" fill="#3a3a42"/>
+<text x="140" y="935" font-family="${mono}" font-weight="700" font-size="30" letter-spacing="3" fill="#9a968f">PERDAGANGAN</text>
+<text x="900" y="935" text-anchor="end" font-family="Oswald" font-weight="600" font-size="52" letter-spacing="4" fill="${halted ? "#ff5a5f" : "#8fdc9a"}" opacity="${halted ? n(0.65 + 0.35 * Math.sin(f / 3), 3) : 1}">${halted ? "DIHENTIKAN" : "BERJALAN"}</text></g>`;
+      };
+      const CHART = (f, { alpha, p1, p2, atHalt, atClose }) => {
+        const pts = [P0];
+        if (p1 < 1) pts.push(lerp(P0, P1, p1));
+        else {
+          pts.push(P1);
+          if (p2 > 0) pts.push(lerp(P1, P2, p2));
+        }
+        const d = pts.map((q, i) => `${i ? "L" : "M"}${n(q.x)} ${n(q.y)}`).join(" ");
+        const tip = pts[pts.length - 1];
+        const grid = [640, 760, 880, 1000].map((y) => `<line x1="110" y1="${y}" x2="910" y2="${y}" stroke="#2c2c33" stroke-width="2"/>`).join("");
+        return `<g opacity="${n(alpha, 3)}"><rect x="80" y="520" width="860" height="600" rx="22" fill="#1d1d22" stroke="#3a3a42" stroke-width="4"/>${grid}
+<text x="110" y="568" font-family="${mono}" font-weight="700" font-size="24" letter-spacing="2" fill="#9a968f">IHSG · 16 OKT 2026</text>
+<line x1="150" y1="640" x2="910" y2="640" stroke="#8d8a84" stroke-width="2" stroke-dasharray="8 8"/>
+<text x="150" y="622" font-family="${mono}" font-weight="500" font-size="20" fill="#9a968f">TUTUP SEBELUMNYA 5.863,78</text>
+<path d="${d}" fill="none" stroke="#ff5a5f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="${n(tip.x)}" cy="${n(tip.y)}" r="13" fill="#ff5a5f" stroke="#fff" stroke-width="4"/>
+${atHalt > 0 ? `<g opacity="${n(atHalt, 3)}"><text x="452" y="948" text-anchor="end" font-family="Oswald" font-weight="600" font-size="26" letter-spacing="2" fill="#ff5a5f">TRADING HALT −8,01%</text><text x="452" y="988" text-anchor="end" font-family="${mono}" font-weight="700" font-size="28" fill="#fff">5.393,92</text></g>` : ""}
+${atClose > 0 ? `<g opacity="${n(atClose, 3)}"><text x="900" y="990" text-anchor="end" font-family="${mono}" font-weight="700" font-size="44" fill="#fff">5.185,10</text><text x="900" y="1080" text-anchor="end" font-family="Oswald" font-weight="600" font-size="30" letter-spacing="2" fill="#ff5a5f">PENUTUPAN −11,57%</text></g>` : ""}</g>`;
+      };
+      // a pile of notes that lifts off and fades: every note has its own delay, sway and tilt (seeded)
+      const BILLS = (f, { appear, lift }) => {
+        if (appear <= 0) return "";
+        let out = "";
+        for (let i = 0; i < 16; i++) {
+          const r = (j) => W.hash(i * 5 + j + 40);
+          const t = lift < 0 ? 0 : Math.max(0, Math.min(1, (f - lift - r(1) * 36) / 60));
+          const x = 540 + (r(2) - 0.5) * 460 + 26 * Math.sin(f / 9 + i) * t;
+          const y = 1010 - (i % 4) * 16 + 14 * Math.floor(i / 8) - 480 * t * t - 40 * t;
+          const rot = (r(3) - 0.5) * 24 + 40 * t * (r(4) - 0.5);
+          out += `<g transform="translate(${n(x)} ${n(y)}) rotate(${n(rot, 1)})" opacity="${n(Math.min(1, appear * 1.4) * (1 - t), 3)}"><rect x="-76" y="-34" width="152" height="68" rx="7" fill="#e7a3ae" stroke="#111" stroke-width="4"/><circle cx="0" cy="0" r="20" fill="none" stroke="#7a2f3e" stroke-width="3"/><text x="0" y="9" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="26" fill="#7a2f3e">Rp</text></g>`;
+        }
+        return out;
+      };
+      const SCREENS = (f) => {
+        let out = "";
+        for (let i = 0; i < 20; i++) {
+          const r = (j) => W.hash(i * 3 + j + 7);
+          const x = 40 + (i % 5) * 210;
+          const y = 300 + Math.floor(i / 5) * 190;
+          out += `<rect x="${x}" y="${y}" width="170" height="130" rx="8" fill="#23232a"/><path d="M${x + 14} ${y + 90} L${x + 50} ${y + 40 + 40 * r(1)} L${x + 90} ${y + 70 + 30 * r(2)} L${x + 130} ${y + 30 + 30 * r(3)} L${x + 156} ${y + 100}" stroke="${r(4) > 0.5 ? "#c0392b" : "#3b7a52"}" stroke-width="5" fill="none" opacity="${n(0.45 + 0.3 * Math.sin(f / 20 + i), 3)}"/>`;
+        }
+        return out;
+      };
+      window.__timelines["anjlok"] = F1.scene("anjlok", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const menit = w("menit");
+        const halt = w("dihentikan");
+        const soren = w("Sorenya");
+        const ditutup = w("ditutup");
+        const persen = w("persen");
+        const sebelas = w("Sebelas", 1);
+        const nilai = w("Nilai");
+        const menguap = w("menguap");
+        const tujuh = w("tujuh", 1);
+        const triliun = w("triliun");
+        const halted = f >= halt;
+        const boardA = 1 - F1.ramp(f, soren - 2, 10);
+        const chartA = F1.ramp(f, soren - 2, 10) * (1 - 0.8 * F1.ramp(f, nilai, 12));
+        const p1 = F1.ramp(f, soren, 22, F1.easeOut);
+        const p2 = F1.ramp(f, ditutup, persen - ditutup + 8, F1.easeOut);
+        const atHalt = F1.ramp(f, soren + 20, 8, F1.expoOut);
+        const atClose = F1.ramp(f, persen, 10, F1.expoOut);
+        const pulse = f >= menit && f < menit + 12 ? Math.sin(((f - menit) / 12) * Math.PI) : 0;
+        const siren = halted && f < soren + 20 ? 0.1 + 0.1 * Math.sin((f - halt) / 3) : 0;
+        const t = f - sebelas;
+        const shake = t >= 0 && t < 10 ? 8 * Math.sin(t * 2.4) * (1 - t / 10) : 0;
+        const flash = f >= sebelas ? 0.13 * Math.exp(-(f - sebelas) / 5) : 0;
+        const traders = F1.world.row(f, { y: 1115, s: 0.62, count: 9, seed: 33, speed: 1.2, freeze: halt });
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#141416"/>
+<g style="filter:blur(4px)" opacity="0.55">${SCREENS(f)}</g>
+<g style="filter:blur(2px)" opacity="0.35">${traders}</g>
+${BOARD(f, { halted, pulse, alpha: boardA })}
+${CHART(f, { alpha: chartA, p1, p2, atHalt, atClose })}
+${BILLS(f, { appear: F1.ramp(f, nilai, 10, F1.expoOut), lift: f >= menguap ? menguap : -1 })}</svg>`;
+        const count = Math.round(760 * F1.ramp(f, tujuh, 40, F1.easeOut));
+        const hud =
+          f >= tujuh
+            ? C.hud(f, { at: tujuh, kicker: "MENGUAP", big: `Rp${count} T`, sub: "SEBELUM 09.00 · 16 OKT", src: "Katadata" })
+            : f >= ditutup
+              ? C.hud(f, { at: ditutup, kicker: "PENUTUPAN", big: "−11,57%", sub: "5.185,10 · −678,67 POIN", src: "Kontan" })
+              : halted
+                ? C.hud(f, { at: halt, kicker: "TRADING HALT", big: "−8,01%", sub: "08:58–09:28 · 5.393,92", src: "Republika" })
+                : C.hud(f, { at: 4, kicker: "JUM 16 OKT 2026", big: "08:58", sub: "BURSA EFEK INDONESIA", src: "Republika" });
+        return F1.join(
+          `<div style="position:absolute;inset:0;transform:translate(${n(shake)}px,0)">`,
+          C.stage(f, D, BG, {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.04, ox: 50, oy: 42 },
+              { at: halt, scale: 1.14, ox: 50, oy: 38, ease: 10 },
+              { at: soren, scale: 1, ox: 50, oy: 45, ease: 12 },
+              { at: sebelas, scale: 1.15, ox: 75, oy: 40, ease: 8 },
+              { at: nilai, scale: 1.04, ox: 50, oy: 50, ease: 14 },
+            ],
+          }),
+          `<div style="position:absolute;inset:0;background:rgba(255,60,60,${n(siren + flash, 3)})"></div>`,
+          C.vignette(0.6, "50% 52%", 38),
+          `</div>`,
+          f >= halt && f < soren ? C.stamp(f, { at: halt, x: 250, y: 1010, rot: -7, text: "TRADING HALT", size: 66 }) : "",
+          f >= triliun ? C.tag(f, { at: triliun, x: 140, y: 600, rot: -3, light: true, size: 44, text: `<span style="color:#c0392b">Rp760 TRILIUN MENGUAP</span>` }) : "",
+          f >= triliun ? C.tag(f, { at: triliun + 8, x: 300, y: 690, rot: 2, size: 28, text: "SEBELUM BURSA BUKA 09.00" }) : "",
+          C.progress(f, { step: 2, label: "BUKTI 1 · ANJLOK" }),
+          hud,
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0, dim: 0.8 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400, dim: 0.88 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, dim: 0.8 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,0 +1,124 @@
+<!-- Slik (the one dark scene): a credit-report card on a night desk. On "SLIK" the card slides in (five KOL boxes 1-5, dim); from "Telat" a day counter runs to 180 while the boxes light up 1 -> 5 (green to red), KOL 5 flashes and a MACET stamp slams on "macet". Beni asks; on "KPR" the card slides out and ten small houses appear, on "tiga puluh persen" three get a red cross, and on "gagal" a KPR DITOLAK stamp lands. Sources: OJK via InvestorTrust (2024), BTN via CNBC Indonesia (Jul 2024). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #1a1f2a;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="slik" data-width="1080" data-height="1920">
+    <div id="slik-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="slik-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.7333" id="slik-sfx-card" class="clip" src="public/sfx/pop-in.wav" data-at="word:SLIK" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.9667" id="slik-sfx-tick" class="clip" src="public/sfx/tick.wav" data-at="word:Telat" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8" id="slik-sfx-macet" class="clip" src="public/sfx/stamp.wav" data-at="word:macet" data-track-index="14" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.5" id="slik-sfx-kpr" class="clip" src="public/sfx/pop-in.wav" data-at="word:KPR" data-track-index="15" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="15.1667" id="slik-sfx-x" class="clip" src="public/sfx/click.wav" data-at="word:persen" data-track-index="16" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="16.7667" id="slik-sfx-ditolak" class="clip" src="public/sfx/stamp.wav" data-at="word:gagal" data-track-index="17" data-volume="0.45"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const KOL = ["#6fcf6a", "#c6f432", "#f2c14a", "#ee8a3a", "#d0413a"];
+      // a small subsidised house; cross = 0..1 red X over it
+      const HOUSE = (x, y, cross, pop) => `<g transform="translate(${x} ${y}) scale(${n(1 + 0.12 * pop, 3)})" stroke="${INK}" stroke-width="5" stroke-linejoin="round">
+<rect x="-52" y="-34" width="104" height="70" fill="${cross > 0 ? "#f1d3cd" : "#f4ead6"}"/><path d="M-66 -34 L0 -88 L66 -34 Z" fill="${cross > 0 ? "#d0413a" : "#b9783e"}"/><rect x="-12" y="-4" width="26" height="40" fill="#8a6a4f"/><rect x="-42" y="-18" width="22" height="20" fill="#bfe3e8"/><rect x="24" y="-18" width="22" height="20" fill="#bfe3e8"/></g>
+${cross > 0 ? `<path d="M${x - 48} ${y - 78} L${n(x - 48 + 96 * cross)} ${n(y - 78 + 120 * cross)} M${x + 48} ${y - 78} L${n(x + 48 - 96 * cross)} ${n(y - 78 + 120 * cross)}" stroke="#ff4d44" stroke-width="12" stroke-linecap="round"/>` : ""}`;
+      const FOLDER = (f, p) => p <= 0.001 ? "" : `<g transform="translate(540 ${n(820 + 40 * (1 - p))}) rotate(${n(-3 + 2 * Math.sin(f / 25), 2)})" opacity="${n(p, 3)}"><path d="M-250 -170 H-120 L-90 -205 H250 V-170" fill="#d9b36a" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/><rect x="-250" y="-170" width="500" height="340" rx="14" fill="#e9c47e" stroke="${INK}" stroke-width="7"/><rect x="-170" y="-90" width="340" height="110" rx="10" fill="#f6efe1" stroke="${INK}" stroke-width="5"/><text x="0" y="-18" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="50" letter-spacing="3" fill="${INK}">BERKAS KREDIT</text><text x="0" y="112" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="30" letter-spacing="3" fill="#c0392b">CATATAN TELAT BAYAR?</text></g>`;
+      const BG = (f, o) => {
+        const card = o.card * (1 - o.houses) <= 0.001 ? "" : `<g transform="translate(${n(90 + (1 - o.card) * 300 - o.houses * 400)} 600)" opacity="${n(o.card * (1 - o.houses), 3)}">
+<rect x="0" y="0" width="800" height="520" rx="22" fill="#f6efe1" stroke="${INK}" stroke-width="7"/>
+<rect x="0" y="0" width="800" height="92" rx="22" fill="${INK}"/><rect x="0" y="60" width="800" height="32" fill="${INK}"/>
+<text x="36" y="62" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="4" fill="#fff">SLIK OJK · CATATAN KREDIT</text>
+<text x="36" y="150" font-family="JetBrains Mono" font-weight="500" font-size="22" letter-spacing="2" fill="#6f6a66">KOLEKTIBILITAS</text>
+${KOL.map((c, i) => {
+  const on = o.kolOn[i];
+  const hot = i === 4 && o.macetP > 0;
+  const x = 36 + i * 148;
+  return `<g transform="translate(${x} 180) scale(${n(1 + (hot ? 0.06 * Math.sin(f / 2) : 0), 3)})"><rect width="130" height="150" rx="14" fill="${on ? c : "#e3dccd"}" stroke="${INK}" stroke-width="6"/><text x="65" y="52" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="30" letter-spacing="2" fill="${on ? INK : "#9b9488"}">KOL</text><text x="65" y="124" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="84" fill="${on ? (i === 4 ? "#fff" : INK) : "#9b9488"}">${i + 1}</text></g>`;
+}).join("")}
+<text x="36" y="410" font-family="JetBrains Mono" font-weight="700" font-size="46" fill="${INK}">TELAT ${o.days} HARI</text>
+<rect x="36" y="440" width="728" height="22" rx="11" fill="#e3dccd" stroke="${INK}" stroke-width="4"/><rect x="38" y="442" width="${n(724 * Math.min(1, o.days / 180))}" height="18" rx="9" fill="${o.days >= 180 ? "#d0413a" : "#ee8a3a"}"/>
+<text x="36" y="498" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">KOL 5 = MACET, TELAT LEBIH DARI 180 HARI</text></g>`;
+        const hs = o.houses <= 0.001 ? "" : `<g opacity="${n(o.houses, 3)}" transform="translate(0 ${n((1 - o.houses) * 50)})">
+<text x="540" y="640" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="44" letter-spacing="3" fill="#fff">RUMAH SUBSIDI · KPR</text>
+${Array.from({ length: 10 }, (_, i) => {
+  const col = i % 5;
+  const row = Math.floor(i / 5);
+  const bad = i >= 7;
+  const crossAt = o.crossAt + (i - 7) * 7;
+  return HOUSE(160 + col * 190, 800 + row * 200, bad ? F1.ramp(f, crossAt, 8, F1.expoOut) : 0, bad && f >= crossAt ? Math.max(0, 1 - (f - crossAt) / 10) : 0);
+}).join("")}
+<text x="90" y="1175" font-family="JetBrains Mono" font-weight="500" font-size="19" fill="#8d95a3">Sumber: BTN via CNBC Indonesia (9 Jul 2024)</text></g>`;
+        return `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="slik-glow" cx="50%" cy="38%" r="65%"><stop offset="0" stop-color="#2b3445"/><stop offset="1" stop-color="#12151c"/></radialGradient>
+<linearGradient id="slik-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe9a8" stop-opacity="0.22"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></linearGradient></defs>
+<rect width="1080" height="1920" fill="url(#slik-glow)"/>
+<path d="M360 0 L720 0 L1000 1250 L80 1250 Z" fill="url(#slik-beam)"/>
+${W.dust(f, { x: 120, y: 520, w: 840, h: 700, count: 22, seed: 12, color: "#ffe9a8", alpha: 0.35 })}
+<rect x="0" y="1150" width="1080" height="770" fill="#10131a"/><rect x="0" y="1150" width="1080" height="6" fill="#3a4357"/>
+${FOLDER(f, 1 - o.card)}${card}${hs}</svg>`;
+      };
+      window.__timelines["slik"] = F1.scene("slik", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const slik = w("SLIK");
+        const telat = w("Telat");
+        const hari = w("hari");
+        const macet = w("macet");
+        const kpr = w("KPR");
+        const tiga = w("tiga", 0);
+        const persen = w("persen");
+        const gagal = w("gagal");
+        // KOL boxes light up 1 -> 5 across "Telat ... seratus delapan puluh hari"
+        const step = (hari - telat) / 4;
+        const kolOn = [0, 1, 2, 3, 4].map((i) => f >= telat + i * step - (i === 0 ? 0 : 0) && (i < 4 || f >= hari));
+        const days = Math.round(181 * F1.ramp(f, telat, hari - telat + 4, F1.Easing.linear || ((t) => t)));
+        const o = {
+          card: F1.ramp(f, slik - 2, 14, F1.expoOut),
+          houses: F1.ramp(f, kpr - 6, 12, F1.expoOut),
+          kolOn,
+          days: Math.min(181, days) > 180 ? "> 180" : String(Math.min(180, days)),
+          macetP: F1.ramp(f, macet, 6, F1.expoOut),
+          crossAt: persen,
+        };
+        const flash = f >= macet && f < macet + 12 ? 0.3 * Math.exp(-(f - macet) / 4) : 0;
+        const shake = f >= macet && f < macet + 9 ? 7 * Math.sin(f * 2.2) * (1 - (f - macet) / 9) : f >= gagal && f < gagal + 9 ? 7 * Math.sin(f * 2.2) * (1 - (f - gagal) / 9) : 0;
+        const l2 = F1.line(S, 2).start;
+        return F1.join(
+          `<div style="position:absolute;inset:0;transform:translate(${n(shake)}px,${n(shake * 0.6)}px)">`,
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.0, ox: 50, oy: 60 },
+              { at: slik - 4, scale: 1.1, ox: 50, oy: 56, ease: 16 },
+              { at: hari - 6, scale: 1.1, ox: 50, oy: 56, ease: 14 },
+              { at: macet, scale: 1.08, ox: 50, oy: 58, ease: 6 },
+              { at: kpr - 6, scale: 1.0, ox: 50, oy: 62, ease: 14 },
+              { at: w("BTN"), scale: 1.08, ox: 50, oy: 64, ease: 14 },
+            ],
+          }),
+          `<div style="position:absolute;inset:0;background:rgba(208,65,58,${n(flash, 3)})"></div>`,
+          C.vignette(0.5, "50% 58%", 40),
+          f < kpr - 8 ? C.stamp(f, { at: macet, x: 610, y: 965, rot: -9, text: "MACET", size: 76 }) : "",
+          C.stamp(f, { at: gagal, x: 220, y: 1030, rot: -8, text: "KPR DITOLAK", size: 70 }),
+          C.progress(f, { step: 5, label: "BUKTI 3 · SLIK" }),
+          f < l2
+            ? C.hud(f, { at: 4, kicker: "YANG PALING BAHAYA", big: f < slik ? "SLIK OJK" : f < macet ? "SLIK OJK" : "KOL 5 · MACET", sub: "TELAT > 180 HARI", src: "OJK via InvestorTrust (2024)", w: 540, bigSize: 56 })
+            : C.hud(f, { at: w("BTN") - 6, kicker: "RUMAH SUBSIDI GAGAL AKAD", big: "30%", sub: "KARENA CATATAN PINJOL", src: "BTN via CNBC Indonesia (Jul 2024)", w: 560, bigSize: 72 }),
+          `</div>`,
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,0 +1,592 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "path": "cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/cast/beni-kaget.svg",
+        "out/Ekonomi_keuangan/rupiah/public/cast/beni-kaget.svg",
+        "out/Ekonomi_keuangan/ihsg/public/cast/beni-kaget.svg",
+        "out/Ekonomi_keuangan/paylater/public/cast/beni-kaget.svg",
+        "out/Ekonomi_keuangan/judol/public/cast/beni-kaget.svg",
+        "out/Ekonomi_keuangan/emas/public/cast/beni-kaget.svg",
+        "out/Ekonomi_keuangan/kelas/public/cast/beni-kaget.svg"
+      ]
+    },
+    {
+      "path": "cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/cast/beni.svg",
+        "out/Ekonomi_keuangan/rupiah/public/cast/beni.svg",
+        "out/Ekonomi_keuangan/ihsg/public/cast/beni.svg",
+        "out/Ekonomi_keuangan/paylater/public/cast/beni.svg",
+        "out/Ekonomi_keuangan/judol/public/cast/beni.svg",
+        "out/Ekonomi_keuangan/emas/public/cast/beni.svg",
+        "out/Ekonomi_keuangan/kelas/public/cast/beni.svg"
+      ]
+    },
+    {
+      "path": "cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/cast/muklis-senyum.svg",
+        "out/Ekonomi_keuangan/rupiah/public/cast/muklis-senyum.svg",
+        "out/Ekonomi_keuangan/ihsg/public/cast/muklis-senyum.svg",
+        "out/Ekonomi_keuangan/paylater/public/cast/muklis-senyum.svg",
+        "out/Ekonomi_keuangan/judol/public/cast/muklis-senyum.svg",
+        "out/Ekonomi_keuangan/emas/public/cast/muklis-senyum.svg",
+        "out/Ekonomi_keuangan/kelas/public/cast/muklis-senyum.svg"
+      ]
+    },
+    {
+      "path": "cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/cast/muklis.svg",
+        "out/Ekonomi_keuangan/rupiah/public/cast/muklis.svg",
+        "out/Ekonomi_keuangan/ihsg/public/cast/muklis.svg",
+        "out/Ekonomi_keuangan/paylater/public/cast/muklis.svg",
+        "out/Ekonomi_keuangan/judol/public/cast/muklis.svg",
+        "out/Ekonomi_keuangan/emas/public/cast/muklis.svg",
+        "out/Ekonomi_keuangan/kelas/public/cast/muklis.svg"
+      ]
+    },
+    {
+      "path": "cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/cast/nisa-kaget.svg",
+        "out/Ekonomi_keuangan/rupiah/public/cast/nisa-kaget.svg",
+        "out/Ekonomi_keuangan/ihsg/public/cast/nisa-kaget.svg",
+        "out/Ekonomi_keuangan/paylater/public/cast/nisa-kaget.svg",
+        "out/Ekonomi_keuangan/judol/public/cast/nisa-kaget.svg",
+        "out/Ekonomi_keuangan/emas/public/cast/nisa-kaget.svg",
+        "out/Ekonomi_keuangan/kelas/public/cast/nisa-kaget.svg"
+      ]
+    },
+    {
+      "path": "cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/cast/nisa.svg",
+        "out/Ekonomi_keuangan/rupiah/public/cast/nisa.svg",
+        "out/Ekonomi_keuangan/ihsg/public/cast/nisa.svg",
+        "out/Ekonomi_keuangan/paylater/public/cast/nisa.svg",
+        "out/Ekonomi_keuangan/judol/public/cast/nisa.svg",
+        "out/Ekonomi_keuangan/emas/public/cast/nisa.svg",
+        "out/Ekonomi_keuangan/kelas/public/cast/nisa.svg"
+      ]
+    },
+    {
+      "path": "fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/BricolageGrotesque.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/BricolageGrotesque.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/BricolageGrotesque.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/BricolageGrotesque.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/BricolageGrotesque.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/BricolageGrotesque.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/BricolageGrotesque.ttf"
+      ]
+    },
+    {
+      "path": "fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/JetBrainsMono-VF.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/JetBrainsMono-VF.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/JetBrainsMono-VF.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/JetBrainsMono-VF.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/JetBrainsMono-VF.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/JetBrainsMono-VF.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/JetBrainsMono-VF.ttf"
+      ]
+    },
+    {
+      "path": "fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/LICENSE-LuckiestGuy.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/LICENSE-LuckiestGuy.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/LICENSE-LuckiestGuy.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/LICENSE-LuckiestGuy.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/LICENSE-LuckiestGuy.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/LICENSE-LuckiestGuy.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/LICENSE-LuckiestGuy.txt"
+      ]
+    },
+    {
+      "path": "fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/LuckiestGuy-Regular.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/LuckiestGuy-Regular.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/LuckiestGuy-Regular.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/LuckiestGuy-Regular.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/LuckiestGuy-Regular.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/LuckiestGuy-Regular.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/LuckiestGuy-Regular.ttf"
+      ]
+    },
+    {
+      "path": "fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/Montserrat-VF.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/Montserrat-VF.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/Montserrat-VF.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/Montserrat-VF.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/Montserrat-VF.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/Montserrat-VF.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/Montserrat-VF.ttf"
+      ]
+    },
+    {
+      "path": "fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/NunitoSans.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/NunitoSans.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/NunitoSans.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/NunitoSans.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/NunitoSans.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/NunitoSans.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/NunitoSans.ttf"
+      ]
+    },
+    {
+      "path": "fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-BricolageGrotesque.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-BricolageGrotesque.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-BricolageGrotesque.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/OFL-BricolageGrotesque.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/OFL-BricolageGrotesque.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/OFL-BricolageGrotesque.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/OFL-BricolageGrotesque.txt"
+      ]
+    },
+    {
+      "path": "fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-JetBrainsMono.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-JetBrainsMono.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-JetBrainsMono.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/OFL-JetBrainsMono.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/OFL-JetBrainsMono.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/OFL-JetBrainsMono.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/OFL-JetBrainsMono.txt"
+      ]
+    },
+    {
+      "path": "fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-Montserrat.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-Montserrat.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-Montserrat.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/OFL-Montserrat.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/OFL-Montserrat.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/OFL-Montserrat.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/OFL-Montserrat.txt"
+      ]
+    },
+    {
+      "path": "fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-NunitoSans.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-NunitoSans.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-NunitoSans.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/OFL-NunitoSans.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/OFL-NunitoSans.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/OFL-NunitoSans.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/OFL-NunitoSans.txt"
+      ]
+    },
+    {
+      "path": "fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-Oswald.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-Oswald.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-Oswald.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/OFL-Oswald.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/OFL-Oswald.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/OFL-Oswald.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/OFL-Oswald.txt"
+      ]
+    },
+    {
+      "path": "fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-PatrickHand.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-PatrickHand.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-PatrickHand.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/OFL-PatrickHand.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/OFL-PatrickHand.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/OFL-PatrickHand.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/OFL-PatrickHand.txt"
+      ]
+    },
+    {
+      "path": "fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/OFL.txt",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/OFL.txt",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/OFL.txt",
+        "out/Ekonomi_keuangan/paylater/public/fonts/OFL.txt",
+        "out/Ekonomi_keuangan/judol/public/fonts/OFL.txt",
+        "out/Ekonomi_keuangan/emas/public/fonts/OFL.txt",
+        "out/Ekonomi_keuangan/kelas/public/fonts/OFL.txt"
+      ]
+    },
+    {
+      "path": "fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/Oswald-VF.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/Oswald-VF.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/Oswald-VF.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/Oswald-VF.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/Oswald-VF.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/Oswald-VF.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/Oswald-VF.ttf"
+      ]
+    },
+    {
+      "path": "fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/PatrickHand-Regular.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/PatrickHand-Regular.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/PatrickHand-Regular.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/PatrickHand-Regular.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/PatrickHand-Regular.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/PatrickHand-Regular.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/PatrickHand-Regular.ttf"
+      ]
+    },
+    {
+      "path": "fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-Black.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-Black.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-Black.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-Black.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-Black.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-Black.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-Black.ttf"
+      ]
+    },
+    {
+      "path": "fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-Bold.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-Bold.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-Bold.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-Bold.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-Bold.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-Bold.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-Bold.ttf"
+      ]
+    },
+    {
+      "path": "fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-Regular.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-Regular.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-Regular.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-Regular.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-Regular.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-Regular.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-Regular.ttf"
+      ]
+    },
+    {
+      "path": "fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-SemiBold.ttf",
+        "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-SemiBold.ttf",
+        "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-SemiBold.ttf",
+        "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-SemiBold.ttf",
+        "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-SemiBold.ttf",
+        "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-SemiBold.ttf",
+        "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-SemiBold.ttf"
+      ]
+    },
+    {
+      "path": "music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde",
+      "sources": [
+        "out/Ekonomi_keuangan/rupiah/public/music/bed.mp3",
+        "out/Ekonomi_keuangan/ihsg/public/music/bed.mp3",
+        "out/Ekonomi_keuangan/paylater/public/music/bed.mp3",
+        "out/Ekonomi_keuangan/judol/public/music/bed.mp3",
+        "out/Ekonomi_keuangan/emas/public/music/bed.mp3",
+        "out/Ekonomi_keuangan/kelas/public/music/bed.mp3"
+      ]
+    },
+    {
+      "path": "sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/cash.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/cash.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/cash.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/cash.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/cash.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/cash.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/cash.wav"
+      ]
+    },
+    {
+      "path": "sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/click.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/click.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/click.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/click.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/click.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/click.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/click.wav"
+      ]
+    },
+    {
+      "path": "sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/ding-num.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/ding-num.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/ding-num.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/ding-num.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/ding-num.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/ding-num.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/ding-num.wav"
+      ]
+    },
+    {
+      "path": "sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/ding.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/ding.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/ding.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/ding.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/ding.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/ding.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/ding.wav"
+      ]
+    },
+    {
+      "path": "sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/door-open.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/door-open.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/door-open.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/door-open.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/door-open.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/door-open.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/door-open.wav"
+      ]
+    },
+    {
+      "path": "sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/drip.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/drip.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/drip.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/drip.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/drip.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/drip.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/drip.wav"
+      ]
+    },
+    {
+      "path": "sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/fall.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/fall.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/fall.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/fall.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/fall.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/fall.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/fall.wav"
+      ]
+    },
+    {
+      "path": "sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/pop-in.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/pop-in.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/pop-in.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/pop-in.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/pop-in.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/pop-in.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/pop-in.wav"
+      ]
+    },
+    {
+      "path": "sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/pop.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/pop.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/pop.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/pop.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/pop.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/pop.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/pop.wav"
+      ]
+    },
+    {
+      "path": "sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/riser.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/riser.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/riser.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/riser.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/riser.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/riser.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/riser.wav"
+      ]
+    },
+    {
+      "path": "sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/shutter.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/shutter.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/shutter.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/shutter.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/shutter.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/shutter.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/shutter.wav"
+      ]
+    },
+    {
+      "path": "sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/stamp.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/stamp.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/stamp.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/stamp.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/stamp.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/stamp.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/stamp.wav"
+      ]
+    },
+    {
+      "path": "sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/sub-drop.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/sub-drop.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/sub-drop.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/sub-drop.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/sub-drop.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/sub-drop.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/sub-drop.wav"
+      ]
+    },
+    {
+      "path": "sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/swoosh-soft.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/swoosh-soft.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/swoosh-soft.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/swoosh-soft.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/swoosh-soft.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/swoosh-soft.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/swoosh-soft.wav"
+      ]
+    },
+    {
+      "path": "sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/tick.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/tick.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/tick.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/tick.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/tick.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/tick.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/tick.wav"
+      ]
+    },
+    {
+      "path": "sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593",
+      "sources": [
+        "out/Ekonomi_keuangan/inflasi/public/sfx/whoosh.wav",
+        "out/Ekonomi_keuangan/rupiah/public/sfx/whoosh.wav",
+        "out/Ekonomi_keuangan/ihsg/public/sfx/whoosh.wav",
+        "out/Ekonomi_keuangan/paylater/public/sfx/whoosh.wav",
+        "out/Ekonomi_keuangan/judol/public/sfx/whoosh.wav",
+        "out/Ekonomi_keuangan/emas/public/sfx/whoosh.wav",
+        "out/Ekonomi_keuangan/kelas/public/sfx/whoosh.wav"
+      ]
+    }
+  ]
+}

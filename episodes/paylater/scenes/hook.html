@@ -1,0 +1,114 @@
+<!-- Hook: a phone floats in a warm sneaker-pop backdrop. Frame 0 is fully drawn (thumbnail): the shop page with the big "CICILAN 0%" badge. On "cicilan" the badge pulses, on "persen" a finger taps BELI; on "Kok" the screen flips to a red bill that ticks up (ILUSTRASI: Rp2.000.000 -> Rp2.262.420, the example from the "nol" scene) while the phone buzzes; on "kasus" a KASUS PAYLATER stamp slams. Beni, then Nisa. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f4e4c8;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0.9667" id="hook-sfx-badge" class="clip" src="public/sfx/pop-in.wav" data-at="word:cicilan" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.5333" id="hook-sfx-tap" class="clip" src="public/sfx/click.wav" data-at="word:persen" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.3333" id="hook-sfx-bill" class="clip" src="public/sfx/ding-num.wav" data-at="word:tagihannya" data-track-index="14" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.3333" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:kasus" data-track-index="15" data-volume="0.4"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const rp = (v) => "Rp" + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const SNEAKER = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})" stroke="${INK}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+<path d="M-112 40 L-112 -8 Q-110 -30 -80 -34 L-42 -36 Q-22 -62 10 -64 L30 -40 Q62 -30 92 -10 Q118 2 118 32 L118 40 Z" fill="#fffaf0"/>
+<path d="M-112 6 Q-60 -10 -10 6 Q40 22 118 12" fill="none" stroke="#d0413a" stroke-width="12"/>
+<path d="M-8 -30 l22 18 M10 -42 l20 16 M-26 -22 l20 16" fill="none" stroke-width="5"/>
+<rect x="-116" y="32" width="238" height="24" rx="12" fill="#e9e2d3"/></g>`;
+      // the phone: screen A = shop page, screen B = bill
+      const PHONE = (f, { tapP, flip, amount, buzz, badgePulse }) => {
+        const a = 1 - flip;
+        const shopX = n(-340 * flip);
+        const billX = n(340 * (1 - flip));
+        const press = tapP > 0 && tapP < 1 ? 1 : 0;
+        const shop = `<g transform="translate(${shopX} 0)" opacity="${n(a, 3)}">
+<rect x="-168" y="-285" width="336" height="64" fill="#fffaf0"/><text x="0" y="-242" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="30" letter-spacing="4" fill="${INK}">TOKO SEPATU</text>
+<rect x="-168" y="-221" width="336" height="200" fill="#ffe3b8"/>${SNEAKER(0, -100, 1.05)}
+<text x="-140" y="30" font-family="Oswald" font-weight="600" font-size="34" fill="${INK}">SEPATU IMPIAN</text>
+<text x="-140" y="76" font-family="JetBrains Mono" font-weight="700" font-size="34" fill="${INK}">Rp2.000.000</text>
+<text x="-140" y="104" font-family="JetBrains Mono" font-weight="500" font-size="16" letter-spacing="2" fill="#8a6f55">ILUSTRASI</text>
+<g transform="translate(0 160) rotate(-4) scale(${n(1 + badgePulse, 3)})"><rect x="-140" y="-40" width="280" height="80" rx="16" fill="#c6f432" stroke="${INK}" stroke-width="6"/><text x="0" y="17" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="46" letter-spacing="1" fill="${INK}">CICILAN 0%</text></g>
+<g transform="translate(0 238) scale(${n(1 - 0.06 * Math.sin(Math.PI * Math.min(1, tapP * 2)) * press, 3)})"><rect x="-130" y="-30" width="260" height="60" rx="30" fill="${INK}"/><text x="0" y="11" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="30" letter-spacing="3" fill="#fff">BELI SEKARANG</text></g>
+${press ? `<circle cx="40" cy="258" r="${n(18 + 70 * tapP)}" fill="none" stroke="${INK}" stroke-width="5" opacity="${n(1 - tapP, 3)}"/>` : ""}
+${tapP > 0 ? `<g transform="translate(46 ${n(268 + 30 * (1 - Math.min(1, tapP * 3)))})"><circle r="30" fill="#e0b08a" stroke="${INK}" stroke-width="6"/></g>` : ""}</g>`;
+        const bill = `<g transform="translate(${billX} 0)" opacity="${n(flip, 3)}">
+<rect x="-168" y="-285" width="336" height="570" fill="#fffaf0"/><rect x="-168" y="-285" width="336" height="90" fill="#d0413a"/>
+<text x="0" y="-228" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="30" letter-spacing="2" fill="#fff">TAGIHAN PAYLATER</text>
+<text x="0" y="-130" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="16" letter-spacing="1" fill="#6f6a66">TOTAL YANG HARUS DIBAYAR</text>
+<text x="0" y="-60" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="40" fill="#c0392b">${rp(amount)}</text>
+<path d="M-60 40 L0 -20 L60 40 M-60 100 L0 40 L60 100" transform="translate(0 ${n(-8 * Math.abs(Math.sin(amount / 9000)))})" fill="none" stroke="#c0392b" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+<text x="0" y="220" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="18" letter-spacing="2" fill="#8a6f55">ILUSTRASI · NAIK TERUS</text></g>`;
+        return `<g transform="translate(540 840) rotate(${n(buzz, 2)})"><rect x="-190" y="-315" width="380" height="630" rx="44" fill="${INK}"/>
+<clipPath id="hook-scr"><rect x="-168" y="-285" width="336" height="570" rx="22"/></clipPath><g clip-path="url(#hook-scr)">${shop}${bill}</g>
+<rect x="-40" y="-306" width="80" height="12" rx="6" fill="#111"/></g>`;
+      };
+      const BG = (f, ph) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="hook-glow" cx="50%" cy="46%" r="55%"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#f4e4c8"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#hook-glow)"/>
+<g fill="#f2c27a" opacity="0.55">${Array.from({ length: 14 }, (_, i) => `<circle cx="${n(80 + 920 * W.hash(i * 3 + 1))}" cy="${n(520 + 640 * W.hash(i * 3 + 2))}" r="${n(10 + 22 * W.hash(i * 3 + 3))}"/>`).join("")}</g>
+<g transform="translate(130 700) rotate(-14)">${SNEAKER(0, 0, 0.55)}</g>
+<g transform="translate(940 1060) rotate(12)">${SNEAKER(0, 0, 0.5)}</g>
+<rect x="0" y="1140" width="1080" height="780" fill="#e3c9a0"/><rect x="0" y="1140" width="1080" height="14" fill="#c8ab7c"/>
+${ph}</svg>`;
+      window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
+        const C = F1.cine;
+        const cicilan = F1.wordFrame(S, "cicilan");
+        const persen = F1.wordFrame(S, "persen");
+        const kok = F1.wordFrame(S, "Kok");
+        const tagihannya = F1.wordFrame(S, "tagihannya");
+        const terus = F1.wordFrame(S, "terus");
+        const kasus = F1.wordFrame(S, "kasus");
+        const pulse = f >= cicilan && f < cicilan + 14 ? 0.12 * Math.sin((Math.PI * (f - cicilan)) / 14) : 0;
+        const tapP = F1.ramp(f, persen, 14, F1.easeOut);
+        const flip = F1.ramp(f, kok - 2, 8, F1.expoOut);
+        const count = F1.ramp(f, tagihannya, terus + 8 - tagihannya, F1.easeOut);
+        const amount = 2000000 + Math.round(262420 * count);
+        // buzz while the bill grows
+        const buzz = f >= kok && f < terus + 14 ? 2.2 * Math.sin(f * 2.3) : 0.6 * Math.sin(f / 20);
+        const bob = 8 * Math.sin(f / 22);
+        const phone = `<g transform="translate(0 ${n(bob)})">${PHONE(f, { tapP, flip, amount, buzz, badgePulse: pulse })}</g>`;
+        const money = f < tagihannya;
+        return F1.join(
+          C.stage(f, D, BG(f, phone), {
+            whip: false,
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 58 },
+              { at: persen - 3, scale: 1.1, ox: 52, oy: 60, ease: 10 },
+              { at: kok - 2, scale: 1.08, ox: 50, oy: 58, ease: 8 },
+              { at: F1.line(S, 1).start, scale: 1, ox: 50, oy: 60, ease: 12 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 50),
+          C.stamp(f, { at: kasus, x: 190, y: 1040, rot: -7, text: "KASUS PAYLATER", size: 58 }),
+          C.progress(f, { step: 1, label: "LAPORAN MASUK" }),
+          C.hud(f, {
+            at: -14,
+            kicker: "LAPORAN MASUK",
+            big: money ? "CICILAN 0%" : "+Rp262.420",
+            sub: money ? "ILUSTRASI · SEPATU Rp2 JT" : "ILUSTRASI · SELISIH TAGIHAN",
+            src: "Kredivo RIPLAY (Jun 2026)",
+            w: 540,
+            bigSize: 54,
+          }),
+          C.cast(S, f, [
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 420, at: -14 },
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

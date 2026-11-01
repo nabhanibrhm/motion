@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "source": "out/Ekonomi_keuangan/rupiah",
+  "files": [
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/voiceover/rupiah.json",
+      "target": "narration.json",
+      "bytes": 3565,
+      "sha256": "e5573035758d0614d7e1043ff59a4897c3bd227fdd4d4cc9c829c84d128bccaf"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/script-short.md",
+      "target": "script-short.md",
+      "bytes": 9487,
+      "sha256": "261b08dcc46add452eea9cb23b0a49f75b4143a16517ff36280496864b4c7e9b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/hook.html",
+      "target": "scenes/hook.html",
+      "bytes": 6317,
+      "sha256": "0c050c89fb06695766b4c349fab2f6a28cdc32e03bb38169a2c6a3f56f54a9bb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/rekor.html",
+      "target": "scenes/rekor.html",
+      "bytes": 8044,
+      "sha256": "0b004c8eaef2ff94ebe574e04b2d550d0b062e088f29d7cddea6612c3b629586"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/dampak.html",
+      "target": "scenes/dampak.html",
+      "bytes": 7542,
+      "sha256": "ece084e61ff9efdf5742ab6557a30f04354e1b7bc29a7e0c58c284eabf8bde2d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/untung.html",
+      "target": "scenes/untung.html",
+      "bytes": 7387,
+      "sha256": "3dce1ef181bb8cc9883ab321089278538f4afb6fc0692cec8647ab7e56860597"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/kalau.html",
+      "target": "scenes/kalau.html",
+      "bytes": 6540,
+      "sha256": "f2a13763342e9ac617bb71589cf2f14e456a3cec3f7aff61b1d955c1866f111f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/pelajaran.html",
+      "target": "scenes/pelajaran.html",
+      "bytes": 6839,
+      "sha256": "d161eec451663d7d3dde900f9fffb442703640d4115c459fe7c089e064f2bc7d"
+    }
+  ]
+}

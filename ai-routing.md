@@ -1,116 +1,105 @@
 # AI model routing
 
-> **AI AGENT INSTRUCTION:** Whenever a new change request is received, you must first read this file, identify the target files for the request, and switch to the cheapest approved model listed below before writing any code.
+**Provider scope:** Claude agents follow the Claude mapping below. ChatGPT/Codex agents follow the Codex mapping. Shared project rules apply to both providers. Explicit user instructions and host capabilities take precedence.
 
-This repo makes faceless short videos in Bahasa Indonesia with HyperFrames: HTML
-scenes animated by GSAP timelines, rendered frame by frame to MP4 in headless
-Chrome. Each video is a self-contained project in `out/<topic>/<video>/`; the current
-one is `out/Ekonomi_keuangan/inflasi/`. There is no server and no stored data.
+Before changing files, identify the targets and use the lowest approved tier covering their actual responsibility. Raise the tier if scope or risk expands.
 
-What *can* go wrong is quiet and only shows up at render time:
-- An animation that depends on wall-clock time, CSS transitions or `Math.random()` instead of the timeline. It previews fine and flickers in the render.
-- A change to the voice alignment or to the shared timing helpers that shifts every caption, lip-sync and SFX after it.
-- Facts that are wrong. This is a finance channel, so a wrong number is a credibility problem, not a typo.
+The repository uses one shared HyperFrames application. Episode authoring is in `episodes/<id>/`; shared media is in `assets/shared/`; engine source is under `src/`; generated projects and stills are under `.cache/`; finished videos are in `out/result/`. The old projects under `out/Ekonomi_keuangan/<id>/` are retained legacy/import material, not the active authoring workflow.
 
-The tiers below are weighted for that. The toolchain, the voice pipeline and the shared timing and layout plumbing route high however small the diff is. Copy wording, colours and one scene's art route low. Facts get checked against a source at every tier.
+Rendering is timeline-driven. Avoid wall-clock animation, CSS transitions, timers, and unseeded randomness. Voice timing, captions, lip-sync, and SFX share timing data. Financial claims require sourcing in `episodes/<id>/script-short.md`.
 
-## Models and effort
+## Claude models and effort
 
 | Model | Effort | Use for |
 |---|---|---|
-| **Haiku 5.5** | default | Docs, caption/line wording that keeps the facts, SFX swaps, colour values |
-| **Sonnet 5.5** · medium | medium | One scene (`compositions/<section>.html`) and its art, a new icon or prop in the episode kit |
-| **Sonnet 5.5** · high | high | Shared timing and layout (`lib/f1/core.js`, `timing.js`, `F1.STAGE`), `scripts/sync.mjs`, voice config structure, a new video project, anything spanning three or more files |
-| **Opus 5.5** · high | high | The voice generator and word alignment (`voiceover/generate.py`), dependencies and lockfiles, a render that fails with no known cause, new facts or figures in a script |
-| **Opus 5.5** · max | xhigh / max | A HyperFrames major upgrade, switching the TTS engine, cloud rendering, a stack or architecture change |
+| **Haiku 5.5** | default | Routine docs, unchanged-fact copy, literal color or asset changes |
+| **Sonnet 5.5** | medium | One scene's art, local styling, bounded read-only runtime investigation |
+| **Sonnet 5.5** | high | Shared runtime, timing/layout, templates, CLI, config/schema, episode migration |
+| **Opus 5.5** | high | Voice synthesis/alignment/cache, mastering/audio, dependencies, new claims, unexplained render failures |
+| **Opus 5.5** | max | Architecture, migration strategy/cutover, stack/engine changes, difficult integration |
 
-**How to switch.**
-- **Session:** if the current model or effort is higher than needed, say so in one line and ask the user to switch with `/model`. If it's lower, stop and ask for the higher one before writing code.
-- **Subagents:** set `model` (`haiku`, `sonnet` or `opus`) and `effort` on the agent call to match the table. Delegating cheap work this way is preferred over switching the whole session.
+Use the host's model controls for Claude. If a required tier is unavailable, explain the limitation; do not claim a model switch that did not happen.
 
----
+## Claude routing map
 
-## Routing map
+| Responsibility / paths | Model / effort |
+|---|---|
+| Routine docs, `README.md`, `CLAUDE.md`, `HANDOFF.md`, this file, `.gitignore`, unchanged-fact copy | Haiku / default |
+| One authored scene `episodes/<id>/scenes/<scene>.html`, local art or styling | Sonnet / medium |
+| Shared browser runtime `src/runtime/**`; templates `src/templates/**`; CLI, config/schema, staging/build orchestration in `scripts/motion.mjs`, `src/config/**`, `src/pipeline/build.mjs` | Sonnet / high |
+| Voice tools/cache/alignment, mastering/audio, dependencies, Python environment, storage and cleanup safety: `tools/voice/**`, `src/pipeline/voice.mjs`, `master.mjs`, `storage.mjs`, root manifests and lockfiles | Opus / high |
+| New financial facts or claims in episode scripts, narration, captions or scenes; unexplained preview/render failures | Opus / high |
+| Whole-project architecture, config/API contracts, engine or TTS changes, migration cutover and rollback | Opus / max |
 
-Paths are relative to a video project (e.g. `out/Ekonomi_keuangan/inflasi/`) unless they start at the repo root. Where several rows match a file, the first one wins.
+### Legacy path reference
 
-### Opus 5.5
+These are historical paths inside retained episode folders. Use them for read-only investigation or approved import work; do not treat them as active authoring targets.
 
-| Path / pattern | Effort | Why |
+| Historical responsibility | Legacy path | Current location |
 |---|---|---|
-| `package.json` `dependencies` / `devDependencies`, `package-lock.json`, the Python packages in `.venv` | high | `hyperframes` is pinned to an **exact version** (no `^`). The CLI, its bundled GSAP and the render engine move together, and a bump can change how every frame renders. |
-| `voiceover/generate.py`: alignment, onset snapping, loudness, the cache key | high | Every word timing comes from here, so captions, lip-sync and SFX all shift with it. Changing the alignment logic needs a bump to the cache salt, or stale timings get reused. |
-| New facts, figures or claims in `script*.md`, `voiceover/*.json` or on-screen text | high | This is financial content. Every number needs a source in the script's sources table, and investment wording keeps the "Bukan saran investasi" disclaimer. |
-| A render or snapshot that fails or hangs with no known cause | high | Usually Chrome or FFmpeg, memory (WSL's low-memory mode) or a non-deterministic scene, not the line in the stack trace. |
-| HyperFrames major upgrade, a new TTS engine | max | |
-| Cloud rendering, replacing a stack piece | max | |
+| Scene HTML | `out/Ekonomi_keuangan/<id>/compositions/` | `episodes/<id>/scenes/` |
+| Drawing kit and timing | `out/Ekonomi_keuangan/<id>/lib/f1/` | `src/runtime/` |
+| Voice generator and cache | `out/Ekonomi_keuangan/<id>/voiceover/` | `tools/voice/` and `.cache/voice/` |
+| Sync/master scripts | `out/Ekonomi_keuangan/<id>/scripts/` | Root CLI and `src/pipeline/` |
+| Per-episode dependencies | Per-episode manifests, `.venv/`, `node_modules/` | Root package and Python environment |
 
-### Sonnet 5.5 · high
+## ChatGPT / Codex routing
 
-| Path / pattern |
-|---|
-| `scripts/sync.mjs`: generates `index.html`, `compositions/captions.html`, `lib/f1/voice.js` and the SFX `data-start` values |
-| `lib/f1/core.js` (`F1.scene`, interpolate/spring, the DOM morph) and `lib/f1/timing.js` (word frames, lip-sync, caption grouping) |
-| `F1.STAGE` and the layout constants: canvas size, the caption band, mascot feet, the safe zones for platform buttons |
-| Structure of `voiceover/<video>.json`: speakers, sections, `"source"`, pause markers (wording inside existing lines is Haiku) |
-| Shared drawing kit used by every scene: `lib/f1/mascot.js`, `toon.js`, `photo.js`, `words.js`, `bits.js`, `f1.css`, and the doodle pen/`Card`/`Stepper`/`Title` in `kasus.js` |
-| `compositions/frame.html` (persistent title + stepper over every scene) |
-| `hyperframes.json`, `package.json` `scripts`, `scripts/hf.mjs`, `scripts/stills.mjs` |
-| A new video project under `out/<topic>/<video>/` (copying the kit, voice config, sync settings) |
+The model IDs and tiers below describe this repository's routing policy. They do not promise public picker names, API availability, pricing, or equal capabilities across vendors. Follow the host's exact delegation arguments; never invent model IDs or claim a model/effort was used when unavailable.
 
-### Sonnet 5.5 · medium
+| Tier | Claude counterpart | Codex model ID | Reasoning effort | Assignment |
+|---|---|---|---|---|
+| C1 | Haiku 5.5 | `gpt-6-luna` | `low` | Routine docs, inventory, unchanged-fact copy, ignore rules, literal asset changes |
+| C2 | Sonnet 5.5 medium | `gpt-6.1-sol` | `medium` | One scene, local art/styling, bounded read-only runtime investigation |
+| C3 | Sonnet 5.5 high | `gpt-6.1-sol` | `high` | Shared runtime, timing/layout, templates, config/schema, CLI and episode migrations |
+| C4 | Opus 5.5 high | `gpt-6.1-terra` | `high` | Voice/cache, mastering/audio, dependencies, cleanup safety, new factual claims |
+| C5 | Opus 5.5 max | `gpt-6-astra` | `xhigh` | Architecture, migration strategy, engine changes, difficult integration and final review |
 
-| Path / pattern |
-|---|
-| One scene, `compositions/<section>.html`: its art, its GSAP timeline and its SFX `<audio data-at=…>` anchors |
-| The episode kit `lib/f1/kasus.js`: a new icon, stamp or prop used by one or two scenes (keep the doodle rules: ink pen, pastel fill, coral accent, ASCII-only Luckiest Guy text) |
-| `compositions/background.html` styling |
-| Re-encoding or a new format for audio/images in `public/` |
+### Codex routing map
 
-### Haiku 5.5
+| Responsibility / paths | Tier |
+|---|---|
+| Routine docs, `README.md`, `CLAUDE.md`, `HANDOFF.md`, this file, `.gitignore`, unchanged-fact copy | C1 |
+| One `episodes/<id>/scenes/<scene>.html`, local art or styling | C2 |
+| `src/runtime/**`, `src/templates/**`, root CLI, config/schema, episode manifests and migrations, build orchestration | C3 |
+| `tools/voice/**`, voice/cache/alignment, audio mastering, root dependency manifests/locks, storage/cleanup safety, new factual claims | C4 |
+| Architecture, cross-module contracts, engine or TTS changes, cutover/rollback, final integration and fidelity review | C5 |
 
-| Path / pattern |
-|---|
-| `**/*.md`: `CLAUDE.md`, `HANDOFF.md`, this file, `voiceover/lines.md` (or regenerate it with `--list`) |
-| Wording of an existing line or caption that keeps every fact and number the same |
-| Swapping a file in `public/sfx/` or `public/fonts/` for one of the same kind |
-| Colour values in `lib/f1/f1.css` (a new variable or a change to how colours are wired is Sonnet · high) |
-| `.gitignore`, `.gitattributes`, a `package.json` `version` bump on its own |
+Route by responsibility, not file extension. A documentation edit that changes architecture or factual claims inherits the higher tier. Legacy paths under `out/Ekonomi_keuangan/<id>/` remain read-only except for explicitly assigned migration/import work.
 
-**Generated, don't edit by hand:** `index.html`, `compositions/captions.html`, `lib/f1/voice.js`, `src/data/<video>-voice.json`, `public/voice/**`, `voiceover/.cache/`, `.stills/`, `renders/`, `node_modules/`, `.venv/`. Change the source (voice config, `generate.py`, `sync.mjs`) and regenerate.
+### Delegation protocol
 
----
+For substantial multi-part work when delegation is available, assign the smallest coherent tasks without splitting a sensitive change so narrowly that its risk disappears. State each task's tier, model/effort, owned files, dependencies, and acceptance checks before dispatch. Keep shared files under one owner; give each worker exclusive write ownership, and communicate interface changes to dependent workers before they proceed.
 
-## Cross-tier rules
+For Codex delegation in this host, set `fork_turns: "none"` when overriding a model and pass `model` and `reasoning_effort` using the tool's supported arguments. Example:
 
-1. **Highest wins.** A request touching several rows runs at the highest model and effort among them.
-2. **Route on files, not wording.** List the target files first. "Make the stamp bounce more" is Sonnet · medium (one scene). "Make captions show 3 words instead of 5" is Sonnet · high (`timing.js`, every scene).
-3. **The kind of change can only raise the level.**
-   - Anything that changes **what gets installed** (a version, the lockfile, a Python package, the Node version): **Opus**.
-   - Anything that changes **voice timing or timing for more than one scene** (alignment, `sync.mjs`, caption grouping, section order, pause markers): at least **Sonnet · high**.
-   - Anything that could make rendering **non-deterministic** (`Date`, `Math.random()`, CSS animations or transitions, timers, fonts or media not loaded before capture): at least **Sonnet · high**.
-   - Anything that changes **output size or format** (canvas size, aspect ratio, fps, codec, the platform safe zones): at least **Sonnet · high**.
-   - Any **new fact or number** shown or spoken: **Opus · high**, with the source added to the script's sources table.
-4. **Paired files go together.** A line in `voiceover/<video>.json` and the scene whose `data-at` anchors use its words; a kit piece in `kasus.js` and the scenes that draw it; `package.json` and `package-lock.json`. Do them in one batch, at the higher of the two rows.
-5. **Scope grows, stop.** If the work needs a higher row mid-task, say so and continue only at that level.
-6. **Read-only work drops one level.** Questions, searches and explanations: Haiku, or Sonnet · medium for Opus areas. No code written.
-7. **Reviews match the code**, one level up for Opus areas (high → xhigh).
-8. **Unsure, go one level up** and say why in one line.
+```js
+spawn_agent({
+  task_name: "runtime_worker",
+  fork_turns: "none",
+  model: "gpt-6.1-sol",
+  reasoning_effort: "high",
+  message: "Repository: D:/Dev/motion. Tier C3. Own src/runtime/f1/core.js only. Follow docs/refactor-design.md; do not modify shared manifests. Report commands and results."
+})
+```
 
-## Rules that outrank this file
+1. Read this file and inspect the working tree before assigning work. For architecture work, the coordinator owns the C5 architect role if already operating at C5; otherwise assign the C5 architecture task before implementation starts.
+2. Workers share the workspace; do not assume branch/worktree isolation. Reserve concurrency for the coordinator and independent review. Serialize expensive voice synthesis and full renders unless resource constraints have been checked.
+3. Keep voice/cache/dependency and cleanup safety at C4 or higher. These reviews require an independent C4 review at `xhigh`; final integration/fidelity review requires C5 at `xhigh`.
+4. If a tier/model/effort is unavailable, report that limitation. Use an available same-or-higher tier where the host supports it; never silently downgrade or claim unavailable delegation. If delegation is unavailable, explain briefly and proceed sequentially where capable.
+5. Return changed files, rationale, commands actually run, results, and unresolved risks. Report blocked browser/render checks as blocked, not passed. Reviewers report findings first and do not edit a worker's owned files until ownership transfers.
 
-These apply at every tier:
+Assignment tiers remain: inventory and workflow documentation C1; architecture C5; CLI/runtime and migrations C3; voice/cache/dependencies and asset cleanup C4; independent voice/dependency/cleanup review C4 at `xhigh`; final architecture/fidelity review C5 at `xhigh`.
 
-- **`hyperframes` stays pinned exactly.** Upgrade it on purpose, then re-check stills and do a full render. Never run `npm audit fix --force`.
-- **Animate from the timeline only.** Scenes draw from the frame through `F1.scene` and GSAP timelines. No CSS transitions or animations, timers, wall-clock time or unseeded randomness.
-- **Never hand-edit generated files.** After any voice change, run the generator, then `node scripts/sync.mjs`, then check stills.
-- **The voice comes from Supertonic-3** (`"source": "supertonic"`: MOG `M1`, WEC `F2`, BOG `M4`). Each mascot keeps the same voice across episodes. TTSMaker MP3s (`"source": "files"`) are the fallback; edge-tts is only a placeholder.
-- **Keep the platform safe zones clear:** the bottom ~15% and the right ~120 px of the 1080×1920 frame.
-- **Facts carry sources.** Each figure (BI, BPS, OJK …) is listed in the script's sources table. Investment talk keeps "Bukan saran investasi".
-- **Before handing off:** `npm run lint` with no errors, and stills checked (`node scripts/stills.mjs all`). A dependency change also needs a fresh install and a full render.
-- **Check frames go to `.stills/` or `%TEMP%\motion-stills\`.** Finished videos go to the project's `renders/` only.
-- **Commit only when the user asks**, and never add a Claude co-author line.
+## Rules that apply to both providers
 
----
-
-_Re-derived on 31 Oct 2026 for the HyperFrames short-video projects. It replaces the Remotion version written on 23 Oct 2026._
+- Keep HyperFrames pinned exactly at `0.8.210` unless an intentional upgrade is approved and verified.
+- Animate from the timeline. Do not add CSS transitions/animations, timers, wall-clock time, or unseeded randomness.
+- Never hand-edit generated files under `.cache/build/<id>/`; edit source/config and regenerate.
+- Preserve Supertonic-3 voice identity: MOG `M1`, WEC `F2`, BOG `M4`. Files mode uses episode recordings under `voice-lines/`.
+- Keep the lower ~15% and right ~120 px of the 1080×1920 frame clear of UI overlays.
+- Add a source in the episode script for each financial figure or claim. Investment topics retain “Bukan saran investasi”.
+- The current output format is fixed at 1080×1920, 30 fps. Profiles are `modern` and `legacy-inflasi`; arbitrary palettes are not configurable.
+- `render` ensures missing or stale voice is generated/reused. `sync`, `preview`, `stills`, `lint`, and `check` never synthesize and require a valid voice cache. `clean` is dry-run by default; voice caches cannot be cleaned, including through an explicit target.
+- Finished outputs are `out/result/<NN>-<id>-short.mp4`; diagnostic frames are under `.cache/stills/<id>/`. Old per-episode `renders/` folders are legacy.
+- Commit only when the user asks, and never add a Claude co-author line.

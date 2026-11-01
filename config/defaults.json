@@ -1,0 +1,5 @@
+{
+  "video": {"width":1080,"height":1920,"fps":30},
+  "runtime": {"profile":"modern"},
+  "audio": {"bed":null,"bedGain":0.3,"loudness":{"integrated":-14,"truePeak":-1,"range":11}}
+}

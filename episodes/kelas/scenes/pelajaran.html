@@ -1,0 +1,93 @@
+<!-- Pelajaran: a checklist card on a warm desk ticks one rule per phrase ("dana", "Cicilan", "Simpan", "tambah"), each with its source line. Beni's "nabung": a NABUNG DULU sticker. Nisa closes the case: warm paper over the scene from "ditutup", KASUS DITUTUP stamp slams, "KASUS #07 · KELAS MENENGAH", the comment question card on "Kamu", SUMBER LENGKAP DI DESKRIPSI. Nisa is drawn after the end card so she stays visible, and the progress strip after the paper. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #ead9bb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="pelajaran" data-width="1080" data-height="1920">
+    <div id="pelajaran-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.6" id="pelajaran-sfx-1" class="clip" src="public/sfx/click.wav" data-at="word:dana" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.2333" id="pelajaran-sfx-2" class="clip" src="public/sfx/click.wav" data-at="word:Cicilan" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.6" id="pelajaran-sfx-3" class="clip" src="public/sfx/click.wav" data-at="word:Simpan" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="11.8333" id="pelajaran-sfx-4" class="clip" src="public/sfx/click.wav" data-at="word:tambah" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.2333" id="pelajaran-sfx-nabung" class="clip" src="public/sfx/cash.wav" data-at="word:nabung" data-track-index="16" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="15.5667" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="17" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="16.5" id="pelajaran-sfx-ask" class="clip" src="public/sfx/pop-in.wav" data-at="word:Kamu" data-track-index="18" data-volume="0.09"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const ITEMS = [
+        { t: "DANA DARURAT ≥ 3× PENGELUARAN BULANAN", s: "", src: "OJK via RRI Makassar (Mar 2026)" },
+        { t: "CICILAN ≤ 30% PENGHASILAN", s: "", src: "OJK via Kontan (batas cicilan fintech, 2026)" },
+        { t: "SIMPAN DI BANK DIJAMIN LPS", s: "s.d. Rp2 M per nasabah per bank · bunga ≤ 3,75%", src: "LPS via RRI (Mei 2025) · Kontan (Okt 2026–Jan 2027)" },
+        { t: "TAMBAH KEAHLIAN", s: "pekerjaan berketerampilan menengah menyusut", src: "Bank Dunia via Jakarta Globe (Des 2025)" },
+      ];
+      const ROW = 136;
+      const LIST = (f, ticks) => `<g transform="translate(70 490)"><rect x="0" y="0" width="870" height="650" rx="24" fill="#f6efe1" stroke="${INK}" stroke-width="6"/>
+<text x="40" y="58" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="4" fill="${INK}">4 LANGKAH JAGA KELAS</text>
+${ITEMS.map((it, i) => {
+  const y = 96 + i * ROW;
+  const p = F1.ramp(f, ticks[i], 10, F1.expoOut);
+  const pre = F1.ramp(f, ticks[i] - 14, 10, F1.expoOut);
+  return `<g opacity="${n(0.25 + 0.75 * pre, 3)}"><rect x="40" y="${y + 6}" width="62" height="62" rx="14" fill="${p > 0 ? "#c6f432" : "#fffaf0"}" stroke="${INK}" stroke-width="6"/>
+${p > 0 ? `<path d="M56 ${y + 38} L72 ${y + 54} L98 ${y + 18}" fill="none" stroke="${INK}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="80" stroke-dashoffset="${n(80 * (1 - p), 1)}" transform="translate(-6 0)"/>` : ""}
+<text x="128" y="${y + 36}" font-family="Oswald" font-weight="600" font-size="35" letter-spacing="1" fill="${INK}">${it.t}</text>
+${it.s ? `<text x="128" y="${y + 66}" font-family="JetBrains Mono" font-weight="700" font-size="20" fill="#6b5f52">${it.s}</text>` : ""}
+<text x="128" y="${y + (it.s ? 94 : 70)}" font-family="JetBrains Mono" font-weight="500" font-size="16" fill="#8a7f70">Sumber: ${it.src}</text></g>`;
+}).join("")}</g>`;
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="pelajaran-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#pelajaran-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#c9ae84"/>
+${F1.world.dust(f, { x: 100, y: 500, w: 840, h: 620, count: 18, seed: 5, color: "#fff3cf", alpha: 0.5 })}
+${LIST(f, o.ticks)}</svg>`;
+      window.__timelines["pelajaran"] = F1.scene("pelajaran", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const ticks = [w("dana"), w("Cicilan"), w("Simpan"), w("tambah")];
+        const oke = F1.line(S, 1).start;
+        const nabung = w("nabung");
+        const ditutup = w("ditutup");
+        const kamu = w("Kamu");
+        const paper = F1.ramp(f, ditutup - 6, 8);
+        const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
+        const ask = F1.ramp(f, kamu, 12, F1.expoOut);
+        const mono = "font-family:'JetBrains Mono',monospace";
+        const end = paper <= 0 ? "" : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#f6efe1", opacity: n(paper, 3) })}"></div>
+<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 470, display: "flex", flexDirection: "column", alignItems: "center", gap: 24, opacity: n(paper, 3) })}">
+<div style="${F1.css({ padding: "12px 30px", border: "6px solid #c0392b", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#c0392b" })}">KASUS DITUTUP</div>
+<div style="${mono};font-weight:500;font-size:26px;letter-spacing:2px;color:#6f6a66">KASUS #07 · KELAS MENENGAH</div>
+<div style="${F1.css({ marginTop: 14, padding: "22px 36px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(ask, 3), transform: `translateY(${n(30 * (1 - ask))}px)` })}"><div style="${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#ff5a5f">● MASIH KELAS MENENGAH?</div><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:60px;line-height:1.15;color:#fff">TULIS DI <span style="color:${C.ACCENT}">KOMENTAR</span></div></div>
+<div style="${mono};font-weight:500;font-size:20px;letter-spacing:1px;color:#6f6a66">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
+        return F1.join(
+          C.stage(f, D, BG(f, { ticks }), {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 56 },
+              { at: ticks[2] - 6, scale: 1.05, ox: 50, oy: 60, ease: 14 },
+              { at: oke, scale: 1.02, ox: 50, oy: 56, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.chip(f, { at: 4, text: "YANG BISA KAMU LAKUKAN" }),
+          C.tag(f, { at: nabung, x: 700, y: 440, rot: 4, text: "NABUNG DULU ✓", size: 38, light: true }),
+          end,
+          C.progress(f, { step: 7, label: "VONIS" }),
+          C.cast(S, f, [
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,0 +1,173 @@
+{
+ "comment": "Short 'Emas Katanya Aman, Kok Turun 20%?' (script-short.md, sources there). Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "say": {},
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1.0,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Emas"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Aku beli emas bulan Januari, katanya aman. [pause 0.15] Kok sekarang rugi?"
+    },
+    {
+     "speaker": "bog",
+     "text": "Kasus baru: emas Nisa menyusut!",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "harga",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Dua puluh sembilan Januari, emas Antam cetak rekor: tiga juta seratus enam puluh delapan ribu per gram. Akhir Oktober, tinggal dua juta lima ratus empat puluh enam ribu."
+    },
+    {
+     "speaker": "bog",
+     "text": "Turun berapa tuh?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Hampir dua puluh persen. Emas dunia malah turun sekitar tiga puluh persen dari rekornya.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kenapa",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kok bisa turun?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Kata World Gold Council, imbal hasil obligasi Amerika naik dan dolar menguat. Emas nggak kasih bunga, jadi kalah menarik.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "spread",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Ada jebakan kedua: harga jual kembali. Tiga puluh Oktober, beli dua juta lima ratus empat puluh enam ribu, dijual lagi cuma dua juta tiga ratus empat puluh satu ribu."
+    },
+    {
+     "speaker": "bog",
+     "text": "Langsung rugi dua ratus lima ribu per gram?!"
+    },
+    {
+     "speaker": "mog",
+     "text": "Betul. Sekitar delapan persen, di hari yang sama.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kalau",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kalau aku beli sepuluh gram pas rekor?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Modalnya tiga puluh satu koma tujuh juta. Dijual akhir Oktober, dapat dua puluh tiga koma empat juta. Rugi lebih dari delapan juta.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "jangka",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Tapi lihat jangka panjang. Sepuluh gram yang dibeli November dua ribu dua puluh satu, sekarang nilainya lebih dari dua kali lipat. Rekor tahun dua ribu dua puluh baru terpecahkan dua setengah tahun kemudian."
+    },
+    {
+     "speaker": "bog",
+     "text": "Jadi emas itu buat jangka panjang.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Jadi: beli bertahap, pakai uang dingin, bukan dana darurat. Pilih yang legal dan logis, cek izinnya di OJK.",
+     "after": 0.1
+    },
+    {
+     "speaker": "wec",
+     "text": "Oke, emasnya aku simpan dulu.",
+     "after": 0.15
+    },
+    {
+     "speaker": "bog",
+     "text": "Kasus ditutup! Kamu beli emas buat jangka pendek atau panjang? Tulis di komentar!",
+     "after": 0.3
+    }
+   ]
+  }
+ ]
+}

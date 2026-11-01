@@ -1,0 +1,134 @@
+{
+  "measurement": "logical file bytes; no allocation-unit or sparse/hardlink dedup claim",
+  "scope": "Existing episode trees and final outputs plus migrated root application, dependencies, authored assets, caches, tests and reports. Excludes unchanged .git, .claude, references and .gitattributes. After report bytes measured before writing this report.",
+  "beforeBytes": 3871421616,
+  "afterBytes": 1330428434,
+  "netReductionBytes": 2540993182,
+  "beforeDependenciesBytes": 3068941252,
+  "afterDependenciesBytes": 440996907,
+  "grossLegacyRemovalBytes": 3359383760,
+  "after": {
+    "out/Ekonomi_keuangan": {
+      "files": 6,
+      "bytes": 169168973,
+      "links": 0
+    },
+    "out/result": {
+      "files": 7,
+      "bytes": 321583431,
+      "links": 0
+    },
+    "episodes": {
+      "files": 75,
+      "bytes": 515384,
+      "links": 0
+    },
+    "assets": {
+      "files": 43,
+      "bytes": 5790076,
+      "links": 0
+    },
+    "src": {
+      "files": 22,
+      "bytes": 210834,
+      "links": 0
+    },
+    "tools": {
+      "files": 3,
+      "bytes": 67744,
+      "links": 0
+    },
+    "scripts": {
+      "files": 4,
+      "bytes": 40619,
+      "links": 0
+    },
+    "config": {
+      "files": 2,
+      "bytes": 332,
+      "links": 0
+    },
+    "tests": {
+      "files": 4,
+      "bytes": 24704,
+      "links": 0
+    },
+    "docs": {
+      "files": 13,
+      "bytes": 266400,
+      "links": 0
+    },
+    "node_modules": {
+      "files": 5201,
+      "bytes": 106905268,
+      "links": 0
+    },
+    ".venv": {
+      "files": 5160,
+      "bytes": 334091639,
+      "links": 0
+    },
+    ".cache": {
+      "files": 1528,
+      "bytes": 391672276,
+      "links": 0
+    },
+    "package.json": {
+      "files": 1,
+      "bytes": 794,
+      "links": 0
+    },
+    "package-lock.json": {
+      "files": 1,
+      "bytes": 64509,
+      "links": 0
+    },
+    "requirements.txt": {
+      "files": 1,
+      "bytes": 166,
+      "links": 0
+    },
+    "requirements-lock.txt": {
+      "files": 1,
+      "bytes": 718,
+      "links": 0
+    },
+    "README.md": {
+      "files": 1,
+      "bytes": 4573,
+      "links": 0
+    },
+    "CLAUDE.md": {
+      "files": 1,
+      "bytes": 2653,
+      "links": 0
+    },
+    "HANDOFF.md": {
+      "files": 1,
+      "bytes": 7936,
+      "links": 0
+    },
+    "ai-routing.md": {
+      "files": 1,
+      "bytes": 9253,
+      "links": 0
+    },
+    ".gitignore": {
+      "files": 1,
+      "bytes": 152,
+      "links": 0
+    }
+  },
+  "retainedRecovery": {
+    "files": 258,
+    "bytes": 74695827,
+    "links": 0
+  },
+  "retainedVoice": {
+    "files": 781,
+    "bytes": 215282631,
+    "links": 0
+  },
+  "retainedOldRenders": 169158934,
+  "remainingOptionalReclaim": "Old renders retained intentionally; baseline recovery and imported voice are protected, not automatically reclaimable."
+}

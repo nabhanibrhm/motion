@@ -1,0 +1,114 @@
+<!-- Telat: a wall calendar on the left, a bill card on the right. Nisa asks; on "telat" the calendar's due date circles red; on "lima persen" a red "5%" badge pops, "per bulan" adds "/BULAN", "total tagihan" points the badge at the whole bill. Muklis's second sentence: the bill card (ILUSTRASI Rp1.000.000) comes in on "satu juta"; from "telat tiga bulan" the calendar flips 3 times and each flip adds Rp50.000 of denda, so the denda counter reaches ±Rp150.000 on "ribu". Source: SPayLater via Metrotvnews (Mar 2026). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #efe3cb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="telat" data-width="1080" data-height="1920">
+    <div id="telat-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="telat-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.4667" id="telat-sfx-telat" class="clip" src="public/sfx/stamp.wav" data-at="word:telat" data-track-index="12" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.0667" id="telat-sfx-lima" class="clip" src="public/sfx/pop-in.wav" data-at="word:lima" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.2" id="telat-sfx-bill" class="clip" src="public/sfx/pop-in.wav" data-at="word:juta" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.1667" id="telat-sfx-flip1" class="clip" src="public/sfx/tick.wav" data-at="word:telat#1+6" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.2333" id="telat-sfx-flip2" class="clip" src="public/sfx/tick.wav" data-at="word:tiga" data-track-index="16" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.4333" id="telat-sfx-flip3" class="clip" src="public/sfx/tick.wav" data-at="word:bulan#1" data-track-index="17" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10" id="telat-sfx-cash" class="clip" src="public/sfx/cash.wav" data-at="word:seratus" data-track-index="18" data-volume="0.28"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const rp = (v) => "Rp" + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const MONTHS = ["JANUARI", "FEBRUARI", "MARET", "APRIL"];
+      // calendar: `flips` = how many months have flipped (float, 0..3), `late` = red circle on the due date
+      const CAL = (f, { late, flip, flipAt }) => {
+        const idx = Math.min(3, Math.floor(flip + 0.0001));
+        const prog = flip - Math.floor(flip);
+        const sheet = (m, y, op, dy) => `<g opacity="${n(op, 3)}" transform="translate(0 ${n(dy)})"><rect x="0" y="0" width="340" height="360" rx="14" fill="#fffaf0" stroke="${INK}" stroke-width="6"/><rect x="0" y="0" width="340" height="86" rx="14" fill="#d0413a" stroke="${INK}" stroke-width="6"/><text x="170" y="60" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="4" fill="#fff">${m}</text>
+${Array.from({ length: 21 }, (_, i) => `<text x="${34 + (i % 7) * 45}" y="${140 + Math.floor(i / 7) * 62}" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="24" fill="#8a8580">${i + 1}</text>`).join("")}
+<g opacity="${n(y, 3)}"><circle cx="${34 + 3 * 45}" cy="${140 + 62 - 8}" r="30" fill="none" stroke="#c0392b" stroke-width="7"/></g></g>`;
+        // old sheet tears off upward as it flips
+        const old = prog > 0 ? sheet(MONTHS[Math.max(0, idx)], 1, 1 - prog, -90 * prog) : "";
+        const cur = sheet(MONTHS[Math.min(3, idx + (prog > 0 ? 1 : 0))], late, 1, 0);
+        return `<g transform="translate(90 640)">
+<rect x="-10" y="-34" width="360" height="30" rx="8" fill="#5b4636" stroke="${INK}" stroke-width="5"/><g fill="#fffaf0" stroke="${INK}" stroke-width="4"><circle cx="60" cy="-19" r="8"/><circle cx="170" cy="-19" r="8"/><circle cx="280" cy="-19" r="8"/></g>
+${cur}${old}
+<text x="170" y="420" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="36" letter-spacing="3" fill="${flip > 0 ? "#c0392b" : "#6f6a66"}">${flip >= 2.99 ? "TELAT 3 BULAN" : flip > 0 ? "TELAT " + Math.max(1, Math.ceil(flip - 0.001)) + " BULAN" : "JATUH TEMPO"}</text></g>`;
+      };
+      const BILL = (f, o) => {
+        if (o.bill <= 0) return "";
+        return `<g transform="translate(${n(480 + (1 - o.bill) * 260)} 690)" opacity="${n(o.bill, 3)}">
+<rect x="0" y="0" width="410" height="440" rx="18" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<rect x="0" y="0" width="410" height="64" rx="18" fill="${INK}"/><text x="205" y="45" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="4" fill="#fff">TAGIHAN</text>
+<text x="30" y="130" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="#6f6a66">POKOK</text>
+<text x="380" y="190" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="48" fill="${INK}">Rp1.000.000</text>
+<path d="M30 220 H380" stroke="#8a6f55" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="30" y="266" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="#c0392b">DENDA 5%/BLN × ${o.months} BLN</text>
+<text x="380" y="346" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="54" fill="#c0392b">+${rp(o.denda)}</text>
+<text x="205" y="400" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="17" letter-spacing="2" fill="#8a6f55">ILUSTRASI · TANPA BUNGA BERBUNGA</text></g>`;
+      };
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="telat-glow" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#efe3cb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#telat-glow)"/>
+<g stroke="#e2d2b0" stroke-width="3">${Array.from({ length: 10 }, (_, i) => `<path d="M0 ${560 + i * 64} H1080"/>`).join("")}</g>
+${CAL(f, o)}${BILL(f, o)}
+${o.five > 0 ? `<g transform="translate(${n(700 + 140 * o.move)} ${n(800 - 145 * o.move)}) rotate(-8) scale(${n(0.4 + 0.6 * o.five + 0.05 * Math.sin(f / 6), 3)})" opacity="${n(Math.min(1, o.five * 2), 3)}"><circle r="${n(104 - 34 * o.move, 1)}" fill="#d0413a" stroke="${INK}" stroke-width="7"/><text x="0" y="${n(28 - 10 * o.move)}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="${n(96 - 32 * o.move)}" fill="#fff">5%</text>${o.per > 0 ? `<text x="0" y="${n(66 - 18 * o.move)}" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="${n(34 - 8 * o.move)}" letter-spacing="3" fill="#fff" opacity="${n(o.per, 3)}">/BULAN</text>` : ""}</g>` : ""}
+</svg>`;
+      window.__timelines["telat"] = F1.scene("telat", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const telat0 = w("telat", 0);
+        const lima = w("lima", 0);
+        const bulan0 = w("bulan", 0);
+        const tagihan1 = w("tagihan", 1);
+        const telat1 = w("telat", 1);
+        const tiga = w("tiga");
+        const bulan1 = w("bulan", 1);
+        const dendanya1 = w("dendanya", 1);
+        const ribu = w("ribu");
+        // the calendar flips three times from "telat" #2; each flip adds one month of denda (Rp50.000)
+        const flipAt = [telat1 + 6, tiga, bulan1];
+        const flipsDone = flipAt.map((a) => F1.ramp(f, a, 8)).reduce((s, v) => s + v, 0);
+        const denda = 50000 * Math.min(3, flipsDone);
+        const o = {
+          late: F1.ramp(f, telat0, 6, F1.expoOut),
+          five: F1.ramp(f, lima, 12, F1.expoOut),
+          per: F1.ramp(f, bulan0, 8, F1.expoOut),
+          move: F1.ramp(f, tagihan1 - 6, 14, F1.expoOut),
+          bill: F1.ramp(f, tagihan1, 12, F1.expoOut),
+          flip: flipsDone,
+          flipAt,
+          months: Math.max(0, Math.min(3, Math.ceil(flipsDone - 0.001))),
+          denda,
+        };
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.04, ox: 30, oy: 60 },
+              { at: lima - 4, scale: 1.1, ox: 40, oy: 58, ease: 14 },
+              { at: tagihan1 - 6, scale: 1.04, ox: 50, oy: 62, ease: 16 },
+              { at: telat1, scale: 1.1, ox: 50, oy: 62, ease: 14 },
+              { at: ribu - 4, scale: 1.06, ox: 50, oy: 64, ease: 12 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.progress(f, { step: 4, label: "SKENARIO · TELAT" }),
+          f < lima
+            ? C.hud(f, { at: 4, kicker: "SKENARIO", big: "TELAT BAYAR", sub: "ILUSTRASI · TAGIHAN Rp1 JT", w: 540, bigSize: 52 })
+            : C.hud(f, { at: lima - 4, kicker: "DENDA", big: "5% / BLN", sub: "DARI TOTAL TAGIHAN (ILUSTRASI)", src: "SPayLater via Metrotvnews (Mar 2026)", w: 540, bigSize: 60 }),
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

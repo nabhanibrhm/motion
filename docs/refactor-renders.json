@@ -1,0 +1,51 @@
+[
+  {
+    "id": "emas",
+    "command": "render --no-master",
+    "status": 1,
+    "beforeHash": "605f842c7c5f51092efa47f029624aea59087c6762ac01c7b152e70499c62db1",
+    "afterHash": "605f842c7c5f51092efa47f029624aea59087c6762ac01c7b152e70499c62db1"
+  },
+  {
+    "id": "ihsg",
+    "command": "render --no-master",
+    "status": 1,
+    "beforeHash": "0fee602bc484783a1e1d2875d39cd23b49862ca885c5b489d5dc23c7f843965e",
+    "afterHash": "0fee602bc484783a1e1d2875d39cd23b49862ca885c5b489d5dc23c7f843965e"
+  },
+  {
+    "id": "inflasi",
+    "command": "render --no-master",
+    "status": 1,
+    "beforeHash": "043cd9f4af70463626596bf05d09c62cc479b36d1adb751869f1fb4419564277",
+    "afterHash": "043cd9f4af70463626596bf05d09c62cc479b36d1adb751869f1fb4419564277"
+  },
+  {
+    "id": "judol",
+    "command": "render --no-master",
+    "status": 1,
+    "beforeHash": "3050eaf4ab67fa550e7612a5eef0ef01fa7f49f664444c49afcbe6a87cab6af2",
+    "afterHash": "3050eaf4ab67fa550e7612a5eef0ef01fa7f49f664444c49afcbe6a87cab6af2"
+  },
+  {
+    "id": "kelas",
+    "command": "render --no-master",
+    "status": 1,
+    "beforeHash": "0fed5afc4230ae7314951115d526654ec2e4045121cf813d706c482895aa522c",
+    "afterHash": "0fed5afc4230ae7314951115d526654ec2e4045121cf813d706c482895aa522c"
+  },
+  {
+    "id": "paylater",
+    "command": "render --no-master",
+    "status": 1,
+    "beforeHash": "56974772a6e51b42cd001da54c15daf6c16e7c8b77f4ae0ba2830baf9cb32a26",
+    "afterHash": "56974772a6e51b42cd001da54c15daf6c16e7c8b77f4ae0ba2830baf9cb32a26"
+  },
+  {
+    "id": "rupiah",
+    "command": "render --no-master",
+    "status": 1,
+    "beforeHash": "156b532ee10c87fa3dcf9c7a6dd8b935693cb3b29033781f06060daca4faa19a",
+    "afterHash": "156b532ee10c87fa3dcf9c7a6dd8b935693cb3b29033781f06060daca4faa19a"
+  }
+]

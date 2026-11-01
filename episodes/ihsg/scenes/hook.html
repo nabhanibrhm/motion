@@ -1,0 +1,86 @@
+<!-- Hook: Nisa's phone, an investment app with every row red and the portfolio line falling (no figures on the phone; the HUD carries the verified IHSG close with its source). On "merah" the phone buzzes, a red flash and a MERAH SEMUA sticker; the camera pushes in. On "Wah" the camera moves to Beni, and on "kasus" a KASUS #03 stamp slams on the phone. Frame 0 is fully drawn (thumbnail). Nisa, Beni. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e7d3;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="1.8667" id="hook-sfx-merah" class="clip" src="public/sfx/pop-in.wav" data-at="word:merah" data-track-index="12" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:kasus" data-track-index="13" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      // the falling portfolio line: 14 seeded points, drawn up to `p` (0..1)
+      const PTS = Array.from({ length: 14 }, (_, i) => ({ x: -186 + (372 * i) / 13, y: -205 + 150 * Math.pow(i / 13, 0.9) + 16 * (W.hash(i + 3) - 0.5) }));
+      const LINE = (p) => {
+        const cnt = Math.max(2, Math.round(2 + p * 12));
+        const pts = PTS.slice(0, cnt);
+        const d = pts.map((q, i) => `${i ? "L" : "M"}${n(q.x)} ${n(q.y)}`).join(" ");
+        const last = pts[pts.length - 1];
+        return `<path d="${d} L${n(last.x)} -20 L${n(pts[0].x)} -20 Z" fill="#d0413a" opacity="0.14"/><path d="${d}" fill="none" stroke="#d0413a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${n(last.x)}" cy="${n(last.y)}" r="12" fill="#d0413a" stroke="#fff" stroke-width="4"/>`;
+      };
+      const ROW = (f, i) => {
+        const y = 14 + 74 * i;
+        const pulse = 0.82 + 0.18 * Math.sin(f / 6 + i * 1.3);
+        return `<g transform="translate(0 ${y})"><rect x="-200" y="0" width="400" height="62" rx="14" fill="#f6efe1" stroke="${INK}" stroke-width="3"/><circle cx="-160" cy="31" r="19" fill="#cfc4b0"/><rect x="-126" y="16" width="${130 - 14 * (i % 3)}" height="14" rx="7" fill="#cfc4b0"/><rect x="-126" y="38" width="76" height="10" rx="5" fill="#ddd3c0"/><rect x="62" y="10" width="124" height="42" rx="12" fill="#d0413a" opacity="${n(pulse, 3)}"/><path d="M110 24 L138 24 L124 42 Z" fill="#fff"/></g>`;
+      };
+      const BG = (f, { buzz, line }) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+<g style="filter:blur(3px)"><rect x="60" y="300" width="300" height="360" fill="#f7e3b0"/><path d="M60 300 h300 v360 h-300 Z M210 300 v360 M60 480 h300" stroke="#8a6f55" stroke-width="16" fill="none"/></g>
+${W.dust(f, { x: 120, y: 520, w: 800, h: 640, count: 22, seed: 4, color: "#fff3cf", alpha: 0.5 })}
+<rect x="0" y="1150" width="1080" height="770" fill="#cdb898"/>
+<ellipse cx="540" cy="1150" rx="330" ry="26" fill="#000" opacity="0.12"/>
+<g transform="translate(540 810) rotate(${n(buzz, 2)})">
+<rect x="-240" y="-330" width="480" height="660" rx="58" fill="${INK}"/>
+<rect x="-218" y="-306" width="436" height="612" rx="42" fill="#fffaf0"/>
+<rect x="-50" y="-306" width="100" height="26" rx="13" fill="${INK}"/>
+<text x="-188" y="-250" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="3" fill="${INK}">PORTOFOLIO</text>
+<rect x="76" y="-282" width="116" height="42" rx="21" fill="#d0413a"/><text x="134" y="-252" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="24" letter-spacing="2" fill="#fff">MERAH</text>
+${LINE(line)}
+${[0, 1, 2, 3].map((i) => ROW(f, i)).join("")}
+</g></svg>`;
+      window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
+        const C = F1.cine;
+        const merah = F1.wordFrame(S, "merah");
+        const semua = F1.wordFrame(S, "semua");
+        const kasus = F1.wordFrame(S, "kasus");
+        const wah = F1.line(S, 1).start;
+        // buzz for ~20 frames from "merah", a short red flash
+        const t = f - merah;
+        const buzz = t >= 0 && t < 22 ? 2.6 * Math.sin(t * 2.4) * (1 - t / 22) : 0;
+        const flash = f >= merah ? 0.14 * Math.exp(-(f - merah) / 6) : 0;
+        const line = 0.45 + 0.55 * F1.ramp(f, 0, 110, F1.easeOut);
+        return F1.join(
+          C.stage(f, D, BG(f, { buzz, line }), {
+            whip: false,
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 52 },
+              { at: merah - 2, scale: 1.1, ox: 50, oy: 25, ease: 12 },
+              { at: wah, scale: 1.04, ox: 50, oy: 25, ease: 10 },
+            ],
+          }),
+          `<div style="position:absolute;inset:0;background:rgba(208,65,58,${n(flash, 3)})"></div>`,
+          C.vignette(0.28, "50% 55%", 45),
+          C.tag(f, { at: semua - 4, x: 610, y: 560, rot: 6, light: true, size: 42, text: `<span style="color:#c0392b">MERAH SEMUA</span>` }),
+          C.stamp(f, { at: kasus, x: 250, y: 930, rot: -9, text: "KASUS #03", size: 70 }),
+          C.progress(f, { step: 1, label: "LAPORAN MASUK" }),
+          C.hud(f, { at: -14, kicker: "LAPORAN · JUM 16 OKT", big: "−11,57%", sub: "IHSG · PENUTUPAN 5.185,10", src: "Kontan", w: 520 }),
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: -14 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 400 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

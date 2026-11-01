@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": "out/Ekonomi_keuangan/emas",
+  "files": [
+    {
+      "source": "out/Ekonomi_keuangan/emas/voiceover/emas.json",
+      "target": "narration.json",
+      "bytes": 4174,
+      "sha256": "b868e1ef70f5c8af17c35528878fa0b25db5af5a2aaf27198d0b73835171062b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/script-short.md",
+      "target": "script-short.md",
+      "bytes": 6891,
+      "sha256": "dd8f048d0868df49aeee1f50ef1f0d523f334563de6fbad5fcd93e54da1aaa6e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/hook.html",
+      "target": "scenes/hook.html",
+      "bytes": 7494,
+      "sha256": "99f95c8f9c39186195433c977e8278038a2c1cd93a74c79ebf0b3ac1ec2fabfb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/harga.html",
+      "target": "scenes/harga.html",
+      "bytes": 10210,
+      "sha256": "8fe6b8bec3c461cc8216c20466cbb293729d6d4628cc592b6d561b38837ad4fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/kenapa.html",
+      "target": "scenes/kenapa.html",
+      "bytes": 7285,
+      "sha256": "b87329dbf5021c48cc5c99378f67f22577589217727b33653920e49acb0c945e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/spread.html",
+      "target": "scenes/spread.html",
+      "bytes": 9682,
+      "sha256": "7a3972e5b361014e91568f7403f1b44a4c589cc61b6f0d20b97e5abd1d3751bc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/kalau.html",
+      "target": "scenes/kalau.html",
+      "bytes": 8109,
+      "sha256": "7818d7520bebed055922577ba7fa0ebd13b7ea2d36ec767e39328ae0ad51e4d5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/jangka.html",
+      "target": "scenes/jangka.html",
+      "bytes": 12321,
+      "sha256": "ceccaf9337ed43072011651c796f6df20aa95d6175d4ca69f07c868203a1b030"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/pelajaran.html",
+      "target": "scenes/pelajaran.html",
+      "bytes": 11000,
+      "sha256": "e577c0328c1f6d1266921304b9976e098321b307bc7c4194a692d8517abe1242"
+    }
+  ]
+}

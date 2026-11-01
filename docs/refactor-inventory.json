@@ -1,0 +1,2786 @@
+{
+  "schemaVersion": 3,
+  "audit": {
+    "repositoryRoot": "D:\\Dev\\motion",
+    "capturedAt": "2026-11-01T11:25:32.517Z",
+    "stage": "pre-retirement baseline; legacy projects still under out/Ekonomi_keuangan/<id>",
+    "scope": {
+      "episodes": [
+        "inflasi",
+        "rupiah",
+        "ihsg",
+        "paylater",
+        "judol",
+        "emas",
+        "kelas"
+      ],
+      "directories": "out/Ekonomi_keuangan/<episode>",
+      "finishedOutputs": "out/result/*.mp4",
+      "dependencyTrees": "included in measured byte/file totals; excluded from authored-only duplicate summary"
+    },
+    "before": {
+      "episodeProjectBytes": 3549807569,
+      "episodeProjectFileCount": 74103,
+      "categories": {
+        "cache": {
+          "files": 126,
+          "bytes": 54787845
+        },
+        ".venv": {
+          "files": 36266,
+          "bytes": 2320604376
+        },
+        "assets": {
+          "files": 400,
+          "bytes": 46846042
+        },
+        "source": {
+          "files": 900,
+          "bytes": 210073496
+        },
+        "node_modules": {
+          "files": 36407,
+          "bytes": 748336876
+        },
+        "renders": {
+          "files": 4,
+          "bytes": 169158934
+        }
+      },
+      "totalCategoryBytes": 3549807569,
+      "dependencyBytes": 3068941252,
+      "finishedOutputs": [
+        {
+          "file": "01-inflasi-short.mp4",
+          "sizeBytes": 34168769,
+          "sha256": "043cd9f4af70463626596bf05d09c62cc479b36d1adb751869f1fb4419564277",
+          "durationSeconds": 71.5,
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video": {
+            "codec": "h264",
+            "width": 1080,
+            "height": 1920,
+            "frameRate": "30/1"
+          },
+          "audio": {
+            "codec": "aac",
+            "sampleRate": "48000",
+            "channels": 2
+          }
+        },
+        {
+          "file": "02-rupiah-short.mp4",
+          "sizeBytes": 29833330,
+          "sha256": "156b532ee10c87fa3dcf9c7a6dd8b935693cb3b29033781f06060daca4faa19a",
+          "durationSeconds": 59.3,
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video": {
+            "codec": "h264",
+            "width": 1080,
+            "height": 1920,
+            "frameRate": "30/1"
+          },
+          "audio": {
+            "codec": "aac",
+            "sampleRate": "48000",
+            "channels": 2
+          }
+        },
+        {
+          "file": "03-ihsg-short.mp4",
+          "sizeBytes": 48950766,
+          "sha256": "0fee602bc484783a1e1d2875d39cd23b49862ca885c5b489d5dc23c7f843965e",
+          "durationSeconds": 97.2,
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video": {
+            "codec": "h264",
+            "width": 1080,
+            "height": 1920,
+            "frameRate": "30/1"
+          },
+          "audio": {
+            "codec": "aac",
+            "sampleRate": "48000",
+            "channels": 2
+          }
+        },
+        {
+          "file": "04-paylater-short.mp4",
+          "sizeBytes": 56206069,
+          "sha256": "56974772a6e51b42cd001da54c15daf6c16e7c8b77f4ae0ba2830baf9cb32a26",
+          "durationSeconds": 99.3,
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video": {
+            "codec": "h264",
+            "width": 1080,
+            "height": 1920,
+            "frameRate": "30/1"
+          },
+          "audio": {
+            "codec": "aac",
+            "sampleRate": "48000",
+            "channels": 2
+          }
+        },
+        {
+          "file": "05-judol-short.mp4",
+          "sizeBytes": 50845047,
+          "sha256": "3050eaf4ab67fa550e7612a5eef0ef01fa7f49f664444c49afcbe6a87cab6af2",
+          "durationSeconds": 94.8,
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video": {
+            "codec": "h264",
+            "width": 1080,
+            "height": 1920,
+            "frameRate": "30/1"
+          },
+          "audio": {
+            "codec": "aac",
+            "sampleRate": "48000",
+            "channels": 2
+          }
+        },
+        {
+          "file": "06-emas-short.mp4",
+          "sizeBytes": 48638477,
+          "sha256": "605f842c7c5f51092efa47f029624aea59087c6762ac01c7b152e70499c62db1",
+          "durationSeconds": 99.8,
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video": {
+            "codec": "h264",
+            "width": 1080,
+            "height": 1920,
+            "frameRate": "30/1"
+          },
+          "audio": {
+            "codec": "aac",
+            "sampleRate": "48000",
+            "channels": 2
+          }
+        },
+        {
+          "file": "07-kelas-short.mp4",
+          "sizeBytes": 52940973,
+          "sha256": "0fed5afc4230ae7314951115d526654ec2e4045121cf813d706c482895aa522c",
+          "durationSeconds": 99.4,
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "video": {
+            "codec": "h264",
+            "width": 1080,
+            "height": 1920,
+            "frameRate": "30/1"
+          },
+          "audio": {
+            "codec": "aac",
+            "sampleRate": "48000",
+            "channels": 2
+          }
+        }
+      ],
+      "finishedOutputBytes": 321583431,
+      "episodes": {
+        "inflasi": {
+          "files": 10711,
+          "bytes": 487787681,
+          "categories": {
+            "cache": {
+              "files": 20,
+              "bytes": 6433998
+            },
+            ".venv": {
+              "files": 5174,
+              "bytes": 303121187
+            },
+            "assets": {
+              "files": 56,
+              "bytes": 5168595
+            },
+            "source": {
+              "files": 259,
+              "bytes": 31989864
+            },
+            "node_modules": {
+              "files": 5201,
+              "bytes": 106905268
+            },
+            "renders": {
+              "files": 1,
+              "bytes": 34168769
+            }
+          },
+          "environment": {
+            "node_modules": true,
+            "venv": true
+          },
+          "symlinkCount": 0,
+          "selectedPublicMediaFiles": 56
+        },
+        "rupiah": {
+          "files": 10619,
+          "bytes": 515487983,
+          "categories": {
+            "cache": {
+              "files": 23,
+              "bytes": 8837958
+            },
+            ".venv": {
+              "files": 5182,
+              "bytes": 336247788
+            },
+            "assets": {
+              "files": 56,
+              "bytes": 6530992
+            },
+            "source": {
+              "files": 156,
+              "bytes": 27132647
+            },
+            "node_modules": {
+              "files": 5201,
+              "bytes": 106905268
+            },
+            "renders": {
+              "files": 1,
+              "bytes": 29833330
+            }
+          },
+          "environment": {
+            "node_modules": true,
+            "venv": true
+          },
+          "symlinkCount": 0,
+          "selectedPublicMediaFiles": 56
+        },
+        "ihsg": {
+          "files": 10548,
+          "bytes": 530972623,
+          "categories": {
+            "cache": {
+              "files": 5,
+              "bytes": 421920
+            },
+            ".venv": {
+              "files": 5182,
+              "bytes": 336246829
+            },
+            "assets": {
+              "files": 56,
+              "bytes": 7010077
+            },
+            "source": {
+              "files": 103,
+              "bytes": 31437763
+            },
+            "node_modules": {
+              "files": 5201,
+              "bytes": 106905268
+            },
+            "renders": {
+              "files": 1,
+              "bytes": 48950766
+            }
+          },
+          "environment": {
+            "node_modules": true,
+            "venv": true
+          },
+          "symlinkCount": 0,
+          "selectedPublicMediaFiles": 56
+        },
+        "paylater": {
+          "files": 10583,
+          "bytes": 559664882,
+          "categories": {
+            "cache": {
+              "files": 26,
+              "bytes": 13793826
+            },
+            ".venv": {
+              "files": 5182,
+              "bytes": 336248109
+            },
+            "assets": {
+              "files": 58,
+              "bytes": 7043059
+            },
+            "source": {
+              "files": 115,
+              "bytes": 39468551
+            },
+            "node_modules": {
+              "files": 5201,
+              "bytes": 106905268
+            },
+            "renders": {
+              "files": 1,
+              "bytes": 56206069
+            }
+          },
+          "environment": {
+            "node_modules": true,
+            "venv": true
+          },
+          "symlinkCount": 0,
+          "selectedPublicMediaFiles": 58
+        },
+        "judol": {
+          "files": 10556,
+          "bytes": 486892787,
+          "categories": {
+            "cache": {
+              "files": 24,
+              "bytes": 12491886
+            },
+            ".venv": {
+              "files": 5182,
+              "bytes": 336247149
+            },
+            "assets": {
+              "files": 58,
+              "bytes": 6991801
+            },
+            "source": {
+              "files": 91,
+              "bytes": 24256683
+            },
+            "node_modules": {
+              "files": 5201,
+              "bytes": 106905268
+            }
+          },
+          "environment": {
+            "node_modules": true,
+            "venv": true
+          },
+          "symlinkCount": 0,
+          "selectedPublicMediaFiles": 58
+        },
+        "emas": {
+          "files": 10556,
+          "bytes": 488762663,
+          "categories": {
+            "cache": {
+              "files": 24,
+              "bytes": 12168384
+            },
+            ".venv": {
+              "files": 5182,
+              "bytes": 336246829
+            },
+            "assets": {
+              "files": 58,
+              "bytes": 7053120
+            },
+            "source": {
+              "files": 91,
+              "bytes": 26389062
+            },
+            "node_modules": {
+              "files": 5201,
+              "bytes": 106905268
+            }
+          },
+          "environment": {
+            "node_modules": true,
+            "venv": true
+          },
+          "symlinkCount": 0,
+          "selectedPublicMediaFiles": 58
+        },
+        "kelas": {
+          "files": 10530,
+          "bytes": 480238950,
+          "categories": {
+            "cache": {
+              "files": 4,
+              "bytes": 639873
+            },
+            ".venv": {
+              "files": 5182,
+              "bytes": 336246485
+            },
+            "assets": {
+              "files": 58,
+              "bytes": 7048398
+            },
+            "source": {
+              "files": 85,
+              "bytes": 29398926
+            },
+            "node_modules": {
+              "files": 5201,
+              "bytes": 106905268
+            }
+          },
+          "environment": {
+            "node_modules": true,
+            "venv": true
+          },
+          "symlinkCount": 0,
+          "selectedPublicMediaFiles": 58
+        }
+      },
+      "filesystemLinks": {
+        "episodeTrees": 0
+      },
+      "authoredDuplicateSummary": {
+        "hashedPaths": [
+          "lib/f1/**",
+          "public/fonts/**",
+          "public/sfx/**",
+          "public/cast/**",
+          "public/music/**",
+          "voiceover/*.py"
+        ],
+        "duplicateContentGroups": 53,
+        "duplicateExtraBytes": 34031814,
+        "groups": [
+          {
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "sizeBytes": 11358,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\LICENSE-LuckiestGuy.txt",
+                "size": 11358
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\LICENSE-LuckiestGuy.txt",
+                "size": 11358
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\LICENSE-LuckiestGuy.txt",
+                "size": 11358
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\LICENSE-LuckiestGuy.txt",
+                "size": 11358
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\LICENSE-LuckiestGuy.txt",
+                "size": 11358
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\LICENSE-LuckiestGuy.txt",
+                "size": 11358
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\LICENSE-LuckiestGuy.txt",
+                "size": 11358
+              }
+            ]
+          },
+          {
+            "sha256": "96f79fcd76b81f84c76305e45b64449d395fa87f8713926fbf4e4e711521a88e",
+            "sizeBytes": 3237,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\bits.js",
+                "size": 3237
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\bits.js",
+                "size": 3237
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\bits.js",
+                "size": 3237
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\bits.js",
+                "size": 3237
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\bits.js",
+                "size": 3237
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\bits.js",
+                "size": 3237
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\bits.js",
+                "size": 3237
+              }
+            ]
+          },
+          {
+            "sha256": "c27d1bc2e7ac885a0a411a4cb263096d44edc815f1c53c1d90566d899dd07e3a",
+            "sizeBytes": 17341,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\core.js",
+                "size": 17341
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\core.js",
+                "size": 17341
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\core.js",
+                "size": 17341
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\core.js",
+                "size": 17341
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\core.js",
+                "size": 17341
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\core.js",
+                "size": 17341
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\core.js",
+                "size": 17341
+              }
+            ]
+          },
+          {
+            "sha256": "6b108cdee86c4a2e11884339a5446a7ad702853b55530feb6a82b31f5f25500e",
+            "sizeBytes": 5662,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\f1.css",
+                "size": 5662
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\f1.css",
+                "size": 5662
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\f1.css",
+                "size": 5662
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\f1.css",
+                "size": 5662
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\f1.css",
+                "size": 5662
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\f1.css",
+                "size": 5662
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\f1.css",
+                "size": 5662
+              }
+            ]
+          },
+          {
+            "sha256": "9cea5127ae156a28f568c229fca6b6aecead443698bbc197b324b54fb73f742a",
+            "sizeBytes": 48010,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\mascot.js",
+                "size": 48010
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\mascot.js",
+                "size": 48010
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\mascot.js",
+                "size": 48010
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\mascot.js",
+                "size": 48010
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\mascot.js",
+                "size": 48010
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\mascot.js",
+                "size": 48010
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\mascot.js",
+                "size": 48010
+              }
+            ]
+          },
+          {
+            "sha256": "ead1663f886c8b50e3b19ba65ba809674d8c5d9166db8dfc4f6431888d91f870",
+            "sizeBytes": 26516,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\photo.js",
+                "size": 26516
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\photo.js",
+                "size": 26516
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\photo.js",
+                "size": 26516
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\photo.js",
+                "size": 26516
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\photo.js",
+                "size": 26516
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\photo.js",
+                "size": 26516
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\photo.js",
+                "size": 26516
+              }
+            ]
+          },
+          {
+            "sha256": "1e55cda199ed4daef6a5ce4edc21b00b00387199b535c518530e7a956138873c",
+            "sizeBytes": 13136,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\rig.js",
+                "size": 13136
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\rig.js",
+                "size": 13136
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\rig.js",
+                "size": 13136
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\rig.js",
+                "size": 13136
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\rig.js",
+                "size": 13136
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\rig.js",
+                "size": 13136
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\rig.js",
+                "size": 13136
+              }
+            ]
+          },
+          {
+            "sha256": "c209cc61a5aa1f8116e4b416d812fae63541e214c55826a9aa971de79a2e8699",
+            "sizeBytes": 19013,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\toon.js",
+                "size": 19013
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\toon.js",
+                "size": 19013
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\toon.js",
+                "size": 19013
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\toon.js",
+                "size": 19013
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\toon.js",
+                "size": 19013
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\toon.js",
+                "size": 19013
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\toon.js",
+                "size": 19013
+              }
+            ]
+          },
+          {
+            "sha256": "8d1ebf51ea08d373a40cd844a60be7a69f5dffb85f692c0179ff48792c439c5e",
+            "sizeBytes": 7864,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\words.js",
+                "size": 7864
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\words.js",
+                "size": 7864
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\words.js",
+                "size": 7864
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\words.js",
+                "size": 7864
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\words.js",
+                "size": 7864
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\words.js",
+                "size": 7864
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\words.js",
+                "size": 7864
+              }
+            ]
+          },
+          {
+            "sha256": "ecaa958a5871d8d31865a82cf626143c503e62106551750a1fea5b2320219ebf",
+            "sizeBytes": 6836,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "lib\\f1\\world.js",
+                "size": 6836
+              },
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\world.js",
+                "size": 6836
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\world.js",
+                "size": 6836
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\world.js",
+                "size": 6836
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\world.js",
+                "size": 6836
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\world.js",
+                "size": 6836
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\world.js",
+                "size": 6836
+              }
+            ]
+          },
+          {
+            "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8",
+            "sizeBytes": 4232,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\cast\\beni-kaget.svg",
+                "size": 4232
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\cast\\beni-kaget.svg",
+                "size": 4232
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\cast\\beni-kaget.svg",
+                "size": 4232
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\cast\\beni-kaget.svg",
+                "size": 4232
+              },
+              {
+                "episode": "judol",
+                "path": "public\\cast\\beni-kaget.svg",
+                "size": 4232
+              },
+              {
+                "episode": "emas",
+                "path": "public\\cast\\beni-kaget.svg",
+                "size": 4232
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\cast\\beni-kaget.svg",
+                "size": 4232
+              }
+            ]
+          },
+          {
+            "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119",
+            "sizeBytes": 4237,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\cast\\beni.svg",
+                "size": 4237
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\cast\\beni.svg",
+                "size": 4237
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\cast\\beni.svg",
+                "size": 4237
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\cast\\beni.svg",
+                "size": 4237
+              },
+              {
+                "episode": "judol",
+                "path": "public\\cast\\beni.svg",
+                "size": 4237
+              },
+              {
+                "episode": "emas",
+                "path": "public\\cast\\beni.svg",
+                "size": 4237
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\cast\\beni.svg",
+                "size": 4237
+              }
+            ]
+          },
+          {
+            "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68",
+            "sizeBytes": 2951,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\cast\\muklis-senyum.svg",
+                "size": 2951
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\cast\\muklis-senyum.svg",
+                "size": 2951
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\cast\\muklis-senyum.svg",
+                "size": 2951
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\cast\\muklis-senyum.svg",
+                "size": 2951
+              },
+              {
+                "episode": "judol",
+                "path": "public\\cast\\muklis-senyum.svg",
+                "size": 2951
+              },
+              {
+                "episode": "emas",
+                "path": "public\\cast\\muklis-senyum.svg",
+                "size": 2951
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\cast\\muklis-senyum.svg",
+                "size": 2951
+              }
+            ]
+          },
+          {
+            "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6",
+            "sizeBytes": 3034,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\cast\\muklis.svg",
+                "size": 3034
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\cast\\muklis.svg",
+                "size": 3034
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\cast\\muklis.svg",
+                "size": 3034
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\cast\\muklis.svg",
+                "size": 3034
+              },
+              {
+                "episode": "judol",
+                "path": "public\\cast\\muklis.svg",
+                "size": 3034
+              },
+              {
+                "episode": "emas",
+                "path": "public\\cast\\muklis.svg",
+                "size": 3034
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\cast\\muklis.svg",
+                "size": 3034
+              }
+            ]
+          },
+          {
+            "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e",
+            "sizeBytes": 2543,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\cast\\nisa-kaget.svg",
+                "size": 2543
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\cast\\nisa-kaget.svg",
+                "size": 2543
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\cast\\nisa-kaget.svg",
+                "size": 2543
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\cast\\nisa-kaget.svg",
+                "size": 2543
+              },
+              {
+                "episode": "judol",
+                "path": "public\\cast\\nisa-kaget.svg",
+                "size": 2543
+              },
+              {
+                "episode": "emas",
+                "path": "public\\cast\\nisa-kaget.svg",
+                "size": 2543
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\cast\\nisa-kaget.svg",
+                "size": 2543
+              }
+            ]
+          },
+          {
+            "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db",
+            "sizeBytes": 2540,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\cast\\nisa.svg",
+                "size": 2540
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\cast\\nisa.svg",
+                "size": 2540
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\cast\\nisa.svg",
+                "size": 2540
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\cast\\nisa.svg",
+                "size": 2540
+              },
+              {
+                "episode": "judol",
+                "path": "public\\cast\\nisa.svg",
+                "size": 2540
+              },
+              {
+                "episode": "emas",
+                "path": "public\\cast\\nisa.svg",
+                "size": 2540
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\cast\\nisa.svg",
+                "size": 2540
+              }
+            ]
+          },
+          {
+            "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682",
+            "sizeBytes": 408496,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\BricolageGrotesque.ttf",
+                "size": 408496
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\BricolageGrotesque.ttf",
+                "size": 408496
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\BricolageGrotesque.ttf",
+                "size": 408496
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\BricolageGrotesque.ttf",
+                "size": 408496
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\BricolageGrotesque.ttf",
+                "size": 408496
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\BricolageGrotesque.ttf",
+                "size": 408496
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\BricolageGrotesque.ttf",
+                "size": 408496
+              }
+            ]
+          },
+          {
+            "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+            "sizeBytes": 187208,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\JetBrainsMono-VF.ttf",
+                "size": 187208
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\JetBrainsMono-VF.ttf",
+                "size": 187208
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\JetBrainsMono-VF.ttf",
+                "size": 187208
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\JetBrainsMono-VF.ttf",
+                "size": 187208
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\JetBrainsMono-VF.ttf",
+                "size": 187208
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\JetBrainsMono-VF.ttf",
+                "size": 187208
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\JetBrainsMono-VF.ttf",
+                "size": 187208
+              }
+            ]
+          },
+          {
+            "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980",
+            "sizeBytes": 73320,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\LuckiestGuy-Regular.ttf",
+                "size": 73320
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\LuckiestGuy-Regular.ttf",
+                "size": 73320
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\LuckiestGuy-Regular.ttf",
+                "size": 73320
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\LuckiestGuy-Regular.ttf",
+                "size": 73320
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\LuckiestGuy-Regular.ttf",
+                "size": 73320
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\LuckiestGuy-Regular.ttf",
+                "size": 73320
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\LuckiestGuy-Regular.ttf",
+                "size": 73320
+              }
+            ]
+          },
+          {
+            "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+            "sizeBytes": 744936,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\Montserrat-VF.ttf",
+                "size": 744936
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\Montserrat-VF.ttf",
+                "size": 744936
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\Montserrat-VF.ttf",
+                "size": 744936
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\Montserrat-VF.ttf",
+                "size": 744936
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\Montserrat-VF.ttf",
+                "size": 744936
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\Montserrat-VF.ttf",
+                "size": 744936
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\Montserrat-VF.ttf",
+                "size": 744936
+              }
+            ]
+          },
+          {
+            "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d",
+            "sizeBytes": 571240,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\NunitoSans.ttf",
+                "size": 571240
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\NunitoSans.ttf",
+                "size": 571240
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\NunitoSans.ttf",
+                "size": 571240
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\NunitoSans.ttf",
+                "size": 571240
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\NunitoSans.ttf",
+                "size": 571240
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\NunitoSans.ttf",
+                "size": 571240
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\NunitoSans.ttf",
+                "size": 571240
+              }
+            ]
+          },
+          {
+            "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba",
+            "sizeBytes": 4403,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\OFL-BricolageGrotesque.txt",
+                "size": 4403
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\OFL-BricolageGrotesque.txt",
+                "size": 4403
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\OFL-BricolageGrotesque.txt",
+                "size": 4403
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\OFL-BricolageGrotesque.txt",
+                "size": 4403
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\OFL-BricolageGrotesque.txt",
+                "size": 4403
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\OFL-BricolageGrotesque.txt",
+                "size": 4403
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\OFL-BricolageGrotesque.txt",
+                "size": 4403
+              }
+            ]
+          },
+          {
+            "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+            "sizeBytes": 4399,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\OFL-JetBrainsMono.txt",
+                "size": 4399
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\OFL-JetBrainsMono.txt",
+                "size": 4399
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\OFL-JetBrainsMono.txt",
+                "size": 4399
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\OFL-JetBrainsMono.txt",
+                "size": 4399
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\OFL-JetBrainsMono.txt",
+                "size": 4399
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\OFL-JetBrainsMono.txt",
+                "size": 4399
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\OFL-JetBrainsMono.txt",
+                "size": 4399
+              }
+            ]
+          },
+          {
+            "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+            "sizeBytes": 4400,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\OFL-Montserrat.txt",
+                "size": 4400
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\OFL-Montserrat.txt",
+                "size": 4400
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\OFL-Montserrat.txt",
+                "size": 4400
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\OFL-Montserrat.txt",
+                "size": 4400
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\OFL-Montserrat.txt",
+                "size": 4400
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\OFL-Montserrat.txt",
+                "size": 4400
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\OFL-Montserrat.txt",
+                "size": 4400
+              }
+            ]
+          },
+          {
+            "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b",
+            "sizeBytes": 4393,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\OFL-NunitoSans.txt",
+                "size": 4393
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\OFL-NunitoSans.txt",
+                "size": 4393
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\OFL-NunitoSans.txt",
+                "size": 4393
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\OFL-NunitoSans.txt",
+                "size": 4393
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\OFL-NunitoSans.txt",
+                "size": 4393
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\OFL-NunitoSans.txt",
+                "size": 4393
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\OFL-NunitoSans.txt",
+                "size": 4393
+              }
+            ]
+          },
+          {
+            "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+            "sizeBytes": 4483,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\OFL-Oswald.txt",
+                "size": 4483
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\OFL-Oswald.txt",
+                "size": 4483
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\OFL-Oswald.txt",
+                "size": 4483
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\OFL-Oswald.txt",
+                "size": 4483
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\OFL-Oswald.txt",
+                "size": 4483
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\OFL-Oswald.txt",
+                "size": 4483
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\OFL-Oswald.txt",
+                "size": 4483
+              }
+            ]
+          },
+          {
+            "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1",
+            "sizeBytes": 4376,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\OFL-PatrickHand.txt",
+                "size": 4376
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\OFL-PatrickHand.txt",
+                "size": 4376
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\OFL-PatrickHand.txt",
+                "size": 4376
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\OFL-PatrickHand.txt",
+                "size": 4376
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\OFL-PatrickHand.txt",
+                "size": 4376
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\OFL-PatrickHand.txt",
+                "size": 4376
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\OFL-PatrickHand.txt",
+                "size": 4376
+              }
+            ]
+          },
+          {
+            "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc",
+            "sizeBytes": 4523,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\OFL.txt",
+                "size": 4523
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\OFL.txt",
+                "size": 4523
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\OFL.txt",
+                "size": 4523
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\OFL.txt",
+                "size": 4523
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\OFL.txt",
+                "size": 4523
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\OFL.txt",
+                "size": 4523
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\OFL.txt",
+                "size": 4523
+              }
+            ]
+          },
+          {
+            "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+            "sizeBytes": 172088,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\Oswald-VF.ttf",
+                "size": 172088
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\Oswald-VF.ttf",
+                "size": 172088
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\Oswald-VF.ttf",
+                "size": 172088
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\Oswald-VF.ttf",
+                "size": 172088
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\Oswald-VF.ttf",
+                "size": 172088
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\Oswald-VF.ttf",
+                "size": 172088
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\Oswald-VF.ttf",
+                "size": 172088
+              }
+            ]
+          },
+          {
+            "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc",
+            "sizeBytes": 214772,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\PatrickHand-Regular.ttf",
+                "size": 214772
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\PatrickHand-Regular.ttf",
+                "size": 214772
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\PatrickHand-Regular.ttf",
+                "size": 214772
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\PatrickHand-Regular.ttf",
+                "size": 214772
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\PatrickHand-Regular.ttf",
+                "size": 214772
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\PatrickHand-Regular.ttf",
+                "size": 214772
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\PatrickHand-Regular.ttf",
+                "size": 214772
+              }
+            ]
+          },
+          {
+            "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb",
+            "sizeBytes": 49328,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\TitilliumWeb-Black.ttf",
+                "size": 49328
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\TitilliumWeb-Black.ttf",
+                "size": 49328
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\TitilliumWeb-Black.ttf",
+                "size": 49328
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\TitilliumWeb-Black.ttf",
+                "size": 49328
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\TitilliumWeb-Black.ttf",
+                "size": 49328
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\TitilliumWeb-Black.ttf",
+                "size": 49328
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\TitilliumWeb-Black.ttf",
+                "size": 49328
+              }
+            ]
+          },
+          {
+            "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093",
+            "sizeBytes": 59884,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\TitilliumWeb-Bold.ttf",
+                "size": 59884
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\TitilliumWeb-Bold.ttf",
+                "size": 59884
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\TitilliumWeb-Bold.ttf",
+                "size": 59884
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\TitilliumWeb-Bold.ttf",
+                "size": 59884
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\TitilliumWeb-Bold.ttf",
+                "size": 59884
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\TitilliumWeb-Bold.ttf",
+                "size": 59884
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\TitilliumWeb-Bold.ttf",
+                "size": 59884
+              }
+            ]
+          },
+          {
+            "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5",
+            "sizeBytes": 63660,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\TitilliumWeb-Regular.ttf",
+                "size": 63660
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\TitilliumWeb-Regular.ttf",
+                "size": 63660
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\TitilliumWeb-Regular.ttf",
+                "size": 63660
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\TitilliumWeb-Regular.ttf",
+                "size": 63660
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\TitilliumWeb-Regular.ttf",
+                "size": 63660
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\TitilliumWeb-Regular.ttf",
+                "size": 63660
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\TitilliumWeb-Regular.ttf",
+                "size": 63660
+              }
+            ]
+          },
+          {
+            "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81",
+            "sizeBytes": 63008,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\fonts\\TitilliumWeb-SemiBold.ttf",
+                "size": 63008
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\fonts\\TitilliumWeb-SemiBold.ttf",
+                "size": 63008
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\fonts\\TitilliumWeb-SemiBold.ttf",
+                "size": 63008
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\fonts\\TitilliumWeb-SemiBold.ttf",
+                "size": 63008
+              },
+              {
+                "episode": "judol",
+                "path": "public\\fonts\\TitilliumWeb-SemiBold.ttf",
+                "size": 63008
+              },
+              {
+                "episode": "emas",
+                "path": "public\\fonts\\TitilliumWeb-SemiBold.ttf",
+                "size": 63008
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\fonts\\TitilliumWeb-SemiBold.ttf",
+                "size": 63008
+              }
+            ]
+          },
+          {
+            "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261",
+            "sizeBytes": 79424,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\cash.wav",
+                "size": 79424
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\cash.wav",
+                "size": 79424
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\cash.wav",
+                "size": 79424
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\cash.wav",
+                "size": 79424
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\cash.wav",
+                "size": 79424
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\cash.wav",
+                "size": 79424
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\cash.wav",
+                "size": 79424
+              }
+            ]
+          },
+          {
+            "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039",
+            "sizeBytes": 6218,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\click.wav",
+                "size": 6218
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\click.wav",
+                "size": 6218
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\click.wav",
+                "size": 6218
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\click.wav",
+                "size": 6218
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\click.wav",
+                "size": 6218
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\click.wav",
+                "size": 6218
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\click.wav",
+                "size": 6218
+              }
+            ]
+          },
+          {
+            "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000",
+            "sizeBytes": 103724,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\ding-num.wav",
+                "size": 103724
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\ding-num.wav",
+                "size": 103724
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\ding-num.wav",
+                "size": 103724
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\ding-num.wav",
+                "size": 103724
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\ding-num.wav",
+                "size": 103724
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\ding-num.wav",
+                "size": 103724
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\ding-num.wav",
+                "size": 103724
+              }
+            ]
+          },
+          {
+            "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f",
+            "sizeBytes": 88244,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\ding.wav",
+                "size": 88244
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\ding.wav",
+                "size": 88244
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\ding.wav",
+                "size": 88244
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\ding.wav",
+                "size": 88244
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\ding.wav",
+                "size": 88244
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\ding.wav",
+                "size": 88244
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\ding.wav",
+                "size": 88244
+              }
+            ]
+          },
+          {
+            "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833",
+            "sizeBytes": 83834,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\door-open.wav",
+                "size": 83834
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\door-open.wav",
+                "size": 83834
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\door-open.wav",
+                "size": 83834
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\door-open.wav",
+                "size": 83834
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\door-open.wav",
+                "size": 83834
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\door-open.wav",
+                "size": 83834
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\door-open.wav",
+                "size": 83834
+              }
+            ]
+          },
+          {
+            "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777",
+            "sizeBytes": 96272,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\drip.wav",
+                "size": 96272
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\drip.wav",
+                "size": 96272
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\drip.wav",
+                "size": 96272
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\drip.wav",
+                "size": 96272
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\drip.wav",
+                "size": 96272
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\drip.wav",
+                "size": 96272
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\drip.wav",
+                "size": 96272
+              }
+            ]
+          },
+          {
+            "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678",
+            "sizeBytes": 518444,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\fall.wav",
+                "size": 518444
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\fall.wav",
+                "size": 518444
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\fall.wav",
+                "size": 518444
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\fall.wav",
+                "size": 518444
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\fall.wav",
+                "size": 518444
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\fall.wav",
+                "size": 518444
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\fall.wav",
+                "size": 518444
+              }
+            ]
+          },
+          {
+            "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a",
+            "sizeBytes": 57644,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\pop-in.wav",
+                "size": 57644
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\pop-in.wav",
+                "size": 57644
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\pop-in.wav",
+                "size": 57644
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\pop-in.wav",
+                "size": 57644
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\pop-in.wav",
+                "size": 57644
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\pop-in.wav",
+                "size": 57644
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\pop-in.wav",
+                "size": 57644
+              }
+            ]
+          },
+          {
+            "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd",
+            "sizeBytes": 14156,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\pop.wav",
+                "size": 14156
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\pop.wav",
+                "size": 14156
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\pop.wav",
+                "size": 14156
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\pop.wav",
+                "size": 14156
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\pop.wav",
+                "size": 14156
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\pop.wav",
+                "size": 14156
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\pop.wav",
+                "size": 14156
+              }
+            ]
+          },
+          {
+            "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747",
+            "sizeBytes": 88244,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\riser.wav",
+                "size": 88244
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\riser.wav",
+                "size": 88244
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\riser.wav",
+                "size": 88244
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\riser.wav",
+                "size": 88244
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\riser.wav",
+                "size": 88244
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\riser.wav",
+                "size": 88244
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\riser.wav",
+                "size": 88244
+              }
+            ]
+          },
+          {
+            "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e",
+            "sizeBytes": 22094,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\shutter.wav",
+                "size": 22094
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\shutter.wav",
+                "size": 22094
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\shutter.wav",
+                "size": 22094
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\shutter.wav",
+                "size": 22094
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\shutter.wav",
+                "size": 22094
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\shutter.wav",
+                "size": 22094
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\shutter.wav",
+                "size": 22094
+              }
+            ]
+          },
+          {
+            "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca",
+            "sizeBytes": 44288,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\stamp.wav",
+                "size": 44288
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\stamp.wav",
+                "size": 44288
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\stamp.wav",
+                "size": 44288
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\stamp.wav",
+                "size": 44288
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\stamp.wav",
+                "size": 44288
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\stamp.wav",
+                "size": 44288
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\stamp.wav",
+                "size": 44288
+              }
+            ]
+          },
+          {
+            "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533",
+            "sizeBytes": 288044,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\sub-drop.wav",
+                "size": 288044
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\sub-drop.wav",
+                "size": 288044
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\sub-drop.wav",
+                "size": 288044
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\sub-drop.wav",
+                "size": 288044
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\sub-drop.wav",
+                "size": 288044
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\sub-drop.wav",
+                "size": 288044
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\sub-drop.wav",
+                "size": 288044
+              }
+            ]
+          },
+          {
+            "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5",
+            "sizeBytes": 44144,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\swoosh-soft.wav",
+                "size": 44144
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\swoosh-soft.wav",
+                "size": 44144
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\swoosh-soft.wav",
+                "size": 44144
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\swoosh-soft.wav",
+                "size": 44144
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\swoosh-soft.wav",
+                "size": 44144
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\swoosh-soft.wav",
+                "size": 44144
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\swoosh-soft.wav",
+                "size": 44144
+              }
+            ]
+          },
+          {
+            "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79",
+            "sizeBytes": 4454,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\tick.wav",
+                "size": 4454
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\tick.wav",
+                "size": 4454
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\tick.wav",
+                "size": 4454
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\tick.wav",
+                "size": 4454
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\tick.wav",
+                "size": 4454
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\tick.wav",
+                "size": 4454
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\tick.wav",
+                "size": 4454
+              }
+            ]
+          },
+          {
+            "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593",
+            "sizeBytes": 52964,
+            "count": 7,
+            "paths": [
+              {
+                "episode": "inflasi",
+                "path": "public\\sfx\\whoosh.wav",
+                "size": 52964
+              },
+              {
+                "episode": "rupiah",
+                "path": "public\\sfx\\whoosh.wav",
+                "size": 52964
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\sfx\\whoosh.wav",
+                "size": 52964
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\sfx\\whoosh.wav",
+                "size": 52964
+              },
+              {
+                "episode": "judol",
+                "path": "public\\sfx\\whoosh.wav",
+                "size": 52964
+              },
+              {
+                "episode": "emas",
+                "path": "public\\sfx\\whoosh.wav",
+                "size": 52964
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\sfx\\whoosh.wav",
+                "size": 52964
+              }
+            ]
+          },
+          {
+            "sha256": "2996a03ea940a238309469839f06a67c140ec463c62ec42830b06987cec7f064",
+            "sizeBytes": 9876,
+            "count": 6,
+            "paths": [
+              {
+                "episode": "rupiah",
+                "path": "lib\\f1\\timing.js",
+                "size": 9876
+              },
+              {
+                "episode": "ihsg",
+                "path": "lib\\f1\\timing.js",
+                "size": 9876
+              },
+              {
+                "episode": "paylater",
+                "path": "lib\\f1\\timing.js",
+                "size": 9876
+              },
+              {
+                "episode": "judol",
+                "path": "lib\\f1\\timing.js",
+                "size": 9876
+              },
+              {
+                "episode": "emas",
+                "path": "lib\\f1\\timing.js",
+                "size": 9876
+              },
+              {
+                "episode": "kelas",
+                "path": "lib\\f1\\timing.js",
+                "size": 9876
+              }
+            ]
+          },
+          {
+            "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde",
+            "sizeBytes": 1501004,
+            "count": 6,
+            "paths": [
+              {
+                "episode": "rupiah",
+                "path": "public\\music\\bed.mp3",
+                "size": 1501004
+              },
+              {
+                "episode": "ihsg",
+                "path": "public\\music\\bed.mp3",
+                "size": 1501004
+              },
+              {
+                "episode": "paylater",
+                "path": "public\\music\\bed.mp3",
+                "size": 1501004
+              },
+              {
+                "episode": "judol",
+                "path": "public\\music\\bed.mp3",
+                "size": 1501004
+              },
+              {
+                "episode": "emas",
+                "path": "public\\music\\bed.mp3",
+                "size": 1501004
+              },
+              {
+                "episode": "kelas",
+                "path": "public\\music\\bed.mp3",
+                "size": 1501004
+              }
+            ]
+          },
+          {
+            "sha256": "0f4f45eddaf953d0af28c0da3dbf23f7de0a911c5492782fdb2ca528a440f450",
+            "sizeBytes": 3940,
+            "count": 6,
+            "paths": [
+              {
+                "episode": "rupiah",
+                "path": "voiceover\\bed.py",
+                "size": 3940
+              },
+              {
+                "episode": "ihsg",
+                "path": "voiceover\\bed.py",
+                "size": 3940
+              },
+              {
+                "episode": "paylater",
+                "path": "voiceover\\bed.py",
+                "size": 3940
+              },
+              {
+                "episode": "judol",
+                "path": "voiceover\\bed.py",
+                "size": 3940
+              },
+              {
+                "episode": "emas",
+                "path": "voiceover\\bed.py",
+                "size": 3940
+              },
+              {
+                "episode": "kelas",
+                "path": "voiceover\\bed.py",
+                "size": 3940
+              }
+            ]
+          }
+        ]
+      },
+      "gitStatusSnapshot": [
+        " M .gitignore",
+        " M CLAUDE.md",
+        " M HANDOFF.md",
+        " M ai-routing.md",
+        " M out/Ekonomi_keuangan/PIPELINE.md",
+        " M out/Ekonomi_keuangan/inflasi/package.json",
+        " M out/Ekonomi_keuangan/inflasi/scripts/master.mjs",
+        " M out/Ekonomi_keuangan/rupiah/package.json",
+        " M out/Ekonomi_keuangan/rupiah/scripts/master.mjs",
+        "?? README.md",
+        "?? assets/",
+        "?? config/",
+        "?? docs/",
+        "?? episodes/",
+        "?? out/Ekonomi_keuangan/emas/",
+        "?? out/Ekonomi_keuangan/ihsg/",
+        "?? out/Ekonomi_keuangan/inflasi/debug.log",
+        "?? out/Ekonomi_keuangan/judol/",
+        "?? out/Ekonomi_keuangan/kelas/",
+        "?? out/Ekonomi_keuangan/paylater/",
+        "?? package-lock.json",
+        "?? package.json",
+        "?? requirements-lock.txt",
+        "?? requirements.txt",
+        "?? scripts/",
+        "?? src/",
+        "?? tests/",
+        "?? tools/"
+      ]
+    },
+    "fullAudit": {
+      "file": "refactor-inventory-full.json",
+      "sha256Groups": 10001,
+      "warning": "This retained broad audit hashed dependency/cache trees and is preserved as raw evidence. Its 10,001 duplicate groups are not an actionable authored-file cleanup list; use authoredDuplicateSummary above."
+    },
+    "priorQuickMeasurement": {
+      "episodeProjectBytes": 3549807749,
+      "differenceBytes": 180,
+      "note": "A prior bounded quick size pass differed by 180 bytes from this timestamped full baseline. Treat it as a separate measurement; the exact full-baseline category sum is recorded above."
+    },
+    "commandsAndMethods": [
+      "Read the existing audit JSON only; no filesystem walk or hashing was restarted.",
+      "Reconciled per-episode logical category totals and output ffprobe metadata from the captured baseline JSON.",
+      "Filtered duplicate hashes from captured full audit to authored runtime, selected public media, and direct voiceover Python paths only.",
+      "Checked process list; no remaining Node audit job was running."
+    ],
+    "afterRetirement": {
+      "capturedAt": "2026-11-01T11:31:21.982Z",
+      "report": "refactor-retirement.json",
+      "executed": true,
+      "legacyPathsRetired": 106,
+      "filesRemoved": 73875,
+      "grossBytesRemoved": 3359383760,
+      "retainedLegacyEntries": {
+        "inflasi": [
+          ".venv",
+          "debug.log",
+          "renders"
+        ],
+        "rupiah": [
+          ".venv",
+          "renders"
+        ],
+        "ihsg": [
+          ".venv",
+          "renders"
+        ],
+        "paylater": [
+          ".venv",
+          "renders"
+        ],
+        "judol": [
+          ".venv"
+        ],
+        "emas": [
+          ".venv"
+        ],
+        "kelas": [
+          ".venv"
+        ]
+      },
+      "protectedPaths": [
+        "out/result",
+        "legacy renders",
+        "legacy interpreter and scripts",
+        "debug.log",
+        "migration archive",
+        "imported voice"
+      ],
+      "preservedEnvironmentStubs": {
+        "path": ".cache/migration-baseline/environments/<episode>/",
+        "episodes": {
+          "emas": {
+            "files": 32,
+            "bytes": 3037837
+          },
+          "ihsg": {
+            "files": 32,
+            "bytes": 3037837
+          },
+          "inflasi": {
+            "files": 32,
+            "bytes": 3037845
+          },
+          "judol": {
+            "files": 32,
+            "bytes": 3037838
+          },
+          "kelas": {
+            "files": 32,
+            "bytes": 3037838
+          },
+          "paylater": {
+            "files": 32,
+            "bytes": 3037841
+          },
+          "rupiah": {
+            "files": 32,
+            "bytes": 3037839
+          }
+        },
+        "totalFiles": 224,
+        "totalBytes": 21264875
+      },
+      "preservedImportedVoiceFiles": 721,
+      "oldRendersAndDebugLog": "Retained per coordinator report",
+      "finishedOutputs": "Retained and SHA-256 verified unchanged across all seven output files",
+      "netDiskChange": "Not stated here; gross removed payload bytes are not a net free-space measurement."
+    },
+    "measurementNotes": {
+      "canonicalSummary": "This report records the pre-retirement baseline and the coordinator-supplied completed-retirement summary. Logical category byte counts are the exact sums from the captured pre-retirement full audit; no post-retirement recursive walk is claimed.",
+      "rawFullAudit": "refactor-inventory-full.json preserves the broad original audit capture including its per-file dependency/cache hashes. It is not the canonical actionable duplicate list."
+    }
+  }
+}

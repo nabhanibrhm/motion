@@ -1,0 +1,122 @@
+<!-- Skala: a paper desk. On "paylater" the two paylater slices of a stacked bar grow, on "pinjol" the big pinjol slice, and the total counts up to ±Rp152 T by "triliun" (Rp106,94 T + Rp31,41 T + Rp13,61 T). On "Siapa" the bar slides away and ten person icons appear with a "?"; on "Tujuh" seven of them light up one by one, "delapan belas ... tiga puluh lima" brings the age tag. Muklis, Beni asks, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #efe6d4;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="skala" data-width="1080" data-height="1920">
+    <div id="skala-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="skala-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.5667" id="skala-sfx-paylater" class="clip" src="public/sfx/pop-in.wav" data-at="word:paylater" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.4333" id="skala-sfx-pinjol" class="clip" src="public/sfx/pop-in.wav" data-at="word:pinjol" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.6667" id="skala-sfx-total" class="clip" src="public/sfx/ding-num.wav" data-at="word:hampir" data-track-index="14" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.5667" id="skala-sfx-tujuh" class="clip" src="public/sfx/tick.wav" data-at="word:Tujuh" data-track-index="15" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.8667" id="skala-sfx-usia" class="clip" src="public/sfx/ding-num.wav" data-at="word:delapan" data-track-index="16" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const BAR_X = 90;
+      const BAR_W = 800;
+      const TOTAL = 151.96;
+      // one person icon: head + shoulders; lit = filled lime
+      const PERSON = (x, y, lit, s = 1) =>
+        `<g transform="translate(${x} ${y}) scale(${n(s, 3)})" stroke="${INK}" stroke-width="5" stroke-linejoin="round"><circle cx="0" cy="-44" r="22" fill="${lit ? "#c6f432" : "#e4dccb"}"/><path d="M-34 36 Q-34 -12 0 -12 Q34 -12 34 36 Z" fill="${lit ? "#c6f432" : "#e4dccb"}"/></g>`;
+      const BG = (f, o) => {
+        // stacked bar: pinjol first on the left (the big one), then paylater bank, then multifinance
+        const wPinjol = (106.94 / TOTAL) * BAR_W * o.pinjol;
+        const wBank = (31.41 / TOTAL) * BAR_W * o.bank;
+        const wMulti = (13.61 / TOTAL) * BAR_W * o.bank;
+        const x2 = BAR_X + (106.94 / TOTAL) * BAR_W;
+        const x3 = x2 + (31.41 / TOTAL) * BAR_W;
+        const lab = (x, y, anchor, a, b, c, op) =>
+          `<g opacity="${n(op, 3)}"><text x="${x}" y="${y}" text-anchor="${anchor}" font-family="Oswald" font-weight="600" font-size="30" letter-spacing="2" fill="${INK}">${a}</text><text x="${x}" y="${y + 38}" text-anchor="${anchor}" font-family="JetBrains Mono" font-weight="700" font-size="34" fill="${c}">${b}</text></g>`;
+        const bar = `<g transform="translate(0 ${n(-o.out * 80)})" opacity="${n(1 - o.out, 3)}">
+<text x="540" y="640" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="22" letter-spacing="3" fill="#6f6a66">TOTAL UTANG · AGU 2026</text>
+<text x="540" y="740" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="86" fill="${INK}">${o.total > 0 ? "±Rp" + n(o.total, 0) + " T" : ""}</text>
+<rect x="${BAR_X - 6}" y="790" width="${BAR_W + 12}" height="92" rx="18" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<rect x="${BAR_X}" y="796" width="${n(wPinjol)}" height="80" fill="#d0413a"/>
+<rect x="${n(x2)}" y="796" width="${n(wBank)}" height="80" fill="#3f78b5"/>
+<rect x="${n(x3)}" y="796" width="${n(wMulti)}" height="80" fill="#d9a441"/>
+<path d="M${n(x2)} 796 V876 M${n(x3)} 796 V876" stroke="${INK}" stroke-width="5" opacity="${n(o.bank, 3)}"/>
+${lab(BAR_X, 940, "start", "PINJOL (P2P)", "Rp106,94 T", "#c0392b", o.pinjol)}
+${lab(n(x2 + 4), 1040, "start", "PAYLATER BANK", "Rp31,41 T", "#3f78b5", o.bank)}
+${lab(n(BAR_X + BAR_W), 940, "end", "MULTIFINANCE", "Rp13,61 T", "#a8741a", o.bank)}
+<path d="M${n(x2 + 40)} 884 V1020" stroke="#3f78b5" stroke-width="4" stroke-dasharray="8 8" opacity="${n(o.bank, 3)}"/>
+<path d="M${n(x3 + 36)} 884 V928" stroke="#a8741a" stroke-width="4" stroke-dasharray="8 8" opacity="${n(o.bank, 3)}"/>
+<text x="${BAR_X}" y="1130" font-family="JetBrains Mono" font-weight="500" font-size="19" fill="#6f6a66" opacity="${n(o.pinjol, 3)}">Sumber: OJK via Kontan (5 Okt 2026), Kontan (6 Okt 2026)</text></g>`;
+        const lit = o.lit;
+        const people = o.ppl <= 0 ? "" : `<g opacity="${n(o.ppl, 3)}" transform="translate(0 ${n((1 - o.ppl) * 60)})">
+<text x="540" y="650" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="46" letter-spacing="3" fill="${INK}">${lit > 0 ? "PENGGUNA PAYLATER" : "SIAPA PENGGUNANYA?"}</text>
+${Array.from({ length: 10 }, (_, i) => {
+  const col = i % 5;
+  const row = Math.floor(i / 5);
+  const on = i < lit;
+  const hop = on && o.litAt[i] !== undefined ? Math.max(0, 1 - (f - o.litAt[i]) / 10) : 0;
+  return PERSON(170 + col * 175, 790 + row * 165 - 26 * Math.sin(Math.PI * hop), on, 1.15 + 0.12 * hop);
+}).join("")}
+${lit === 0 ? `<text x="540" y="1100" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="120" fill="#c0392b" opacity="${n(0.7 + 0.3 * Math.sin(f / 6), 3)}">?</text>` : ""}
+${lit >= 7 ? `<g transform="translate(540 1085) scale(${n(1 + 0.08 * Math.max(0, 1 - (f - o.litAt[6]) / 10), 3)})"><rect x="-300" y="-44" width="600" height="88" rx="16" fill="#fffaf0" stroke="${INK}" stroke-width="6"/><text x="0" y="22" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="52" letter-spacing="3" fill="${INK}">7 DARI 10 PENGGUNA</text></g>` : ""}
+${o.age > 0 ? `<g transform="translate(540 1175) scale(${n(0.7 + 0.3 * o.age, 3)})" opacity="${n(o.age, 3)}"><rect x="-250" y="-34" width="500" height="68" rx="34" fill="#c6f432" stroke="${INK}" stroke-width="6"/><text x="0" y="14" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="3" fill="${INK}">USIA 18–35 TAHUN</text></g>` : ""}
+</g>`;
+        return `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#efe6d4"/>
+<g stroke="#e0d4bb" stroke-width="3">${Array.from({ length: 12 }, (_, i) => `<path d="M0 ${560 + i * 60} H1080"/>`).join("")}</g>
+${bar}${people}</svg>`;
+      };
+      window.__timelines["skala"] = F1.scene("skala", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const paylater = w("paylater");
+        const pinjol = w("pinjol");
+        const hampir = w("hampir");
+        const triliun = w("triliun");
+        const siapa = w("Siapa");
+        const tujuh = w("Tujuh");
+        const delapan = w("delapan");
+        const litAt = Array.from({ length: 7 }, (_, i) => tujuh + 4 + i * 5);
+        const lit = litAt.filter((a) => f >= a).length;
+        const o = {
+          bank: F1.ramp(f, paylater, 12, F1.expoOut),
+          pinjol: F1.ramp(f, pinjol, 14, F1.expoOut),
+          total: 151.96 * F1.ramp(f, hampir, triliun + 6 - hampir, F1.easeOut),
+          out: F1.ramp(f, siapa - 4, 10),
+          ppl: F1.ramp(f, siapa, 12, F1.expoOut),
+          lit,
+          litAt,
+          age: F1.ramp(f, delapan, 10, F1.expoOut),
+        };
+        const l2 = F1.line(S, 2).start;
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.04, ox: 50, oy: 62 },
+              { at: pinjol - 4, scale: 1.1, ox: 40, oy: 62, ease: 14 },
+              { at: triliun - 6, scale: 1.06, ox: 50, oy: 60, ease: 14 },
+              { at: siapa, scale: 1.0, ox: 50, oy: 62, ease: 10 },
+              { at: tujuh, scale: 1.08, ox: 50, oy: 62, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.progress(f, { step: 2, label: "BUKTI 1 · SKALA" }),
+          f < l2
+            ? C.hud(f, { at: 4, kicker: "UTANG PAYLATER + PINJOL", big: f < hampir ? "AGU 2026" : "±Rp152 T", sub: "HAMPIR 152 TRILIUN RUPIAH", src: "Katadata (6 Okt 2026)", w: 540, bigSize: 60 })
+            : C.hud(f, { at: l2 - 6, kicker: "PENGGUNA PAYLATER", big: "7 DARI 10", sub: "USIA 18–35 TAHUN (70,4%)", src: "Kredivo × Katadata Insight Center (2024)", w: 540, bigSize: 60 }),
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

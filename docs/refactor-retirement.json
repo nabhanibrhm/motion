@@ -1,0 +1,818 @@
+{
+  "schemaVersion": 1,
+  "description": "Retirement of verified legacy project files; dependency graphs and versions verified, not dependency file bytes.",
+  "before": {
+    "inflasi": [
+      ".hyperframes",
+      ".stills",
+      ".venv",
+      "compositions",
+      "debug.log",
+      "hyperframes.json",
+      "index.html",
+      "lib",
+      "node_modules",
+      "package-lock.json",
+      "package.json",
+      "public",
+      "renders",
+      "script-short.md",
+      "script.md",
+      "scripts",
+      "src",
+      "voiceover"
+    ],
+    "rupiah": [
+      ".hyperframes",
+      ".stills",
+      ".venv",
+      "compositions",
+      "hyperframes.json",
+      "index.html",
+      "lib",
+      "node_modules",
+      "package-lock.json",
+      "package.json",
+      "public",
+      "renders",
+      "script-short.md",
+      "scripts",
+      "src",
+      "voiceover"
+    ],
+    "ihsg": [
+      ".hyperframes",
+      ".stills",
+      ".venv",
+      "compositions",
+      "hyperframes.json",
+      "index.html",
+      "lib",
+      "node_modules",
+      "package-lock.json",
+      "package.json",
+      "public",
+      "renders",
+      "script-short.md",
+      "scripts",
+      "src",
+      "voiceover"
+    ],
+    "paylater": [
+      ".hyperframes",
+      ".stills",
+      ".venv",
+      "compositions",
+      "hyperframes.json",
+      "index.html",
+      "lib",
+      "node_modules",
+      "package-lock.json",
+      "package.json",
+      "public",
+      "renders",
+      "script-short.md",
+      "scripts",
+      "src",
+      "voiceover"
+    ],
+    "judol": [
+      ".hyperframes",
+      ".stills",
+      ".venv",
+      "compositions",
+      "hyperframes.json",
+      "index.html",
+      "lib",
+      "node_modules",
+      "package-lock.json",
+      "package.json",
+      "public",
+      "script-short.md",
+      "scripts",
+      "src",
+      "voiceover"
+    ],
+    "emas": [
+      ".hyperframes",
+      ".stills",
+      ".venv",
+      "compositions",
+      "hyperframes.json",
+      "index.html",
+      "lib",
+      "node_modules",
+      "package-lock.json",
+      "package.json",
+      "public",
+      "script-short.md",
+      "scripts",
+      "src",
+      "voiceover"
+    ],
+    "kelas": [
+      ".hyperframes",
+      ".stills",
+      ".venv",
+      "compositions",
+      "hyperframes.json",
+      "index.html",
+      "lib",
+      "node_modules",
+      "package-lock.json",
+      "package.json",
+      "public",
+      "script-short.md",
+      "scripts",
+      "src",
+      "voiceover"
+    ]
+  },
+  "after": {
+    "inflasi": [
+      ".venv",
+      "debug.log",
+      "renders"
+    ],
+    "rupiah": [
+      ".venv",
+      "renders"
+    ],
+    "ihsg": [
+      ".venv",
+      "renders"
+    ],
+    "paylater": [
+      ".venv",
+      "renders"
+    ],
+    "judol": [
+      ".venv"
+    ],
+    "emas": [
+      ".venv"
+    ],
+    "kelas": [
+      ".venv"
+    ]
+  },
+  "episodes": [
+    "inflasi",
+    "rupiah",
+    "ihsg",
+    "paylater",
+    "judol",
+    "emas",
+    "kelas"
+  ],
+  "paths": [
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/.hyperframes",
+      "kind": "generated-diagnostics",
+      "files": 3,
+      "bytes": 110867
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/.stills",
+      "kind": "generated-diagnostics",
+      "files": 17,
+      "bytes": 6323131
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/.venv/Lib/site-packages",
+      "kind": "duplicate-python-packages",
+      "files": 5142,
+      "bytes": 300083342
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/compositions",
+      "kind": "archived-source-and-cache",
+      "files": 9,
+      "bytes": 55287
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/hyperframes.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 318
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/index.html",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 4446
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/lib",
+      "kind": "archived-source-and-cache",
+      "files": 13,
+      "bytes": 192915
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/node_modules",
+      "kind": "duplicate-node-dependencies",
+      "files": 5201,
+      "bytes": 106905268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/package-lock.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 64523
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/package.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 719
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/public",
+      "kind": "archived-source-and-cache",
+      "files": 47,
+      "bytes": 5113308
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/script-short.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 3190
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/script.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 9154
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/scripts",
+      "kind": "archived-source-and-cache",
+      "files": 4,
+      "bytes": 16201
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/src",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 15878
+    },
+    {
+      "path": "out/Ekonomi_keuangan/inflasi/voiceover",
+      "kind": "archived-source-and-cache",
+      "files": 235,
+      "bytes": 31682520
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/.hyperframes",
+      "kind": "generated-diagnostics",
+      "files": 3,
+      "bytes": 59088
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/.stills",
+      "kind": "generated-diagnostics",
+      "files": 20,
+      "bytes": 8778870
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/.venv/Lib/site-packages",
+      "kind": "duplicate-python-packages",
+      "files": 5150,
+      "bytes": 333209949
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/compositions",
+      "kind": "archived-source-and-cache",
+      "files": 8,
+      "bytes": 62696
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/hyperframes.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 318
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/index.html",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 4401
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/lib",
+      "kind": "archived-source-and-cache",
+      "files": 12,
+      "bytes": 177306
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/node_modules",
+      "kind": "duplicate-node-dependencies",
+      "files": 5201,
+      "bytes": 106905268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/package-lock.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 64523
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/package.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 726
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/public",
+      "kind": "archived-source-and-cache",
+      "files": 48,
+      "bytes": 6468296
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/script-short.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 9487
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/scripts",
+      "kind": "archived-source-and-cache",
+      "files": 4,
+      "bytes": 17613
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/src",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 17009
+    },
+    {
+      "path": "out/Ekonomi_keuangan/rupiah/voiceover",
+      "kind": "archived-source-and-cache",
+      "files": 134,
+      "bytes": 26841264
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/.hyperframes",
+      "kind": "generated-diagnostics",
+      "files": 3,
+      "bytes": 31527
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/.stills",
+      "kind": "generated-diagnostics",
+      "files": 2,
+      "bytes": 390393
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/.venv/Lib/site-packages",
+      "kind": "duplicate-python-packages",
+      "files": 5150,
+      "bytes": 333208992
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/compositions",
+      "kind": "archived-source-and-cache",
+      "files": 8,
+      "bytes": 86453
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/hyperframes.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 318
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/index.html",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 4369
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/lib",
+      "kind": "archived-source-and-cache",
+      "files": 12,
+      "bytes": 181297
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/node_modules",
+      "kind": "duplicate-node-dependencies",
+      "files": 5201,
+      "bytes": 106905268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/package-lock.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 64523
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/package.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 713
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/public",
+      "kind": "archived-source-and-cache",
+      "files": 48,
+      "bytes": 6923624
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/script-short.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 8478
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/scripts",
+      "kind": "archived-source-and-cache",
+      "files": 4,
+      "bytes": 17340
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/src",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 24542
+    },
+    {
+      "path": "out/Ekonomi_keuangan/ihsg/voiceover",
+      "kind": "archived-source-and-cache",
+      "files": 81,
+      "bytes": 31136183
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/.hyperframes",
+      "kind": "generated-diagnostics",
+      "files": 3,
+      "bytes": 48159
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/.stills",
+      "kind": "generated-diagnostics",
+      "files": 23,
+      "bytes": 13745667
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/.venv/Lib/site-packages",
+      "kind": "duplicate-python-packages",
+      "files": 5150,
+      "bytes": 333210268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/compositions",
+      "kind": "archived-source-and-cache",
+      "files": 9,
+      "bytes": 93759
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/hyperframes.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 318
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/index.html",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 4794
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/lib",
+      "kind": "archived-source-and-cache",
+      "files": 12,
+      "bytes": 181825
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/node_modules",
+      "kind": "duplicate-node-dependencies",
+      "files": 5201,
+      "bytes": 106905268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/package-lock.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 64523
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/package.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 728
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/public",
+      "kind": "archived-source-and-cache",
+      "files": 49,
+      "bytes": 6949300
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/script-short.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 8053
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/scripts",
+      "kind": "archived-source-and-cache",
+      "files": 4,
+      "bytes": 17371
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/src",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 25514
+    },
+    {
+      "path": "out/Ekonomi_keuangan/paylater/voiceover",
+      "kind": "archived-source-and-cache",
+      "files": 93,
+      "bytes": 39165425
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/.hyperframes",
+      "kind": "generated-diagnostics",
+      "files": 2,
+      "bytes": 44567
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/.stills",
+      "kind": "generated-diagnostics",
+      "files": 22,
+      "bytes": 12447319
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/.venv/Lib/site-packages",
+      "kind": "duplicate-python-packages",
+      "files": 5150,
+      "bytes": 333209311
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/compositions",
+      "kind": "archived-source-and-cache",
+      "files": 9,
+      "bytes": 97221
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/hyperframes.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 318
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/index.html",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 4783
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/lib",
+      "kind": "archived-source-and-cache",
+      "files": 12,
+      "bytes": 181049
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/node_modules",
+      "kind": "duplicate-node-dependencies",
+      "files": 5201,
+      "bytes": 106905268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/package-lock.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 64523
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/package.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 725
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/public",
+      "kind": "archived-source-and-cache",
+      "files": 49,
+      "bytes": 6894580
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/script-short.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 7780
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/scripts",
+      "kind": "archived-source-and-cache",
+      "files": 4,
+      "bytes": 17356
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/src",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 24078
+    },
+    {
+      "path": "out/Ekonomi_keuangan/judol/voiceover",
+      "kind": "archived-source-and-cache",
+      "files": 69,
+      "bytes": 23956071
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/.hyperframes",
+      "kind": "generated-diagnostics",
+      "files": 2,
+      "bytes": 46181
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/.stills",
+      "kind": "generated-diagnostics",
+      "files": 22,
+      "bytes": 12122203
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/.venv/Lib/site-packages",
+      "kind": "duplicate-python-packages",
+      "files": 5150,
+      "bytes": 333208992
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/compositions",
+      "kind": "archived-source-and-cache",
+      "files": 9,
+      "bytes": 97772
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/hyperframes.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 318
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/index.html",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 4776
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/lib",
+      "kind": "archived-source-and-cache",
+      "files": 12,
+      "bytes": 182634
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/node_modules",
+      "kind": "duplicate-node-dependencies",
+      "files": 5201,
+      "bytes": 106905268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/package-lock.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 64523
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/package.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 709
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/public",
+      "kind": "archived-source-and-cache",
+      "files": 49,
+      "bytes": 6955348
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/script-short.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 6891
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/scripts",
+      "kind": "archived-source-and-cache",
+      "files": 4,
+      "bytes": 17336
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/src",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 27272
+    },
+    {
+      "path": "out/Ekonomi_keuangan/emas/voiceover",
+      "kind": "archived-source-and-cache",
+      "files": 69,
+      "bytes": 26084603
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/.hyperframes",
+      "kind": "generated-diagnostics",
+      "files": 2,
+      "bytes": 37049
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/.stills",
+      "kind": "generated-diagnostics",
+      "files": 2,
+      "bytes": 602824
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/.venv/Lib/site-packages",
+      "kind": "duplicate-python-packages",
+      "files": 5150,
+      "bytes": 333208647
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/compositions",
+      "kind": "archived-source-and-cache",
+      "files": 9,
+      "bytes": 97658
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/hyperframes.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 318
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/index.html",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 4780
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/lib",
+      "kind": "archived-source-and-cache",
+      "files": 12,
+      "bytes": 181656
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/node_modules",
+      "kind": "duplicate-node-dependencies",
+      "files": 5201,
+      "bytes": 106905268
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/package-lock.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 64523
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/package.json",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 710
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/public",
+      "kind": "archived-source-and-cache",
+      "files": 49,
+      "bytes": 6950740
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/script-short.md",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 8770
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/scripts",
+      "kind": "archived-source-and-cache",
+      "files": 4,
+      "bytes": 17341
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/src",
+      "kind": "archived-source-and-cache",
+      "files": 1,
+      "bytes": 25275
+    },
+    {
+      "path": "out/Ekonomi_keuangan/kelas/voiceover",
+      "kind": "archived-source-and-cache",
+      "files": 63,
+      "bytes": 29095553
+    }
+  ],
+  "files": 73875,
+  "bytes": 3359383760,
+  "dependencyVerification": "Node package graph and Python distribution versions; dependency payloads not byte-hashed",
+  "protected": [
+    "out/result",
+    "legacy renders",
+    "legacy interpreter and scripts",
+    "debug.log",
+    "migration archive",
+    "imported voice"
+  ],
+  "executed": true
+}

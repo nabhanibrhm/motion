@@ -1,0 +1,166 @@
+{
+ "comment": "Short 'IHSG Anjlok 10% Sehari: Apa Itu MSCI?' (script-short.md, sources there). Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "say": {},
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1.0,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus IHSG"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Jumat pagi, aplikasi sahamku merah semua! [pause 0.15] Kok bisa?"
+    },
+    {
+     "speaker": "bog",
+     "text": "Wah, kasus baru nih.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "anjlok",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Enam belas Oktober, jam sembilan kurang dua menit, perdagangan bursa dihentikan. Sorenya, IHSG ditutup anjlok sebelas koma lima tujuh persen."
+    },
+    {
+     "speaker": "bog",
+     "text": "Sebelas persen sehari?!"
+    },
+    {
+     "speaker": "mog",
+     "text": "Nilai pasar yang menguap pagi itu sekitar tujuh ratus enam puluh triliun rupiah.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "msci",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Gara-gara apa?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Gara-gara MSCI, pembuat daftar saham yang diikuti dana global. Dana pasif wajib ikut daftarnya."
+    },
+    {
+     "speaker": "bog",
+     "text": "Terus MSCI bilang apa?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Indonesia bisa diturunkan ke status Standalone, di bawah pasar berkembang. Alasannya: kepemilikan saham tidak transparan, dan dugaan transaksi yang terkoordinasi.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "asing",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Hari itu asing jual bersih tiga koma tiga lima triliun rupiah. Bursa sampai memangkas batas turun harian saham jadi tujuh persen."
+    },
+    {
+     "speaker": "wec",
+     "text": "Yang kena siapa?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Investor pasar modal kita tiga puluh dua juta orang. Lebih dari separuhnya berumur tiga puluh tahun ke bawah.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kalau",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Kalau beneran diturunkan?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Keputusannya paling lambat Juni tahun depan. Argentina di Standalone sejak dua ribu dua puluh satu. Tapi IHSG pernah bangkit ke rekor baru setelah krisis dua ribu delapan dan COVID. [pause 0.15] Masa lalu bukan jaminan.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Jadi, jangan jual atau beli karena panik. Kata Bursa Efek Indonesia, lihat perusahaannya, bukan harganya. Beli bertahap, dan jangan ikut-ikutan saham viral.",
+     "after": 0.1
+    },
+    {
+     "speaker": "wec",
+     "text": "Oke, aku nggak panic selling.",
+     "after": 0.15
+    },
+    {
+     "speaker": "bog",
+     "text": "Kasus ditutup! Menurutmu, IHSG bakal bangkit? Tulis di komentar!",
+     "after": 0.3
+    }
+   ]
+  }
+ ]
+}

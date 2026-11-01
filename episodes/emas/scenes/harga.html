@@ -1,0 +1,108 @@
+<!-- Harga: a price board. Card 1 "29 JAN 2026 · REKOR" counts up to Rp3.168.000 as Muklis says the figure (REKOR stamp on "rekor"); card 2 "30 OKT 2026" appears on "Akhir" and its price falls from the record down to Rp2.546.000 on "tinggal ... ribu". Between them a red -19,6% tag counts in on "Hampir". On "dunia" a global-gold card slides in: EMAS DUNIA, +-30% below the January record (US$5.591,61/oz record, below US$3.900 on 30 Oct), counting to 30 on the second "tiga puluh persen". Every figure has its source (HUD + a small line). Muklis, Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e7d3;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="harga" data-width="1080" data-height="1920">
+    <div id="harga-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="harga-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.8" id="harga-sfx-rekor" class="clip" src="public/sfx/stamp.wav" data-at="word:rekor" data-track-index="12" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.7333" id="harga-sfx-num1" class="clip" src="public/sfx/ding-num.wav" data-at="word:tiga" data-track-index="13" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.5667" id="harga-sfx-b" class="clip" src="public/sfx/pop-in.wav" data-at="word:Akhir" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.9" id="harga-sfx-fall" class="clip" src="public/sfx/fall.wav" data-at="word:tinggal" data-track-index="15" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.4" id="harga-sfx-pct" class="clip" src="public/sfx/ding-num.wav" data-at="word:Hampir" data-track-index="16" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="16.7" id="harga-sfx-world" class="clip" src="public/sfx/pop-in.wav" data-at="word:dunia" data-track-index="17" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="18.1333" id="harga-sfx-num2" class="clip" src="public/sfx/ding-num.wav" data-at="word:tiga#1" data-track-index="18" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#c0392b";
+      const MUTE = "#6b5f52";
+      const fmt = (v) => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const GOLD = (x, y, s = 1, text = true) => `<g transform="translate(${n(x)} ${n(y)}) scale(${n(s, 3)})" stroke="${INK}" stroke-width="6" stroke-linejoin="round">
+<path d="M-104 -66 L104 -66 L80 -98 L-80 -98 Z" fill="#f5d878"/><path d="M-130 0 L130 0 L104 -66 L-104 -66 Z" fill="#e0b13a"/>
+<path d="M-62 -8 L-34 -8 L-10 -58 L-38 -58 Z" fill="#fff" opacity="0.38" stroke="none"/>
+${text ? `<text x="0" y="-33" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="31" letter-spacing="3" fill="${INK}" stroke="none">1 GRAM</text><text x="0" y="-12" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="17" letter-spacing="2" fill="#7a5a12" stroke="none">999.9</text>` : ""}</g>`;
+      // one price card (x 80..940, 180 high) at y; date label, price text (null hides it), colour of the price
+      const CARD = (y, p, { date, tag, price, color, src, bar = true }) =>
+        p <= 0
+          ? ""
+          : `<g opacity="${n(p, 3)}" transform="translate(${n((1 - p) * 90)} ${y})"><rect x="80" y="0" width="860" height="180" rx="20" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+${bar ? GOLD(215, 150, 0.62, false) : ""}
+<text x="340" y="52" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="3" fill="${INK}">${date}</text>${tag ? `<rect x="${tag.x}" y="22" width="${tag.w}" height="40" rx="10" fill="${tag.fill}" stroke="${INK}" stroke-width="4"/><text x="${tag.x + tag.w / 2}" y="52" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="26" letter-spacing="2" fill="${tag.ink}">${tag.text}</text>` : ""}
+${price === null ? "" : `<text x="340" y="132" font-family="Oswald" font-weight="700" font-size="88" fill="${color}">Rp${price}<tspan font-size="34" font-weight="600" fill="${MUTE}"> /gram</tspan></text>`}
+<text x="340" y="166" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">Sumber: ${src}</text></g>`;
+      const GLOBE = (x, y, r) => `<g transform="translate(${x} ${y})"><circle r="${r}" fill="#9cc7e8" stroke="${INK}" stroke-width="5"/><path d="M${-r} 0 H${r} M0 ${-r} V${r}" stroke="${INK}" stroke-width="3" fill="none"/><ellipse rx="${r * 0.45}" ry="${r}" fill="none" stroke="${INK}" stroke-width="3"/><path d="M${-r * 0.78} ${-r * 0.55} H${r * 0.78} M${-r * 0.78} ${r * 0.55} H${r * 0.78}" stroke="${INK}" stroke-width="3" fill="none"/><path d="M-6 -10 Q8 -34 26 -22 Q34 -4 14 8 Q2 16 -6 -10 Z" fill="#7fbf8a" stroke="${INK}" stroke-width="3"/></g>`;
+      window.__timelines["harga"] = F1.scene("harga", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const rekor = w("rekor");
+        const tiga = w("tiga");
+        const gram = w("gram");
+        const akhir = w("Akhir");
+        const tinggal = w("tinggal");
+        const ribu2 = w("ribu", 1);
+        const hampir = w("Hampir");
+        const dunia = w("dunia");
+        const tiga2 = w("tiga", 1);
+        const persen2 = w("persen", 1);
+        const turun = F1.line(S, 1).start;
+        // card 1 price counts up while he says the figure; card 2 price falls from the record to the latest
+        const p1 = Math.round(3168000 * F1.ramp(f, tiga, gram - tiga + 4, F1.easeOut));
+        const fall = F1.ramp(f, tinggal, ribu2 + 8 - tinggal, F1.easeOut);
+        const p2 = Math.round(3168000 + (2546000 - 3168000) * fall);
+        const pct = (19.6 * F1.ramp(f, hampir, 22, F1.easeOut)).toFixed(1).replace(".", ",");
+        const world = F1.ramp(f, dunia, 12, F1.expoOut);
+        const d30 = Math.round(30 * F1.ramp(f, tiga2, persen2 - tiga2 + 6, F1.easeOut));
+        const tagP = F1.ramp(f, hampir, 10, F1.expoOut);
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+<g style="filter:blur(3px)"><rect x="740" y="290" width="260" height="300" fill="#f7e3b0"/><path d="M740 290 h260 v300 h-260 Z M870 290 v300 M740 440 h260" stroke="#8a6f55" stroke-width="14" fill="none"/></g>
+${W.dust(f, { x: 100, y: 480, w: 840, h: 680, count: 22, seed: 9, color: "#fff3cf", alpha: 0.5 })}
+<rect x="0" y="1180" width="1080" height="740" fill="#cdb898"/>
+${CARD(530, F1.ramp(f, 8, 12, F1.expoOut), { date: "29 JAN 2026", price: f < tiga ? null : fmt(p1), color: INK, src: "RRI (harga jual Antam)" })}
+${f >= akhir - 2 ? CARD(775, F1.ramp(f, akhir - 2, 12, F1.expoOut), { date: "30 OKT 2026", price: f < tinggal ? null : fmt(p2), color: RED, src: "Katadata (Logam Mulia)" }) : ""}
+${tagP > 0 ? `<g transform="translate(540 742) scale(${n(0.6 + 0.4 * tagP, 3)})" opacity="${n(tagP, 3)}"><path d="M-300 -2 H-110 M110 -2 H300" stroke="${RED}" stroke-width="6" stroke-dasharray="4 12" stroke-linecap="round"/><path d="M-26 -28 L26 -28 L26 -4 L40 -4 L0 28 L-40 -4 L-26 -4 Z" fill="${RED}" stroke="${INK}" stroke-width="4" transform="translate(-92 -6) scale(0.78)"/><rect x="-62" y="-26" width="220" height="52" rx="14" fill="${RED}" stroke="${INK}" stroke-width="5"/><text x="48" y="12" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="38" letter-spacing="1" fill="#fff">−${pct}%</text></g>` : ""}
+${world > 0 ? `<g opacity="${n(world, 3)}" transform="translate(0 ${n((1 - world) * 70)})"><rect x="80" y="980" width="860" height="206" rx="20" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>${GLOBE(180, 1072, 62)}
+<text x="290" y="1032" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="3" fill="${INK}">EMAS DUNIA · DI BAWAH REKOR</text>
+<text x="290" y="1118" font-family="Oswald" font-weight="700" font-size="84" fill="${RED}">±${d30}%<tspan font-size="30" font-weight="600" fill="${MUTE}"> DARI REKOR JAN 2026</tspan></text>
+<text x="290" y="1150" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">Rekor US$5.591,61/oz (29 Jan) · 30 Okt di bawah US$3.900</text>
+<text x="290" y="1172" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">Sumber: Reuters via Aaj; Yahoo Finance</text></g>` : ""}</svg>`;
+        const hud =
+          f >= dunia
+            ? C.hud(f, { at: dunia, kicker: "EMAS DUNIA", big: "±30% TURUN", sub: "DARI REKOR JAN 2026", src: "Reuters via Aaj, Yahoo Finance", w: 540, bigSize: 56 })
+            : f >= hampir
+              ? C.hud(f, { at: hampir, kicker: "EMAS ANTAM TURUN", big: `−${pct}%`, sub: "29 JAN → 30 OKT 2026", src: "RRI, Katadata", w: 540 })
+              : C.hud(f, { at: 4, kicker: "HARGA EMAS ANTAM", big: "1 GRAM", sub: "REKOR 29 JAN VS 30 OKT 2026", src: "RRI, Katadata", w: 540 });
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1.03, ox: 50, oy: 28 },
+              { at: akhir, scale: 1.03, ox: 50, oy: 38, ease: 14 },
+              { at: dunia, scale: 1.04, ox: 50, oy: 48, ease: 14 },
+            ],
+          }),
+          C.vignette(0.24, "50% 55%", 50),
+          C.stamp(f, { at: rekor, x: 690, y: 478, rot: -7, text: "REKOR", size: 46 }),
+          C.progress(f, { step: 2, label: "BUKTI 1 · HARGA" }),
+          hud,
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

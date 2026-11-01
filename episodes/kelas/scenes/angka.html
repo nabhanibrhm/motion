@@ -1,0 +1,161 @@
+<!-- Angka: a staircase of income classes (ATAS, KELAS MENENGAH, MENUJU KELAS MENENGAH, RENTAN, MISKIN) with small people on every step. On "lima puluh tujuh juta" the middle step counts up to 57,33 JT (2019, BPS); on "tinggal" two figures step down to the stair below and the middle step counts down to 47,85 JT (2024). A tag -9,48 JUTA pops on Beni's "sembilan setengah juta", the TURUN KELAS stamp slams on "turun", and on "menuju" the stair below swells with new people and counts to 142 JT (50,4%, 2025: data BPS, diolah Mandiri Institute). Muklis, Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #efe3c8;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="angka" data-width="1080" data-height="1920">
+    <div id="angka-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="angka-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.8333" id="angka-sfx-lima" class="clip" src="public/sfx/ding-num.wav" data-at="word:lima" data-track-index="12" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.6333" id="angka-sfx-tinggal" class="clip" src="public/sfx/fall.wav" data-at="word:tinggal" data-track-index="13" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="12.1667" id="angka-sfx-tag" class="clip" src="public/sfx/pop-in.wav" data-at="word:sembilan#1" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.9667" id="angka-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:turun" data-track-index="15" data-volume="0.35"></audio>
+    <audio data-hf-media-start-basis="local" data-start="16.5667" id="angka-sfx-menuju" class="clip" src="public/sfx/pop-in.wav" data-at="word:menuju" data-track-index="16" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="19.7667" id="angka-sfx-separuh" class="clip" src="public/sfx/ding-num.wav" data-at="word:separuh" data-track-index="17" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      // ---- staircase kit (same in angka and kalau): five steps, small people standing on them ----
+      const CLOTH = ["#c2463b", "#3f78b5", "#5fae7a", "#d9a441", "#7fa88a", "#b5523b", "#4e6a8f", "#e2b6c0", "#8a6f55", "#e9e2d3", "#5d6b74", "#c98a6a"];
+      const SKIN = ["#c68a5e", "#a8724c", "#8c5a3c", "#d9a07a", "#b98058"];
+      const KINDS = ["man", "hijab", "peci", "man", "hijab", "old", "kid", "man", "hijab"];
+      const pick = (arr, h) => arr[Math.floor(h * arr.length) % arr.length];
+      const look = (seed) => ({ kind: pick(KINDS, W.hash(seed * 3 + 1)), cloth: pick(CLOTH, W.hash(seed * 3 + 2)), skin: pick(SKIN, W.hash(seed * 3 + 3)) });
+      const fmt = (v, d = 2) => v.toFixed(d).replace(".", ",");
+      const STEPS = [["ATAS"], ["KELAS", "MENENGAH"], ["MENUJU", "KELAS", "MENENGAH"], ["RENTAN"], ["MISKIN"]];
+      const SX = 60;
+      const SW = 180;
+      const TOP0 = 640;
+      const SH = 90;
+      const GROUND = 1150;
+      const stepTop = (i) => TOP0 + i * SH;
+      // k-th standing place on step i (feet position): 5 per row, rows stagger back
+      const slot = (i, k) => ({ x: SX + i * SW + 26 + (k % 5) * 30 + (Math.floor(k / 5) % 2) * 14, y: stepTop(i) - 4 - Math.floor(k / 5) * 20 });
+      // one small person; grow 0..1 pops it in from its feet; flip mirrors it (walking left)
+      const guy = (f, seed, x, y, { s = 0.42, amp = 0, grow = 1, flip = false, look: lk = null } = {}) => {
+        if (grow <= 0) return "";
+        const p = W.person(f, { x, y, s: s * grow, ...(lk || look(seed)), amp, phase: f * 0.55 + seed });
+        return flip ? `<g transform="translate(${n(x)} 0) scale(-1 1) translate(${n(-x)} 0)">${p}</g>` : p;
+      };
+      // people = [{ x, y, svg }]; back rows first
+      const crowd = (list) => list.sort((a, b) => a.y - b.y).map((p) => p.svg).join("");
+      const STAIRS = (f, { fills, ink = INK, text = INK, hi = -1, hiP = 0, nums = {} }) => {
+        let out = "";
+        for (let i = 0; i < 5; i++) {
+          const x = SX + i * SW;
+          const top = stepTop(i);
+          const lines = STEPS[i];
+          const lift = 0;
+          out += `<g transform="translate(0 ${n(lift)})"><rect x="${x}" y="${top}" width="${SW}" height="${GROUND - top}" fill="${fills[i]}" stroke="${ink}" stroke-width="${n(5 + 3 * (i === hi ? hiP : 0), 1)}" stroke-linejoin="round"/>
+<rect x="${x + 4}" y="${top + 4}" width="${SW - 8}" height="12" fill="#fff" opacity="${i === hi ? n(0.2 + 0.25 * hiP, 3) : 0.22}"/>`;
+          lines.forEach((t, li) => {
+            out += `<text x="${x + SW / 2}" y="${top + 50 + li * 30}" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="26" letter-spacing="2" fill="${text}">${t}</text>`;
+          });
+          const nm = nums[i];
+          if (nm && nm.a > 0) {
+            const y0 = top + 50 + lines.length * 30 + 22;
+            out += `<g opacity="${n(nm.a, 3)}"><text x="${x + SW / 2}" y="${y0}" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="${text}">${nm.year}</text><text x="${x + SW / 2}" y="${y0 + 40}" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="${nm.size || 30}" fill="${nm.color || text}">${nm.big}</text></g>`;
+          }
+          out += "</g>";
+        }
+        return out;
+      };
+      const FILLS = ["#ecd9a5", "#a9d6a0", "#bcd9e6", "#efcf9c", "#e0b5a8"];
+      const BASE = [3, 10, 6, 8, 5];
+      window.__timelines["angka"] = F1.scene("angka", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const lima = w("lima");
+        const juta0 = w("juta");
+        const tinggal = w("tinggal");
+        const juta1 = w("juta", 1);
+        const sembilan = w("sembilan", 1);
+        const turun = w("turun");
+        const menuju = w("menuju");
+        const separuh = w("separuh");
+        // counts: 2019 ticks up on "lima puluh tujuh juta", 2024 ticks down on "tinggal ... juta", 2025 ticks up on "menuju"
+        const up19 = 57.33 * F1.ramp(f, lima, juta0 - lima + 8, F1.easeOut);
+        const down24 = 57.33 - 9.48 * F1.ramp(f, tinggal, juta1 - tinggal + 8, F1.easeOut);
+        const up25 = 142 * F1.ramp(f, menuju + 4, 52, F1.easeOut);
+        const phase24 = f >= tinggal;
+        const phase25 = f >= menuju;
+        const midBig = phase24 ? fmt(down24) : fmt(up19);
+        const nums = {
+          1: { a: F1.ramp(f, lima - 6, 10), year: phase24 ? "2024" : "2019", big: `${midBig} JT`, size: 28, color: phase24 ? "#c0392b" : INK },
+          2: { a: F1.ramp(f, menuju, 10), year: "2025", big: "142 JT", size: 30, color: "#1f6d86" },
+        };
+        // who stands where (feet positions), people drawn back rows first
+        const people = [];
+        const add = (seed, x, y, opt) => people.push({ y, svg: guy(f, seed, x, y, opt) });
+        for (let i = 0; i < 5; i++) {
+          for (let k = 0; k < BASE[i]; k++) {
+            const s = slot(i, k);
+            if (i === 1 && k >= 8) {
+              // the last two on the middle step walk down to the stair below
+              const t0 = tinggal + (k - 8) * 8;
+              const p = F1.ramp(f, t0, 26, F1.glide);
+              const to = slot(2, 6 + (k - 8));
+              const moving = p > 0 && p < 1;
+              add(i * 20 + k, s.x + (to.x - s.x) * p, s.y + (to.y - s.y) * p - 46 * 4 * p * (1 - p), { amp: moving ? 1 : 0 });
+            } else add(i * 20 + k, s.x, s.y);
+          }
+        }
+        // the stair below swells
+        for (let k = 8; k < 15; k++) {
+          const s = slot(2, k);
+          add(200 + k, s.x, s.y, { grow: F1.ramp(f, menuju + 6 + (k - 8) * 9, 8, F1.backOut) });
+        }
+        // red dashed arrow from the middle step to the one below
+        const arrow = F1.ramp(f, turun - 4, 14, F1.easeOut);
+        const ARR = arrow <= 0 ? "" : `<g opacity="${n(arrow * (1 - F1.ramp(f, menuju - 4, 8)), 3)}"><path d="M372 684 Q440 640 486 772" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" stroke-dasharray="14 14"/><path d="M468 756 L488 786 L506 752" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+        const src = phase25 ? "Sumber: data BPS, diolah Mandiri Institute (2025), via GoodStats/Kontan" : "Sumber: BPS via CNBC Indonesia (2019, 2024) · selisih: BPS via detikFinance";
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="angka-glow" cx="50%" cy="38%" r="65%"><stop offset="0" stop-color="#fff4da"/><stop offset="1" stop-color="#ecdcba"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#angka-glow)"/>
+<rect x="0" y="1150" width="1080" height="770" fill="#cdb48a"/><rect x="0" y="1150" width="1080" height="12" fill="#a8906f"/>
+${STAIRS(f, { fills: FILLS, hi: phase25 ? 2 : 1, hiP: F1.ramp(f, phase25 ? menuju : lima - 6, 10), nums })}
+${crowd(people)}
+${ARR}
+<text x="60" y="1182" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#6f6a66">${src}</text>
+<text x="60" y="1204" font-family="JetBrains Mono" font-weight="500" font-size="16" letter-spacing="1" fill="#8a6f55">ILUSTRASI · JUMLAH IKON TIDAK PERSIS SKALA</text></svg>`;
+        const hud = phase25
+          ? C.hud(f, { at: menuju, kicker: "MENUJU KELAS MENENGAH", big: "142 JT", sub: "2025 · 50,4% PENDUDUK", src: "data BPS, diolah Mandiri Institute", bigSize: 64, w: 520 })
+          : phase24
+            ? C.hud(f, { at: tinggal, kicker: "KELAS MENENGAH · 2024", big: "47,85 JT", sub: "17,13% PENDUDUK", src: "BPS via CNBC Indonesia", bigSize: 64 })
+            : f >= lima - 4
+              ? C.hud(f, { at: lima - 4, kicker: "KELAS MENENGAH · 2019", big: "57,33 JT", sub: "21,45% PENDUDUK", src: "BPS via CNBC Indonesia", bigSize: 64 })
+              : C.chip(f, { at: 4, text: "DATA BPS" });
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 62 },
+              { at: tinggal - 6, scale: 1.04, ox: 38, oy: 66, ease: 14 },
+              { at: menuju - 4, scale: 1.04, ox: 52, oy: 66, ease: 14 },
+            ],
+          }),
+          C.vignette(0.2, "50% 55%", 55),
+          f < menuju - 4 ? C.tag(f, { at: sembilan, x: 270, y: 540, rot: -3, light: true, size: 50, text: `<span style="color:#c0392b">−9,48 JUTA</span>` }) : "",
+          f < menuju - 4 ? C.stamp(f, { at: turun, x: 530, y: 600, rot: -6, text: "TURUN KELAS", size: 50 }) : "",
+          f >= separuh ? C.tag(f, { at: separuh, x: 470, y: 560, rot: -3, light: true, size: 46, text: `≈ <span style="color:#1f6d86">SEPARUH PENDUDUK</span>` }) : "",
+          C.progress(f, { step: 2, label: "BUKTI 1 · ANGKA" }),
+          hud,
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

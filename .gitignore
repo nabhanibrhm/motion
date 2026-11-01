@@ -1,7 +1,9 @@
 node_modules/
-out/*.mp4
-.stills/
 .venv/
+.venv/**
+/.cache/
+/out/result/
+.stills/
 **/voiceover/.cache/
 .hyperframes/
 __pycache__/
@@ -9,3 +11,4 @@ __pycache__/
 .DS_Store
 Thumbs.db
 build/
+out/*.mp4

@@ -1,0 +1,179 @@
+{
+ "comment": "Short 'Paylater: Gratis Bunga atau Jebakan?' (script-short.md, sources there). Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "say": {
+  "paylater": "pei leiter"
+ },
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1.0,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Paylater"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Sepatu impian, cicilan nol persen! [pause 0.15] Kok tagihannya nambah terus?!"
+    },
+    {
+     "speaker": "wec",
+     "text": "Beni, kamu kena kasus paylater.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "skala",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Utang paylater dan pinjol orang Indonesia hampir seratus lima puluh dua triliun rupiah."
+    },
+    {
+     "speaker": "bog",
+     "text": "Siapa aja yang pakai?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Tujuh dari sepuluh penggunanya berumur delapan belas sampai tiga puluh lima tahun.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "nol",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Tapi kan nol persen?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Nol persen cuma untuk tenor atau akun tertentu. Di satu aplikasi, belanja dua juta dicicil tiga bulan pakai akun biasa, jadi dua juta dua ratus enam puluh ribu lebih."
+    },
+    {
+     "speaker": "bog",
+     "text": "Hah? Nambah dua ratus ribu!",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "telat",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kalau telat bayar?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Ada aplikasi yang dendanya lima persen per bulan dari total tagihan. Tagihan satu juta, telat tiga bulan, dendanya sekitar seratus lima puluh ribu.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "slik",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Yang paling bahaya: catatannya masuk SLIK OJK. Telat lebih dari seratus delapan puluh hari, statusnya macet."
+    },
+    {
+     "speaker": "bog",
+     "text": "Terus kenapa?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Waktu ngajuin KPR, bank cek catatan itu. BTN pernah bilang, tiga puluh persen rumah subsidi gagal akad karena catatan pinjol.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "aturan",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Makanya aturannya diperketat ya?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Iya. Pengguna paylater minimal delapan belas tahun dan berpenghasilan tiga juta sebulan. Cicilan pinjol maksimal tiga puluh persen penghasilan.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Jadi: total cicilan di bawah tiga puluh lima persen gaji. Paylater cuma untuk kebutuhan yang direncanakan, bayar penuh, jangan gali lubang tutup lubang.",
+     "after": 0.1
+    },
+    {
+     "speaker": "bog",
+     "text": "Oke… sepatunya nunggu gajian.",
+     "after": 0.15
+    },
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup! Paylater itu utang, bukan diskon. Kamu pernah telat bayar? Cerita di komentar!",
+     "after": 0.3
+    }
+   ]
+  }
+ ]
+}

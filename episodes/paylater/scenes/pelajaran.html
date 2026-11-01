@@ -1,0 +1,94 @@
+<!-- Pelajaran: a checklist card on a warm desk ticks one rule per phrase ("total", "kebutuhan", "bayar", "jangan"). Beni's "sepatunya nunggu gajian": the sneaker sits by the card with a NUNGGU GAJIAN tag. Nisa closes the case: warm paper over the scene from "ditutup", KASUS DITUTUP stamp slams, "KASUS #04 · PAYLATER", the PAYLATER = UTANG, BUKAN DISKON slogan on "Paylater", the comment question on "Kamu", SUMBER LENGKAP DI DESKRIPSI. Nisa is drawn after the end card so she stays visible. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #ead9bb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="pelajaran" data-width="1080" data-height="1920">
+    <div id="pelajaran-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.0333" id="pelajaran-sfx-1" class="clip" src="public/sfx/click.wav" data-at="word:total" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.8" id="pelajaran-sfx-2" class="clip" src="public/sfx/click.wav" data-at="word:kebutuhan" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.9333" id="pelajaran-sfx-3" class="clip" src="public/sfx/click.wav" data-at="word:bayar" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.9667" id="pelajaran-sfx-4" class="clip" src="public/sfx/click.wav" data-at="word:jangan" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="11.6333" id="pelajaran-sfx-shoe" class="clip" src="public/sfx/pop-in.wav" data-at="word:sepatunya" data-track-index="16" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13.7667" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="17" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="15.5667" id="pelajaran-sfx-slogan" class="clip" src="public/sfx/pop-in.wav" data-at="word:utang" data-track-index="18" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="17.4667" id="pelajaran-sfx-ask" class="clip" src="public/sfx/pop-in.wav" data-at="word:Kamu" data-track-index="19" data-volume="0.09"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const ITEMS = ["TOTAL CICILAN < 35% GAJI", "HANYA KEBUTUHAN TERENCANA", "BAYAR PENUH", "JANGAN GALI LUBANG TUTUP LUBANG"];
+      const LIST = (f, ticks) => `<g transform="translate(90 560)"><rect x="0" y="0" width="800" height="496" rx="22" fill="#f6efe1" stroke="${INK}" stroke-width="6"/>
+<text x="40" y="66" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="4" fill="${INK}">CARA AMAN PAKAI PAYLATER</text>
+${ITEMS.map((t, i) => {
+  const p = F1.ramp(f, ticks[i] - 2, 10, F1.expoOut);
+  const y = 112 + 86 * i;
+  const fs = t.length > 26 ? 29 : 34;
+  return `<g opacity="${n(0.3 + 0.7 * p, 3)}" transform="translate(${n(-20 * (1 - p))} 0)"><rect x="36" y="${y}" width="54" height="54" rx="10" fill="#fff" stroke="${INK}" stroke-width="5"/>${p > 0 ? `<path d="M47 ${y + 27} L61 ${y + 42} L82 ${y + 10}" stroke="#4e8a4f" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="60" stroke-dashoffset="${n(60 * (1 - p))}"/>` : ""}<text x="112" y="${y + 38}" font-family="Oswald" font-weight="600" font-size="${fs}" fill="${INK}">${t}</text></g>`;
+}).join("")}
+<text x="40" y="450" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">Sumber: Prita Ghozie via Okezone (Feb 2023)</text><text x="40" y="474" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">OJK via Antara Kaltim (Agu 2023)</text></g>`;
+      const SNEAKER = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})" stroke="${INK}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+<path d="M-112 40 L-112 -8 Q-110 -30 -80 -34 L-42 -36 Q-22 -62 10 -64 L30 -40 Q62 -30 92 -10 Q118 2 118 32 L118 40 Z" fill="#fffaf0"/>
+<path d="M-112 6 Q-60 -10 -10 6 Q40 22 118 12" fill="none" stroke="#d0413a" stroke-width="12"/>
+<path d="M-8 -30 l22 18 M10 -42 l20 16 M-26 -22 l20 16" fill="none" stroke-width="5"/>
+<rect x="-116" y="32" width="238" height="24" rx="12" fill="#e9e2d3"/></g>`;
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="pelajaran-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#pelajaran-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#c9ae84"/>
+${F1.world.dust(f, { x: 120, y: 560, w: 840, h: 560, count: 18, seed: 5, color: "#fff3cf", alpha: 0.5 })}
+${LIST(f, o.ticks)}
+${o.shoe > 0 ? `<g transform="translate(${n(300 + (1 - o.shoe) * 300)} ${n(1100 - 40 * Math.sin(Math.PI * Math.min(1, (1 - o.shoe) * 3)) )})" opacity="${n(o.shoe, 3)}">${SNEAKER(0, 0, 0.62)}</g>` : ""}</svg>`;
+      window.__timelines["pelajaran"] = F1.scene("pelajaran", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const ticks = [w("total"), w("kebutuhan"), w("bayar"), w("jangan")];
+        const oke = F1.line(S, 1).start;
+        const ditutup = w("ditutup");
+        const utang = w("utang");
+        const kamu = w("Kamu");
+        const paper = F1.ramp(f, ditutup - 6, 8);
+        const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
+        const slogan = F1.ramp(f, utang - 6, 12, F1.expoOut);
+        const ask = F1.ramp(f, kamu, 12, F1.expoOut);
+        const o = { ticks, shoe: F1.ramp(f, w("sepatunya") - 2, 14, F1.expoOut) };
+        const mono = "font-family:'JetBrains Mono',monospace";
+        const end = paper <= 0 ? "" : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#f6efe1", opacity: n(paper, 3) })}"></div>
+<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 470, display: "flex", flexDirection: "column", alignItems: "center", gap: 22, opacity: n(paper, 3) })}">
+<div style="${F1.css({ padding: "12px 30px", border: "6px solid #c0392b", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#c0392b" })}">KASUS DITUTUP</div>
+<div style="${mono};font-weight:500;font-size:26px;letter-spacing:2px;color:#6f6a66">KASUS #04 · PAYLATER</div>
+<div style="${F1.css({ marginTop: 6, padding: "18px 36px", borderRadius: 18, background: "#fffaf0", border: "6px solid #2a2a2e", textAlign: "center", opacity: n(slogan, 3), transform: `translateY(${n(30 * (1 - slogan))}px) rotate(-1.5deg)` })}"><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:58px;line-height:1.1;letter-spacing:2px;color:#2a2a2e">PAYLATER = <span style="color:#c0392b">UTANG</span>,<br>BUKAN DISKON</div></div>
+<div style="${F1.css({ marginTop: 14, padding: "22px 36px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(ask, 3), transform: `translateY(${n(30 * (1 - ask))}px)` })}"><div style="${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#ff5a5f">● PERNAH TELAT BAYAR?</div><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:60px;line-height:1.15;color:#fff">CERITA DI <span style="color:${C.ACCENT}">KOMENTAR</span></div></div>
+<div style="${mono};font-weight:500;font-size:20px;letter-spacing:1px;color:#6f6a66">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.06, ox: 50, oy: 60 },
+              { at: ticks[2], scale: 1.1, ox: 50, oy: 64, ease: 14 },
+              { at: oke, scale: 1.04, ox: 40, oy: 66, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.chip(f, { at: 4, text: "YANG BISA KAMU LAKUKAN" }),
+          C.tag(f, { at: w("gajian"), x: 520, y: 1088, rot: -4, text: "NUNGGU GAJIAN", size: 36, light: true }),
+          end,
+          C.progress(f, { step: 7, label: "VONIS" }),
+          C.cast(S, f, [
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 380 },
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

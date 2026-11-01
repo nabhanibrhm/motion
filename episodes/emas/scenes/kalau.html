@@ -1,0 +1,99 @@
+<!-- Kalau: the what-if as a receipt. Ten mini gold bars pop in on "sepuluh"; the receipt prints BELI 10 GRAM x Rp3.168.000 (counts to Rp31.680.000 on "tiga puluh satu koma tujuh juta"), then BUYBACK 10 GRAM x Rp2.341.000 (counts to Rp23.410.000 on "dua puluh tiga koma empat juta") and SELISIH counts to -Rp8.270.000 on "Rugi", RUGI stamp on "delapan". Chip BUKAN SARAN INVESTASI; "belum termasuk pajak"; sources RRI and Katadata. Nisa, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #eadcc4;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="kalau" data-width="1080" data-height="1920">
+    <div id="kalau-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kalau-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.7667" id="kalau-sfx-bars" class="clip" src="public/sfx/pop-in.wav" data-at="word:sepuluh" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.6667" id="kalau-sfx-num1" class="clip" src="public/sfx/ding-num.wav" data-at="word:tiga" data-track-index="13" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.7667" id="kalau-sfx-jual" class="clip" src="public/sfx/pop-in.wav" data-at="word:Dijual" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.2667" id="kalau-sfx-num2" class="clip" src="public/sfx/ding-num.wav" data-at="word:dua" data-track-index="15" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.9667" id="kalau-sfx-rugi" class="clip" src="public/sfx/fall.wav" data-at="word:Rugi" data-track-index="16" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.8333" id="kalau-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:delapan" data-track-index="17" data-volume="0.4"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#c0392b";
+      const MUTE = "#6b5f52";
+      const fmt = (v) => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const MINI = (x, y, p) =>
+        p <= 0
+          ? ""
+          : `<g opacity="${n(p, 3)}" transform="translate(${n(x)} ${n(y - (1 - p) * 40)}) scale(0.34)" stroke="${INK}" stroke-width="9" stroke-linejoin="round"><path d="M-104 -66 L104 -66 L80 -98 L-80 -98 Z" fill="#f5d878"/><path d="M-130 0 L130 0 L104 -66 L-104 -66 Z" fill="#e0b13a"/><path d="M-62 -8 L-34 -8 L-10 -58 L-38 -58 Z" fill="#fff" opacity="0.38" stroke="none"/></g>`;
+      // the receipt; a row is { p (reveal 0..1) }; every number is passed in already formatted
+      const RECEIPT = (f, o) => {
+        const row = (p, dy) => `opacity="${n(p, 3)}" transform="translate(${n(-30 * (1 - p))} ${dy})"`;
+        return `<g transform="translate(230 590)"><path d="M0 0 H620 V548 L596 530 L572 548 L548 530 L524 548 L500 530 L476 548 L452 530 L428 548 L404 530 L380 548 L356 530 L332 548 L308 530 L284 548 L260 530 L236 548 L212 530 L188 548 L164 530 L140 548 L116 530 L92 548 L68 530 L44 548 L20 530 L0 548 Z" fill="#fffaf0" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+<text x="310" y="54" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="6" fill="${INK}">STRUK SKENARIO</text>
+<line x1="30" y1="78" x2="590" y2="78" stroke="#b9ad98" stroke-width="3" stroke-dasharray="10 8"/>
+<g ${row(o.r1, 0)}><text x="30" y="112" font-family="JetBrains Mono" font-weight="700" font-size="21" letter-spacing="1" fill="${INK}">BELI · 29 JAN 2026 (REKOR)</text>
+<text x="30" y="150" font-family="JetBrains Mono" font-weight="500" font-size="25" fill="${MUTE}">10 GRAM × Rp3.168.000</text>
+<text x="590" y="204" text-anchor="end" font-family="Oswald" font-weight="700" font-size="60" fill="${INK}">${o.v1}</text></g>
+<line x1="30" y1="226" x2="590" y2="226" stroke="#b9ad98" stroke-width="3" stroke-dasharray="10 8"/>
+<g ${row(o.r2, 0)}><text x="30" y="260" font-family="JetBrains Mono" font-weight="700" font-size="21" letter-spacing="1" fill="${INK}">BUYBACK · 30 OKT 2026</text>
+<text x="30" y="298" font-family="JetBrains Mono" font-weight="500" font-size="25" fill="${MUTE}">10 GRAM × Rp2.341.000</text>
+<text x="590" y="352" text-anchor="end" font-family="Oswald" font-weight="700" font-size="60" fill="${INK}">${o.v2}</text></g>
+<line x1="30" y1="376" x2="590" y2="376" stroke="${INK}" stroke-width="4"/><line x1="30" y1="384" x2="590" y2="384" stroke="${INK}" stroke-width="4"/>
+<g ${row(o.r3, 0)}><text x="30" y="436" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="3" fill="${INK}">SELISIH</text>
+<text x="590" y="446" text-anchor="end" font-family="Oswald" font-weight="700" font-size="66" fill="${RED}">${o.v3}</text></g>
+<text x="310" y="494" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="21" fill="${MUTE}">belum termasuk pajak</text>
+<text x="310" y="520" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="16" fill="#8a6f55">Sumber: RRI (29 Jan 2026), Katadata (30 Okt 2026)</text></g>`;
+      };
+      window.__timelines["kalau"] = F1.scene("kalau", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const sepuluh = w("sepuluh");
+        const tiga0 = w("tiga", 0);
+        const juta0 = w("juta", 0);
+        const dijual = w("Dijual");
+        const dua = w("dua");
+        const juta1 = w("juta", 1);
+        const rugi = w("Rugi");
+        const juta2 = w("juta", 2);
+        const delapan = w("delapan");
+        const r1 = F1.ramp(f, sepuluh - 2, 12, F1.expoOut);
+        const r2 = F1.ramp(f, dijual - 2, 12, F1.expoOut);
+        const r3 = F1.ramp(f, rugi - 2, 12, F1.expoOut);
+        const v1 = f < tiga0 ? "" : "Rp" + fmt(31680000 * F1.ramp(f, tiga0, juta0 - tiga0 + 6, F1.easeOut));
+        const v2 = f < dua ? "" : "Rp" + fmt(23410000 * F1.ramp(f, dua, juta1 - dua + 6, F1.easeOut));
+        const v3 = f < rugi ? "" : "−Rp" + fmt(8270000 * F1.ramp(f, rugi, juta2 - rugi + 6, F1.easeOut));
+        const bars = Array.from({ length: 10 }, (_, i) => MINI(310 + (i % 5) * 92 + 46 + 10, 520 + Math.floor(i / 5) * 34, F1.ramp(f, sepuluh + i * 2, 8, F1.expoOut))).join("");
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#eadcc4"/>
+<g style="filter:blur(3px)"><rect x="80" y="300" width="260" height="300" fill="#f7e3b0"/><path d="M80 300 h260 v300 h-260 Z M210 300 v300 M80 450 h260" stroke="#8a6f55" stroke-width="14" fill="none"/></g>
+${W.dust(f, { x: 120, y: 480, w: 800, h: 680, count: 18, seed: 33, color: "#fff3cf", alpha: 0.5 })}
+<rect x="0" y="1170" width="1080" height="750" fill="#cdb391"/><rect x="0" y="1160" width="1080" height="12" fill="#a8906f"/>
+${bars}${RECEIPT(f, { r1, r2, r3, v1, v2, v3 })}</svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1.03, ox: 50, oy: 28 },
+              { at: dijual - 4, scale: 1.04, ox: 50, oy: 40, ease: 12 },
+              { at: rugi - 4, scale: 1.05, ox: 50, oy: 52, ease: 12 },
+            ],
+          }),
+          C.vignette(0.24, "50% 55%", 50),
+          C.stamp(f, { at: delapan, x: 50, y: 900, rot: -10, text: "RUGI", size: 50 }),
+          C.progress(f, { step: 5, label: "SKENARIO" }),
+          C.chip(f, { at: 4, text: "BUKAN SARAN INVESTASI" }),
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "inflasi",
+  "number": 1,
+  "title": "Kenapa Harga Nasi Goreng Naik Terus?",
+  "category": "Ekonomi_keuangan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "legacy-inflasi",
+    "case": {
+      "id": "KASUS #01",
+      "steps": 6
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "penjual",
+      "file": "scenes/penjual.html"
+    },
+    {
+      "id": "bahan",
+      "file": "scenes/bahan.html"
+    },
+    {
+      "id": "kita",
+      "file": "scenes/kita.html"
+    },
+    {
+      "id": "dalang",
+      "file": "scenes/dalang.html"
+    },
+    {
+      "id": "pelajaran",
+      "file": "scenes/pelajaran.html"
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

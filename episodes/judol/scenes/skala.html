@@ -1,0 +1,117 @@
+<!-- Skala (bukti 1): HUD "PERPUTARAN JUDOL" counts to Rp86,82 T on "delapan ... triliun" (PPATK, Jan-Jun 2026). Art: six month tiles JAN-JUN light up on "enam bulan", a ledger card counts 467,32 JUTA TRANSAKSI. On "Bayarnya" it swaps for a row of ten deposit slips; on "sembilan ... QRIS" nine get a small QR mark and the HUD switches to 87,66% (share of deposit transactions by count). Muklis, Beni, Muklis. Sources: PPATK press release 4 Aug 2026. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e6d0;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="skala" data-width="1080" data-height="1920">
+    <div id="skala-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="skala-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.6667" id="skala-sfx-months" class="clip" src="public/sfx/tick.wav" data-at="word:enam" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6.6667" id="skala-sfx-count" class="clip" src="public/sfx/ding-num.wav" data-at="word:delapan" data-track-index="13" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.0667" id="skala-sfx-pay" class="clip" src="public/sfx/pop-in.wav" data-at="word:Bayarnya" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="11.7" id="skala-sfx-qris" class="clip" src="public/sfx/click.wav" data-at="word:sembilan" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13.6333" id="skala-sfx-pct" class="clip" src="public/sfx/ding-num.wav" data-at="word:QRIS" data-track-index="16" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const MONTHS = ["JAN", "FEB", "MAR", "APR", "MEI", "JUN"];
+      const idr = (v, d = 2) => v.toFixed(d).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      // a tiny QR-like glyph (seeded cells), 60 px wide
+      const QR = (x, y, s, seed) => {
+        let cells = "";
+        for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) if (W.hash(seed * 25 + r * 5 + c) > 0.45 || (r < 2 && c < 2)) cells += `<rect x="${c * 8}" y="${r * 8}" width="8" height="8"/>`;
+        return `<g transform="translate(${x} ${y}) scale(${s})" fill="${INK}"><rect x="-4" y="-4" width="48" height="48" fill="#fff" stroke="${INK}" stroke-width="3"/>${cells}</g>`;
+      };
+      const MONTHS_ROW = (f, o) => MONTHS.map((m, i) => {
+        const on = f >= o.monthAt + i * o.monthStep;
+        const pop = on ? Math.max(0, 1 - (f - (o.monthAt + i * o.monthStep)) / 8) : 0;
+        return `<g transform="translate(${130 + i * 142} ${n(600 - 12 * pop)}) scale(${n(1 + 0.1 * pop, 3)})"><rect width="124" height="92" rx="14" fill="${on ? "#f6c86a" : "#e8dcc3"}" stroke="${INK}" stroke-width="6"/><text x="62" y="60" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="38" letter-spacing="2" fill="${on ? INK : "#a39a88"}">${m}</text></g>`;
+      }).join("");
+      const LEDGER = (f, o) => `<g transform="translate(90 ${n(790 + 30 * (1 - o.ledger))})" opacity="${n(o.ledger, 3)}"><rect width="840" height="300" rx="24" fill="#fffaf0" stroke="${INK}" stroke-width="7"/>
+<rect width="840" height="72" rx="24" fill="${INK}"/><rect y="40" width="840" height="32" fill="${INK}"/>
+<text x="36" y="50" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="4" fill="#fff">TRANSAKSI JUDOL ONLINE</text>
+<text x="36" y="180" font-family="JetBrains Mono" font-weight="700" font-size="92" fill="#c0392b">${idr(o.tx)}</text>
+<text x="36" y="236" font-family="JetBrains Mono" font-weight="700" font-size="40" letter-spacing="2" fill="${INK}">JUTA TRANSAKSI</text>
+<text x="36" y="278" font-family="JetBrains Mono" font-weight="500" font-size="18" fill="#8a6f55">Sumber: PPATK (siaran pers 4 Agu 2026) · Jan-Jun 2026</text>
+${Array.from({ length: 9 }, (_, i) => `<rect x="${560 + i * 28}" y="${n(230 - 14 * (i % 3) - 10 * (i % 2))}" width="18" height="${n(20 + 14 * (i % 3) + 10 * (i % 2))}" rx="4" fill="#d0413a" opacity="0.8"/>`).join("")}</g>`;
+      // ten deposit slips, nine marked with a QR (87,66% by transaction count, rounded for the picture)
+      const SLIPS = (f, o) => {
+        const slips = Array.from({ length: 10 }, (_, i) => {
+          const col = i % 5;
+          const row = Math.floor(i / 5);
+          const p = F1.ramp(f, o.slipAt + i * 3, 10, F1.expoOut);
+          const marked = i < 9 && f >= o.qrAt + i * o.qrStep;
+          const pop = marked ? Math.max(0, 1 - (f - (o.qrAt + i * o.qrStep)) / 8) : 0;
+          return `<g transform="translate(${n(110 + col * 168)} ${n(700 + row * 200 + 30 * (1 - p))}) scale(${n(1 + 0.08 * pop, 3)})" opacity="${n(p, 3)}"><rect width="146" height="160" rx="14" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<rect x="18" y="16" width="110" height="14" rx="7" fill="#e3dccd"/><text x="73" y="82" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="34" fill="${INK}">Rp</text>
+${marked ? QR(48, 100, 1, i + 1) : `<rect x="26" y="104" width="94" height="14" rx="7" fill="#e3dccd"/>`}</g>`;
+        }).join("");
+        return `<g opacity="${n(o.slips, 3)}"><text x="540" y="650" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="3" fill="${INK}">10 SETORAN JUDOL</text>${slips}
+<text x="540" y="1112" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="30" letter-spacing="1" fill="${INK}">≈ 9 DARI 10 LEWAT <tspan fill="#c0392b">QRIS</tspan></text></g>`;
+      };
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="skala-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#f1e6d0"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#skala-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#d8c19a"/>
+${W.dust(f, { x: 100, y: 540, w: 880, h: 600, count: 14, seed: 8, color: "#fff3cf", alpha: 0.4 })}
+<g opacity="${n(1 - o.slips, 3)}">${MONTHS_ROW(f, o)}${LEDGER(f, o)}</g>
+${o.slips > 0.001 ? SLIPS(f, o) : ""}</svg>`;
+      window.__timelines["skala"] = F1.scene("skala", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const enam = w("enam");
+        const bulan = w("bulan");
+        const delapan = w("delapan");
+        const triliun = w("triliun");
+        const bayarnya = w("Bayarnya");
+        const sembilan = w("sembilan");
+        const qris = w("QRIS");
+        const tx = F1.ramp(f, enam, 36, F1.easeOut) * 467.32;
+        const o = {
+          monthAt: enam - 2,
+          monthStep: (bulan + 10 - enam) / 6,
+          ledger: F1.ramp(f, enam - 4, 14, F1.expoOut),
+          tx,
+          slips: F1.ramp(f, bayarnya - 4, 12, F1.expoOut),
+          slipAt: bayarnya,
+          qrAt: sembilan,
+          qrStep: (qris - sembilan) / 9,
+        };
+        const turn = F1.ramp(f, delapan, triliun + 6 - delapan, F1.easeOut);
+        const bigT = f < delapan ? "Rp—" : "Rp" + idr(86.82 * turn) + " T";
+        const pct = F1.ramp(f, sembilan, qris + 4 - sembilan, F1.easeOut);
+        const pay = f >= bayarnya - 4;
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1.04, ox: 50, oy: 62 },
+              { at: enam - 6, scale: 1.08, ox: 50, oy: 64, ease: 14 },
+              { at: bayarnya - 4, scale: 1.04, ox: 50, oy: 62, ease: 14 },
+              { at: sembilan - 4, scale: 1.08, ox: 50, oy: 64, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.progress(f, { step: 2, label: "BUKTI 1 · SKALA" }),
+          pay
+            ? C.hud(f, { at: bayarnya - 4, kicker: "SETORAN JUDOL", big: f < sembilan ? "?" : idr(87.66 * pct) + "%", sub: "SETORAN (JUMLAH TRANSAKSI) LEWAT QRIS", src: "PPATK (4 Agu 2026)", w: 560, bigSize: 72 })
+            : C.hud(f, { at: 4, kicker: "PERPUTARAN JUDOL", big: bigT, sub: "JAN-JUN 2026 · 467,32 JUTA TRANSAKSI", src: "PPATK (4 Agu 2026)", w: 560, bigSize: 72 }),
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

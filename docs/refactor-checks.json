@@ -1,0 +1,72 @@
+[
+  {
+    "id": "emas",
+    "command": "lint",
+    "status": 0
+  },
+  {
+    "id": "emas",
+    "command": "check",
+    "status": 1
+  },
+  {
+    "id": "ihsg",
+    "command": "lint",
+    "status": 0
+  },
+  {
+    "id": "ihsg",
+    "command": "check",
+    "status": 1
+  },
+  {
+    "id": "inflasi",
+    "command": "lint",
+    "status": 0
+  },
+  {
+    "id": "inflasi",
+    "command": "check",
+    "status": 1
+  },
+  {
+    "id": "judol",
+    "command": "lint",
+    "status": 0
+  },
+  {
+    "id": "judol",
+    "command": "check",
+    "status": 1
+  },
+  {
+    "id": "kelas",
+    "command": "lint",
+    "status": 0
+  },
+  {
+    "id": "kelas",
+    "command": "check",
+    "status": 1
+  },
+  {
+    "id": "paylater",
+    "command": "lint",
+    "status": 0
+  },
+  {
+    "id": "paylater",
+    "command": "check",
+    "status": 1
+  },
+  {
+    "id": "rupiah",
+    "command": "lint",
+    "status": 0
+  },
+  {
+    "id": "rupiah",
+    "command": "check",
+    "status": 1
+  }
+]

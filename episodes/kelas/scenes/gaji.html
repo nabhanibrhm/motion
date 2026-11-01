@@ -1,0 +1,109 @@
+<!-- Gaji: two bars race on a paper desk: UPAH +1,94% (green, grows on "satu koma sembilan persen") and HARGA +2,31% (red, longer, grows on "dua koma tiga persen"; BPS, Agu 2025); the DAYA BELI stamp slams on "daya". On "Saldo" the bars slide away and two cards drop in: the average balance of accounts under Rp100 JT counts down Rp1,76 JT -> Rp1,69 JT (Jun 2025 -> Jun 2026, LPS data via IDX Channel) and, on "LPS", the counterpoint card: total deposits under Rp100 JT still +5,16% (LPS via Kontan). Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #ead9bb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="gaji" data-width="1080" data-height="1920">
+    <div id="gaji-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="gaji-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.5667" id="gaji-sfx-upah" class="clip" src="public/sfx/pop-in.wav" data-at="word:upah" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.6333" id="gaji-sfx-harga" class="clip" src="public/sfx/pop-in.wav" data-at="word:harga" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.2667" id="gaji-sfx-daya" class="clip" src="public/sfx/stamp.wav" data-at="word:daya" data-track-index="14" data-volume="0.35"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.8667" id="gaji-sfx-saldo" class="clip" src="public/sfx/pop-in.wav" data-at="word:Saldo" data-track-index="15" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="12.8333" id="gaji-sfx-turun" class="clip" src="public/sfx/ding-num.wav" data-at="word:turun#1" data-track-index="16" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.3333" id="gaji-sfx-lps" class="clip" src="public/sfx/pop-in.wav" data-at="word:LPS" data-track-index="17" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.8333" id="gaji-sfx-total" class="clip" src="public/sfx/ding-num.wav" data-at="word:totalnya" data-track-index="18" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const fmt = (v, d = 2) => v.toFixed(d).replace(".", ",");
+      const BX = 90;
+      const FULL = 760;
+      // one horizontal bar with its label above and its value inside
+      const BAR = (y, label, p, frac, fill, value, valColor) =>
+        `<text x="${BX}" y="${y - 14}" font-family="JetBrains Mono" font-weight="700" font-size="22" letter-spacing="2" fill="#6b5f52">${label}</text>
+<rect x="${BX - 6}" y="${y}" width="${FULL + 12}" height="96" rx="18" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<rect x="${BX}" y="${y + 6}" width="${n(FULL * frac * p)}" height="84" rx="12" fill="${fill}"/>
+<text x="${BX + 26}" y="${y + 70}" font-family="Oswald" font-weight="700" font-size="64" fill="${valColor}" opacity="${n(Math.min(1, p * 4), 3)}">${value}</text>`;
+      const CARD = (p, y, h, inner) => `<g opacity="${n(p, 3)}" transform="translate(0 ${n(50 * (1 - p))})"><rect x="70" y="${y}" width="870" height="${h}" rx="24" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>${inner}</g>`;
+      window.__timelines["gaji"] = F1.scene("gaji", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const upah = w("upah");
+        const persen0 = w("persen");
+        const harga = w("harga");
+        const persen1 = w("persen", 1);
+        const daya = w("daya");
+        const turun0 = w("turun");
+        const saldo = w("Saldo");
+        const turun1 = w("turun", 1);
+        const lps = w("LPS");
+        const tumbuh = w("tumbuh");
+        const gone = F1.ramp(f, saldo - 4, 12, F1.easeOut);
+        const aU = F1.ramp(f, upah, persen0 - upah + 6, F1.easeOut);
+        const aH = F1.ramp(f, harga, persen1 - harga + 6, F1.easeOut);
+        const vU = fmt(1.94 * aU);
+        const vH = fmt(2.31 * aH);
+        const cA = F1.ramp(f, saldo - 2, 12, F1.expoOut);
+        const cB = F1.ramp(f, lps - 4, 12, F1.expoOut);
+        const bal = 1.76 - 0.07 * F1.ramp(f, saldo + 10, turun1 - saldo - 4, F1.easeOut);
+        const dep = 5.16 * F1.ramp(f, lps, tumbuh - lps + 6, F1.easeOut);
+        const bars = `<g opacity="${n(1 - gone, 3)}" transform="translate(0 ${n(-70 * gone)})">
+${BAR(610, "UPAH BURUH · RATA-RATA", aU, 1.94 / 2.31, "#9ccf9a", `+${vU}%`, INK)}
+${BAR(790, "HARGA-HARGA · INFLASI", aH, 1, "#d0413a", `+${vH}%`, "#fff")}
+<text x="${BX}" y="945" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#6f6a66" opacity="${n(Math.min(1, aU * 3), 3)}">Sumber: BPS (Sakernas) via Infobank · BPS via Kontan (Agu 2025)</text></g>`;
+        const cardA = CARD(cA, 500, 290, `<text x="110" y="560" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="2" fill="${INK}">SALDO RATA-RATA REKENING &lt; Rp100 JT</text>
+<text x="110" y="660" font-family="JetBrains Mono" font-weight="700" font-size="54" fill="${INK}">Rp1,76 JT</text><text x="110" y="696" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="#6b5f52">JUN 2025</text>
+<path d="M440 640 H500 M482 620 L504 640 L482 660" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="530" y="660" font-family="JetBrains Mono" font-weight="700" font-size="54" fill="#c0392b">Rp${fmt(bal)} JT</text><text x="530" y="696" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="#6b5f52">JUN 2026</text>
+<path d="M880 612 V664 M860 646 L880 668 L900 646" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="110" y="760" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#6f6a66">Sumber: Bright Institute (Awalil Rizky), data LPS via IDX Channel</text>`);
+        const cardB = CARD(cB, 820, 290, `<text x="110" y="880" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="2" fill="${INK}">LPS: TOTAL SIMPANAN &lt; Rp100 JT</text>
+<text x="110" y="990" font-family="JetBrains Mono" font-weight="700" font-size="76" fill="#2e7d3a">+${fmt(dep)}%</text>
+<path d="M450 960 V910 M430 928 L450 904 L470 928" fill="none" stroke="#2e7d3a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="500" y="962" font-family="JetBrains Mono" font-weight="700" font-size="24" letter-spacing="2" fill="#6b5f52">TETAP TUMBUH</text><text x="500" y="994" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="#6b5f52">JUN 2026 · TAHUNAN</text>
+<text x="110" y="1076" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#6f6a66">Sumber: LPS (Anggito Abimanyu) via Kontan</text>`);
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="gaji-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#gaji-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#c9ae84"/>
+${F1.world.dust(f, { x: 100, y: 500, w: 840, h: 620, count: 16, seed: 14, color: "#fff3cf", alpha: 0.45 })}
+${bars}${cardA}${cardB}</svg>`;
+        const hud =
+          f >= lps
+            ? C.hud(f, { at: lps, kicker: "LPS · SIMPANAN < Rp100 JT", big: "+5,16%", sub: "TAHUNAN · JUN 2026", src: "LPS via Kontan", bigSize: 64 })
+            : f >= saldo
+              ? C.hud(f, { at: saldo, kicker: "SALDO REKENING < Rp100 JT", big: "Rp1,69 JT", sub: "JUN 2025: Rp1,76 JT", src: "data LPS via IDX Channel", bigSize: 56, w: 540 })
+              : f >= harga
+                ? C.hud(f, { at: harga, kicker: "HARGA-HARGA · AGU 2025", big: "+2,31%", sub: "INFLASI TAHUNAN", src: "BPS via Kontan", bigSize: 64 })
+                : C.hud(f, { at: 4, kicker: "UPAH BURUH · AGU 2025", big: "+1,94%", sub: "RATA-RATA UPAH, TAHUNAN", src: "BPS (Sakernas) via Infobank", bigSize: 64 });
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 56 },
+              { at: harga - 6, scale: 1.04, ox: 50, oy: 60, ease: 14 },
+              { at: saldo - 6, scale: 1.03, ox: 50, oy: 52, ease: 14 },
+            ],
+          }),
+          C.vignette(0.2, "50% 55%", 55),
+          f < saldo ? C.stamp(f, { at: daya, x: 330, y: 970, rot: -7, text: "DAYA BELI ▼", size: 60 }) : "",
+          C.progress(f, { step: 5, label: "BUKTI 3 · DAYA BELI" }),
+          hud,
+          C.cast(S, f, [
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 420, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

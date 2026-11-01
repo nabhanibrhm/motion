@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "rupiah",
+  "number": 2,
+  "title": "Rupiah Tembus Rp18.000: Siapa yang Untung?",
+  "category": "Ekonomi_keuangan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #02",
+      "steps": 6
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "rekor",
+      "file": "scenes/rekor.html"
+    },
+    {
+      "id": "dampak",
+      "file": "scenes/dampak.html"
+    },
+    {
+      "id": "untung",
+      "file": "scenes/untung.html"
+    },
+    {
+      "id": "kalau",
+      "file": "scenes/kalau.html"
+    },
+    {
+      "id": "pelajaran",
+      "file": "scenes/pelajaran.html"
+    }
+  ],
+  "audio": {
+    "bed": "music/bed.mp3",
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

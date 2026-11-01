@@ -1,0 +1,26 @@
+[
+  {
+    "name": "tests",
+    "status": 0
+  },
+  {
+    "name": "validate",
+    "status": 0
+  },
+  {
+    "name": "sync",
+    "status": 0
+  },
+  {
+    "name": "migration",
+    "status": 0
+  },
+  {
+    "name": "fidelity",
+    "status": 0
+  },
+  {
+    "name": "python",
+    "status": 0
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": "out/Ekonomi_keuangan/paylater",
+  "files": [
+    {
+      "source": "out/Ekonomi_keuangan/paylater/voiceover/paylater.json",
+      "target": "narration.json",
+      "bytes": 4056,
+      "sha256": "93357917ec6ad015e7d5dfdddaaa8ceec8b8c708a2e84dc47886ff7df6debf0f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/script-short.md",
+      "target": "script-short.md",
+      "bytes": 8053,
+      "sha256": "c4c4de80e0ec7c96102947a516680df2707b26f253a2fb53662c4638c6e0f6eb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/hook.html",
+      "target": "scenes/hook.html",
+      "bytes": 9012,
+      "sha256": "dd30cdaae55166a1a4e7563e91353b24f48c0bbfb1cafce83465fd9afda4fc4a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/skala.html",
+      "target": "scenes/skala.html",
+      "bytes": 9205,
+      "sha256": "f5b90d0f4b5ec22758bbdb630c128361aa132469c4d27955d62742634f18d46b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/nol.html",
+      "target": "scenes/nol.html",
+      "bytes": 8743,
+      "sha256": "50eacbde27d4a7f386b29d8d2dcec65a33340009c00ceb466922389b95bf84cc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/telat.html",
+      "target": "scenes/telat.html",
+      "bytes": 9562,
+      "sha256": "a9b2fe667025c28a3b7c9d2d128e099bbee728c4ea2b76dec8e63c7986f8eec9"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/slik.html",
+      "target": "scenes/slik.html",
+      "bytes": 10840,
+      "sha256": "b20b99e7445b6710d83ab55d9c748e238bd942561c4d4bee482d661ccf68509d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/aturan.html",
+      "target": "scenes/aturan.html",
+      "bytes": 8659,
+      "sha256": "50984cb65ee8553824cd825917c232ca1361e9d7581e7461c52f73532ce2d127"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/pelajaran.html",
+      "target": "scenes/pelajaran.html",
+      "bytes": 8985,
+      "sha256": "c5307750e02ebdb6bb4e13b4bc1caad08b6318dcfd049a41e814a348e9dd40c3"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+ "comment": "Short 'Judol Lewat QRIS: Kenapa Bandar Selalu Menang' (script-short.md, sources there). Educational, anti-gambling: no site, game or app names. Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "say": {
+  "QRIS": "kiuwris",
+  "QRIS-nya": "kiuwris-nya",
+  "Healing": "hilling"
+ },
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1.0,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1.0,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Judol"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Cuma sepuluh ribu sekali main. [pause 0.15] Siapa tahu menang besar!"
+    },
+    {
+     "speaker": "wec",
+     "text": "Beni, stop! Itu judol.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "skala",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Judol bukan hal kecil. Kata PPATK, di enam bulan pertama tahun ini, perputaran uangnya delapan puluh enam koma delapan dua triliun rupiah."
+    },
+    {
+     "speaker": "bog",
+     "text": "Bayarnya gimana?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Hampir sembilan dari sepuluh setoran lewat QRIS.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "qris",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Berarti QRIS bahaya?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Bukan QRIS-nya. Yang dipakai itu merchant palsu. Bank Indonesia kasih contoh: warung cilok yang terus-terusan terima uang dengan jumlah sama.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "bandar",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Tapi kan ada yang menang?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Sesekali, iya. Tapi bandar memasang untung di setiap permainan. Makin sering kamu main, hasilmu makin dekat ke rata-ratanya: kalah.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kalau",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Kalau aku main seribu kali?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Seribu kali sepuluh ribu, berarti sepuluh juta. Kalau mesinnya mengembalikan sembilan puluh persen, rata-rata kamu rugi satu juta. Itu pun kalau jujur. Situs ilegal nggak ada yang mengawasi.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "korban",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Yang paling kena justru yang paling butuh. Menurut PPATK, tujuh puluh satu persen pemainnya berpenghasilan di bawah lima juta sebulan."
+    },
+    {
+     "speaker": "wec",
+     "text": "Keluarganya ikut kena juga."
+    },
+    {
+     "speaker": "mog",
+     "text": "Betul. Kata WHO, satu penjudi berisiko tinggi ikut merugikan sekitar enam orang lain.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Ingat, main judi itu pidana. Kalau sudah susah berhenti, minta bantuan: Healing seratus sembilan belas, ekstensi delapan. Gratis.",
+     "after": 0.1
+    },
+    {
+     "speaker": "bog",
+     "text": "Oke. Aplikasinya aku hapus.",
+     "after": 0.15
+    },
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup! Bandar selalu menang. Bagikan video ini ke orang yang kamu sayang.",
+     "after": 0.3
+    }
+   ]
+  }
+ ]
+}

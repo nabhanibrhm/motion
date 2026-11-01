@@ -1,0 +1,204 @@
+<!-- Kalau: the one dark scene (dusk, skyline with a few lit windows). A family of four stands on the KELAS MENENGAH step under a "?" while Nisa asks. From "delapan puluh delapan ribu" pink PHK slips drift down onto the lower steps while the HUD counts 88.519 (PHK 2025, Kemnaker via detikFinance). On "Tanpa tabungan" an empty piggy bank pops with the TANPA TABUNGAN tag; on "satu PHK" a PHK shock card hits the family, on "sakit" a SAKIT card does; on "turun" the family steps down one stair and the TURUN KELAS stamp slams. Nisa, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #1c2132;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="kalau" data-width="1080" data-height="1920">
+    <div id="kalau-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kalau-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.8333" id="kalau-sfx-num" class="clip" src="public/sfx/ding-num.wav" data-at="word:delapan" data-track-index="12" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.7667" id="kalau-sfx-piggy" class="clip" src="public/sfx/pop-in.wav" data-at="word:tabungan" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6.8333" id="kalau-sfx-phk" class="clip" src="public/sfx/fall.wav" data-at="word:PHK#2" data-track-index="14" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.0667" id="kalau-sfx-sakit" class="clip" src="public/sfx/click.wav" data-at="word:sakit" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.5" id="kalau-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:turun" data-track-index="16" data-volume="0.35"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      // ---- staircase kit (same in angka and kalau): five steps, small people standing on them ----
+      const CLOTH = ["#c2463b", "#3f78b5", "#5fae7a", "#d9a441", "#7fa88a", "#b5523b", "#4e6a8f", "#e2b6c0", "#8a6f55", "#e9e2d3", "#5d6b74", "#c98a6a"];
+      const SKIN = ["#c68a5e", "#a8724c", "#8c5a3c", "#d9a07a", "#b98058"];
+      const KINDS = ["man", "hijab", "peci", "man", "hijab", "old", "kid", "man", "hijab"];
+      const pick = (arr, h) => arr[Math.floor(h * arr.length) % arr.length];
+      const look = (seed) => ({ kind: pick(KINDS, W.hash(seed * 3 + 1)), cloth: pick(CLOTH, W.hash(seed * 3 + 2)), skin: pick(SKIN, W.hash(seed * 3 + 3)) });
+      const fmt = (v, d = 2) => v.toFixed(d).replace(".", ",");
+      const STEPS = [["ATAS"], ["KELAS", "MENENGAH"], ["MENUJU", "KELAS", "MENENGAH"], ["RENTAN"], ["MISKIN"]];
+      const SX = 60;
+      const SW = 180;
+      const TOP0 = 640;
+      const SH = 90;
+      const GROUND = 1150;
+      const stepTop = (i) => TOP0 + i * SH;
+      // k-th standing place on step i (feet position): 5 per row, rows stagger back
+      const slot = (i, k) => ({ x: SX + i * SW + 26 + (k % 5) * 30 + (Math.floor(k / 5) % 2) * 14, y: stepTop(i) - 4 - Math.floor(k / 5) * 20 });
+      // one small person; grow 0..1 pops it in from its feet; flip mirrors it (walking left)
+      const guy = (f, seed, x, y, { s = 0.42, amp = 0, grow = 1, flip = false, look: lk = null } = {}) => {
+        if (grow <= 0) return "";
+        const p = W.person(f, { x, y, s: s * grow, ...(lk || look(seed)), amp, phase: f * 0.55 + seed });
+        return flip ? `<g transform="translate(${n(x)} 0) scale(-1 1) translate(${n(-x)} 0)">${p}</g>` : p;
+      };
+      // people = [{ x, y, svg }]; back rows first
+      const crowd = (list) => list.sort((a, b) => a.y - b.y).map((p) => p.svg).join("");
+      const STAIRS = (f, { fills, ink = INK, text = INK, hi = -1, hiP = 0, nums = {} }) => {
+        let out = "";
+        for (let i = 0; i < 5; i++) {
+          const x = SX + i * SW;
+          const top = stepTop(i);
+          const lines = STEPS[i];
+          const lift = 0;
+          out += `<g transform="translate(0 ${n(lift)})"><rect x="${x}" y="${top}" width="${SW}" height="${GROUND - top}" fill="${fills[i]}" stroke="${ink}" stroke-width="${n(5 + 3 * (i === hi ? hiP : 0), 1)}" stroke-linejoin="round"/>
+<rect x="${x + 4}" y="${top + 4}" width="${SW - 8}" height="12" fill="#fff" opacity="${i === hi ? n(0.2 + 0.25 * hiP, 3) : 0.22}"/>`;
+          lines.forEach((t, li) => {
+            out += `<text x="${x + SW / 2}" y="${top + 50 + li * 30}" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="26" letter-spacing="2" fill="${text}">${t}</text>`;
+          });
+          const nm = nums[i];
+          if (nm && nm.a > 0) {
+            const y0 = top + 50 + lines.length * 30 + 22;
+            out += `<g opacity="${n(nm.a, 3)}"><text x="${x + SW / 2}" y="${y0}" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="${text}">${nm.year}</text><text x="${x + SW / 2}" y="${y0 + 40}" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="${nm.size || 30}" fill="${nm.color || text}">${nm.big}</text></g>`;
+          }
+          out += "</g>";
+        }
+        return out;
+      };
+      const FILLS = ["#c9b27a", "#7fb08a", "#7fa3b8", "#c79a63", "#b27b70"];
+      const BASE = [2, 0, 3, 3, 2];
+      const DARK = "#0f1220";
+      // the family (kept as looks, not seeds): man, woman, two kids
+      const FAM = [
+        { kind: "man", cloth: "#4e6a8f", skin: "#a8724c" },
+        { kind: "hijab", cloth: "#d9a441", skin: "#c68a5e", veil: "#e2b6c0" },
+        { kind: "kid", cloth: "#5fae7a", skin: "#c68a5e" },
+        { kind: "kid", cloth: "#c2463b", skin: "#a8724c" },
+      ];
+      const SKYLINE = (() => {
+        let out = "";
+        for (let i = 0; i < 11; i++) {
+          const x = -20 + i * 106;
+          const h = 160 + 190 * W.hash(i + 5);
+          out += `<rect x="${x}" y="${n(1150 - h)}" width="94" height="${n(h)}" fill="#252b42"/>`;
+          for (let r = 0; r < Math.floor(h / 46); r++)
+            for (let c = 0; c < 3; c++) if (W.hash(i * 31 + r * 7 + c) > 0.62) out += `<rect x="${x + 12 + c * 28}" y="${n(1150 - h + 14 + r * 46)}" width="16" height="22" fill="#f2cf6d" opacity="0.8"/>`;
+        }
+        return out;
+      })();
+      // pink slip: a small paper with a header strip
+      const SLIP = (x, y, rot, s = 1) => `<g transform="translate(${n(x)} ${n(y)}) rotate(${n(rot, 1)}) scale(${s})"><rect x="-22" y="-28" width="44" height="56" rx="4" fill="#f4b6c2" stroke="${DARK}" stroke-width="4"/><path d="M-12 -14 H12 M-12 -4 H12 M-12 6 H4" stroke="#b5495f" stroke-width="4" stroke-linecap="round"/></g>`;
+      // the shock card that hits the family
+      const SHOCK = (f, { at, from, to, text, color, icon }) => {
+        const t = f - at;
+        if (t < 0 || t > 40) return "";
+        const p = F1.ramp(f, at - 18, 18, F1.easeOut);
+        const x = from.x + (to.x - from.x) * p;
+        const y = from.y + (to.y - from.y) * p - 90 * 4 * p * (1 - p);
+        const fade = 1 - F1.ramp(f, at + 18, 20);
+        const bounce = t > 0 ? -22 * Math.sin(Math.min(1, t / 18) * Math.PI) : 0;
+        return `<g opacity="${n(Math.min(1, p * 3) * fade, 3)}" transform="translate(${n(x)} ${n(y + bounce)}) rotate(${n(-10 + 10 * p, 1)})"><rect x="-96" y="-44" width="192" height="88" rx="14" fill="#fffaf0" stroke="${DARK}" stroke-width="6"/><rect x="-96" y="-44" width="192" height="26" rx="14" fill="${color}"/><rect x="-96" y="-30" width="192" height="12" fill="${color}"/><text x="14" y="30" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="44" letter-spacing="3" fill="${color}">${text}</text>${icon}</g>`;
+      };
+      const PIGGY = (f, p) => {
+        if (p <= 0) return "";
+        const wob = 2 * Math.sin(f / 12);
+        return `<g opacity="${n(p, 3)}" transform="translate(800 ${n(620 + 30 * (1 - p))}) rotate(${n(wob, 2)}) scale(${n(0.7 + 0.3 * p, 3)})">
+<ellipse cx="0" cy="0" rx="112" ry="82" fill="#f1a9b4" stroke="${DARK}" stroke-width="7"/>
+<path d="M-60 -70 L-48 -104 L-22 -76" fill="#f1a9b4" stroke="${DARK}" stroke-width="7" stroke-linejoin="round"/>
+<ellipse cx="112" cy="8" rx="30" ry="24" fill="#e68ea0" stroke="${DARK}" stroke-width="6"/><circle cx="104" cy="8" r="5" fill="${DARK}"/><circle cx="122" cy="8" r="5" fill="${DARK}"/>
+<circle cx="64" cy="-26" r="8" fill="${DARK}"/>
+<rect x="-30" y="-84" width="60" height="9" rx="4" fill="${DARK}"/>
+<rect x="-70" y="68" width="22" height="34" rx="8" fill="#f1a9b4" stroke="${DARK}" stroke-width="6"/><rect x="40" y="68" width="22" height="34" rx="8" fill="#f1a9b4" stroke="${DARK}" stroke-width="6"/>
+<path d="M-112 -4 q-26 -8 -18 -34" fill="none" stroke="${DARK}" stroke-width="6" stroke-linecap="round"/>
+<path d="M-40 -6 L-8 24 M-8 -6 L-40 24" stroke="#c0392b" stroke-width="9" stroke-linecap="round" opacity="0.9"/></g>`;
+      };
+      window.__timelines["kalau"] = F1.scene("kalau", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const phk0 = w("PHK");
+        const delapan0 = w("delapan");
+        const ribu = w("ribu");
+        const tanpa = w("Tanpa");
+        const tabungan = w("tabungan");
+        const phk2 = w("PHK", 2);
+        const sakit = w("sakit");
+        const turun = w("turun");
+        const count = Math.round(88519 * F1.ramp(f, delapan0, ribu - delapan0 + 14, F1.easeOut));
+        const cnt = String(count).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        const piggy = F1.ramp(f, tabungan - 4, 12, F1.backOut);
+        // the family: stands on the middle step, hops down to the next on "turun"
+        const hop = F1.ramp(f, turun, 30, F1.glide);
+        const hits = [phk2, sakit].map((t) => (f >= t && f < t + 18 ? Math.sin(((f - t) / 18) * Math.PI) : 0));
+        const flinch = Math.max(...hits);
+        const people = [];
+        BASE.forEach((cnt0, i) => {
+          for (let k = 0; k < cnt0; k++) {
+            const s = slot(i, k + (i === 2 ? 4 : i === 3 ? 3 : 0));
+            people.push({ y: s.y, svg: guy(f, 300 + i * 10 + k, s.x, s.y) });
+          }
+        });
+        FAM.forEach((lk, k) => {
+          const from = { x: 262 + k * 40, y: stepTop(1) - 4 };
+          const to = slot(2, k + 0); // lands among the people already there
+          const toX = 456 + k * 34;
+          const x = from.x + (toX - from.x) * hop + (flinch > 0 ? 3 * Math.sin(f * 2.6) : 0);
+          const y = from.y + (to.y - from.y) * hop - 56 * 4 * hop * (1 - hop) + flinch * 3;
+          const moving = hop > 0 && hop < 1;
+          people.push({ y: y + 1, svg: guy(f, 400 + k, x, y, { s: 0.5, amp: moving ? 1 : 0, look: lk }) });
+        });
+        // slips drifting down onto the lower steps while the count runs
+        let slips = "";
+        for (let i = 0; i < 14; i++) {
+          const t0 = delapan0 + i * 4;
+          const p = F1.ramp(f, t0, 30, F1.easeOut);
+          if (p <= 0) continue;
+          const sx = 640 + 300 * W.hash(i + 71);
+          const stepIdx = sx < 780 ? 3 : 4;
+          const land = stepTop(stepIdx) - 20 - 14 * W.hash(i + 33);
+          const y = 470 + (land - 470) * p * p;
+          slips += SLIP(sx + 14 * Math.sin(f / 9 + i), y, 40 * Math.sin(f / 11 + i) * (1 - p) + 14 * (W.hash(i + 9) - 0.5) * p, 0.8);
+        }
+        const q = F1.ramp(f, 6, 10, F1.expoOut) * (1 - F1.ramp(f, phk0 - 4, 8));
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><linearGradient id="kalau-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151a2a"/><stop offset="1" stop-color="#2d3550"/></linearGradient></defs>
+<rect width="1080" height="1920" fill="url(#kalau-sky)"/>
+<circle cx="900" cy="480" r="40" fill="#f4e7b8" opacity="0.9"/>
+<g>${Array.from({ length: 22 }, (_, i) => `<circle cx="${n(40 + 1000 * W.hash(i * 3 + 91))}" cy="${n(440 + 330 * W.hash(i * 3 + 92))}" r="${n(2 + 2 * W.hash(i * 3 + 93), 1)}" fill="#fff" opacity="${n(0.3 + 0.4 * Math.abs(Math.sin(f / 30 + i)), 2)}"/>`).join("")}</g>
+${SKYLINE}
+<rect x="0" y="1150" width="1080" height="770" fill="#171b2a"/><rect x="0" y="1150" width="1080" height="12" fill="#0f1220"/>
+${STAIRS(f, { fills: FILLS, ink: DARK, text: "#10131f", hi: 1, hiP: 1 })}
+${PIGGY(f, piggy)}
+${slips}
+${crowd(people)}
+<g opacity="${n(q, 3)}"><text x="330" y="${n(560 - 6 * Math.sin(f / 9))}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="150" fill="#fff" stroke="${DARK}" stroke-width="6" paint-order="stroke">?</text></g>
+${SHOCK(f, { at: phk2, from: { x: 880, y: 500 }, to: { x: 340, y: 640 }, text: "PHK", color: "#c0392b", icon: `<path d="M-72 18 L-52 -2 M-52 18 L-72 -2" stroke="#fff" stroke-width="6" stroke-linecap="round"/>` })}
+${SHOCK(f, { at: sakit, from: { x: 880, y: 500 }, to: { x: 340, y: 640 }, text: "SAKIT", color: "#3f78b5", icon: `<path d="M-62 -4 V16 M-72 6 H-52" stroke="#fff" stroke-width="7" stroke-linecap="round"/>` })}
+<text x="60" y="1182" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#a7a9b4">Sumber: Kemnaker via detikFinance (PHK 2025) · ILUSTRASI keluarga</text></svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 60 },
+              { at: tanpa - 4, scale: 1.04, ox: 62, oy: 56, ease: 14 },
+              { at: phk2 - 20, scale: 1.05, ox: 36, oy: 62, ease: 14 },
+            ],
+          }),
+          C.vignette(0.32, "50% 55%", 50),
+          C.tag(f, { at: tabungan, x: 600, y: 780, rot: 3, light: true, size: 40, text: `<span style="color:#c0392b">TANPA TABUNGAN</span>` }),
+          C.stamp(f, { at: turun, x: 250, y: 520, rot: -6, text: "TURUN KELAS", size: 52, color: "#d0413a" }),
+          C.progress(f, { step: 6, label: "SKENARIO" }),
+          f >= delapan0
+            ? C.hud(f, { at: delapan0, kicker: "PHK 2025", big: cnt, sub: "PEKERJA KENA PHK", src: "Kemnaker via detikFinance", bigSize: 72 })
+            : C.chip(f, { at: 4, text: "KALAU TERJADI?" }),
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

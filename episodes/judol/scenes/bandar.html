@@ -1,0 +1,120 @@
+<!-- Bandar (tersangka): a chart panel on a warm desk. A jagged balance line wanders (an occasional win on "Sesekali" gets a marker) while a dashed AVERAGE line, which only goes down, is drawn on "memasang untung". On "Makin sering" the caption SEMAKIN SERING MAIN -> HASIL MENDEKATI RATA-RATA appears and the wiggles shrink onto the average line; a KALAH stamp slams on "kalah". Illustrative chart, no real data. Source: A/Prof Milad Haghani, Univ. of Melbourne (30 Des 2025). Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #efe3cb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="bandar" data-width="1080" data-height="1920">
+    <div id="bandar-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="bandar-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.2" id="bandar-sfx-chart" class="clip" src="public/sfx/pop-in.wav" data-at="word:Tapi" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.9" id="bandar-sfx-win" class="clip" src="public/sfx/click.wav" data-at="word:Sesekali+12" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.9667" id="bandar-sfx-avg" class="clip" src="public/sfx/tick.wav" data-at="word:memasang" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6.5667" id="bandar-sfx-cap" class="clip" src="public/sfx/pop-in.wav" data-at="word:Makin" data-track-index="15" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.7667" id="bandar-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:kalah" data-track-index="16" data-volume="0.45"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      // the illustrative balance path: avg falls from 130 to 340 (local px), the wiggles around it shrink with plays
+      const N = 100;
+      const X0 = 100;
+      const XW = 690;
+      const PTS = (() => {
+        const out = [];
+        let nn = 0;
+        for (let i = 0; i <= N; i++) {
+          const t = i / N;
+          nn = 0.55 * nn + (W.hash(i * 11.9 + 3) - 0.5) * 2;
+          const amp = 78 * Math.pow(1 - t, 1.3) + 6;
+          out.push([X0 + XW * t, 40 + (i === 0 ? 130 : 130 + 210 * t + amp * nn * 0.9)]);
+        }
+        return out;
+      })();
+      let PEAK = 1;
+      for (let i = 1; i <= 40; i++) if (PTS[i][1] < PTS[PEAK][1]) PEAK = i;
+      const PANEL = (f, o) => {
+        const k = Math.max(1, Math.round(N * o.draw));
+        const path = PTS.slice(0, k + 1).map((p, i) => `${i ? "L" : "M"}${n(p[0], 1)} ${n(p[1], 1)}`).join(" ");
+        const head = PTS[Math.min(N, k)];
+        const peak = PTS[PEAK];
+        const win = F1.ramp(f, o.winAt, 10, F1.expoOut);
+        const ax = (o.avg > 0 ? `<path d="M${X0} 170 L${n(X0 + XW * o.avg)} ${n(170 + 210 * o.avg)}" stroke="#c0392b" stroke-width="7" stroke-dasharray="20 12" stroke-linecap="round" fill="none"/>` : "");
+        const label = o.avg > 0.95 ? `<text x="${X0 + XW - 6}" y="${n(170 + 210 + 28)}" text-anchor="end" font-family="Oswald" font-weight="700" font-size="30" letter-spacing="2" fill="#c0392b">RATA-RATA</text>` : "";
+        const edge = F1.ramp(f, o.edgeAt, 10, F1.expoOut);
+        return `<g transform="translate(90 ${n(560 + 24 * (1 - o.panel))})" opacity="${n(o.panel, 3)}"><rect width="840" height="500" rx="24" fill="#fffaf0" stroke="${INK}" stroke-width="7"/>
+<text x="36" y="56" font-family="Oswald" font-weight="600" font-size="28" letter-spacing="3" fill="${INK}">SALDO PEMAIN · ILUSTRASI</text>
+<g stroke="#e6dcc6" stroke-width="2">${[170, 240, 310, 380].map((y) => `<path d="M${X0} ${y} H${X0 + XW}"/>`).join("")}</g>
+<path d="M${X0} 90 V420 H${X0 + XW + 20}" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M${X0} 170 H${X0 + XW}" stroke="#8d877b" stroke-width="3" stroke-dasharray="6 8"/><text x="${X0 + 8}" y="196" font-family="JetBrains Mono" font-weight="700" font-size="17" fill="#8d877b">MODAL</text>
+<text x="${X0 + XW / 2}" y="424" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="16" letter-spacing="2" fill="#8a6f55">JUMLAH PERMAINAN →</text>
+${ax}
+<path d="${path}" stroke="${INK}" stroke-width="7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="${n(head[0], 1)}" cy="${n(head[1], 1)}" r="11" fill="#d0413a" stroke="${INK}" stroke-width="4"/>
+${win > 0 ? `<g opacity="${n(win, 3)}"><circle cx="${n(peak[0], 1)}" cy="${n(peak[1], 1)}" r="${n(13 + 8 * (1 - win), 1)}" fill="#6fcf6a" stroke="${INK}" stroke-width="5"/><path d="M${n(peak[0] + 16, 1)} ${n(peak[1] - 4, 1)} L${n(peak[0] + 16 + 250 * win, 1)} ${n(peak[1] - 8, 1)}" stroke="${INK}" stroke-width="4"/><g transform="translate(${n(peak[0] + 270, 1)} ${n(peak[1] - 30, 1)})"><rect width="262" height="42" rx="8" fill="#111"/><text x="131" y="30" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="28" letter-spacing="2" fill="#fff">SESEKALI MENANG</text></g></g>` : ""}
+${label}
+${edge > 0 ? `<g opacity="${n(edge, 3)}" transform="translate(${n(X0 + 250)} ${n(300 + 20 * (1 - edge))}) rotate(14)"><rect x="-120" y="-24" width="240" height="44" rx="8" fill="#c0392b"/><text x="0" y="8" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="26" letter-spacing="2" fill="#fff">UNTUNG BANDAR</text></g>` : ""}
+${o.cap > 0 ? `<g opacity="${n(o.cap, 3)}" transform="translate(0 ${n(10 * (1 - o.cap))})"><text x="420" y="458" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="27" letter-spacing="1" fill="${INK}">SEMAKIN SERING MAIN → HASIL MENDEKATI RATA-RATA</text><text x="420" y="486" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="16" fill="#8a6f55">Sumber: Univ. of Melbourne (30 Des 2025)</text></g>` : ""}</g>`;
+      };
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="bandar-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#efe3cb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#bandar-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#cfb68b"/>
+${W.dust(f, { x: 100, y: 540, w: 880, h: 600, count: 14, seed: 33, color: "#fff3cf", alpha: 0.4 })}
+${PANEL(f, o)}</svg>`;
+      window.__timelines["bandar"] = F1.scene("bandar", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const sesekali = w("Sesekali");
+        const memasang = w("memasang");
+        const makin = w("Makin");
+        const kalah = w("kalah");
+        const peakAt = sesekali + 20;
+        const lin = (t) => t;
+        const draw = f < peakAt ? (PEAK / N) * F1.ramp(f, sesekali, 20, lin) : PEAK / N + (1 - PEAK / N) * F1.ramp(f, peakAt, kalah + 6 - peakAt, lin);
+        const o = {
+          panel: F1.ramp(f, 2, 14, F1.expoOut),
+          draw,
+          winAt: peakAt,
+          avg: F1.ramp(f, memasang, 26, F1.easeOut),
+          edgeAt: w("untung"),
+          cap: F1.ramp(f, makin, 12, F1.expoOut),
+        };
+        const second = f >= makin;
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1.02, ox: 50, oy: 62 },
+              { at: memasang - 8, scale: 1.07, ox: 55, oy: 66, ease: 16 },
+              { at: makin - 4, scale: 1.03, ox: 50, oy: 62, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.stamp(f, { at: kalah, x: 610, y: 715, rot: -8, text: "KALAH", size: 84 }),
+          C.progress(f, { step: 4, label: "TERSANGKA · BANDAR" }),
+          C.hud(f, {
+            at: 4,
+            kicker: "TERSANGKA · BANDAR",
+            big: second ? "RATA-RATA" : "BANDAR",
+            sub: second ? "MAKIN SERING MAIN, HASIL MAKIN DEKAT" : "PASANG UNTUNG DI SETIAP PERMAINAN",
+            src: "Univ. of Melbourne (30 Des 2025)",
+            w: 560,
+            bigSize: 60,
+          }),
+          C.cast(S, f, [
+            { src: C.CAST.beni, x: 540, y: 1200, w: 400, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

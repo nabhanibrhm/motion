@@ -1,0 +1,99 @@
+<!-- Aturan: a rulebook on a paper desk. Nisa asks; "ATURAN BARU" ribbon sits on the book and a green DIPERKETAT stamp slams on "diperketat". Muklis: the first rule card (PAYLATER) comes in on "Pengguna"; "MIN. 18 TAHUN" with a big 18 on "delapan belas", "PENGHASILAN ≥ Rp3 JUTA/BULAN" on "tiga juta"; the second card (PINJOL) on "Cicilan", its bar fills to 30% on "tiga puluh persen". Sources: OJK FAQ PADK 2/2026, SEOJK 19/2025 via Kontan (Feb 2026). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #efe4cc;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="aturan" data-width="1080" data-height="1920">
+    <div id="aturan-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="aturan-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.9" id="aturan-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:diperketat" data-track-index="12" data-volume="0.35"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.7333" id="aturan-sfx-r1" class="clip" src="public/sfx/pop-in.wav" data-at="word:Pengguna" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.1667" id="aturan-sfx-18" class="clip" src="public/sfx/ding-num.wav" data-at="word:delapan" data-track-index="14" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="7.0667" id="aturan-sfx-3jt" class="clip" src="public/sfx/pop-in.wav" data-at="word:juta" data-track-index="15" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.4333" id="aturan-sfx-r2" class="clip" src="public/sfx/pop-in.wav" data-at="word:Cicilan" data-track-index="16" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.1667" id="aturan-sfx-30" class="clip" src="public/sfx/ding-num.wav" data-at="word:puluh" data-track-index="17" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const BG = (f, o) => {
+        // the book: two page blocks and a spine, always on the desk (frame 0 is already drawn)
+        const book = `<g transform="translate(540 ${n(560 + 6 * Math.sin(f / 30))}) rotate(-2)">
+<rect x="-420" y="-10" width="840" height="560" rx="20" fill="#2f6f55" stroke="${INK}" stroke-width="7"/>
+<rect x="-400" y="10" width="800" height="520" rx="12" fill="#f6efe1" stroke="${INK}" stroke-width="5"/>
+<path d="M0 10 V530" stroke="${INK}" stroke-width="6"/></g>`;
+        const ribbon = `<g transform="translate(540 ${n(588 + 6 * Math.sin(f / 30))}) rotate(-2)" opacity="${n(1 - o.cards, 3)}"><rect x="-300" y="150" width="600" height="110" rx="14" fill="#c6f432" stroke="${INK}" stroke-width="6"/><text x="0" y="228" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="76" letter-spacing="6" fill="${INK}">ATURAN BARU</text>
+<text x="0" y="330" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="30" letter-spacing="3" fill="#6f6a66">OJK · 2026</text></g>`;
+        const card1 = o.r1 <= 0 ? "" : `<g transform="translate(${n(90 - (1 - o.r1) * 120)} 600)" opacity="${n(o.r1, 3)}">
+<rect x="0" y="0" width="800" height="280" rx="20" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<rect x="0" y="0" width="800" height="62" rx="20" fill="${INK}"/><rect x="0" y="40" width="800" height="22" fill="${INK}"/>
+<text x="30" y="46" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="5" fill="#fff">PAYLATER</text>
+<text x="770" y="44" text-anchor="end" font-family="JetBrains Mono" font-weight="500" font-size="18" fill="#c9c6c0">OJK, FAQ PADK 2/2026</text>
+${o.age > 0 ? `<g transform="translate(110 168) scale(${n(0.5 + 0.5 * o.age, 3)})" opacity="${n(o.age, 3)}"><circle r="70" fill="#c6f432" stroke="${INK}" stroke-width="6"/><text x="0" y="28" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="82" fill="${INK}">18</text></g><text x="215" y="150" font-family="Oswald" font-weight="600" font-size="44" letter-spacing="2" fill="${INK}" opacity="${n(o.age, 3)}">MINIMAL 18 TAHUN</text>` : ""}
+${o.inc > 0 ? `<g opacity="${n(o.inc, 3)}" transform="translate(${n((1 - o.inc) * 40)} 0)"><circle cx="245" cy="214" r="22" fill="#f2c14a" stroke="${INK}" stroke-width="5"/><text x="245" y="223" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="26" fill="${INK}">Rp</text><text x="290" y="226" font-family="Oswald" font-weight="600" font-size="32" letter-spacing="1" fill="${INK}">PENGHASILAN</text><text x="770" y="224" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="30" fill="#2f7d4a">≥ Rp3 JUTA/BLN</text></g>` : ""}</g>`;
+        const card2 = o.r2 <= 0 ? "" : `<g transform="translate(${n(90 + (1 - o.r2) * 120)} 910)" opacity="${n(o.r2, 3)}">
+<rect x="0" y="0" width="800" height="250" rx="20" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<rect x="0" y="0" width="800" height="62" rx="20" fill="#d0413a"/><rect x="0" y="40" width="800" height="22" fill="#d0413a"/>
+<text x="30" y="46" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="5" fill="#fff">PINJOL (2026)</text>
+<text x="770" y="44" text-anchor="end" font-family="JetBrains Mono" font-weight="500" font-size="18" fill="#ffe3df">SEOJK 19/2025</text>
+<text x="30" y="124" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="2" fill="${INK}">CICILAN MAKS. 30% PENGHASILAN</text>
+<rect x="30" y="152" width="740" height="52" rx="26" fill="#e9e2d3" stroke="${INK}" stroke-width="5"/>
+<rect x="34" y="156" width="${n(Math.max(0, 732 * 0.3 * o.bar))}" height="44" rx="22" fill="#c6f432"/>
+<path d="M${n(30 + 740 * 0.3)} 144 V212" stroke="${INK}" stroke-width="6"/>
+<text x="770" y="232" text-anchor="end" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">PENGHASILAN 100%</text></g>`;
+        return `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="aturan-glow" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#efe4cc"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#aturan-glow)"/>
+<rect x="0" y="1180" width="1080" height="740" fill="#d4bd96"/>
+<g opacity="${n(1 - o.cards, 3)}">${book}</g>${ribbon}${card1}${card2}</svg>`;
+      };
+      window.__timelines["aturan"] = F1.scene("aturan", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const pengguna = w("Pengguna");
+        const delapan = w("delapan");
+        const juta = w("juta");
+        const cicilan = w("Cicilan");
+        const puluh = w("puluh");
+        const persen = w("persen");
+        const o = {
+          r1: F1.ramp(f, pengguna, 12, F1.expoOut),
+          age: F1.ramp(f, delapan, 10, F1.expoOut),
+          inc: F1.ramp(f, juta - 12, 10, F1.expoOut),
+          r2: F1.ramp(f, cicilan, 12, F1.expoOut),
+          bar: F1.ramp(f, puluh - 4, persen + 8 - puluh, F1.easeOut),
+          cards: F1.ramp(f, pengguna - 4, 8),
+        };
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.06, ox: 50, oy: 58 },
+              { at: pengguna - 4, scale: 1.05, ox: 50, oy: 52, ease: 14 },
+              { at: delapan - 6, scale: 1.12, ox: 36, oy: 46, ease: 14 },
+              { at: cicilan - 6, scale: 1.08, ox: 50, oy: 66, ease: 16 },
+              { at: puluh - 6, scale: 1.14, ox: 40, oy: 66, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          f < pengguna ? C.stamp(f, { at: w("diperketat"), x: 250, y: 1010, rot: -7, color: "#2f7d4a", text: "DIPERKETAT", size: 70 }) : "",
+          C.progress(f, { step: 6, label: "ATURAN BARU" }),
+          f < cicilan
+            ? C.hud(f, { at: 4, kicker: "ATURAN BARU", big: "PAYLATER", sub: "SYARAT PENGGUNA · 2026", src: "OJK, FAQ PADK 2/2026", w: 540, bigSize: 60 })
+            : C.hud(f, { at: cicilan - 4, kicker: "ATURAN BARU", big: "PINJOL", sub: "CICILAN ≤ 30% PENGHASILAN", src: "SEOJK 19/2025 via Kontan (Feb 2026)", w: 540, bigSize: 60 }),
+          C.cast(S, f, [
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

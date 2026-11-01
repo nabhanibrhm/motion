@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "source": "out/Ekonomi_keuangan/ihsg",
+  "files": [
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/voiceover/ihsg.json",
+      "target": "narration.json",
+      "bytes": 3882,
+      "sha256": "188dd7884d5e3611e23f4e288b5d858aa00cc6dc9a3a96e0129b0d0a9eb806e5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/script-short.md",
+      "target": "script-short.md",
+      "bytes": 8478,
+      "sha256": "cf8995be8a9f70719383b2be27b5a1718e00002b7296514e9e1ec0b7177df8c9"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/hook.html",
+      "target": "scenes/hook.html",
+      "bytes": 5837,
+      "sha256": "187ba6ed1e06488fbe24d04ed534aeff8bc08d13fbd34389a4ecf581e53787f2"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/anjlok.html",
+      "target": "scenes/anjlok.html",
+      "bytes": 11577,
+      "sha256": "41ae05066c873429c5d51da3c762700aa3c61863b8f24b93a2fbd9bee4d3cba4"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/msci.html",
+      "target": "scenes/msci.html",
+      "bytes": 10522,
+      "sha256": "585a8f4779f2f5bed9e4b71655bf7f833d4aeb99eb799069b20a6e775fd37a4e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/asing.html",
+      "target": "scenes/asing.html",
+      "bytes": 10840,
+      "sha256": "4c491206469724039fa15aafd464f8bd6deb5d8dafe3f6aafbb166252434a50d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/kalau.html",
+      "target": "scenes/kalau.html",
+      "bytes": 11868,
+      "sha256": "cad9fe14ee8d062ae50b9244480b0d23ae84e7ead75993437a64685047fde59b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/pelajaran.html",
+      "target": "scenes/pelajaran.html",
+      "bytes": 7804,
+      "sha256": "8278863c7681e182dcaa46a16fff2cf7bf95df3769747581540b3ea7333155c0"
+    }
+  ]
+}

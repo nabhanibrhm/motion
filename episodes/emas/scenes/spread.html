@@ -1,0 +1,114 @@
+<!-- Spread: two price tags hang from a rail under a "30 OKT 2026 · HARI YANG SAMA" banner. HARGA BELI counts up to Rp2.546.000 on "beli ... ribu"; BUYBACK counts up to Rp2.341.000 on "dijual ... ribu". On Beni's "Langsung" a red gap card slides in; the red gap counts to -Rp205.000/g on "rugi dua ratus lima ribu" with a RUGI stamp on "rugi", and "(≈8%)" on "delapan". Sources: Katadata (Logam Mulia, 30 Okt 2026). Muklis, Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e7d3;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="spread" data-width="1080" data-height="1920">
+    <div id="spread-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="spread-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.5" id="spread-sfx-date" class="clip" src="public/sfx/pop-in.wav" data-at="word:Tiga" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.1667" id="spread-sfx-beli" class="clip" src="public/sfx/pop-in.wav" data-at="word:beli" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.4333" id="spread-sfx-num1" class="clip" src="public/sfx/ding-num.wav" data-at="word:dua" data-track-index="14" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2" id="spread-sfx-jual" class="clip" src="public/sfx/pop-in.wav" data-at="word:jual" data-track-index="15" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.4333" id="spread-sfx-num2" class="clip" src="public/sfx/ding-num.wav" data-at="word:dua#1" data-track-index="16" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="12.9333" id="spread-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:rugi" data-track-index="17" data-volume="0.4"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13.2333" id="spread-sfx-num3" class="clip" src="public/sfx/ding-num.wav" data-at="word:dua#2" data-track-index="18" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="16.4667" id="spread-sfx-pct" class="clip" src="public/sfx/tick.wav" data-at="word:delapan" data-track-index="19" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#c0392b";
+      const MUTE = "#6b5f52";
+      const fmt = (v) => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const GOLD = (x, y, s = 1) => `<g transform="translate(${n(x)} ${n(y)}) scale(${n(s, 3)})" stroke="${INK}" stroke-width="6" stroke-linejoin="round"><path d="M-104 -66 L104 -66 L80 -98 L-80 -98 Z" fill="#f5d878"/><path d="M-130 0 L130 0 L104 -66 L-104 -66 Z" fill="#e0b13a"/><path d="M-62 -8 L-34 -8 L-10 -58 L-38 -58 Z" fill="#fff" opacity="0.38" stroke="none"/></g>`;
+      // a hanging price tag; cx = centre x of the tag, the string hangs from the rail at y 566
+      const TAG = (f, p, { cx, fill, head, sub, price, color, phase, bar }) =>
+        p <= 0
+          ? ""
+          : `<g opacity="${n(p, 3)}" transform="translate(${cx} ${n(610 - (1 - p) * 120)}) rotate(${n(2.2 * Math.sin(f / 31 + phase), 2)})">
+<line x1="0" y1="0" x2="0" y2="50" stroke="${INK}" stroke-width="5"/>
+<path d="M-175 80 Q-175 50 -145 50 H145 Q175 50 175 80 V330 Q175 350 155 350 H-155 Q-175 350 -175 330 Z" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+<circle cx="0" cy="76" r="14" fill="#f1e7d3" stroke="${INK}" stroke-width="5"/>
+<text x="0" y="148" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="4" fill="${INK}">${head}</text>
+<text x="0" y="178" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="18" letter-spacing="1" fill="${MUTE}">${sub}</text>
+<text x="0" y="262" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="62" fill="${color}">${price}</text>
+<text x="0" y="296" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="26" letter-spacing="2" fill="${MUTE}">PER GRAM</text>
+<text x="0" y="330" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="16" fill="#8a6f55">Sumber: Katadata</text></g>`;
+      window.__timelines["spread"] = F1.scene("spread", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const tiga = w("Tiga");
+        const beli = w("beli");
+        const dua0 = w("dua", 0);
+        const ribu0 = w("ribu", 0);
+        const dijual = w("dijual");
+        const dua1 = w("dua", 1);
+        const ribu1 = w("ribu", 1);
+        const langsung = w("Langsung");
+        const rugi = w("rugi");
+        const ribu2 = w("ribu", 2);
+        const delapan = w("delapan");
+        const jual0 = w("jual");
+        const bP = F1.ramp(f, beli - 2, 12, F1.expoOut);
+        const jP = F1.ramp(f, jual0 - 2, 12, F1.expoOut);
+        const v1 = 2546000 * F1.ramp(f, dua0, ribu0 - dua0 + 8, F1.easeOut);
+        const v2 = 2341000 * F1.ramp(f, dua1, ribu1 - dua1 + 8, F1.easeOut);
+        const gapv = 205000 * F1.ramp(f, rugi, ribu2 - rugi + 8, F1.easeOut);
+        const gP = F1.ramp(f, langsung, 12, F1.expoOut);
+        const pctP = F1.ramp(f, delapan, 10, F1.expoOut);
+        const banP = F1.ramp(f, tiga, 10, F1.expoOut);
+        const minus = F1.ramp(f, beli + 6, 10, F1.expoOut);
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+<g style="filter:blur(3px)"><rect x="80" y="290" width="260" height="300" fill="#f7e3b0"/><path d="M80 290 h260 v300 h-260 Z M210 290 v300 M80 440 h260" stroke="#8a6f55" stroke-width="14" fill="none"/></g>
+${W.dust(f, { x: 100, y: 480, w: 840, h: 680, count: 22, seed: 21, color: "#fff3cf", alpha: 0.5 })}
+<rect x="0" y="1190" width="1080" height="730" fill="#cdb898"/>
+${banP > 0 ? `<g opacity="${n(banP, 3)}" transform="translate(540 ${n(554 - (1 - banP) * 24)}) scale(${n(0.7 + 0.3 * banP, 3)})"><rect x="-290" y="-28" width="580" height="56" rx="14" fill="#18181c" opacity="0.9"/><text x="0" y="11" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="31" letter-spacing="3" fill="#f5d27a">30 OKT 2026 · HARI YANG SAMA</text></g>` : ""}
+<rect x="90" y="600" width="840" height="14" rx="7" fill="#6b5b45" stroke="${INK}" stroke-width="5"/>
+${TAG(f, bP, { cx: 290, fill: "#f6e2a0", head: "HARGA BELI", sub: "LOGAM MULIA", price: f < dua0 ? "" : "Rp" + fmt(v1), color: INK, phase: 0, bar: true })}
+${TAG(f, jP, { cx: 730, fill: "#e9e2d3", head: "BUYBACK", sub: "JUAL KEMBALI", price: f < dua1 ? "" : "Rp" + fmt(v2), color: RED, phase: 2, bar: false })}
+${minus > 0 ? `<g transform="translate(510 824) scale(${n(minus, 3)})"><circle r="28" fill="${RED}" stroke="${INK}" stroke-width="5"/><rect x="-14" y="-4" width="28" height="8" rx="4" fill="#fff"/></g>` : ""}
+${gP > 0 ? `<g opacity="${n(gP, 3)}" transform="translate(0 ${n((1 - gP) * 70)})"><rect x="100" y="994" width="840" height="196" rx="20" fill="#fffaf0" stroke="${RED}" stroke-width="7"/>
+<path d="M152 1034 H208 V1084 H236 L180 1140 L124 1084 H152 Z" fill="${RED}" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+<text x="268" y="1094" font-family="Oswald" font-weight="700" font-size="96" fill="${RED}">−Rp${fmt(gapv)}<tspan font-size="36" font-weight="600" fill="${MUTE}"> /gram</tspan></text>
+<text x="268" y="1138" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="2" fill="${INK}" opacity="${n(pctP, 3)}">SELISIH JUAL-BELI (≈8%)</text>
+<text x="268" y="1172" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55">Sumber: Katadata (Logam Mulia, 30 Okt 2026)</text></g>` : ""}</svg>`;
+        const pct = Math.round(8.1 * 10 * pctP) / 10;
+        const hud =
+          f >= delapan
+            ? C.hud(f, { at: delapan, kicker: "SELISIH · HARI YANG SAMA", big: "−8,1%", sub: "−Rp205.000 PER GRAM", src: "Katadata (30 Okt 2026)", w: 540 })
+            : f >= langsung
+              ? C.hud(f, { at: langsung, kicker: "SELISIH PER GRAM", big: `−Rp${fmt(gapv)}`, sub: "HARGA BELI − BUYBACK", src: "Katadata (30 Okt 2026)", w: 540, bigSize: 64 })
+              : C.hud(f, { at: 4, kicker: "JEBAKAN KEDUA", big: "BUYBACK", sub: "HARGA JUAL KEMBALI · 30 OKT 2026", src: "Katadata (Logam Mulia)", w: 540, bigSize: 64 });
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1.03, ox: 50, oy: 30 },
+              { at: dijual, scale: 1.03, ox: 62, oy: 36, ease: 14 },
+              { at: langsung, scale: 1.04, ox: 50, oy: 44, ease: 14 },
+            ],
+          }),
+          C.vignette(0.24, "50% 55%", 50),
+          C.stamp(f, { at: rugi, x: 740, y: 1112, rot: -7, text: "RUGI", size: 52 }),
+          C.progress(f, { step: 4, label: "BUKTI 2 · SELISIH JUAL-BELI" }),
+          hud,
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,0 +1,88 @@
+<!-- Pelajaran: a morning room; chip BUKAN SARAN INVESTASI; a checklist card ticks one tip each on "panik", "perusahaannya", "bertahap" and "viral", every tip with its named source line. Muklis, then Nisa ("aku nggak panic selling"), then Beni closes the case: a paper end card with the KASUS DITUTUP stamp on "ditutup", KASUS #03 · IHSG, the next MSCI review (11 NOV 2026, Antara), then the comment question on "Menurutmu"; the speaker stays in front of the card. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #e6dccb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="pelajaran" data-width="1080" data-height="1920">
+    <div id="pelajaran-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.3333" id="pelajaran-sfx-1" class="clip" src="public/sfx/click.wav" data-at="word:panik" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.4333" id="pelajaran-sfx-2" class="clip" src="public/sfx/click.wav" data-at="word:perusahaannya" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.1667" id="pelajaran-sfx-3" class="clip" src="public/sfx/click.wav" data-at="word:bertahap" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.6" id="pelajaran-sfx-4" class="clip" src="public/sfx/click.wav" data-at="word:viral" data-track-index="15" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13.3" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="16" data-volume="0.45"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const ITEMS = [
+        { t: "JANGAN JUAL/BELI KARENA PANIK", s: "BEI (Iding Pardi) via Kontan, 16 Okt 2026" },
+        { t: "LIHAT PERUSAHAANNYA, BUKAN HARGANYA", s: "BEI (Saptono Adi Junarso) via Infobank, 29 Jan 2026" },
+        { t: "BELI BERTAHAP", s: "Panin Sekuritas (Elandry Pratama) via Kontan, 17 Okt 2026" },
+        { t: "JANGAN FOMO SAHAM VIRAL", s: "Analis Reydi Octa via Kontan, 23 Feb 2026" },
+      ];
+      // the checklist: item i slides in and gets its tick at frame ticks[i]
+      const LIST = (f, ticks) => `<g transform="translate(80 490)"><rect x="0" y="0" width="840" height="610" rx="22" fill="#f6efe1" stroke="#2a2a2e" stroke-width="6"/>
+<text x="40" y="70" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="3" fill="#2a2a2e">YANG BISA KITA LAKUKAN</text>
+${ITEMS.map((it, i) => {
+  const p = F1.ramp(f, ticks[i] - 2, 10, F1.expoOut);
+  const y = 112 + 122 * i;
+  return `<g opacity="${n(0.25 + 0.75 * p, 3)}" transform="translate(${n(-20 * (1 - p))} 0)"><rect x="40" y="${y}" width="56" height="56" rx="10" fill="#fff" stroke="#2a2a2e" stroke-width="5"/>${p > 0 ? `<path d="M52 ${y + 28} L66 ${y + 44} L88 ${y + 12}" stroke="#4e8a4f" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="60" stroke-dashoffset="${n(60 * (1 - p))}"/>` : ""}<text x="120" y="${y + 40}" font-family="Oswald" font-weight="600" font-size="35" fill="#2a2a2e">${it.t}</text><text x="120" y="${y + 80}" font-family="JetBrains Mono" font-weight="500" font-size="18" fill="#6b5f52">Sumber: ${it.s}</text></g>`;
+}).join("")}</g>`;
+      const BG = (f, ticks) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#e2d6c3"/>
+<g style="filter:blur(3px)"><rect x="660" y="260" width="320" height="200" fill="#f7e3b0"/><path d="M660 260 h320 v200 h-320 Z M820 260 v200" stroke="#8a6f55" stroke-width="16" fill="none"/></g>
+${F1.world.dust(f, { x: 380, y: 620, w: 640, h: 480, count: 18, seed: 9, color: "#fff3cf", alpha: 0.55 })}
+<rect x="0" y="1128" width="1080" height="792" fill="#b9a083"/>
+${LIST(f, ticks)}</svg>`;
+      window.__timelines["pelajaran"] = F1.scene("pelajaran", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const ticks = [w("panik"), w("perusahaannya"), w("bertahap"), w("viral")];
+        const oke = F1.line(S, 1).start;
+        const ditutup = w("ditutup");
+        // end card: warm paper over the room from "ditutup", the stamp slams in a beat later, the next review line follows,
+        // and the comment question rises in on "Menurutmu"
+        const menurut = w("Menurutmu");
+        const paper = F1.ramp(f, ditutup - 6, 8);
+        const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
+        const rev = F1.ramp(f, ditutup + 12, 12, F1.expoOut);
+        const ask = F1.ramp(f, menurut, 12, F1.expoOut);
+        const mono = "font-family:'JetBrains Mono',monospace";
+        const end = paper <= 0 ? "" : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#f6efe1", opacity: n(paper, 3) })}"></div>
+<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 330, display: "flex", flexDirection: "column", alignItems: "center", gap: 26, opacity: n(paper, 3) })}">
+<div style="${F1.css({ padding: "14px 30px", border: "6px solid #c0392b", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#c0392b" })}">KASUS DITUTUP</div>
+<div style="${mono};font-weight:500;font-size:26px;letter-spacing:2px;color:#6f6a66">KASUS #03 · IHSG</div>
+<div style="${F1.css({ textAlign: "center", opacity: n(rev, 3), transform: `translateY(${n(24 * (1 - rev))}px)` })}"><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:40px;letter-spacing:2px;color:#2a2a2e">REVIEW MSCI BERIKUTNYA: <span style="color:#c0392b">11 NOV 2026</span></div><div style="${mono};font-weight:500;font-size:19px;color:#8d8a84;margin-top:6px">Sumber: Antara (Agu 2026)</div></div>
+<div style="${F1.css({ marginTop: 10, padding: "24px 40px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(ask, 3), transform: `translateY(${n(30 * (1 - ask))}px)` })}"><div style="${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#ff5a5f">● MENURUTMU</div><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:64px;line-height:1.15;color:#fff">IHSG BAKAL<br><span style="color:${C.ACCENT}">BANGKIT?</span></div><div style="${mono};font-weight:500;font-size:24px;letter-spacing:1px;color:#c9c6c0;margin-top:10px">TULIS DI KOMENTAR</div></div>
+<div style="${mono};font-weight:500;font-size:20px;letter-spacing:1px;color:#6f6a66;opacity:${n(ask, 3)}">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
+        return F1.join(
+          C.stage(f, D, BG(f, ticks), {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1.04, ox: 50, oy: 40 },
+              { at: w("lihat"), scale: 1.07, ox: 50, oy: 50, ease: 14 },
+              { at: oke, scale: 1, ox: 50, oy: 48, ease: 12 },
+              { at: w("Kasus"), scale: 1.06, ox: 52, oy: 44, ease: 20 },
+            ],
+          }),
+          C.vignette(0.3, "50% 50%", 55),
+          C.chip(f, { at: 4, text: "BUKAN SARAN INVESTASI" }),
+          end,
+          C.progress(f, { step: 6, label: "VONIS" }),
+          C.cast(S, f, [
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 400 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

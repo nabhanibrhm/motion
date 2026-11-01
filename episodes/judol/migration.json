@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": "out/Ekonomi_keuangan/judol",
+  "files": [
+    {
+      "source": "out/Ekonomi_keuangan/judol/voiceover/judol.json",
+      "target": "narration.json",
+      "bytes": 4228,
+      "sha256": "a37997283fcce1c78769fc6a23c3cfedde604b5c9c98a9c9b64d18fe2ef6c47d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/script-short.md",
+      "target": "script-short.md",
+      "bytes": 7780,
+      "sha256": "4b3eb6ee75a154057a43dd66ea798426f7ae17b63a000bffd7277501169039b7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/hook.html",
+      "target": "scenes/hook.html",
+      "bytes": 8394,
+      "sha256": "c6ac999f23253d558b409acd6229f447afba7b1667bacdfeb894312727993a22"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/skala.html",
+      "target": "scenes/skala.html",
+      "bytes": 8811,
+      "sha256": "f2c5a647474f82810e7b7e5f6cfddaac626866406ee82060558b6bb38601c781"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/qris.html",
+      "target": "scenes/qris.html",
+      "bytes": 12297,
+      "sha256": "f1b5b54fa24e8ded19b5ce7a7e2de2d42af297be1f5dc202e3e0ead431861c2b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/bandar.html",
+      "target": "scenes/bandar.html",
+      "bytes": 8764,
+      "sha256": "5718a5e00e23f03dbcef2a851b8d03385a9b00c4a8d4c0ac5a56cb21fc8dcc42"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/kalau.html",
+      "target": "scenes/kalau.html",
+      "bytes": 8381,
+      "sha256": "0499eb7615b65eeed4979fcc318165f12624f1ded5a7c1e41e3a6ed79aeed7eb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/korban.html",
+      "target": "scenes/korban.html",
+      "bytes": 9610,
+      "sha256": "37f70dac6f94becafd7df07456a539072af25d6e4e5474422f36941bc64fb2c9"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/pelajaran.html",
+      "target": "scenes/pelajaran.html",
+      "bytes": 13087,
+      "sha256": "4ede0e4d389315dd64f351aa337fa5034e7059d1e7c1a58280fb972abfb07c1a"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+<!-- Kalau (skenario, the one dark scene): three cards stack on a night desk under a permanent label SIMULASI ILUSTRASI · ASUMSI RTP 90%. On "Seribu" card 1 "1.000 x Rp10.000" opens and counts to Rp10.000.000 DIPERTARUHKAN on "sepuluh juta". On "mesinnya" card 2 shows a plain MESIN box and counts to Rp9.000.000 DIKEMBALIKAN 90% on "sembilan puluh persen". On "rata-rata" card 3 opens, a RUGI stamp slams on "rugi" and the value counts to Rp1.000.000. Tags: ITU PUN KALAU JUJUR (on "jujur"), SITUS ILEGAL: TIDAK ADA YANG MENGAWASI (on "Situs"). Arithmetic is ours (1.000 x Rp10.000, assumed 90% return); source for the 90% assumption: Pemerintah Australia Barat (RTP policy, 18 Jun 2026). Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #1a1f2a;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="kalau" data-width="1080" data-height="1920">
+    <div id="kalau-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kalau-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.7667" id="kalau-sfx-c1" class="clip" src="public/sfx/pop-in.wav" data-at="word:Seribu" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.7333" id="kalau-sfx-n1" class="clip" src="public/sfx/ding-num.wav" data-at="word:berarti" data-track-index="13" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.7333" id="kalau-sfx-c2" class="clip" src="public/sfx/pop-in.wav" data-at="word:mesinnya" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6.7667" id="kalau-sfx-n2" class="clip" src="public/sfx/ding-num.wav" data-at="word:sembilan" data-track-index="15" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.1667" id="kalau-sfx-c3" class="clip" src="public/sfx/pop-in.wav" data-at="word:rata-rata" data-track-index="16" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.4" id="kalau-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:rugi" data-track-index="17" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="12.1333" id="kalau-sfx-jujur" class="clip" src="public/sfx/pop-in.wav" data-at="word:jujur" data-track-index="18" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13.2333" id="kalau-sfx-situs" class="clip" src="public/sfx/sub-drop.wav" data-at="word:Situs" data-track-index="19" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const rp = (v) => "Rp" + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const val = (v, p) => (p <= 0 ? "Rp—" : rp(v * p));
+      const CARD = (y, p, body, fill = "#f6efe1", edge = INK, h = 140) => p <= 0.001 ? "" : `<g transform="translate(${n(90 + 70 * (1 - p))} ${y})" opacity="${n(p, 3)}"><rect width="840" height="${h}" rx="20" fill="${fill}" stroke="${edge}" stroke-width="7"/>${body}</g>`;
+      const MESIN = `<g transform="translate(650 28)"><rect width="150" height="86" rx="12" fill="#c9c3b6" stroke="${INK}" stroke-width="6"/><rect x="14" y="14" width="122" height="22" rx="6" fill="#8d877b" stroke="${INK}" stroke-width="4"/><text x="75" y="68" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="30" letter-spacing="4" fill="${INK}">MESIN</text></g>`;
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="kalau-glow" cx="50%" cy="38%" r="65%"><stop offset="0" stop-color="#2b3445"/><stop offset="1" stop-color="#12151c"/></radialGradient>
+<linearGradient id="kalau-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe9a8" stop-opacity="0.18"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></linearGradient></defs>
+<rect width="1080" height="1920" fill="url(#kalau-glow)"/>
+<path d="M360 0 L720 0 L1000 1250 L80 1250 Z" fill="url(#kalau-beam)"/>
+${W.dust(f, { x: 120, y: 540, w: 840, h: 600, count: 18, seed: 17, color: "#ffe9a8", alpha: 0.3 })}
+<rect x="0" y="1160" width="1080" height="760" fill="#10131a"/><rect x="0" y="1160" width="1080" height="6" fill="#3a4357"/>
+${o.bar > 0.001 ? `<g opacity="${n(o.bar, 3)}" transform="translate(90 ${n(578 + 10 * (1 - o.bar))})"><rect width="840" height="50" rx="10" fill="#f5d27a" stroke="#111" stroke-width="4"/><text x="420" y="36" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="25" letter-spacing="1" fill="#111">SIMULASI ILUSTRASI · ASUMSI RTP 90%</text></g>` : ""}
+${CARD(644, o.c1, `<text x="36" y="46" font-family="JetBrains Mono" font-weight="700" font-size="30" fill="${INK}">1.000 × Rp10.000 =</text><text x="36" y="114" font-family="JetBrains Mono" font-weight="700" font-size="62" fill="${INK}">${val(10000000, o.v1)}</text><text x="800" y="108" text-anchor="end" font-family="Oswald" font-weight="600" font-size="34" letter-spacing="3" fill="#8a6f55">DIPERTARUHKAN</text>`)}
+${CARD(802, o.c2, `<text x="36" y="46" font-family="JetBrains Mono" font-weight="700" font-size="28" fill="${INK}">DIKEMBALIKAN 90% (RTP)</text><text x="36" y="114" font-family="JetBrains Mono" font-weight="700" font-size="62" fill="#4e8a4f">${val(9000000, o.v2)}</text>${MESIN}`)}
+${CARD(960, o.c3, `<text x="36" y="58" font-family="Oswald" font-weight="700" font-size="42" letter-spacing="4" fill="#ffd9d4">RATA-RATA RUGI</text><text x="36" y="136" font-family="JetBrains Mono" font-weight="700" font-size="66" fill="#ff5a5f">${val(1000000, o.v3)}</text>`, "#3a1d1f", "#d0413a", 170)}
+</svg>`;
+      window.__timelines["kalau"] = F1.scene("kalau", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const seribu = w("Seribu");
+        const berarti = w("berarti");
+        const juta = F1.word(S, "juta");
+        const mesinnya = w("mesinnya");
+        const sembilan = w("sembilan");
+        const persen = F1.word(S, "persen");
+        const rata = w("rata-rata");
+        const rugi = w("rugi");
+        const satu = w("satu");
+        const jutaEnd = F1.word(S, "juta", 1);
+        const jujur = w("jujur");
+        const situs = w("Situs");
+        const o = {
+          bar: F1.ramp(f, seribu - 14, 12, F1.expoOut),
+          c1: F1.ramp(f, seribu - 4, 12, F1.expoOut),
+          c2: F1.ramp(f, mesinnya - 2, 12, F1.expoOut),
+          c3: F1.ramp(f, rata - 2, 12, F1.expoOut),
+          v1: F1.ramp(f, berarti, juta.end - berarti, F1.easeOut),
+          v2: F1.ramp(f, sembilan, persen.end - sembilan, F1.easeOut),
+          v3: F1.ramp(f, satu, jutaEnd.end - satu, F1.easeOut),
+        };
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1.02, ox: 50, oy: 62 },
+              { at: mesinnya - 8, scale: 1.04, ox: 50, oy: 66, ease: 16 },
+              { at: rata - 6, scale: 1.05, ox: 50, oy: 68, ease: 14 },
+              { at: situs - 8, scale: 1.03, ox: 50, oy: 64, ease: 14 },
+            ],
+          }),
+          C.vignette(0.5, "50% 58%", 40),
+          C.stamp(f, { at: rugi, x: 700, y: 1000, rot: -9, text: "RUGI", size: 72, color: "#ff5a5f" }),
+          f < situs - 8 ? C.tag(f, { at: jujur, x: 90, y: 1140, rot: -2, text: "ITU PUN KALAU JUJUR", size: 36, light: true }) : "",
+          C.tag(f, { at: situs, x: 90, y: 1140, rot: -1.5, text: "SITUS ILEGAL: TIDAK ADA YANG MENGAWASI", size: 34 }),
+          C.progress(f, { step: 5, label: "SKENARIO" }),
+          C.hud(f, { at: 4, kicker: "SIMULASI ILUSTRASI", big: "RTP 90%", sub: "ASUMSI · BATAS MIN. MESIN LEGAL", src: "Pem. Australia Barat (18 Jun 2026)", w: 560, bigSize: 72 }),
+          C.cast(S, f, [
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

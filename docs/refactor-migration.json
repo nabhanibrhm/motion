@@ -1,0 +1,2787 @@
+{
+  "schemaVersion": 1,
+  "episodes": [
+    "inflasi",
+    "rupiah",
+    "ihsg",
+    "paylater",
+    "judol",
+    "emas",
+    "kelas"
+  ],
+  "archive": {
+    "path": ".cache/migration-baseline/legacy-source.zip",
+    "bytes": 35912040,
+    "sha256": "1090196b2e2750e408f558caccc7d78d477dbb9c1bbd2203491162037cdc9a0c"
+  },
+  "baseline": {
+    "path": ".cache/migration-baseline/source-hashes.json",
+    "bytes": 105048,
+    "sha256": "a300e516d1a32279d4712296ade12301ced45e9c129fe5ecfd9dc44a98250395"
+  },
+  "mappings": [
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/voiceover/inflasi.json",
+      "target": "episodes/inflasi/narration.json",
+      "bytes": 3049,
+      "sha256": "686607cb1d53ba1aad4319b01f7237e0ea3d94d98e88b6cfe2c68ee8bf56de76"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/script-short.md",
+      "target": "episodes/inflasi/script-short.md",
+      "bytes": 3190,
+      "sha256": "bcd160b6f3760471fb8ce6a2acb86eb543a488e0a04a993210cde7dac3950ec4"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/script.md",
+      "target": "episodes/inflasi/script.md",
+      "bytes": 9154,
+      "sha256": "aa9a8dfa196ff398fd3bdb15d7b2436c8ad17360562c248a3e162c9cf389801b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/compositions/hook.html",
+      "target": "episodes/inflasi/scenes/hook.html",
+      "bytes": 5294,
+      "sha256": "70e28b5cd4a24f853bcfd6b959870ffabeea2f1232721d5f6338734562b35ae3"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/compositions/penjual.html",
+      "target": "episodes/inflasi/scenes/penjual.html",
+      "bytes": 4831,
+      "sha256": "167eb31a2f31a2e39b54988349baa47dc1c27107d624119fd8f47f5250d32f5d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/compositions/bahan.html",
+      "target": "episodes/inflasi/scenes/bahan.html",
+      "bytes": 6917,
+      "sha256": "19d19192f287a8fb8471ffb993c8b2d9123f1542b6af8b99b3024d1b05d8db90"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/compositions/kita.html",
+      "target": "episodes/inflasi/scenes/kita.html",
+      "bytes": 4391,
+      "sha256": "1cf4daff9dca67a48c5c747ffebe7035a4d35a4044b12095e4020c5dbf316b4a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/compositions/dalang.html",
+      "target": "episodes/inflasi/scenes/dalang.html",
+      "bytes": 5717,
+      "sha256": "5c25796f4086fddaca52623124f8e0614307111aeb3e98a35b94bd0a0db39092"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/compositions/pelajaran.html",
+      "target": "episodes/inflasi/scenes/pelajaran.html",
+      "bytes": 7171,
+      "sha256": "2a1000f3541c00507b5d661d33a197810530d975827c3f71fad0720eb1115806"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/voiceover/rupiah.json",
+      "target": "episodes/rupiah/narration.json",
+      "bytes": 3565,
+      "sha256": "e5573035758d0614d7e1043ff59a4897c3bd227fdd4d4cc9c829c84d128bccaf"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/script-short.md",
+      "target": "episodes/rupiah/script-short.md",
+      "bytes": 9487,
+      "sha256": "261b08dcc46add452eea9cb23b0a49f75b4143a16517ff36280496864b4c7e9b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/hook.html",
+      "target": "episodes/rupiah/scenes/hook.html",
+      "bytes": 6317,
+      "sha256": "0c050c89fb06695766b4c349fab2f6a28cdc32e03bb38169a2c6a3f56f54a9bb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/rekor.html",
+      "target": "episodes/rupiah/scenes/rekor.html",
+      "bytes": 8044,
+      "sha256": "0b004c8eaef2ff94ebe574e04b2d550d0b062e088f29d7cddea6612c3b629586"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/dampak.html",
+      "target": "episodes/rupiah/scenes/dampak.html",
+      "bytes": 7542,
+      "sha256": "ece084e61ff9efdf5742ab6557a30f04354e1b7bc29a7e0c58c284eabf8bde2d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/untung.html",
+      "target": "episodes/rupiah/scenes/untung.html",
+      "bytes": 7387,
+      "sha256": "3dce1ef181bb8cc9883ab321089278538f4afb6fc0692cec8647ab7e56860597"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/kalau.html",
+      "target": "episodes/rupiah/scenes/kalau.html",
+      "bytes": 6540,
+      "sha256": "f2a13763342e9ac617bb71589cf2f14e456a3cec3f7aff61b1d955c1866f111f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/pelajaran.html",
+      "target": "episodes/rupiah/scenes/pelajaran.html",
+      "bytes": 6839,
+      "sha256": "d161eec451663d7d3dde900f9fffb442703640d4115c459fe7c089e064f2bc7d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/voiceover/ihsg.json",
+      "target": "episodes/ihsg/narration.json",
+      "bytes": 3882,
+      "sha256": "188dd7884d5e3611e23f4e288b5d858aa00cc6dc9a3a96e0129b0d0a9eb806e5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/script-short.md",
+      "target": "episodes/ihsg/script-short.md",
+      "bytes": 8478,
+      "sha256": "cf8995be8a9f70719383b2be27b5a1718e00002b7296514e9e1ec0b7177df8c9"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/hook.html",
+      "target": "episodes/ihsg/scenes/hook.html",
+      "bytes": 5837,
+      "sha256": "187ba6ed1e06488fbe24d04ed534aeff8bc08d13fbd34389a4ecf581e53787f2"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/anjlok.html",
+      "target": "episodes/ihsg/scenes/anjlok.html",
+      "bytes": 11577,
+      "sha256": "41ae05066c873429c5d51da3c762700aa3c61863b8f24b93a2fbd9bee4d3cba4"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/msci.html",
+      "target": "episodes/ihsg/scenes/msci.html",
+      "bytes": 10522,
+      "sha256": "585a8f4779f2f5bed9e4b71655bf7f833d4aeb99eb799069b20a6e775fd37a4e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/asing.html",
+      "target": "episodes/ihsg/scenes/asing.html",
+      "bytes": 10840,
+      "sha256": "4c491206469724039fa15aafd464f8bd6deb5d8dafe3f6aafbb166252434a50d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/kalau.html",
+      "target": "episodes/ihsg/scenes/kalau.html",
+      "bytes": 11868,
+      "sha256": "cad9fe14ee8d062ae50b9244480b0d23ae84e7ead75993437a64685047fde59b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/pelajaran.html",
+      "target": "episodes/ihsg/scenes/pelajaran.html",
+      "bytes": 7804,
+      "sha256": "8278863c7681e182dcaa46a16fff2cf7bf95df3769747581540b3ea7333155c0"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/voiceover/paylater.json",
+      "target": "episodes/paylater/narration.json",
+      "bytes": 4056,
+      "sha256": "93357917ec6ad015e7d5dfdddaaa8ceec8b8c708a2e84dc47886ff7df6debf0f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/script-short.md",
+      "target": "episodes/paylater/script-short.md",
+      "bytes": 8053,
+      "sha256": "c4c4de80e0ec7c96102947a516680df2707b26f253a2fb53662c4638c6e0f6eb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/hook.html",
+      "target": "episodes/paylater/scenes/hook.html",
+      "bytes": 9012,
+      "sha256": "dd30cdaae55166a1a4e7563e91353b24f48c0bbfb1cafce83465fd9afda4fc4a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/skala.html",
+      "target": "episodes/paylater/scenes/skala.html",
+      "bytes": 9205,
+      "sha256": "f5b90d0f4b5ec22758bbdb630c128361aa132469c4d27955d62742634f18d46b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/nol.html",
+      "target": "episodes/paylater/scenes/nol.html",
+      "bytes": 8743,
+      "sha256": "50eacbde27d4a7f386b29d8d2dcec65a33340009c00ceb466922389b95bf84cc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/telat.html",
+      "target": "episodes/paylater/scenes/telat.html",
+      "bytes": 9562,
+      "sha256": "a9b2fe667025c28a3b7c9d2d128e099bbee728c4ea2b76dec8e63c7986f8eec9"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/slik.html",
+      "target": "episodes/paylater/scenes/slik.html",
+      "bytes": 10840,
+      "sha256": "b20b99e7445b6710d83ab55d9c748e238bd942561c4d4bee482d661ccf68509d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/aturan.html",
+      "target": "episodes/paylater/scenes/aturan.html",
+      "bytes": 8659,
+      "sha256": "50984cb65ee8553824cd825917c232ca1361e9d7581e7461c52f73532ce2d127"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/pelajaran.html",
+      "target": "episodes/paylater/scenes/pelajaran.html",
+      "bytes": 8985,
+      "sha256": "c5307750e02ebdb6bb4e13b4bc1caad08b6318dcfd049a41e814a348e9dd40c3"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/voiceover/judol.json",
+      "target": "episodes/judol/narration.json",
+      "bytes": 4228,
+      "sha256": "a37997283fcce1c78769fc6a23c3cfedde604b5c9c98a9c9b64d18fe2ef6c47d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/script-short.md",
+      "target": "episodes/judol/script-short.md",
+      "bytes": 7780,
+      "sha256": "4b3eb6ee75a154057a43dd66ea798426f7ae17b63a000bffd7277501169039b7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/hook.html",
+      "target": "episodes/judol/scenes/hook.html",
+      "bytes": 8394,
+      "sha256": "c6ac999f23253d558b409acd6229f447afba7b1667bacdfeb894312727993a22"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/skala.html",
+      "target": "episodes/judol/scenes/skala.html",
+      "bytes": 8811,
+      "sha256": "f2c5a647474f82810e7b7e5f6cfddaac626866406ee82060558b6bb38601c781"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/qris.html",
+      "target": "episodes/judol/scenes/qris.html",
+      "bytes": 12297,
+      "sha256": "f1b5b54fa24e8ded19b5ce7a7e2de2d42af297be1f5dc202e3e0ead431861c2b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/bandar.html",
+      "target": "episodes/judol/scenes/bandar.html",
+      "bytes": 8764,
+      "sha256": "5718a5e00e23f03dbcef2a851b8d03385a9b00c4a8d4c0ac5a56cb21fc8dcc42"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/kalau.html",
+      "target": "episodes/judol/scenes/kalau.html",
+      "bytes": 8381,
+      "sha256": "0499eb7615b65eeed4979fcc318165f12624f1ded5a7c1e41e3a6ed79aeed7eb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/korban.html",
+      "target": "episodes/judol/scenes/korban.html",
+      "bytes": 9610,
+      "sha256": "37f70dac6f94becafd7df07456a539072af25d6e4e5474422f36941bc64fb2c9"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/pelajaran.html",
+      "target": "episodes/judol/scenes/pelajaran.html",
+      "bytes": 13087,
+      "sha256": "4ede0e4d389315dd64f351aa337fa5034e7059d1e7c1a58280fb972abfb07c1a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/voiceover/emas.json",
+      "target": "episodes/emas/narration.json",
+      "bytes": 4174,
+      "sha256": "b868e1ef70f5c8af17c35528878fa0b25db5af5a2aaf27198d0b73835171062b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/script-short.md",
+      "target": "episodes/emas/script-short.md",
+      "bytes": 6891,
+      "sha256": "dd8f048d0868df49aeee1f50ef1f0d523f334563de6fbad5fcd93e54da1aaa6e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/hook.html",
+      "target": "episodes/emas/scenes/hook.html",
+      "bytes": 7494,
+      "sha256": "99f95c8f9c39186195433c977e8278038a2c1cd93a74c79ebf0b3ac1ec2fabfb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/harga.html",
+      "target": "episodes/emas/scenes/harga.html",
+      "bytes": 10210,
+      "sha256": "8fe6b8bec3c461cc8216c20466cbb293729d6d4628cc592b6d561b38837ad4fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/kenapa.html",
+      "target": "episodes/emas/scenes/kenapa.html",
+      "bytes": 7285,
+      "sha256": "b87329dbf5021c48cc5c99378f67f22577589217727b33653920e49acb0c945e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/spread.html",
+      "target": "episodes/emas/scenes/spread.html",
+      "bytes": 9682,
+      "sha256": "7a3972e5b361014e91568f7403f1b44a4c589cc61b6f0d20b97e5abd1d3751bc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/kalau.html",
+      "target": "episodes/emas/scenes/kalau.html",
+      "bytes": 8109,
+      "sha256": "7818d7520bebed055922577ba7fa0ebd13b7ea2d36ec767e39328ae0ad51e4d5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/jangka.html",
+      "target": "episodes/emas/scenes/jangka.html",
+      "bytes": 12321,
+      "sha256": "ceccaf9337ed43072011651c796f6df20aa95d6175d4ca69f07c868203a1b030"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/pelajaran.html",
+      "target": "episodes/emas/scenes/pelajaran.html",
+      "bytes": 11000,
+      "sha256": "e577c0328c1f6d1266921304b9976e098321b307bc7c4194a692d8517abe1242"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/voiceover/kelas.json",
+      "target": "episodes/kelas/narration.json",
+      "bytes": 4062,
+      "sha256": "b73ef7c882eaa2d19e304161d2ae8e09df6f045d32c66abc6dfbe5ecbe553e9b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/script-short.md",
+      "target": "episodes/kelas/script-short.md",
+      "bytes": 8770,
+      "sha256": "9c213d72b75a1359fdc56660896422e81dc65b8ec6a7f307ad6fdcbe41721035"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/hook.html",
+      "target": "episodes/kelas/scenes/hook.html",
+      "bytes": 8757,
+      "sha256": "49c9a1fc6b99a62381204fcb7cc4b2665b73414fa7ebac15b2d0cb510a1adcf2"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/angka.html",
+      "target": "episodes/kelas/scenes/angka.html",
+      "bytes": 11455,
+      "sha256": "0bebc460dae1a80bc0c52b9207ce57991eff23ed0e1b9a6598b4ab5e19a19249"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/siapa.html",
+      "target": "episodes/kelas/scenes/siapa.html",
+      "bytes": 8878,
+      "sha256": "01fd6a7ab01ded180a36e15bdbb323f8274679b9f0f514581d0b3f8ee6582d81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/kenapa.html",
+      "target": "episodes/kelas/scenes/kenapa.html",
+      "bytes": 8825,
+      "sha256": "e42b9a4c3de2b33b23d68a7d3e040859815ec4cd5db8a523dcc85bddc21f2198"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/gaji.html",
+      "target": "episodes/kelas/scenes/gaji.html",
+      "bytes": 9141,
+      "sha256": "95761f5983f4797420c430e63c96583b1d98f5216805d44096befee26b90e04c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/kalau.html",
+      "target": "episodes/kelas/scenes/kalau.html",
+      "bytes": 14517,
+      "sha256": "2eb70400f1624a44a32e04119d26ba7a8bc646fb6bf6c67182bc73fa5c360403"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/pelajaran.html",
+      "target": "episodes/kelas/scenes/pelajaran.html",
+      "bytes": 7786,
+      "sha256": "0d2757bf9c48f18f603c2199eeb52abd33c50b8d7383d1c7c26625dee9728616"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/BricolageGrotesque.ttf",
+      "target": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/BricolageGrotesque.ttf",
+      "target": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/BricolageGrotesque.ttf",
+      "target": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/BricolageGrotesque.ttf",
+      "target": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/BricolageGrotesque.ttf",
+      "target": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/BricolageGrotesque.ttf",
+      "target": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/BricolageGrotesque.ttf",
+      "target": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/JetBrainsMono-VF.ttf",
+      "target": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/JetBrainsMono-VF.ttf",
+      "target": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/JetBrainsMono-VF.ttf",
+      "target": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/JetBrainsMono-VF.ttf",
+      "target": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/JetBrainsMono-VF.ttf",
+      "target": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/JetBrainsMono-VF.ttf",
+      "target": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/JetBrainsMono-VF.ttf",
+      "target": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/LICENSE-LuckiestGuy.txt",
+      "target": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/LICENSE-LuckiestGuy.txt",
+      "target": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/LICENSE-LuckiestGuy.txt",
+      "target": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/LICENSE-LuckiestGuy.txt",
+      "target": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/LICENSE-LuckiestGuy.txt",
+      "target": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/LICENSE-LuckiestGuy.txt",
+      "target": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/LICENSE-LuckiestGuy.txt",
+      "target": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/LuckiestGuy-Regular.ttf",
+      "target": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/LuckiestGuy-Regular.ttf",
+      "target": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/LuckiestGuy-Regular.ttf",
+      "target": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/LuckiestGuy-Regular.ttf",
+      "target": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/LuckiestGuy-Regular.ttf",
+      "target": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/LuckiestGuy-Regular.ttf",
+      "target": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/LuckiestGuy-Regular.ttf",
+      "target": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/Montserrat-VF.ttf",
+      "target": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/Montserrat-VF.ttf",
+      "target": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/Montserrat-VF.ttf",
+      "target": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/Montserrat-VF.ttf",
+      "target": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/Montserrat-VF.ttf",
+      "target": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/Montserrat-VF.ttf",
+      "target": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/Montserrat-VF.ttf",
+      "target": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/NunitoSans.ttf",
+      "target": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/NunitoSans.ttf",
+      "target": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/NunitoSans.ttf",
+      "target": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/NunitoSans.ttf",
+      "target": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/NunitoSans.ttf",
+      "target": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/NunitoSans.ttf",
+      "target": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/NunitoSans.ttf",
+      "target": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-BricolageGrotesque.txt",
+      "target": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-BricolageGrotesque.txt",
+      "target": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-BricolageGrotesque.txt",
+      "target": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/OFL-BricolageGrotesque.txt",
+      "target": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/OFL-BricolageGrotesque.txt",
+      "target": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/OFL-BricolageGrotesque.txt",
+      "target": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/OFL-BricolageGrotesque.txt",
+      "target": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-JetBrainsMono.txt",
+      "target": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-JetBrainsMono.txt",
+      "target": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-JetBrainsMono.txt",
+      "target": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/OFL-JetBrainsMono.txt",
+      "target": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/OFL-JetBrainsMono.txt",
+      "target": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/OFL-JetBrainsMono.txt",
+      "target": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/OFL-JetBrainsMono.txt",
+      "target": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-Montserrat.txt",
+      "target": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-Montserrat.txt",
+      "target": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-Montserrat.txt",
+      "target": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/OFL-Montserrat.txt",
+      "target": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/OFL-Montserrat.txt",
+      "target": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/OFL-Montserrat.txt",
+      "target": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/OFL-Montserrat.txt",
+      "target": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-NunitoSans.txt",
+      "target": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-NunitoSans.txt",
+      "target": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-NunitoSans.txt",
+      "target": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/OFL-NunitoSans.txt",
+      "target": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/OFL-NunitoSans.txt",
+      "target": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/OFL-NunitoSans.txt",
+      "target": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/OFL-NunitoSans.txt",
+      "target": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-Oswald.txt",
+      "target": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-Oswald.txt",
+      "target": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-Oswald.txt",
+      "target": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/OFL-Oswald.txt",
+      "target": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/OFL-Oswald.txt",
+      "target": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/OFL-Oswald.txt",
+      "target": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/OFL-Oswald.txt",
+      "target": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/OFL-PatrickHand.txt",
+      "target": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/OFL-PatrickHand.txt",
+      "target": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/OFL-PatrickHand.txt",
+      "target": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/OFL-PatrickHand.txt",
+      "target": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/OFL-PatrickHand.txt",
+      "target": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/OFL-PatrickHand.txt",
+      "target": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/OFL-PatrickHand.txt",
+      "target": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/OFL.txt",
+      "target": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/OFL.txt",
+      "target": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/OFL.txt",
+      "target": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/OFL.txt",
+      "target": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/OFL.txt",
+      "target": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/OFL.txt",
+      "target": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/OFL.txt",
+      "target": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/Oswald-VF.ttf",
+      "target": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/Oswald-VF.ttf",
+      "target": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/Oswald-VF.ttf",
+      "target": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/Oswald-VF.ttf",
+      "target": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/Oswald-VF.ttf",
+      "target": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/Oswald-VF.ttf",
+      "target": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/Oswald-VF.ttf",
+      "target": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/PatrickHand-Regular.ttf",
+      "target": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/PatrickHand-Regular.ttf",
+      "target": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/PatrickHand-Regular.ttf",
+      "target": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/PatrickHand-Regular.ttf",
+      "target": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/PatrickHand-Regular.ttf",
+      "target": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/PatrickHand-Regular.ttf",
+      "target": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/PatrickHand-Regular.ttf",
+      "target": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-Black.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-Black.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-Black.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-Black.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-Black.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-Black.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-Black.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-Bold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-Bold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-Bold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-Bold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-Bold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-Bold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-Bold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-Regular.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-Regular.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-Regular.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-Regular.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-Regular.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-Regular.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-Regular.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/fonts/TitilliumWeb-SemiBold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/fonts/TitilliumWeb-SemiBold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/fonts/TitilliumWeb-SemiBold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/fonts/TitilliumWeb-SemiBold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/fonts/TitilliumWeb-SemiBold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/fonts/TitilliumWeb-SemiBold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/fonts/TitilliumWeb-SemiBold.ttf",
+      "target": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/cash.wav",
+      "target": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/cash.wav",
+      "target": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/cash.wav",
+      "target": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/cash.wav",
+      "target": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/cash.wav",
+      "target": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/cash.wav",
+      "target": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/cash.wav",
+      "target": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/click.wav",
+      "target": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/click.wav",
+      "target": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/click.wav",
+      "target": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/click.wav",
+      "target": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/click.wav",
+      "target": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/click.wav",
+      "target": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/click.wav",
+      "target": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/ding-num.wav",
+      "target": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/ding-num.wav",
+      "target": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/ding-num.wav",
+      "target": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/ding-num.wav",
+      "target": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/ding-num.wav",
+      "target": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/ding-num.wav",
+      "target": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/ding-num.wav",
+      "target": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/ding.wav",
+      "target": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/ding.wav",
+      "target": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/ding.wav",
+      "target": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/ding.wav",
+      "target": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/ding.wav",
+      "target": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/ding.wav",
+      "target": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/ding.wav",
+      "target": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/door-open.wav",
+      "target": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/door-open.wav",
+      "target": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/door-open.wav",
+      "target": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/door-open.wav",
+      "target": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/door-open.wav",
+      "target": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/door-open.wav",
+      "target": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/door-open.wav",
+      "target": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/drip.wav",
+      "target": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/drip.wav",
+      "target": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/drip.wav",
+      "target": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/drip.wav",
+      "target": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/drip.wav",
+      "target": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/drip.wav",
+      "target": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/drip.wav",
+      "target": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/fall.wav",
+      "target": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/fall.wav",
+      "target": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/fall.wav",
+      "target": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/fall.wav",
+      "target": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/fall.wav",
+      "target": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/fall.wav",
+      "target": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/fall.wav",
+      "target": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/pop-in.wav",
+      "target": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/pop-in.wav",
+      "target": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/pop-in.wav",
+      "target": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/pop-in.wav",
+      "target": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/pop-in.wav",
+      "target": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/pop-in.wav",
+      "target": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/pop-in.wav",
+      "target": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/pop.wav",
+      "target": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/pop.wav",
+      "target": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/pop.wav",
+      "target": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/pop.wav",
+      "target": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/pop.wav",
+      "target": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/pop.wav",
+      "target": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/pop.wav",
+      "target": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/riser.wav",
+      "target": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/riser.wav",
+      "target": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/riser.wav",
+      "target": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/riser.wav",
+      "target": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/riser.wav",
+      "target": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/riser.wav",
+      "target": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/riser.wav",
+      "target": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/shutter.wav",
+      "target": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/shutter.wav",
+      "target": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/shutter.wav",
+      "target": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/shutter.wav",
+      "target": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/shutter.wav",
+      "target": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/shutter.wav",
+      "target": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/shutter.wav",
+      "target": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/stamp.wav",
+      "target": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/stamp.wav",
+      "target": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/stamp.wav",
+      "target": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/stamp.wav",
+      "target": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/stamp.wav",
+      "target": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/stamp.wav",
+      "target": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/stamp.wav",
+      "target": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/sub-drop.wav",
+      "target": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/sub-drop.wav",
+      "target": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/sub-drop.wav",
+      "target": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/sub-drop.wav",
+      "target": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/sub-drop.wav",
+      "target": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/sub-drop.wav",
+      "target": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/sub-drop.wav",
+      "target": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/swoosh-soft.wav",
+      "target": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/swoosh-soft.wav",
+      "target": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/swoosh-soft.wav",
+      "target": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/swoosh-soft.wav",
+      "target": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/swoosh-soft.wav",
+      "target": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/swoosh-soft.wav",
+      "target": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/swoosh-soft.wav",
+      "target": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/tick.wav",
+      "target": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/tick.wav",
+      "target": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/tick.wav",
+      "target": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/tick.wav",
+      "target": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/tick.wav",
+      "target": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/tick.wav",
+      "target": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/tick.wav",
+      "target": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/sfx/whoosh.wav",
+      "target": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/sfx/whoosh.wav",
+      "target": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/sfx/whoosh.wav",
+      "target": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/sfx/whoosh.wav",
+      "target": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/sfx/whoosh.wav",
+      "target": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/sfx/whoosh.wav",
+      "target": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/sfx/whoosh.wav",
+      "target": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/cast/beni-kaget.svg",
+      "target": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/cast/beni-kaget.svg",
+      "target": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/cast/beni-kaget.svg",
+      "target": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/cast/beni-kaget.svg",
+      "target": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/cast/beni-kaget.svg",
+      "target": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/cast/beni-kaget.svg",
+      "target": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/cast/beni-kaget.svg",
+      "target": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/cast/beni.svg",
+      "target": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/cast/beni.svg",
+      "target": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/cast/beni.svg",
+      "target": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/cast/beni.svg",
+      "target": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/cast/beni.svg",
+      "target": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/cast/beni.svg",
+      "target": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/cast/beni.svg",
+      "target": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/cast/muklis-senyum.svg",
+      "target": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/cast/muklis-senyum.svg",
+      "target": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/cast/muklis-senyum.svg",
+      "target": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/cast/muklis-senyum.svg",
+      "target": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/cast/muklis-senyum.svg",
+      "target": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/cast/muklis-senyum.svg",
+      "target": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/cast/muklis-senyum.svg",
+      "target": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/cast/muklis.svg",
+      "target": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/cast/muklis.svg",
+      "target": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/cast/muklis.svg",
+      "target": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/cast/muklis.svg",
+      "target": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/cast/muklis.svg",
+      "target": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/cast/muklis.svg",
+      "target": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/cast/muklis.svg",
+      "target": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/cast/nisa-kaget.svg",
+      "target": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/cast/nisa-kaget.svg",
+      "target": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/cast/nisa-kaget.svg",
+      "target": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/cast/nisa-kaget.svg",
+      "target": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/cast/nisa-kaget.svg",
+      "target": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/cast/nisa-kaget.svg",
+      "target": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/cast/nisa-kaget.svg",
+      "target": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/public/cast/nisa.svg",
+      "target": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/cast/nisa.svg",
+      "target": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/cast/nisa.svg",
+      "target": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/cast/nisa.svg",
+      "target": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/cast/nisa.svg",
+      "target": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/cast/nisa.svg",
+      "target": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/cast/nisa.svg",
+      "target": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/public/music/bed.mp3",
+      "target": "assets/shared/music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/public/music/bed.mp3",
+      "target": "assets/shared/music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/public/music/bed.mp3",
+      "target": "assets/shared/music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/public/music/bed.mp3",
+      "target": "assets/shared/music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/public/music/bed.mp3",
+      "target": "assets/shared/music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/public/music/bed.mp3",
+      "target": "assets/shared/music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/inflasi/compositions/background.html",
+      "target": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/rupiah/compositions/background.html",
+      "target": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/ihsg/compositions/background.html",
+      "target": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/paylater/compositions/background.html",
+      "target": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/judol/compositions/background.html",
+      "target": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/emas/compositions/background.html",
+      "target": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    },
+    {
+      "source": "out/Ekonomi_keuangan/kelas/compositions/background.html",
+      "target": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "episodes/inflasi/narration.json",
+      "bytes": 3049,
+      "sha256": "686607cb1d53ba1aad4319b01f7237e0ea3d94d98e88b6cfe2c68ee8bf56de76"
+    },
+    {
+      "path": "episodes/inflasi/script-short.md",
+      "bytes": 3190,
+      "sha256": "bcd160b6f3760471fb8ce6a2acb86eb543a488e0a04a993210cde7dac3950ec4"
+    },
+    {
+      "path": "episodes/inflasi/script.md",
+      "bytes": 9154,
+      "sha256": "aa9a8dfa196ff398fd3bdb15d7b2436c8ad17360562c248a3e162c9cf389801b"
+    },
+    {
+      "path": "episodes/inflasi/scenes/hook.html",
+      "bytes": 5294,
+      "sha256": "70e28b5cd4a24f853bcfd6b959870ffabeea2f1232721d5f6338734562b35ae3"
+    },
+    {
+      "path": "episodes/inflasi/scenes/penjual.html",
+      "bytes": 4831,
+      "sha256": "167eb31a2f31a2e39b54988349baa47dc1c27107d624119fd8f47f5250d32f5d"
+    },
+    {
+      "path": "episodes/inflasi/scenes/bahan.html",
+      "bytes": 6917,
+      "sha256": "19d19192f287a8fb8471ffb993c8b2d9123f1542b6af8b99b3024d1b05d8db90"
+    },
+    {
+      "path": "episodes/inflasi/scenes/kita.html",
+      "bytes": 4391,
+      "sha256": "1cf4daff9dca67a48c5c747ffebe7035a4d35a4044b12095e4020c5dbf316b4a"
+    },
+    {
+      "path": "episodes/inflasi/scenes/dalang.html",
+      "bytes": 5717,
+      "sha256": "5c25796f4086fddaca52623124f8e0614307111aeb3e98a35b94bd0a0db39092"
+    },
+    {
+      "path": "episodes/inflasi/scenes/pelajaran.html",
+      "bytes": 7171,
+      "sha256": "2a1000f3541c00507b5d661d33a197810530d975827c3f71fad0720eb1115806"
+    },
+    {
+      "path": "episodes/inflasi/episode.json",
+      "bytes": 974,
+      "sha256": "0a4cb9e69ef3ebbef116f3483639e2a6936de6d1096e2e894216481237b255aa"
+    },
+    {
+      "path": "episodes/inflasi/migration.json",
+      "bytes": 2094,
+      "sha256": "3c38be1c53edda7ef9445cef66f0ef8cbd2c1ee8c5e8509c10f15821eafd25c0"
+    },
+    {
+      "path": "assets/shared/fonts/BricolageGrotesque.ttf",
+      "bytes": 408496,
+      "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"
+    },
+    {
+      "path": "assets/shared/fonts/JetBrainsMono-VF.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "path": "assets/shared/fonts/LICENSE-LuckiestGuy.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "assets/shared/fonts/LuckiestGuy-Regular.ttf",
+      "bytes": 73320,
+      "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980"
+    },
+    {
+      "path": "assets/shared/fonts/Montserrat-VF.ttf",
+      "bytes": 744936,
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "path": "assets/shared/fonts/NunitoSans.ttf",
+      "bytes": 571240,
+      "sha256": "f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d"
+    },
+    {
+      "path": "assets/shared/fonts/OFL-BricolageGrotesque.txt",
+      "bytes": 4403,
+      "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+    },
+    {
+      "path": "assets/shared/fonts/OFL-JetBrainsMono.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "path": "assets/shared/fonts/OFL-Montserrat.txt",
+      "bytes": 4400,
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+    },
+    {
+      "path": "assets/shared/fonts/OFL-NunitoSans.txt",
+      "bytes": 4393,
+      "sha256": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b"
+    },
+    {
+      "path": "assets/shared/fonts/OFL-Oswald.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652"
+    },
+    {
+      "path": "assets/shared/fonts/OFL-PatrickHand.txt",
+      "bytes": 4376,
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "path": "assets/shared/fonts/OFL.txt",
+      "bytes": 4523,
+      "sha256": "c0562e066174197902a4a10606673d189f067970ef89c6013943b9cf182aadbc"
+    },
+    {
+      "path": "assets/shared/fonts/Oswald-VF.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "path": "assets/shared/fonts/PatrickHand-Regular.ttf",
+      "bytes": 214772,
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "path": "assets/shared/fonts/TitilliumWeb-Black.ttf",
+      "bytes": 49328,
+      "sha256": "6e064771c29aee4c79c9aebbd560db79faa71f4c1944ea27f12d82be8a04b1cb"
+    },
+    {
+      "path": "assets/shared/fonts/TitilliumWeb-Bold.ttf",
+      "bytes": 59884,
+      "sha256": "e2e8e1812041e2c5868f1d03ac24994312052c5381cca2e80748f08cb7e13093"
+    },
+    {
+      "path": "assets/shared/fonts/TitilliumWeb-Regular.ttf",
+      "bytes": 63660,
+      "sha256": "7b6b4452c65cc8b8522e92e7d4d4c2e6d7675341ceafd041bb6bd30297517ea5"
+    },
+    {
+      "path": "assets/shared/fonts/TitilliumWeb-SemiBold.ttf",
+      "bytes": 63008,
+      "sha256": "7c92f15302d7ac1836015cb9cf4068796406667b304a061b75df8e11f1648c81"
+    },
+    {
+      "path": "assets/shared/sfx/cash.wav",
+      "bytes": 79424,
+      "sha256": "942c2b5a01a47cc54c20230222b09f12f96f971b347127a7ded98faa3dd2e261"
+    },
+    {
+      "path": "assets/shared/sfx/click.wav",
+      "bytes": 6218,
+      "sha256": "08e49bf512ad7c242f768fd59074351b96df0806f9724e6088d75bd4d7568039"
+    },
+    {
+      "path": "assets/shared/sfx/ding-num.wav",
+      "bytes": 103724,
+      "sha256": "fb1e36e3a029df8539a94ab37ba037406a490dc8e81e17769ba025f7a5b54000"
+    },
+    {
+      "path": "assets/shared/sfx/ding.wav",
+      "bytes": 88244,
+      "sha256": "116e82e5d1d5bc8f541374905185ed85cb27a2f60c5a4bf427611d486d0fa14f"
+    },
+    {
+      "path": "assets/shared/sfx/door-open.wav",
+      "bytes": 83834,
+      "sha256": "f4ef44a118d4484a3e972032b0622b875fe9af1cd682b6073ce4c0735280c833"
+    },
+    {
+      "path": "assets/shared/sfx/drip.wav",
+      "bytes": 96272,
+      "sha256": "581ab75faedfb1ef99c9ff77b387b0b717e6b6f40df29134091da34dcf6b0777"
+    },
+    {
+      "path": "assets/shared/sfx/fall.wav",
+      "bytes": 518444,
+      "sha256": "cb4fa9df09d959c102735f58c533ff1fa45cb63e5feb0979c5cbb51c05959678"
+    },
+    {
+      "path": "assets/shared/sfx/pop-in.wav",
+      "bytes": 57644,
+      "sha256": "242cd70a2a1ebce8f0a1a00256cf14cb50959048b7ba875b73595bd1f4c7e14a"
+    },
+    {
+      "path": "assets/shared/sfx/pop.wav",
+      "bytes": 14156,
+      "sha256": "cc55b6ec56f37f09f868213f2d6f65461ef24df5241d7bc2eeec8aae4d833afd"
+    },
+    {
+      "path": "assets/shared/sfx/riser.wav",
+      "bytes": 88244,
+      "sha256": "6a8a4c2140fb395e6c193d4cffd3639cc0710e1b37ac97159d386c9aec090747"
+    },
+    {
+      "path": "assets/shared/sfx/shutter.wav",
+      "bytes": 22094,
+      "sha256": "c52b999b8a889ebffac6405f6a664997055c62c35b7b8627d482a508d484a64e"
+    },
+    {
+      "path": "assets/shared/sfx/stamp.wav",
+      "bytes": 44288,
+      "sha256": "6ee3ec76bcab599b4b8d275d488b73970fdb6c167b091a21520b4ec3f71fbaca"
+    },
+    {
+      "path": "assets/shared/sfx/sub-drop.wav",
+      "bytes": 288044,
+      "sha256": "b13caa8143c8aff7107bd0ec4b408061aa385eae604baa95a90e1c1f7b03c533"
+    },
+    {
+      "path": "assets/shared/sfx/swoosh-soft.wav",
+      "bytes": 44144,
+      "sha256": "37ee355de3e68c7b551f7280134e17d4dfcbc4d6ae697d90da9bb70fc2116ae5"
+    },
+    {
+      "path": "assets/shared/sfx/tick.wav",
+      "bytes": 4454,
+      "sha256": "eaa967be3862563bfb4d4d94dd86ddb658aa1ab1074c797e65584bce0f17df79"
+    },
+    {
+      "path": "assets/shared/sfx/whoosh.wav",
+      "bytes": 52964,
+      "sha256": "74a093c44f41a110bd9e9b2efe5e36259fe1b0f4bfbc92210a1bc65017b3b593"
+    },
+    {
+      "path": "assets/shared/cast/beni-kaget.svg",
+      "bytes": 4232,
+      "sha256": "31114c0e2b7c5c3f902ad16fe043f19bfef6f93925b0ccc21814d58902395ab8"
+    },
+    {
+      "path": "assets/shared/cast/beni.svg",
+      "bytes": 4237,
+      "sha256": "03203ee638049e37ad8ab02c71211502b62dfc70172471c78e01c59b85f65119"
+    },
+    {
+      "path": "assets/shared/cast/muklis-senyum.svg",
+      "bytes": 2951,
+      "sha256": "e10031c84ac8c1decf78495fcad31c7440647cf0efbac5c5f1bf8a201ea15d68"
+    },
+    {
+      "path": "assets/shared/cast/muklis.svg",
+      "bytes": 3034,
+      "sha256": "8de02c4b188fdcae18edbf7ca245080333641c3b5ff90fff06fc458173d491e6"
+    },
+    {
+      "path": "assets/shared/cast/nisa-kaget.svg",
+      "bytes": 2543,
+      "sha256": "341864c5b2aad42d83b2ddb148b6dc79583c0ceed48234053936f2559463c96e"
+    },
+    {
+      "path": "assets/shared/cast/nisa.svg",
+      "bytes": 2540,
+      "sha256": "404246a0b85a87b08277226f4dd36dfe9cae0d87ee0c9713257f902931d833db"
+    },
+    {
+      "path": "episodes/rupiah/narration.json",
+      "bytes": 3565,
+      "sha256": "e5573035758d0614d7e1043ff59a4897c3bd227fdd4d4cc9c829c84d128bccaf"
+    },
+    {
+      "path": "episodes/rupiah/script-short.md",
+      "bytes": 9487,
+      "sha256": "261b08dcc46add452eea9cb23b0a49f75b4143a16517ff36280496864b4c7e9b"
+    },
+    {
+      "path": "episodes/rupiah/scenes/hook.html",
+      "bytes": 6317,
+      "sha256": "0c050c89fb06695766b4c349fab2f6a28cdc32e03bb38169a2c6a3f56f54a9bb"
+    },
+    {
+      "path": "episodes/rupiah/scenes/rekor.html",
+      "bytes": 8044,
+      "sha256": "0b004c8eaef2ff94ebe574e04b2d550d0b062e088f29d7cddea6612c3b629586"
+    },
+    {
+      "path": "episodes/rupiah/scenes/dampak.html",
+      "bytes": 7542,
+      "sha256": "ece084e61ff9efdf5742ab6557a30f04354e1b7bc29a7e0c58c284eabf8bde2d"
+    },
+    {
+      "path": "episodes/rupiah/scenes/untung.html",
+      "bytes": 7387,
+      "sha256": "3dce1ef181bb8cc9883ab321089278538f4afb6fc0692cec8647ab7e56860597"
+    },
+    {
+      "path": "episodes/rupiah/scenes/kalau.html",
+      "bytes": 6540,
+      "sha256": "f2a13763342e9ac617bb71589cf2f14e456a3cec3f7aff61b1d955c1866f111f"
+    },
+    {
+      "path": "episodes/rupiah/scenes/pelajaran.html",
+      "bytes": 6839,
+      "sha256": "d161eec451663d7d3dde900f9fffb442703640d4115c459fe7c089e064f2bc7d"
+    },
+    {
+      "path": "episodes/rupiah/episode.json",
+      "bytes": 982,
+      "sha256": "488cc467f13057ab2528c37cc361f3da11256e5fe6409c7d82e2276873d8c3ce"
+    },
+    {
+      "path": "episodes/rupiah/migration.json",
+      "bytes": 1880,
+      "sha256": "1a23d30d162489422097a2efbf6537e6a686aae21dd4503a41d5b762f9fe9ed7"
+    },
+    {
+      "path": "assets/shared/music/bed.mp3",
+      "bytes": 1501004,
+      "sha256": "09c34f4fd0dbbeb7e5e21c14194e732a49fd48ece8703e78e728c38f39fa4dde"
+    },
+    {
+      "path": "episodes/ihsg/narration.json",
+      "bytes": 3882,
+      "sha256": "188dd7884d5e3611e23f4e288b5d858aa00cc6dc9a3a96e0129b0d0a9eb806e5"
+    },
+    {
+      "path": "episodes/ihsg/script-short.md",
+      "bytes": 8478,
+      "sha256": "cf8995be8a9f70719383b2be27b5a1718e00002b7296514e9e1ec0b7177df8c9"
+    },
+    {
+      "path": "episodes/ihsg/scenes/hook.html",
+      "bytes": 5837,
+      "sha256": "187ba6ed1e06488fbe24d04ed534aeff8bc08d13fbd34389a4ecf581e53787f2"
+    },
+    {
+      "path": "episodes/ihsg/scenes/anjlok.html",
+      "bytes": 11577,
+      "sha256": "41ae05066c873429c5d51da3c762700aa3c61863b8f24b93a2fbd9bee4d3cba4"
+    },
+    {
+      "path": "episodes/ihsg/scenes/msci.html",
+      "bytes": 10522,
+      "sha256": "585a8f4779f2f5bed9e4b71655bf7f833d4aeb99eb799069b20a6e775fd37a4e"
+    },
+    {
+      "path": "episodes/ihsg/scenes/asing.html",
+      "bytes": 10840,
+      "sha256": "4c491206469724039fa15aafd464f8bd6deb5d8dafe3f6aafbb166252434a50d"
+    },
+    {
+      "path": "episodes/ihsg/scenes/kalau.html",
+      "bytes": 11868,
+      "sha256": "cad9fe14ee8d062ae50b9244480b0d23ae84e7ead75993437a64685047fde59b"
+    },
+    {
+      "path": "episodes/ihsg/scenes/pelajaran.html",
+      "bytes": 7804,
+      "sha256": "8278863c7681e182dcaa46a16fff2cf7bf95df3769747581540b3ea7333155c0"
+    },
+    {
+      "path": "episodes/ihsg/episode.json",
+      "bytes": 971,
+      "sha256": "a12bac3fa19f89e3c71bbed69b5a29776ee68435db75aa9951f36bfa7d945d7a"
+    },
+    {
+      "path": "episodes/ihsg/migration.json",
+      "bytes": 1860,
+      "sha256": "c734b50536f9c9c9eb5b9443426949b02697fd090c67af67544f4630782dd495"
+    },
+    {
+      "path": "episodes/paylater/narration.json",
+      "bytes": 4056,
+      "sha256": "93357917ec6ad015e7d5dfdddaaa8ceec8b8c708a2e84dc47886ff7df6debf0f"
+    },
+    {
+      "path": "episodes/paylater/script-short.md",
+      "bytes": 8053,
+      "sha256": "c4c4de80e0ec7c96102947a516680df2707b26f253a2fb53662c4638c6e0f6eb"
+    },
+    {
+      "path": "episodes/paylater/scenes/hook.html",
+      "bytes": 9012,
+      "sha256": "dd30cdaae55166a1a4e7563e91353b24f48c0bbfb1cafce83465fd9afda4fc4a"
+    },
+    {
+      "path": "episodes/paylater/scenes/skala.html",
+      "bytes": 9205,
+      "sha256": "f5b90d0f4b5ec22758bbdb630c128361aa132469c4d27955d62742634f18d46b"
+    },
+    {
+      "path": "episodes/paylater/scenes/nol.html",
+      "bytes": 8743,
+      "sha256": "50eacbde27d4a7f386b29d8d2dcec65a33340009c00ceb466922389b95bf84cc"
+    },
+    {
+      "path": "episodes/paylater/scenes/telat.html",
+      "bytes": 9562,
+      "sha256": "a9b2fe667025c28a3b7c9d2d128e099bbee728c4ea2b76dec8e63c7986f8eec9"
+    },
+    {
+      "path": "episodes/paylater/scenes/slik.html",
+      "bytes": 10840,
+      "sha256": "b20b99e7445b6710d83ab55d9c748e238bd942561c4d4bee482d661ccf68509d"
+    },
+    {
+      "path": "episodes/paylater/scenes/aturan.html",
+      "bytes": 8659,
+      "sha256": "50984cb65ee8553824cd825917c232ca1361e9d7581e7461c52f73532ce2d127"
+    },
+    {
+      "path": "episodes/paylater/scenes/pelajaran.html",
+      "bytes": 8985,
+      "sha256": "c5307750e02ebdb6bb4e13b4bc1caad08b6318dcfd049a41e814a348e9dd40c3"
+    },
+    {
+      "path": "episodes/paylater/episode.json",
+      "bytes": 1038,
+      "sha256": "8e7b985e9135549c5aa03e74ebd8dbe59e195743beb5c2a0db1e97b0e71477b3"
+    },
+    {
+      "path": "episodes/paylater/migration.json",
+      "bytes": 2120,
+      "sha256": "ef7977438557bceba9bfe24f2fd7ee29126749c71dcc9a8deaf6e8c6bdae3a79"
+    },
+    {
+      "path": "episodes/judol/narration.json",
+      "bytes": 4228,
+      "sha256": "a37997283fcce1c78769fc6a23c3cfedde604b5c9c98a9c9b64d18fe2ef6c47d"
+    },
+    {
+      "path": "episodes/judol/script-short.md",
+      "bytes": 7780,
+      "sha256": "4b3eb6ee75a154057a43dd66ea798426f7ae17b63a000bffd7277501169039b7"
+    },
+    {
+      "path": "episodes/judol/scenes/hook.html",
+      "bytes": 8394,
+      "sha256": "c6ac999f23253d558b409acd6229f447afba7b1667bacdfeb894312727993a22"
+    },
+    {
+      "path": "episodes/judol/scenes/skala.html",
+      "bytes": 8811,
+      "sha256": "f2c5a647474f82810e7b7e5f6cfddaac626866406ee82060558b6bb38601c781"
+    },
+    {
+      "path": "episodes/judol/scenes/qris.html",
+      "bytes": 12297,
+      "sha256": "f1b5b54fa24e8ded19b5ce7a7e2de2d42af297be1f5dc202e3e0ead431861c2b"
+    },
+    {
+      "path": "episodes/judol/scenes/bandar.html",
+      "bytes": 8764,
+      "sha256": "5718a5e00e23f03dbcef2a851b8d03385a9b00c4a8d4c0ac5a56cb21fc8dcc42"
+    },
+    {
+      "path": "episodes/judol/scenes/kalau.html",
+      "bytes": 8381,
+      "sha256": "0499eb7615b65eeed4979fcc318165f12624f1ded5a7c1e41e3a6ed79aeed7eb"
+    },
+    {
+      "path": "episodes/judol/scenes/korban.html",
+      "bytes": 9610,
+      "sha256": "37f70dac6f94becafd7df07456a539072af25d6e4e5474422f36941bc64fb2c9"
+    },
+    {
+      "path": "episodes/judol/scenes/pelajaran.html",
+      "bytes": 13087,
+      "sha256": "4ede0e4d389315dd64f351aa337fa5034e7059d1e7c1a58280fb972abfb07c1a"
+    },
+    {
+      "path": "episodes/judol/episode.json",
+      "bytes": 1050,
+      "sha256": "f5ad3da6a7032127211c46cd8d341b91951ca8aabbf7380996650200d000dfa2"
+    },
+    {
+      "path": "episodes/judol/migration.json",
+      "bytes": 2094,
+      "sha256": "b21dbf4f584a8603b1e2aa9c49e68dc26f7d3056fc35c49374085796d197bad8"
+    },
+    {
+      "path": "episodes/emas/narration.json",
+      "bytes": 4174,
+      "sha256": "b868e1ef70f5c8af17c35528878fa0b25db5af5a2aaf27198d0b73835171062b"
+    },
+    {
+      "path": "episodes/emas/script-short.md",
+      "bytes": 6891,
+      "sha256": "dd8f048d0868df49aeee1f50ef1f0d523f334563de6fbad5fcd93e54da1aaa6e"
+    },
+    {
+      "path": "episodes/emas/scenes/hook.html",
+      "bytes": 7494,
+      "sha256": "99f95c8f9c39186195433c977e8278038a2c1cd93a74c79ebf0b3ac1ec2fabfb"
+    },
+    {
+      "path": "episodes/emas/scenes/harga.html",
+      "bytes": 10210,
+      "sha256": "8fe6b8bec3c461cc8216c20466cbb293729d6d4628cc592b6d561b38837ad4fc"
+    },
+    {
+      "path": "episodes/emas/scenes/kenapa.html",
+      "bytes": 7285,
+      "sha256": "b87329dbf5021c48cc5c99378f67f22577589217727b33653920e49acb0c945e"
+    },
+    {
+      "path": "episodes/emas/scenes/spread.html",
+      "bytes": 9682,
+      "sha256": "7a3972e5b361014e91568f7403f1b44a4c589cc61b6f0d20b97e5abd1d3751bc"
+    },
+    {
+      "path": "episodes/emas/scenes/kalau.html",
+      "bytes": 8109,
+      "sha256": "7818d7520bebed055922577ba7fa0ebd13b7ea2d36ec767e39328ae0ad51e4d5"
+    },
+    {
+      "path": "episodes/emas/scenes/jangka.html",
+      "bytes": 12321,
+      "sha256": "ceccaf9337ed43072011651c796f6df20aa95d6175d4ca69f07c868203a1b030"
+    },
+    {
+      "path": "episodes/emas/scenes/pelajaran.html",
+      "bytes": 11000,
+      "sha256": "e577c0328c1f6d1266921304b9976e098321b307bc7c4194a692d8517abe1242"
+    },
+    {
+      "path": "episodes/emas/episode.json",
+      "bytes": 1041,
+      "sha256": "78d6ddb0a5b28b9911e9a95ccb305fcd348428e294b25eb5856cad8f2118aca3"
+    },
+    {
+      "path": "episodes/emas/migration.json",
+      "bytes": 2088,
+      "sha256": "3c308b167a21f2f5bffbd13bb690680942bee26a8698e84a9fd1efe86c18f2ef"
+    },
+    {
+      "path": "episodes/kelas/narration.json",
+      "bytes": 4062,
+      "sha256": "b73ef7c882eaa2d19e304161d2ae8e09df6f045d32c66abc6dfbe5ecbe553e9b"
+    },
+    {
+      "path": "episodes/kelas/script-short.md",
+      "bytes": 8770,
+      "sha256": "9c213d72b75a1359fdc56660896422e81dc65b8ec6a7f307ad6fdcbe41721035"
+    },
+    {
+      "path": "episodes/kelas/scenes/hook.html",
+      "bytes": 8757,
+      "sha256": "49c9a1fc6b99a62381204fcb7cc4b2665b73414fa7ebac15b2d0cb510a1adcf2"
+    },
+    {
+      "path": "episodes/kelas/scenes/angka.html",
+      "bytes": 11455,
+      "sha256": "0bebc460dae1a80bc0c52b9207ce57991eff23ed0e1b9a6598b4ab5e19a19249"
+    },
+    {
+      "path": "episodes/kelas/scenes/siapa.html",
+      "bytes": 8878,
+      "sha256": "01fd6a7ab01ded180a36e15bdbb323f8274679b9f0f514581d0b3f8ee6582d81"
+    },
+    {
+      "path": "episodes/kelas/scenes/kenapa.html",
+      "bytes": 8825,
+      "sha256": "e42b9a4c3de2b33b23d68a7d3e040859815ec4cd5db8a523dcc85bddc21f2198"
+    },
+    {
+      "path": "episodes/kelas/scenes/gaji.html",
+      "bytes": 9141,
+      "sha256": "95761f5983f4797420c430e63c96583b1d98f5216805d44096befee26b90e04c"
+    },
+    {
+      "path": "episodes/kelas/scenes/kalau.html",
+      "bytes": 14517,
+      "sha256": "2eb70400f1624a44a32e04119d26ba7a8bc646fb6bf6c67182bc73fa5c360403"
+    },
+    {
+      "path": "episodes/kelas/scenes/pelajaran.html",
+      "bytes": 7786,
+      "sha256": "0d2757bf9c48f18f603c2199eeb52abd33c50b8d7383d1c7c26625dee9728616"
+    },
+    {
+      "path": "episodes/kelas/episode.json",
+      "bytes": 1033,
+      "sha256": "c6e87c8272e54e4193a4980cc74d71b127240305314a4376cea81f3621e58f2a"
+    },
+    {
+      "path": "episodes/kelas/migration.json",
+      "bytes": 2092,
+      "sha256": "4cf08ea487f3d0256b63a3b9d1363b6ead4a9a429118c45b4d9a1c3cd298ea26"
+    },
+    {
+      "path": "assets/shared/asset-manifest.json",
+      "bytes": 27068,
+      "sha256": "2ac6a87eedd145db2dd80549d1ad9eeb6ad1b36da8a957c4d654deb8af2ef0f8"
+    },
+    {
+      "path": "src/templates/background.html",
+      "bytes": 753,
+      "sha256": "172443668be0f589038e8a43f62b741637c3ff31f4cc1754d32f6f39c90e223c"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+<!-- Nol: a sale sign. Nisa asks "nol persen?": a big lime "0%" price badge pops on "nol"; on "tenor" and "akun" two tags (TENOR TERTENTU, AKUN TERTENTU) and the fine-print line "0% HANYA TENOR / AKUN TERTENTU" land. On "aplikasi" the badge makes way for a receipt: belanja Rp2.000.000 ticks in on "juta", "3 BULAN" on "tiga", "AKUN BASIC" on "biasa", then TOTAL BAYAR counts up to Rp2.262.420 ("jadi dua juta dua ratus ... lebih"); Beni's "Nambah" slams a red +Rp262.420 stamp. Source: Kredivo RIPLAY Multiguna (Jun 2026). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e3c4;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="nol" data-width="1080" data-height="1920">
+    <div id="nol-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="nol-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.5667" id="nol-sfx-nol" class="clip" src="public/sfx/pop-in.wav" data-at="word:nol" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.0667" id="nol-sfx-tenor" class="clip" src="public/sfx/pop-in.wav" data-at="word:tenor" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.7667" id="nol-sfx-akun" class="clip" src="public/sfx/pop-in.wav" data-at="word:akun" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.5333" id="nol-sfx-receipt" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:aplikasi" data-track-index="15" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.4667" id="nol-sfx-total" class="clip" src="public/sfx/ding-num.wav" data-at="word:jadi" data-track-index="16" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="14.1333" id="nol-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Nambah" data-track-index="17" data-volume="0.4"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const rp = (v) => "Rp" + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const BG = (f, o) => {
+        // phase 1: the "0%" price badge on a string, swinging a little
+        const swing = 4 * Math.sin(f / 16);
+        const badge = o.badge <= 0 ? "" : `<g opacity="${n(1 - o.recIn, 3)}" transform="translate(0 ${n(-120 * o.recIn)})"><g transform="translate(540 540) rotate(${n(swing, 2)})">
+<g transform="translate(0 150) scale(${n(0.4 + 0.6 * o.badge + 0.06 * Math.sin(f / 7), 3)})"><path d="M-250 -130 H190 L270 0 L190 130 H-250 Q-290 130 -290 90 V-90 Q-290 -130 -250 -130 Z" fill="#c6f432" stroke="${INK}" stroke-width="9" stroke-linejoin="round"/>
+<circle cx="190" cy="0" r="20" fill="#f1e3c4" stroke="${INK}" stroke-width="6"/>
+<text x="-40" y="62" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="200" letter-spacing="4" fill="${INK}">0%</text></g></g>
+<g opacity="${n(o.fine, 3)}" transform="translate(0 ${n((1 - o.fine) * 30)})"><rect x="110" y="900" width="860" height="70" rx="12" fill="#fffaf0" stroke="${INK}" stroke-width="5"/>
+<text x="540" y="949" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="30" letter-spacing="1" fill="#c0392b">* HANYA TENOR / AKUN TERTENTU</text></g></g>`;
+        // phase 2: the receipt
+        const row = (y, label, value, p, color = INK) => (p <= 0 ? "" : `<g opacity="${n(p, 3)}" transform="translate(${n(-30 * (1 - p))} 0)"><text x="50" y="${y}" font-family="Oswald" font-weight="500" font-size="34" letter-spacing="3" fill="#6f6a66">${label}</text><text x="710" y="${y}" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="40" fill="${color}">${value}</text></g>`);
+        const receipt = o.recIn <= 0 ? "" : `<g transform="translate(150 ${n(600 + (1 - o.recIn) * 260)})" opacity="${n(o.recIn, 3)}">
+<path d="M0 0 H760 V560 L720 536 L680 560 L640 536 L600 560 L560 536 L520 560 L480 536 L440 560 L400 536 L360 560 L320 536 L280 560 L240 536 L200 560 L160 536 L120 560 L80 536 L40 560 L0 536 Z" fill="#fffaf0" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+<text x="50" y="62" font-family="JetBrains Mono" font-weight="700" font-size="26" letter-spacing="3" fill="${INK}">STRUK CICILAN</text>
+<path d="M50 90 H710" stroke="#8a6f55" stroke-width="3" stroke-dasharray="10 8"/>
+${row(160, "BELANJA", rp(2000000), o.r1)}
+${row(230, "TENOR", "3 BULAN", o.r2)}
+${row(300, "AKUN", "BASIC", o.r3)}
+<path d="M50 340 H710" stroke="#8a6f55" stroke-width="3" stroke-dasharray="10 8" opacity="${n(o.r3, 3)}"/>
+${o.tot > 0 ? `<text x="50" y="410" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="3" fill="${INK}">TOTAL BAYAR</text><text x="710" y="490" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="76" fill="#c0392b">${rp(o.total)}</text>` : ""}
+<text x="50" y="522" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#8a6f55" opacity="${n(o.r3, 3)}">bunga 4%/bln + biaya layanan 1%</text></g>`;
+        return `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="nol-glow" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#f1e3c4"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#nol-glow)"/>
+<g stroke="#dfcfa8" stroke-width="4" opacity="0.7">${Array.from({ length: 9 }, (_, i) => `<path d="M${-100 + i * 160} 1160 L${200 + i * 160} 520" />`).join("")}</g>
+${badge}${receipt}</svg>`;
+      };
+      window.__timelines["nol"] = F1.scene("nol", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const nol = w("nol");
+        const tenor = w("tenor");
+        const akun0 = w("akun", 0);
+        const aplikasi = w("aplikasi");
+        const juta = w("juta", 0);
+        const tiga = w("tiga");
+        const biasa = w("biasa");
+        const jadi = w("jadi");
+        const lebih = w("lebih");
+        const nambah = w("Nambah");
+        const o = {
+          badge: F1.ramp(f, nol, 12, F1.backOut || F1.expoOut),
+          fine: F1.ramp(f, w("tertentu"), 10, F1.expoOut),
+          recIn: F1.ramp(f, aplikasi + 8, 14, F1.expoOut),
+          r1: F1.ramp(f, juta, 8, F1.expoOut),
+          r2: F1.ramp(f, tiga, 8, F1.expoOut),
+          r3: F1.ramp(f, biasa, 8, F1.expoOut),
+          tot: F1.ramp(f, jadi, 6),
+          total: 2000000 + 262420 * F1.ramp(f, jadi, lebih + 6 - jadi, F1.easeOut),
+        };
+        const phase1 = f < aplikasi + 8;
+        const shake = f >= nambah && f < nambah + 8 ? 5 * Math.sin(f * 2.4) * (1 - (f - nambah) / 8) : 0;
+        return F1.join(
+          `<div style="position:absolute;inset:0;transform:translate(${n(shake)}px,0)">`,
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.06, ox: 50, oy: 60 },
+              { at: tenor - 4, scale: 1.12, ox: 50, oy: 62, ease: 14 },
+              { at: aplikasi + 6, scale: 1.04, ox: 50, oy: 60, ease: 14 },
+              { at: jadi, scale: 1.12, ox: 55, oy: 70, ease: 18 },
+              { at: nambah, scale: 1.08, ox: 50, oy: 62, ease: 10 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          phase1 ? C.tag(f, { at: tenor, x: 120, y: 990, rot: -5, text: "TENOR TERTENTU", size: 40, light: true }) : "",
+          phase1 ? C.tag(f, { at: akun0, x: 560, y: 1050, rot: 4, text: "AKUN TERTENTU", size: 40, light: true }) : "",
+          C.stamp(f, { at: nambah, x: 590, y: 485, rot: -8, text: "+Rp262.420", size: 52 }),
+          C.progress(f, { step: 3, label: "BUKTI 2 · NOL PERSEN" }),
+          phase1
+            ? C.hud(f, { at: 4, kicker: "IKLAN", big: "0%", sub: "KATA IKLANNYA...", w: 540, bigSize: 72 })
+            : C.hud(f, { at: aplikasi + 8, kicker: "KENYATAANNYA", big: f < jadi ? "Rp2 JUTA" : f < nambah ? rp(o.total) : "+Rp262.420", sub: "3 BULAN · AKUN BASIC", src: "Kredivo RIPLAY Multiguna (Jun 2026)", w: 540, bigSize: 52 }),
+          `</div>`,
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

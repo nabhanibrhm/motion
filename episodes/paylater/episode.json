@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "paylater",
+  "number": 4,
+  "title": "Paylater: Gratis Bunga atau Jebakan?",
+  "category": "Ekonomi_keuangan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #04",
+      "steps": 7
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "skala",
+      "file": "scenes/skala.html"
+    },
+    {
+      "id": "nol",
+      "file": "scenes/nol.html"
+    },
+    {
+      "id": "telat",
+      "file": "scenes/telat.html"
+    },
+    {
+      "id": "slik",
+      "file": "scenes/slik.html"
+    },
+    {
+      "id": "aturan",
+      "file": "scenes/aturan.html"
+    },
+    {
+      "id": "pelajaran",
+      "file": "scenes/pelajaran.html"
+    }
+  ],
+  "audio": {
+    "bed": "music/bed.mp3",
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

@@ -7,12 +7,12 @@ Ideas for the faceless Bahasa Indonesia shorts channel (9:16, about 60 s, the "K
 | # | Working title | Status |
 |---|---|---|
 | 01 | "Kenapa Harga Nasi Goreng Naik Terus?" (inflation) | done: `inflasi/` |
-| 1 | "Rupiah Tembus Rp18.000: Siapa yang Untung?" | in review: `rupiah/` (first render 1 Nov 2026) |
-| 2 | "IHSG Anjlok 10% Sehari: Apa Itu MSCI?" | timely (MSCI review, Nov 2026) |
-| 3 | "Paylater: Gratis Bunga atau Jebakan?" | backup (evergreen) |
-| 4 | "Judol Lewat QRIS: Kenapa Bandar Selalu Menang" | idea |
-| 5 | "Emas Katanya Aman, Kok Turun 20%?" | idea |
-| 6 | "Kelas Menengah Hilang ke Mana?" | idea |
+| 1 | "Rupiah Tembus Rp18.000: Siapa yang Untung?" | done: `rupiah/` (KASUS #02, 59 s) |
+| 2 | "IHSG Anjlok 10% Sehari: Apa Itu MSCI?" | in production: `ihsg/` (KASUS #03, ~97 s; publish before the MSCI review on 11 Nov 2026) |
+| 3 | "Paylater: Gratis Bunga atau Jebakan?" | in production: `paylater/` (KASUS #04, ~99 s) |
+| 4 | "Judol Lewat QRIS: Kenapa Bandar Selalu Menang" | in production: `judol/` (KASUS #05, ~95 s) |
+| 5 | "Emas Katanya Aman, Kok Turun 20%?" | in production: `emas/` (KASUS #06, ~100 s) |
+| 6 | "Kelas Menengah Hilang ke Mana?" | in production: `kelas/` (KASUS #07, ~99 s) |
 | 7 | "Kalau Kena PHK Besok, Kamu Bertahan Berapa Bulan?" | idea |
 | 8 | "Gaji Naik 8%, Kok Tetap Kurang?" | timely (UMP 2027, Nov 2026) |
 | 9 | "Kenapa Harga Cabai Bisa Naik Dua Kali Lipat?" | idea |

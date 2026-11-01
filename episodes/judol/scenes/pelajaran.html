@@ -1,0 +1,142 @@
+<!-- Pelajaran (vonis): on "pidana" a law card JUDI = PIDANA / KUHP PASAL 427 slides in (Hukumonline); on "bantuan" the help card opens (BUTUH BANTUAN? HEALING119 on "Healing", 119 on "seratus", ext. 8 on "ekstensi", GRATIS on "Gratis"; small Halo Kemenkes 1500-567; Kemenkes). On Beni's "Oke" the cards slide out for a phone: a generic app tile jiggles and is deleted on "hapus". Warm paper covers the scene from "ditutup": KASUS DITUTUP stamp, KASUS #05 · JUDOL, BANDAR SELALU MENANG on "Bandar", the help line kept on the card, BAGIKAN KE ORANG YANG KAMU SAYANG on "Bagikan", SUMBER LENGKAP DI DESKRIPSI. The cast is drawn after the end card and the progress strip after the paper. Muklis, Beni, Nisa. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #ead9bb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="pelajaran" data-width="1080" data-height="1920">
+    <div id="pelajaran-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.6667" id="pelajaran-sfx-law" class="clip" src="public/sfx/pop-in.wav" data-at="word:pidana" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.4" id="pelajaran-sfx-help" class="clip" src="public/sfx/pop-in.wav" data-at="word:bantuan" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5.5667" id="pelajaran-sfx-119" class="clip" src="public/sfx/click.wav" data-at="word:seratus" data-track-index="14" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.8667" id="pelajaran-sfx-free" class="clip" src="public/sfx/ding-num.wav" data-at="word:Gratis" data-track-index="15" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="11" id="pelajaran-sfx-del" class="clip" src="public/sfx/click.wav" data-at="word:hapus" data-track-index="16" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="12.1667" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="17" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13.4667" id="pelajaran-sfx-slogan" class="clip" src="public/sfx/pop-in.wav" data-at="word:Bandar" data-track-index="18" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="15.2333" id="pelajaran-sfx-share" class="clip" src="public/sfx/pop-in.wav" data-at="word:Bagikan" data-track-index="19" data-volume="0.09"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const LIME = "#c6f432";
+      const LAW = (p, out) => {
+        const a = p * (1 - out);
+        if (a <= 0.001) return "";
+        return `<g transform="translate(${n(90 + 90 * (1 - p) - 120 * out)} 548)" opacity="${n(a, 3)}"><rect width="840" height="232" rx="22" fill="#fffaf0" stroke="${INK}" stroke-width="7"/>
+<text x="36" y="96" font-family="Oswald" font-weight="700" font-size="86" letter-spacing="3" fill="${INK}">JUDI = <tspan fill="#c0392b">PIDANA</tspan></text>
+<text x="36" y="148" font-family="JetBrains Mono" font-weight="700" font-size="38" letter-spacing="2" fill="${INK}">KUHP PASAL 427</text>
+<text x="36" y="184" font-family="JetBrains Mono" font-weight="500" font-size="21" fill="#6f6a66">MAIN JUDI TANPA IZIN: PENJARA MAKS. 3 TAHUN / DENDA KAT. III</text>
+<text x="36" y="214" font-family="JetBrains Mono" font-weight="500" font-size="16" fill="#8a6f55">Sumber: Hukumonline</text></g>`;
+      };
+      const HELP = (f, o) => {
+        const a = o.help * (1 - o.out);
+        if (a <= 0.001) return "";
+        const big = F1.ramp(f, o.healingAt, 8, F1.expoOut);
+        const n119 = F1.ramp(f, o.seratusAt, 8, F1.expoOut);
+        const ext = F1.ramp(f, o.extAt, 8, F1.expoOut);
+        const free = F1.ramp(f, o.freeAt, 8, F1.expoOut);
+        return `<g transform="translate(${n(90 + 90 * (1 - o.help) - 120 * o.out)} 800)" opacity="${n(a, 3)}"><rect width="840" height="340" rx="22" fill="${INK}" stroke="#111" stroke-width="7"/>
+<text x="36" y="58" font-family="JetBrains Mono" font-weight="700" font-size="28" letter-spacing="3" fill="#ff5a5f">● BUTUH BANTUAN?</text>
+<text x="36" y="170" font-family="Oswald" font-weight="700" font-size="118" letter-spacing="4" fill="${LIME}" opacity="${n(big, 3)}">HEALING119</text>
+<text x="36" y="262" font-family="JetBrains Mono" font-weight="700" font-size="72" fill="#fff" opacity="${n(n119, 3)}">119</text>
+<text x="212" y="262" font-family="JetBrains Mono" font-weight="700" font-size="72" fill="#fff" opacity="${n(ext, 3)}">ext. 8</text>
+${free > 0 ? `<g transform="translate(560 ${n(206 - 6 * (1 - free))}) rotate(-4) scale(${n(0.6 + 0.4 * free, 3)})" opacity="${n(free, 3)}"><rect width="220" height="76" rx="14" fill="${LIME}" stroke="#111" stroke-width="5"/><text x="110" y="56" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="52" letter-spacing="3" fill="#111">GRATIS</text></g>
+<text x="36" y="304" font-family="JetBrains Mono" font-weight="700" font-size="26" letter-spacing="1" fill="#f5d27a" opacity="${n(free, 3)}">Halo Kemenkes 1500-567</text>` : ""}
+<text x="36" y="330" font-family="JetBrains Mono" font-weight="500" font-size="15" fill="#8d8a84">Sumber: Kemenkes (Healing119, Halo Kemenkes)</text></g>`;
+      };
+      // Beni's phone: a generic app tile jiggles with a red minus badge, then is deleted
+      const PHONE = (f, o) => {
+        if (o.phone <= 0.001) return "";
+        const del = F1.ramp(f, o.delAt, 10, F1.expoOut);
+        const tap = F1.ramp(f, o.delAt - 8, 8, F1.easeOut);
+        const jig = del > 0 ? 0 : 2.2 * Math.sin(f * 0.9);
+        const tiles = [0, 1, 2, 3, 4, 5].map((i) => {
+          const col = i % 3;
+          const row = Math.floor(i / 3);
+          const x = -110 + col * 110;
+          const y = -170 + row * 130;
+          if (i === 1) {
+            return `<g transform="translate(${x} ${y}) rotate(${n(jig, 2)}) scale(${n(1 - del, 3)})" opacity="${n(1 - del, 3)}"><rect x="-44" y="-44" width="88" height="88" rx="20" fill="#8d877b" stroke="${INK}" stroke-width="5"/><text x="0" y="8" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="46" fill="#e3dccd">?</text><circle cx="-40" cy="-40" r="19" fill="#d0413a" stroke="${INK}" stroke-width="4"/><rect x="-50" y="-43" width="20" height="6" rx="3" fill="#fff"/></g>`;
+          }
+          return `<g transform="translate(${x} ${y}) rotate(${n(i % 2 ? -jig : jig, 2)})"><rect x="-44" y="-44" width="88" height="88" rx="20" fill="${["#e2b6c0", "#d9a441", "#7fa88a", "#4e6a8f", "#c98a6a", "#8fae8c"][i]}" stroke="${INK}" stroke-width="5" opacity="0.9"/></g>`;
+        }).join("");
+        const poof = del > 0 && del < 1 ? [0, 1, 2, 3, 4, 5].map((k) => `<circle cx="${n(0 + 70 * del * Math.cos(k * 1.05))}" cy="${n(-170 + 70 * del * Math.sin(k * 1.05))}" r="${n(14 * (1 - del), 1)}" fill="#c9c3b6" opacity="${n(1 - del, 3)}"/>`).join("") : "";
+        const finger = tap > 0 && del < 0.6 ? `<g transform="translate(${n(-150 + 110 * 1 + 14 * (1 - tap))} ${n(-130 + 30 * (1 - tap))})"><circle r="${n(26 + 8 * Math.sin(tap * 3), 1)}" fill="#e0b08a" stroke="${INK}" stroke-width="6"/></g>` : "";
+        const done = F1.ramp(f, o.delAt + 6, 10, F1.expoOut);
+        return `<g transform="translate(540 ${n(850 + 60 * (1 - o.phone))}) scale(0.92)" opacity="${n(o.phone * (1 - o.phoneOut), 3)}"><rect x="-190" y="-315" width="380" height="630" rx="44" fill="${INK}"/>
+<rect x="-168" y="-285" width="336" height="570" rx="22" fill="#fffaf0"/><rect x="-40" y="-306" width="80" height="12" rx="6" fill="#111"/>
+<g transform="translate(0 20)">${tiles}${poof}${finger}</g>
+${done > 0 ? `<g opacity="${n(done, 3)}" transform="translate(0 ${n(190 - 8 * (1 - done))})"><rect x="-130" y="-34" width="260" height="68" rx="34" fill="${LIME}" stroke="${INK}" stroke-width="5"/><text x="0" y="14" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="36" letter-spacing="3" fill="${INK}">✓ DIHAPUS</text></g>` : ""}</g>`;
+      };
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="pelajaran-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#pelajaran-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#c9ae84"/>
+${W.dust(f, { x: 120, y: 540, w: 840, h: 600, count: 16, seed: 9, color: "#fff3cf", alpha: 0.5 })}
+${LAW(o.law, o.out)}${HELP(f, o)}${PHONE(f, o)}</svg>`;
+      window.__timelines["pelajaran"] = F1.scene("pelajaran", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const pidana = w("pidana");
+        const bantuan = w("bantuan");
+        const oke = w("Oke");
+        const hapus = w("hapus");
+        const ditutup = w("ditutup");
+        const bandar = w("Bandar");
+        const bagikan = w("Bagikan");
+        const o = {
+          law: F1.ramp(f, pidana - 4, 12, F1.expoOut),
+          help: F1.ramp(f, bantuan - 2, 12, F1.expoOut),
+          healingAt: w("Healing") - 2,
+          seratusAt: w("seratus") - 2,
+          extAt: w("ekstensi") - 2,
+          freeAt: w("Gratis") - 2,
+          out: F1.ramp(f, oke - 6, 10),
+          phone: F1.ramp(f, oke - 2, 12, F1.expoOut),
+          phoneOut: F1.ramp(f, ditutup - 6, 8),
+          delAt: hapus,
+        };
+        const paper = F1.ramp(f, ditutup - 6, 8);
+        const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
+        const slogan = F1.ramp(f, bandar - 4, 12, F1.expoOut);
+        const share = F1.ramp(f, bagikan - 2, 12, F1.expoOut);
+        const mono = "font-family:'JetBrains Mono',monospace";
+        const end = paper <= 0 ? "" : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#f6efe1", opacity: n(paper, 3) })}"></div>
+<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 470, display: "flex", flexDirection: "column", alignItems: "center", gap: 20, opacity: n(paper, 3) })}">
+<div style="${F1.css({ padding: "12px 30px", border: "6px solid #c0392b", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#c0392b" })}">KASUS DITUTUP</div>
+<div style="${mono};font-weight:500;font-size:26px;letter-spacing:2px;color:#6f6a66">KASUS #05 · JUDOL</div>
+<div style="${F1.css({ marginTop: 4, padding: "14px 36px", borderRadius: 18, background: "#fffaf0", border: "6px solid #2a2a2e", textAlign: "center", opacity: n(slogan, 3), transform: `translateY(${n(30 * (1 - slogan))}px) rotate(-1.5deg)` })}"><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:58px;line-height:1.1;letter-spacing:2px;color:#2a2a2e">BANDAR SELALU <span style="color:#c0392b">MENANG</span></div></div>
+<div style="${F1.css({ padding: "16px 34px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(paper, 3) })}"><div style="${mono};font-weight:700;font-size:22px;letter-spacing:2px;color:#ff5a5f">● BUTUH BANTUAN?</div><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:58px;line-height:1.15;color:#fff"><span style="color:${C.ACCENT}">HEALING119</span> · 119 ext. 8 · <span style="color:${C.ACCENT}">GRATIS</span></div></div>
+<div style="${F1.css({ padding: "16px 34px", borderRadius: 20, background: C.ACCENT, border: "6px solid #2a2a2e", textAlign: "center", opacity: n(share, 3), transform: `translateY(${n(30 * (1 - share))}px)` })}"><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:40px;line-height:1.15;letter-spacing:1px;color:#2a2a2e">BAGIKAN KE ORANG YANG KAMU SAYANG</div></div>
+<div style="${mono};font-weight:500;font-size:20px;letter-spacing:1px;color:#6f6a66">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1.02, ox: 50, oy: 62 },
+              { at: bantuan - 6, scale: 1.05, ox: 50, oy: 64, ease: 14 },
+              { at: oke - 6, scale: 1.03, ox: 50, oy: 62, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.chip(f, { at: 4, text: "YANG BISA KAMU LAKUKAN" }),
+          end,
+          C.progress(f, { step: 7, label: "VONIS" }),
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

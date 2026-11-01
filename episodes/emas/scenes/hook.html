@@ -1,0 +1,85 @@
+<!-- Hook: Nisa's phone shows the gold price line falling (only the two verified points, each labelled) next to a small gold-bar card (generic bar, "1 GRAM / 999.9", no brand mark). The HUD carries the verified drop with its sources. On "rugi" the phone buzzes with a red flash and a RUGI tag; on "Kasus" a KASUS #06 stamp slams down. Frame 0 is fully drawn (thumbnail). Nisa, Beni. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e7d3;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="3.0667" id="hook-sfx-rugi" class="clip" src="public/sfx/pop-in.wav" data-at="word:rugi" data-track-index="12" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.7333" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Kasus" data-track-index="13" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#d0413a";
+      // a generic gold bar (no brand): front face, lighter top face, a glint; (x, y) = bottom centre of the front face
+      const GOLD = (x, y, s = 1, text = true) => `<g transform="translate(${n(x)} ${n(y)}) scale(${n(s, 3)})" stroke="${INK}" stroke-width="6" stroke-linejoin="round">
+<path d="M-104 -66 L104 -66 L80 -98 L-80 -98 Z" fill="#f5d878"/><path d="M-130 0 L130 0 L104 -66 L-104 -66 Z" fill="#e0b13a"/>
+<path d="M-62 -8 L-34 -8 L-10 -58 L-38 -58 Z" fill="#fff" opacity="0.38" stroke="none"/>
+${text ? `<text x="0" y="-33" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="31" letter-spacing="3" fill="${INK}" stroke="none">1 GRAM</text><text x="0" y="-12" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="17" letter-spacing="2" fill="#7a5a12" stroke="none">999.9</text>` : ""}</g>`;
+      const CARD = () => `<g transform="translate(280 880) rotate(-7)"><rect x="-165" y="-215" width="330" height="430" rx="18" fill="#fffaf0" stroke="${INK}" stroke-width="6"/><rect x="-146" y="-196" width="292" height="392" rx="10" fill="none" stroke="#d9b24a" stroke-width="3"/>
+<text x="0" y="-146" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="36" letter-spacing="4" fill="${INK}">EMAS BATANGAN</text>
+<text x="0" y="-112" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="17" letter-spacing="3" fill="#8a6f55">SERTIFIKAT · CONTOH</text>
+${GOLD(0, 30, 1)}
+<rect x="-96" y="64" width="192" height="8" rx="4" fill="#e9e2d3"/><rect x="-96" y="90" width="150" height="8" rx="4" fill="#e9e2d3"/><rect x="-96" y="116" width="170" height="8" rx="4" fill="#e9e2d3"/></g>`;
+      const PHONE = (f, buzz) => `<g transform="translate(670 800) rotate(${n(buzz, 2)})">
+<rect x="-225" y="-315" width="450" height="630" rx="56" fill="${INK}"/><rect x="-204" y="-292" width="408" height="584" rx="40" fill="#fffaf0"/><rect x="-48" y="-292" width="96" height="24" rx="12" fill="${INK}"/>
+<text x="-176" y="-228" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="3" fill="${INK}">EMAS</text>
+<rect x="68" y="-262" width="122" height="44" rx="22" fill="${RED}"/><text x="129" y="-231" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="26" letter-spacing="1" fill="#fff">−19,6%</text>
+<line x1="-170" y1="40" x2="170" y2="40" stroke="#d6cdbd" stroke-width="3" stroke-dasharray="8 8"/>
+<path d="M-140 -120 L140 10 L140 40 L-140 40 Z" fill="${RED}" opacity="0.13"/>
+<path d="M-140 -120 L140 10" fill="none" stroke="${RED}" stroke-width="10" stroke-linecap="round"/>
+<circle cx="-140" cy="-120" r="11" fill="#e0b13a" stroke="${INK}" stroke-width="4"/>
+<circle cx="140" cy="10" r="${n(13 + 2 * Math.sin(f / 5), 1)}" fill="${RED}" stroke="#fff" stroke-width="4"/>
+<text x="-176" y="-158" font-family="JetBrains Mono" font-weight="700" font-size="19" fill="${INK}">29 JAN · Rp3.168.000</text>
+<text x="176" y="74" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="19" fill="${RED}">30 OKT · Rp2.546.000</text>
+<g transform="translate(0 112)"><rect x="-190" y="0" width="380" height="66" rx="14" fill="#f6efe1" stroke="${INK}" stroke-width="3"/>${GOLD(-146, 50, 0.2, false)}<rect x="-96" y="16" width="120" height="14" rx="7" fill="#cfc4b0"/><rect x="-96" y="40" width="76" height="10" rx="5" fill="#ddd3c0"/><rect x="62" y="12" width="114" height="42" rx="12" fill="${RED}"/><path d="M104 26 L132 26 L118 44 Z" fill="#fff"/></g>
+<g transform="translate(0 200)"><rect x="-190" y="0" width="380" height="66" rx="14" fill="#f6efe1" stroke="${INK}" stroke-width="3"/><circle cx="-148" cy="33" r="19" fill="#cfc4b0"/><rect x="-96" y="16" width="150" height="14" rx="7" fill="#cfc4b0"/><rect x="-96" y="40" width="90" height="10" rx="5" fill="#ddd3c0"/><rect x="62" y="12" width="114" height="42" rx="12" fill="${RED}" opacity="0.8"/><path d="M104 26 L132 26 L118 44 Z" fill="#fff"/></g></g>`;
+      const BG = (f, buzz) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+<g style="filter:blur(3px)"><rect x="700" y="290" width="300" height="340" fill="#f7e3b0"/><path d="M700 290 h300 v340 h-300 Z M850 290 v340 M700 460 h300" stroke="#8a6f55" stroke-width="16" fill="none"/></g>
+${W.dust(f, { x: 120, y: 500, w: 800, h: 640, count: 22, seed: 6, color: "#fff3cf", alpha: 0.5 })}
+<rect x="0" y="1150" width="1080" height="770" fill="#cdb898"/>
+<ellipse cx="540" cy="1150" rx="400" ry="24" fill="#000" opacity="0.12"/>
+${CARD()}${PHONE(f, buzz)}</svg>`;
+      window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
+        const C = F1.cine;
+        const rugi = F1.wordFrame(S, "rugi");
+        const kasus = F1.wordFrame(S, "Kasus");
+        const beni = F1.line(S, 1).start;
+        const t = f - rugi;
+        const buzz = t >= 0 && t < 22 ? 2.6 * Math.sin(t * 2.4) * (1 - t / 22) : 0;
+        const flash = f >= rugi ? 0.14 * Math.exp(-(f - rugi) / 6) : 0;
+        return F1.join(
+          C.stage(f, D, BG(f, buzz), {
+            whip: false,
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 50 },
+              { at: rugi - 2, scale: 1.07, ox: 55, oy: 32, ease: 12 },
+              { at: beni, scale: 1.03, ox: 50, oy: 32, ease: 10 },
+            ],
+          }),
+          `<div style="position:absolute;inset:0;background:rgba(208,65,58,${n(flash, 3)})"></div>`,
+          C.vignette(0.26, "50% 55%", 45),
+          C.tag(f, { at: rugi, x: 700, y: 480, rot: 6, light: true, size: 54, text: `<span style="color:#c0392b">RUGI?</span>` }),
+          C.stamp(f, { at: kasus, x: 150, y: 1050, rot: -9, text: "KASUS #06", size: 64 }),
+          C.progress(f, { step: 1, label: "LAPORAN MASUK" }),
+          C.hud(f, { at: -14, kicker: "LAPORAN · EMAS ANTAM", big: "−19,6%", sub: "29 JAN → 30 OKT 2026 · PER GRAM", src: "RRI, Katadata", w: 540 }),
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: -14 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 400 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>
