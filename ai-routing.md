@@ -104,7 +104,7 @@ These apply at every tier:
 - **`hyperframes` stays pinned exactly.** Upgrade it on purpose, then re-check stills and do a full render. Never run `npm audit fix --force`.
 - **Animate from the timeline only.** Scenes draw from the frame through `F1.scene` and GSAP timelines. No CSS transitions or animations, timers, wall-clock time or unseeded randomness.
 - **Never hand-edit generated files.** After any voice change, run the generator, then `node scripts/sync.mjs`, then check stills.
-- **Voice files come from TTSMaker** (`"source": "files"`, one MP3 per line in `voiceover/lines/`). Each mascot keeps the same voice across episodes. edge-tts is only a placeholder.
+- **The voice comes from Supertonic-3** (`"source": "supertonic"`: MOG `M1`, WEC `F2`, BOG `M4`). Each mascot keeps the same voice across episodes. TTSMaker MP3s (`"source": "files"`) are the fallback; edge-tts is only a placeholder.
 - **Keep the platform safe zones clear:** the bottom ~15% and the right ~120 px of the 1080×1920 frame.
 - **Facts carry sources.** Each figure (BI, BPS, OJK …) is listed in the script's sources table. Investment talk keeps "Bukan saran investasi".
 - **Before handing off:** `npm run lint` with no errors, and stills checked (`node scripts/stills.mjs all`). A dependency change also needs a fresh install and a full render.

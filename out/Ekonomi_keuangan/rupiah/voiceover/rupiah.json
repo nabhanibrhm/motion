@@ -1,0 +1,139 @@
+{
+ "comment": "Short 'Rupiah Tembus Rp18.000: Siapa yang Untung?' (script-short.md, sources there). Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 0.8,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 0.9,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 0.9,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Rupiah"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.15,
+  "gapNewSpeaker": 0.25,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "HP impianku naik sejuta?! [pause 0.2] Siapa pelakunya?",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "rekor",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Pelakunya: [pause 0.2] dolar. Akhir Oktober, satu dolar tembus delapan belas ribu. [pause 0.15] Terlemah sepanjang sejarah.",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "dampak",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Bukan cuma HP. Kedelai buat tahu tempe hampir semuanya impor. [pause 0.15] Bahan baku obat juga.",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "untung",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Terus, siapa yang untung?",
+     "after": 0.2
+    },
+    {
+     "speaker": "mog",
+     "text": "Yang dapat dolar. Eksportir sawit dan batu bara, juga pekerja migran. [pause 0.15] Dolarnya jadi lebih banyak rupiah.",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "kalau",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kalau tembus dua puluh ribu?",
+     "after": 0.2
+    },
+    {
+     "speaker": "mog",
+     "text": "HP sembilan juta jadi sepuluh juta. Pemerintah dan BI memperkirakan rupiah menguat tahun depan. [pause 0.15] Tapi perkiraan bukan janji.",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Jadi, jangan panik borong dolar. Tunda belanja impor yang belum perlu, pilih produk lokal, siapkan dana darurat.",
+     "after": 0.2
+    },
+    {
+     "speaker": "bog",
+     "text": "Oke… HP-nya nunggu dulu.",
+     "after": 0.15
+    },
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup! Follow buat kasus berikutnya!",
+     "after": 0.6
+    }
+   ]
+  }
+ ]
+}

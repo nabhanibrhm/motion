@@ -31,6 +31,22 @@
   font-family: "Patrick Hand";
   src: url("../../public/fonts/PatrickHand-Regular.ttf") format("truetype");
 }
+/* cinematic look (lib/f1/cine.js): captions, tags, HUD card */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../public/fonts/Montserrat-VF.ttf") format("truetype");
+  font-weight: 100 900;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../../public/fonts/Oswald-VF.ttf") format("truetype");
+  font-weight: 200 700;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../public/fonts/JetBrainsMono-VF.ttf") format("truetype");
+  font-weight: 100 800;
+}
 
 :root {
   /* editorial (colorhunt 000000-cb2957-dddddd-eeeeee) */

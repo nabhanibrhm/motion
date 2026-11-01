@@ -8,7 +8,7 @@ Each video is a self-contained project under `out/<topic>/<video>/` with its own
 
 ## Commands (run inside the video's folder)
 
-- `.venv/bin/python voiceover/generate.py voiceover/inflasi.json` (Windows: `.venv\Scripts\python`): builds the voice. Set `"source": "files"` to use TTSMaker MP3s from `voiceover/lines/`
+- `.venv/bin/python voiceover/generate.py voiceover/inflasi.json` (Windows: `.venv\Scripts\python`): builds the voice with Supertonic-3 (`"source": "supertonic"`). `"source": "files"` uses TTSMaker MP3s from `voiceover/lines/` instead
 - `node scripts/sync.mjs`: re-times the scenes, captions and SFX from the voice data
 - `npm run preview`: HyperFrames Studio
 - `node scripts/stills.mjs all|<section>|custom --at 1,2`: still frames → `.stills/`

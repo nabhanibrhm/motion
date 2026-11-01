@@ -1,0 +1,82 @@
+<!-- Rekor: dark spotlight on a balance scale. One dollar note sits on the left pan; from "dolar" rupiah notes stack on the right pan and the beam tips; the HUD counts Rp16.631 (a year ago) up to the record Rp18.183 from "delapan"; on "Terlemah" a red tag slams in and the camera punches in. Muklis in the shadow. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #141416;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="rekor" data-width="1080" data-height="1920">
+    <div id="rekor-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="rekor-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.1" id="rekor-sfx-dolar" class="clip" src="public/sfx/pop-in.wav" data-at="word:dolar" data-track-index="12" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.8667" id="rekor-sfx-num" class="clip" src="public/sfx/ding-num.wav" data-at="word:delapan" data-track-index="13" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6.7" id="rekor-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Terlemah" data-track-index="14" data-volume="0.4"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const NOTE = (x, y, fill, ink, label) => `<g transform="translate(${n(x)} ${n(y)})"><rect x="-90" y="-22" width="180" height="44" rx="6" fill="${fill}" stroke="#111" stroke-width="4"/><text x="0" y="10" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="24" fill="${ink}">${label}</text></g>`;
+      // the scale: tilt in degrees (positive drops the right pan), stack = rupiah notes on the right pan
+      const SCALE = (tilt, stack, pop) => {
+        const a = (tilt * Math.PI) / 180;
+        const L = { x: 540 - 300 * Math.cos(a), y: 640 - 300 * Math.sin(a) };
+        const R = { x: 540 + 300 * Math.cos(a), y: 640 + 300 * Math.sin(a) };
+        const pan = (p) => `<path d="M${n(p.x - 130)} ${n(p.y + 150)} L${n(p.x)} ${n(p.y)} L${n(p.x + 130)} ${n(p.y + 150)}" stroke="#8a857d" stroke-width="4" fill="none"/><path d="M${n(p.x - 150)} ${n(p.y + 150)} H${n(p.x + 150)} Q${n(p.x + 120)} ${n(p.y + 190)} ${n(p.x)} ${n(p.y + 190)} Q${n(p.x - 120)} ${n(p.y + 190)} ${n(p.x - 150)} ${n(p.y + 150)} Z" fill="#c9a24a" stroke="#111" stroke-width="5"/>`;
+        let notes = "";
+        for (let i = 0; i < stack; i++) notes += NOTE(R.x + 6 * Math.sin(i * 1.7), R.y + 128 - 30 * i, "#e7a3ae", "#7a2f3e", "RUPIAH");
+        return `<rect x="525" y="640" width="30" height="520" fill="#6b5b45" stroke="#111" stroke-width="5"/><path d="M420 1160 H660 L620 1110 H460 Z" fill="#6b5b45" stroke="#111" stroke-width="5"/>
+<line x1="${n(L.x)}" y1="${n(L.y)}" x2="${n(R.x)}" y2="${n(R.y)}" stroke="#c9a24a" stroke-width="18" stroke-linecap="round"/><circle cx="540" cy="640" r="22" fill="#c9a24a" stroke="#111" stroke-width="5"/>
+${pan(L)}${pan(R)}${pop > 0 ? `<g transform="translate(${n(L.x)} ${n(L.y + 122)}) scale(${n(pop, 3)})">${NOTE(0, 0, "#9ccf9a", "#1f4d2a", "US$1")}</g>` : ""}${notes}`;
+      };
+      window.__timelines["rekor"] = F1.scene("rekor", (f, { S, D }) => {
+        const C = F1.cine;
+        const dolar = F1.wordFrame(S, "dolar");
+        const akhir = F1.wordFrame(S, "Akhir");
+        const delapan = F1.wordFrame(S, "delapan");
+        const terlemah = F1.wordFrame(S, "Terlemah");
+        // the spotlight stutters on, then sways a little on its wire
+        const light = F1.ramp(f, 0, 18) * (f > 3 && f < 9 && f % 2 ? 0.4 : 1);
+        const sway = 24 * Math.sin(f / 37);
+        const pop = F1.ramp(f, dolar, 12, F1.expoOut);
+        // notes stack one by one from "Akhir"; 8 by "delapan", then 9 for the record
+        const stack = f < akhir ? 0 : Math.min(9, 1 + Math.floor((f - akhir) / Math.max(1, (delapan - akhir) / 7)));
+        const tilt = -10 + 2.6 * stack + (stack ? 1.2 * Math.exp(-(f - akhir) / 30) * Math.sin(f / 3) : 0);
+        // a year ago Rp16.631 (31 Okt 2025), the record close Rp18.183 (28 Okt 2026): counts up from "delapan"
+        const rate = Math.round(16631 + (18183 - 16631) * F1.ramp(f, delapan, 34, F1.easeOut));
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#141416"/>
+<path d="M440 0 L640 0 L${n(920 + sway)} 1160 L${n(160 + sway)} 1160 Z" fill="#2c2b2f" opacity="${n(0.8 * light, 3)}"/>
+<g opacity="${n(light, 3)}">${F1.world.dust(f, { x: 240, y: 80, w: 600, h: 1000, count: 34, seed: 11, alpha: 0.45 })}</g>
+<ellipse cx="540" cy="1160" rx="400" ry="60" fill="#2f2e33" opacity="${n(light, 3)}"/>
+<g opacity="${n(light, 3)}">${SCALE(tilt, stack, pop)}</g></svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.12, ox: 50, oy: 40 },
+              { at: dolar, scale: 1, ox: 50, oy: 45 },
+              { at: delapan, scale: 1.18, ox: 62, oy: 45, ease: 16 },
+              { at: terlemah, scale: 1.32, ox: 60, oy: 42 },
+            ],
+          }),
+          C.vignette(0.75, "50% 42%", 30),
+          C.hud(f, {
+            at: 6,
+            kicker: f < terlemah ? "KURS RUPIAH" : "REKOR TERLEMAH",
+            big: f < delapan ? "Rp16.631" : "Rp" + rate.toLocaleString("id-ID"),
+            sub: f < delapan ? "PER US$ · 31 OKT 2025" : "PER US$ · 28 OKT 2026",
+            src: f < delapan ? "Kontan" : "BI JISDOR, Bloomberg Technoz",
+            w: 520,
+          }),
+          C.tag(f, { at: terlemah, x: 300, y: 820, rot: -5, light: true, size: 40, text: `<span style="color:#c0392b">TERLEMAH SEPANJANG SEJARAH</span>` }),
+          C.tag(f, { at: terlemah + 10, x: 330, y: 905, rot: 2, size: 26, text: "SETAHUN: DOLAR +9% LEBIH MAHAL" }),
+          C.cast(S, f, [{ src: C.CAST.muklis, x: 860, y: 1320, w: 320, at: 0, dim: 0.6 }]),
+        );
+      });
+    })();
+  </script>
+</template>

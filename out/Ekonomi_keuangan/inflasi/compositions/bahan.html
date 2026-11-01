@@ -1,66 +1,86 @@
-<!-- Suspect 2, the ingredients: chilli, rice, egg, gas pop up (each with an up arrow); the card counts up food inflation +6,21% (Dec 2025). Stamp: BERSALAH... SEBAGIAN. -->
+<!-- Bahan: market stalls with swaying awnings and shoppers walking past; cabai, beras, telur and gas hop as they are named (and all again on "naik!"); cuts on "Betul", "harga", "Tapi". Nisa shocked, then Muklis. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
     #root {
       position: absolute;
       inset: 0;
+      background: #d9d4c8;
+      overflow: hidden;
     }
   </style>
   <div id="root" data-composition-id="bahan" data-width="1080" data-height="1920">
     <div id="bahan-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0" id="bahan-sfx-card" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
     <audio data-hf-media-start-basis="local" data-start="0.2" id="bahan-sfx-cabai" class="clip" src="public/sfx/pop-in.wav" data-at="word:Cabai" data-track-index="12" data-volume="0.09"></audio>
-    <audio data-hf-media-start-basis="local" data-start="1.2667" id="bahan-sfx-beras" class="clip" src="public/sfx/pop-in.wav" data-at="word:beras" data-track-index="13" data-volume="0.09"></audio>
-    <audio data-hf-media-start-basis="local" data-start="2.1667" id="bahan-sfx-telur" class="clip" src="public/sfx/pop-in.wav" data-at="word:telur" data-track-index="14" data-volume="0.09"></audio>
-    <audio data-hf-media-start-basis="local" data-start="3" id="bahan-sfx-gas" class="clip" src="public/sfx/pop-in.wav" data-at="word:gas" data-track-index="15" data-volume="0.09"></audio>
-    <audio data-hf-media-start-basis="local" data-start="9.8667" id="bahan-sfx-stat" class="clip" src="public/sfx/ding-num.wav" data-at="word:enam" data-track-index="16" data-volume="0.07"></audio>
-    <audio data-hf-media-start-basis="local" data-start="11.7667" id="bahan-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:sebagian" data-track-index="17" data-volume="0.4"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0.5667" id="bahan-sfx-beras" class="clip" src="public/sfx/pop-in.wav" data-at="word:beras" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.0333" id="bahan-sfx-telur" class="clip" src="public/sfx/pop-in.wav" data-at="word:telur" data-track-index="14" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1.4333" id="bahan-sfx-gas" class="clip" src="public/sfx/pop-in.wav" data-at="word:gas" data-track-index="15" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8.5" id="bahan-sfx-stat" class="clip" src="public/sfx/ding-num.wav" data-at="word:enam" data-track-index="16" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10.6333" id="bahan-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:sebagian" data-track-index="17" data-volume="0.4"></audio>
   </div>
   <script>
-    window.__timelines["bahan"] = F1.scene("bahan", (f, { S }) => {
-      const K = F1.kasus;
-      const pen = K.pen("bahan", f);
-      const mogLine = F1.line(S, 1);
-      const enam = F1.wordFrame(S, "enam");
-      const sebagian = F1.wordFrame(S, "sebagian");
-      const ITEMS = [
-        { icon: "chili", label: "cabai", word: "Cabai", x: 185, y: 610 },
-        { icon: "rice", label: "beras", word: "beras", x: 395, y: 610 },
-        { icon: "egg", label: "telur", word: "telur", x: 185, y: 820 },
-        { icon: "gas", label: "gas", word: "gas", x: 395, y: 820 },
-      ];
-      const ats = ITEMS.map((it) => F1.wordFrame(S, it.word));
-      const count = ats.filter((a) => f >= a).length;
-      const drawings = ITEMS.map((it, i) => K.Pop({ x: it.x, y: it.y, at: ats[i] }, f, K.Icon(it.icon, 140)) + K.Up({ x: it.x + 62, y: it.y - 58, at: ats[i] + 6, size: 54 }, f)).join("");
-      const labels = ITEMS.map((it, i) => K.Pop({ x: it.x, y: it.y + 92, at: ats[i] + 2 }, f, K.Label(it.label, { size: 32 }))).join("");
-      const s = F1.ramp(f, enam - 4, 24, F1.easeOut);
-      return F1.join(
-        pen,
-        K.sk(drawings),
-        labels,
-        K.Card({
-          at: 0, kicker: "TERSANGKA 2 DARI 3", big: f < enam - 4 ? "?" : `+${(6.21 * s).toFixed(2).replace(".", ",")}%`, bigSize: 84, label: "HARGA PANGAN", sub: "inflasi pangan, Des 2025",
-          bar: { k: count / 4, text: `${count} / 4 naik` },
-        }, f),
-        K.Stamp({ text: "BERSALAH... SEBAGIAN", x: 540, y: 950, at: sebagian, rot: -5, size: 54 }, f),
-        K.inked(F1.join(
-          F1.Mascot(
-            {
-              character: "mog", x: 290, scale: 1.25, facing: "right", look: [[0, { x: 780, y: 1300 }], [mogLine.start - 4, "viewer"]], talking: F1.isSpeaking(S, "mog", f),
-              gesture: [[0, "listen"], [enam - 6, { gesture: "point", dir: "up-right" }], [sebagian, "idle"]], expression: [[0, "neutral"], [sebagian, "smug"]],
-            },
-            f,
-          ),
-          F1.Mascot(
-            {
-              character: "wec", x: 790, scale: 1.1, facing: "left", look: [[0, "up"], [mogLine.start, { x: 290, y: 1300 }]], talking: F1.isSpeaking(S, "wec", f),
-              gesture: [[0, "cheer"], [mogLine.start - 4, "listen"]], expression: [[0, "surprised"], [mogLine.start, "neutral"]],
-            },
-            f,
-          ),
-        )),
-      );
-    });
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      // an item hops when it is named (and again on "naik!"): a quick jump with a squash on landing
+      const hop = (f, at) => {
+        const t = f - at;
+        if (t < 0 || t > 16) return { y: 0, sq: 1 };
+        return t < 10 ? { y: -70 * Math.sin((Math.PI * t) / 10), sq: 1 } : { y: 0, sq: 1 - 0.12 * Math.sin((Math.PI * (t - 10)) / 6) };
+      };
+      const item = (h, cx, by, body) => `<g transform="translate(${cx} ${n(by + h.y)}) scale(${n(2 - h.sq, 3)} ${n(h.sq, 3)}) translate(${-cx} ${-by})">${body}</g>`;
+      const awning = (f, k, fill, stripe) => `<g transform="translate(240 0) skewX(${n(2.2 * Math.sin(f / 17 + k), 2)}) translate(-240 0)"><path d="M0 0 H480 L450 90 H30 Z" fill="${fill}"/><path d="M60 0 L90 90 M160 0 L170 90 M260 0 L260 90 M360 0 L350 90" stroke="${stripe}" stroke-width="22"/></g>`;
+      const BG = (f, hp) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#d6d9d4"/>
+<g style="filter:blur(3px)"><path d="M0 640 L180 520 L330 610 L520 470 L700 600 L880 500 L1080 590 L1080 760 L0 760 Z" fill="#9b958c"/><rect x="0" y="700" width="1080" height="120" fill="#bdb3a3"/>
+<g opacity="0.8">${W.row(f, { y: 800, s: 0.55, count: 10, seed: 33, speed: 1 })}</g></g>
+<rect x="0" y="800" width="1080" height="1120" fill="#b8a68c"/>
+<g transform="translate(40 720)">${awning(f, 0, "#b5523b", "#d9785e")}
+<rect x="30" y="90" width="16" height="330" fill="#5b4636"/><rect x="434" y="90" width="16" height="330" fill="#5b4636"/><rect x="10" y="300" width="460" height="40" fill="#8f6b50"/>
+${item(hp.cabai, 115, 300, `<g fill="#d0453a"><path d="M60 300 q 20 -60 40 0 Z"/><path d="M95 300 q 20 -80 45 0 Z"/><path d="M135 300 q 18 -55 38 0 Z"/><path d="M75 300 q 25 -100 55 -10 Z"/></g>`)}
+${item(hp.beras, 340, 305, `<rect x="250" y="210" width="90" height="95" rx="16" fill="#efe6d2"/><rect x="345" y="220" width="90" height="85" rx="16" fill="#e8dcc2"/><text x="295" y="270" text-anchor="middle" font-family="Oswald" font-size="24" fill="#6b5f52">BERAS</text>`)}</g>
+<g transform="translate(560 720)">${awning(f, 2, "#d9a441", "#ecc56a")}
+<rect x="30" y="90" width="16" height="330" fill="#5b4636"/><rect x="434" y="90" width="16" height="330" fill="#5b4636"/><rect x="10" y="300" width="460" height="40" fill="#8f6b50"/>
+${item(hp.telur, 125, 308, `<g fill="#f6efe1" stroke="#c9b48f" stroke-width="3"><ellipse cx="80" cy="280" rx="22" ry="28"/><ellipse cx="125" cy="282" rx="22" ry="28"/><ellipse cx="170" cy="280" rx="22" ry="28"/><ellipse cx="102" cy="250" rx="22" ry="28"/><ellipse cx="148" cy="250" rx="22" ry="28"/></g>`)}
+${item(hp.gas, 362, 300, `<rect x="290" y="170" width="70" height="130" rx="30" fill="#5fae7a"/><rect x="310" y="150" width="30" height="26" rx="6" fill="#3f7d55"/><rect x="370" y="180" width="64" height="120" rx="28" fill="#5fae7a"/><text x="325" y="250" text-anchor="middle" font-family="Oswald" font-size="22" fill="#f6efe1">LPG</text>`)}</g>
+${W.row(f, { y: 1215, s: 1.05, count: 5, seed: 12, speed: 1.9 })}</svg>`;
+      window.__timelines["bahan"] = F1.scene("bahan", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const enam = w("enam");
+        const sebagian = w("sebagian");
+        const naik = w("naik");
+        // named items hop on their word; everything hops again on "naik!"
+        const both = (at) => {
+          const a = hop(f, at);
+          const b = hop(f, naik + 2);
+          return a.y !== 0 || a.sq !== 1 ? a : b;
+        };
+        const hp = { cabai: both(w("Cabai")), beras: both(w("beras")), telur: both(w("telur")), gas: both(w("gas")) };
+        return F1.join(
+          C.stage(f, D, BG(f, hp), {
+            zoom: 0.05,
+            shots: [
+              { at: 0, scale: 1.28, ox: 50, oy: 50 },
+              { at: w("Betul"), scale: 1, ox: 50, oy: 50 },
+              { at: w("harga"), scale: 1.14, ox: 30, oy: 48, ease: 18 },
+              { at: w("Tapi"), scale: 1.05, ox: 70, oy: 45 },
+            ],
+          }),
+          C.vignette(0.35, "50% 50%", 55),
+          C.tag(f, { at: w("Cabai"), x: 70, y: 650, rot: -6, text: "CABAI ▲" }),
+          C.tag(f, { at: w("beras"), x: 330, y: 860, rot: 4, text: "BERAS ▲" }),
+          C.tag(f, { at: w("telur"), x: 600, y: 900, rot: -3, text: "TELUR ▲" }),
+          C.tag(f, { at: w("gas"), x: 850, y: 820, rot: 5, text: "GAS ▲" }),
+          C.hud(f, { at: 4, kicker: "TERSANGKA 2 / 3", big: f < enam ? "?" : "+6,21%", sub: "INFLASI PANGAN · 2025" }),
+          C.tag(f, { at: sebagian, x: 560, y: 470, rot: -5, light: true, size: 40, text: `<span style="color:#c0392b">BERSALAH... SEBAGIAN</span>` }),
+          C.cast(S, f, [
+            { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
   </script>
 </template>

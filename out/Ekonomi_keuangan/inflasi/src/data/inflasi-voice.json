@@ -3,17 +3,29 @@
   "mog": {
    "voice": "id-ID-ArdiNeural",
    "rate": "-2%",
-   "pitch": "-4Hz"
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 0.8
+   }
   },
   "wec": {
    "voice": "id-ID-GadisNeural",
    "rate": "+6%",
-   "pitch": "+2Hz"
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 0.9
+   }
   },
   "bog": {
    "voice": "id-ID-ArdiNeural",
    "rate": "+6%",
-   "pitch": "+10Hz"
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 0.9
+   }
   }
  },
  "chapters": [
@@ -22,13 +34,13 @@
    "title": "Kasus Nasi Goreng"
   }
  ],
- "total": 66.69,
+ "total": 70.43,
  "sections": [
   {
    "id": "hook",
    "chapter": "kasus",
    "start": 0.0,
-   "duration": 5.642,
+   "duration": 5.6,
    "lead": 0.2,
    "tail": 0.1,
    "audio": "voice/inflasi/hook.mp3",
@@ -38,62 +50,62 @@
      "speaker": "bog",
      "text": "Nasi goreng dua puluh ribu?! Dulu cuma lima ribu! Siapa pelakunya?",
      "start": 0.24,
-     "end": 5.362,
+     "end": 5.32,
      "words": [
       {
        "word": "Nasi",
        "start": 0.24,
-       "end": 0.582
+       "end": 0.74
       },
       {
        "word": "goreng",
-       "start": 0.582,
-       "end": 0.841
+       "start": 0.74,
+       "end": 1.14
       },
       {
        "word": "dua",
-       "start": 0.841,
-       "end": 0.971
+       "start": 1.14,
+       "end": 1.305
       },
       {
        "word": "puluh",
-       "start": 0.971,
-       "end": 1.16
+       "start": 1.305,
+       "end": 1.58
       },
       {
        "word": "ribu?!",
-       "start": 1.16,
-       "end": 1.573
+       "start": 1.58,
+       "end": 2.52
       },
       {
        "word": "Dulu",
-       "start": 2.702,
-       "end": 3.056
+       "start": 2.54,
+       "end": 2.84
       },
       {
        "word": "cuma",
-       "start": 3.056,
-       "end": 3.268
+       "start": 2.84,
+       "end": 3.22
       },
       {
        "word": "lima",
-       "start": 3.268,
-       "end": 3.445
+       "start": 3.22,
+       "end": 3.6
       },
       {
        "word": "ribu!",
-       "start": 3.445,
-       "end": 3.881
+       "start": 3.6,
+       "end": 4.2
       },
       {
        "word": "Siapa",
-       "start": 4.301,
-       "end": 4.69
+       "start": 4.62,
+       "end": 4.9
       },
       {
        "word": "pelakunya?",
-       "start": 4.69,
-       "end": 5.362
+       "start": 4.9,
+       "end": 5.32
       }
      ]
     }
@@ -102,8 +114,8 @@
   {
    "id": "penjual",
    "chapter": "kasus",
-   "start": 5.642,
-   "duration": 5.75,
+   "start": 5.6,
+   "duration": 5.42,
    "lead": 0.15,
    "tail": 0.1,
    "audio": "voice/inflasi/penjual.mp3",
@@ -113,47 +125,47 @@
      "speaker": "mog",
      "text": "Penjualnya? Untungnya dari dulu segitu-segitu aja. Bukan dia.",
      "start": 0.19,
-     "end": 5.47,
+     "end": 5.14,
      "words": [
       {
        "word": "Penjualnya?",
        "start": 0.19,
-       "end": 1.096
+       "end": 0.78
       },
       {
        "word": "Untungnya",
-       "start": 1.516,
-       "end": 2.039
+       "start": 1.2,
+       "end": 1.78
       },
       {
        "word": "dari",
-       "start": 2.039,
-       "end": 2.23
+       "start": 1.78,
+       "end": 2.1
       },
       {
        "word": "dulu",
-       "start": 2.23,
-       "end": 2.485
+       "start": 2.1,
+       "end": 2.52
       },
       {
        "word": "segitu-segitu",
-       "start": 2.485,
-       "end": 3.136
+       "start": 2.52,
+       "end": 3.66
       },
       {
        "word": "aja.",
-       "start": 3.136,
-       "end": 3.671
+       "start": 3.66,
+       "end": 3.94
       },
       {
        "word": "Bukan",
-       "start": 4.526,
-       "end": 4.985
+       "start": 4.55,
+       "end": 4.82
       },
       {
        "word": "dia.",
-       "start": 4.986,
-       "end": 5.47
+       "start": 4.82,
+       "end": 5.14
       }
      ]
     }
@@ -162,8 +174,8 @@
   {
    "id": "bahan",
    "chapter": "kasus",
-   "start": 11.392,
-   "duration": 12.787,
+   "start": 11.02,
+   "duration": 11.54,
    "lead": 0.15,
    "tail": 0.1,
    "audio": "voice/inflasi/bahan.mp3",
@@ -173,135 +185,135 @@
      "speaker": "wec",
      "text": "Cabai, beras, telur, gas, semuanya naik!",
      "start": 0.19,
-     "end": 4.777,
+     "end": 2.72,
      "words": [
       {
        "word": "Cabai,",
        "start": 0.19,
-       "end": 0.827
+       "end": 0.56
       },
       {
        "word": "beras,",
-       "start": 1.251,
-       "end": 1.853
+       "start": 0.56,
+       "end": 0.94
       },
       {
        "word": "telur,",
-       "start": 2.171,
-       "end": 2.714
+       "start": 1.02,
+       "end": 1.34
       },
       {
        "word": "gas,",
-       "start": 3.008,
-       "end": 3.515
+       "start": 1.42,
+       "end": 1.68
       },
       {
        "word": "semuanya",
-       "start": 3.775,
-       "end": 4.365
+       "start": 1.98,
+       "end": 2.38
       },
       {
        "word": "naik!",
-       "start": 4.365,
-       "end": 4.777
+       "start": 2.38,
+       "end": 2.72
       }
      ]
     },
     {
      "speaker": "mog",
      "text": "Betul. Tahun dua ribu dua puluh lima, harga pangan naik lebih dari enam persen. Tapi itu baru sebagian.",
-     "start": 5.197,
-     "end": 12.507,
+     "start": 3.14,
+     "end": 11.26,
      "words": [
       {
        "word": "Betul.",
-       "start": 5.197,
-       "end": 5.963
+       "start": 3.14,
+       "end": 3.67
       },
       {
        "word": "Tahun",
-       "start": 6.832,
-       "end": 7.125
+       "start": 4.27,
+       "end": 4.63
       },
       {
        "word": "dua",
-       "start": 7.125,
-       "end": 7.253
+       "start": 4.63,
+       "end": 4.772
       },
       {
        "word": "ribu",
-       "start": 7.253,
-       "end": 7.431
+       "start": 4.772,
+       "end": 4.962
       },
       {
        "word": "dua",
-       "start": 7.431,
-       "end": 7.572
+       "start": 4.962,
+       "end": 5.104
       },
       {
        "word": "puluh",
-       "start": 7.572,
-       "end": 7.776
+       "start": 5.104,
+       "end": 5.341
       },
       {
        "word": "lima,",
-       "start": 7.776,
-       "end": 8.273
+       "start": 5.341,
+       "end": 5.53
       },
       {
        "word": "harga",
-       "start": 8.605,
-       "end": 8.937
+       "start": 6.7,
+       "end": 7.11
       },
       {
        "word": "pangan",
-       "start": 8.937,
-       "end": 9.179
+       "start": 7.11,
+       "end": 7.37
       },
       {
        "word": "naik",
-       "start": 9.179,
-       "end": 9.434
+       "start": 7.37,
+       "end": 7.79
       },
       {
        "word": "lebih",
-       "start": 9.434,
-       "end": 9.664
+       "start": 7.79,
+       "end": 8.05
       },
       {
        "word": "dari",
-       "start": 9.664,
-       "end": 9.855
+       "start": 8.05,
+       "end": 8.51
       },
       {
        "word": "enam",
-       "start": 9.855,
-       "end": 10.072
+       "start": 8.51,
+       "end": 9.07
       },
       {
        "word": "persen.",
-       "start": 10.072,
-       "end": 10.646
+       "start": 9.07,
+       "end": 9.59
       },
       {
        "word": "Tapi",
-       "start": 11.066,
-       "end": 11.334
+       "start": 10.01,
+       "end": 10.22
       },
       {
        "word": "itu",
-       "start": 11.334,
-       "end": 11.576
+       "start": 10.22,
+       "end": 10.42
       },
       {
        "word": "baru",
-       "start": 11.576,
-       "end": 11.767
+       "start": 10.42,
+       "end": 10.64
       },
       {
        "word": "sebagian.",
-       "start": 11.767,
-       "end": 12.507
+       "start": 10.64,
+       "end": 11.26
       }
      ]
     }
@@ -310,8 +322,8 @@
   {
    "id": "kita",
    "chapter": "kasus",
-   "start": 24.179,
-   "duration": 9.09,
+   "start": 22.56,
+   "duration": 8.75,
    "lead": 0.15,
    "tail": 0.1,
    "audio": "voice/inflasi/kita.mp3",
@@ -321,95 +333,95 @@
      "speaker": "bog",
      "text": "Lho, kok aku?",
      "start": 0.19,
-     "end": 1.464,
+     "end": 0.85,
      "words": [
       {
        "word": "Lho,",
        "start": 0.19,
-       "end": 0.626
+       "end": 0.47
       },
       {
        "word": "kok",
-       "start": 0.839,
-       "end": 1.004
+       "start": 0.47,
+       "end": 0.61
       },
       {
        "word": "aku?",
-       "start": 1.004,
-       "end": 1.464
+       "start": 0.61,
+       "end": 0.85
       }
      ]
     },
     {
      "speaker": "mog",
      "text": "Pas THR, semua orang belanja barengan. Uang banyak, barangnya sama. Harga ikut naik.",
-     "start": 1.884,
-     "end": 8.81,
+     "start": 1.27,
+     "end": 8.47,
      "words": [
       {
        "word": "Pas",
-       "start": 1.884,
-       "end": 2.075
+       "start": 1.27,
+       "end": 1.52
       },
       {
        "word": "THR,",
-       "start": 2.075,
-       "end": 2.738
+       "start": 1.52,
+       "end": 2.3
       },
       {
        "word": "semua",
-       "start": 2.993,
-       "end": 3.312
+       "start": 2.62,
+       "end": 2.98
       },
       {
        "word": "orang",
-       "start": 3.312,
-       "end": 3.503
+       "start": 2.98,
+       "end": 3.4
       },
       {
        "word": "belanja",
-       "start": 3.503,
-       "end": 3.822
+       "start": 3.4,
+       "end": 3.82
       },
       {
        "word": "barengan.",
-       "start": 3.822,
-       "end": 4.447
+       "start": 3.82,
+       "end": 4.4
       },
       {
        "word": "Uang",
-       "start": 5.302,
-       "end": 5.545
+       "start": 5.06,
+       "end": 5.36
       },
       {
        "word": "banyak,",
-       "start": 5.545,
-       "end": 6.106
+       "start": 5.36,
+       "end": 5.84
       },
       {
        "word": "barangnya",
-       "start": 6.323,
-       "end": 6.731
+       "start": 5.84,
+       "end": 6.88
       },
       {
        "word": "sama.",
-       "start": 6.731,
-       "end": 7.241
+       "start": 6.88,
+       "end": 7.18
       },
       {
        "word": "Harga",
-       "start": 7.611,
-       "end": 8.032
+       "start": 7.55,
+       "end": 7.93
       },
       {
        "word": "ikut",
-       "start": 8.032,
-       "end": 8.3
+       "start": 7.93,
+       "end": 8.19
       },
       {
        "word": "naik.",
-       "start": 8.3,
-       "end": 8.81
+       "start": 8.19,
+       "end": 8.47
       }
      ]
     }
@@ -418,8 +430,8 @@
   {
    "id": "dalang",
    "chapter": "kasus",
-   "start": 33.269,
-   "duration": 15.019,
+   "start": 31.31,
+   "duration": 17.25,
    "lead": 0.15,
    "tail": 0.1,
    "audio": "voice/inflasi/dalang.mp3",
@@ -429,165 +441,165 @@
      "speaker": "mog",
      "text": "Dalang sebenarnya: nilai uang itu sendiri. Seratus ribu hari ini, sepuluh tahun lagi daya belinya cuma sekitar tujuh puluh empat ribu.",
      "start": 0.19,
-     "end": 8.788,
+     "end": 12.25,
      "words": [
       {
        "word": "Dalang",
        "start": 0.19,
-       "end": 0.598
+       "end": 0.57
       },
       {
        "word": "sebenarnya:",
-       "start": 0.598,
-       "end": 1.389
+       "start": 0.57,
+       "end": 1.13
       },
       {
        "word": "nilai",
-       "start": 1.809,
-       "end": 2.217
+       "start": 1.55,
+       "end": 1.93
       },
       {
        "word": "uang",
-       "start": 2.217,
-       "end": 2.421
+       "start": 1.93,
+       "end": 2.25
       },
       {
        "word": "itu",
-       "start": 2.421,
-       "end": 2.6
+       "start": 2.25,
+       "end": 2.45
       },
       {
        "word": "sendiri.",
-       "start": 2.6,
-       "end": 3.225
+       "start": 2.45,
+       "end": 2.91
       },
       {
        "word": "Seratus",
-       "start": 4.094,
-       "end": 4.477
+       "start": 5.32,
+       "end": 5.71
       },
       {
        "word": "ribu",
-       "start": 4.477,
-       "end": 4.668
+       "start": 5.71,
+       "end": 6.11
       },
       {
        "word": "hari",
-       "start": 4.668,
-       "end": 4.834
+       "start": 6.11,
+       "end": 6.29
       },
       {
        "word": "ini,",
-       "start": 4.834,
-       "end": 5.293
+       "start": 6.29,
+       "end": 6.57
       },
       {
        "word": "sepuluh",
-       "start": 5.586,
-       "end": 5.931
+       "start": 6.99,
+       "end": 7.23
       },
       {
        "word": "tahun",
-       "start": 5.931,
-       "end": 6.16
+       "start": 7.23,
+       "end": 7.59
       },
       {
        "word": "lagi",
-       "start": 6.16,
-       "end": 6.403
+       "start": 7.59,
+       "end": 7.99
       },
       {
        "word": "daya",
-       "start": 6.403,
-       "end": 6.62
+       "start": 7.99,
+       "end": 8.59
       },
       {
        "word": "belinya",
-       "start": 6.62,
-       "end": 6.977
+       "start": 8.59,
+       "end": 9.11
       },
       {
        "word": "cuma",
-       "start": 6.977,
-       "end": 7.219
+       "start": 9.11,
+       "end": 9.61
       },
       {
        "word": "sekitar",
-       "start": 7.219,
-       "end": 7.589
+       "start": 9.61,
+       "end": 10.19
       },
       {
        "word": "tujuh",
-       "start": 7.589,
-       "end": 7.921
+       "start": 10.19,
+       "end": 10.457
       },
       {
        "word": "puluh",
-       "start": 7.921,
-       "end": 8.086
+       "start": 10.457,
+       "end": 10.723
       },
       {
        "word": "empat",
-       "start": 8.086,
-       "end": 8.329
+       "start": 10.723,
+       "end": 10.99
       },
       {
        "word": "ribu.",
-       "start": 8.329,
-       "end": 8.788
+       "start": 10.99,
+       "end": 12.25
       }
      ]
     },
     {
      "speaker": "wec",
      "text": "Kayak es batu. Nggak kelihatan mencair, tapi lama-lama habis!",
-     "start": 9.208,
-     "end": 14.739,
+     "start": 12.67,
+     "end": 16.97,
      "words": [
       {
        "word": "Kayak",
-       "start": 9.208,
-       "end": 9.739
+       "start": 12.67,
+       "end": 13.01
       },
       {
        "word": "es",
-       "start": 9.739,
-       "end": 10.14
+       "start": 13.01,
+       "end": 13.19
       },
       {
        "word": "batu.",
-       "start": 10.14,
-       "end": 10.694
+       "start": 13.19,
+       "end": 13.63
       },
       {
        "word": "Nggak",
-       "start": 11.484,
-       "end": 11.767
+       "start": 14.01,
+       "end": 14.23
       },
       {
        "word": "kelihatan",
-       "start": 11.767,
-       "end": 12.239
+       "start": 14.23,
+       "end": 14.81
       },
       {
        "word": "mencair,",
-       "start": 12.239,
-       "end": 12.911
+       "start": 14.81,
+       "end": 15.43
       },
       {
        "word": "tapi",
-       "start": 13.206,
-       "end": 13.5
+       "start": 15.67,
+       "end": 15.91
       },
       {
        "word": "lama-lama",
-       "start": 13.5,
-       "end": 13.996
+       "start": 15.91,
+       "end": 16.35
       },
       {
        "word": "habis!",
-       "start": 13.996,
-       "end": 14.739
+       "start": 16.35,
+       "end": 16.97
       }
      ]
     }
@@ -596,8 +608,8 @@
   {
    "id": "pelajaran",
    "chapter": "kasus",
-   "start": 48.288,
-   "duration": 18.402,
+   "start": 48.56,
+   "duration": 21.87,
    "lead": 0.15,
    "tail": 0.45,
    "audio": "voice/inflasi/pelajaran.mp3",
@@ -607,208 +619,208 @@
      "speaker": "mog",
      "text": "Jadi jangan cuma simpan uang di bawah kasur. Uangmu harus tumbuh minimal secepat inflasi. Pilih yang legal dan diawasi OJK.",
      "start": 0.19,
-     "end": 8.686,
+     "end": 11.83,
      "words": [
       {
        "word": "Jadi",
        "start": 0.19,
-       "end": 0.547
+       "end": 0.57
       },
       {
        "word": "jangan",
-       "start": 0.547,
-       "end": 0.84
+       "start": 0.57,
+       "end": 1.03
       },
       {
        "word": "cuma",
-       "start": 0.841,
-       "end": 1.032
+       "start": 1.03,
+       "end": 1.31
       },
       {
        "word": "simpan",
-       "start": 1.032,
-       "end": 1.312
+       "start": 1.31,
+       "end": 1.77
       },
       {
        "word": "uang",
-       "start": 1.312,
-       "end": 1.58
+       "start": 1.77,
+       "end": 2.21
       },
       {
        "word": "di",
-       "start": 1.58,
-       "end": 1.67
+       "start": 2.21,
+       "end": 2.39
       },
       {
        "word": "bawah",
-       "start": 1.67,
-       "end": 1.912
+       "start": 2.39,
+       "end": 2.69
       },
       {
        "word": "kasur.",
-       "start": 1.912,
-       "end": 2.473
+       "start": 2.69,
+       "end": 3.31
       },
       {
        "word": "Uangmu",
-       "start": 3.329,
-       "end": 3.737
+       "start": 4.29,
+       "end": 4.83
       },
       {
        "word": "harus",
-       "start": 3.737,
-       "end": 3.941
+       "start": 4.83,
+       "end": 5.43
       },
       {
        "word": "tumbuh",
-       "start": 3.941,
-       "end": 4.209
+       "start": 5.43,
+       "end": 5.85
       },
       {
        "word": "minimal",
-       "start": 4.209,
-       "end": 4.63
+       "start": 5.85,
+       "end": 6.43
       },
       {
        "word": "secepat",
-       "start": 4.63,
-       "end": 5.025
+       "start": 6.43,
+       "end": 7.31
       },
       {
        "word": "inflasi.",
-       "start": 5.025,
-       "end": 5.739
+       "start": 7.31,
+       "end": 7.97
       },
       {
        "word": "Pilih",
-       "start": 6.594,
-       "end": 6.887
+       "start": 9.08,
+       "end": 9.49
       },
       {
        "word": "yang",
-       "start": 6.887,
-       "end": 7.028
+       "start": 9.49,
+       "end": 9.63
       },
       {
        "word": "legal",
-       "start": 7.028,
-       "end": 7.423
+       "start": 9.63,
+       "end": 10.07
       },
       {
        "word": "dan",
-       "start": 7.423,
-       "end": 7.602
+       "start": 10.07,
+       "end": 10.45
       },
       {
        "word": "diawasi",
-       "start": 7.602,
-       "end": 8.061
+       "start": 10.45,
+       "end": 11.15
       },
       {
        "word": "OJK.",
-       "start": 8.061,
-       "end": 8.686
+       "start": 11.15,
+       "end": 11.83
       }
      ]
     },
     {
      "speaker": "bog",
      "text": "Oke… aku bayar dua puluh ribu. Tapi sekarang aku tahu pelakunya.",
-     "start": 9.106,
-     "end": 13.549,
+     "start": 12.25,
+     "end": 17.2,
      "words": [
       {
        "word": "Oke…",
-       "start": 9.106,
-       "end": 9.66
+       "start": 12.25,
+       "end": 12.6
       },
       {
        "word": "aku",
-       "start": 9.908,
-       "end": 10.144
+       "start": 13.13,
+       "end": 13.38
       },
       {
        "word": "bayar",
-       "start": 10.144,
-       "end": 10.427
+       "start": 13.38,
+       "end": 13.86
       },
       {
        "word": "dua",
-       "start": 10.427,
-       "end": 10.58
+       "start": 13.86,
+       "end": 14.1
       },
       {
        "word": "puluh",
-       "start": 10.58,
-       "end": 10.757
+       "start": 14.1,
+       "end": 14.5
       },
       {
        "word": "ribu.",
-       "start": 10.757,
-       "end": 11.181
+       "start": 14.5,
+       "end": 15.12
       },
       {
        "word": "Tapi",
-       "start": 11.969,
-       "end": 12.24
+       "start": 15.37,
+       "end": 15.62
       },
       {
        "word": "sekarang",
-       "start": 12.24,
-       "end": 12.57
+       "start": 15.62,
+       "end": 16.06
       },
       {
        "word": "aku",
-       "start": 12.57,
-       "end": 12.735
+       "start": 16.06,
+       "end": 16.38
       },
       {
        "word": "tahu",
-       "start": 12.735,
-       "end": 12.924
+       "start": 16.38,
+       "end": 16.66
       },
       {
        "word": "pelakunya.",
-       "start": 12.924,
-       "end": 13.549
+       "start": 16.66,
+       "end": 17.2
       }
      ]
     },
     {
      "speaker": "wec",
      "text": "Kasus ditutup! Follow buat kasus berikutnya!",
-     "start": 13.919,
-     "end": 17.772,
+     "start": 17.57,
+     "end": 21.24,
      "words": [
       {
        "word": "Kasus",
-       "start": 13.919,
-       "end": 14.402
+       "start": 17.57,
+       "end": 18.28
       },
       {
        "word": "ditutup!",
-       "start": 14.402,
-       "end": 15.027
+       "start": 18.28,
+       "end": 19.04
       },
       {
        "word": "Follow",
-       "start": 15.815,
-       "end": 16.31
+       "start": 19.28,
+       "end": 19.66
       },
       {
        "word": "buat",
-       "start": 16.31,
-       "end": 16.557
+       "start": 19.66,
+       "end": 20.02
       },
       {
        "word": "kasus",
-       "start": 16.557,
-       "end": 16.994
+       "start": 20.02,
+       "end": 20.52
       },
       {
        "word": "berikutnya!",
-       "start": 16.994,
-       "end": 17.772
+       "start": 20.52,
+       "end": 21.24
       }
      ]
     }

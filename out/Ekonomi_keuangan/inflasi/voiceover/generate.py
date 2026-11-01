@@ -3,8 +3,11 @@
 Usage: python voiceover/generate.py voiceover/inflasi.json          build the voice from the config
        python voiceover/generate.py voiceover/inflasi.json --list   write voiceover/lines.md (what to record)
 
-Two sources (config `"source"`):
+Three sources (config `"source"`):
   "edge-tts" (default)  every chunk is synthesised with edge-tts, which also returns word timings.
+  "supertonic"          every chunk is synthesised locally with Supertonic-3 (OpenRAIL-M, CPU, `pip install
+                        supertonic`), voice from the speaker's `supertonic` {voice: F1-F5/M1-M5, speed?}.
+                        Word timings come from faster-whisper, as for "files".
   "files"               every line is a ready-made audio file, one per line, made elsewhere (TTSMaker):
                         voiceover/lines/<section id>-<line index>.mp3 (or .wav). Inline [pause] markers are
                         ignored (one file per line). Word timings come from faster-whisper (local, CPU):
@@ -53,7 +56,9 @@ PEAK_CEIL = 0.89
 MARKER = re.compile(r"\[(?:pause|hold)\s+([\d.]+)\]")
 LINES_DIR = Path(os.environ.get("VOICE_LINES") or ROOT / "voiceover" / "lines")  # VOICE_LINES: test with another folder
 WHISPER_MODEL = os.environ.get("WHISPER_MODEL", "small")  # "small" handles Indonesian well on CPU
+SUPERTONIC_STEPS = 16  # denoising steps: 8 is the library default, 16 is cleaner and still a few seconds a line on CPU
 _whisper = None
+_supertonic = None
 
 
 def norm(w: str) -> str:
@@ -163,6 +168,25 @@ def from_file(path: Path, text: str) -> dict:
     return {"words": words, "mp3": path}
 
 
+def synth_supertonic(text: str, spk: dict) -> dict:
+    """Synthesise one chunk with Supertonic-3 (cached wav), timed by faster-whisper. Returns {"words", "mp3"}."""
+    global _supertonic
+    st = spk["supertonic"]
+    speed = st.get("speed", 1.05)
+    key = hashlib.sha1(f'supertonic-3|{st["voice"]}|{speed}|{SUPERTONIC_STEPS}|{text}'.encode()).hexdigest()[:16]
+    wav = CACHE / f"st-{key}.wav"
+    if not wav.exists():
+        if _supertonic is None:
+            from supertonic import TTS
+
+            print("    loading Supertonic-3 (first run downloads it)")
+            _supertonic = TTS(model="supertonic-3")
+        x, _ = _supertonic.synthesize(text, voice_style=_supertonic.get_voice_style(st["voice"]), lang="id",
+                                      speed=speed, total_steps=SUPERTONIC_STEPS)
+        _supertonic.save_audio(x, str(wav))
+    return from_file(wav, text)
+
+
 def write_list(cfg: dict) -> None:
     """voiceover/lines.md: every file to make, with the speaker and the exact text to paste."""
     rows = ["# Lines to record", "", "One file per line in `voiceover/lines/`. Paste the text as it is (the [pause] markers are left out).", ""]
@@ -206,7 +230,7 @@ async def synth(text: str, spk: dict) -> dict:
 
 
 def decode(mp3: Path) -> np.ndarray:
-    wav = mp3.with_suffix(".wav")
+    wav = mp3.with_name(mp3.stem + ".decoded.wav")  # never the input itself (wav lines, Supertonic cache)
     subprocess.run([str(FFMPEG), "-y", "-v", "error", "-i", str(mp3), "-ac", "1", "-ar", str(SR), str(wav)], check=True)
     with wave.open(str(wav), "rb") as w:
         data = w.readframes(w.getnframes())
@@ -295,8 +319,8 @@ async def build_section(sec: dict, cfg: dict, lead: float, tail_override: float 
         for pi in range(0, len(pieces), 2):
             chunk_text = pieces[pi].strip()
             if chunk_text:
-                if files:
-                    res = from_file(line_file(sec["id"], li), chunk_text)
+                if files or cfg.get("source") == "supertonic":
+                    res = from_file(line_file(sec["id"], li), chunk_text) if files else synth_supertonic(chunk_text, spk)
                     x = level(decode(res["mp3"]))
                     raw = res["words"]
                 else:

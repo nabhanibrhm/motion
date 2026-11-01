@@ -1,20 +1,33 @@
 {
  "comment": "Short 'Kenapa Harga Nasi Goreng Naik Terus?' (script-short.md). Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
  "speakers": {
   "mog": {
    "voice": "id-ID-ArdiNeural",
    "rate": "-2%",
-   "pitch": "-4Hz"
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 0.8
+   }
   },
   "wec": {
    "voice": "id-ID-GadisNeural",
    "rate": "+6%",
-   "pitch": "+2Hz"
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 0.9
+   }
   },
   "bog": {
    "voice": "id-ID-ArdiNeural",
    "rate": "+6%",
-   "pitch": "+10Hz"
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 0.9
+   }
   }
  },
  "chapters": [
