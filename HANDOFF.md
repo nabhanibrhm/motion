@@ -1,10 +1,24 @@
-# Handoff: production status (1 Nov 2026, evening)
+# Handoff: production status (4 Nov 2026, evening)
 
 Commit only when requested. Before changes, read `ai-routing.md` and route by the current shared-module responsibilities there.
 
 ## Claude: start here
 
-**The shared application is implemented, all seven original episodes are migrated, and episode 08 (`ump`) was produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top; nothing pushed). Preserve existing modified and untracked work.
+**The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
+
+**Changed this session (4 Nov 2026, WSL machine):**
+- New channel line **HotWizz** (breaking news, category `Berita`, theme `config/themes/hotwizz.json`, single narrator Nisa / `wec`, Supertonic F2, speed 1, range 1.4). Case ids are `HOTWIZZ #NN`, not KASUS.
+  - **#01 `sadap`** (ep 09): "Eks Kapolri Ditahan: Diduga Sadap Presiden", 130.0 s. Published; passed 40k views.
+  - **#02 `ksp`** (ep 10): "Listyo Dicopot dari KSP: Sadapannya ke Mana?", 123.8 s, -14.0 LUFS / -1.0 dBTP. Facts rechecked about 15:00 WIB on 4 Nov. Published on 4 Nov.
+  - Captions are in `out/<NN>-<id>-caption.txt` (git-ignored): sources by outlet and date, no URLs, photo credits, hashtags `#HotWizz #listyosigitprabowo #fyp #trending #polri`.
+- **Neutrality rules for HotWizz** (see each `script-short.md`): every person is "tersangka" with praduga tak bersalah; equal card and photo treatment for both political sides; contested readings are attributed (e.g. Istana's "mengarah ke makar" beside Yusril's "pasal makar tidak digunakan"); a claim needs two outlets or it is dropped. Photos are Wikimedia Commons (public domain or CC BY-SA, credited); use a silhouette when none is found.
+- **Voice pacing rule:** the user wants an even pace, above all in the hook. Supertonic rushes short chunks, so write narration with **no `[pause]` markers**, keep the hook as one chunk, use few commas (full stops and colons are fine). Measure syllables/sec per chunk after `voice` and re-punctuate outliers (ep 10 spread about 3.4%, ep 09 was 13.7%). Verify proper nouns with Whisper; add `say` entries (ep 10 uses `Letjen`→`let-jen`, `update`→`apdet`, `Nasution`→`nasutiyon`).
+- **No baked music for HotWizz:** ep 10 sets `audio.bed: null`; the user adds a TikTok sound at upload. If they link a TikTok sound, check whether it is a "suara asli" with speech before using it.
+- **Theme watermark:** `runtime.watermark` in a theme (src, opacity, width, pulse {period, scale, glow}) draws one big centred logo on every scene via `C.watermark` in `src/runtime/f1/cine.js` (lighten blend, sine pulse from the frame). Validated in `src/config/validate.mjs`; test in `tests/engine.test.mjs` (21/21 pass). HotWizz uses the text-only logo `assets/shared/brand/hotwizz-logo.svg`. It is theme-wide, so re-rendering ep 09 would now include it.
+- `master.mjs` now converts voice and bed to stereo fltp before mixing the bed (since ep 09).
+- On WSL, render with `node scripts/motion.mjs render <id> -- --no-low-memory-mode --workers 2` (screenshot capture is slow otherwise).
+
+**Changed earlier (1 Nov 2026, Windows machine):**
 
 **Changed this session (1 Nov 2026):**
 - Episode folders are `episodes/<NN>_<id>/` (e.g. `01_inflasi`). The loader checks the prefix against the manifest `number`; commands, caches and outputs still use the bare id. `new` creates prefixed folders. Voice caches are path-independent and stayed valid.
@@ -27,25 +41,27 @@ Read [CLAUDE.md](CLAUDE.md), the **Claude** routing section of [ai-routing.md](a
 | Preserved speech and migration recovery | `.cache/voice/`, `.cache/migration-baseline/` |
 | Finished mastered videos | `out/<NN>-<id>-short.mp4` |
 
-The active IDs are `inflasi`, `rupiah`, `ihsg`, `paylater`, `judol`, `emas`, `kelas`, and `ump`, each in an `episodes/<NN>_<id>/` folder (e.g. `episodes/01_inflasi/`); commands still take the bare id. Category is manifest metadata, not a parent directory. The old `out/Ekonomi_keuangan/` application sources and duplicate installations have been retired and the folder is gone: its four historical renders and `inflasi/debug.log` now live under `.cache/migration-baseline/legacy-out/Ekonomi_keuangan/`, and the ideas board moved to `content_idea/PIPELINE.md`.
+The active IDs are `inflasi`, `rupiah`, `ihsg`, `paylater`, `judol`, `emas`, `kelas`, `ump`, `sadap`, and `ksp`, each in an `episodes/<NN>_<id>/` folder (e.g. `episodes/01_inflasi/`); commands still take the bare id. Category is manifest metadata, not a parent directory. The old `out/Ekonomi_keuangan/` application sources and duplicate installations have been retired and the folder is gone: its four historical renders and `inflasi/debug.log` now live under `.cache/migration-baseline/legacy-out/Ekonomi_keuangan/`, and the ideas board moved to `content_idea/PIPELINE.md`.
 
 Keep HyperFrames pinned to **0.8.210** and preserve the HTML/GSAP/F1 stack. Generated projects include local GSAP and referenced assets within the served root. Edit authored source and rebuild; do not patch generated HTML or staged assets. New episodes need configuration, narration, and unique artwork, without copied engines or separate dependency installations.
 
 ## Next actions for Claude
 
 1. Run `git status --short` and read the current task before editing. The migration baseline's status snapshot is historical; do not reset or clean the current tree.
-2. **Next episode: idea #11 "Diskon 11.11"** (board brief in `content_idea/PIPELINE.md`; editorial window 2–10 Nov 2026, so it is time-critical). Would be KASUS #09. Recheck sources S11/S12 at production time.
-3. **UMP (08) fixes before publishing:** the board's audit asks to separate the regional minimum wage from an individual raise. The hook currently goes from "UMP naik 8%" to Nisa's "Gaji naik delapan persen…"; adjust the hook and add one line that UMP is a minimum, then regenerate voice and re-render. Also swap in October inflation (BPS release 2 Nov) or the official UMP 2027 figure if available; `episodes/08_ump/script-short.md` "Before rendering" lists every number to recompute.
-4. **IHSG (03) before publishing:** MSCI's 15 Oct 2026 consultation (Emerging → Standalone, decision by end of June 2027) is a proposal, not a downgrade; update the script context (board idea 2).
-5. Re-render the seven original episodes on this machine and compare scene boundaries, captions, SFX moments, duration, audio sync and loudness against the preserved baselines and existing outputs. Fresh-render fidelity of 01–07 is still unverified.
-6. For new production work, use the root `new` command, then edit the manifest, narration, sources, and custom scenes. Never recreate per-episode dependencies, voice tools, or shared asset libraries.
-7. Keep editorial approval for episodes 05–08 separate from technical approval. Preserve the review notes below.
+2. **HotWizz follow-ups:** if the Listyo case moves (motive, new suspects, Listyo's statement, charges changed), a #03 follows the same pattern: send the script first, recheck news just before building, rebuild facts table S1–Sn in `script-short.md`. Check `episodes/10_ksp/script-short.md` "Do not use" before reusing any claim.
+3. **Known bug, music bed cutoff:** `assets/shared/music/bed.mp3` is 75.0 s and `masterVideo` does not loop it, so any bedded episode longer than 75 s loses music after 75 s (ep 03–08 run 94–102 s; ep 09 at 130 s). Fix by looping the bed input (e.g. `-stream_loop -1` before the bed `-i`) and re-check the 1.5 s fade-out. Not yet fixed.
+4. **Next KASUS episode: idea #11 "Diskon 11.11"** (board brief in `content_idea/PIPELINE.md`; editorial window 2–10 Nov 2026, so it is time-critical). Would be KASUS #09 (episode number 11). Recheck sources S11/S12 at production time.
+5. **UMP (08) fixes before publishing:** the board's audit asks to separate the regional minimum wage from an individual raise. The hook currently goes from "UMP naik 8%" to Nisa's "Gaji naik delapan persen…"; adjust the hook and add one line that UMP is a minimum, then regenerate voice and re-render. Also swap in October inflation (BPS release 2 Nov) or the official UMP 2027 figure if available; `episodes/08_ump/script-short.md` "Before rendering" lists every number to recompute.
+6. **IHSG (03) before publishing:** MSCI's 15 Oct 2026 consultation (Emerging → Standalone, decision by end of June 2027) is a proposal, not a downgrade; update the script context (board idea 2).
+7. Re-render the seven original episodes on this machine and compare scene boundaries, captions, SFX moments, duration, audio sync and loudness against the preserved baselines and existing outputs. Fresh-render fidelity of 01–07 is still unverified.
+8. For new production work, use the root `new` command, then edit the manifest, narration, sources, and custom scenes. Never recreate per-episode dependencies, voice tools, or shared asset libraries.
+9. Keep editorial approval for episodes 05–08 separate from technical approval. Preserve the review notes below.
 
 Use the CLI's scoped dry run for routine cleanup. Never delete all of `.cache/`: it also contains imported speech and archived copies of retired untracked source.
 
 ## Finished episodes and outputs
 
-Eight mastered outputs are in `out/` (synced to Google Drive):
+Ten mastered outputs exist. 01–08 are in `out/` on the Windows machine (synced to Google Drive); this WSL checkout's `out/` holds only 09 and 10:
 
 | File | Episode | Length |
 |---|---|---:|
@@ -57,6 +73,8 @@ Eight mastered outputs are in `out/` (synced to Google Drive):
 | `06-emas-short.mp4` | Emas Katanya Aman, Kok Turun 20%? (KASUS #06) | 99.8 s |
 | `07-kelas-short.mp4` | Kelas Menengah Hilang ke Mana? (KASUS #07) | 99.4 s |
 | `08-ump-short.mp4` | Gaji Naik 8%, Kok Tetap Kurang? (KASUS #08) | 101.8 s |
+| `09-sadap-short.mp4` | Eks Kapolri Ditahan: Diduga Sadap Presiden (HOTWIZZ #01) | 130.0 s |
+| `10-ksp-short.mp4` | Listyo Dicopot dari KSP: Sadapannya ke Mana? (HOTWIZZ #02) | 123.8 s |
 
 Episodes 03–08 were made 80–100 seconds long at the user's request (08 runs slightly over; cut one Muklis line if needed). 01–07 predate the refactor; on the previous host their re-render attempts failed at the loopback page, so those files are the original masters. 08 is the first fresh render from the shared pipeline: 1080×1920, 30 fps, -14.0 LUFS, -0.8 dBTP true peak (slightly over the -1 target after AAC encoding).
 
@@ -124,7 +142,7 @@ A fresh `npm ci` was attempted but could not complete offline in this environmen
 
 ## Verification limits
 
-**Passed:** clean builds followed by sync succeeded for all seven episodes; all seven HyperFrames lint checks passed with zero errors. Final source verification covered 7 episodes, 119 outputs, and 361 asset maps. Twenty integrated tests passed (4 retirement, 6 engine, 6 migration, 4 voice). Legacy retirement is complete; see `docs/refactor-retirement.json` for its measured scope.
+**Passed:** clean builds followed by sync succeeded for all seven episodes; all seven HyperFrames lint checks passed with zero errors. Final source verification covered 7 episodes, 119 outputs, and 361 asset maps. Twenty integrated tests passed (21 since the watermark test, 4 Nov) (4 retirement, 6 engine, 6 migration, 4 voice). Legacy retirement is complete; see `docs/refactor-retirement.json` for its measured scope.
 
 **Update (1 Nov 2026, this machine):** `stills` and a full mastered `render` work here; episode 08 was rendered successfully. Lint for 08 reports 0 errors (one caption-density warning, same as the others). The blocked result below applies to the previous host and to the seven original episodes, which have not yet been re-rendered.
 
@@ -150,5 +168,5 @@ Fresh online installation and Linux/WSL execution have not been verified. Browse
 - The earlier question about whether to ignore `out/` is resolved in the current root `.gitignore`. The four legacy per-episode renders remain preserved after retirement.
 - The prior `PIPELINE.md` (now `content_idea/PIPELINE.md`) status said cases #2–#6 were still marked “in production” pending approval to change their board state. That editorial update remains a separate user-review decision.
 - An audio pass was proposed but not started: Openverse was available for episode-specific SFX and licensed music; the “Real SFX Claude Skill” was not found; the installed Earshot plugin was for Claude Code event sounds rather than video sound effects. If that work resumes, confirm the intended SFX tool before proceeding.
-- Remaining ideas on the board: #7 PHK/dana darurat, #9 cabai, #10 BI Rate, and the new #11 Diskon 11.11, #12 biaya QRIS, #13 penyamaran identitas, #14 rumah subsidi. The board's recommended order is 11 → 12 → 13 → 14. The next case number is #09.
+- Remaining ideas on the board: #7 PHK/dana darurat, #9 cabai, #10 BI Rate, and the new #11 Diskon 11.11, #12 biaya QRIS, #13 penyamaran identitas, #14 rumah subsidi. The board's recommended order is 11 → 12 → 13 → 14. The next KASUS case number is #09; the next HotWizz is #03.
 - TikTok/Shorts covers: none are made yet. A cover frame can be exported with `stills <id> --at <s>`; a dedicated 1080×1920 cover per episode (title centred for the 3:4 profile crop) was offered but not requested.
