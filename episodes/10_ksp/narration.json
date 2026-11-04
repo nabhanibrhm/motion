@@ -1,0 +1,133 @@
+{
+ "comment": "HotWizz #02 follow-up (script-short.md, sources there). One female narrator (wec, F2). Legal framing: tersangka throughout, presumption of innocence stated, no motive asserted, both political readings balanced.",
+ "source": "supertonic",
+ "say": {
+  "Nasution": "nasutiyon",
+  "Letjen": "let-jen",
+  "update": "apdet"
+ },
+ "speakers": {
+  "wec": {
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "update",
+   "title": "Update Kasus Sadap"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Selasa malam dia ditahan. Rabu, Presiden memberhentikannya. Tapi satu pertanyaan terbesar belum terjawab. Hasil sadapannya diserahkan ke siapa?",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "pecat",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Rabu, empat November, Mensesneg Prasetyo Hadi mengumumkan: Presiden Prabowo memberhentikan Listyo Sigit Prabowo dari jabatan Kepala Staf Kepresidenan."
+    },
+    {
+     "speaker": "wec",
+     "text": "Alasannya, konsekuensi logis, karena beliau kini tersangka."
+    },
+    {
+     "speaker": "wec",
+     "text": "Untuk sementara tugasnya dijalankan Letjen TNI Ariyo Windutomo. Masa jabatan Listyo di sana: tiga puluh empat hari."
+    }
+   ]
+  },
+  {
+   "id": "istana",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Menurut Istana, Presiden prihatin luar biasa, dan meminta Kapolri mengusut seobjektif mungkin, tanpa ada yang ditutup-tutupi."
+    },
+    {
+     "speaker": "wec",
+     "text": "Istana bahkan menyebut perbuatan ini mengarah ke makar, karena informasi kepala negara sangat sensitif."
+    },
+    {
+     "speaker": "wec",
+     "text": "Sebelumnya, Selasa malam Menko Yusril menegaskan pasal makar sama sekali tidak digunakan. Pasal yang dikenakan polisi masih soal penyadapan."
+    }
+   ]
+  },
+  {
+   "id": "polri",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Dari Polri, Irwasum menegaskan: ini perbuatan oknum, bukan kebijakan institusi."
+    },
+    {
+     "speaker": "wec",
+     "text": "Motifnya belum diungkap. Tersangka baru, belum ada. Dan Listyo sendiri belum memberi pernyataan."
+    }
+   ]
+  },
+  {
+   "id": "kemana",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Di media sosial, pertanyaan yang paling sering muncul: hasil sadapannya mengalir ke mana?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Sebagian menduga ke kelompok politik tertentu. Sebagian lagi mengingatkan: belum ada satu bukti pun soal itu. Istana sendiri mengaku belum tahu."
+    },
+    {
+     "speaker": "wec",
+     "text": "Dan faktanya: kasus ini tidak sesederhana Geng Solo lawan kubu Prabowo. Listyo memang dikenal dekat dengan Jokowi. Tapi Irjen Ahrie Sonta, salah satu tersangka, pernah jadi ajudan Presiden Prabowo."
+    }
+   ]
+  },
+  {
+   "id": "penutup",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Jadi sekarang, tinggal tiga pertanyaan: apa peran masing-masing, ke mana hasilnya, dan untuk apa."
+    },
+    {
+     "speaker": "wec",
+     "text": "Sampai polisi menjawab tiga hal itu, semua teori di media sosial masih sekadar teori."
+    },
+    {
+     "speaker": "wec",
+     "text": "Ingat, ketiganya masih tersangka dan berhak atas praduga tak bersalah. Menurutmu pertanyaan mana yang harus dijawab duluan? Tulis di komentar dan follow untuk update berikutnya.",
+     "after": 0.6
+    }
+   ]
+  }
+ ]
+}

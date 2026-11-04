@@ -1,0 +1,112 @@
+<!-- Hook (HotWizz #02): frame 0 is the thumbnail: red UPDATE bar + HOTWIZZ bug, headline "DITAHAN → DIBERHENTIKAN", Listyo's KSP photo as a news photo with name card. On "ditahan" the SELASA card lights up; on "memberhentikannya" the RABU card lights up and DIBERHENTIKAN is stamped on the name card (never the face); on "pertanyaan" the photo block gives way to a phone with REC dot and a big "?"; on "Hasil" the label DISERAHKAN KE SIAPA? slams in. Photo: public/photos/listyo-ksp.jpg. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-ditahan" class="clip" src="public/sfx/pop-in.wav" data-at="word:ditahan" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:memberhentikannya" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-tanya" class="clip" src="public/sfx/whoosh.wav" data-at="word:pertanyaan" data-track-index="14" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-hasil" class="clip" src="public/sfx/ding.wav" data-at="word:Hasil" data-track-index="15" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const RED = "#ff2d3d";
+      const YEL = "#ffd23f";
+      const ORG = "#ff7a1a";
+      const mono = "'JetBrains Mono', monospace";
+      const osw = "Oswald, sans-serif";
+      // photo + name card geometry
+      const PX = 72, PY = 720, PW = 500, PH = 560;
+      const NY = PY + PH + 16;
+
+      window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
+        const C = F1.cine;
+        const ditahan = F1.wordFrame(S, "ditahan");
+        const berhenti = F1.wordFrame(S, "memberhentikannya");
+        const tanya = F1.wordFrame(S, "pertanyaan");
+        const hasil = F1.wordFrame(S, "Hasil");
+
+        const pulse = 0.5 + 0.5 * Math.sin(f / 5);
+        const c1 = F1.ramp(f, ditahan, 12, F1.expoOut);
+        const c2 = F1.ramp(f, berhenti, 12, F1.expoOut);
+        const out = 1 - F1.ramp(f, tanya - 2, 14, F1.expoOut); // photo block + cards leave
+        const phoneP = F1.ramp(f, tanya, 16, F1.expoOut);
+        const labelP = F1.ramp(f, hasil, 12, F1.expoOut);
+        const rec = Math.floor(f / 10) % 2 === 0;
+        const headDim = 1 - 0.65 * F1.ramp(f, tanya, 14, F1.expoOut);
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,#1b2133 0%,#0d0f16 70%)"></div>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<g opacity="0.5" stroke="${RED}" stroke-width="2">${Array.from({ length: 6 }, (_, i) => `<line x1="${n(-200 + i * 260 + (f * 0.6) % 260)}" y1="1500" x2="${n(100 + i * 260 + (f * 0.6) % 260)}" y2="1200" opacity="${n(0.15 + 0.1 * W.hash(i), 2)}"/>`).join("")}</g>
+</svg>
+<!-- UPDATE bar + HOTWIZZ bug -->
+<div style="position:absolute;left:72px;top:268px;width:888px;height:84px;background:${RED};display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-sizing:border-box;box-shadow:0 0 ${n(24 + 14 * pulse)}px rgba(255,45,61,0.55)">
+<div style="font-family:${osw};font-weight:700;font-size:58px;letter-spacing:8px;color:#fff"><span style="display:inline-block;width:22px;height:22px;border-radius:50%;background:#fff;margin-right:18px;opacity:${n(0.5 + 0.5 * pulse, 2)}"></span>UPDATE</div>
+<div style="font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:#0d0f16;background:${YEL};padding:6px 14px;border-radius:6px">HOTWIZZ</div></div>
+<!-- headline -->
+<div style="position:absolute;left:72px;top:366px;width:888px;opacity:${n(headDim, 3)};font-family:${osw};font-weight:700;line-height:1.0;letter-spacing:2px;color:#fff;text-shadow:0 6px 0 rgba(0,0,0,0.5)">
+<div style="font-size:150px"><span style="color:${YEL}">DITAHAN</span> <span style="color:${ORG}">→</span></div>
+<div style="font-size:116px">DIBERHENTIKAN</div></div>
+<div style="position:absolute;left:72px;top:655px;width:120px;height:8px;background:${ORG};opacity:${n(headDim, 3)}"></div>`;
+
+        // news photo with red rim + name card
+        const portrait = F1.Photo({ src: "public/photos/listyo-ksp.jpg", x: PX, y: PY, w: PW, h: PH, fit: "cover", focal: { x: 0.5, y: 0.3 }, enter: "none", border: 8, radius: 8, zoom: [1.0, 1.06], dur: 300 }, f);
+        const rim = `<div style="position:absolute;left:${PX - 8}px;top:${PY - 8}px;width:${PW + 16}px;height:${PH + 16}px;border:4px solid ${RED};border-radius:16px;box-shadow:0 0 30px rgba(255,45,61,0.45)"></div>`;
+        const card = `<div style="position:absolute;left:${PX}px;top:${NY}px;width:888px;height:96px;padding:12px 18px;box-sizing:border-box;background:#fff;border-left:10px solid ${RED};font-family:${mono};font-weight:700;font-size:25px;line-height:1.3;letter-spacing:0.5px;color:#0d0f16">LISTYO SIGIT PRABOWO ·<br>EKS KAPOLRI</div>`;
+        const stamp = f >= berhenti ? C.stamp(f, { at: berhenti + 4, x: 585, y: NY + 4, rot: -5, text: "DIBERHENTIKAN", size: 38, color: RED }) : "";
+
+        // date cards (right column), dim until their word
+        const dateCard = (y, p, date, what, col) => {
+          const a = 0.28 + 0.72 * p;
+          return `<div style="position:absolute;left:608px;top:${y}px;width:352px;height:250px;box-sizing:border-box;padding:22px 20px;border:4px solid ${p > 0.01 ? col : "#3a4256"};border-radius:14px;background:${p > 0.01 ? "rgba(13,15,22,0.9)" : "rgba(21,26,38,0.6)"};opacity:${n(a, 3)};transform:scale(${n(1 + 0.05 * Math.sin(Math.PI * Math.min(1, p)), 3)});box-shadow:${p > 0.01 ? `0 0 ${n(20 * p)}px ${col}77` : "none"}">
+<div style="font-family:${mono};font-weight:700;font-size:28px;letter-spacing:1px;color:#fff">${date}</div>
+<div style="width:60px;height:6px;background:${col};margin:14px 0"></div>
+<div style="font-family:${osw};font-weight:700;font-size:${what.length > 12 ? 40 : 66}px;line-height:1.05;letter-spacing:1px;color:${col}">${what}</div></div>`;
+        };
+        const photoBlock = out > 0.01 ? `<div style="position:absolute;inset:0;opacity:${n(out, 3)};transform:translateX(${n((1 - out) * -120)}px)">
+${rim}${portrait}${card}${stamp}
+${dateCard(PY, c1, "SELASA, 3 NOV", "DITAHAN", YEL)}
+${dateCard(PY + 270, c2, "RABU, 4 NOV", "DIBERHENTIKAN DARI KSP", RED)}</div>` : "";
+
+        // phone with REC dot and big "?"
+        const pcx = 540, pcy = 975;
+        const sc = 0.5 + 1.05 * phoneP;
+        const q = 1 + 0.06 * Math.sin(f / 6);
+        const waves = [0, 1, 2].map((i) => {
+          const k = ((f - tanya) / 40 + i / 3) % 1;
+          const r = 260 + k * 150;
+          return `<circle cx="${pcx}" cy="${pcy}" r="${n(r)}" fill="none" stroke="${YEL}" stroke-width="5" opacity="${n((1 - k) * 0.5 * phoneP, 2)}"/>`;
+        }).join("");
+        const phone = phoneP > 0 ? `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0;opacity:${n(phoneP, 3)}">
+${waves}
+<g transform="translate(${pcx} ${pcy}) scale(${n(sc, 3)}) rotate(${n(4 * (1 - phoneP) + 3, 2)})">
+<rect x="-100" y="-190" width="200" height="380" rx="30" fill="#1b2133" stroke="#fff" stroke-width="5"/>
+<rect x="-84" y="-164" width="168" height="328" rx="14" fill="#0d0f16"/>
+<rect x="-26" y="-178" width="52" height="8" rx="4" fill="#fff"/>
+<circle cx="-54" cy="-136" r="${rec ? 10 : 6}" fill="${RED}"/>
+<text x="-34" y="-128" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#fff">REC</text>
+<text x="0" y="${n(60 * q)}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="${n(190 * q)}" fill="${YEL}">?</text>
+</g></svg>` : "";
+        const label = labelP > 0 ? `<div style="position:absolute;left:72px;top:${n(1310 + (1 - labelP) * 40)}px;width:888px;text-align:center;opacity:${n(labelP, 3)};transform:scale(${n(0.8 + 0.2 * labelP, 3)});font-family:${osw};font-weight:700;font-size:78px;white-space:nowrap;letter-spacing:3px;color:${YEL};text-shadow:0 6px 0 rgba(0,0,0,0.6)">DISERAHKAN KE SIAPA?</div>` : "";
+
+        return F1.join(
+          C.stage(f, D, BG + photoBlock + phone + label, {
+            whip: false,
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 45 },
+              { at: tanya - 4, scale: 1.03, ox: 50, oy: 55, ease: 14 },
+            ],
+          }),
+          C.vignette(0.35, "50% 50%", 45),
+          C.progress(f, { step: 1, label: "UPDATE" }),
+        );
+      });
+    })();
+  </script>
+</template>

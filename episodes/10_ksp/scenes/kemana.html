@@ -1,0 +1,129 @@
+<!-- Kemana: line 1 "HASIL SADAPAN -> ?" with data packets flowing to a big question mark; line 2 two identical bubbles (menduga / mengingatkan), one BELUM TERBUKTI stamp on both at the same frame on "belum", chip ISTANA: BELUM TAHU on "Istana", no faces; line 3 bubbles clear on "faktanya", two identical columns (Jokowi + Listyo card, Prabowo + Ahrie card), same size/treatment/brightness, neither dims. Photo credit for Ahrie on screen. Sumber: lihat script-short.md S9-S12. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="kemana" data-width="1080" data-height="1920">
+    <div id="kemana-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kemana-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kemana-sfx-menduga" class="clip" src="public/sfx/pop.wav" data-at="word:menduga" data-track-index="13" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kemana-sfx-belum" class="clip" src="public/sfx/stamp.wav" data-at="word:belum" data-track-index="14" data-volume="0.28"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kemana-sfx-geng" class="clip" src="public/sfx/pop-in.wav" data-at="word:Geng" data-track-index="15" data-volume="0.15"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const mono = "'JetBrains Mono', monospace";
+      const osw = "Oswald, sans-serif";
+      window.__timelines["kemana"] = F1.scene("kemana", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const sebagian = w("Sebagian");
+        const menduga = w("menduga");
+        const mengingatkan = w("mengingatkan");
+        const belum = w("belum");
+        const istana = w("Istana");
+        const faktanya = w("faktanya");
+        const tidak = w("tidak");
+        const geng = w("Geng");
+        const listyo = w("Listyo");
+        const jokowi = w("Jokowi");
+        const ahrie = w("Ahrie");
+        const ajudan = w("ajudan");
+        const mana = w("mana");
+        const l1 = F1.line(S, 0).start;
+
+        // ---- beat 1: HASIL SADAPAN -> ? ----
+        const out1 = F1.ramp(f, sebagian - 2, 12, F1.easeOut);
+        let B1 = "";
+        if (out1 < 1) {
+          const hp = F1.ramp(f, l1 + 4, 14, F1.expoOut);
+          const qp = F1.ramp(f, mana - 4, 14, F1.backOut);
+          const pulse = 1 + 0.04 * Math.sin(f / 7);
+          const qs = (0.8 + 0.2 * Math.min(1.1, qp)) * pulse;
+          let pk = "";
+          for (let i = 0; i < 9; i++) {
+            const h = F1.world.hash(i + 3);
+            const t = (((f - l1) / 70 + i / 9) % 1 + 1) % 1;
+            const x = 330 + t * 380;
+            const y = 940 + (h - 0.5) * 200 * (1 - t * 0.85);
+            const sc = 1 - 0.55 * t * t;
+            const op = Math.min(1, t * 8) * (1 - Math.max(0, (t - 0.85) / 0.15));
+            pk += `<div style="position:absolute;left:${n(x)}px;top:${n(y)}px;width:62px;height:34px;border-radius:8px;background:${h > 0.5 ? "#ff7a1a" : "#ffd23f"};opacity:${n(op * hp, 3)};transform:scale(${n(sc, 3)});display:flex;align-items:center;justify-content:center;font-family:${mono};font-weight:700;font-size:15px;color:#0d0f16">${h > 0.5 ? "01101" : "10010"}</div>`;
+          }
+          const rec = Math.floor(f / 15) % 2 === 0 ? 1 : 0.25;
+          B1 = `<div style="position:absolute;inset:0;opacity:${n(1 - out1, 3)};transform:translateY(${n(-30 * out1)}px)">
+<div style="position:absolute;left:0;width:1080px;top:520px;text-align:center;font-family:${osw};font-weight:700;font-size:100px;letter-spacing:3px;color:#fff;opacity:${n(hp, 3)};transform:scale(${n(0.9 + 0.1 * hp, 3)})">HASIL SADAPAN <span style="color:#ff2d3d">→ ?</span></div>
+<div style="position:absolute;left:70px;top:840px;width:240px;height:200px;border-radius:18px;background:#151a26;border:4px solid #fff;opacity:${n(hp, 3)}">
+<div style="position:absolute;left:24px;top:22px;display:flex;align-items:center;gap:10px;font-family:${mono};font-weight:700;font-size:24px;color:#fff"><span style="width:18px;height:18px;border-radius:50%;background:#ff2d3d;opacity:${rec}"></span>REC</div>
+<div style="position:absolute;left:24px;bottom:24px;font-family:${osw};font-weight:600;font-size:40px;letter-spacing:2px;line-height:1.1;color:#ffd23f">REKAMAN<br>SADAPAN</div></div>
+<div style="position:absolute;left:310px;top:956px;width:410px;height:0;border-top:4px dashed rgba(255,255,255,0.35);opacity:${n(hp, 3)}"></div>
+${pk}
+<div style="position:absolute;left:640px;top:690px;width:340px;text-align:center;font-family:${osw};font-weight:700;font-size:520px;line-height:1;color:#ff2d3d;opacity:${n(Math.min(1, 0.55 + 0.45 * qp), 3)};transform:scale(${n(qs, 3)});transform-origin:50% 55%;text-shadow:0 0 60px rgba(255,45,61,0.45)">?</div></div>`;
+        }
+
+        // ---- beat 2: two identical bubbles, one stamp frame, no faces ----
+        const out2 = F1.ramp(f, faktanya - 2, 10, F1.easeOut);
+        const BW = 430, BH = 340, BY = 790, BLX = 60, BRX = 520;
+        const bubble = (x, at, text) => {
+          const p = F1.ramp(f, at, 12, F1.backOut);
+          if (p <= 0) return "";
+          return `<div style="position:absolute;left:${x}px;top:${BY}px;width:${BW}px;height:${BH}px;opacity:${n(Math.min(1, p), 3)};transform:translateY(${n((1 - p) * 40)}px) scale(${n(0.85 + 0.15 * Math.min(1, p), 3)})">
+<div style="position:absolute;left:70px;top:-18px;width:30px;height:30px;background:#151a26;border-left:4px solid #fff;border-top:4px solid #fff;transform:rotate(45deg)"></div>
+<div style="position:absolute;inset:0;border-radius:22px;background:#151a26;border:4px solid #fff;display:flex;align-items:flex-start;justify-content:center;text-align:center;padding:60px 26px 0;box-sizing:border-box;font-family:${osw};font-weight:600;font-size:46px;line-height:1.2;letter-spacing:1px;color:#fff">${text}</div></div>`;
+        };
+        const stampAt = (x) => (f >= belum ? C.stamp(f, { at: belum, x, y: BY + 215, rot: -6, text: "BELUM TERBUKTI", color: "#2a2a2e", size: 34 }) : "");
+        let B2 = "";
+        if (out2 < 1 && f >= menduga - 14) {
+          const cp = F1.ramp(f, menduga - 12, 12, F1.expoOut);
+          B2 = `<div style="position:absolute;inset:0;opacity:${n(1 - out2, 3)};transform:translateY(${n(-30 * out2)}px)">
+<div style="position:absolute;left:60px;width:890px;top:640px;text-align:center;font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:#c9c6c0;opacity:${n(cp, 3)}">DUGAAN DI MEDIA SOSIAL · BUKAN FAKTA</div>
+${bubble(BLX, menduga - 2, "KE KELOMPOK TERTENTU?")}
+${bubble(BRX, mengingatkan - 2, "BELUM ADA BUKTI")}
+${stampAt(BLX + 40)}${stampAt(BRX + 40)}</div>`;
+        }
+
+        // ---- beat 3: two identical columns ----
+        const CW = 400, LX = 95, RX = 525, PY = 540, PH = 380, TY = PY + PH + 14;
+        const col = (x, src, name, role, cardSrc, cardName, cardRole, cardAt, labelAt, label, credit) => {
+          const ph = F1.Photo({ src, x, y: PY, w: CW, h: PH, fit: "cover", focal: { x: 0.5, y: 0.3 }, at: geng, enter: "rise", enterFrames: 16, border: 8, radius: 14, dur: 400, zoom: [1, 1.04] }, f);
+          const tp = F1.ramp(f, geng + 8, 12, F1.expoOut);
+          const nm = tp <= 0 ? "" : `<div style="position:absolute;left:${x}px;top:${TY}px;width:${CW}px;text-align:center;opacity:${n(tp, 3)}">
+<div style="font-family:${osw};font-weight:600;font-size:38px;letter-spacing:2px;color:#fff">${name}</div></div>`;
+          const cp = F1.ramp(f, cardAt - 4, 14, F1.expoOut);
+          const LY = TY + 64, CY = LY + 50, CH = 150;
+          const lp = F1.ramp(f, cardAt - 8, 10, F1.easeOut);
+          const line = lp <= 0 ? "" : `<div style="position:absolute;left:${x + CW / 2 - 2}px;top:${LY}px;width:4px;height:${n(50 * lp)}px;background:#ffd23f"></div>`;
+          const card = cp <= 0 ? "" : `<div style="position:absolute;left:${x}px;top:${CY}px;width:${CW}px;height:${CH}px;opacity:${n(cp, 3)};transform:translateY(${n((1 - cp) * 24)}px)">
+<div style="position:absolute;inset:0;border-radius:16px;background:#151a26;border:3px solid rgba(255,255,255,0.85)"></div>
+${F1.Photo({ src: cardSrc, x: 18, y: 25, w: 100, h: 100, fit: "cover", focal: { x: 0.5, y: 0.25 }, enter: "none", border: 4, radius: 8, dur: 200, zoom: [1, 1.03] }, f)}
+<div style="position:absolute;left:134px;top:0;right:14px;height:${CH}px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+<div style="font-family:${mono};font-weight:700;font-size:16px;letter-spacing:1px;line-height:1.25;color:#c9c6c0">${cardName} · TERSANGKA</div>
+<div style="font-family:${osw};font-weight:600;font-size:30px;letter-spacing:1px;white-space:nowrap;color:#fff">${cardRole}</div></div></div>`;
+          const lb = F1.ramp(f, labelAt - 2, 10, F1.expoOut);
+          const lab = lb <= 0 ? "" : `<div style="position:absolute;left:${x}px;top:${CY + CH + 18}px;width:${CW}px;height:76px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:${osw};font-weight:600;font-size:30px;letter-spacing:2px;line-height:1.15;color:#ffd23f;opacity:${n(lb, 3)};transform:translateY(${n((1 - lb) * 14)}px)">${role}</div>`;
+          const cr = cp <= 0 || !credit ? "" : `<div style="position:absolute;left:${x}px;top:${CY + CH + 100}px;width:${CW}px;text-align:center;font-family:${mono};font-weight:500;font-size:16px;color:#8d8a84;opacity:${n(cp, 3)}">${credit}</div>`;
+          return ph + nm + line + card + lab + cr;
+        };
+        let B3 = "";
+        if (f >= tidak - 10) {
+          const hp = F1.ramp(f, tidak - 6, 14, F1.expoOut);
+          B3 = `<div style="position:absolute;left:0;width:1080px;top:418px;text-align:center;font-family:${osw};font-weight:700;font-size:62px;letter-spacing:3px;color:#fff;opacity:${n(hp, 3)};transform:translateY(${n((1 - hp) * 20)}px)">TIDAK <span style="color:#ffd23f">SESEDERHANA</span> ITU</div>
+${col(LX, "public/photos/jokowi.jpg", "JOKO WIDODO", "EKS AJUDAN<br>PRESIDEN JOKOWI", "public/photos/listyo-ksp.jpg", "LISTYO SIGIT PRABOWO", "EKS KAPOLRI", listyo, jokowi, "", "")}
+${col(RX, "public/photos/prabowo.jpg", "PRABOWO SUBIANTO", "AJUDAN PRESIDEN<br>PRABOWO · OKT 2024", "public/photos/ahrie.jpg", "IRJEN AHRIE SONTA", "KADIVKUM POLRI", ahrie, ajudan, "", "Foto: Ahrie Sonta Nasution · CC BY-SA 4.0")}`;
+        }
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1b2132 0%, #0d0f16 75%)"></div>${B1}${B2}${B3}`;
+        const chipOn = f >= istana - 2 && out2 < 1;
+
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.02, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 50 }] }),
+          C.vignette(0.35, "50% 50%", 55),
+          chipOn ? C.chip(f, { at: istana - 2, text: "ISTANA: BELUM TAHU" }) : "",
+          C.progress(f, { step: 5, label: "PERTANYAAN WARGANET" }),
+        );
+      });
+    })();
+  </script>
+</template>

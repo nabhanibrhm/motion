@@ -1,0 +1,73 @@
+<!-- Polri: case-file checklist. Items appear on "oknum" (checked), "Motifnya", "Tersangka", "pernyataan" (yellow BELUM markers, never red). Sumber: Beritasatu, Kumparan, AP. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="polri" data-width="1080" data-height="1920">
+    <div id="polri-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="polri-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="polri-sfx-oknum" class="clip" src="public/sfx/ding.wav" data-at="word:oknum" data-track-index="13" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="polri-sfx-motif" class="clip" src="public/sfx/pop-in.wav" data-at="word:Motifnya" data-track-index="14" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="polri-sfx-tersangka" class="clip" src="public/sfx/pop.wav" data-at="word:Tersangka" data-track-index="15" data-volume="0.12"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const mono = "'JetBrains Mono', monospace";
+      window.__timelines["polri"] = F1.scene("polri", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const items = [
+          { at: w("oknum"), pre: w("Irwasum"), tag: "IRWASUM", text: "OKNUM, BUKAN INSTITUSI", done: true },
+          { at: w("Motifnya"), tag: "MOTIF", text: "BELUM DIUNGKAP" },
+          { at: w("Tersangka"), tag: "TERSANGKA BARU", text: "BELUM ADA" },
+          { at: w("pernyataan"), pre: w("Listyo"), tag: "PERNYATAAN LISTYO", text: "BELUM ADA" },
+        ];
+
+        const PX = 72, PW = 936, PY = 520, HDR = 74, RH = 190, GAP = 18;
+        const PH = HDR + items.length * (RH + GAP) + 6;
+        const pp = F1.ramp(f, 6, 16, F1.expoOut);
+
+        const row = (it, i) => {
+          const y = PY + HDR + i * (RH + GAP);
+          const p = F1.ramp(f, it.at - 6, 12, F1.backOut);
+          if (p <= 0) return "";
+          const pe = Math.min(1, p);
+          const mk = F1.ramp(f, it.at + 4, 10, F1.backOut);
+          const col = it.done ? "#35d07f" : "#ffd23f";
+          const glow = Math.max(0, 1 - (f - it.at) / 24);
+          const marker = it.done
+            ? `<svg width="88" height="88" viewBox="0 0 88 88" style="position:absolute;right:28px;top:${(RH - 88) / 2}px;opacity:${n(Math.min(1, mk), 3)};transform:scale(${n(Math.max(0, mk), 3)})"><circle cx="44" cy="44" r="40" fill="none" stroke="${col}" stroke-width="6"/><path d="M24 46 L38 60 L64 30" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" stroke-dashoffset="${n(70 * (1 - Math.min(1, F1.ramp(f, it.at + 4, 12, F1.easeOut))))}"/></svg>`
+            : `<div style="position:absolute;right:28px;top:${(RH - 88) / 2}px;width:88px;height:88px;border-radius:50%;border:6px dashed ${col};box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-family:Oswald,sans-serif;font-weight:700;font-size:56px;color:${col};opacity:${n(Math.min(1, mk), 3)};transform:scale(${n(Math.max(0, mk), 3)}) rotate(${n(Math.sin(f / 14 + i) * 4, 2)}deg)">?</div>`;
+          const badge = it.done ? "" : `<span style="display:inline-block;margin-left:14px;padding:2px 12px;border-radius:6px;background:#ffd23f;color:#111;font-family:${mono};font-weight:700;font-size:22px;letter-spacing:2px;vertical-align:middle">BELUM</span>`;
+          return `<div style="position:absolute;left:${n(PX + 18 + (1 - pe) * 70)}px;top:${y}px;width:${PW - 36}px;height:${RH}px;opacity:${n(pe, 3)}">
+<div style="position:absolute;inset:0;border-radius:16px;background:#1b2132;border:3px solid ${it.done ? "#35d07f" : "rgba(255,210,63,0.55)"};box-shadow:0 0 ${n(30 * glow)}px ${it.done ? "rgba(53,208,127,0.55)" : "rgba(255,210,63,0.45)"}"></div>
+<div style="position:absolute;left:30px;top:0;right:140px;height:${RH}px;display:flex;flex-direction:column;justify-content:center;gap:10px">
+<div style="font-family:${mono};font-weight:700;font-size:24px;letter-spacing:3px;color:#c9c6c0">${it.tag}</div>
+<div style="font-family:Oswald,sans-serif;font-weight:700;font-size:${it.done ? 52 : 60}px;line-height:1.05;letter-spacing:1px;color:${it.done ? "#fff" : "#ffd23f"}">${it.text}${badge}</div>
+</div>${marker}</div>`;
+        };
+
+        const PANEL = pp <= 0 ? "" : `<div style="position:absolute;left:${PX}px;top:${n(PY + (1 - pp) * 50)}px;width:${PW}px;height:${PH}px;opacity:${n(pp, 3)}">
+<div style="position:absolute;inset:0;border-radius:24px;background:#151a26;border:4px solid rgba(255,255,255,0.85)"></div>
+<div style="position:absolute;left:50%;top:-18px;width:160px;height:36px;margin-left:-80px;border-radius:10px;background:#ffd23f"></div>
+<div style="position:absolute;left:34px;top:22px;font-family:${mono};font-weight:700;font-size:26px;letter-spacing:4px;color:#ff7a1a">BERKAS KASUS · PENYADAPAN</div>
+<div style="position:absolute;left:34px;right:34px;top:${HDR - 6}px;height:2px;background:rgba(255,255,255,0.18)"></div></div>`;
+
+        const chipAt = items[0].at + 20;
+        const cp = F1.ramp(f, chipAt, 14, F1.expoOut);
+        const CHIP = cp <= 0 ? "" : `<div style="position:absolute;left:590px;top:290px;width:340px;text-align:center;line-height:1.4;opacity:${n(cp, 3)};transform:translateY(${n((1 - cp) * 20)}px);padding:10px 20px;border-radius:10px;background:#111;border:2px solid rgba(255,255,255,0.5);font-family:${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#fff">3 TERSANGKA<br>DITAHAN RUTAN MABES</div>`;
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1b2132 0%, #0d0f16 75%)"></div>${PANEL}${items.map(row).join("")}${CHIP}`;
+
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.025, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 50 }] }),
+          C.vignette(0.35, "50% 50%", 55),
+          C.hud(f, { at: 4, kicker: "POLRI", big: "STATUS KASUS", sub: "PERNYATAAN RESMI & YANG BELUM ADA", src: "Beritasatu, Kumparan, AP", bigSize: 52 }),
+          C.progress(f, { step: 4, label: "KATA POLRI" }),
+        );
+      });
+    })();
+  </script>
+</template>

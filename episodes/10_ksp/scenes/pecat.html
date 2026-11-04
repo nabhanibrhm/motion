@@ -1,0 +1,95 @@
+<!-- Pecat: Prasetyo announces (photo), Listyo KSP card stamped DIBERHENTIKAN on the name card, quote KONSEKUENSI LOGIS + STATUS: TERSANGKA, Plt KSP Ariyo card, day counter 1 OKT -> 4 NOV = 34 HARI. Sumber: Mensesneg via detik, Kompas. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="pecat" data-width="1080" data-height="1920">
+    <div id="pecat-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pecat-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:Prasetyo" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pecat-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:memberhentikan" data-track-index="13" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pecat-sfx-ariyo" class="clip" src="public/sfx/pop-in.wav" data-at="word:Ariyo" data-track-index="14" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pecat-sfx-tick" class="clip" src="public/sfx/tick.wav" data-at="word:tiga" data-track-index="15" data-volume="0.15"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const mono = "'JetBrains Mono', monospace";
+      window.__timelines["pecat"] = F1.scene("pecat", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const prasetyo = w("Prasetyo");
+        const memberhentikan = w("memberhentikan");
+        const konsekuensi = w("konsekuensi");
+        const tersangka = w("tersangka");
+        const letjen = w("Letjen");
+        const ariyo = w("Ariyo");
+        const masa = w("Masa");
+        const tiga = w("tiga");
+        const hari = w("hari");
+
+        // a person card: photo + name card below; visible in [at, out)
+        const PX = 320, PW = 440, PH = 500, PY = 520, CY = 1055, CX = 100, CW = 880, CH = 150;
+        const person = (at, out, src, focal, name, role, tilt, accent) => {
+          if (f < at || f >= out) return "";
+          const fade = 1 - F1.ramp(f, out - 8, 8);
+          const p = F1.ramp(f, at + 8, 14, F1.expoOut);
+          const photo = F1.Photo({ src, x: PX, y: PY, w: PW, h: PH, fit: "cover", focal, at, enter: "rise", enterFrames: 16, border: 8, radius: 14, tilt, dur: 400, zoom: [1, 1.04] }, f);
+          return `<div style="position:absolute;inset:0;opacity:${n(fade, 3)}">${photo}
+<div style="position:absolute;left:${CX}px;top:${n(CY + (1 - p) * 30)}px;width:${CW}px;height:${CH}px;opacity:${n(p, 3)}">
+<div style="position:absolute;inset:0;border-radius:16px;background:#151a26;border:3px solid ${accent}"></div>
+<div style="position:absolute;left:30px;top:0;right:30px;height:${CH}px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+<div style="font-family:${mono};font-weight:700;font-size:22px;letter-spacing:2px;color:${accent === "#fff" ? "#ffd23f" : accent}">${role}</div>
+<div style="font-family:Oswald,sans-serif;font-weight:600;font-size:46px;letter-spacing:1px;line-height:1.1;color:#fff">${name}</div></div></div></div>`;
+        };
+
+        const tPras = prasetyo - 6;
+        const tList = memberhentikan - 6;
+        const tQuote = konsekuensi - 6;
+        const tAr = ariyo - 8;
+        const tCount = masa - 4;
+
+        const PRAS = person(tPras, tList - 2, "public/photos/prasetyo.jpg", { x: 0.5, y: 0.3 }, "PRASETYO HADI", "● MENSESNEG", -1.5, "#fff");
+        const LIST = person(tList, tQuote - 2, "public/photos/listyo-ksp.jpg", { x: 0.5, y: 0.3 }, "LISTYO SIGIT PRABOWO", "KEPALA STAF KEPRESIDENAN", 0, "#fff");
+        const ARI = person(tAr, tCount - 2, "public/photos/ariyo.jpg", { x: 0.5, y: 0.3 }, "LETJEN TNI ARIYO WINDUTOMO", "PLT KSP", 1.5, "#ffd23f");
+        const stampOn = f >= memberhentikan + 8 && f < tQuote - 2;
+        const STAMP = stampOn ? `<div style="position:absolute;inset:0;opacity:${n(1 - F1.ramp(f, tQuote - 10, 8), 3)}">${C.stamp(f, { at: memberhentikan + 8, x: 630, y: CY + 48, rot: -4, text: "DIBERHENTIKAN", color: "#ff2d3d", size: 36 })}</div>` : "";
+
+        // quote beat
+        let QUOTE = "";
+        if (f >= tQuote && f < tAr + 4) {
+          const p = F1.ramp(f, tQuote, 14, F1.backOut);
+          const fade = 1 - F1.ramp(f, tAr - 4, 8);
+          QUOTE = `<div style="position:absolute;left:70px;top:620px;width:940px;text-align:center;opacity:${n(Math.min(1, p) * fade, 3)};transform:scale(${n(0.85 + 0.15 * Math.min(1, p), 3)})">
+<div style="font-family:Oswald,sans-serif;font-weight:700;font-size:150px;line-height:1.02;letter-spacing:2px;color:#fff;text-shadow:0 6px 30px rgba(255,45,61,0.45)">"KONSEKUENSI<br><span style="color:#ff2d3d">LOGIS"</span></div></div>
+<div style="opacity:${n(fade, 3)}">${C.tag(f, { at: tersangka - 4, x: 330, y: 1010, rot: -3, text: "STATUS: TERSANGKA", size: 44, light: true })}</div>`;
+        }
+
+        // counter beat
+        let COUNT = "";
+        if (f >= tCount) {
+          const p = F1.ramp(f, tCount, 14, F1.expoOut);
+          const k = F1.ramp(f, tiga, hari + 10 - tiga, F1.easeOut);
+          const days = Math.round(34 * k);
+          const bar = n(k * 100, 2);
+          COUNT = `<div style="position:absolute;left:70px;top:640px;width:940px;text-align:center;opacity:${n(p, 3)};transform:translateY(${n((1 - p) * 40)}px)">
+<div style="font-family:${mono};font-weight:700;font-size:56px;letter-spacing:3px;color:#c9c6c0">1 OKT <span style="color:#ff2d3d">→</span> 4 NOV</div>
+<div style="font-family:Oswald,sans-serif;font-weight:700;font-size:260px;line-height:1.05;color:#ffd23f;margin-top:30px">${days}<span style="font-size:110px;color:#fff;letter-spacing:4px"> HARI</span></div>
+<div style="margin:36px auto 0;width:700px;height:16px;border-radius:8px;background:#151a26;border:2px solid rgba(255,255,255,0.4);overflow:hidden"><div style="width:${bar}%;height:100%;background:linear-gradient(90deg,#ff7a1a,#ff2d3d)"></div></div>
+<div style="font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:#8d8a84;margin-top:16px">MASA JABATAN LISTYO SEBAGAI KSP</div></div>`;
+        }
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1b2132 0%, #0d0f16 75%)"></div>
+${PRAS}${LIST}${ARI}${QUOTE}${COUNT}`;
+
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.025, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 50 }] }),
+          C.vignette(0.35, "50% 50%", 55),
+          STAMP,
+          C.hud(f, { at: 4, kicker: "RABU · ISTANA", big: "4 NOV 2026", sub: "PENGUMUMAN MENSESNEG", src: "Mensesneg via detik, Kompas", bigSize: 52 }),
+          C.progress(f, { step: 2, label: "KSP DIBERHENTIKAN" }),
+        );
+      });
+    })();
+  </script>
+</template>

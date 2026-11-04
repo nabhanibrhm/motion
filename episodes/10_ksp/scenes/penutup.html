@@ -1,0 +1,74 @@
+<!-- Penutup (ksp): three question cards light up on "peran"/"hasilnya"/"untuk"; on "teori" a dashed TEORI != FAKTA label; on "Ingat" end card STATUS, then CTA on "Menurutmu", FOLLOW chip on "follow", footer. No photos. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="penutup" data-width="1080" data-height="1920">
+    <div id="penutup-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-peran" class="clip" src="public/sfx/pop-in.wav" data-at="word:peran" data-track-index="13" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-tersangka" class="clip" src="public/sfx/stamp.wav" data-at="word:Ingat" data-track-index="14" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-follow" class="clip" src="public/sfx/ding.wav" data-at="word:follow" data-track-index="15" data-volume="0.15"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const RED = "#ff2d3d", ORG = "#ff7a1a", YEL = "#ffd23f";
+      const mono = "'JetBrains Mono', monospace";
+      window.__timelines["penutup"] = F1.scene("penutup", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const peran = w("peran"), hasilnya = w("hasilnya"), untuk = w("untuk"), teori = w("teori");
+        const ingat = w("Ingat"), menurutmu = w("Menurutmu"), follow = w("follow");
+        const pop = (at, d = 12) => Math.min(1, F1.ramp(f, at, d, F1.backOut));
+        const txt = (s, size, color, extra = "") => `font-family:Oswald;font-weight:700;font-size:${size}px;color:${color};letter-spacing:2px;${extra}`;
+        const box = (x, y, wd, inner, extra = "") => `<div style="position:absolute;left:${x}px;top:${y}px;width:${wd}px;text-align:center;${extra}">${inner}</div>`;
+        const sh = (p) => `opacity:${n(p, 3)};transform:translateY(${n((1 - p) * 40)}px) scale(${n(0.9 + 0.1 * p, 3)})`;
+
+        // ---- question cards ----
+        const qs = [["1", "PERAN MASING-MASING?", peran, YEL], ["2", "KE MANA HASILNYA?", hasilnya, ORG], ["3", "UNTUK APA?", untuk, RED]];
+        const gone = F1.ramp(f, ingat - 6, 14, F1.easeIn);
+        let cards = "";
+        qs.forEach(([num, label, at, col], i) => {
+          const enter = pop(8 + i * 5, 14);
+          const lit = F1.ramp(f, at - 2, 8, F1.easeOut);
+          const y = 360 + i * 270;
+          const pulse = lit * (1 - F1.ramp(f, at + 10, 14, F1.easeOut));
+          cards += `<div style="position:absolute;left:70px;top:${n(y + (1 - enter) * 60 - gone * 120)}px;width:880px;height:230px;border-radius:26px;opacity:${n(enter * (1 - gone), 3)};background:${lit > 0.01 ? "rgba(255,255,255,0.05)" : "#151a26"};border:6px solid ${lit > 0.5 ? col : "#2a3144"};box-shadow:0 0 ${n(60 * lit + 40 * pulse)}px ${col}${lit > 0.5 ? "88" : "00"}">
+<div style="position:absolute;left:34px;top:34px;width:160px;height:160px;border-radius:80px;background:${lit > 0.5 ? col : "#2a3144"};color:${lit > 0.5 ? "#0d0f16" : "#9aa3b8"};text-align:center;${txt("", 120, "inherit", "line-height:164px")}">${num}</div>
+<div style="position:absolute;left:230px;top:0;width:620px;height:230px;display:flex;align-items:center;${txt("", 74, lit > 0.5 ? "#fff" : "#8b94aa", "line-height:80px;letter-spacing:2px")}">${label}</div></div>`;
+        });
+        // teori overlay
+        const tp = pop(teori - 2, 12), tOut = F1.ramp(f, ingat - 6, 14, F1.easeIn);
+        const TEORI = tp <= 0 || tOut >= 1 ? "" : `<div style="position:absolute;left:150px;top:${n(1220 + (1 - tp) * 40)}px;width:780px;opacity:${n(tp * (1 - tOut), 3)};transform:rotate(-3deg);text-align:center">
+<div style="${txt("", 78, YEL, "padding:12px 0;border:6px dashed " + YEL + ";border-radius:18px;background:rgba(13,15,22,0.92);letter-spacing:5px")}">TEORI ≠ FAKTA</div></div>`;
+        const HEAD = F1.ramp(f, 2, 14, F1.easeOut) * (1 - gone) <= 0 ? "" : box(0, 250, 1080, `<span style="font-family:${mono};font-weight:700;font-size:34px;letter-spacing:6px;color:#9aa3b8">TINGGAL TIGA PERTANYAAN</span>`, `opacity:${n(F1.ramp(f, 2, 14, F1.easeOut) * (1 - gone), 3)}`);
+
+        // ---- end card ----
+        const e1 = pop(ingat, 12), e2 = pop(menurutmu, 12), e3 = pop(menurutmu + 14, 12), e4 = pop(follow, 12);
+        const e5 = F1.ramp(f, follow + 8, 14, F1.easeOut);
+        let chips = "";
+        ["1", "2", "3"].forEach((c, i) => {
+          const p = pop(menurutmu + 16 + i * 4, 10);
+          chips += `<div style="display:inline-block;width:120px;height:120px;margin:0 22px;border-radius:60px;background:${[YEL, ORG, RED][i]};color:#0d0f16;text-align:center;${txt("", 84, "#0d0f16", "line-height:124px")};opacity:${n(p, 3)};transform:scale(${n(0.6 + 0.4 * p, 3)})">${c}</div>`;
+        });
+        const CARD = f < ingat - 2 ? "" : `
+${box(60, 330, 960, `<div style="font-family:${mono};font-weight:700;font-size:34px;letter-spacing:5px;color:#9aa3b8">STATUS:</div><div style="${txt("", 170, YEL, "line-height:170px;letter-spacing:4px")}">TERSANGKA</div><div style="${txt("", 56, "#fff", "letter-spacing:3px")}">· PRADUGA TAK BERSALAH ·</div>`, sh(e1))}
+${e2 <= 0 ? "" : box(60, 760, 960, `<div style="${txt("", 78, "#fff", "line-height:86px;letter-spacing:2px")}">PERTANYAAN MANA YANG<br><span style="color:${ORG}">HARUS DIJAWAB DULUAN?</span></div>`, sh(e2))}
+${e3 <= 0 ? "" : box(60, 1000, 960, chips, "")}
+${e4 <= 0 ? "" : box(180, 1230, 720, `<div style="${txt("", 54, "#0d0f16", "padding:10px 0;border-radius:14px;background:" + YEL + ";letter-spacing:4px")}">FOLLOW UNTUK UPDATE</div>`, sh(e4))}
+${e5 <= 0 ? "" : box(60, 1400, 960, `<span style="font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:#9aa3b8">HOTWIZZ #02 · SUMBER DI DESKRIPSI</span>`, `opacity:${n(e5, 3)}`)}`;
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 45%,#1a2030 0%,#0d0f16 80%)"></div>
+<div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 2px,transparent 2px 6px)"></div>
+${HEAD}${cards}${TEORI}${CARD}`;
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.02, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 45 }, { at: ingat - 6, scale: 1, ox: 50, oy: 48, ease: 14 }] }),
+          C.vignette(0.45, "50% 50%", 50),
+          C.progress(f, { step: 6, label: "TIGA PERTANYAAN" }),
+        );
+      });
+    })();
+  </script>
+</template>

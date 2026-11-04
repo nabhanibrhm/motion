@@ -1,0 +1,80 @@
+<!-- Istana (HotWizz #02, KATA ISTANA): HUD "ISTANA · 4 NOV 2026". Quote cards on "prihatin" and "seobjektif" (small Prabowo photo beside the reactions), then two equal cards: "makar" (Istana) and "Yusril" (makar article not used), plus a charges line on "Pasal". Photo: public/photos/prabowo.jpg. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="istana" data-width="1080" data-height="1920">
+    <div id="istana-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="istana-sfx-prihatin" class="clip" src="public/sfx/pop-in.wav" data-at="word:prihatin" data-track-index="12" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="istana-sfx-makar" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:makar" data-track-index="13" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="istana-sfx-stamp" class="clip" src="public/sfx/pop.wav" data-at="word:Yusril" data-track-index="14" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const RED = "#ff2d3d", ORG = "#ff7a1a", YEL = "#ffd23f";
+      const mono = "JetBrains Mono";
+      window.__timelines["istana"] = F1.scene("istana", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const prihatin = w("prihatin"), seobjektif = w("seobjektif"), makar = w("makar"), yusril = w("Yusril"), pasal = w("Pasal", 1);
+        const op = (p) => n(Math.max(0, Math.min(1, p)), 3);
+        const X = 72, W = 888;
+
+        // quote cards (stack in the upper area, leave when the comparison starts)
+        const quote = (at, y, h, kicker, lines, col, bw) => {
+          const p = F1.ramp(f, at, 14, F1.backOut);
+          if (p <= 0) return "";
+          const out = 1 - F1.ramp(f, makar - 8, 10, F1.easeOut);
+          const lh = 74;
+          const ts = lines.map((t, i) => `<text x="${X + 40}" y="${y + 126 + i * lh}" font-family="Oswald" font-weight="700" font-size="${t.length > 22 ? 56 : 68}" fill="#fff">${t}</text>`).join("");
+          return `<g opacity="${op(Math.min(p, out))}" transform="translate(${n((1 - Math.min(1, p)) * -60)} 0)">
+<rect x="${X}" y="${y}" width="${bw}" height="${h}" rx="18" fill="#151a26" stroke="${col}" stroke-width="5"/>
+<rect x="${X}" y="${y}" width="14" height="${h}" rx="6" fill="${col}"/>
+<text x="${X + 40}" y="${y + 50}" font-family="${mono}" font-weight="700" font-size="24" letter-spacing="2" fill="${col}">${kicker}</text>
+${ts}</g>`;
+        };
+
+        // equal comparison cards
+        const CH = 400;
+        const card = (at, y, head, body, col, mark) => {
+          const p = F1.ramp(f, at, 14, F1.backOut);
+          if (p <= 0) return "";
+          return `<g opacity="${op(p)}" transform="translate(0 ${n((1 - Math.min(1, p)) * 50)})">
+<rect x="${X}" y="${y}" width="${W}" height="${CH}" rx="20" fill="#151a26" stroke="${col}" stroke-width="6"/>
+<path d="M${X} ${y + 64} v-44 a20 20 0 0 1 20 -20 h${W - 40} a20 20 0 0 1 20 20 v44 z" fill="${col}"/>
+<text x="${X + 28}" y="${y + 43}" font-family="${mono}" font-weight="700" font-size="24" letter-spacing="2" fill="${col === YEL ? "#111" : "#fff"}">${head}</text>
+${body.map((t, i) => `<text x="${X + 40}" y="${y + 150 + i * 84 + (t.dy || 0)}" font-family="Oswald" font-weight="700" font-size="${t.s}" fill="${t.c || "#fff"}">${t.t}</text>`).join("")}
+</g>`;
+        };
+        const Y1 = 470, Y2 = 930;
+        const cardA = card(makar, Y1, "ISTANA · RABU, 4 NOV", [{ t: "ISTANA: MENGARAH", s: 70 }, { t: "KE MAKAR?", s: 84, c: RED }, { t: "alasan: informasi kepala negara sensitif", s: 30, c: "#aab0c0" }], RED);
+        const cardB = card(yusril, Y2, "MENKO YUSRIL · SELASA, 3 NOV", [{ t: "PASAL MAKAR", s: 70 }, { t: "TIDAK DIGUNAKAN", s: 84, c: YEL }, { t: "detik, Beritasatu", s: 26, c: "#aab0c0", dy: -42 }], YEL);
+        const pl = F1.ramp(f, pasal, 12, F1.expoOut);
+        const pasalLine = pl <= 0 ? "" : `<g opacity="${op(pl)}" transform="translate(${n((1 - pl) * -30)} 0)"><rect x="${X + 30}" y="${Y2 + 316}" width="${W - 60}" height="56" rx="10" fill="${YEL}"/><text x="${X + 50}" y="${Y2 + 355}" font-family="${mono}" font-weight="700" font-size="25" fill="#111">PASAL: PENYADAPAN · 258 KUHP · UU ITE</text></g>`;
+
+        // Prabowo photo (small, beside the reaction quotes only)
+        const pp = F1.ramp(f, prihatin + 4, 14, F1.backOut);
+        const ppOut = 1 - F1.ramp(f, makar - 8, 10, F1.easeOut);
+        const photo = pp <= 0 ? "" : `<div style="position:absolute;inset:0;opacity:${op(Math.min(pp, ppOut))};transform:translateY(${n((1 - Math.min(1, pp)) * 30)}px)">
+<div style="position:absolute;left:${X + W - 190}px;top:${Y1 - 20}px;width:176px;height:216px">${F1.Photo({ src: "public/photos/prabowo.jpg", x: 0, y: 0, w: 176, h: 216, fit: "cover", focal: { x: 0.5, y: 0.3 }, enter: "none", border: 5, radius: 10, dur: 400, zoom: [1, 1.05] }, f)}</div>
+<div style="position:absolute;left:${X + W - 190}px;top:${Y1 + 204}px;width:176px;text-align:center;font:700 20px 'JetBrains Mono';color:#c9c6c0">PRESIDEN</div></div>`;
+
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="istana-g" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#1a2030"/><stop offset="1" stop-color="#0d0f16"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#istana-g)"/>
+${quote(prihatin, 500, 230, "PRESIDEN · VIA MENSESNEG", ["PRIHATIN", "LUAR BIASA"], ORG, W - 220)}
+${quote(seobjektif, 790, 360, "PERMINTAAN KE KAPOLRI", ["SEOBJEKTIF MUNGKIN", "TANPA ADA YANG", "DITUTUP-TUTUPI"], YEL, W)}
+${cardA}${cardB}${pasalLine}
+</svg>`;
+        return F1.join(
+          C.stage(f, D, BG + photo, { zoom: 0.02, shots: [{ at: 0, scale: 1, ox: 50, oy: 45 }] }),
+          C.vignette(0.3, "50% 50%", 55),
+          C.hud(f, { at: 4, kicker: "KATA ISTANA", big: "ISTANA · 4 NOV 2026", sub: "PERNYATAAN MENSESNEG", src: "Mensesneg via detik, CNN Indonesia, Okezone", bigSize: 44, w: 700 }),
+          C.progress(f, { step: 3, label: "KATA ISTANA" }),
+        );
+      });
+    })();
+  </script>
+</template>

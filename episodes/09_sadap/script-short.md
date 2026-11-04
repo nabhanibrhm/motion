@@ -104,7 +104,7 @@ All photos come from Wikimedia Commons. They are stored in `assets/photos/`, res
 ## Do not use
 
 - "First former Kapolri ever detained" is false: Rusdihardjo (Kapolri 2000–01) was jailed for corruption (JPNN, 17 Mar 2009).
-- "Dicopot dari KSP" is false as of 4 Nov: the government has not discussed a successor (CNN Indonesia, 3–4 Nov).
+- "Dicopot dari KSP" was false when #01 was made (morning of 4 Nov). **Update:** around midday on 4 Nov the Istana announced Listyo's dismissal as KSP (see `episodes/10_ksp/script-short.md`, S1). #01 is unaffected because it never said he was removed.
 - "Each charge carries more than 10 years" is false: the maximums are 10, 6 and 8 years.
 - From the social-media chronology, use only the unnamed core (device detected, devices moved) and label it unconfirmed. Do not use: Ahrie resisting, being handcuffed or confessing on LSP's orders; Slamet Uliandi's or any other house named; "belasan jenderal"; Mako Brimob; a device "worth trillions"; or the death-penalty or makar calls.
 - Do not use the resurfaced Jokowi "data intelijen parpol" video. It tilts toward one camp.

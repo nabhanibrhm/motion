@@ -13,6 +13,27 @@ export function validateEpisode(ctx,{voice=null}={}) {
   check(c.video?.width===1080&&c.video?.height===1920&&c.video?.fps===30,'Only 1080x1920 at 30 fps is currently supported');
   check(['modern','legacy-inflasi'].includes(c.runtime?.profile),'Unsupported runtime profile');
   check(typeof c.runtime?.case?.id==='string'&&Number.isSafeInteger(c.runtime?.case?.steps)&&c.runtime.case.steps>0,'runtime.case requires id and positive steps');
+  const wm=c.runtime?.watermark;
+  if(wm!==undefined) {
+    check(wm&&typeof wm==='object'&&!Array.isArray(wm),'runtime.watermark must be an object');
+    if(wm&&typeof wm==='object') {
+      for(const key of Object.keys(wm)) check(['src','opacity','width','pulse'].includes(key),`runtime.watermark.${key} is not supported`);
+      check(Number.isFinite(wm.opacity)&&wm.opacity>=0&&wm.opacity<=1,'runtime.watermark.opacity must be 0..1');
+      check(Number.isInteger(wm.width)&&wm.width>=100&&wm.width<=1080,'runtime.watermark.width must be an integer 100..1080');
+      if(wm.pulse!==undefined) {
+        const pu=wm.pulse;
+        check(pu&&typeof pu==='object'&&!Array.isArray(pu),'runtime.watermark.pulse must be an object');
+        if(pu&&typeof pu==='object') {
+          for(const key of Object.keys(pu)) check(['period','scale','glow'].includes(key),`runtime.watermark.pulse.${key} is not supported`);
+          check(Number.isFinite(pu.period)&&pu.period>=0.4&&pu.period<=5,'runtime.watermark.pulse.period must be 0.4..5 seconds');
+          check(Number.isFinite(pu.scale)&&pu.scale>=0&&pu.scale<=0.2,'runtime.watermark.pulse.scale must be 0..0.2');
+          check(Number.isFinite(pu.glow)&&pu.glow>=0&&pu.glow<=0.9,'runtime.watermark.pulse.glow must be 0..0.9');
+        }
+      }
+      if(typeof wm.src!=='string'||!/\.(?:svg|png|webp|jpe?g)$/i.test(wm.src)) errors.push('runtime.watermark.src must be an svg/png/webp/jpg asset path');
+      else try{check(existsSync(within(paths.sharedAssetsDir,wm.src))||existsSync(within(paths.episodeAssetsDir,wm.src)),`Missing watermark asset: ${wm.src}`);}catch(e){errors.push(e.message);}
+    }
+  }
   check(typeof c.narration==='string'&&typeof c.script==='string','narration and script paths are required');
   for(const path of [c.narration,c.script]) {try{check(typeof path==='string'&&existsSync(within(episodeDir,path)),`Missing source: ${path}`);}catch(e){errors.push(e.message);}}
   check(Array.isArray(c.scenes)&&c.scenes.length>0,'scenes must be a nonempty array');

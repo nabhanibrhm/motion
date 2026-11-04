@@ -3,7 +3,10 @@ import {join} from 'node:path';
 import {createContext, Script} from 'node:vm';
 
 export function runtimeConfig(config) {
-  return {profile:config.runtime.profile,case:config.runtime.case,captions:{maxWords:config.runtime.profile==='legacy-inflasi'?4:6}};
+  const out={profile:config.runtime.profile,case:config.runtime.case,captions:{maxWords:config.runtime.profile==='legacy-inflasi'?4:6}};
+  // Opt-in (theme) watermark; omitted when unset so existing episodes keep an identical F1.CONFIG.
+  if(config.runtime.watermark) out.watermark=structuredClone(config.runtime.watermark);
+  return out;
 }
 /** Fresh globals on every call, including when multiple episodes build in one process. */
 export function loadTiming(ctx, voice, {warnings=[]}={}) {

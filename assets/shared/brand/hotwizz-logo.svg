@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 128" width="800" height="128">
+  <title>HOTWIZZ</title>
+  <defs>
+    <clipPath id="cap"><rect x="-20" y="-128" width="800" height="128"/></clipPath>
+  </defs>
+  <!-- wordmark: heavy italic capitals drawn from plain shapes (no font dependency); cap height 128, baseline y 128 -->
+  <g transform="translate(4 128) skewX(-8)">
+    <g fill="#ff2d3d">
+      <!-- H -->
+      <path d="M0-128h32v48h40v-48h32V0H72v-48H32V0H0z"/>
+      <!-- O -->
+      <path fill-rule="evenodd" d="M152-128H192A34 34 0 0 1 226-94V-34A34 34 0 0 1 192 0H152A34 34 0 0 1 118-34V-94A34 34 0 0 1 152-128ZM160-96H184A10 10 0 0 1 194-86V-42A10 10 0 0 1 184-32H160A10 10 0 0 1 150-42V-86A10 10 0 0 1 160-96Z"/>
+      <!-- T -->
+      <path d="M240-128h104v32h-36V0h-32v-96h-36z"/>
+    </g>
+    <g fill="#fff">
+      <!-- W -->
+      <g clip-path="url(#cap)"><path d="M370-150 396 14 433-78 470 14 496-150" fill="none" stroke="#fff" stroke-width="32" stroke-linejoin="miter" stroke-miterlimit="10"/></g>
+      <!-- I -->
+      <path d="M528-128h32V0h-32z"/>
+      <!-- Z Z -->
+      <path d="M580-128h90v32l-52 64h52V0h-90v-32l52-64h-52z"/>
+      <path d="M684-128h90v32l-52 64h52V0h-90v-32l52-64h-52z"/>
+    </g>
+  </g>
+</svg>

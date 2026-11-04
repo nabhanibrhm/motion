@@ -6,6 +6,10 @@
  *   C.stage(f, D, bg, { zoom, ox, oy, shots, whip })  background html inside a camera that pushes in by `zoom` over
  *                                         the scene, or re-frames on beats with `shots` (see C.camera); `whip` (default
  *                                         on) swings the scene in from the right with motion blur over its first frames
+ *                                         With `runtime.watermark` set (theme), stage also draws one big centred logo over
+ *                                         `bg` (inside the camera) with mix-blend-mode: lighten, so it only lifts the dark
+ *                                         ground and never shows over photos, text or cards brighter than the mark.
+ *                                         Scenes that do not call C.stage get no watermark.
  *   C.progress(f, { step, label })        the case-progress strip at the top: "KASUS #07 · <label>" over one segment
  *                                         per scene (C.CASE); the current segment fills as the scene opens
  *   C.vignette(alpha, at, inner)          radial darkening over the scene
@@ -57,13 +61,25 @@
     }
     return { s, ox: x, oy: y };
   };
+  // The logo's aspect ratio (viewBox 800x128 in assets/shared/brand/hotwizz-logo.svg); other ratios can be set via height.
+  // `pulse` {period s, scale, glow}: a steady heartbeat from the frame number only (smooth sine), scaling the mark up to
+  // `scale` and swinging its brightness by +-`glow` around `opacity`. Without `pulse` the mark is static.
+  C.watermark = (f, { src, opacity = 0.2, width = 920, height = null, pulse = null }) => {
+    const h = height ?? Math.round((width * 128) / 800);
+    const p = pulse ? 0.5 + 0.5 * Math.sin((2 * Math.PI * f) / Math.max(1, pulse.period * 30) - Math.PI / 2) : 0;
+    const bright = pulse ? opacity * (1 + pulse.glow * (2 * p - 1)) : opacity;
+    const scale = pulse ? 1 + pulse.scale * p : 1;
+    // lighten keeps the brighter of (logo, backdrop) per channel: brightness() dims the logo to a faint tone that
+    // only beats the dark ground, so photos, white cards and text stay untouched without any layering in the scene
+    return `<img src="public/${src}" alt="" style="${F1.css({ position: "absolute", left: n((1080 - width) / 2), top: n(960 - h / 2), width, height: h, mixBlendMode: "lighten", filter: `brightness(${n(bright, 3)})`, transform: pulse ? `scale(${n(scale, 4)})` : null, pointerEvents: "none" })}">`;
+  };
   C.stage = (f, D, bg, opts = {}) => {
     const cam = C.camera(f, D, opts);
     if (legacy) return `<div style="${F1.css({ position: "absolute", inset: 0, transformOrigin: `${n(cam.ox)}% ${n(cam.oy)}%`, transform: `scale(${n(cam.s, 4)})` })}">${bg}</div>`;
     // whip-pan in: the previous scene "swings out" because this one arrives from the right, blurred
     const w = opts.whip === false ? 1 : F1.ramp(f, 0, 9, F1.expoOut);
     const whip = w < 1 ? ` translateX(${n((1 - w) * 260)}px)` : "";
-    return `<div style="${F1.css({ position: "absolute", inset: 0, transformOrigin: `${n(cam.ox)}% ${n(cam.oy)}%`, transform: `scale(${n(cam.s, 4)})${whip}`, filter: w < 1 ? `blur(${n((1 - w) * 14, 2)}px)` : "none" })}">${bg}</div>`;
+    return `<div style="${F1.css({ position: "absolute", inset: 0, transformOrigin: `${n(cam.ox)}% ${n(cam.oy)}%`, transform: `scale(${n(cam.s, 4)})${whip}`, filter: w < 1 ? `blur(${n((1 - w) * 14, 2)}px)` : "none" })}">${bg}${F1.CONFIG?.watermark ? C.watermark(f, F1.CONFIG.watermark) : ""}</div>`;
   };
 
   C.vignette = (alpha = 0.5, at = "50% 55%", inner = 45) =>

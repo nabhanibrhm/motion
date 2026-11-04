@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {promises as fs} from 'node:fs';
 import {join,resolve} from 'node:path';
 import {REPO_ROOT,loadEpisode,mergeConfig,within,narrationDefaults} from '../src/config/episodes.mjs';
+import {runtimeConfig} from '../src/runtime/timing.mjs';
 import {validateEpisode} from '../src/config/validate.mjs';
 import {loadTiming} from '../src/runtime/timing.mjs';
 import {buildEpisode} from '../src/pipeline/build.mjs';
@@ -75,6 +76,28 @@ test('schema rejects scene order, duplicate ids, invalid profile and missing sou
   assert.throws(()=>validateEpisode(bad),/Duplicate narration section ids/);
   bad.config.script='../escape';assert.throws(()=>validateEpisode(bad),/escapes its root/);
   assert.throws(()=>within(ctx.episodeDir,'../../elsewhere'),/escapes/);
+});
+test('runtime.watermark is opt-in and validated',async t=>{
+  const {ctx}=await fixture(t);
+  assert.equal(validateEpisode(ctx).valid,true);
+  assert.equal(Object.hasOwn(runtimeConfig(ctx.config),'watermark'),false);
+  await fs.mkdir(join(ctx.paths.sharedAssetsDir,'brand'),{recursive:true});
+  await fs.writeFile(join(ctx.paths.sharedAssetsDir,'brand/mark.svg'),'<svg xmlns="http://www.w3.org/2000/svg"/>');
+  const ok=structuredClone(ctx);ok.config.runtime.watermark={src:'brand/mark.svg',opacity:.2,width:820};
+  assert.equal(validateEpisode(ok).valid,true);
+  assert.deepEqual(runtimeConfig(ok.config).watermark,{src:'brand/mark.svg',opacity:.2,width:820});
+  ok.config.runtime.watermark.pulse={period:1.2,scale:.04,glow:.3};assert.equal(validateEpisode(ok).valid,true);
+  const bad=(patch,re)=>{const c=structuredClone(ok);Object.assign(c.config.runtime.watermark,patch);assert.throws(()=>validateEpisode(c),re);};
+  bad({src:'brand/missing.svg'},/Missing watermark asset/);
+  bad({src:'../escape.svg'},/escapes its root/);
+  bad({src:'brand/mark.txt'},/watermark\.src/);
+  bad({opacity:1.5},/watermark\.opacity/);
+  bad({width:50},/watermark\.width/);
+  bad({extra:1},/watermark\.extra/);
+  bad({pulse:{period:.1,scale:.04,glow:.3}},/pulse\.period/);
+  bad({pulse:{period:1.2,scale:.5,glow:.3}},/pulse\.scale/);
+  bad({pulse:{period:1.2,scale:.04,glow:2}},/pulse\.glow/);
+  bad({pulse:{period:1.2,scale:.04,glow:.3,x:1}},/pulse\.x/);
 });
 test('same-episode operations serialize and release lock on errors',async t=>{
   const {ctx}=await fixture(t);

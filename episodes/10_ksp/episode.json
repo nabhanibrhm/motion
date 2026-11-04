@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "ksp",
+  "number": 10,
+  "title": "Listyo Dicopot dari KSP: Sadapannya ke Mana?",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #02",
+      "steps": 6
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "pecat",
+      "file": "scenes/pecat.html"
+    },
+    {
+      "id": "istana",
+      "file": "scenes/istana.html"
+    },
+    {
+      "id": "polri",
+      "file": "scenes/polri.html"
+    },
+    {
+      "id": "kemana",
+      "file": "scenes/kemana.html"
+    },
+    {
+      "id": "penutup",
+      "file": "scenes/penutup.html"
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}
