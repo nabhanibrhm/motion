@@ -59,6 +59,9 @@ ${["GAJI POKOK", "TUNJANGAN", "POTONGAN"].map((t, i) => `<text x="-196" y="${-13
 <path d="M-150 0 H-90 Q-70 0 -70 22 Q-70 44 -90 44 H-150 Z" fill="#a98a68" stroke="${INK}" stroke-width="6"/><circle cx="-102" cy="22" r="9" fill="#f4e4c8" stroke="${INK}" stroke-width="4"/>
 <path d="M-60 6 q20 -26 40 0 t40 0 t40 0" fill="none" stroke="#c9c6c0" stroke-width="5" stroke-linecap="round" opacity="0.7" transform="translate(0 ${n(5 * Math.sin(f / 7))})"/>
 <path d="M150 -70 q18 26 0 44 q-18 -18 0 -44 Z" fill="#7bc3e8" stroke="${INK}" stroke-width="5" transform="translate(30 ${n(4 * Math.sin(f / 9))})"/></g>`;
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
         const C = F1.cine;
         const naik = F1.wordFrame(S, "naik");
@@ -75,6 +78,8 @@ ${["GAJI POKOK", "TUNJANGAN", "POTONGAN"].map((t, i) => `<text x="-196" y="${-13
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <defs><radialGradient id="hook-glow" cx="50%" cy="46%" r="58%"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#f1dfbf"/></radialGradient></defs>
 <rect width="1080" height="1920" fill="url(#hook-glow)"/>
+${DRIFT(f, { seed: 200, count: 8, y0: 560, y1: 1050, color: "#f2c27a", a: 0.28 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 380, y1: 1100 })}
 <g fill="#f2c27a" opacity="0.5">${Array.from({ length: 14 }, (_, i) => `<circle cx="${n(80 + 920 * W.hash(i * 3 + 1))}" cy="${n(500 + 640 * W.hash(i * 3 + 2))}" r="${n(10 + 22 * W.hash(i * 3 + 3))}"/>`).join("")}</g>
 <rect x="0" y="1140" width="1080" height="780" fill="#e3c9a0"/><rect x="0" y="1140" width="1080" height="14" fill="#c8ab7c"/>
 <g opacity="${n(crowd * 0.9, 3)}">${crowd > 0 ? W.row(f, { y: 1130, s: 0.62, count: 12, seed: 71, speed: 0.9, bob: 8 }) : ""}</g>

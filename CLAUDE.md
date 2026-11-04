@@ -2,7 +2,7 @@
 
 Faceless short videos in Bahasa Indonesia, generated with HyperFrames 0.8.210, GSAP, Node.js 22+, and Python 3.12. **Read `HANDOFF.md` first.** For changes, read `ai-routing.md` and follow its provider-specific routing guidance.
 
-One shared application and runtime serve all episodes. Authored episode data lives in `episodes/<NN>_<id>/`; shared assets are in `assets/shared/`; generated projects and stills are under `.cache/`; mastered finished videos are in `out/`.
+One shared application and runtime serve all episodes. Authored episode data lives in `episodes/<NN>_<id>/`; shared assets are in `assets/shared/`; generated projects and stills are under `.cache/`; mastered finished videos are in `out/`: renders land in `out/` (finished, not uploaded yet), and the user's posted videos are moved by hand to `out/uploaded/`. Never overwrite a file in `out/uploaded/`; captions live in `out/caption/`.
 
 ## Commands
 
@@ -24,7 +24,7 @@ See [README.md](README.md) for setup and the episode workflow. Create a starter 
 
 Source data belongs in `episodes/<NN>_<id>/episode.json`, `narration.json`, `script-short.md`, and `scenes/`. Shared runtime and orchestration live under `src/runtime/`, `src/pipeline/`, `src/config/`, and `src/templates/`. Generated HyperFrames files under `.cache/build/<id>/` are disposable output; do not hand-edit generated copies.
 
-The only supported video format is 1080×1920 at 30 fps. Runtime profiles are `modern` and `legacy-inflasi`; named config themes may set supported runtime/case/audio/voice values, but arbitrary palettes and output dimensions are not supported. See [docs/refactor-design.md](docs/refactor-design.md) for the current contracts and [docs/refactor-inventory.json](docs/refactor-inventory.json) for the captured before-state inventory.
+The only supported video size is 1080×1920, at 30 fps (default) or 60 fps (opt-in with `video.fps: 60`, currently episode 07). At 60 fps, scenes and the runtime still work in 30-fps timeline frames and receive a fractional `f`, so never use `f % N`, integer-frame triggers or `f` as an array index without rounding. Runtime profiles are `modern` and `legacy-inflasi`; named config themes may set supported runtime/case/audio/voice values, but arbitrary palettes and output dimensions are not supported. See [docs/refactor-design.md](docs/refactor-design.md) for the current contracts and [docs/refactor-inventory.json](docs/refactor-inventory.json) for the captured before-state inventory.
 
 Do not install dependencies separately in episode folders. Install Node dependencies once at the root with `npm ci` and use the root `.venv` with `requirements-lock.txt` for voice tooling. Do not delete `.cache/migration-baseline/`, imported voice caches, or authored source as routine cleanup. Commit only when requested; do not add a Claude co-author line. When the user says "commit it", do three steps in this order: update `HANDOFF.md` with what changed, commit, then push to `origin`.
 

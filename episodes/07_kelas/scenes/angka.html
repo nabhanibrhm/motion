@@ -71,6 +71,9 @@
       };
       const FILLS = ["#ecd9a5", "#a9d6a0", "#bcd9e6", "#efcf9c", "#e0b5a8"];
       const BASE = [3, 10, 6, 8, 5];
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["angka"] = F1.scene("angka", (f, { S, D }) => {
         const C = F1.cine;
         const w = (x, o = 0) => F1.wordFrame(S, x, o);
@@ -121,6 +124,8 @@
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <defs><radialGradient id="angka-glow" cx="50%" cy="38%" r="65%"><stop offset="0" stop-color="#fff4da"/><stop offset="1" stop-color="#ecdcba"/></radialGradient></defs>
 <rect width="1080" height="1920" fill="url(#angka-glow)"/>
+${DRIFT(f, { seed: 210, count: 8, y0: 300, y1: 1000, color: "#f2c27a", a: 0.25 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.2, y0: 300, y1: 1100 })}
 <rect x="0" y="1150" width="1080" height="770" fill="#cdb48a"/><rect x="0" y="1150" width="1080" height="12" fill="#a8906f"/>
 ${STAIRS(f, { fills: FILLS, hi: phase25 ? 2 : 1, hiP: F1.ramp(f, phase25 ? menuju : lima - 6, 10), nums })}
 ${crowd(people)}

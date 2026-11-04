@@ -25,7 +25,7 @@ export async function buildEpisode(ctx,{check=false,locked=false}={}) {
   const {manifest:voice}=await ensureVoice(ctx,{generate:false,checkOnly:check});
   validateEpisode(ctx,{voice});
   const warnings=[], F1=loadTiming(ctx,voice,{warnings}), timing=F1.segments();
-  const {config:c,paths:p,repoRoot}=ctx, W=c.video.width,H=c.video.height,FPS=c.video.fps;
+  const {config:c,paths:p,repoRoot}=ctx, W=c.video.width,H=c.video.height,FPS=F1.FPS,RFPS=c.video.fps; // FPS = 30-fps timeline frame units; RFPS = render sampling rate (scenes get fractional f)
   const sec=f=>+(f/FPS).toFixed(4), changed=[], desired=new Map();
   const put=(path,text)=>desired.set(path,text);
   const kit=join(repoRoot,'src/runtime/f1');
@@ -69,7 +69,7 @@ export async function buildEpisode(ctx,{check=false,locked=false}={}) {
 ${libs.map(name=>`<script src="lib/f1/${name}.js"></script>`).join('\n')}
 <style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:${W}px;height:${H}px;overflow:hidden;background:var(--editorial-bg)}</style>
 </head><body>
-<div id="root" data-composition-id="${ctx.id}" data-start="0" data-duration="${sec(timing.total)}" data-fps="${FPS}" data-width="${W}" data-height="${H}">
+<div id="root" data-composition-id="${ctx.id}" data-start="0" data-duration="${sec(timing.total)}" data-fps="${RFPS}" data-width="${W}" data-height="${H}">
 ${host({id:'background',src:'compositions/background.html',start:0,dur:sec(timing.total),track:0,z:0})}
 ${sceneHosts.join('\n')}
 ${host({id:'captions',src:'compositions/captions.html',start:0,dur:sec(timing.total),track:3,z:100,kind:'captions'})}
@@ -104,5 +104,5 @@ ${audio.join('\n')}
   changed.push(...assets.changed.map(path=>`public/${path}`));
   if(check&&!assets.current) throw new Error(`Build assets out of date for ${ctx.id}; run sync`);
   if(check&&changed.length) throw new Error(`Build out of date for ${ctx.id}: ${changed.join(', ')}; run sync`);
-  return {buildDir:p.buildDir,changed,timing:{...timing,fps:FPS,seconds:sec(timing.total)}};
+  return {buildDir:p.buildDir,changed,timing:{...timing,fps:FPS,renderFps:RFPS,seconds:sec(timing.total)}};
 }

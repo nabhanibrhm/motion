@@ -10,7 +10,7 @@ export function validateEpisode(ctx,{voice=null}={}) {
   check(Number.isSafeInteger(c.number)&&c.number>0,'number must be a positive integer');
   check(typeof c.title==='string'&&!!c.title.trim(),'title is required');
   check(typeof c.category==='string'&&/^[\p{L}\p{N}][\p{L}\p{N}_ -]*$/u.test(c.category),'category must be a nonempty name');
-  check(c.video?.width===1080&&c.video?.height===1920&&c.video?.fps===30,'Only 1080x1920 at 30 fps is currently supported');
+  check(c.video?.width===1080&&c.video?.height===1920&&(c.video?.fps===30||c.video?.fps===60),'Only 1080x1920 at 30 or 60 fps is currently supported');
   check(['modern','legacy-inflasi'].includes(c.runtime?.profile),'Unsupported runtime profile');
   check(typeof c.runtime?.case?.id==='string'&&Number.isSafeInteger(c.runtime?.case?.steps)&&c.runtime.case.steps>0,'runtime.case requires id and positive steps');
   const wm=c.runtime?.watermark;

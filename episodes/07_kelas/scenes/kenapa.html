@@ -51,6 +51,9 @@
       };
       // card 3: ten person icons, eight light up red one by one
       const PERSON = (x, y, lit) => `<g transform="translate(${x} ${y}) scale(0.7)" stroke="${INK}" stroke-width="5" stroke-linejoin="round"><circle cx="0" cy="-44" r="22" fill="${lit ? "#d0413a" : "#e4dccb"}"/><path d="M-34 36 Q-34 -12 0 -12 Q34 -12 34 36 Z" fill="${lit ? "#d0413a" : "#e4dccb"}"/></g>`;
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["kenapa"] = F1.scene("kenapa", (f, { S, D }) => {
         const C = F1.cine;
         const w = (x, o = 0) => F1.wordFrame(S, x, o);
@@ -76,6 +79,8 @@
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <defs><radialGradient id="kenapa-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff4da"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
 <rect width="1080" height="1920" fill="url(#kenapa-glow)"/>
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
+${DRIFT(f, { seed: 230, count: 6, y0: 560, y1: 1050, color: "#e0b57a", a: 0.2 })}
 <rect x="0" y="1160" width="1080" height="760" fill="#c9ae84"/>
 ${F1.world.dust(f, { x: 100, y: 500, w: 840, h: 620, count: 16, seed: 9, color: "#fff3cf", alpha: 0.45 })}
 ${CARD(0, p1, `${title(0, "LUKA PANDEMI")}<text x="${CX + 40}" y="${cardY(0) + 104}" font-family="JetBrains Mono" font-weight="700" font-size="22" letter-spacing="1" fill="#6b5f52">“SCARRING EFFECT” DARI PANDEMI COVID-19</text>${SCAR(0, k)}${srcLine(0, "BPS via CNBC Indonesia (Agu 2024)")}`)}

@@ -111,3 +111,14 @@ test('CLI preserves spaced values and rejects ambiguous or unmanaged arguments',
   for(const args of [['render','kelas','--','..'],['render','kelas','--','-ooutside.mp4'],['render','kelas','--','--output=outside.mp4'],['render','kelas','--','--fps','60'],['stills','kelas','hook','--at','1'],['sync','kelas','--all'],['new','demo','--title']]) assert.throws(()=>parseArgs(args));
   assert.deepEqual(parseArgs(['render','kelas','--','--quality','draft','--workers=1']).forward,['--quality','draft','--workers=1']);
 });
+
+test('video.fps opts in to 60 while timeline units and 30 fps stay unchanged',async t=>{
+  const {ctx}=await fixture(t);
+  assert.equal(ctx.config.video.fps,30);assert.equal(validateEpisode(ctx).valid,true);
+  const b30=await buildEpisode(ctx);assert.equal(b30.timing.fps,30);assert.equal(b30.timing.renderFps,30);
+  const idx30=await fs.readFile(join(b30.buildDir,'index.html'),'utf8');assert.match(idx30,/data-fps="30"/);
+  const hi=structuredClone(ctx);hi.config.video.fps=60;assert.equal(validateEpisode(hi).valid,true);
+  const b60=await buildEpisode(hi);assert.equal(b60.timing.fps,30);assert.equal(b60.timing.renderFps,60);assert.equal(b60.timing.seconds,b30.timing.seconds);
+  assert.match(await fs.readFile(join(b60.buildDir,'index.html'),'utf8'),/data-fps="60"/);
+  const bad=structuredClone(ctx);bad.config.video.fps=24;assert.throws(()=>validateEpisode(bad),/30 or 60 fps/);
+});

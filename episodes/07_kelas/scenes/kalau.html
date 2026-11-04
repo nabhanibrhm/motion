@@ -115,6 +115,9 @@
 <path d="M-112 -4 q-26 -8 -18 -34" fill="none" stroke="${DARK}" stroke-width="6" stroke-linecap="round"/>
 <path d="M-40 -6 L-8 24 M-8 -6 L-40 24" stroke="#c0392b" stroke-width="9" stroke-linecap="round" opacity="0.9"/></g>`;
       };
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["kalau"] = F1.scene("kalau", (f, { S, D }) => {
         const C = F1.cine;
         const w = (x, o = 0) => F1.wordFrame(S, x, o);
@@ -165,6 +168,8 @@
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <defs><linearGradient id="kalau-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151a2a"/><stop offset="1" stop-color="#2d3550"/></linearGradient></defs>
 <rect width="1080" height="1920" fill="url(#kalau-sky)"/>
+${DRIFT(f, { seed: 250, count: 7, y0: 500, y1: 1000, color: "#8fa0c8", a: 0.14 })}
+${SWEEP(f, { color: "#8fa0c8", a: 0.12, y0: 300, y1: 1100 })}
 <circle cx="900" cy="480" r="40" fill="#f4e7b8" opacity="0.9"/>
 <g>${Array.from({ length: 22 }, (_, i) => `<circle cx="${n(40 + 1000 * W.hash(i * 3 + 91))}" cy="${n(440 + 330 * W.hash(i * 3 + 92))}" r="${n(2 + 2 * W.hash(i * 3 + 93), 1)}" fill="#fff" opacity="${n(0.3 + 0.4 * Math.abs(Math.sin(f / 30 + i)), 2)}"/>`).join("")}</g>
 ${SKYLINE}
