@@ -1,0 +1,122 @@
+<!-- Pelajaran (VONIS): card "BANDINGKAN: TOTAL BAYAR vs KEBUTUHAN AWAL" slides in on "bandingkan"; "HARGA CORET" is struck through on "coret". On "Oke" Beni's cart (SIMULASI) drops the three extra items one by one and the total falls to Rp700.000 on "tujuh". Nisa closes: paper end card, KASUS DITUTUP stamp on "ditutup", question card on "komentar". Cast after the end card, progress strip last. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #ead9bb; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="pelajaran" data-width="1080" data-height="1920">
+    <div id="pelajaran-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-bandingkan" class="clip" src="public/sfx/pop-in.wav" data-at="word:bandingkan" data-track-index="12" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-coret" class="clip" src="public/sfx/whoosh.wav" data-at="word:coret" data-track-index="13" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-d1" class="clip" src="public/sfx/pop.wav" data-at="word:Oke" data-track-index="14" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-d2" class="clip" src="public/sfx/pop.wav" data-at="word:keranjangku" data-track-index="15" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-d3" class="clip" src="public/sfx/pop.wav" data-at="word:balik" data-track-index="16" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-ding" class="clip" src="public/sfx/ding-num.wav" data-at="word:tujuh" data-track-index="17" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="18" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="pelajaran-sfx-ask" class="clip" src="public/sfx/pop-in.wav" data-at="word:komentar" data-track-index="19" data-volume="0.09"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const mono = "font-family:'JetBrains Mono',monospace";
+      const T = (x, y, s, txt, o = {}) => `<text x="${x}" y="${y}" text-anchor="${o.a || "start"}" font-family="${o.mono ? "JetBrains Mono" : "Oswald"}" font-weight="${o.w || 600}" font-size="${s}" letter-spacing="${o.ls === undefined ? 1 : o.ls}" fill="${o.c || INK}">${txt}</text>`;
+      const CARD = (f, o) => {
+        const pi = F1.ramp(f, o.band, 12, F1.expoOut);
+        const st = F1.ramp(f, o.coret, 8, F1.expoOut);
+        return `<g transform="translate(${n(-900 * (1 - pi), 1)} 0)"><g transform="translate(70 270)">
+<rect width="940" height="330" rx="24" fill="#f6efe1" stroke="${INK}" stroke-width="6"/>
+${T(470, 62, 36, "BANDINGKAN", { a: "middle", ls: 5, c: "#c0392b" })}
+<rect x="40" y="90" width="410" height="130" rx="16" fill="#c6f432" stroke="${INK}" stroke-width="5"/>
+${T(245, 140, 34, "TOTAL BAYAR", { a: "middle", ls: 3 })}
+${T(245, 188, 20, "yang keluar dari dompet", { a: "middle", w: 500, mono: 1, ls: 0 })}
+${T(470, 168, 34, "vs", { a: "middle" })}
+<rect x="490" y="90" width="410" height="130" rx="16" fill="#fffaf0" stroke="${INK}" stroke-width="5"/>
+${T(695, 140, 34, "KEBUTUHAN AWAL", { a: "middle", ls: 3 })}
+${T(695, 188, 20, "daftar belanja semula", { a: "middle", w: 500, mono: 1, ls: 0 })}
+<rect x="280" y="244" width="380" height="64" rx="12" fill="#e9e1d0" stroke="${INK}" stroke-width="4"/>
+${T(470, 288, 34, "HARGA CORET", { a: "middle", ls: 3, c: "#8a7f70" })}
+<line x1="290" y1="276" x2="${n(290 + 360 * st, 1)}" y2="276" stroke="#c0392b" stroke-width="8" stroke-linecap="round" opacity="${st > 0 ? 1 : 0}"/>
+</g></g>`;
+      };
+      const ITEMS = [
+        { name: "KABEL", price: "Rp100.000" },
+        { name: "KAOS KAKI", price: "Rp100.000" },
+        { name: "MUG", price: "Rp100.000" },
+      ];
+      const fmt = (v) => "Rp" + Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const CART = (f, o) => {
+        const pi = F1.ramp(f, o.oke - 8, 12, F1.expoOut);
+        let total = 1000000;
+        o.drop.forEach((d) => { if (f >= d + 8) total -= 100000; });
+        const ok = total <= 700000;
+        const fl = ok ? F1.ramp(f, o.tujuh, 10, F1.expoOut) : 0;
+        return `<g opacity="${n(pi, 3)}" transform="translate(0 ${n(40 * (1 - pi), 1)})"><g transform="translate(70 660)">
+<rect width="940" height="520" rx="24" fill="#f6efe1" stroke="${INK}" stroke-width="6"/>
+${T(40, 60, 34, "KERANJANG BENI", { ls: 4 })}
+${T(900, 60, 20, "SIMULASI", { a: "end", mono: 1, w: 700, ls: 2, c: "#c0392b" })}
+${T(40, 130, 30, "DAFTAR AWAL", { c: "#3b6b2a", ls: 3 })}
+${T(900, 130, 30, "Rp700.000", { a: "end", c: "#3b6b2a" })}
+<line x1="40" y1="150" x2="900" y2="150" stroke="${INK}" stroke-width="3"/>
+${ITEMS.map((it, i) => {
+  const p = F1.ramp(f, o.drop[i], 12, F1.expoOut);
+  const y = 190 + i * 76;
+  return `<g transform="translate(${n(1100 * p, 1)} 0)" opacity="${n(1 - p * 0.9, 3)}"><rect x="40" y="${y}" width="860" height="62" rx="12" fill="#fde7e4" stroke="#c0392b" stroke-width="4"/>
+${T(60, y + 42, 28, "+ " + it.name, { ls: 2 })}
+${T(520, y + 40, 18, "DI LUAR DAFTAR", { mono: 1, w: 700, c: "#c0392b", ls: 1 })}
+${T(880, y + 42, 28, it.price, { a: "end" })}</g>`;
+}).join("")}
+<line x1="40" y1="430" x2="900" y2="430" stroke="${INK}" stroke-width="3"/>
+${T(40, 485, 36, "TOTAL KERANJANG", { ls: 3 })}
+<g transform="translate(900 485) scale(${n(1 + 0.12 * Math.sin(Math.PI * fl), 3)})">${T(0, 0, 44, fmt(total), { a: "end", c: ok ? "#3b6b2a" : "#c0392b" })}</g>
+</g></g>`;
+      };
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="pelajaran-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#pelajaran-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#c9ae84"/>
+${F1.world.dust(f, { x: 100, y: 300, w: 840, h: 800, count: 16, seed: 9, color: "#fff3cf", alpha: 0.45 })}
+${CARD(f, o)}${CART(f, o)}</svg>`;
+      window.__timelines["pelajaran"] = F1.scene("pelajaran", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const band = w("bandingkan");
+        const coret = w("coret");
+        const oke = w("Oke");
+        const d2 = w("keranjangku");
+        const d3 = w("balik");
+        const tujuh = w("tujuh");
+        const ditutup = w("ditutup");
+        const komentar = w("komentar");
+        const o = { band, coret, oke, tujuh, drop: [oke, d2, d3] };
+        const paper = F1.ramp(f, ditutup - 6, 8);
+        const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
+        const ask = F1.ramp(f, komentar - 6, 12, F1.expoOut);
+        const end = paper <= 0 ? "" : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#f6efe1", opacity: n(paper, 3) })}"></div>
+<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 330, display: "flex", flexDirection: "column", alignItems: "center", gap: 36, opacity: n(paper, 3) })}">
+<div style="${F1.css({ padding: "12px 30px", border: "6px solid #c0392b", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#c0392b" })}">KASUS DITUTUP</div>
+<div style="${mono};font-weight:500;font-size:26px;letter-spacing:2px;color:#6f6a66">KASUS #09 · DISKON 11.11</div>
+<div style="${F1.css({ marginTop: 14, padding: "22px 36px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(ask, 3), transform: `translateY(${n(30 * (1 - ask))}px)` })}"><div style="${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#ff5a5f">● PERNAH NAMBAH BARANG</div><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:56px;line-height:1.15;color:#fff">BIAR VOUCHER KEPAKAI?<br>TULIS DI <span style="color:${C.ACCENT}">KOMENTAR</span></div></div>
+<div style="${mono};font-weight:500;font-size:20px;letter-spacing:1px;color:#6f6a66">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 56 },
+              { at: oke - 6, scale: 1.04, ox: 50, oy: 58, ease: 14 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          end,
+          C.progress(f, { step: 7, label: "VONIS" }),
+          C.cast(S, f, [
+            { src: C.CAST.nisa, x: 480, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beni, x: 480, y: 1200, w: 380 },
+            { src: C.CAST.nisaKaget, x: 480, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

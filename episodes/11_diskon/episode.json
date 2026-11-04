@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "diskon",
+  "number": 11,
+  "title": "Diskon 11.11: Hemat atau Boros?",
+  "category": "Ekonomi_keuangan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #09",
+      "steps": 7
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "syarat",
+      "file": "scenes/syarat.html"
+    },
+    {
+      "id": "keranjang",
+      "file": "scenes/keranjang.html"
+    },
+    {
+      "id": "struk",
+      "file": "scenes/struk.html"
+    },
+    {
+      "id": "kenapa",
+      "file": "scenes/kenapa.html"
+    },
+    {
+      "id": "cek",
+      "file": "scenes/cek.html"
+    },
+    {
+      "id": "pelajaran",
+      "file": "scenes/pelajaran.html"
+    }
+  ],
+  "audio": {
+    "bed": "music/bed.mp3",
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

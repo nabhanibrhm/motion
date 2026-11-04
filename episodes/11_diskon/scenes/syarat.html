@@ -1,0 +1,102 @@
+<!-- Syarat: a generic voucher card "PROMO BANK 11.11 · CONTOH" builds line by line (DISKON 10% on "diskon", MIN. BELANJA Rp1.000.000 on "minimal", POTONGAN MAKS. Rp120.000 on "maksimal"; S&K promo bank 11.11, per 3 Nov 2026, bukan endorsement). On Beni's "tujuh" his list DAFTAR BELANJA Rp700.000 slides in with a red gap KURANG Rp300.000 (SIMULASI). Muklis, Beni. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #efe3c8; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="syarat" data-width="1080" data-height="1920">
+    <div id="syarat-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="syarat-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="syarat-sfx-diskon" class="clip" src="public/sfx/pop-in.wav" data-at="word:diskon" data-track-index="13" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="syarat-sfx-minimal" class="clip" src="public/sfx/tick.wav" data-at="word:minimal" data-track-index="14" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="syarat-sfx-maksimal" class="clip" src="public/sfx/ding-num.wav" data-at="word:maksimal" data-track-index="15" data-volume="0.08"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="syarat-sfx-tujuh" class="clip" src="public/sfx/whoosh.wav" data-at="word:tujuh" data-track-index="16" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="syarat-sfx-kurang" class="clip" src="public/sfx/stamp.wav" data-at="word:ratus" data-track-index="17" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const RED = "#c0392b";
+      const BLUE = "#1f6d86";
+      const GREEN = "#2f8f5b";
+      const mono = "JetBrains Mono";
+      window.__timelines["syarat"] = F1.scene("syarat", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const diskon = w("diskon");
+        const minimal = w("minimal");
+        const maksimal = w("maksimal");
+        const tujuh = w("tujuh");
+        const ratus = w("ratus", 0);
+
+        // ---- voucher card ----
+        const cv = Math.min(1, F1.ramp(f, 2, 14, F1.backOut));
+        const VX = 90, VY = 290, VW = 900, VH = 520;
+        const row = (at, y, label, val, color, vsize) => {
+          const p = F1.ramp(f, at, 10, F1.backOut);
+          if (p <= 0) return "";
+          const q = Math.min(1, p);
+          return `<g opacity="${n(q, 3)}" transform="translate(${n((1 - q) * -50)} 0)">
+<rect x="${VX + 40}" y="${y}" width="${VW - 80}" height="108" rx="14" fill="#fff" stroke="${INK}" stroke-width="4"/>
+<rect x="${VX + 40}" y="${y}" width="14" height="108" rx="6" fill="${color}"/>
+<text x="${VX + 76}" y="${y + 38}" font-family="Oswald" font-weight="600" font-size="24" letter-spacing="3" fill="#6f6a66">${label}</text>
+<text x="${VX + 76}" y="${y + 92}" font-family="Oswald" font-weight="700" font-size="${vsize}" fill="${color}">${val}</text></g>`;
+        };
+        const hold = F1.ramp(f, ratus + 20, 10);
+        const VOUCHER = `<g opacity="${n(cv, 3)}" transform="translate(0 ${n((1 - cv) * 40)})">
+<rect x="${VX + 8}" y="${VY + 10}" width="${VW}" height="${VH}" rx="22" fill="#000" opacity="0.14"/>
+<rect x="${VX}" y="${VY}" width="${VW}" height="${VH}" rx="22" fill="#fbf6ea" stroke="${INK}" stroke-width="5"/>
+<path d="M${VX} ${VY + 86} v-64 a22 22 0 0 1 22 -22 h${VW - 44} a22 22 0 0 1 22 22 v64 z" fill="${BLUE}" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+<text x="${VX + VW / 2}" y="${VY + 58}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="5" fill="#fff">PROMO BANK 11.11 · CONTOH</text>
+${row(diskon, VY + 110, "DISKON", "10%", RED, 56)}
+${row(minimal, VY + 232, "MIN. BELANJA", "Rp1.000.000", INK, 52)}
+${row(maksimal, VY + 354, "POTONGAN MAKS.", "Rp120.000", GREEN, 52)}
+</g>
+<text x="${VX}" y="${VY + VH + 40}" opacity="${n(cv, 3)}" font-family="${mono}" font-weight="500" font-size="17" fill="#6f6a66">Sumber: S&amp;K promo bank 11.11, per 3 Nov 2026 · bukan endorsement</text>`;
+
+        // ---- Beni's list ----
+        const ls = Math.min(1, F1.ramp(f, tujuh, 14, F1.backOut));
+        const LX = 190, LY = 875, LW = 700;
+        const items = ["Item 1", "Item 2", "Item 3"];
+        const LIST = ls <= 0 ? "" : `<g opacity="${n(ls, 3)}" transform="translate(${n((1 - ls) * 160)} 0)">
+<rect x="${LX + 6}" y="${LY + 8}" width="${LW}" height="130" rx="16" fill="#000" opacity="0.14"/>
+<rect x="${LX}" y="${LY}" width="${LW}" height="130" rx="16" fill="#fffdf4" stroke="${INK}" stroke-width="4"/>
+<text x="${LX + 28}" y="${LY + 44}" font-family="Oswald" font-weight="600" font-size="24" letter-spacing="3" fill="#6f6a66">DAFTAR BELANJA</text>
+<text x="${LX + 28}" y="${LY + 104}" font-family="Oswald" font-weight="700" font-size="56" fill="${INK}">Rp700.000</text>
+<text x="${LX + LW - 24}" y="${LY + 112}" text-anchor="end" font-family="${mono}" font-weight="600" font-size="20" letter-spacing="2" fill="${BLUE}">SIMULASI</text>
+</g>`;
+
+        // ---- red gap ----
+        const gp = F1.ramp(f, ratus, 12, F1.backOut);
+        const GY = 1030;
+        const GAP = gp <= 0 ? "" : `<g opacity="${n(Math.min(1, gp), 3)}" transform="translate(${n(540)} ${GY + 30}) scale(${n(0.7 + 0.3 * Math.min(1.1, gp), 3)}) translate(${-540} ${-(GY + 30)}) rotate(-2 540 ${GY + 30})">
+<rect x="${LX}" y="${GY}" width="${LW}" height="70" rx="12" fill="${RED}" stroke="${INK}" stroke-width="4" stroke-dasharray="14 8"/>
+<text x="540" y="${GY + 48}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="2" fill="#fff">KURANG Rp300.000</text></g>`;
+
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="syarat-glow" cx="50%" cy="38%" r="65%"><stop offset="0" stop-color="#fff4da"/><stop offset="1" stop-color="#ecdcba"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#syarat-glow)"/>
+<rect x="0" y="1290" width="1080" height="630" fill="#cdb48a"/><rect x="0" y="1290" width="1080" height="12" fill="#a8906f"/>
+${VOUCHER}
+${LIST}
+${GAP}</svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 40 },
+              { at: tujuh - 6, scale: 1.03, ox: 50, oy: 52, ease: 14 },
+            ],
+          }),
+          C.vignette(0.2, "50% 55%", 55),
+          C.progress(f, { step: 2, label: "BUKTI 1 · SYARAT PROMO" }),
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

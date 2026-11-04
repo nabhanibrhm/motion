@@ -18,6 +18,16 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - `master.mjs` now converts voice and bed to stereo fltp before mixing the bed (since ep 09).
 - On WSL, render with `node scripts/motion.mjs render <id> -- --no-low-memory-mode --workers 2` (screenshot capture is slow otherwise).
 
+**Changed on the Windows machine (2–4 Nov 2026):**
+- **Episode 11 `diskon`** ("Diskon 11.11: Hemat atau Boros?", KASUS #09) is rendered: `out/11-diskon-short.mp4`, 84.2 s, -14.0 LUFS / -0.8 dBTP, lint 0 errors. Its caption is `out/caption/11-diskon.txt`. Publish before 11 Nov; the promo terms it cites run until 12 Nov. It was first numbered 09 and was renumbered to 11 to avoid colliding with `09_sadap`.
+  - **Editorial rules:** no bank, marketplace, shop or brand appears on screen, and marketplaces read "e-commerce" everywhere. The cart is a labelled simulation. 11.11 is not Harbolnas (10–16 Dec 2026). The caption still names BRI as the source of the example promo terms; the user hasn't said whether to change it to "promo bank".
+- **TikTok took down KASUS 05 (judol)** for a Community Guidelines violation. The automated appeal was rejected. Rule from now on: censor sensitive words in captions, hashtags and on-screen text (`j*dol`, `j*di`, `pinj*l`), and never open a video, cover or caption with a sales pitch for a harmful product. Do not re-upload 05; a reworked version can go up after the strike expires (around early Feb 2027).
+- **Upload status (user, 4 Nov):** 01–04, 09 and 10 are on TikTok; 05 was removed. Next: 11 Diskon (before 11 Nov), 06 Emas, 07 Kelas. Hold 08 until it is fixed.
+- **Fresh renders of 02–07 match the originals:** duration Δ 0.00 s, -14.1 LUFS both, mean SSIM ≥ 0.997, no second below 0.99, 0 ms audio offset. Results are in `out/compare/REPORT.md` with side-by-side frames. 01 was not re-rendered.
+- **KASUS captions** for 01–08 are in `out/caption/NN-<id>.txt`: a `KASUS N - Judul` title, a hook line, the sources, the disclaimer and exactly five hashtags starting `#KasusKita #fyp`. HotWizz captions use the laptop's `out/<NN>-<id>-caption.txt` naming.
+- **yt-dlp** is installed for the Windows user (Python 3.12, not in `.venv`); run it as `py -3.12 -m yt_dlp`. Use it to pull YouTube subtitles for research, and trace any figure back to its primary source.
+- **YouTube plans (not implemented):** [docs/youtube-longform-design.md](docs/youtube-longform-design.md) adds a 16:9 format; [docs/youtube-compilation-design.md](docs/youtube-compilation-design.md) plans one video combining the eight KASUS shorts, inspired by a format study of two reference videos. Both need user decisions first.
+
 **Changed earlier (1 Nov 2026, Windows machine):**
 
 **Changed this session (1 Nov 2026):**
@@ -41,7 +51,7 @@ Read [CLAUDE.md](CLAUDE.md), the **Claude** routing section of [ai-routing.md](a
 | Preserved speech and migration recovery | `.cache/voice/`, `.cache/migration-baseline/` |
 | Finished mastered videos | `out/<NN>-<id>-short.mp4` |
 
-The active IDs are `inflasi`, `rupiah`, `ihsg`, `paylater`, `judol`, `emas`, `kelas`, `ump`, `sadap`, and `ksp`, each in an `episodes/<NN>_<id>/` folder (e.g. `episodes/01_inflasi/`); commands still take the bare id. Category is manifest metadata, not a parent directory. The old `out/Ekonomi_keuangan/` application sources and duplicate installations have been retired and the folder is gone: its four historical renders and `inflasi/debug.log` now live under `.cache/migration-baseline/legacy-out/Ekonomi_keuangan/`, and the ideas board moved to `content_idea/PIPELINE.md`.
+The active IDs are `inflasi`, `rupiah`, `ihsg`, `paylater`, `judol`, `emas`, `kelas`, `ump`, `sadap`, `ksp`, and `diskon`, each in an `episodes/<NN>_<id>/` folder (e.g. `episodes/01_inflasi/`); commands still take the bare id. Category is manifest metadata, not a parent directory. The old `out/Ekonomi_keuangan/` application sources and duplicate installations have been retired and the folder is gone: its four historical renders and `inflasi/debug.log` now live under `.cache/migration-baseline/legacy-out/Ekonomi_keuangan/`, and the ideas board moved to `content_idea/PIPELINE.md`.
 
 Keep HyperFrames pinned to **0.8.210** and preserve the HTML/GSAP/F1 stack. Generated projects include local GSAP and referenced assets within the served root. Edit authored source and rebuild; do not patch generated HTML or staged assets. New episodes need configuration, narration, and unique artwork, without copied engines or separate dependency installations.
 
@@ -50,18 +60,19 @@ Keep HyperFrames pinned to **0.8.210** and preserve the HTML/GSAP/F1 stack. Gene
 1. Run `git status --short` and read the current task before editing. The migration baseline's status snapshot is historical; do not reset or clean the current tree.
 2. **HotWizz follow-ups:** if the Listyo case moves (motive, new suspects, Listyo's statement, charges changed), a #03 follows the same pattern: send the script first, recheck news just before building, rebuild facts table S1–Sn in `script-short.md`. Check `episodes/10_ksp/script-short.md` "Do not use" before reusing any claim.
 3. **Known bug, music bed cutoff:** `assets/shared/music/bed.mp3` is 75.0 s and `masterVideo` does not loop it, so any bedded episode longer than 75 s loses music after 75 s (ep 03–08 run 94–102 s; ep 09 at 130 s). Fix by looping the bed input (e.g. `-stream_loop -1` before the bed `-i`) and re-check the 1.5 s fade-out. Not yet fixed.
-4. **Next KASUS episode: idea #11 "Diskon 11.11"** (board brief in `content_idea/PIPELINE.md`; editorial window 2–10 Nov 2026, so it is time-critical). Would be KASUS #09 (episode number 11). Recheck sources S11/S12 at production time.
+4. **Episode 11 `diskon` (KASUS #09) is done** (see above). If the user changes anything, rebuild from `episodes/11_diskon/`. It runs 84.2 s with a bed, so the bed-cutoff bug above affects it after 75 s.
 5. **UMP (08) fixes before publishing:** the board's audit asks to separate the regional minimum wage from an individual raise. The hook currently goes from "UMP naik 8%" to Nisa's "Gaji naik delapan persen…"; adjust the hook and add one line that UMP is a minimum, then regenerate voice and re-render. Also swap in October inflation (BPS release 2 Nov) or the official UMP 2027 figure if available; `episodes/08_ump/script-short.md` "Before rendering" lists every number to recompute.
-6. **IHSG (03) before publishing:** MSCI's 15 Oct 2026 consultation (Emerging → Standalone, decision by end of June 2027) is a proposal, not a downgrade; update the script context (board idea 2).
-7. Re-render the seven original episodes on this machine and compare scene boundaries, captions, SFX moments, duration, audio sync and loudness against the preserved baselines and existing outputs. Fresh-render fidelity of 01–07 is still unverified.
-8. For new production work, use the root `new` command, then edit the manifest, narration, sources, and custom scenes. Never recreate per-episode dependencies, voice tools, or shared asset libraries.
-9. Keep editorial approval for episodes 05–08 separate from technical approval. Preserve the review notes below.
+6. **IHSG (03) is already on TikTok:** MSCI's 15 Oct 2026 consultation (Emerging → Standalone, decision by end of June 2027) is a proposal, not a downgrade; update the script context (board idea 2).
+7. Fresh-render fidelity of 02–07 is verified (see above). Only 01 (inflasi, `legacy-inflasi` profile) remains to re-render and compare the same way. Back up `out/01-inflasi-short.mp4` first, because `render` overwrites it.
+8. **YouTube:** once the user settles the open decisions in the two YouTube design docs, start Phase 1 (format contract) as routed there.
+9. For new production work, use the root `new` command, then edit the manifest, narration, sources, and custom scenes. Never recreate per-episode dependencies, voice tools, or shared asset libraries.
+10. Keep editorial approval for episodes 05–11 separate from technical approval. Preserve the review notes below.
 
 Use the CLI's scoped dry run for routine cleanup. Never delete all of `.cache/`: it also contains imported speech and archived copies of retired untracked source.
 
 ## Finished episodes and outputs
 
-Ten mastered outputs exist. 01–08 are in `out/` on the Windows machine (synced to Google Drive); this WSL checkout's `out/` holds only 09 and 10:
+Eleven mastered outputs exist. 01–08 and 11 are in `out/` on the Windows machine (synced to Google Drive); this WSL checkout's `out/` holds only 09 and 10:
 
 | File | Episode | Length |
 |---|---|---:|
@@ -75,6 +86,7 @@ Ten mastered outputs exist. 01–08 are in `out/` on the Windows machine (synced
 | `08-ump-short.mp4` | Gaji Naik 8%, Kok Tetap Kurang? (KASUS #08) | 101.8 s |
 | `09-sadap-short.mp4` | Eks Kapolri Ditahan: Diduga Sadap Presiden (HOTWIZZ #01) | 130.0 s |
 | `10-ksp-short.mp4` | Listyo Dicopot dari KSP: Sadapannya ke Mana? (HOTWIZZ #02) | 123.8 s |
+| `11-diskon-short.mp4` | Diskon 11.11: Hemat atau Boros? (KASUS #09), Windows machine only | 84.2 s |
 
 Episodes 03–08 were made 80–100 seconds long at the user's request (08 runs slightly over; cut one Muklis line if needed). 01–07 predate the refactor; on the previous host their re-render attempts failed at the loopback page, so those files are the original masters. 08 is the first fresh render from the shared pipeline: 1080×1920, 30 fps, -14.0 LUFS, -0.8 dBTP true peak (slightly over the -1 target after AAC encoding).
 
@@ -104,10 +116,10 @@ From the repository root, the workflow is:
 
 `voice` prepares or reuses speech; title-only or unrelated visual changes do not require regeneration. `render` ensures missing or stale voice is generated/reused automatically before building. `sync`, `preview`, `stills`, `lint`, and `check` require a valid voice cache and never synthesize. For files mode, episode recordings go under `episodes/<NN>_<id>/voice-lines/`. Use the root CLI and environments; retirement of the old per-episode applications is complete.
 
-Examples (the `new` command is illustrative; it would create `episodes/09_diskon/`):
+Examples (the `new` command is illustrative; it would create `episodes/12_contoh/`):
 
 ```powershell
-node scripts/motion.mjs new diskon --title "Judul video" --category Ekonomi_keuangan --number 9
+node scripts/motion.mjs new contoh --title "Judul video" --category Ekonomi_keuangan --number 12
 node scripts/motion.mjs validate --all
 node scripts/motion.mjs preview inflasi
 node scripts/motion.mjs stills inflasi --at 1,10,30

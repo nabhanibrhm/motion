@@ -1,0 +1,91 @@
+<!-- Struk: two paper receipts. Right "DENGAN PROMO" builds on "sepuluh"/"sembilan" (Rp1.000.000, -10%, BAYAR Rp900.000); left "RENCANA AWAL" Rp700.000 on "tujuh"; on "dua ratus ribu" a red bracket +Rp200.000 DARI RENCANA. SIMULASI label. Nisa, Beni. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #ead9bb; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="struk" data-width="1080" data-height="1920">
+    <div id="struk-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="struk-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="struk-sfx-r" class="clip" src="public/sfx/pop-in.wav" data-at="word:Satu" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="struk-sfx-cut" class="clip" src="public/sfx/stamp.wav" data-at="word:sepuluh" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="struk-sfx-pay" class="clip" src="public/sfx/ding-num.wav" data-at="word:sembilan" data-track-index="14" data-volume="0.08"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="struk-sfx-plan" class="clip" src="public/sfx/pop-in.wav" data-at="word:tujuh" data-track-index="15" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="struk-sfx-gap" class="clip" src="public/sfx/sub-drop.wav" data-at="word:dua" data-track-index="16" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="struk-sfx-gap2" class="clip" src="public/sfx/ding.wav" data-at="word:banyak" data-track-index="17" data-volume="0.07"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const rp = (v) => "Rp" + Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      window.__timelines["struk"] = F1.scene("struk", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const satu = w("Satu");
+        const sepuluh = w("sepuluh");
+        const sembilan = w("sembilan");
+        const tujuh = w("tujuh");
+        const dua = w("dua");
+        const ribu = w("ribu", 2);
+        const rR = F1.ramp(f, satu - 2, 12, F1.expoOut);
+        const sub = F1.ramp(f, satu + 4, 10, F1.expoOut);
+        const dis = F1.ramp(f, sepuluh, 10, F1.expoOut);
+        const pay = F1.ramp(f, sembilan, 10, F1.expoOut);
+        const rL = F1.ramp(f, tujuh - 2, 12, F1.expoOut);
+        const br = F1.ramp(f, dua, 12, F1.expoOut);
+        const lab = F1.ramp(f, ribu, 10, F1.expoOut);
+        const mono = (x, y, s, t, fill = INK, anchor = "start", wt = 700) => `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="JetBrains Mono" font-weight="${wt}" font-size="${s}" fill="${fill}">${t}</text>`;
+        const osw = (x, y, s, t, fill = INK, anchor = "start") => `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="Oswald" font-weight="600" font-size="${s}" letter-spacing="2" fill="${fill}">${t}</text>`;
+        const paper = (x, h) => { let z = `M${x} ${400 + h}`; for (let i = 0; i < 10; i++) z += ` l22 22 l22 -22`; return `<rect x="${x}" y="400" width="440" height="${h}" rx="14" fill="#fffaf0" stroke="${INK}" stroke-width="6"/><path d="${z} Z" fill="#fffaf0" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`; };
+        const right = `<g opacity="${n(rR, 3)}" transform="translate(${n(80 * (1 - rR))} 0)">
+${paper(520, 560)}
+${osw(550, 460, 36, "DENGAN PROMO")}
+<line x1="550" y1="480" x2="930" y2="480" stroke="${INK}" stroke-width="4" stroke-dasharray="10 8"/>
+<g opacity="${n(sub, 3)}">${mono(550, 540, 20, "SUBTOTAL", "#6b5f52")}${mono(930, 596, 40, rp(1000000), INK, "end")}</g>
+<g opacity="${n(dis, 3)}" transform="translate(0 ${n(12 * (1 - dis))})">${mono(550, 660, 20, "DISKON 10%", "#6b5f52")}${mono(930, 716, 40, "−" + rp(100000), "#c0392b", "end")}</g>
+<line x1="550" y1="750" x2="930" y2="750" stroke="${INK}" stroke-width="4" stroke-dasharray="10 8"/>
+<g opacity="${n(pay, 3)}" transform="translate(0 ${n(12 * (1 - pay))})">${osw(550, 810, 30, "BAYAR", "#6b5f52")}${mono(930, 880, 54, rp(900000), "#2e7d3a", "end")}</g>
+${mono(550, 950, 15, "Sumber: simulasi, tanpa ongkir", "#6f6a66", "start", 500)}</g>`;
+        const left = `<g opacity="${n(rL, 3)}" transform="translate(${n(-80 * (1 - rL))} 0)">
+${paper(40, 560)}
+${osw(70, 460, 36, "RENCANA AWAL")}
+<line x1="70" y1="480" x2="450" y2="480" stroke="${INK}" stroke-width="4" stroke-dasharray="10 8"/>
+${mono(70, 540, 20, "DAFTAR BELANJA", "#6b5f52")}${mono(70, 600, 28, "Barang pilihan", INK)}${mono(70, 650, 22, "(tanpa barang tambahan)", "#6b5f52", "start", 500)}
+<line x1="70" y1="750" x2="450" y2="750" stroke="${INK}" stroke-width="4" stroke-dasharray="10 8"/>
+${osw(70, 810, 30, "TOTAL", "#6b5f52")}${mono(450, 880, 54, rp(700000), INK, "end")}
+${mono(70, 950, 15, "Sumber: simulasi, tanpa ongkir", "#6f6a66", "start", 500)}</g>`;
+        // bracket from left total level (y880) up to right total? draw under receipts joining the two totals
+        const bw = 880 * br;
+        const bracket = `<g opacity="${n(br, 3)}">
+<path d="M${n(480 - bw / 2 + 40)} 1040 v32 H${n(480 + bw / 2 + 40)} v-32" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g opacity="${n(lab, 3)}" transform="translate(0 ${n(14 * (1 - lab))})">
+<rect x="150" y="1096" width="690" height="74" rx="14" fill="#c0392b" stroke="${INK}" stroke-width="5"/>
+<text x="495" y="1148" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="44" letter-spacing="2" fill="#fff">+Rp200.000 DARI RENCANA</text></g>`;
+        const simTag = `<g opacity="${n(rR, 3)}"><rect x="340" y="300" width="400" height="56" rx="12" fill="#2a2a2e" transform="rotate(-1.5 540 328)"/><text x="540" y="340" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="30" letter-spacing="3" fill="#fffaf0" transform="rotate(-1.5 540 328)">SIMULASI · TANPA ONGKIR</text></g>`;
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="struk-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#struk-glow)"/>
+<rect x="0" y="1210" width="1080" height="710" fill="#c9ae84"/><rect x="0" y="1210" width="1080" height="12" fill="#a8906f"/>
+${F1.world.dust(f, { x: 100, y: 400, w: 840, h: 700, count: 12, seed: 31, color: "#fff3cf", alpha: 0.4 })}
+${simTag}${left}${right}${bracket}</svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 55 },
+              { at: dua - 4, scale: 1.03, ox: 50, oy: 62, ease: 14 },
+            ],
+          }),
+          C.vignette(0.2, "50% 55%", 55),
+          C.progress(f, { step: 4, label: "BUKTI 3 · DUA STRUK" }),
+          C.cast(S, f, [
+            { src: C.CAST.nisa, x: 480, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.beniKaget, x: 480, y: 1200, w: 380 },
+            { src: C.CAST.nisa, x: 480, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,0 +1,113 @@
+<!-- Kenapa: Beni confused ("?" card) -> on "Survei" a stat card "> 1/2 ORANG INDONESIA CENDERUNG BELANJA IMPULSIF" (Populix 2023, D5) with ten dots filling past half on "separuh" -> on "potongannya" the card leaves and a balance scale shows a giant "-Rp100 RB" badge outweighing a small "TOTAL Rp900 RB" tag (SIMULASI); on "bayarnya" the beam flips. Beni, Muklis, Nisa. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #ead9bb;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="kenapa" data-width="1080" data-height="1920">
+    <div id="kenapa-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-q" class="clip" src="public/sfx/pop-in.wav" data-at="word:sadar" data-track-index="12" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-survei" class="clip" src="public/sfx/pop-in.wav" data-at="word:Survei" data-track-index="13" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-separuh" class="clip" src="public/sfx/ding-num.wav" data-at="word:separuh" data-track-index="14" data-volume="0.07"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-impulsif" class="clip" src="public/sfx/tick.wav" data-at="word:impulsif" data-track-index="15" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-scale" class="clip" src="public/sfx/whoosh.wav" data-at="word:potongannya" data-track-index="16" data-volume="0.14"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kenapa-sfx-flip" class="clip" src="public/sfx/sub-drop.wav" data-at="word:bayarnya" data-track-index="17" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const CARD = (p, y, h, inner) => `<g opacity="${n(p, 3)}" transform="translate(0 ${n(50 * (1 - p))})"><rect x="70" y="${y}" width="870" height="${h}" rx="24" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>${inner}</g>`;
+      window.__timelines["kenapa"] = F1.scene("kenapa", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const sadar = w("sadar");
+        const survei = w("Survei");
+        const separuh = w("separuh");
+        const impulsif = w("impulsif");
+        const promo = w("Promo");
+        const potongannya = w("potongannya");
+        const bayarnya = w("bayarnya");
+        // Beni's question card
+        const qOut = F1.ramp(f, survei - 6, 10, F1.easeOut);
+        const qA = F1.ramp(f, 6, 14, F1.expoOut) * (1 - qOut);
+        const qPulse = 1 + 0.04 * Math.sin(f / 5);
+        const q = `<text x="505" y="780" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="260" fill="#c0392b" transform="scale(${n(qPulse, 3)})" style="transform-origin:505px 680px">?</text>
+<text x="505" y="860" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="56" fill="${INK}">KOK NGGAK SADAR?</text>
+<text x="505" y="915" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="24" letter-spacing="3" fill="#6b5f52">RASA HEMAT YANG MENIPU</text>`;
+        const cardQ = CARD(qA, 520, 460, q);
+        // stat card
+        const sIn = F1.ramp(f, survei - 2, 12, F1.expoOut);
+        const sOut = F1.ramp(f, promo - 4, 12, F1.easeOut);
+        const sA = sIn * (1 - sOut);
+        const fillP = F1.ramp(f, separuh - 14, 22, F1.easeOut) * 5.7;
+        const dots = Array.from({ length: 10 }, (_, i) => {
+          const fr = Math.max(0, Math.min(1, fillP - i));
+          const cx = 190 + i * 78;
+          return `<circle cx="${cx}" cy="820" r="30" fill="#e4d6bd" stroke="${INK}" stroke-width="4"/><circle cx="${cx}" cy="820" r="${n(24 * fr)}" fill="#d0413a"/>`;
+        }).join("");
+        const stat = `<text x="110" y="660" font-family="Oswald" font-weight="700" font-size="190" fill="#c0392b">&gt; 1/2</text>
+<text x="110" y="730" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="1" fill="${INK}">ORANG INDONESIA CENDERUNG</text>
+<text x="110" y="778" font-family="Oswald" font-weight="600" font-size="40" letter-spacing="1" fill="${INK}" opacity="${n(F1.ramp(f, impulsif - 10, 8), 3)}">BELANJA <tspan fill="#c0392b">IMPULSIF</tspan></text>
+${dots}
+<text x="110" y="896" font-family="JetBrains Mono" font-weight="700" font-size="20" letter-spacing="2" fill="#6b5f52">ILUSTRASI · 10 ORANG</text>
+<text x="110" y="926" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#6f6a66">Sumber: survei Populix, 2023 (&gt;1.000 responden)</text>`;
+        const cardS = CARD(sA, 470, 500, stat);
+        // balance scale
+        const bIn = F1.ramp(f, promo + 8, 12, F1.expoOut);
+        const flip = F1.ramp(f, bayarnya - 2, 16, F1.expoOut);
+        const ang = (-9 + 18 * flip) * Math.PI / 180;
+        const PX = 520, PY = 640, L = 270;
+        const lx = PX - L * Math.cos(ang), ly = PY - L * Math.sin(ang);
+        const rx = PX + L * Math.cos(ang), ry = PY + L * Math.sin(ang);
+        const bs = 1 - 0.25 * flip;
+        const ts = 0.85 + 0.2 * flip;
+        const left = `<g transform="translate(${n(lx)} ${n(ly)})"><path d="M0 0 L-60 90 M0 0 L60 90" stroke="${INK}" stroke-width="5" fill="none"/>
+<g transform="translate(0 190) scale(${n(bs, 3)})"><circle r="104" fill="#d0413a" stroke="${INK}" stroke-width="6"/><text y="-6" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="56" fill="#fff">−Rp100</text><text y="52" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="56" fill="#fff">RB</text></g></g>`;
+        const right = `<g transform="translate(${n(rx)} ${n(ry)})"><path d="M0 0 L-70 90 M0 0 L70 90" stroke="${INK}" stroke-width="5" fill="none"/>
+<g transform="translate(0 150) scale(${n(ts, 3)})"><rect x="-115" y="-8" width="230" height="130" rx="14" fill="${flip > 0.5 ? "#2e7d3a" : "#4a4a52"}" stroke="${INK}" stroke-width="6"/><text y="40" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="24" letter-spacing="2" fill="#f5d27a">TOTAL</text><text y="98" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="54" fill="#fff">Rp900 RB</text></g></g>`;
+        const scale = `<g opacity="${n(bIn, 3)}" transform="translate(0 ${n(40 * (1 - bIn))})">
+<rect x="${PX - 8}" y="${PY}" width="16" height="400" fill="${INK}"/><rect x="${PX - 110}" y="1040" width="220" height="30" rx="10" fill="${INK}"/>
+<line x1="${n(lx)}" y1="${n(ly)}" x2="${n(rx)}" y2="${n(ry)}" stroke="${INK}" stroke-width="16" stroke-linecap="round"/>
+${left}${right}<circle cx="${PX}" cy="${PY}" r="22" fill="#e8a33d" stroke="${INK}" stroke-width="6"/>
+<text x="110" y="1130" font-family="JetBrains Mono" font-weight="700" font-size="20" letter-spacing="2" fill="#6b5f52">SIMULASI · ANGKA CONTOH BENI</text></g>`;
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="kenapa-glow" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#kenapa-glow)"/>
+<rect x="0" y="1160" width="1080" height="760" fill="#c9ae84"/>
+${F1.world.dust(f, { x: 100, y: 500, w: 840, h: 620, count: 14, seed: 31, color: "#fff3cf", alpha: 0.45 })}
+${cardQ}${cardS}${bIn > 0 ? scale : ""}</svg>`;
+        const chip =
+          f >= promo - 2
+            ? C.chip(f, { at: promo - 2, text: "FOKUS KE POTONGAN" })
+            : f >= survei - 2
+              ? C.chip(f, { at: survei - 2, text: "KAMU NGGAK SENDIRIAN" })
+              : C.chip(f, { at: 4, text: "KOK NGGAK SADAR?" });
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 56 },
+              { at: survei - 6, scale: 1.03, ox: 50, oy: 54, ease: 14 },
+              { at: potongannya - 6, scale: 1.04, ox: 50, oy: 52, ease: 14 },
+            ],
+          }),
+          C.vignette(0.2, "50% 55%", 55),
+          C.progress(f, { step: 5, label: "TERSANGKA · RASA HEMAT" }),
+          chip,
+          C.cast(S, f, [
+            { src: C.CAST.beniKaget, x: 480, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 480, y: 1200, w: 380 },
+            { src: C.CAST.nisa, x: 480, y: 1200, w: 400 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

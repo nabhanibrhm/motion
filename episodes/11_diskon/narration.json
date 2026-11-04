@@ -1,0 +1,174 @@
+{
+ "comment": "Short 'Diskon 11.11: Hemat atau Boros?' (script-short.md, sources there). The cart, list and receipts are a labelled simulation; no bank, platform or shop is named on screen. Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
+ "source": "supertonic",
+ "say": {
+  "Populix": "popiuliks"
+ },
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Diskon 11.11"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Sebelas-sebelas! [pause 0.15] Aku hemat seratus ribu!"
+    },
+    {
+     "speaker": "wec",
+     "text": "Hemat? Coba kita cek struknya dulu, Ben.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "syarat",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Contoh promo bank minggu ini: diskon sepuluh persen, minimal belanja satu juta, potongan maksimal seratus dua puluh ribu."
+    },
+    {
+     "speaker": "bog",
+     "text": "Padahal belanjaanku cuma tujuh ratus ribu.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "keranjang",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Ya udah, aku tambah tiga ratus ribu biar pas satu juta."
+    },
+    {
+     "speaker": "wec",
+     "text": "Nah, di situ jebakannya. Barang tambahan itu tadinya nggak ada di daftarmu.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "struk",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kita hitung. Satu juta dipotong sepuluh persen, kamu bayar sembilan ratus ribu. Rencana awalmu tujuh ratus ribu."
+    },
+    {
+     "speaker": "bog",
+     "text": "Lho, berarti?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Kamu keluar dua ratus ribu lebih banyak.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kenapa",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Kok aku nggak sadar, ya?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Kamu nggak sendirian. Survei Populix tahun dua ribu dua puluh tiga: lebih dari separuh orang Indonesia cenderung belanja impulsif."
+    },
+    {
+     "speaker": "wec",
+     "text": "Promo bikin kita fokus ke potongannya, bukan ke total bayarnya.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "cek",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Undang-undang perlindungan konsumen melarang penjual menaikkan harga sebelum obral. Jadi cek riwayat harganya."
+    },
+    {
+     "speaker": "wec",
+     "text": "Baca juga syaratnya: minimal belanja, batas potongan, kuota, metode bayar, dan ongkir.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pelajaran",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Jadi, bandingkan total bayar dengan kebutuhan awalmu, bukan dengan harga coret. Kalau barangnya memang butuh, baru beda cerita."
+    },
+    {
+     "speaker": "bog",
+     "text": "Oke, keranjangku balik ke tujuh ratus ribu.",
+     "after": 0.15
+    },
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup! Kamu pernah nambah barang cuma biar voucher kepakai? Tulis di komentar!",
+     "after": 0.3
+    }
+   ]
+  }
+ ]
+}

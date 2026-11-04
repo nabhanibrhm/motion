@@ -1,0 +1,109 @@
+<!-- Keranjang: Beni pads his cart. A MIN. BELANJA bar fills from Rp700.000 to Rp1.000.000 as three generic items (mug, socks, cable) drop into the cart on "tambah", "tiga", "ratus"; on "pas" the bar turns green SYARAT TERPENUHI; on "jebakannya" each item gets a red DI LUAR DAFTAR tag. Label SIMULASI. Beni, Nisa. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #efe6d2; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="keranjang" data-width="1080" data-height="1920">
+    <div id="keranjang-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="keranjang-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="11" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="1" id="keranjang-sfx-i1" class="clip" src="public/sfx/pop-in.wav" data-at="word:tambah" data-track-index="12" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2" id="keranjang-sfx-i2" class="clip" src="public/sfx/pop-in.wav" data-at="word:tiga" data-track-index="13" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3" id="keranjang-sfx-i3" class="clip" src="public/sfx/pop-in.wav" data-at="word:ratus" data-track-index="14" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4" id="keranjang-sfx-pas" class="clip" src="public/sfx/ding.wav" data-at="word:pas" data-track-index="15" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5" id="keranjang-sfx-jebak" class="clip" src="public/sfx/stamp.wav" data-at="word:jebakannya" data-track-index="16" data-volume="0.22"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const INK = "#2a2a2e";
+      const RED = "#c0392b";
+      const GREEN = "#2e9a54";
+      const clamp01 = (v) => Math.max(0, Math.min(1, v));
+      const BX = 100, BW = 800, BY = 392, BH = 56;
+      const ITEMS = [
+        { x: 110, label: "MUG", art: `<path d="M-34 -30 H20 V22 Q20 40 2 40 H-14 Q-34 40 -34 22 Z" fill="#fffaf0" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/><path d="M20 -16 H32 Q46 -16 46 0 Q46 16 20 16" fill="none" stroke="${INK}" stroke-width="6"/><rect x="-34" y="-30" width="54" height="12" fill="#2f6aa8"/>` },
+        { x: 375, label: "KAOS KAKI", art: `<path d="M-20 -40 H12 V10 L36 30 Q42 44 28 46 H-8 Q-24 46 -20 30 Z" fill="#fffaf0" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/><rect x="-20" y="-40" width="32" height="14" fill="#e0a040"/><path d="M-18 14 H10" stroke="#e0a040" stroke-width="6"/>` },
+        { x: 640, label: "KABEL", art: `<path d="M-42 20 Q-42 -30 0 -30 Q42 -30 42 20" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round"/><rect x="-54" y="14" width="24" height="34" rx="5" fill="#fffaf0" stroke="${INK}" stroke-width="6"/><rect x="30" y="14" width="24" height="34" rx="5" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>` },
+      ];
+      const CW = 230, CH = 170, REST = 575;
+      window.__timelines["keranjang"] = F1.scene("keranjang", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const ats = [w("tambah"), w("tiga"), w("ratus")];
+        const pas = w("pas");
+        const jebak = w("jebakannya");
+        let fillV = 0.7;
+        ats.forEach((a) => {
+          fillV += 0.1 * clamp01(F1.ramp(f, a + 8, 14, F1.easeOut));
+        });
+        const done = clamp01(F1.ramp(f, pas, 8));
+        const barCol = done > 0 ? GREEN : "#2f6aa8";
+        const total = 700 + 100 * ats.filter((a) => f >= a + 8).length;
+        const totalTxt = "Rp" + String(total * 1000).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        const panelP = F1.ramp(f, 4, 14, F1.expoOut);
+
+        let items = "";
+        ITEMS.forEach((it, i) => {
+          const p = F1.ramp(f, ats[i], 14, F1.easeOut);
+          if (p <= 0) return;
+          const y = REST - 260 * (1 - p) * (1 - p);
+          items += `<g opacity="${n(clamp01(p * 2), 3)}" transform="translate(${it.x} ${n(y)})">
+<rect width="${CW}" height="${CH}" rx="16" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<g transform="translate(${CW / 2} 66)">${it.art}</g>
+<text x="${CW / 2}" y="${CH - 18}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="28" letter-spacing="2" fill="${INK}">${it.label}</text>
+</g>`;
+        });
+        const cart = `<g>
+<path d="M60 770 H920 L880 1010 Q876 1030 856 1030 H124 Q104 1030 100 1010 Z" fill="#d9cdb2" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>
+<circle cx="230" cy="1066" r="26" fill="${INK}"/><circle cx="750" cy="1066" r="26" fill="${INK}"/>
+<text x="490" y="840" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="24" letter-spacing="3" fill="#6b6556">KERANJANG BENI</text>
+<text x="490" y="930" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="84" letter-spacing="2" fill="${INK}">${totalTxt}</text>
+</g>`;
+        let tags = "";
+        ITEMS.forEach((it, i) => {
+          const tp = clamp01(F1.ramp(f, jebak + i * 6, 10, F1.backOut));
+          if (tp <= 0 || f < ats[i]) return;
+          tags += `<g opacity="${n(tp, 3)}" transform="translate(${it.x + CW / 2} ${REST - 6}) rotate(${-6 + i * 5}) scale(${n(2 - tp, 3)})"><rect x="-100" y="-26" width="200" height="52" rx="8" fill="${RED}" stroke="#fff" stroke-width="4"/><text y="9" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="25" letter-spacing="2" fill="#fff">DI LUAR DAFTAR</text></g>`;
+        });
+        const okP = clamp01(F1.ramp(f, pas, 10, F1.backOut));
+        const ok = okP <= 0 ? "" : `<g opacity="${n(okP, 3)}" transform="translate(${BX + BW / 2} ${BY + BH / 2}) scale(${n(0.8 + 0.2 * okP, 3)})"><text y="14" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="5" fill="#fff">SYARAT TERPENUHI</text></g>`;
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><pattern id="keranjang-grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#d9cdb2" stroke-width="2"/></pattern></defs>
+<rect width="1080" height="1920" fill="url(#keranjang-grid)" opacity="0.7"/>
+<g opacity="${n(panelP, 3)}" transform="translate(0 ${n(30 * (1 - panelP))})">
+<rect x="60" y="270" width="900" height="900" rx="22" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<text x="${BX}" y="340" font-family="Oswald" font-weight="700" font-size="34" letter-spacing="4" fill="${INK}">MIN. BELANJA PROMO</text>
+<text x="${BX + BW}" y="340" text-anchor="end" font-family="Oswald" font-weight="700" font-size="34" letter-spacing="2" fill="${barCol}">${totalTxt}</text>
+<rect x="${BX}" y="${BY}" width="${BW}" height="${BH}" rx="14" fill="#e8dfc9" stroke="${INK}" stroke-width="5"/>
+<rect x="${BX + 3}" y="${BY + 3}" width="${n((BW - 6) * clamp01(fillV))}" height="${BH - 6}" rx="11" fill="${barCol}"/>
+${ok}
+<text x="${BX}" y="${BY + BH + 36}" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#6b6556">DAFTAR Rp700.000</text>
+<text x="${BX + BW}" y="${BY + BH + 36}" text-anchor="end" font-family="JetBrains Mono" font-weight="700" font-size="22" fill="#6b6556">SYARAT Rp1.000.000</text>
+<text x="${BX}" y="${BY + BH + 66}" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#6b6556">Sumber: S&amp;K promo bank 11.11 (contoh), per 3 Nov 2026</text>
+${items}
+${cart}
+${tags}
+<rect x="${BX}" y="1096" width="390" height="40" rx="8" fill="#111"/><text x="${BX + 195}" y="1126" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="26" letter-spacing="3" fill="#f5d27a">SIMULASI · TANPA ONGKIR</text>
+<text x="${BX + 410}" y="1124" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="#6b6556">Sumber: angka contoh Beni</text>
+</g>
+</svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 40 },
+              { at: pas - 6, scale: 1.03, ox: 50, oy: 36, ease: 16 },
+            ],
+          }),
+          C.vignette(0.16, "50% 50%", 55),
+          C.progress(f, { step: 3, label: "BUKTI 2 · KERANJANG" }),
+          C.cast(S, f, [
+            { src: C.CAST.beni, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>
