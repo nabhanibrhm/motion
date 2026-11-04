@@ -8,7 +8,7 @@ export async function masterVideo({ input, output, bedPath = null, bedGain = .3,
   if (!Number.isFinite(dur) || dur <= 0) throw new Error('Invalid video duration');
   if (bedPath) await fs.access(bedPath);
   const inputs = ['-i', input, ...(bedPath ? ['-i', bedPath] : [])];
-  const mix = bedPath ? `[0:a]aresample=48000,asplit=2[v][sc];[1:a]aresample=48000,volume=${bedGain},atrim=0:${dur},afade=t=out:st=${Math.max(0,dur-1.5).toFixed(2)}:d=1.5[m];[m][sc]sidechaincompress=threshold=0.015:ratio=5:attack=40:release=400[md];[v][md]amix=inputs=2:normalize=0:duration=first,` : '[0:a]';
+  const mix = bedPath ? `[0:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,asplit=2[v][sc];[1:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=${bedGain},atrim=0:${dur},afade=t=out:st=${Math.max(0,dur-1.5).toFixed(2)}:d=1.5[m];[m][sc]sidechaincompress=threshold=0.015:ratio=5:attack=40:release=400[md];[v][md]amix=inputs=2:normalize=0:duration=first,` : '[0:a]';
   const target = `I=${integrated}:TP=${truePeak}:LRA=${range}`;
   const ff = args => run('ffmpeg', ['-hide_banner','-nostdin',...args]).stderr;
   const log = ff([...inputs,'-filter_complex',`${mix}loudnorm=${target}:print_format=json[out]`,'-map','[out]','-f','null','-']);

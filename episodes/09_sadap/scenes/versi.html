@@ -1,0 +1,132 @@
+<!-- Versi: split screen. Panel A (VERSI RESMI, solid, dominant): file window + delete bar on "dihapus", timeline 30 OKT on "Tiga", 4 HARI on "Empat", 3 NOV on "tersangka". Panel B (VERSI MEDSOS, dashed, greyed): house + blinking device on "alat", MABES -> RUMAH on "dipindah", BELUM DIKONFIRMASI stamp on "dikonfirmasi". No photos, names or handles. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="versi" data-width="1080" data-height="1920">
+    <div id="versi-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="versi-sfx-dua" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:dua" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="versi-sfx-dihapus" class="clip" src="public/sfx/pop-in.wav" data-at="word:dihapus" data-track-index="13" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="versi-sfx-empat" class="clip" src="public/sfx/ding.wav" data-at="word:Empat" data-track-index="14" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="versi-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:dikonfirmasi" data-track-index="15" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const RED = "#ff2d3d", ORG = "#ff7a1a", YEL = "#ffd23f";
+      const mono = "JetBrains Mono";
+      window.__timelines["versi"] = F1.scene("versi", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const dua = w("dua"), resmi = w("resmi"), file = w("file"), dihapus = w("dihapus"), tiga = w("Tiga"), empat = w("Empat"),
+          tersangka = w("tersangka"), beredar = w("beredar"), alat = w("alat"), dipindah = w("dipindah"), konf = w("dikonfirmasi");
+        const op = (p) => n(Math.max(0, Math.min(1, p)), 3);
+        const X = 72, W = 888, H = 540, AY = 340, BY = 910;
+
+        // ---- title ----
+        const tp = F1.ramp(f, 2, 14, F1.expoOut);
+        const TITLE = `<g opacity="${op(tp)}" transform="translate(0 ${n((1 - tp) * 24)})"><text x="${X}" y="${AY - 24}" font-family="Oswald" font-weight="700" font-size="56" letter-spacing="1" fill="#fff">BAGAIMANA KASUS INI <tspan fill="${YEL}">TERBONGKAR?</tspan></text></g>`;
+
+        // ---- panel A ----
+        const pa = F1.ramp(f, dua, 14, F1.backOut), pb = F1.ramp(f, dua + 6, 14, F1.backOut);
+        const panelA = () => {
+          let s = `<g opacity="${op(pa)}" transform="translate(0 ${n((1 - pa) * 40)})">
+<rect x="${X}" y="${AY}" width="${W}" height="${H}" rx="20" fill="#151a26" stroke="#fff" stroke-width="5"/>
+<rect x="${X - 6}" y="${AY - 6}" width="${W + 12}" height="${H + 12}" rx="24" fill="none" stroke="${RED}" stroke-width="3" opacity="0.8"/>
+<path d="M${X} ${AY + 70} v-50 a20 20 0 0 1 20 -20 h${W - 40} a20 20 0 0 1 20 20 v50 z" fill="${RED}"/>
+<text x="${X + 24}" y="${AY + 46}" font-family="Oswald" font-weight="700" font-size="32" letter-spacing="2" fill="#fff">VERSI RESMI · BARESKRIM</text>`;
+          // file window
+          const fw = F1.ramp(f, file, 12, F1.backOut);
+          if (fw > 0) {
+            const wx = X + 36, wy = AY + 96, ww = W - 72;
+            const del = F1.ramp(f, dihapus, 40, F1.easeOut);
+            const gone = del > 0.98;
+            s += `<g opacity="${op(fw)}" transform="translate(0 ${n((1 - Math.min(1, fw)) * 20)})">
+<rect x="${wx}" y="${wy}" width="${ww}" height="200" rx="12" fill="#0d0f16" stroke="#8d93a3" stroke-width="3"/>
+<rect x="${wx}" y="${wy}" width="${ww}" height="44" rx="12" fill="#2a3144"/><rect x="${wx}" y="${wy + 30}" width="${ww}" height="14" fill="#2a3144"/>
+<circle cx="${wx + 24}" cy="${wy + 22}" r="7" fill="${RED}"/><circle cx="${wx + 46}" cy="${wy + 22}" r="7" fill="${YEL}"/>
+<text x="${wx + 72}" y="${wy + 30}" font-family="${mono}" font-weight="700" font-size="21" fill="#e8eaf0">HASIL_SADAPAN / LOG_AKSES</text>
+<g opacity="${n(1 - del * 0.75, 3)}" font-family="${mono}" font-weight="500" font-size="19" fill="#aab0c0">
+<text x="${wx + 24}" y="${wy + 78}">▤ rekaman_0xx.dat</text><text x="${wx + 24}" y="${wy + 108}">▤ log_akses_2025.csv</text></g>
+<g opacity="${op(F1.ramp(f, dihapus, 8))}">
+<rect x="${wx + 24}" y="${wy + 134}" width="${ww - 48}" height="34" rx="8" fill="#2a1216" stroke="${RED}" stroke-width="3"/>
+<rect x="${wx + 24}" y="${wy + 134}" width="${n((ww - 48) * del)}" height="34" rx="8" fill="${RED}"/>
+<text x="${wx + 40}" y="${wy + 159}" font-family="${mono}" font-weight="700" font-size="20" fill="#fff">${gone ? "TERHAPUS" : "MENGHAPUS…"}</text></g></g>`;
+            const lp = F1.ramp(f, dihapus + 6, 10, F1.expoOut);
+            if (lp > 0) s += `<g opacity="${op(lp)}" transform="translate(${n((1 - lp) * -30)} 0)"><rect x="${wx}" y="${wy + 212}" width="${ww}" height="42" rx="8" fill="${YEL}"/><text x="${wx + ww / 2}" y="${wy + 242}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="22" fill="#111">DIDUGA DIPERINTAHKAN · OKT 2026</text></g>`;
+          }
+          // timeline
+          const ty = AY + 430, x1 = X + 130, x2 = X + W - 130;
+          const n1 = F1.ramp(f, tiga, 10, F1.backOut), ln = F1.ramp(f, empat, 24, F1.easeOut), n2 = F1.ramp(f, tersangka, 10, F1.backOut);
+          if (n1 > 0) {
+            s += `<line x1="${x1}" y1="${ty}" x2="${x2}" y2="${ty}" stroke="#4a5166" stroke-width="5" stroke-dasharray="4 10" opacity="${op(n1)}"/>
+<line x1="${x1}" y1="${ty}" x2="${n(x1 + (x2 - x1) * ln)}" y2="${ty}" stroke="${ORG}" stroke-width="7"/>
+<g opacity="${op(n1)}"><circle cx="${x1}" cy="${ty}" r="${n(14 * Math.min(1.2, n1))}" fill="${RED}" stroke="#fff" stroke-width="4"/>
+<text x="${x1}" y="${ty - 32}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="30" fill="#fff">30 OKT</text>
+<text x="${x1}" y="${ty + 48}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="19" fill="#c9c6c0">LAPORAN POLISI</text></g>`;
+          }
+          if (ln > 0) {
+            const bx = (x1 + x2) / 2;
+            s += `<g opacity="${op(ln * 2)}" transform="translate(${bx} ${ty}) scale(${n(0.7 + 0.3 * Math.min(1, ln * 2))}) translate(${-bx} ${-ty})"><rect x="${bx - 70}" y="${ty - 26}" width="140" height="52" rx="10" fill="${ORG}" stroke="#151a26" stroke-width="5"/><text x="${bx}" y="${ty + 11}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="32" fill="#111">4 HARI</text></g>`;
+          }
+          if (n2 > 0) {
+            s += `<g opacity="${op(n2)}"><circle cx="${x2}" cy="${ty}" r="${n(14 * Math.min(1.2, n2))}" fill="${RED}" stroke="#fff" stroke-width="4"/>
+<text x="${x2}" y="${ty - 32}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="30" fill="#fff">3 NOV</text>
+<text x="${x2}" y="${ty + 48}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="19" fill="#c9c6c0">3 TERSANGKA</text></g>`;
+          }
+          return s + "</g>";
+        };
+
+        // ---- panel B (greyed, dashed, unverified) ----
+        const panelB = () => {
+          let s = `<g opacity="${op(pb * 0.85)}" transform="translate(0 ${n((1 - pb) * 40)})" filter="grayscale(0.85)">
+<rect x="${X}" y="${BY}" width="${W}" height="${H}" rx="20" fill="#161922" stroke="#8a8f9c" stroke-width="4" stroke-dasharray="18 12"/>
+<path d="M${X} ${BY + 70} v-50 a20 20 0 0 1 20 -20 h${W - 40} a20 20 0 0 1 20 20 v50 z" fill="#3a3f4c"/>
+<text x="${X + 24}" y="${BY + 46}" font-family="Oswald" font-weight="600" font-size="28" letter-spacing="1.5" fill="#b9bdc8">VERSI MEDSOS · BELUM DIKONFIRMASI</text>`;
+          const cy = BY + 300;
+          // house (generic)
+          const hx = X + 600;
+          const hp = F1.ramp(f, Math.min(alat, beredar + 20), 14, F1.backOut);
+          const hh = F1.ramp(f, alat, 12, F1.backOut);
+          if (hp > 0) {
+            const blink = f >= alat ? (Math.floor((f - alat) / 8) % 2 === 0 ? 1 : 0.2) : 0;
+            s += `<g opacity="${op(hp)}"><path d="M${hx} ${cy - 40} l110 -90 l110 90 v130 h-220 z" fill="#2b303c" stroke="#9aa0ad" stroke-width="5" stroke-linejoin="round"/>
+<rect x="${hx + 85}" y="${cy + 20}" width="50" height="70" fill="#161922" stroke="#9aa0ad" stroke-width="4"/>
+<text x="${hx + 110}" y="${cy + 125}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="18" fill="#9aa0ad">RUMAH</text></g>`;
+            if (hh > 0) s += `<g opacity="${op(hh)}"><rect x="${hx + 150}" y="${cy - 12}" width="40" height="28" rx="6" fill="#222733" stroke="#c9ccd4" stroke-width="3"/>
+<circle cx="${hx + 170}" cy="${cy + 2}" r="${n(8 + blink * 3)}" fill="${ORG}" opacity="${n(0.3 + 0.7 * blink, 2)}"/>
+<circle cx="${hx + 170}" cy="${cy + 2}" r="${n(14 + 18 * (1 - blink))}" fill="none" stroke="${ORG}" stroke-width="3" opacity="${n(0.5 * (1 - blink), 2)}"/>
+<text x="${hx + 170}" y="${cy - 28}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="17" fill="${ORG}">ALAT?</text></g>`;
+          }
+          // mabes -> rumah
+          const mp = F1.ramp(f, dipindah, 12, F1.backOut), ar = F1.ramp(f, dipindah + 4, 22, F1.easeOut);
+          if (mp > 0) {
+            const mx = X + 70, ax1 = mx + 200, ax2 = hx - 30;
+            s += `<g opacity="${op(mp)}"><rect x="${mx}" y="${cy - 60}" width="180" height="150" fill="#2b303c" stroke="#9aa0ad" stroke-width="5"/><path d="M${mx - 10} ${cy - 60} h200 l-100 -50 z" fill="#3a3f4c" stroke="#9aa0ad" stroke-width="5" stroke-linejoin="round"/>
+<text x="${mx + 90}" y="${cy + 125}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="18" fill="#9aa0ad">MABES</text></g>
+<line x1="${ax1}" y1="${cy + 10}" x2="${n(ax1 + (ax2 - ax1) * ar)}" y2="${cy + 10}" stroke="${YEL}" stroke-width="8" stroke-dasharray="16 10"/>
+<path d="M${ax2} ${cy - 6} l26 16 l-26 16 z" fill="${YEL}" opacity="${op((ar - 0.9) * 10)}"/>
+<text x="${(ax1 + ax2) / 2}" y="${cy - 28}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="21" fill="${YEL}" opacity="${op(ar * 2)}">MABES → RUMAH</text>`;
+          }
+          return s + "</g>";
+        };
+
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="versi-g" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#1a2030"/><stop offset="1" stop-color="#0d0f16"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#versi-g)"/>
+${TITLE}
+${panelA()}
+${panelB()}
+<g opacity="${op(F1.ramp(f, dua + 10, 10) * 0.9)}"><circle cx="${X + W / 2}" cy="${(AY + H + BY) / 2}" r="22" fill="#0d0f16" stroke="#8d93a3" stroke-width="3"/><text x="${X + W / 2}" y="${(AY + H + BY) / 2 + 7}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="20" fill="#fff">VS</text></g>
+</svg>`;
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.02, shots: [{ at: 0, scale: 1, ox: 50, oy: 45 }] }),
+          C.vignette(0.3, "50% 50%", 55),
+          f >= konf ? C.stamp(f, { at: konf, x: 170, y: BY + 90, rot: -6, text: "BELUM DIKONFIRMASI", size: 52 }) : "",
+          C.progress(f, { step: 4, label: "DUA VERSI" }),
+        );
+      });
+    })();
+  </script>
+</template>

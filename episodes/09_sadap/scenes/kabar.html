@@ -1,0 +1,78 @@
+<!-- Kabar (HotWizz #01): HUD "SELASA, 3 NOV 2026 · BARESKRIM POLRI" with source; tag ANCAMAN MAKS 10 TAHUN on "Ancamannya"; three suspect cards slide in on "Listyo", "Ahrie", "Eko" (Listyo and Ahrie with licensed photos, Eko a grey silhouette), each name card gets a TERSANGKA stamp (never on a face). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>#root{position:absolute;inset:0;background:#0d0f16;overflow:hidden}</style>
+  <div id="root" data-composition-id="kabar" data-width="1080" data-height="1920">
+    <div id="kabar-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kabar-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.22"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kabar-sfx-ancam" class="clip" src="public/sfx/pop-in.wav" data-at="word:Ancamannya" data-track-index="13" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kabar-sfx-listyo" class="clip" src="public/sfx/whoosh.wav" data-at="word:Listyo-4" data-track-index="14" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kabar-sfx-ahrie" class="clip" src="public/sfx/whoosh.wav" data-at="word:Ahrie-4" data-track-index="15" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kabar-sfx-eko" class="clip" src="public/sfx/whoosh.wav" data-at="word:Eko-4" data-track-index="16" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kabar-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Eko+10" data-track-index="17" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const mono = "'JetBrains Mono', monospace";
+      const RED = "#ff2d3d", ORANGE = "#ff7a1a", YELLOW = "#ffd23f";
+      window.__timelines["kabar"] = F1.scene("kabar", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const ancam = w("Ancamannya");
+        const listyo = w("Listyo");
+        const ahrie = w("Ahrie");
+        const eko = w("Eko");
+
+        // ---- background: dark stage, hot glow, slow diagonal hazard lines ----
+        let lines = "";
+        for (let i = -4; i < 14; i++) {
+          const x = i * 120 + ((f * 0.6) % 120);
+          lines += `<line x1="${n(x)}" y1="0" x2="${n(x - 700)}" y2="1920" stroke="#fff" stroke-opacity="0.025" stroke-width="2"/>`;
+        }
+        const pulse = 0.5 + 0.5 * Math.sin(f / 22);
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="kabar-g" cx="85%" cy="12%" r="70%"><stop offset="0" stop-color="${RED}" stop-opacity="${n(0.22 + 0.06 * pulse, 3)}"/><stop offset="1" stop-color="#151a26" stop-opacity="0"/></radialGradient>
+<radialGradient id="kabar-g2" cx="10%" cy="85%" r="60%"><stop offset="0" stop-color="${ORANGE}" stop-opacity="0.12"/><stop offset="1" stop-color="#0d0f16" stop-opacity="0"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="#0d0f16"/><rect width="1080" height="1920" fill="url(#kabar-g)"/><rect width="1080" height="1920" fill="url(#kabar-g2)"/>${lines}
+<rect x="0" y="0" width="1080" height="10" fill="${RED}"/></svg>`;
+
+        // ---- suspect cards ----
+        const CX = 72, CW = 888, CH = 270;
+        const sil = `<svg width="100%" height="100%" viewBox="0 0 200 250" style="position:absolute;inset:0"><rect width="200" height="250" fill="#2a3040"/><circle cx="100" cy="95" r="42" fill="#6b7384"/><path d="M20 250 C20 175 62 148 100 148 C138 148 180 175 180 250 Z" fill="#5a6274"/></svg>`;
+        const card = ({ at, y, name, role, photo, silhouette, credit, rot }) => {
+          const p = F1.ramp(f, at - 12, 14, F1.expoOut);
+          if (p <= 0) return "";
+          const slide = -(1 - Math.min(1, p)) * 220;
+          const bob = Math.sin(f / 30 + y) * 2;
+          const img = photo
+            ? F1.Photo({ src: photo.src, x: 24, y: 10, w: 200, h: 250, fit: "cover", focal: photo.focal, enter: "none", border: 4, radius: 10, zoom: [1.05, 1.15], dur: 150, at: 0 }, f)
+            : `<div style="position:absolute;left:24px;top:10px;width:200px;height:250px;border-radius:12px;overflow:hidden;border:4px solid rgba(255,255,255,0.5);box-sizing:border-box">${silhouette}</div>`;
+          const stampAt = at + 12;
+          return `<div style="position:absolute;left:${CX}px;top:${y}px;width:${CW}px;height:${CH}px;opacity:${n(Math.min(1, p * 1.5), 3)};transform:translate(${n(slide)}px,${n(bob)}px) rotate(${rot + (1 - Math.min(1, p)) * 4}deg)">
+<div style="position:absolute;inset:0;border-radius:18px;background:linear-gradient(100deg,#1b2233,#151a26);border:2px solid rgba(255,255,255,0.14);box-shadow:0 18px 40px rgba(0,0,0,0.5)"></div>
+<div style="position:absolute;left:0;top:18px;bottom:18px;width:8px;border-radius:4px;background:${RED}"></div>
+${img}
+<div style="position:absolute;left:256px;top:26px;width:600px;font-family:Oswald,sans-serif;font-weight:700;font-size:44px;line-height:1.08;letter-spacing:1px;color:#fff">${name}</div>
+${role ? `<div style="position:absolute;left:256px;top:${role.top}px;font-family:${mono};font-weight:700;font-size:25px;letter-spacing:1px;color:${ORANGE}">${role.text}</div>` : ""}
+${C.stamp(f - 0, { at: stampAt, x: 560, y: 185, rot: -5, text: "TERSANGKA", size: 34, color: RED })}
+</div>${credit ? `<div style="position:absolute;left:${CX + 24}px;top:${y + CH + 6}px;font-family:${mono};font-weight:500;font-size:17px;color:#9aa0ad;opacity:${n(Math.min(1, p), 3)}">${credit}</div>` : ""}`;
+        };
+        const Y0 = 560, GAP = 320;
+        const CARDS =
+          card({ at: listyo, y: Y0, rot: -0.6, name: "LISTYO SIGIT PRABOWO", role: { text: "EKS KAPOLRI", top: 110 }, photo: { src: "public/photos/listyo-ksp.jpg", focal: { x: 0.5, y: 0.3 } } }) +
+          card({ at: ahrie, y: Y0 + GAP, rot: 0.5, name: "IRJEN AHRIE SONTA NASUTION", role: { text: "KADIVKUM POLRI", top: 160 }, photo: { src: "public/photos/ahrie.jpg", focal: { x: 0.5, y: 0.35 } }, credit: "Foto: Ahrie Sonta Nasution · CC BY-SA 4.0" }) +
+          card({ at: eko, y: Y0 + 2 * GAP, rot: -0.4, name: "IRJEN EKO HADI SANTOSO", silhouette: sil });
+
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.04, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 40 }, { at: listyo - 6, scale: 1.02, ox: 50, oy: 55, ease: 16 }] }),
+          C.vignette(0.35, "50% 50%", 50),
+          C.hud(f, { at: 4, kicker: "KABAR", big: "SELASA, 3 NOV 2026", sub: "BARESKRIM POLRI", src: "Bareskrim via detik, Kompas", w: 700, bigSize: 44 }),
+          f >= ancam ? C.tag(f, { at: ancam, x: 72, y: 458, rot: -1.5, size: 34, text: `<span style="color:${YELLOW}">ANCAMAN MAKS 10 TAHUN</span> · PASAL 258 KUHP` }) : "",
+          CARDS,
+          C.progress(f, { step: 2, label: "KABAR · 3 NOV 2026" }),
+        );
+      });
+    })();
+  </script>
+</template>

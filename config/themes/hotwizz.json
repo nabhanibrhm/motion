@@ -1,0 +1,5 @@
+{
+  "runtime": {"profile": "modern"},
+  "voice": {"speakers": {"wec": {"supertonic": {"voice": "F2", "speed": 1, "range": 1.4}}}},
+  "audio": {"bed": "music/bed.mp3", "bedGain": 0.25}
+}

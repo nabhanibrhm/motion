@@ -1,0 +1,122 @@
+<!-- Ironi: line 1 "9 AGU 2022" chip + press-conference photo (Listyo announces Sambo as suspect, Kompas) with a FERDY SAMBO inset on "Sambo"; line 2 swings to "1 OKT 2026 · DILANTIK KSP" with the KSP portrait on "dilantik", a 0 -> 33 HARI counter between "Tiga" and "ditahan", jail bars slide over the portrait frame on "ditahan". Source: Kompas, Setneg. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #0d0f16;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="ironi" data-width="1080" data-height="1920">
+    <div id="ironi-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="ironi-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="ironi-sfx-sambo" class="clip" src="public/sfx/pop-in.wav" data-at="word:Sambo" data-track-index="13" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="ironi-sfx-dilantik" class="clip" src="public/sfx/whoosh.wav" data-at="word:dilantik" data-track-index="14" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="ironi-sfx-tiga" class="clip" src="public/sfx/riser.wav" data-at="word:Tiga" data-track-index="15" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="ironi-sfx-ditahan" class="clip" src="public/sfx/stamp.wav" data-at="word:ditahan." data-track-index="16" data-volume="0.35"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const RED = "#ff2d3d", ORANGE = "#ff7a1a", YELLOW = "#ffd23f";
+      const mono = "'JetBrains Mono', monospace";
+      window.__timelines["ironi"] = F1.scene("ironi", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const sambo = w("Sambo");
+        const dilantik = w("dilantik");
+        const tiga = w("Tiga");
+        const ditahan = w("ditahan");
+        const swing = dilantik - 8; // scene 1 leaves, scene 2 arrives
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 40%,#1b2133,#0d0f16 75%)"></div>
+<div style="position:absolute;left:0;right:0;top:0;height:14px;background:${RED}"></div>`;
+
+        // ---------- scene 1: press conference ----------
+        const sw = F1.ramp(f, swing, 12, F1.expoIn ?? F1.easeOut);
+        let ONE = "";
+        if (f < swing + 14) {
+          const pin = F1.ramp(f, 2, 16, F1.expoOut);
+          const PX = 80, PY = 350, PW = 920, PH = 760;
+          const sIn = F1.ramp(f, sambo, 14, F1.backOut);
+          const photo = (img, x, y, bw, bh, bc, rot) =>
+            `<div style="position:absolute;left:${x}px;top:${y}px;width:${bw}px;height:${bh}px;border:6px solid ${bc};border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,0.55);transform:rotate(${rot}deg);background:#222">${img}</div>`;
+          const inset = sIn <= 0 ? "" : `<div style="position:absolute;left:660px;top:560px;width:270px;opacity:${n(Math.min(1, sIn), 3)};transform:scale(${n(0.6 + 0.4 * sIn, 3)});transform-origin:50% 100%">
+${photo('<img src="public/photos/sambo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 25%">', 0, 0, 270, 300, YELLOW, 3)}
+<div style="margin:-12px 14px 0;position:relative;padding:8px 14px;background:#fff;color:#111;font-family:Oswald,sans-serif;font-weight:700;font-size:34px;letter-spacing:2px;text-align:center;border-radius:8px;transform:rotate(3deg)">FERDY SAMBO</div></div>`;
+          ONE = `<div style="position:absolute;inset:0;opacity:${n(1 - sw, 3)};transform:translateX(${n(-sw * 700)}px)">
+<div style="position:absolute;left:0;top:0;opacity:${n(pin, 3)};transform:translateY(${n((1 - pin) * 50)}px)">
+${photo('<img src="public/photos/listyo-sambo-pers.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:62% 55%">', PX, PY, PW, PH, "#fff", -1.2)}
+<div style="position:absolute;left:${PX}px;top:${PY + PH - 6}px;width:${PW}px;padding:16px 22px;box-sizing:border-box;background:${RED};color:#fff;font-family:Oswald,sans-serif;font-weight:700;font-size:44px;line-height:1.1;letter-spacing:2px;border-radius:0 0 16px 16px;transform:rotate(-1.2deg);transform-origin:0 0">KAPOLRI UMUMKAN FERDY SAMBO TERSANGKA</div></div>
+${inset}
+<div style="position:absolute;left:72px;top:1290px;font-family:${mono};font-weight:500;font-size:18px;color:#9aa0b0">Sumber: Kompas, Setneg</div></div>`;
+        }
+
+        // ---------- scene 2: KSP, counter, jail ----------
+        let TWO = "";
+        if (f >= swing - 2) {
+          const arr = F1.ramp(f, swing, 14, F1.expoOut);
+          const pop = F1.ramp(f, dilantik, 14, F1.backOut);
+          const cp = F1.ramp(f, tiga, ditahan - tiga - 4, F1.easeOut);
+          const count = Math.round(33 * cp);
+          const PX = 72, PY = 380, PW = 400, PH = 590;
+          const bars = F1.ramp(f, ditahan, 14, F1.expoOut);
+          let jail = "";
+          if (bars > 0) {
+            for (let i = 0; i < 6; i++) {
+              const p = F1.ramp(f, ditahan + i * 2, 12, F1.expoOut);
+              const bx = 18 + i * 66;
+              jail += `<div style="position:absolute;left:${bx}px;top:${n(-PH * (1 - p))}px;width:20px;height:${PH + 20}px;border-radius:10px;background:linear-gradient(90deg,#3a3f4d,#9aa0b0 45%,#2a2e3a);box-shadow:4px 0 10px rgba(0,0,0,0.6)"></div>`;
+            }
+            const rp = F1.ramp(f, ditahan, 8, F1.easeOut);
+            jail += `<div style="position:absolute;left:0;right:0;top:60px;height:18px;background:#4a4f5e;opacity:${n(rp, 3)}"></div><div style="position:absolute;left:0;right:0;bottom:60px;height:18px;background:#4a4f5e;opacity:${n(rp, 3)}"></div><div style="position:absolute;inset:0;background:rgba(255,45,61,${n(0.18 * bars, 3)})"></div>`;
+          }
+          const portrait = `<div style="position:absolute;left:${PX}px;top:${PY}px;width:${PW}px;height:${PH}px;opacity:${n(Math.min(1, pop), 3)};transform:scale(${n(0.8 + 0.2 * pop, 3)}) rotate(${n(1.5 * pop, 2)}deg);transform-origin:50% 50%">
+<div style="position:absolute;inset:0;border:6px solid #fff;border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,0.55);background:#222"><img src="public/photos/listyo-ksp.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 25%"><div style="position:absolute;inset:0">${jail}</div></div>
+<div style="position:absolute;left:12px;right:12px;top:${PH - 4}px;padding:8px 10px;background:#fff;color:#111;font-family:Oswald,sans-serif;font-weight:700;font-size:28px;letter-spacing:2px;text-align:center;border-radius:8px">LISTYO SIGIT PRABOWO</div></div>`;
+
+          const cOp = F1.ramp(f, dilantik + 4, 12);
+          const numCol = bars > 0 ? RED : YELLOW;
+          const counter = `<div style="position:absolute;left:510px;top:360px;width:450px;text-align:center;opacity:${n(cOp, 3)}">
+<div style="font-family:Oswald,sans-serif;font-weight:700;font-size:330px;line-height:1;color:${numCol};text-shadow:0 0 40px rgba(255,122,26,0.35);letter-spacing:-4px">${count}</div>
+<div style="font-family:Oswald,sans-serif;font-weight:700;font-size:100px;line-height:1;color:#fff;letter-spacing:12px;margin-top:-6px">HARI</div></div>`;
+
+          // timeline from 1 OKT to 3 NOV, filled by the counter
+          const TX = 100, TW = 840, TY = 1070;
+          const tl = `<div style="position:absolute;left:0;top:0;opacity:${n(cOp, 3)}">
+<div style="position:absolute;left:${TX}px;top:${TY}px;width:${TW}px;height:12px;border-radius:6px;background:rgba(255,255,255,0.18)"></div>
+<div style="position:absolute;left:${TX}px;top:${TY}px;width:${n(TW * cp)}px;height:12px;border-radius:6px;background:linear-gradient(90deg,${ORANGE},${RED})"></div>
+<div style="position:absolute;left:${TX - 12}px;top:${TY - 6}px;width:24px;height:24px;border-radius:50%;background:${YELLOW}"></div>
+<div style="position:absolute;left:${n(TX + TW * cp - 12)}px;top:${TY - 6}px;width:24px;height:24px;border-radius:50%;background:${bars > 0 ? RED : "#fff"}"></div>
+<div style="position:absolute;left:${TX - 20}px;top:${TY + 34}px;font-family:${mono};font-weight:700;font-size:26px;color:#fff;white-space:nowrap">1 OKT 2026</div>
+<div style="position:absolute;left:${TX + TW - 190}px;top:${TY + 34}px;font-family:${mono};font-weight:700;font-size:26px;color:#fff;text-align:right;width:210px">3 NOV 2026</div></div>`;
+
+          const dp = F1.ramp(f, ditahan, 10, F1.expoOut);
+          const banner = dp <= 0 ? "" : `<div style="position:absolute;left:72px;top:1250px;width:880px;padding:16px 0;text-align:center;background:${RED};color:#fff;font-family:Oswald,sans-serif;font-weight:700;font-size:52px;letter-spacing:3px;border-radius:12px;opacity:${n(dp, 3)};transform:scale(${n(1.6 - 0.6 * dp, 3)});transform-origin:50% 50%">3 NOV 2026 · DITAHAN</div>`;
+          const src = `<div style="position:absolute;left:72px;top:1370px;font-family:${mono};font-weight:500;font-size:18px;color:#9aa0b0;opacity:${n(cOp, 3)}">Sumber: Kompas, Setneg</div>`;
+          TWO = `<div style="position:absolute;inset:0;opacity:${n(arr, 3)};transform:translateX(${n((1 - arr) * 700)}px)">${portrait}${counter}${tl}${banner}${src}</div>`;
+        }
+
+        const chip = f < swing
+          ? C.chip(f, { at: 4, text: "9 AGU 2022" })
+          : f < swing + 4 ? "" : C.chip(f, { at: swing + 4, text: "1 OKT 2026 · DILANTIK KEPALA STAF KEPRESIDENAN" });
+
+        return F1.join(
+          C.stage(f, D, BG + ONE + TWO, {
+            whip: false,
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 40 },
+              { at: swing, scale: 1, ox: 50, oy: 45 },
+            ],
+          }),
+          C.vignette(0.45),
+          chip,
+          C.progress(f, { step: 6, label: "IRONI" }),
+        );
+      });
+    })();
+  </script>
+</template>

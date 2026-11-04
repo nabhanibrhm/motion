@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "sadap",
+  "number": 9,
+  "title": "Eks Kapolri Ditahan: Diduga Sadap Presiden",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {"width": 1080, "height": 1920, "fps": 30},
+  "runtime": {
+    "profile": "modern",
+    "case": {"id": "HOTWIZZ #01", "steps": 7}
+  },
+  "scenes": [
+    {"id": "hook", "file": "scenes/hook.html"},
+    {"id": "kabar", "file": "scenes/kabar.html"},
+    {"id": "modus", "file": "scenes/modus.html"},
+    {"id": "versi", "file": "scenes/versi.html"},
+    {"id": "kubu", "file": "scenes/kubu.html"},
+    {"id": "ironi", "file": "scenes/ironi.html"},
+    {"id": "penutup", "file": "scenes/penutup.html"}
+  ]
+}

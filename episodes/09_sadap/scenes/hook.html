@@ -1,0 +1,110 @@
+<!-- Hook (HotWizz #01): frame 0 is the thumbnail: red BREAKING bar, headline "EKS KAPOLRI DITAHAN", the Kapolri portrait in a news frame with name label. On "Sekarang" jail bars slide over the whole photo frame and "RUTAN MABES POLRI" appears; on "penyadapan" a phone with sound waves, REC dot and tag DIDUGA pops in; on "Prabowo" a small framed photo of the President pops beside the phone. Photos: public/photos/listyo-kapolri.jpg, public/photos/prabowo.jpg. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-sekarang" class="clip" src="public/sfx/door-open.wav" data-at="word:Sekarang" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-sadap" class="clip" src="public/sfx/pop-in.wav" data-at="word:penyadapan" data-track-index="13" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-prabowo" class="clip" src="public/sfx/pop.wav" data-at="word:Prabowo" data-track-index="14" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const RED = "#ff2d3d";
+      const YEL = "#ffd23f";
+      const mono = "'JetBrains Mono', monospace";
+      const osw = "Oswald, sans-serif";
+      // portrait frame geometry
+      const PX = 100, PY = 715, PW = 540, PH = 640;
+
+      window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
+        const C = F1.cine;
+        const sekarang = F1.wordFrame(S, "Sekarang");
+        const sadap = F1.wordFrame(S, "penyadapan");
+        const prabowo = F1.wordFrame(S, "Prabowo");
+
+        const pulse = 0.5 + 0.5 * Math.sin(f / 4);
+        const bars = F1.ramp(f, sekarang, 22, F1.expoOut);
+        const label = F1.ramp(f, sekarang + 14, 12, F1.expoOut);
+        const phoneP = F1.ramp(f, sadap, 14, F1.expoOut);
+        const prabP = F1.ramp(f, prabowo, 12, F1.expoOut);
+        const rec = f >= sadap && Math.floor((f - sadap) / 10) % 2 === 0;
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,#1b2133 0%,#0d0f16 70%)"></div>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<g opacity="0.5" stroke="#ff2d3d" stroke-width="2">${Array.from({ length: 6 }, (_, i) => `<line x1="${n(-200 + i * 260 + (f * 0.6) % 260)}" y1="1500" x2="${n(100 + i * 260 + (f * 0.6) % 260)}" y2="1200" opacity="${n(0.15 + 0.1 * W.hash(i), 2)}"/>`).join("")}</g>
+</svg>
+<!-- BREAKING bar -->
+<div style="position:absolute;left:72px;top:278px;width:888px;height:84px;background:${RED};display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-sizing:border-box;box-shadow:0 0 ${n(24 + 14 * pulse)}px rgba(255,45,61,0.55)">
+<div style="font-family:${osw};font-weight:700;font-size:58px;letter-spacing:8px;color:#fff"><span style="display:inline-block;width:22px;height:22px;border-radius:50%;background:#fff;margin-right:18px;opacity:${n(0.5 + 0.5 * pulse, 2)}"></span>BREAKING</div>
+<div style="font-family:${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#fff">3 NOV 2026</div></div>
+<!-- headline -->
+<div style="position:absolute;left:72px;top:372px;width:888px;font-family:${osw};font-weight:700;font-size:152px;line-height:1.0;letter-spacing:2px;color:#fff;text-shadow:0 6px 0 rgba(0,0,0,0.5)">EKS KAPOLRI<br><span style="color:${YEL}">DITAHAN</span></div>
+<div style="position:absolute;left:72px;top:665px;width:120px;height:8px;background:#ff7a1a"></div>`;
+
+        // portrait frame with red edge; bars overlay covers the whole frame
+        const portrait = F1.Photo({ src: "public/photos/listyo-kapolri.jpg", x: PX, y: PY, w: PW, h: PH, fit: "cover", focal: { x: 0.5, y: 0.25 }, enter: "none", border: 8, radius: 8, zoom: [1.0, 1.06], dur: 220 }, f);
+        const NB = 7;
+        const barW = PW / NB;
+        const barEls = Array.from({ length: NB }, (_, i) => {
+          const d = i / NB;
+          const p = F1.clamp01 ? F1.clamp01((bars - d * 0.5) / 0.5) : Math.max(0, Math.min(1, (bars - d * 0.5) / 0.5));
+          const h = PH * p;
+          return `<div style="position:absolute;left:${n(i * barW + barW * 0.5 - 9)}px;top:0;width:18px;height:${n(h)}px;background:linear-gradient(90deg,#4a505c,#c4c9d2 45%,#4a505c);box-shadow:0 0 10px rgba(0,0,0,0.7)"></div>`;
+        }).join("");
+        const cross = [0.18, 0.5, 0.82].map((y) => `<div style="position:absolute;left:0;top:${n(PH * y - 8)}px;width:${n(PW * bars)}px;height:16px;background:linear-gradient(180deg,#4a505c,#c4c9d2 45%,#4a505c);box-shadow:0 0 10px rgba(0,0,0,0.7)"></div>`).join("");
+        const jail = bars > 0 ? `<div style="position:absolute;left:${PX}px;top:${PY}px;width:${PW}px;height:${PH}px;border-radius:10px;overflow:hidden"><div style="position:absolute;inset:0;background:rgba(10,12,20,${n(0.35 * bars, 2)})"></div>${barEls}${cross}</div>` : "";
+        const frameRim = `<div style="position:absolute;left:${PX - 8}px;top:${PY - 8}px;width:${PW + 16}px;height:${PH + 16}px;border:4px solid ${RED};border-radius:16px;box-shadow:0 0 30px rgba(255,45,61,0.45)"></div>`;
+        const rutan = label > 0 ? `<div style="position:absolute;left:${PX}px;top:${n(PY + PH - 96 + (1 - label) * 30)}px;width:${PW}px;height:72px;background:${RED};opacity:${n(label, 3)};display:flex;align-items:center;justify-content:center;font-family:${osw};font-weight:700;font-size:44px;letter-spacing:5px;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.5)">RUTAN MABES POLRI</div>` : "";
+        const nameLabel = `<div style="position:absolute;left:${PX}px;top:${PY + PH + 16}px;width:${PW}px;padding:10px 16px;box-sizing:border-box;background:#fff;border-left:10px solid ${RED};font-family:${mono};font-weight:700;font-size:21px;line-height:1.25;letter-spacing:0.5px;color:#0d0f16">LISTYO SIGIT PRABOWO ·<br>KAPOLRI 2021–2026</div>`;
+
+        // phone with sound waves and REC dot
+        const phoneCX = 800, phoneCY = 850;
+        const waves = [0, 1, 2].map((i) => {
+          const k = ((f - sadap) / 36 + i / 3) % 1;
+          const r = 120 + k * 80;
+          return `<path d="M ${phoneCX - 100 - r * 0.0} ${phoneCY - r * 0.9} A ${r} ${r} 0 0 0 ${phoneCX - 100} ${phoneCY + r * 0.9}" fill="none" stroke="${YEL}" stroke-width="6" stroke-linecap="round" opacity="${n((1 - k) * 0.8 * phoneP, 2)}"/>`;
+        }).join("");
+        const phone = phoneP > 0 ? `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0;opacity:${n(phoneP, 3)}">
+${waves}
+<g transform="translate(${phoneCX} ${n(phoneCY + (1 - phoneP) * 40)}) scale(${n(0.7 + 0.3 * phoneP, 3)}) rotate(6)">
+<rect x="-100" y="-190" width="200" height="380" rx="30" fill="#1b2133" stroke="#fff" stroke-width="6"/>
+<rect x="-80" y="-160" width="160" height="300" rx="14" fill="#0d0f16"/>
+<rect x="-26" y="-178" width="52" height="8" rx="4" fill="#fff"/>
+<circle cx="-56" cy="-124" r="${rec ? 11 : 6}" fill="${RED}"/>
+<text x="-36" y="-116" font-family="JetBrains Mono" font-weight="700" font-size="24" fill="#fff">REC</text>
+${Array.from({ length: 9 }, (_, i) => `<rect x="${-66 + i * 15}" y="${n(-14 - (24 + 40 * Math.abs(Math.sin(f / 5 + i * 1.3))) / 2)}" width="8" height="${n(24 + 40 * Math.abs(Math.sin(f / 5 + i * 1.3)))}" rx="4" fill="${i % 2 ? YEL : "#ff7a1a"}"/>`).join("")}
+<rect x="-60" y="90" width="120" height="10" rx="5" fill="#2a3144"/>
+</g></svg>` : "";
+
+        // Prabowo small framed photo
+        const FX = 700, FY = 1090, FW = 220, FH = 250;
+        const prabPhoto = F1.Photo({ src: "public/photos/prabowo.jpg", x: FX, y: FY, w: FW, h: FH, fit: "cover", focal: { x: 0.5, y: 0.3 }, enter: "none", border: 6, radius: 6 }, f);
+        const prabBlock = prabP > 0 ? `<div style="position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:${n(prabP, 3)};transform-origin:${FX + FW / 2}px ${FY + FH / 2}px;transform:scale(${n(0.6 + 0.4 * prabP, 3)}) rotate(${n(-3 * prabP, 2)}deg)">
+<div style="position:absolute;left:${FX - 6}px;top:${FY - 6}px;width:${FW + 12}px;height:${FH + 12}px;border:3px solid ${YEL};border-radius:12px"></div>${prabPhoto}
+<div style="position:absolute;left:${FX - 6}px;top:${FY + FH + 12}px;width:${FW + 12}px;padding:7px 10px;box-sizing:border-box;background:${YEL};font-family:${mono};font-weight:700;font-size:15px;line-height:1.25;letter-spacing:0.3px;color:#0d0f16;text-align:center">PRESIDEN PRABOWO SUBIANTO</div></div>` : "";
+
+        const ART = `${frameRim}${portrait}${jail}${rutan}${nameLabel}`;
+
+        return F1.join(
+          C.stage(f, D, BG + ART + phone + prabBlock, {
+            whip: false,
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 45 },
+              { at: sekarang - 4, scale: 1.05, ox: 30, oy: 60, ease: 14 },
+              { at: sadap - 4, scale: 1.04, ox: 65, oy: 55, ease: 14 },
+            ],
+          }),
+          C.vignette(0.35, "50% 50%", 45),
+          C.tag(f, { at: sadap + 6, x: 735, y: 945, rot: -6, text: "DIDUGA", size: 44, light: true }),
+          C.progress(f, { step: 1, label: "BREAKING" }),
+        );
+      });
+    })();
+  </script>
+</template>

@@ -1,0 +1,89 @@
+<!-- Penutup: "LAWFUL INTERCEPTION = PENYADAPAN YANG SAH" (on "Artinya"); on "Presiden" LAWFUL cracks and gets a red strike-through with "?" (a question, not a verdict); on "kita" a phone at the viewer's angle with a faint REC dot and BAGAIMANA DENGAN KITA?; then the end card: STATUS (on "tersangka"), MOTIF BELUM DIUNGKAP (on "motifnya"), CTA (on "percaya"/"komentar"), footer. No photos. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="penutup" data-width="1080" data-height="1920">
+    <div id="penutup-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-presiden" class="clip" src="public/sfx/sub-drop.wav" data-at="word:Presiden" data-track-index="13" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-kita" class="clip" src="public/sfx/pop-in.wav" data-at="word:kita" data-track-index="14" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-tersangka" class="clip" src="public/sfx/stamp.wav" data-at="word:tersangka" data-track-index="15" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="penutup-sfx-percaya" class="clip" src="public/sfx/ding.wav" data-at="word:percaya" data-track-index="16" data-volume="0.15"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const RED = "#ff2d3d", ORG = "#ff7a1a", YEL = "#ffd23f";
+      const mono = "'JetBrains Mono', monospace";
+      window.__timelines["penutup"] = F1.scene("penutup", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const artinya = w("Artinya"), presiden = w("Presiden"), kita = w("kita");
+        const tersangka = w("tersangka"), motifnya = w("motifnya"), percaya = w("percaya"), komentar = w("komentar");
+        const pop = (at, d = 12) => Math.min(1, F1.ramp(f, at, d, F1.backOut));
+        const txt = (s, size, color, extra = "") => `font-family:Oswald;font-weight:700;font-size:${size}px;color:${color};letter-spacing:2px;${extra}`;
+        const box = (x, y, wd, inner, extra = "") => `<div style="position:absolute;left:${x}px;top:${y}px;width:${wd}px;text-align:center;${extra}">${inner}</div>`;
+
+        // ---- title block: centred at first, shrinks to the top on "Presiden" ----
+        const mv = F1.ramp(f, presiden - 4, 16, F1.easeOut);
+        const ty = -400 * mv, sc = 1 - 0.3 * mv;
+        const t1 = pop(3, 14), sub = pop(artinya, 12);
+        const cr = F1.ramp(f, presiden + 2, 8, F1.easeOut);
+        const strike = F1.ramp(f, presiden + 8, 10, F1.expoOut);
+        const q = pop(presiden + 14, 12);
+        const shake = cr > 0 && cr < 1 ? (F1.world.hash(f) - 0.5) * 14 : 0;
+        const end = F1.ramp(f, tersangka - 4, 12, F1.easeOut);
+        const titleOp = 1 - 0.7 * end;
+        const crack = cr <= 0 ? "" : `<polyline points="470,640 500,690 478,730 520,775 495,815" fill="none" stroke="#0d0f16" stroke-width="9" stroke-linejoin="round" opacity="${n(cr, 3)}"/><polyline points="470,640 500,690 478,730 520,775 495,815" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round" opacity="${n(cr, 3)}"/>`;
+        const strk = strike <= 0 ? "" : `<line x1="230" y1="730" x2="${n(230 + 620 * strike)}" y2="${n(730 - 20 * strike)}" stroke="${RED}" stroke-width="22" stroke-linecap="round"/>`;
+        const TITLE = `<div style="position:absolute;inset:0;opacity:${n(titleOp, 3)};transform-origin:540px 800px;transform:translateY(${n(ty)}px) scale(${n(sc, 4)})">
+<div style="position:absolute;left:0;width:1080px;top:${n(620 + (1 - t1) * 50)}px;text-align:center;opacity:${n(t1, 3)};transform:translateX(${n(shake)}px)"><div style="${txt("", 200, "#fff", "line-height:190px;letter-spacing:6px")}">LAWFUL</div>
+<div style="${txt("", 128, "#fff", "line-height:130px;letter-spacing:3px")}">INTERCEPTION</div></div>
+<svg width="1080" height="1000" viewBox="0 0 1080 1000" style="position:absolute;left:0;top:0">${crack}${strk}</svg>
+${q > 0 ? `<div style="position:absolute;left:830px;top:${n(560 + (1 - q) * 40)}px;opacity:${n(q, 3)};${txt("", 200, YEL, "text-shadow:0 0 30px rgba(255,210,63,0.5);transform:rotate(8deg)")}">?</div>` : ""}
+${sub > 0 ? box(0, 980, 1080, `<span style="font-family:${mono};font-weight:700;font-size:46px;letter-spacing:2px;color:${YEL}">= PENYADAPAN YANG SAH</span>`, `opacity:${n(sub, 3)};transform:translateY(${n((1 - sub) * 30)}px)`) : ""}
+</div>`;
+
+        // ---- phone at viewer's angle (line 2, on "kita") ----
+        const ph = pop(kita - 8, 14);
+        const phOut = F1.ramp(f, tersangka - 6, 10, F1.easeIn);
+        const rec = 0.35 + 0.35 * (0.5 + 0.5 * Math.sin(f / 7));
+        let bars = "";
+        for (let i = 0; i < 18; i++) {
+          const h = 20 + 80 * (0.5 + 0.5 * Math.sin(f / 5 + i * 1.3)) * (0.4 + F1.world.hash(i));
+          bars += `<rect x="${40 + i * 24}" y="${n(560 - h)}" width="12" height="${n(h)}" rx="4" fill="${RED}" opacity="0.3"/>`;
+        }
+        const PHONE = ph <= 0 || phOut >= 1 ? "" : `<div style="position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:${n(ph * (1 - phOut), 3)};transform:translateY(${n((1 - ph) * 120 + phOut * 160)}px);perspective:1400px">
+<div style="position:absolute;left:290px;top:660px;width:500px;height:790px;border-radius:64px;background:#05060a;border:8px solid #2a3144;box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 60px rgba(255,45,61,0.18);transform:rotateX(8deg) rotateZ(-2deg);overflow:hidden">
+<div style="position:absolute;inset:0;background:linear-gradient(#151a26,#0a0c12)"></div>
+<div style="position:absolute;left:190px;top:18px;width:100px;height:26px;border-radius:13px;background:#000"></div>
+<svg width="484" height="774" style="position:absolute;left:0;top:0">${bars.replace(/y="(\S+)"/g, (m, y) => `y="${+y + 160}"`)}<rect x="30" y="140" width="424" height="3" fill="${RED}" opacity="0.25"/></svg>
+<div style="position:absolute;left:36px;top:72px;font-family:${mono};font-weight:700;font-size:24px;color:${RED};opacity:${n(rec, 3)}"><span style="display:inline-block;width:18px;height:18px;border-radius:9px;background:${RED};margin-right:10px;vertical-align:-2px"></span>REC</div>
+<div style="position:absolute;left:0;width:484px;top:230px;text-align:center;line-height:104px;${txt("", 96, "#fff", "text-shadow:0 4px 0 rgba(0,0,0,0.6)")}">BAGAIMANA<br>DENGAN<br><span style="color:${YEL}">KITA?</span></div>
+</div></div>`;
+
+        // ---- end card ----
+        const e1 = pop(tersangka, 12), e2 = pop(motifnya, 12), e3 = pop(percaya, 12), e4 = pop(komentar, 12);
+        const e5 = F1.ramp(f, komentar + 6, 14, F1.easeOut);
+        const sh = (p) => `opacity:${n(p, 3)};transform:translateY(${n((1 - p) * 40)}px) scale(${n(0.9 + 0.1 * p, 3)})`;
+        const CARD = f < tersangka - 2 ? "" : `
+${box(60, 640, 960, `<div style="font-family:${mono};font-weight:700;font-size:34px;letter-spacing:5px;color:#9aa3b8">STATUS:</div><div style="${txt("", 150, YEL, "line-height:150px;letter-spacing:4px")}">TERSANGKA</div><div style="${txt("", 52, "#fff", "letter-spacing:3px")}">· PRADUGA TAK BERSALAH ·</div>`, sh(e1))}
+${e2 <= 0 ? "" : box(110, 960, 860, `<div style="${txt("", 66, "#fff", "padding:14px 0;border:6px solid " + RED + ";border-radius:14px;background:rgba(255,45,61,0.22);letter-spacing:3px")}">MOTIF BELUM DIUNGKAP</div>`, sh(e2))}
+${e3 <= 0 ? "" : box(60, 1115, 960, `<div style="${txt("", 78, "#fff", "line-height:84px;letter-spacing:2px")}">VERSI MANA YANG<br><span style="color:${ORG}">KAMU PERCAYA?</span></div>`, sh(e3))}
+${e4 <= 0 ? "" : box(180, 1308, 720, `<div style="${txt("", 54, "#0d0f16", "padding:10px 0;border-radius:14px;background:" + YEL + ";letter-spacing:4px")}">TULIS DI KOMENTAR</div>`, sh(e4))}
+${e5 <= 0 ? "" : box(60, 1432, 960, `<span style="font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:#9aa3b8">HOTWIZZ #01 · SUMBER DI DESKRIPSI</span>`, `opacity:${n(e5, 3)}`)}`;
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 45%,#1a2030 0%,#0d0f16 80%)"></div>
+<div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 2px,transparent 2px 6px)"></div>
+${TITLE}${PHONE}${CARD}`;
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.025, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 45 }, { at: kita - 6, scale: 1.02, ox: 50, oy: 50, ease: 14 }] }),
+          C.vignette(0.45, "50% 50%", 50),
+          C.progress(f, { step: 7, label: "PERTANYAAN BESAR" }),
+        );
+      });
+    })();
+  </script>
+</template>

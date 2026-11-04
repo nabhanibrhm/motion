@@ -1,0 +1,92 @@
+<!-- Kubu: two readings, equal weight. Line 1: two identical photo frames (Jokowi / Prabowo) with a neutral white VS; line 2 on "Kapolresta" / "ajudannya" a small fact card with Listyo's photo; line 3 two identical bubbles on "menuding" / "perebutan", and on "belum" one BELUM TERBUKTI stamp lands on both at the same frame. Sumber: Radar Solo, Radar Madiun, Fajar, RMOL. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="kubu" data-width="1080" data-height="1920">
+    <div id="kubu-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kubu-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kubu-sfx-kapolresta" class="clip" src="public/sfx/pop-in.wav" data-at="word:Kapolresta" data-track-index="13" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kubu-sfx-menuding" class="clip" src="public/sfx/pop.wav" data-at="word:menuding" data-track-index="14" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="kubu-sfx-belum" class="clip" src="public/sfx/stamp.wav" data-at="word:belum" data-track-index="15" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const mono = "'JetBrains Mono', monospace";
+      window.__timelines["kubu"] = F1.scene("kubu", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const kapolresta = w("Kapolresta");
+        const ajudannya = w("ajudannya");
+        const menuding = w("menuding");
+        const perebutan = w("perebutan");
+        const belum = w("belum");
+        const l1 = F1.line(S, 0).start;
+
+        // ---- line 1: two identical frames, identical timing ----
+        const FW = 360, FH = 420, FY = 510, LX = 80, RX = 600;
+        const t0 = l1 + 6;
+        const photo = (src, x, focal) =>
+          F1.Photo({ src, x, y: FY, w: FW, h: FH, fit: "cover", focal, at: t0, enter: "rise", enterFrames: 16, border: 8, radius: 12, dur: 400, zoom: [1, 1.04] }, f);
+        const lab = (x, small, name) => {
+          const p = F1.ramp(f, t0 + 10, 12, F1.expoOut);
+          if (p <= 0) return "";
+          return `<div style="position:absolute;left:${x}px;top:${FY + FH + 16}px;width:${FW}px;text-align:center;opacity:${n(p, 3)}">
+<div style="font-family:${mono};font-weight:700;font-size:22px;letter-spacing:2px;color:#ffd23f">${small}</div>
+<div style="font-family:Oswald,sans-serif;font-weight:600;font-size:36px;letter-spacing:2px;color:#fff;margin-top:4px">${name}</div></div>`;
+        };
+        const vp = F1.ramp(f, t0 + 6, 12, F1.backOut);
+        const VS = vp <= 0 ? "" : `<div style="position:absolute;left:${(LX + FW + RX) / 2 - 60}px;top:${FY + FH / 2 - 40}px;width:120px;text-align:center;font-family:Oswald,sans-serif;font-weight:700;font-size:64px;letter-spacing:4px;color:#fff;opacity:${n(Math.min(1, vp), 3)};transform:scale(${n(0.6 + 0.4 * vp, 3)})">VS</div>`;
+
+        // ---- line 2: fact card with Listyo ----
+        const CY = 1040, CX = 80, CW = 880, CH = 130;
+        const cp = F1.ramp(f, kapolresta - 4, 14, F1.expoOut);
+        const hl = (p) => `color:${p > 0 ? "#ffd23f" : "#fff"}`;
+        const aj = F1.ramp(f, ajudannya - 2, 8);
+        const CARD = cp <= 0 ? "" : `<div style="position:absolute;left:${n(CX + (1 - cp) * 60)}px;top:${CY}px;width:${CW}px;height:${CH}px;opacity:${n(cp, 3)}">
+<div style="position:absolute;inset:0;border-radius:16px;background:#151a26;border:3px solid rgba(255,255,255,0.85)"></div>
+${F1.Photo({ src: "public/photos/listyo-kapolri.jpg", x: 22, y: 15, w: 100, h: 100, fit: "cover", focal: { x: 0.5, y: 0.25 }, enter: "none", border: 4, radius: 8, dur: 200, zoom: [1, 1.03] }, f)}
+<div style="position:absolute;left:156px;top:0;right:20px;height:${CH}px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+<div style="font-family:${mono};font-weight:700;font-size:20px;letter-spacing:2px;color:#c9c6c0">LISTYO SIGIT PRABOWO</div>
+<div style="font-family:Oswald,sans-serif;font-weight:600;font-size:34px;letter-spacing:1px;line-height:1.15;color:#fff"><span style="color:#ffd23f">KAPOLRESTA SURAKARTA 2011–12</span> · <span style="color:${aj > 0 ? "#ffd23f" : "#fff"}">EKS AJUDAN PRESIDEN JOKOWI</span></div>
+</div></div>`;
+
+        // ---- line 3: two equal bubbles, one stamp frame ----
+        const BW2 = 410, BH2 = 220, BY = 1225, BLX = 70, BRX = 550;
+        const bubble = (x, at, text, tail) => {
+          const p = F1.ramp(f, at, 12, F1.backOut);
+          if (p <= 0) return "";
+          const tx = tail === "l" ? 70 : BW2 - 70 - 30;
+          return `<div style="position:absolute;left:${x}px;top:${BY}px;width:${BW2}px;height:${BH2}px;opacity:${n(Math.min(1, p), 3)};transform:translateY(${n((1 - p) * 40)}px) scale(${n(0.85 + 0.15 * Math.min(1, p), 3)})">
+<div style="position:absolute;left:${tx}px;top:-18px;width:30px;height:30px;background:#151a26;border-left:4px solid #fff;border-top:4px solid #fff;transform:rotate(45deg)"></div>
+<div style="position:absolute;inset:0;border-radius:22px;background:#151a26;border:4px solid #fff;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:0 26px 26px;box-sizing:border-box;font-family:Oswald,sans-serif;font-weight:600;font-size:38px;line-height:1.2;letter-spacing:1px;color:#fff">${text}</div></div>`;
+        };
+        const stampAt = (x) => (f >= belum ? C.stamp(f, { at: belum, x, y: BY - 34, rot: -6, text: "BELUM TERBUKTI", color: "#2a2a2e", size: 34 }) : "");
+
+        // from just before "menuding" both faces and the fact card recede identically, so no face sits beside the accusations
+        const rc = F1.ramp(f, menuding - 6, 14, F1.easeOut);
+        const GRP = `<div style="position:absolute;inset:0;opacity:${n(1 - 0.65 * rc, 3)};transform-origin:540px ${FY + FH / 2}px;transform:scale(${n(1 - 0.4 * rc, 3)}) translateY(${n(-60 * rc)}px)">`;
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1b2132 0%, #0d0f16 75%)"></div>
+${GRP}${photo("public/photos/jokowi.jpg", LX, { x: 0.5, y: 0.3 })}
+${photo("public/photos/prabowo.jpg", RX, { x: 0.5, y: 0.3 })}
+${lab(LX, "GENG SOLO?", "JOKO WIDODO")}
+${lab(RX, "KUBU PRABOWO?", "PRABOWO SUBIANTO")}
+${VS}</div>
+<div style="position:absolute;inset:0;opacity:${n(1 - 0.65 * rc, 3)}">${CARD}</div>
+${bubble(BLX, menuding - 2, "GENG SOLO MEMATA-MATAI PRESIDEN?", "l")}
+${bubble(BRX, perebutan - 2, "PEREBUTAN PENGARUH ELITE? PENGALIHAN ISU?", "l")}`;
+
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.025, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 50 }] }),
+          C.vignette(0.35, "50% 50%", 55),
+          stampAt(BLX + 40),
+          stampAt(BRX + 40),
+          C.hud(f, { at: 4, kicker: "TAFSIR DI MEDIA SOSIAL", big: "DUA BACAAN", sub: "BUKAN FAKTA TERKONFIRMASI", src: "Radar Solo, Radar Madiun, Fajar, RMOL", bigSize: 44 }),
+          C.progress(f, { step: 5, label: "DUA KUBU" }),
+        );
+      });
+    })();
+  </script>
+</template>

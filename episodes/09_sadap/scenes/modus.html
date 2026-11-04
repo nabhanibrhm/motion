@@ -1,0 +1,145 @@
+<!-- Modus: server rack "LIMS · Lawful Interception Management System" with the rule card SADAP = HANYA UNTUK PERKARA (highlight on "perkara"). Masked numbers drop into the rack from "diduga" on; tags SEJAK 2025 (on "sejak") and TANPA VERIFIKASI (on "verifikasi"). On line 3 six target chips pop on the spoken words: Presiden (small Prabowo photo), pejabat negara, politisi, media, ormas, pengusaha. Source: Bareskrim via detik. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="modus" data-width="1080" data-height="1920">
+    <div id="modus-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="modus-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="12" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="modus-sfx-verif" class="clip" src="public/sfx/stamp.wav" data-at="word:verifikasi" data-track-index="13" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="modus-sfx-presiden" class="clip" src="public/sfx/pop-in.wav" data-at="word:Presiden" data-track-index="14" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const RED = "#ff2d3d", ORANGE = "#ff7a1a", YEL = "#ffd23f", PANEL = "#151a26";
+      const mono = "JetBrains Mono";
+      const ICONS = {
+        negara: `<path d="M8 22 L28 8 L48 22 Z M12 26 h6 v18 h-6 z M25 26 h6 v18 h-6 z M38 26 h6 v18 h-6 z M8 47 h40 v5 h-40 z" fill="#fff"/>`,
+        politisi: `<circle cx="28" cy="16" r="9" fill="#fff"/><path d="M10 52 q0-22 18-22 q18 0 18 22 z" fill="#fff"/><path d="M25 32 h6 l2 20 h-10 z" fill="${RED}"/>`,
+        media: `<rect x="22" y="6" width="12" height="26" rx="6" fill="#fff"/><path d="M14 26 q0 14 14 14 q14 0 14-14" fill="none" stroke="#fff" stroke-width="4"/><rect x="26" y="40" width="4" height="8" fill="#fff"/><rect x="18" y="48" width="20" height="4" rx="2" fill="#fff"/>`,
+        ormas: `<circle cx="28" cy="14" r="7" fill="#fff"/><path d="M16 38 q0-16 12-16 q12 0 12 16 z" fill="#fff"/><circle cx="10" cy="22" r="5" fill="#fff" opacity="0.7"/><path d="M0 42 q0-12 10-12 q4 0 6 2 q-6 4-6 10 z" fill="#fff" opacity="0.7"/><circle cx="46" cy="22" r="5" fill="#fff" opacity="0.7"/><path d="M56 42 q0-12-10-12 q-4 0-6 2 q6 4 6 10 z" fill="#fff" opacity="0.7"/>`,
+        pengusaha: `<rect x="8" y="20" width="40" height="28" rx="5" fill="#fff"/><path d="M20 20 v-6 q0-4 4-4 h8 q4 0 4 4 v6" fill="none" stroke="#fff" stroke-width="4"/><rect x="8" y="30" width="40" height="4" fill="${ORANGE}"/><rect x="25" y="28" width="6" height="8" rx="1" fill="${YEL}"/>`,
+      };
+      window.__timelines["modus"] = F1.scene("modus", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const lims = w("LIMS");
+        const hanya = w("hanya");
+        const perkara = w("perkara");
+        const sejak = w("sejak");
+        const diduga = w("diduga");
+        const verif = w("verifikasi");
+        const line3 = F1.line(S, 2).start;
+        const ramp = (at, d = 12, e = F1.backOut) => F1.ramp(f, at, d, e);
+
+        // ---- server rack ----
+        const RX = 250, RY = 540, RW = 580, RH = 440;
+        const rk = Math.min(1, ramp(2, 16, F1.expoOut));
+        let units = "";
+        for (let i = 0; i < 5; i++) {
+          const uy = RY + 125 + i * 61;
+          let leds = "";
+          for (let k = 0; k < 4; k++) {
+            const on = Math.sin(f * 0.35 + i * 1.7 + k * 2.3) > (f >= diduga ? -0.3 : 0.4);
+            const col = i === 2 && f >= verif ? RED : k % 2 ? ORANGE : "#4cf0a0";
+            leds += `<circle cx="${RX + RW - 130 + k * 24}" cy="${uy + 25}" r="7" fill="${col}" opacity="${on ? 1 : 0.2}"/>`;
+          }
+          units += `<rect x="${RX + 26}" y="${uy}" width="${RW - 52}" height="50" rx="8" fill="#1e2536" stroke="#2f3a52" stroke-width="3"/>
+<rect x="${RX + 44}" y="${uy + 14}" width="150" height="10" rx="5" fill="#2f3a52"/><rect x="${RX + 44}" y="${uy + 32}" width="100" height="10" rx="5" fill="#2f3a52"/>${leds}`;
+        }
+        const scan = ((f * 5) % 300);
+        const RACK = `<g opacity="${n(rk, 3)}" transform="translate(0 ${n((1 - rk) * 50)})">
+<rect x="${RX + 10}" y="${RY + 14}" width="${RW}" height="${RH}" rx="20" fill="#000" opacity="0.35"/>
+<rect x="${RX}" y="${RY}" width="${RW}" height="${RH}" rx="20" fill="${PANEL}" stroke="${RED}" stroke-width="5"/>
+<rect x="${RX}" y="${RY}" width="${RW}" height="112" rx="20" fill="#1e2536"/>
+<text x="${RX + RW / 2}" y="${RY + 62}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="60" letter-spacing="8" fill="#fff">LIMS</text>
+<text x="${RX + RW / 2}" y="${RY + 96}" text-anchor="middle" font-family="${mono}" font-weight="500" font-size="19" fill="${YEL}">Lawful Interception Management System</text>
+${units}
+<rect x="${RX + 30}" y="${RY + 125 + scan}" width="${RW - 60}" height="3" fill="${RED}" opacity="0.5"/>
+<rect x="${RX + 40}" y="${RY + RH - 8}" width="${RW - 80}" height="14" rx="4" fill="#2f3a52"/></g>`;
+
+        // ---- masked numbers dropping into the server (line 2) ----
+        let drops = "";
+        if (f >= diduga - 4 && f < line3 + 10) {
+          const per = 16;
+          const k0 = Math.floor((f - (diduga - 4)) / per);
+          for (let k = Math.max(0, k0 - 2); k <= k0; k++) {
+            const t0 = diduga - 4 + k * per;
+            const p = (f - t0) / 24;
+            if (p < 0 || p > 1) continue;
+            const x = RX + 60 + Math.round(F1.world.hash(k + 3) * (RW - 330));
+            const y = 440 + (RY + 120 - 440) * (p * p);
+            const fade = 1 - F1.ramp(f, t0 + 15, 8);
+            drops += `<g opacity="${n(fade, 3)}"><rect x="${x}" y="${n(y)}" width="270" height="46" rx="23" fill="#0d0f16" stroke="${YEL}" stroke-width="3"/><text x="${x + 135}" y="${n(y + 32)}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="24" fill="${YEL}">08xx-xxxx-xxxx</text></g>`;
+          }
+        }
+
+        // ---- rule card ----
+        const rc = Math.min(1, ramp(hanya - 16, 14, F1.backOut));
+        const hl = F1.ramp(f, perkara, 8, F1.easeOut);
+        const RULE = rc <= 0 ? "" : `<g opacity="${n(rc, 3)}" transform="translate(0 ${n((1 - rc) * 30)})">
+<rect x="90" y="1002" width="830" height="92" rx="16" fill="#0d0f16" stroke="#fff" stroke-width="4"/>
+<rect x="90" y="1002" width="14" height="92" rx="6" fill="${RED}"/>
+<text x="505" y="1068" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="50" letter-spacing="2" fill="#fff">SADAP = HANYA UNTUK <tspan fill="${hl > 0.5 ? YEL : "#fff"}">PERKARA</tspan></text>
+${hl > 0 ? `<rect x="${n(640 - 0)}" y="1076" width="${n(262 * hl)}" height="6" fill="${YEL}"/>` : ""}</g>`;
+
+        // ---- targets (line 3) ----
+        const TW = 280, TH = 96, TX = 90, GAP = 5;
+        const targets = [
+          ["PRESIDEN", w("Presiden"), null],
+          ["PEJABAT NEGARA", w("pejabat"), "negara"],
+          ["POLITISI", w("politisi"), "politisi"],
+          ["MEDIA", w("media"), "media"],
+          ["ORMAS", w("ormas"), "ormas"],
+          ["PENGUSAHA", w("pengusaha"), "pengusaha"],
+        ];
+        const hdr = ramp(line3 - 4, 10, F1.easeOut);
+        let tg = hdr <= 0 ? "" : `<text x="90" y="1222" opacity="${n(hdr, 3)}" font-family="${mono}" font-weight="700" font-size="22" letter-spacing="3" fill="${RED}">● DIDUGA JADI TARGET</text>`;
+        targets.forEach(([label, at, icon], i) => {
+          const p = F1.ramp(f, at, 12, F1.backOut);
+          if (p <= 0) return;
+          const x = TX + (i % 3) * (TW + GAP * 4), y = 1240 + Math.floor(i / 3) * (TH + 14);
+          const ring = F1.ramp(f, at, 16, F1.easeOut);
+          const flash = Math.max(0, 1 - (f - at) / 20);
+          const glyph = icon
+            ? `<g transform="translate(${x + 10} ${y + 20}) scale(0.95)">${ICONS[icon]}</g>`
+            : `<clipPath id="modus-pres"><circle cx="${x + 46}" cy="${y + 48}" r="34"/></clipPath><circle cx="${x + 46}" cy="${y + 48}" r="38" fill="#fff"/>`;
+          tg += `<g opacity="${n(Math.min(1, p), 3)}" transform="translate(${n(x + TW / 2)} ${n(y + TH / 2)}) scale(${n(0.6 + 0.4 * Math.min(1.12, p), 3)}) translate(${n(-(x + TW / 2))} ${n(-(y + TH / 2))})">
+<rect x="${x}" y="${y}" width="${TW}" height="${TH}" rx="16" fill="${flash > 0 ? "#3a1a22" : PANEL}" stroke="${RED}" stroke-width="4"/>
+<circle cx="${x + 46}" cy="${y + 48}" r="${n(38 + ring * 18)}" fill="none" stroke="${RED}" stroke-width="3" opacity="${n(1 - ring, 3)}"/>
+${glyph}
+<text x="${x + 96}" y="${y + 58}" font-family="Oswald" font-weight="600" font-size="${label.length > 12 ? 22 : label.length > 9 ? 27 : 32}" letter-spacing="1" fill="#fff">${label}</text></g>`;
+        });
+        const presP = F1.ramp(f, targets[0][1], 12, F1.backOut);
+        const presPhoto = presP <= 0 ? "" : F1.Photo({ src: "public/photos/prabowo.jpg", x: TX + 8, y: 1248, w: 76, h: 80, fit: "cover", focal: { x: 0.5, y: 0.3 }, enter: "none", border: 3, radius: 38, dur: 120, zoom: [1, 1.05] }, f);
+        const presWrap = presP <= 0 ? "" : `<div style="position:absolute;inset:0;opacity:${n(Math.min(1, presP), 3)};transform:scale(${n(0.6 + 0.4 * Math.min(1.12, presP), 3)});transform-origin:${TX + TW / 2}px 1288px">${presPhoto}</div>`;
+
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="modus-glow" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#1c2236"/><stop offset="1" stop-color="#0d0f16"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#modus-glow)"/>
+<rect x="0" y="1000" width="1080" height="920" fill="#0d0f16" opacity="0.4"/>
+${RACK}${drops}${RULE}</svg>`;
+
+        const tagsOn = (at, text, x, y, rot, color) => (f < at ? "" : C.tag(f, { at, x, y, rot, text, size: 34 }));
+        return F1.join(
+          C.stage(f, D, BG + `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">${tg}</svg>${presWrap}`, {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 35 },
+              { at: diduga - 6, scale: 1.02, ox: 50, oy: 45, ease: 14 },
+              { at: line3 - 6, scale: 1.02, ox: 50, oy: 62, ease: 14 },
+            ],
+          }),
+          C.vignette(0.45, "50% 55%", 50),
+          C.hud(f, { at: 6, kicker: "SERVER RESMI POLRI", big: "LIMS", sub: "ALAT PENYADAPAN", src: "Bareskrim via detik", bigSize: 56, w: 500 }),
+          tagsOn(sejak, `<span style="color:${YEL}">SEJAK 2025</span>`, 90, 1105, -2),
+          tagsOn(verif, `TANPA <span style="color:${RED}">VERIFIKASI</span>`, 330, 1105, 2),
+          f >= verif ? C.stamp(f, { at: verif + 4, x: 700, y: 1098, rot: -8, text: "DIDUGA", size: 36, color: RED }) : "",
+          C.progress(f, { step: 3, label: "MODUS · LIMS" }),
+        );
+      });
+    })();
+  </script>
+</template>

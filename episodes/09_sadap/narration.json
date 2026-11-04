@@ -1,0 +1,160 @@
+{
+ "comment": "HotWizz #01 breaking news (script-short.md, sources there). One female narrator (wec, F2). Legal framing: tersangka/diduga throughout, unconfirmed social-media version labelled, both political readings given without endorsing either, presumption of innocence stated, no motive asserted.",
+ "source": "supertonic",
+ "say": {
+  "LIMS": "lims",
+  "Kadivkum": "kadifkum",
+  "iPad": "aipad",
+  "flashdisk": "flesdis",
+  "Lawful": "lofful",
+  "Interception": "intersepsyen",
+  "Nasution": "nasutiyon"
+ },
+ "speakers": {
+  "wec": {
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Eks Kapolri Ditahan"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Sebulan lalu, dia masih Kapolri. [pause 0.2] Sekarang, dia ditahan di rutan markas yang dulu dia pimpin."
+    },
+    {
+     "speaker": "wec",
+     "text": "Kasusnya? [pause 0.15] Dugaan penyadapan Presiden Prabowo.",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "kabar",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Selasa malam, tiga November, Bareskrim menetapkan mantan Kapolri Listyo Sigit Prabowo sebagai tersangka. Ancamannya sampai sepuluh tahun penjara."
+    },
+    {
+     "speaker": "wec",
+     "text": "Dua jenderal bintang dua ikut ditahan: Kadivkum Irjen Ahrie Sonta Nasution, dan Irjen Eko Hadi Santoso.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "modus",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Alatnya bernama LIMS, server penyadapan resmi Polri yang seharusnya hanya dipakai untuk perkara."
+    },
+    {
+     "speaker": "wec",
+     "text": "Tapi sejak dua ribu dua puluh lima, nomor-nomor diduga dimasukkan tanpa verifikasi."
+    },
+    {
+     "speaker": "wec",
+     "text": "Targetnya? Presiden, pejabat negara, politisi, media, ormas, sampai pengusaha.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "versi",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Soal bagaimana kasus ini terbongkar, ada dua versi."
+    },
+    {
+     "speaker": "wec",
+     "text": "Versi resmi polisi: Oktober lalu, file sadapan diduga diperintahkan untuk dihapus. Tiga puluh Oktober, petugas yang mengetahuinya melapor. Empat hari kemudian, tiga jenderal jadi tersangka."
+    },
+    {
+     "speaker": "wec",
+     "text": "Versi yang beredar di X lain lagi: katanya ada alat sadap mencurigakan terdeteksi di rumah seorang jenderal, dan perangkatnya dipindah dari Mabes setelah pergantian Kapolri. [pause 0.15] Versi ini belum dikonfirmasi polisi.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kubu",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Di media sosial, kasus ini langsung dibaca sebagai babak baru Geng Solo lawan kubu Prabowo."
+    },
+    {
+     "speaker": "wec",
+     "text": "Listyo memang dikenal dekat dengan Jokowi: Kapolresta Solo saat Jokowi wali kota, lalu ajudannya di Istana."
+    },
+    {
+     "speaker": "wec",
+     "text": "Sebagian menuding kelompok Geng Solo memata-matai presiden. Sebagian lagi menyebutnya perebutan pengaruh elite, atau sekadar pengalihan isu. [pause 0.15] Dua-duanya belum terbukti.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "ironi",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Ironisnya, tahun dua ribu dua puluh dua, dia sendiri yang mengumumkan Ferdy Sambo sebagai tersangka."
+    },
+    {
+     "speaker": "wec",
+     "text": "Satu Oktober lalu, dia dilantik jadi Kepala Staf Kepresidenan. [pause 0.2] Tiga puluh tiga hari kemudian, dia ditahan.",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "penutup",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Nama sistemnya Lawful Interception. Artinya: penyadapan yang sah."
+    },
+    {
+     "speaker": "wec",
+     "text": "Kalau Presiden saja bisa disadap tanpa perkara, [pause 0.15] bagaimana dengan kita?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Ingat, statusnya masih tersangka, dan polisi belum mengungkap motifnya. Dari semua versi yang beredar, mana yang kamu percaya? Tulis di komentar.",
+     "after": 0.6
+    }
+   ]
+  }
+ ]
+}
