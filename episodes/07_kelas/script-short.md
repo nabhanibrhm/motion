@@ -1,5 +1,7 @@
 # Kelas Menengah Hilang ke Mana? (Short)
 
+*Rewritten 4 Nov 2026 in the KSP-pacing style (no pauses, even chunks, hook as one line); facts unchanged.*
+
 Episode #6 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #07), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **215 spoken words**, **about 99 s**, over the quiet music bed. **Non-political:** BPS and World Bank framing only; no party, president, minister or programme named.
 
 Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 1.0, widened pitch range. Lines in *[brackets]* are on-screen notes. Every on-screen figure carries a "Sumber: …" line. **[K#]** = sources table. Facts checked on 1 Nov 2026.
@@ -9,25 +11,21 @@ Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 
 ### 1 · Hook (`hook`, LAPORAN MASUK)
 *[Beni with a payslip "GAJI NAIK ▲" and an empty wallet; his shopping bag gets smaller.]*
 
-**BENI:** Gajiku naik tiap tahun. Kok rasanya makin bokek?
-
-**NISA:** Beni, kamu nggak sendirian.
+**NISA:** Sembilan setengah juta orang turun kelas dalam lima tahun. Gajinya naik tiap tahun tapi dompetnya makin tipis. Kamu bisa jadi yang berikutnya.
 
 ### 2 · The numbers (`angka`, BUKTI 1 · ANGKA)
 *[A staircase of people: "2019 · 57,33 JUTA" → "2024 · 47,85 JUTA" (BPS) [K1, K2]; a few figures step down one stair; tag "−9,48 JUTA" [K4]. Then the stair below swells: "MENUJU KELAS MENENGAH · 142 JUTA (50,4%) · 2025" [K8].]*
 
-**MUKLIS:** Data BPS: tahun dua ribu sembilan belas, kelas menengah ada lima puluh tujuh juta orang. Tahun dua ribu dua puluh empat, tinggal empat puluh delapan juta.
+**MUKLIS:** Data BPS: tahun dua ribu sembilan belas kelas menengah ada lima puluh tujuh juta orang. Tahun dua ribu dua puluh empat tinggal empat puluh delapan juta.
 
-**BENI:** Hilang sembilan setengah juta orang?!
+**BENI:** Tunggu dulu. Jadi, sembilan setengah juta orang itu. Hilang ke mana semua?
 
-**MUKLIS:** Bukan hilang, turun kelas. Kelompok menuju kelas menengah malah membengkak, sekarang sekitar separuh penduduk.
+**MUKLIS:** Bukan hilang tapi turun kelas. Kelompok menuju kelas menengah malah membengkak dan sekarang sekitar separuh penduduk.
 
 ### 3 · Who counts (`siapa`, BUKTI 2 · SIAPA)
 *[A ruler/band: "KELAS MENENGAH (BPS) · PENGELUARAN Rp2,04–9,90 JUTA / ORANG / BULAN (2024)" [K5], with most people bunched at the left edge: "KEBANYAKAN DI BATAS BAWAH" [K6].]*
 
-**NISA:** Kelas menengah itu yang kayak gimana?
-
-**MUKLIS:** Versi BPS, pengeluarannya sekitar dua juta sampai sepuluh juta per orang per bulan. Kebanyakan mepet di batas bawah.
+**MUKLIS:** Kelas menengah itu yang kayak gimana? Versi BPS pengeluarannya sekitar dua juta sampai sepuluh juta per orang per bulan. Kebanyakan mepet di batas bawah.
 
 ### 4 · Why (`kenapa`, TERSANGKA · PENYEBAB)
 *[Three evidence cards: "LUKA PANDEMI (BPS)" [K7]; "PEKERJA BERGAJI KELAS MENENGAH 14% → 8% (2019→2024, Bank Dunia)" [K12]; "8 DARI 10 LAPANGAN KERJA BARU INFORMAL (2019–2024)" [K14].]*
@@ -37,25 +35,23 @@ Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 
 ### 5 · The squeeze (`gaji`, BUKTI 3 · DAYA BELI)
 *[Two bars: "UPAH +1,94%" vs "HARGA +2,31%" (Agu 2025) [K15, K16]; tag "DAYA BELI ▼". Then a small balance card: "SALDO RATA-RATA REKENING < Rp100 JT: Rp1,76 JT → Rp1,69 JT (Jun 2025→Jun 2026)" [K21] and beside it "LPS: TOTAL SIMPANAN < Rp100 JT TETAP +5,16%" [K23].]*
 
-**BENI:** Tapi gajiku kan naik?
+**BENI:** Tapi, gajiku kan naik tiap tahun. Masa, daya beliku malah ikut turun juga?
 
-**MUKLIS:** Tahun lalu rata-rata upah buruh naik satu koma sembilan persen, harga naik dua koma tiga persen. Gaji naik, daya beli malah turun. Saldo rata-rata rekening kecil juga turun, meski kata LPS totalnya masih tumbuh.
+**MUKLIS:** Tahun lalu rata-rata upah buruh naik satu koma sembilan persen. Harga naik dua koma tiga persen. Gaji naik tapi daya beli malah turun. Saldo rata-rata rekening kecil juga turun, meski kata LPS totalnya masih tumbuh.
 
 ### 6 · What if (`kalau`, SKENARIO)
 *[A family on the staircase; "PHK 2025: 88.519 PEKERJA (Kemnaker)" [K25]; one shock card ("PHK" / "SAKIT") knocks them down a stair; tag "TANPA TABUNGAN".]*
 
-**NISA:** Kalau kena PHK?
-
-**MUKLIS:** Tahun lalu delapan puluh delapan ribu pekerja kena PHK. Tanpa tabungan, satu PHK atau sakit bisa bikin keluarga turun kelas.
+**MUKLIS:** Terus kalau kena PHK? Tahun lalu delapan puluh delapan ribu pekerja kena PHK. Tanpa tabungan satu PHK atau sakit bisa bikin keluarga turun kelas.
 
 ### 7 · What to do and close (`pelajaran`, VONIS)
 *[Checklist: "DANA DARURAT ≥ 3× PENGELUARAN BULANAN [K31]", "CICILAN ≤ 30% PENGHASILAN [K28]", "SIMPAN DI BANK DIJAMIN LPS (s.d. Rp2 M, bunga ≤ 3,75%) [K29, K30]", "TAMBAH KEAHLIAN [K13]". Paper end card: "KASUS DITUTUP", "KASUS #07 · KELAS MENENGAH", comment question, "SUMBER LENGKAP DI DESKRIPSI".]*
 
-**MUKLIS:** Jadi: siapkan dana darurat minimal tiga kali pengeluaran bulanan. Cicilan maksimal tiga puluh persen penghasilan. Simpan di bank yang dijamin LPS, terus tambah keahlian.
+**MUKLIS:** Jadi siapkan dana darurat minimal tiga kali pengeluaran bulanan. Cicilan maksimal tiga puluh persen penghasilan. Simpan di bank yang dijamin LPS lalu terus tambah keahlian.
 
-**BENI:** Oke, mulai bulan ini aku nabung dulu.
+**BENI:** Oke, aku paham sekarang. Mulai bulan ini, aku sisihkan gaji buat nabung dulu.
 
-**NISA:** Kasus ditutup! Kamu merasa masih kelas menengah? Tulis di komentar!
+**NISA:** Kasus ditutup! Sekarang giliran kamu. Kamu merasa masih kelas menengah? Tulis di komentar!
 
 ---
 

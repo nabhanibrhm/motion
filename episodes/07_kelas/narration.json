@@ -9,7 +9,7 @@
    "pitch": "-4Hz",
    "supertonic": {
     "voice": "M1",
-    "speed": 1.0,
+    "speed": 1,
     "range": 1.5
    }
   },
@@ -19,7 +19,7 @@
    "pitch": "+2Hz",
    "supertonic": {
     "voice": "F2",
-    "speed": 1.0,
+    "speed": 1,
     "range": 1.4
    }
   },
@@ -29,7 +29,7 @@
    "pitch": "+10Hz",
    "supertonic": {
     "voice": "M4",
-    "speed": 1.0,
+    "speed": 1,
     "range": 1.4
    }
   }
@@ -55,13 +55,9 @@
    "chapter": "kasus",
    "lines": [
     {
-     "speaker": "bog",
-     "text": "Gajiku naik tiap tahun. [pause 0.15] Kok rasanya makin bokek?"
-    },
-    {
      "speaker": "wec",
-     "text": "Beni, kamu nggak sendirian.",
-     "after": 0.2
+     "text": "Sembilan setengah juta orang turun kelas dalam lima tahun. Gajinya naik tiap tahun tapi dompetnya makin tipis. Kamu bisa jadi yang berikutnya.",
+     "after": 0.25
     }
    ]
   },
@@ -71,15 +67,15 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Data BPS: tahun dua ribu sembilan belas, kelas menengah ada lima puluh tujuh juta orang. Tahun dua ribu dua puluh empat, tinggal empat puluh delapan juta."
+     "text": "Data BPS: tahun dua ribu sembilan belas kelas menengah ada lima puluh tujuh juta orang. Tahun dua ribu dua puluh empat tinggal empat puluh delapan juta."
     },
     {
      "speaker": "bog",
-     "text": "Hilang sembilan setengah juta orang?!"
+     "text": "Tunggu dulu. Jadi, sembilan setengah juta orang itu. Hilang ke mana semua?"
     },
     {
      "speaker": "mog",
-     "text": "Bukan hilang, turun kelas. Kelompok menuju kelas menengah malah membengkak, sekarang sekitar separuh penduduk.",
+     "text": "Bukan hilang tapi turun kelas. Kelompok menuju kelas menengah malah membengkak dan sekarang sekitar separuh penduduk.",
      "after": 0.2
     }
    ]
@@ -89,12 +85,8 @@
    "chapter": "kasus",
    "lines": [
     {
-     "speaker": "wec",
-     "text": "Kelas menengah itu yang kayak gimana?"
-    },
-    {
      "speaker": "mog",
-     "text": "Versi BPS, pengeluarannya sekitar dua juta sampai sepuluh juta per orang per bulan. Kebanyakan mepet di batas bawah.",
+     "text": "Kelas menengah itu yang kayak gimana? Versi BPS pengeluarannya sekitar dua juta sampai sepuluh juta per orang per bulan. Kebanyakan mepet di batas bawah.",
      "after": 0.2
     }
    ]
@@ -116,11 +108,11 @@
    "lines": [
     {
      "speaker": "bog",
-     "text": "Tapi gajiku kan naik?"
+     "text": "Tapi, gajiku kan naik tiap tahun. Masa, daya beliku malah ikut turun juga?"
     },
     {
      "speaker": "mog",
-     "text": "Tahun lalu rata-rata upah buruh naik satu koma sembilan persen, harga naik dua koma tiga persen. Gaji naik, daya beli malah turun. Saldo rata-rata rekening kecil juga turun, meski kata LPS totalnya masih tumbuh.",
+     "text": "Tahun lalu rata-rata upah buruh naik satu koma sembilan persen. Harga naik dua koma tiga persen. Gaji naik tapi daya beli malah turun. Saldo rata-rata rekening kecil juga turun, meski kata LPS totalnya masih tumbuh.",
      "after": 0.2
     }
    ]
@@ -130,12 +122,8 @@
    "chapter": "kasus",
    "lines": [
     {
-     "speaker": "wec",
-     "text": "Kalau kena PHK?"
-    },
-    {
      "speaker": "mog",
-     "text": "Tahun lalu delapan puluh delapan ribu pekerja kena PHK. Tanpa tabungan, satu PHK atau sakit bisa bikin keluarga turun kelas.",
+     "text": "Terus kalau kena PHK? Tahun lalu delapan puluh delapan ribu pekerja kena PHK. Tanpa tabungan satu PHK atau sakit bisa bikin keluarga turun kelas.",
      "after": 0.2
     }
    ]
@@ -146,17 +134,15 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Jadi: siapkan dana darurat minimal tiga kali pengeluaran bulanan. Cicilan maksimal tiga puluh persen penghasilan. Simpan di bank yang dijamin LPS, terus tambah keahlian.",
-     "after": 0.1
+     "text": "Jadi siapkan dana darurat minimal tiga kali pengeluaran bulanan. Cicilan maksimal tiga puluh persen penghasilan. Simpan di bank yang dijamin LPS lalu terus tambah keahlian."
     },
     {
      "speaker": "bog",
-     "text": "Oke, mulai bulan ini aku nabung dulu.",
-     "after": 0.15
+     "text": "Oke, aku paham sekarang. Mulai bulan ini, aku sisihkan gaji buat nabung dulu."
     },
     {
      "speaker": "wec",
-     "text": "Kasus ditutup! Kamu merasa masih kelas menengah? Tulis di komentar!",
+     "text": "Kasus ditutup! Sekarang giliran kamu. Kamu merasa masih kelas menengah? Tulis di komentar!",
      "after": 0.3
     }
    ]

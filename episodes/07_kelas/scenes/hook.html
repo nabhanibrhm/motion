@@ -13,8 +13,8 @@
     <div id="hook-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="0.6333" id="hook-sfx-naik" class="clip" src="public/sfx/pop-in.wav" data-at="word:naik" data-track-index="12" data-volume="0.09"></audio>
     <audio data-hf-media-start-basis="local" data-start="2.2333" id="hook-sfx-makin" class="clip" src="public/sfx/swoosh-soft.wav" data-at="word:makin" data-track-index="13" data-volume="0.15"></audio>
-    <audio data-hf-media-start-basis="local" data-start="2.5667" id="hook-sfx-bokek" class="clip" src="public/sfx/fall.wav" data-at="word:bokek" data-track-index="14" data-volume="0.1"></audio>
-    <audio data-hf-media-start-basis="local" data-start="4.0667" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:sendirian" data-track-index="15" data-volume="0.4"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2.5667" id="hook-sfx-bokek" class="clip" src="public/sfx/fall.wav" data-at="word:tipis" data-track-index="14" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="4.0667" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:berikutnya" data-track-index="15" data-volume="0.4"></audio>
   </div>
   <script>
     (() => {
@@ -63,9 +63,9 @@ ${["GAJI POKOK", "TUNJANGAN", "POTONGAN"].map((t, i) => `<text x="-196" y="${-13
         const C = F1.cine;
         const naik = F1.wordFrame(S, "naik");
         const makin = F1.wordFrame(S, "makin");
-        const bokek = F1.wordFrame(S, "bokek");
-        const nggak = F1.wordFrame(S, "nggak");
-        const sendirian = F1.wordFrame(S, "sendirian");
+        const bokek = F1.wordFrame(S, "tipis");
+        const nggak = F1.wordFrame(S, "Kamu");
+        const sendirian = F1.wordFrame(S, "berikutnya");
         const pulse = f >= naik && f < naik + 16 ? 0.14 * Math.sin((Math.PI * (f - naik)) / 16) : 0;
         const arrowY = f >= naik ? -10 * Math.abs(Math.sin((f - naik) / 5)) * (1 - F1.ramp(f, naik + 40, 20)) : 0;
         const shrink = F1.ramp(f, makin, bokek - makin + 14, F1.easeOut);
@@ -86,7 +86,7 @@ ${SLIP(f, { pulse, arrowY })}${BAG(f, { shrink, gone })}${WALLET(f, { shake })}<
             shots: [
               { at: 0, scale: 1, ox: 50, oy: 60 },
               { at: makin - 4, scale: 1.08, ox: 66, oy: 58, ease: 12 },
-              { at: F1.line(S, 1).start, scale: 1, ox: 50, oy: 60, ease: 12 },
+              { at: F1.wordFrame(S, "Kamu"), scale: 1, ox: 50, oy: 60, ease: 12 },
             ],
           }),
           C.vignette(0.22, "50% 58%", 50),
@@ -94,8 +94,7 @@ ${SLIP(f, { pulse, arrowY })}${BAG(f, { shrink, gone })}${WALLET(f, { shake })}<
           C.progress(f, { step: 1, label: "LAPORAN MASUK" }),
           C.hud(f, { at: -14, kicker: "LAPORAN MASUK", big: "GAJI NAIK ▲", sub: "ILUSTRASI · DOMPET MAKIN TIPIS", bigSize: 52, w: 540 }),
           C.cast(S, f, [
-            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 420, at: -14 },
-            { src: C.CAST.nisa, x: 540, y: 1200, w: 380 },
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380, at: -14 },
           ]),
         );
       });

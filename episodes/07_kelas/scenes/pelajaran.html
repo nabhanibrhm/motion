@@ -18,7 +18,7 @@
     <audio data-hf-media-start-basis="local" data-start="11.8333" id="pelajaran-sfx-4" class="clip" src="public/sfx/click.wav" data-at="word:tambah" data-track-index="15" data-volume="0.25"></audio>
     <audio data-hf-media-start-basis="local" data-start="14.2333" id="pelajaran-sfx-nabung" class="clip" src="public/sfx/cash.wav" data-at="word:nabung" data-track-index="16" data-volume="0.25"></audio>
     <audio data-hf-media-start-basis="local" data-start="15.5667" id="pelajaran-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="17" data-volume="0.45"></audio>
-    <audio data-hf-media-start-basis="local" data-start="16.5" id="pelajaran-sfx-ask" class="clip" src="public/sfx/pop-in.wav" data-at="word:Kamu" data-track-index="18" data-volume="0.09"></audio>
+    <audio data-hf-media-start-basis="local" data-start="16.5" id="pelajaran-sfx-ask" class="clip" src="public/sfx/pop-in.wav" data-at="word:Kamu#1" data-track-index="18" data-volume="0.09"></audio>
   </div>
   <script>
     (() => {
@@ -56,7 +56,7 @@ ${LIST(f, o.ticks)}</svg>`;
         const oke = F1.line(S, 1).start;
         const nabung = w("nabung");
         const ditutup = w("ditutup");
-        const kamu = w("Kamu");
+        const kamu = w("Kamu", 1);
         const paper = F1.ramp(f, ditutup - 6, 8);
         const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
         const ask = F1.ramp(f, kamu, 12, F1.expoOut);
