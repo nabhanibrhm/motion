@@ -1,4 +1,4 @@
-<!-- Hook: Nisa's phone shows the gold price line falling (only the two verified points, each labelled) next to a small gold-bar card (generic bar, "1 GRAM / 999.9", no brand mark). The HUD carries the verified drop with its sources. On "rugi" the phone buzzes with a red flash and a RUGI tag; on "Kasus" a KASUS #06 stamp slams down. Frame 0 is fully drawn (thumbnail). Nisa, Beni. -->
+<!-- Hook: Nisa's phone shows the gold price line falling (only the two verified points, each labelled) next to a small gold-bar card (generic bar, "1 GRAM / 999.9", no brand mark). The HUD carries the verified drop with its sources. On "rugi" the phone buzzes with a red flash and a RUGI tag; on "Masih" a KASUS #06 stamp slams down. Frame 0 is fully drawn (thumbnail) and shows the hook claim (-19,6% since the January record). Nisa only. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -12,7 +12,7 @@
   <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
     <div id="hook-art" class="f1-layer"></div>
     <audio data-hf-media-start-basis="local" data-start="3.0667" id="hook-sfx-rugi" class="clip" src="public/sfx/pop-in.wav" data-at="word:rugi" data-track-index="12" data-volume="0.13"></audio>
-    <audio data-hf-media-start-basis="local" data-start="3.7333" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Kasus" data-track-index="13" data-volume="0.3"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3.7333" id="hook-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:Masih" data-track-index="13" data-volume="0.3"></audio>
   </div>
   <script>
     (() => {
@@ -45,16 +45,20 @@ ${GOLD(0, 30, 1)}
 <g transform="translate(0 200)"><rect x="-190" y="0" width="380" height="66" rx="14" fill="#f6efe1" stroke="${INK}" stroke-width="3"/><circle cx="-148" cy="33" r="19" fill="#cfc4b0"/><rect x="-96" y="16" width="150" height="14" rx="7" fill="#cfc4b0"/><rect x="-96" y="40" width="90" height="10" rx="5" fill="#ddd3c0"/><rect x="62" y="12" width="114" height="42" rx="12" fill="${RED}" opacity="0.8"/><path d="M104 26 L132 26 L118 44 Z" fill="#fff"/></g></g>`;
       const BG = (f, buzz) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <rect width="1080" height="1920" fill="#f1e7d3"/>
+${DRIFT(f, { seed: 300, count: 7, y0: 420, y1: 1050, color: "#f2c27a", a: 0.26 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
 <g style="filter:blur(3px)"><rect x="700" y="290" width="300" height="340" fill="#f7e3b0"/><path d="M700 290 h300 v340 h-300 Z M850 290 v340 M700 460 h300" stroke="#8a6f55" stroke-width="16" fill="none"/></g>
 ${W.dust(f, { x: 120, y: 500, w: 800, h: 640, count: 22, seed: 6, color: "#fff3cf", alpha: 0.5 })}
 <rect x="0" y="1150" width="1080" height="770" fill="#cdb898"/>
 <ellipse cx="540" cy="1150" rx="400" ry="24" fill="#000" opacity="0.12"/>
 ${CARD()}${PHONE(f, buzz)}</svg>`;
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
         const C = F1.cine;
         const rugi = F1.wordFrame(S, "rugi");
-        const kasus = F1.wordFrame(S, "Kasus");
-        const beni = F1.line(S, 1).start;
+        const kasus = F1.wordFrame(S, "Masih");
         const t = f - rugi;
         const buzz = t >= 0 && t < 22 ? 2.6 * Math.sin(t * 2.4) * (1 - t / 22) : 0;
         const flash = f >= rugi ? 0.14 * Math.exp(-(f - rugi) / 6) : 0;
@@ -65,7 +69,7 @@ ${CARD()}${PHONE(f, buzz)}</svg>`;
             shots: [
               { at: 0, scale: 1, ox: 50, oy: 50 },
               { at: rugi - 2, scale: 1.07, ox: 55, oy: 32, ease: 12 },
-              { at: beni, scale: 1.03, ox: 50, oy: 32, ease: 10 },
+              { at: kasus - 4, scale: 1.03, ox: 50, oy: 32, ease: 10 },
             ],
           }),
           `<div style="position:absolute;inset:0;background:rgba(208,65,58,${n(flash, 3)})"></div>`,
@@ -76,7 +80,6 @@ ${CARD()}${PHONE(f, buzz)}</svg>`;
           C.hud(f, { at: -14, kicker: "LAPORAN · EMAS ANTAM", big: "−19,6%", sub: "29 JAN → 30 OKT 2026 · PER GRAM", src: "RRI, Katadata", w: 540 }),
           C.cast(S, f, [
             { src: C.CAST.nisaKaget, x: 540, y: 1200, w: 380, at: -14 },
-            { src: C.CAST.beni, x: 540, y: 1200, w: 400 },
           ]),
         );
       });

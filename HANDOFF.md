@@ -1,4 +1,4 @@
-# Handoff: production status (5 Nov 2026)
+# Handoff: production status (5 Nov 2026, evening)
 
 Commit only when requested. Before changes, read `ai-routing.md` and route by the current shared-module responsibilities there.
 
@@ -6,9 +6,20 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**Changed on 5 Nov 2026 evening (Windows machine):**
+- **06 `emas` rewritten in KSP pacing and rendered at 60 fps** (`out/06-emas-short.mp4` on this machine only: 1080×1920, 60 fps, 8,034 frames, 133.9 s, -14.0 LUFS, **-0.1 dBTP** — above the -1 target, listen for distortion). Ready for 7 Nov.
+  - Hook is one Nisa line ("Emas yang katanya paling aman sudah turun hampir dua puluh persen dari rekor Januari… Masih yakin emas itu aman?"); Beni's hook line and cast entry were removed and the KASUS #06 stamp moved to "Masih". Every other line is 11–17+ words with no `[pause]`; line counts and scene cue words were kept, so all 101 anchors resolve. Facts unchanged; `script-short.md` matches.
+  - "2,5 TAHUN" settled: spoken "lebih dari dua setengah tahun", label "> 2,5 TAHUN" (Aug 2020 → Mar 2023 ≈ 2.6 years).
+  - DRIFT/SWEEP background motion in all 7 scenes (same helpers as 07); `video.fps: 60`; the bed loops to the end.
+  - Prices are from 30 Oct; recheck the Antam price before posting if wanted.
+- **New rules (user, 5 Nov):** (1) frame 0 must show the hook's claim/number — 07's opening still showed the old "GAJI NAIK" payslip; (2) every video ends with a **title-only cover card** over the last ~1 s (outro tail, after the final word) so it can be chosen in TikTok's "Select cover". 06's is the `cover` overlay in `episodes/06_emas/scenes/pelajaran.html` (KASUS stamp, title in Oswald 118 px, key number on a red chip, inside the centred 3:4 crop y 240–1680). Not yet a shared runtime helper.
+- **07 `kelas` early numbers (5 Nov evening):** 939 views, about 489 of them TikTok "platform support" bonus views, 13 likes, 0 comments; not shadow-banned. Analytics (watch time, For You share) hadn't appeared yet. `07-kelas-short.mp4` is now in `out/uploaded/` on this machine.
+- **VoiceStudio test (local app, OmniVoice backend at `%APPDATA%\OmniVoice`):** its Supertonic 3 engine can't clone (`supports_cloning = False`), so the "Test female" profile came out male; full OmniVoice needs ~6 GB VRAM and timed out on this laptop's 2 GB MX250. Use the OmniVoice GGUF engine or a stronger machine. The user then made one WAV per character; they were split by Whisper word timings into `episodes/06_emas/voice-lines/<section>-<i>.mp3` (16 files, committed). With `narration.source: "files"` they align (122.3 s, all cues resolve) but are faster/less even than Supertonic (6.5 vs 5.9 syl/s). **Known problems:** `pelajaran-0` (Muklis's last line) is cut off mid-"OJK" — needs a re-take; Whisper heard "emas" as "mas" three times in Muklis's file; Beni says "jawaban" not "jawabanmu". The committed narration stays `source: "supertonic"` (matches the rendered master); switch to `files` only to test the recordings, and render that test to a different filename first so the Supertonic master isn't overwritten.
+- Cartesia (cloud TTS) was discussed as the hardware-free option; Indonesian support is unconfirmed, cloning likely needs the Pro plan, and the free tier is non-commercial.
+
 **Changed on 5 Nov 2026 (WSL machine, no code changes):**
 - **07 `kelas` was posted the morning of 5 Nov** and reached about 900 views within hours. The user hasn't yet checked how long viewers watch or whether views come from the For You page. Ask for both before 06 goes up, to judge whether the 60 fps KSP format should become standard.
-- **06 Emas stays on 7 Nov** (advised not to post early while 07 is still climbing). Before posting, re-render it so the music loops past 75 s, settle the "2,5 TAHUN" label, and optionally add the 60 fps DRIFT/SWEEP background motion. 06 exists only on the Windows machine's `out/`.
+- **06 Emas stays on 7 Nov** (advised not to post early while 07 is still climbing). Done the evening of 5 Nov: re-rendered with the KSP pacing, 60 fps, looping bed and the "> 2,5 TAHUN" label (see above). 06 exists only on the Windows machine's `out/`.
 - **Listyo check (5 Nov): no hard development, no HOTWIZZ #03.** Since #02: Yusril said there was "keinginan melumpuhkan Presiden" (Kompas, 4 Nov 15:36). That is a minister's reading; police still haven't stated a motive, so "motif belum diungkap" holds if it's attributed to police. Liputan6 alone reports that politicians, journalists and businesspeople were also tapped, so leave it out until a second outlet confirms it. "SU" is a witness, not a suspect. Nothing yet from Listyo or a lawyer, no praperadilan filing, no new suspects.
 - **Trending research (5 Nov) for the next KASUS (#10):** recommended **PPN 11% on sanitary pads** (viral since 25 Oct; DJP says it isn't a "menstruation tax"; the DPR and Komnas Perempuan are pushing for an exemption). Other candidates: Q3-2026 GDP (BPS, 5 Nov 11.00 WIB; consensus 5.20%), the rupiah strengthening to about Rp18.070. Rejected: the foaming-tea protest story (names a brand, BPOM results pending) and "Prabowo Tidak Sendiri" (one-sided politics).
 - **Cartesia voice clone (exploring):** the user is setting up a voice clone on cartesia.ai (Models → Voices → Clone; whether clones speak Indonesian is unconfirmed). There's no integration yet; to try it, use files mode (`voice-lines/<section>-<i>.mp3|wav`, narration source `files`). A direct API provider would need a change in `tools/voice/generate.py`. The current TTS is Supertonic 1.3.1 (M1 Muklis, F2 Nisa, M4 Beni), with faster-whisper 1.2.1 for alignment.
@@ -96,7 +107,7 @@ Eleven mastered outputs exist. 01–08 and 11 are in `out/` on the Windows machi
 | `03-ihsg-short.mp4` | IHSG Anjlok 10% Sehari: Apa Itu MSCI? (KASUS #03) | 97.2 s |
 | `04-paylater-short.mp4` | Paylater: Gratis Bunga atau Jebakan? (KASUS #04) | 99.3 s |
 | `05-judol-short.mp4` | Judol Lewat QRIS (KASUS #05) | 94.8 s |
-| `06-emas-short.mp4` | Emas Katanya Aman, Kok Turun 20%? (KASUS #06) | 99.8 s |
+| `06-emas-short.mp4` | Emas Katanya Aman, Kok Turun 20%? (KASUS #06), 60 fps KSP pacing (5 Nov) | 133.9 s |
 | `07-kelas-short.mp4` | Kelas Menengah Hilang ke Mana? (KASUS #07) | 99.4 s |
 | `08-ump-short.mp4` | Gaji Naik 8%, Kok Tetap Kurang? (KASUS #08) | 101.8 s |
 | `09-sadap-short.mp4` | Eks Kapolri Ditahan: Diduga Sadap Presiden (HOTWIZZ #01) | 130.0 s |
@@ -112,7 +123,7 @@ Episodes 03–08 were made 80–100 seconds long at the user's request (08 runs 
 - **UMP (08):** Nisa leads (about two thirds of the words, at the user's request); Muklis adds facts and the OJK-seminar quote; Beni asks. The 8% raise is a labelled simulation inside the union's 7,5–9,5% proposal; "≈ 4,7%" uses simple subtraction (exact 4,57%) and is labelled "perkiraan sederhana". Every on-screen figure has a source line. Scenes were written by seven Sonnet scene agents (one per scene, using the matching `07_kelas` scene as reference) and corrected over three rounds of stills; captions sit at roughly y 1480–1650, so keep scene art out of that band.
 
 - **Judol:** no site, game, or app is named; the loss example is labeled “simulasi ilustrasi, asumsi RTP 90%”; Healing119, 119 ext. 8 stays on the end card; counters show “Rp-” until the number is spoken.
-- **Emas:** the on-screen "2,5 TAHUN" matches the spoken line, but Aug 2020 to Mar 2023 is closer to &asymp;2.6 years. Offer to change the label to "2,5". No purchase-tax rate is stated because sources disagree.
+- **Emas:** settled 5 Nov: spoken "lebih dari dua setengah tahun", label "> 2,5 TAHUN". No purchase-tax rate is stated because sources disagree.
 - **Kelas:** 2025 figures are labeled “data BPS, diolah Mandiri Institute”; the savings scene shows both the falling average balance and LPS's counterpoint that totals still grow.
 
 Before publishing, include the full sources list from each episode's `script-short.md` in its description. The IHSG episode should be published before the MSCI review on 11 Nov 2026.

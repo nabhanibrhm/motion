@@ -1,65 +1,65 @@
 # Emas Katanya Aman, Kok Turun 20%? (Short)
 
-Episode #5 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #06), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **225 spoken words**, **about 99 s**, over the quiet music bed. Investment topic: **"Bukan saran investasi"** is on screen in the what-if and advice scenes.
+*Rewritten 5 Nov 2026 in the KSP-pacing style (one-chunk hook, no pauses, lines of 12+ words) and rendered at 60 fps with DRIFT/SWEEP background motion; facts unchanged. Frame 0 shows the hook claim (−19,6% since the January record).*
+
+Episode #5 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #06), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **300 spoken words**, **about 134 s**, over the quiet music bed. Investment topic: **"Bukan saran investasi"** is on screen in the what-if and advice scenes.
 
 Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 1.0, widened pitch range. Lines in *[brackets]* are on-screen notes. Every on-screen figure carries a "Sumber: …" line. **[G#]** = sources table. Facts checked on 1 Nov 2026. Prices are Antam 1-gram base prices from the Logam Mulia list unless stated; don't mix them with Pegadaian's list.
 
 ---
 
 ### 1 · Hook (`hook`, LAPORAN MASUK)
-*[Nisa holding a small gold bar card ("1 GRAM", Antam-style certificate, no logo) and her phone showing a red price line.]*
+*[Frame 0: a gold bar card ("1 GRAM", no logo) and a phone with the red price line 29 JAN Rp3.168.000 → 30 OKT Rp2.546.000, HUD "−19,6%". RUGI? tag on "rugi"; KASUS #06 stamp on "Masih".]*
 
-**NISA:** Aku beli emas bulan Januari, katanya aman. Kok sekarang rugi?
-
-**BENI:** Kasus baru: emas Nisa menyusut!
+**NISA:** Emas yang katanya paling aman sudah turun hampir dua puluh persen dari rekor Januari. Yang beli pas rekor dan jual sekarang pasti rugi. Masih yakin emas itu aman?
 
 ### 2 · The price (`harga`, BUKTI 1 · HARGA)
 *[A price board: "29 JAN 2026 · Rp3.168.000/g · REKOR" [G1] → "30 OKT 2026 · Rp2.546.000/g" [G4]; a "−19,6%" tag. Then a small global card: "EMAS DUNIA · ±30% DI BAWAH REKOR JANUARI" [G10, G11].]*
 
-**MUKLIS:** Dua puluh sembilan Januari, emas Antam cetak rekor: tiga juta seratus enam puluh delapan ribu per gram. Akhir Oktober, tinggal dua juta lima ratus empat puluh enam ribu.
+**MUKLIS:** Dua puluh sembilan Januari emas Antam cetak rekor: tiga juta seratus enam puluh delapan ribu per gram. Akhir Oktober tinggal dua juta lima ratus empat puluh enam ribu.
 
-**BENI:** Turun berapa tuh?
+**BENI:** Tunggu dulu. Kalau dihitung dari rekor sampai harga sekarang, itu turunnya berapa banyak?
 
 **MUKLIS:** Hampir dua puluh persen. Emas dunia malah turun sekitar tiga puluh persen dari rekornya.
 
 ### 3 · Why (`kenapa`, TERSANGKA · BUNGA & DOLAR)
 *[A seesaw: "IMBAL HASIL OBLIGASI AS ▲" and "DOLAR AS ▲" on one side, a gold bar going up on the other [G9]. Tag: "EMAS TIDAK MEMBERI BUNGA".]*
 
-**NISA:** Kok bisa turun?
+**NISA:** Kok bisa turun sebanyak itu? Bukannya emas justru naik kalau ekonomi lagi nggak jelas?
 
-**MUKLIS:** Kata World Gold Council, imbal hasil obligasi Amerika naik dan dolar menguat. Emas nggak kasih bunga, jadi kalah menarik.
+**MUKLIS:** Kata World Gold Council imbal hasil obligasi Amerika naik dan dolar menguat. Emas nggak kasih bunga jadi kalah menarik.
 
 ### 4 · The spread (`spread`, BUKTI 2 · SELISIH JUAL-BELI)
 *[Two price tags side by side on 30 Okt: "HARGA BELI Rp2.546.000" and "BUYBACK Rp2.341.000" [G4]; a red gap "−Rp205.000/g (≈8%)" counting in.]*
 
-**MUKLIS:** Ada jebakan kedua: harga jual kembali. Tiga puluh Oktober, beli dua juta lima ratus empat puluh enam ribu, dijual lagi cuma dua juta tiga ratus empat puluh satu ribu.
+**MUKLIS:** Ada jebakan kedua yaitu harga jual kembali. Tiga puluh Oktober harga belinya dua juta lima ratus empat puluh enam ribu. Tapi dijual lagi cuma dua juta tiga ratus empat puluh satu ribu.
 
-**BENI:** Langsung rugi dua ratus lima ribu per gram?!
+**BENI:** Jadi kalau baru beli terus dijual lagi, langsung rugi dua ratus lima ribu per gram?
 
-**MUKLIS:** Betul. Sekitar delapan persen, di hari yang sama.
+**MUKLIS:** Betul. Selisihnya sekitar delapan persen dan itu terjadi di hari yang sama.
 
 ### 5 · What if (`kalau`, SKENARIO)
 *[A receipt: "10 GRAM × Rp3.168.000 = Rp31.680.000" (29 Jan) → "BUYBACK 10 × Rp2.341.000 = Rp23.410.000" (30 Okt) → red "−Rp8.270.000". Chip "BUKAN SARAN INVESTASI". Small: "belum termasuk pajak" [G1, G4].]*
 
-**NISA:** Kalau aku beli sepuluh gram pas rekor?
+**NISA:** Terus kalau aku beli sepuluh gram pas harganya lagi rekor. Itu di bulan Januari. Hasilnya gimana?
 
-**MUKLIS:** Modalnya tiga puluh satu koma tujuh juta. Dijual akhir Oktober, dapat dua puluh tiga koma empat juta. Rugi lebih dari delapan juta.
+**MUKLIS:** Modalnya tiga puluh satu koma tujuh juta. Dijual akhir Oktober dapat dua puluh tiga koma empat juta. Rugi lebih dari delapan juta.
 
 ### 6 · The long view (`jangka`, BUKTI 3 · JANGKA PANJANG)
-*[A simple bar row: "NOV 2021 · 10 g = Rp9.510.000" [G21] vs "OKT 2026 · BUYBACK 10 g = Rp23.410.000" [G4], "+146%". Then a small timeline: "REKOR AGU 2020 Rp1.065.000 [G18] → TURUN Rp930.000 APR 2021 [G19] → REKOR BARU MAR 2023 [G20]" with "≈2,5 TAHUN".]*
+*[A simple bar row: "NOV 2021 · 10 g = Rp9.510.000" [G21] vs "OKT 2026 · BUYBACK 10 g = Rp23.410.000" [G4], "+146%". Then a small timeline: "REKOR AGU 2020 Rp1.065.000 [G18] → TURUN Rp930.000 APR 2021 [G19] → REKOR BARU MAR 2023 [G20]" with "> 2,5 TAHUN" (Aug 2020 → Mar 2023 ≈ 2,6 years, spoken as "lebih dari dua setengah tahun").]*
 
-**MUKLIS:** Tapi lihat jangka panjang. Sepuluh gram yang dibeli November dua ribu dua puluh satu, sekarang nilainya lebih dari dua kali lipat. Rekor tahun dua ribu dua puluh baru terpecahkan dua setengah tahun kemudian.
+**MUKLIS:** Tapi lihat jangka panjang. Sepuluh gram yang dibeli November dua ribu dua puluh satu sekarang nilainya lebih dari dua kali lipat. Rekor tahun dua ribu dua puluh baru terpecahkan lebih dari dua setengah tahun kemudian.
 
-**BENI:** Jadi emas itu buat jangka panjang.
+**BENI:** Oh begitu. Jadi emas itu lebih cocok buat jangka panjang, bukan buat cari untung cepat.
 
 ### 7 · What to do and close (`pelajaran`, VONIS)
 *[Chip "BUKAN SARAN INVESTASI". Checklist: "BELI BERTAHAP [G25]", "PAKAI UANG DINGIN, BUKAN DANA DARURAT [G25]", "LEGAL DAN LOGIS [G24]", "CEK IZIN DI OJK". Paper end card: "KASUS DITUTUP", "KASUS #06 · EMAS", "EMAS = JANGKA PANJANG", comment question, "SUMBER LENGKAP DI DESKRIPSI".]*
 
-**MUKLIS:** Jadi: beli bertahap, pakai uang dingin, bukan dana darurat. Pilih yang legal dan logis, cek izinnya di OJK.
+**MUKLIS:** Jadi beli bertahap dan pakai uang dingin, bukan dana darurat. Pilih yang legal dan logis lalu cek izinnya di OJK.
 
-**NISA:** Oke, emasnya aku simpan dulu.
+**NISA:** Oke, aku paham sekarang. Mulai bulan ini aku mau nabung emas sedikit demi sedikit lalu aku simpan untuk jangka waktu yang lama.
 
-**BENI:** Kasus ditutup! Kamu beli emas buat jangka pendek atau panjang? Tulis di komentar!
+**BENI:** Kasus ditutup. Kamu beli emas buat jangka pendek atau jangka panjang? Tulis jawabanmu di komentar ya!
 
 ---
 

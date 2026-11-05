@@ -9,7 +9,7 @@
    "pitch": "-4Hz",
    "supertonic": {
     "voice": "M1",
-    "speed": 1.0,
+    "speed": 1,
     "range": 1.5
    }
   },
@@ -19,7 +19,7 @@
    "pitch": "+2Hz",
    "supertonic": {
     "voice": "F2",
-    "speed": 1.0,
+    "speed": 1,
     "range": 1.4
    }
   },
@@ -29,7 +29,7 @@
    "pitch": "+10Hz",
    "supertonic": {
     "voice": "M4",
-    "speed": 1.0,
+    "speed": 1,
     "range": 1.4
    }
   }
@@ -56,12 +56,8 @@
    "lines": [
     {
      "speaker": "wec",
-     "text": "Aku beli emas bulan Januari, katanya aman. [pause 0.15] Kok sekarang rugi?"
-    },
-    {
-     "speaker": "bog",
-     "text": "Kasus baru: emas Nisa menyusut!",
-     "after": 0.2
+     "text": "Emas yang katanya paling aman sudah turun hampir dua puluh persen dari rekor Januari. Yang beli pas rekor dan jual sekarang pasti rugi. Masih yakin emas itu aman?",
+     "after": 0.25
     }
    ]
   },
@@ -71,11 +67,11 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Dua puluh sembilan Januari, emas Antam cetak rekor: tiga juta seratus enam puluh delapan ribu per gram. Akhir Oktober, tinggal dua juta lima ratus empat puluh enam ribu."
+     "text": "Dua puluh sembilan Januari emas Antam cetak rekor: tiga juta seratus enam puluh delapan ribu per gram. Akhir Oktober tinggal dua juta lima ratus empat puluh enam ribu."
     },
     {
      "speaker": "bog",
-     "text": "Turun berapa tuh?"
+     "text": "Tunggu dulu. Kalau dihitung dari rekor sampai harga sekarang, itu turunnya berapa banyak?"
     },
     {
      "speaker": "mog",
@@ -90,11 +86,11 @@
    "lines": [
     {
      "speaker": "wec",
-     "text": "Kok bisa turun?"
+     "text": "Kok bisa turun sebanyak itu? Bukannya emas justru naik kalau ekonomi lagi nggak jelas?"
     },
     {
      "speaker": "mog",
-     "text": "Kata World Gold Council, imbal hasil obligasi Amerika naik dan dolar menguat. Emas nggak kasih bunga, jadi kalah menarik.",
+     "text": "Kata World Gold Council imbal hasil obligasi Amerika naik dan dolar menguat. Emas nggak kasih bunga jadi kalah menarik.",
      "after": 0.2
     }
    ]
@@ -105,15 +101,15 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Ada jebakan kedua: harga jual kembali. Tiga puluh Oktober, beli dua juta lima ratus empat puluh enam ribu, dijual lagi cuma dua juta tiga ratus empat puluh satu ribu."
+     "text": "Ada jebakan kedua yaitu harga jual kembali. Tiga puluh Oktober harga belinya dua juta lima ratus empat puluh enam ribu. Tapi dijual lagi cuma dua juta tiga ratus empat puluh satu ribu."
     },
     {
      "speaker": "bog",
-     "text": "Langsung rugi dua ratus lima ribu per gram?!"
+     "text": "Jadi kalau baru beli terus dijual lagi, langsung rugi dua ratus lima ribu per gram?"
     },
     {
      "speaker": "mog",
-     "text": "Betul. Sekitar delapan persen, di hari yang sama.",
+     "text": "Betul. Selisihnya sekitar delapan persen dan itu terjadi di hari yang sama.",
      "after": 0.2
     }
    ]
@@ -124,11 +120,11 @@
    "lines": [
     {
      "speaker": "wec",
-     "text": "Kalau aku beli sepuluh gram pas rekor?"
+     "text": "Terus kalau aku beli sepuluh gram pas harganya lagi rekor. Itu di bulan Januari. Hasilnya gimana?"
     },
     {
      "speaker": "mog",
-     "text": "Modalnya tiga puluh satu koma tujuh juta. Dijual akhir Oktober, dapat dua puluh tiga koma empat juta. Rugi lebih dari delapan juta.",
+     "text": "Modalnya tiga puluh satu koma tujuh juta. Dijual akhir Oktober dapat dua puluh tiga koma empat juta. Rugi lebih dari delapan juta.",
      "after": 0.2
     }
    ]
@@ -139,11 +135,11 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Tapi lihat jangka panjang. Sepuluh gram yang dibeli November dua ribu dua puluh satu, sekarang nilainya lebih dari dua kali lipat. Rekor tahun dua ribu dua puluh baru terpecahkan dua setengah tahun kemudian."
+     "text": "Tapi lihat jangka panjang. Sepuluh gram yang dibeli November dua ribu dua puluh satu sekarang nilainya lebih dari dua kali lipat. Rekor tahun dua ribu dua puluh baru terpecahkan lebih dari dua setengah tahun kemudian."
     },
     {
      "speaker": "bog",
-     "text": "Jadi emas itu buat jangka panjang.",
+     "text": "Oh begitu. Jadi emas itu lebih cocok buat jangka panjang, bukan buat cari untung cepat.",
      "after": 0.2
     }
    ]
@@ -154,17 +150,17 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Jadi: beli bertahap, pakai uang dingin, bukan dana darurat. Pilih yang legal dan logis, cek izinnya di OJK.",
+     "text": "Jadi beli bertahap dan pakai uang dingin, bukan dana darurat. Pilih yang legal dan logis lalu cek izinnya di OJK.",
      "after": 0.1
     },
     {
      "speaker": "wec",
-     "text": "Oke, emasnya aku simpan dulu.",
+     "text": "Oke, aku paham sekarang. Mulai bulan ini aku mau nabung emas sedikit demi sedikit lalu aku simpan untuk jangka waktu yang lama.",
      "after": 0.15
     },
     {
      "speaker": "bog",
-     "text": "Kasus ditutup! Kamu beli emas buat jangka pendek atau panjang? Tulis di komentar!",
+     "text": "Kasus ditutup. Kamu beli emas buat jangka pendek atau jangka panjang? Tulis jawabanmu di komentar ya!",
      "after": 0.3
     }
    ]

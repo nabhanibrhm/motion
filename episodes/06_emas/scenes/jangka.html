@@ -1,4 +1,4 @@
-<!-- Jangka: two gold columns. NOV 2021 (10 g = Rp9.510.000, grows on "dibeli") vs OKT 2026 (BUYBACK 10 g = Rp23.410.000, grows on "nilainya"); a +146% badge on "lebih" and a LEBIH DARI x2 stamp on "lipat". On "Rekor" the panel swaps to a three-point timeline (only the listed points): REKOR AGU 2020 Rp1.065.000, TURUN APR 2021 Rp930.000, REKOR BARU MAR 2023 Rp1.088.000, with a bracket "≈2,5 TAHUN". On Beni's line the chart dims and an EMAS = JANGKA PANJANG pill slams in. Sources: Kontan, Katadata, CNBC Indonesia, Republika. Muklis, Beni. -->
+<!-- Jangka: two gold columns. NOV 2021 (10 g = Rp9.510.000, grows on "dibeli") vs OKT 2026 (BUYBACK 10 g = Rp23.410.000, grows on "nilainya"); a +146% badge on "lebih" and a LEBIH DARI x2 stamp on "lipat". On "Rekor" the panel swaps to a three-point timeline (only the listed points): REKOR AGU 2020 Rp1.065.000, TURUN APR 2021 Rp930.000, REKOR BARU MAR 2023 Rp1.088.000, with a bracket "> 2,5 TAHUN". On Beni's line the chart dims and an EMAS = JANGKA PANJANG pill slams in. Sources: Kontan, Katadata, CNBC Indonesia, Republika. Muklis, Beni. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
   <style>
@@ -66,9 +66,12 @@ ${o.s1 > 0 ? `<path d="M${q0.x} ${q0.y} L${n(a.x)} ${n(a.y)}" fill="none" stroke
 ${o.p0 > 0 ? `<circle cx="${q0.x}" cy="${q0.y}" r="12" fill="#e0b13a" stroke="${INK}" stroke-width="4"/><g opacity="${n(o.p0, 3)}">${T(110, 636, 20, INK, "REKOR · AGU 2020")}${T(110, 678, 40, INK, "Rp1.065.000", { font: "Oswald" })}</g>` : ""}
 ${o.s1 >= 1 ? `<circle cx="${q1.x}" cy="${q1.y}" r="12" fill="${RED}" stroke="${INK}" stroke-width="4"/>${T(q1.x, 950, 20, RED, "TURUN · APR 2021", { anchor: "middle" })}${T(q1.x, 994, 42, RED, "Rp930.000", { anchor: "middle", font: "Oswald" })}` : ""}
 ${o.s2 >= 1 ? `<circle cx="${q2.x}" cy="${q2.y}" r="13" fill="${LIME}" stroke="${INK}" stroke-width="4"/>${T(810, 606, 20, INK, "REKOR BARU · MAR 2023", { anchor: "end" })}${T(810, 646, 40, INK, "Rp1.088.000", { anchor: "end", font: "Oswald" })}` : o.s1 >= 1 ? `<circle cx="${n(tip.x)}" cy="${n(tip.y)}" r="11" fill="#e0b13a" stroke="${INK}" stroke-width="4"/>` : ""}
-${o.br > 0 ? `<g opacity="${n(Math.min(1, o.br * 2), 3)}"><path d="M${q0.x} 580 V560 H${n(q0.x + (q2.x - q0.x) * o.br)} V580" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>${o.br > 0.55 ? `<rect x="410" y="532" width="200" height="50" rx="14" fill="${LIME}" stroke="${INK}" stroke-width="5"/>${T(510, 568, 32, INK, "≈2,5 TAHUN", { anchor: "middle", font: "Oswald", ls: 1 })}` : ""}</g>` : ""}
+${o.br > 0 ? `<g opacity="${n(Math.min(1, o.br * 2), 3)}"><path d="M${q0.x} 580 V560 H${n(q0.x + (q2.x - q0.x) * o.br)} V580" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>${o.br > 0.55 ? `<rect x="410" y="532" width="200" height="50" rx="14" fill="${LIME}" stroke="${INK}" stroke-width="5"/>${T(510, 568, 32, INK, "> 2,5 TAHUN", { anchor: "middle", font: "Oswald", ls: 1 })}` : ""}</g>` : ""}
 ${T(110, 1124, 16, "#8a6f55", "Sumber: CNBC Indonesia (Mar 2023), Republika (2021)", { weight: 500 })}</g>`;
       };
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["jangka"] = F1.scene("jangka", (f, { S, D }) => {
         const C = F1.cine;
         const w = (x, o = 0) => F1.wordFrame(S, x, o);
@@ -91,6 +94,8 @@ ${T(110, 1124, 16, "#8a6f55", "Sumber: CNBC Indonesia (Mar 2023), Republika (202
         const end = F1.ramp(f, jadi + 14, 10, F1.expoOut);
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <rect width="1080" height="1920" fill="#eadcc4"/>
+${DRIFT(f, { seed: 350, count: 7, y0: 420, y1: 1050, color: "#e0b57a", a: 0.2 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
 <g style="filter:blur(3px)"><rect x="740" y="290" width="260" height="300" fill="#f7e3b0"/><path d="M740 290 h260 v300 h-260 Z M870 290 v300 M740 440 h260" stroke="#8a6f55" stroke-width="14" fill="none"/></g>
 ${W.dust(f, { x: 100, y: 480, w: 840, h: 680, count: 20, seed: 41, color: "#fff3cf", alpha: 0.5 })}
 <rect x="0" y="1190" width="1080" height="730" fill="#cdb391"/><rect x="0" y="1180" width="1080" height="12" fill="#a8906f"/>
@@ -99,7 +104,7 @@ ${LINE(f, { alpha: f < rekor - 6 ? 0 : F1.ramp(f, rekor - 6, 8) * dim, p0: F1.ra
         const pctN = Math.round(146 * F1.ramp(f, lebih, 26, F1.easeOut));
         const hud =
           f >= rekor
-            ? C.hud(f, { at: rekor, kicker: "REKOR 2020 → REKOR BARU", big: "≈2,5 TAHUN", sub: "AGU 2020 → MAR 2023", src: "CNBC Indonesia, Republika", w: 540, bigSize: 60 })
+            ? C.hud(f, { at: rekor, kicker: "REKOR 2020 → REKOR BARU", big: "> 2,5 TAHUN", sub: "AGU 2020 → MAR 2023", src: "CNBC Indonesia, Republika", w: 540, bigSize: 60 })
             : f >= lebih
               ? C.hud(f, { at: lebih, kicker: "10 GRAM · 5 TAHUN", big: "+146%", sub: "Rp9.510.000 → Rp23.410.000", src: "Kontan, Katadata", w: 540 })
               : C.hud(f, { at: 4, kicker: "LIHAT JANGKA PANJANG", big: "5 TAHUN", sub: "10 GRAM · NOV 2021 → OKT 2026", src: "Kontan, Katadata", w: 540 });

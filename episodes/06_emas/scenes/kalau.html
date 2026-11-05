@@ -50,6 +50,9 @@
 <text x="310" y="494" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="21" fill="${MUTE}">belum termasuk pajak</text>
 <text x="310" y="520" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="16" fill="#8a6f55">Sumber: RRI (29 Jan 2026), Katadata (30 Okt 2026)</text></g>`;
       };
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["kalau"] = F1.scene("kalau", (f, { S, D }) => {
         const C = F1.cine;
         const w = (x, o = 0) => F1.wordFrame(S, x, o);
@@ -71,6 +74,8 @@
         const bars = Array.from({ length: 10 }, (_, i) => MINI(310 + (i % 5) * 92 + 46 + 10, 520 + Math.floor(i / 5) * 34, F1.ramp(f, sepuluh + i * 2, 8, F1.expoOut))).join("");
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <rect width="1080" height="1920" fill="#eadcc4"/>
+${DRIFT(f, { seed: 340, count: 7, y0: 420, y1: 1050, color: "#e0b57a", a: 0.2 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
 <g style="filter:blur(3px)"><rect x="80" y="300" width="260" height="300" fill="#f7e3b0"/><path d="M80 300 h260 v300 h-260 Z M210 300 v300 M80 450 h260" stroke="#8a6f55" stroke-width="14" fill="none"/></g>
 ${W.dust(f, { x: 120, y: 480, w: 800, h: 680, count: 18, seed: 33, color: "#fff3cf", alpha: 0.5 })}
 <rect x="0" y="1170" width="1080" height="750" fill="#cdb391"/><rect x="0" y="1160" width="1080" height="12" fill="#a8906f"/>
