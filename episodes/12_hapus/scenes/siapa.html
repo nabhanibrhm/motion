@@ -1,0 +1,107 @@
+<!-- Siapa: photo name card IRJEN SLAMET ULIANDI (same treatment as the other three suspect cards; photo credit under the card) with a status chip SAKSI -> TERSANGKA on "ini"; quote card "UNSUR PERBUATAN MELAWAN HUKUM TERPENUHI" attributed to Dirtipidsiber Bareskrim, 5 Nov 2026; yellow chip BELUM DITAHAN with the police's reason on line 3. No stamp over the photo. Sumber: Kompas, CNBC Indonesia, detik (script-short.md S1-S3). -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="siapa" data-width="1080" data-height="1920">
+    <div id="siapa-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="siapa-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="siapa-sfx-flip" class="clip" src="public/sfx/stamp.wav" data-at="word:ini" data-track-index="21" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="siapa-sfx-quote" class="clip" src="public/sfx/pop-in.wav" data-at="word:Suhermanto" data-track-index="22" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="siapa-sfx-belum" class="clip" src="public/sfx/ding.wav" data-at="word:ditahan" data-track-index="23" data-volume="0.15"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const mono = "'JetBrains Mono', monospace";
+      const osw = "Oswald, sans-serif";
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+
+      window.__timelines["siapa"] = F1.scene("siapa", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const irjen = w("Irjen");
+        const uliandi = w("Uliandi");
+        const mantan = w("mantan");
+        const sebelumnya = w("sebelumnya");
+        const ini = w("ini");
+        const suhermanto = w("Suhermanto");
+        const gelar = w("gelar");
+        const unsur = w("unsur");
+        const melawan = w("melawan");
+        const terpenuhi = w("terpenuhi");
+        const ditahan = w("ditahan");
+        const sakit = w("sakit");
+        const stroke = w("stroke");
+        const line2 = F1.line(S, 2).start;
+
+        const reveal = (at, d = 10) => F1.ramp(f, at, d, F1.expoOut);
+        const R = (p, dx = 0, dy = 0) => `opacity:${n(Math.min(1, p), 3)};transform:translate(${n((1 - p) * dx)}px,${n((1 - p) * dy)}px)`;
+
+        // ---------------- name card (identical size/treatment for all four suspects) ----------------
+        const cp = F1.ramp(f, 4, 16, F1.expoOut);
+        const flip = F1.ramp(f, ini, 10, F1.easeOut);
+        const saksiP = F1.ramp(f, sebelumnya, 10, F1.expoOut);
+        let chip = "";
+        if (flip < 0.5 && saksiP > 0) {
+          const sy = Math.max(0.02, 1 - 2 * flip);
+          chip = `<div style="position:absolute;left:270px;top:262px;padding:6px 26px;border-radius:10px;background:#2a3247;border:3px dashed #8d8a84;font-family:${osw};font-weight:600;font-size:40px;letter-spacing:4px;color:#c9c6c0;opacity:${n(saksiP, 3)};transform:scaleY(${n(sy, 3)})">SAKSI</div>`;
+        } else if (flip >= 0.5) {
+          const sy = Math.max(0.02, 2 * flip - 1);
+          chip = `<div style="position:absolute;left:270px;top:262px;padding:6px 26px;border-radius:10px;background:#ff2d3d;border:3px solid #ff2d3d;font-family:${osw};font-weight:700;font-size:40px;letter-spacing:4px;color:#fff;transform:scaleY(${n(sy, 3)})">TERSANGKA</div>`;
+        }
+        const glow = Math.max(0, 1 - (f - ini) / 30) * flip;
+        const borderCol = flip > 0.5 ? `rgba(255,45,61,${n(0.35 + 0.5 * glow, 3)})` : "rgba(255,255,255,0.85)";
+        const NAME = cp <= 0 ? "" : `<div style="position:absolute;left:72px;top:${n(490 + (1 - cp) * 60)}px;width:888px;height:340px;opacity:${n(cp, 3)}">
+<div style="position:absolute;inset:0;border-radius:24px;background:#151a26;border:4px solid ${borderCol};box-shadow:0 0 ${n(46 * glow)}px rgba(255,45,61,0.55)"></div>
+<div style="position:absolute;left:26px;top:24px;width:220px;height:292px;border-radius:16px;background:linear-gradient(180deg,#232a3d 0%,#151a26 100%);border:2px solid rgba(255,255,255,0.18);overflow:hidden">
+<img src="public/photos/slamet.jpg" style="width:220px;height:292px;object-fit:cover;object-position:50% 20%;filter:saturate(0.9) contrast(1.05);display:block"></div>
+<div style="position:absolute;left:26px;top:346px;white-space:nowrap;font-family:${mono};font-weight:500;font-size:18px;line-height:1.2;color:rgba(255,255,255,0.7)">Foto: CNN Indonesia via Wikimedia Commons · CC BY-SA 4.0</div>
+<div style="position:absolute;left:270px;top:26px;width:590px;font-family:${osw};font-weight:700;font-size:84px;line-height:1;letter-spacing:1px;color:#fff">
+<div style="${R(reveal(irjen), -40)}">IRJEN SLAMET</div><div style="${R(reveal(uliandi), -40)}">ULIANDI</div></div>
+<div style="position:absolute;left:270px;top:210px;font-family:${mono};font-weight:700;font-size:26px;letter-spacing:2px;color:#ffd23f;${R(reveal(mantan), -30)}">MANTAN KADIV TIK POLRI</div>${chip}</div>`;
+
+        // ---------------- quote card (line 1) ----------------
+        const qp = F1.ramp(f, suhermanto - 6, 16, F1.expoOut);
+        const qdim = 1 - 0.35 * F1.ramp(f, line2, 12, F1.easeOut);
+        const hit = F1.ramp(f, terpenuhi, 8, F1.backOut);
+        const pulse = 0.18 + 0.1 * Math.sin(f * 0.15);
+        const QUOTE = qp <= 0 ? "" : `<div style="position:absolute;left:72px;top:${n(860 + (1 - qp) * 60)}px;width:888px;height:400px;opacity:${n(qp * qdim, 3)}">
+<div style="position:absolute;inset:0;border-radius:24px;background:#151a26;border:4px solid rgba(255,255,255,0.85)"></div>
+<div style="position:absolute;right:60px;top:-16px;width:150px;height:32px;border-radius:10px;background:#ff7a1a"></div>
+<div style="position:absolute;left:34px;top:30px;font-family:${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#ff7a1a">DIRTIPIDSIBER BARESKRIM · 5 NOV 2026</div>
+<div style="position:absolute;left:34px;right:34px;top:72px;height:2px;background:rgba(255,255,255,0.18)"></div>
+<div style="position:absolute;right:36px;top:60px;font-family:${osw};font-weight:700;font-size:170px;line-height:1;color:rgba(255,210,63,${n(pulse, 3)})">&ldquo;</div>
+<div style="position:absolute;left:34px;top:88px;font-family:${mono};font-weight:500;font-size:22px;letter-spacing:2px;color:#c9c6c0;${R(reveal(gelar), -30)}">HASIL GELAR PERKARA</div>
+<div style="position:absolute;left:34px;top:128px;width:820px;font-family:${osw};font-weight:700;font-size:76px;line-height:1.06;letter-spacing:1px;color:#fff">
+<div style="${R(reveal(unsur), 0, 24)}">UNSUR PERBUATAN</div>
+<div style="${R(reveal(melawan), 0, 24)}">MELAWAN HUKUM</div>
+<div style="${R(reveal(terpenuhi), 0, 24)}"><span style="display:inline-block;padding:0 16px;border-radius:10px;background:${hit > 0 ? "#ffd23f" : "transparent"};color:#0d0f16;transform:scale(${n(0.85 + 0.15 * Math.min(1.1, Math.max(0, hit)), 3)});transform-origin:left center">TERPENUHI</span></div></div></div>`;
+
+        // ---------------- not detained chip (line 2) ----------------
+        const dp = F1.ramp(f, ditahan - 4, 12, F1.backOut);
+        const sp = F1.ramp(f, sakit, 10, F1.expoOut);
+        const st = F1.ramp(f, stroke, 6);
+        const HOLD = dp <= 0 ? "" : `<div style="position:absolute;left:72px;top:1290px;width:888px;height:150px;opacity:${n(Math.min(1, dp), 3)};transform:translateY(${n((1 - Math.min(1, dp)) * 30)}px) scale(${n(0.94 + 0.06 * Math.min(1.1, Math.max(0, dp)), 3)})">
+<div style="position:absolute;inset:0;border-radius:18px;background:rgba(255,210,63,0.12);border:4px solid #ffd23f"></div>
+<div style="position:absolute;left:32px;top:10px;font-family:${osw};font-weight:700;font-size:64px;line-height:1.1;letter-spacing:3px;color:#ffd23f">BELUM DITAHAN</div>
+<div style="position:absolute;left:32px;top:96px;font-family:${mono};font-weight:700;font-size:26px;letter-spacing:1px;color:#c9c6c0;${R(sp, 0, 10)}">SAKIT PASCA <span style="color:${st > 0 ? "#fff" : "#c9c6c0"}">STROKE</span> · <span style="color:#ff7a1a">KATA POLRI</span></div></div>`;
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1b2132 0%, #0d0f16 75%)"></div>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+${DRIFT(f, { seed: 1200, count: 8, y0: 300, y1: 1400, color: "#ff7a1a", a: 0.16 })}
+${SWEEP(f, { color: "#ffd23f", a: 0.14, y0: 300, y1: 1400 })}</svg>${NAME}${QUOTE}${HOLD}`;
+
+        return F1.join(
+          C.stage(f, D, BG, { zoom: 0.025, whip: false, shots: [{ at: 0, scale: 1, ox: 50, oy: 50 }] }),
+          C.vignette(0.35, "50% 50%", 55),
+          C.hud(f, { at: 4, kicker: "KASUS PENYADAPAN", big: "TERSANGKA KE-4", sub: "PENETAPAN 5 NOV 2026", src: "Kompas, CNBC Indonesia, detik", bigSize: 40 }),
+          C.progress(f, { step: 2, label: "TERSANGKA KE-4" }),
+        );
+      });
+    })();
+  </script>
+</template>

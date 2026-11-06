@@ -1,39 +1,117 @@
 {
-  "source": "supertonic",
-  "speakers": {
-    "mog": {
-      "supertonic": {
-        "voice": "M1",
-        "speed": 1,
-        "range": 1.5
-      }
-    }
-  },
-  "chapters": [
+ "comment": "HotWizz #03 (script-short.md, sources there). One female narrator, Cartesia 'Intan' (sonic-3.6, id-ID) recorded per line in voice-lines/<section>-<i>.wav. Legal framing: tersangka throughout, presumption of innocence stated, no motive asserted.",
+ "source": "files",
+ "say": {},
+ "speakers": {
+  "wec": {
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "update",
+   "title": "Tersangka Keempat"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "update",
+   "lines": [
     {
-      "id": "kasus",
-      "title": "Tersangka Keempat: Siapa yang Setujui Hapus Sadapan?"
+     "speaker": "wec",
+     "text": "Kamis malam polisi menetapkan tersangka keempat kasus penyadapan Presiden. Menurut polisi dialah jenderal yang mengizinkan hasil sadapan itu dihapus.",
+     "after": 0.25
     }
-  ],
-  "defaults": {
-    "lead": 0.15,
-    "tail": 0.1,
-    "gapSameSpeaker": 0.1,
-    "gapNewSpeaker": 0.1,
-    "firstLead": 0.2,
-    "chapterLead": 0.1,
-    "chapterEndTail": 0.1
+   ]
   },
-  "sections": [
+  {
+   "id": "siapa",
+   "chapter": "update",
+   "lines": [
     {
-      "id": "hook",
-      "chapter": "kasus",
-      "lines": [
-        {
-          "speaker": "mog",
-          "text": "Tersangka Keempat: Siapa yang Setujui Hapus Sadapan?"
-        }
-      ]
+     "speaker": "wec",
+     "text": "Dia adalah Irjen Slamet Uliandi, mantan Kepala Divisi TIK Polri, yang sebelumnya hanya berstatus saksi dalam kasus ini."
+    },
+    {
+     "speaker": "wec",
+     "text": "Direktur Direktorat Tindak Pidana Siber Bareskrim Brigjen Suhermanto menyebut gelar perkara menyimpulkan unsur perbuatan melawan hukumnya sudah terpenuhi."
+    },
+    {
+     "speaker": "wec",
+     "text": "Tapi Slamet belum ditahan. Menurut polisi dia sedang sakit pasca stroke sehingga penahanan belum bisa dilakukan."
     }
-  ]
+   ]
+  },
+  {
+   "id": "hapus",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Menurut polisi pada awal Oktober tersangka Ahrie Sonta meminta izin kepada Slamet untuk menghapus file hasil penyadapan."
+    },
+    {
+     "speaker": "wec",
+     "text": "Slamet disebut menyetujui penghapusan file hasil penyadapan selama ini. Menurut polisi semua itu dilakukan di lingkungan Polri sendiri."
+    }
+   ]
+  },
+  {
+   "id": "sasaran",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Menurut Kabareskrim yang disadap tanpa prosedur bukan cuma nomor Presiden tapi juga pejabat negara dan tokoh politik."
+    },
+    {
+     "speaker": "wec",
+     "text": "Media, tokoh ormas, LSM dan para pengusaha juga ikut jadi sasaran dalam periode dua ribu dua puluh lima sampai dua ribu dua puluh enam."
+    }
+   ]
+  },
+  {
+   "id": "belum",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Keempatnya dijerat pasal penyadapan, akses ilegal dan penghapusan data elektronik dengan ancaman sampai sepuluh tahun penjara."
+    },
+    {
+     "speaker": "wec",
+     "text": "Tapi motifnya belum diungkap polisi. Ke mana hasil sadapan mengalir juga belum terjawab. Dan Listyo belum memberi pernyataan apa pun."
+    }
+   ]
+  },
+  {
+   "id": "penutup",
+   "chapter": "update",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kalau nomor Presiden saja bisa disadap tanpa prosedur, wajar kalau banyak orang bertanya seberapa aman nomor kita."
+    },
+    {
+     "speaker": "wec",
+     "text": "Ingat, keempatnya masih tersangka dan berhak atas praduga tak bersalah. Menurutmu apa yang harus diungkap polisi duluan? Tulis di komentar dan follow untuk update berikutnya.",
+     "after": 1.6
+    }
+   ]
+  }
+ ]
 }

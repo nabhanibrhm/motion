@@ -4,27 +4,45 @@
   "number": 12,
   "title": "Tersangka Keempat: Siapa yang Setujui Hapus Sadapan?",
   "category": "Berita",
+  "theme": "hotwizz",
   "narration": "narration.json",
   "script": "script-short.md",
   "video": {
     "width": 1080,
     "height": 1920,
-    "fps": 30
+    "fps": 60
   },
   "runtime": {
     "profile": "modern",
     "case": {
-      "id": "KASUS #12",
-      "steps": 1
+      "id": "HOTWIZZ #03",
+      "steps": 6
     }
   },
   "scenes": [
     {
       "id": "hook",
-      "template": "title-card",
-      "props": {
-        "title": "Tersangka Keempat: Siapa yang Setujui Hapus Sadapan?"
-      }
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "siapa",
+      "file": "scenes/siapa.html"
+    },
+    {
+      "id": "hapus",
+      "file": "scenes/hapus.html"
+    },
+    {
+      "id": "sasaran",
+      "file": "scenes/sasaran.html"
+    },
+    {
+      "id": "belum",
+      "file": "scenes/belum.html"
+    },
+    {
+      "id": "penutup",
+      "file": "scenes/penutup.html"
     }
   ],
   "audio": {

@@ -1,0 +1,160 @@
+<!-- Hapus: server rack "LIMS · SERVER PENYADAPAN" (LAWFUL INTERCEPTION). Request card AWAL OKT 2026 · AS → SU slides in on "Oktober" (AS lights on "Sonta", arrow on "meminta", IZIN HAPUS? on "izin"), KATA POLISI attribution on the card. ACC stamp lands on the card on "menyetujui". On "penghapusan" file icons drain from the rack into a bin. Tag DI LINGKUNGAN POLRI · BUKAN MARKAS KHUSUS on "lingkungan". Initials only, no names, no faces. Sumber: detik, Kompas, CNN Indonesia. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="hapus" data-width="1080" data-height="1920">
+    <div id="hapus-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hapus-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="30" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hapus-sfx-card" class="clip" src="public/sfx/pop-in.wav" data-at="word:Oktober" data-track-index="31" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hapus-sfx-acc" class="clip" src="public/sfx/stamp.wav" data-at="word:menyetujui" data-track-index="32" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hapus-sfx-tag" class="clip" src="public/sfx/ding.wav" data-at="word:lingkungan" data-track-index="33" data-volume="0.15"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const mono = "'JetBrains Mono', monospace";
+      const osw = "Oswald, sans-serif";
+      const smooth = (t) => t * t * (3 - 2 * t);
+
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+
+      // file icon centred on (x,y)
+      const FILE = (x, y, s, rot, a) => `<g transform="translate(${n(x)} ${n(y)}) rotate(${n(rot, 1)}) scale(${n(s, 3)})" opacity="${n(a, 3)}"><path d="M-22 -28 H8 L22 -14 V28 H-22 Z" fill="#dfe5f2" stroke="#0d0f16" stroke-width="3" stroke-linejoin="round"/><path d="M8 -28 V-14 H22 Z" fill="#9aa6c2"/><path d="M-12 -2 H12 M-12 8 H12 M-12 18 H4" stroke="#6b7794" stroke-width="4" stroke-linecap="round"/></g>`;
+
+      // grid of stored files inside the rack panel
+      const GRID = Array.from({ length: 9 }, (_, i) => ({ x: 160 + 111 * (i % 3), y: 745 + 70 * Math.floor(i / 3) }));
+      const BIN = { x: 780, y: 1018 };
+      const CTRL = { x: 420, y: 1120 };
+
+      window.__timelines["hapus"] = F1.scene("hapus", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const oktober = w("Oktober");
+        const sonta = w("Sonta");
+        const meminta = w("meminta");
+        const izin = w("izin");
+        const acc = w("menyetujui");
+        const hapusAt = w("penghapusan");
+        const lingkungan = w("lingkungan");
+
+        // ---------- rack + bin (svg) ----------
+        const t0 = hapusAt;
+        const fl = GRID.map((g, i) => {
+          const start = t0 + 4 * i;
+          const p = F1.ramp(f, start, 24, smooth);
+          return { g, i, start, p, land: start + 24 };
+        });
+        const drained = F1.ramp(f, t0 + 4 * 8 + 24, 10, F1.expoOut);
+        const drainingNow = f >= t0 && drained < 1;
+        const bump = Math.min(1, fl.reduce((s, o) => s + Math.max(0, 1 - Math.abs(f - o.land) / 6), 0));
+        const binGlow = F1.ramp(f, t0, 10, F1.expoOut) * (1 - drained * 0.6);
+
+        const files = fl
+          .map((o) => {
+            if (o.p <= 0) return FILE(o.g.x, o.g.y, 1, 0, 1);
+            if (o.p >= 1) return "";
+            const q = o.p;
+            const x = (1 - q) * (1 - q) * o.g.x + 2 * (1 - q) * q * CTRL.x + q * q * BIN.x;
+            const y = (1 - q) * (1 - q) * o.g.y + 2 * (1 - q) * q * CTRL.y + q * q * BIN.y;
+            const dir = W.hash(700 + o.i) > 0.5 ? 1 : -1;
+            return FILE(x, y, 1 - 0.45 * q, dir * 38 * q, q > 0.85 ? 1 - (q - 0.85) / 0.15 : 1);
+          })
+          .join("");
+
+        const leds = (row) => [0, 1]
+          .map((k) => {
+            const on = drainingNow || f < t0 ? Math.sin(f * 0.31 + row * 1.9 + k * 2.4) > -0.2 : false;
+            const col = drained >= 1 ? "#3a4358" : on ? (k ? "#ff7a1a" : "#35d07f") : "#3a4358";
+            return `<circle cx="${116 + 24 * k}" cy="${row * 0 + 0}" r="7" fill="${col}"/>`;
+          })
+          .join("");
+        const slots = [950, 1014, 1078]
+          .map((y, r) => `<g transform="translate(0 ${y})"><rect x="92" y="0" width="358" height="52" rx="6" fill="#1b2132" stroke="#2d3649" stroke-width="3"/><g transform="translate(0 26)">${leds(r)}</g><path d="M250 14 H430 M250 26 H430 M250 38 H430" stroke="#2d3649" stroke-width="4" stroke-linecap="round"/></g>`)
+          .join("");
+        const kosong = F1.ramp(f, t0 + 4 * 8 + 28, 12, F1.expoOut);
+        const lidLift = bump * 9;
+        const binRed = `rgba(255,45,61,${n(0.75 * binGlow, 3)})`;
+        const dih = F1.ramp(f, t0 + 24, 10, F1.expoOut);
+
+        const SVG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<defs><radialGradient id="hapus-glow" cx="50%" cy="42%" r="70%"><stop offset="0" stop-color="#1b2132"/><stop offset="1" stop-color="#0d0f16"/></radialGradient></defs>
+<rect width="1080" height="1920" fill="url(#hapus-glow)"/>
+${DRIFT(f, { seed: 410, count: 8, y0: 300, y1: 1400, color: "#ff7a1a", a: 0.2 })}
+${SWEEP(f, { color: "#ff2d3d", a: 0.16, y0: 280, y1: 1400 })}
+<rect x="72" y="520" width="398" height="86" rx="12" fill="#151a26" stroke="#ff7a1a" stroke-width="4"/>
+<text x="92" y="556" font-family="JetBrains Mono" font-weight="700" font-size="22" letter-spacing="1" fill="#ff7a1a">LIMS · SERVER PENYADAPAN</text>
+<text x="92" y="590" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="#c9c6c0">LAWFUL INTERCEPTION</text>
+<rect x="72" y="620" width="398" height="540" rx="14" fill="#11151f" stroke="#3a4358" stroke-width="6"/>
+<rect x="92" y="640" width="358" height="290" rx="8" fill="#0d0f16" stroke="rgba(255,122,26,0.6)" stroke-width="3"/>
+<text x="108" y="674" font-family="JetBrains Mono" font-weight="700" font-size="22" letter-spacing="2" fill="#ffd23f">FILE HASIL SADAPAN</text>
+${slots}
+${kosong > 0 ? `<text x="271" y="810" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="34" letter-spacing="4" fill="#8d8a84" opacity="${n(kosong, 3)}">KOSONG</text>` : ""}
+<g transform="translate(${BIN.x} 0)">
+<path d="M-90 1030 H90 L72 1250 H-72 Z" fill="#1b2132" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
+<path d="M-40 1050 L-34 1230 M0 1050 V1230 M40 1050 L34 1230" stroke="rgba(255,255,255,0.28)" stroke-width="5" stroke-linecap="round"/>
+<path d="M-90 1030 H90 L72 1250 H-72 Z" fill="none" stroke="${binRed}" stroke-width="12" stroke-linejoin="round" style="filter:blur(6px)"/>
+<text x="0" y="1160" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="36" letter-spacing="3" fill="#ff2d3d" opacity="${n(dih, 3)}">DIHAPUS</text>
+<g transform="translate(0 ${n(-lidLift)}) rotate(${n(-bump * 7, 2)} 90 1015)"><rect x="-105" y="1002" width="210" height="26" rx="8" fill="#2d3649" stroke="#fff" stroke-width="5"/><rect x="-26" y="982" width="52" height="20" rx="6" fill="#2d3649" stroke="#fff" stroke-width="5"/></g>
+</g>
+${files}</svg>`;
+
+        // ---------- request card ----------
+        const cp = F1.ramp(f, oktober - 6, 14, F1.expoOut);
+        const sp = F1.ramp(f, sonta, 8, F1.expoOut);
+        const ap = F1.ramp(f, meminta, 12, F1.easeOut);
+        const ip = F1.ramp(f, izin - 2, 10, F1.expoOut);
+        const kp = F1.ramp(f, acc, 8, F1.expoOut);
+        const kk = Math.max(0, f - acc);
+        const shake = kk < 12 ? Math.sin(kk * 2.4) * 7 * (1 - kk / 12) : 0;
+        const su = F1.ramp(f, acc + 2, 10, F1.expoOut);
+        const chip = (txt, on, col) => `<div style="width:150px;height:104px;box-sizing:border-box;border-radius:14px;background:#1b2132;border:4px solid ${on > 0 ? col : "rgba(255,255,255,0.7)"};box-shadow:0 0 ${n(26 * on)}px ${col};display:flex;align-items:center;justify-content:center;font-family:${osw};font-weight:700;font-size:72px;letter-spacing:3px;color:${on > 0 ? col : "#fff"}">${txt}</div>`;
+        const CARD =
+          cp <= 0
+            ? ""
+            : `<div style="position:absolute;left:${n(500 + (1 - cp) * 520 + shake)}px;top:540px;width:460px;height:432px;opacity:${n(Math.min(1, cp * 1.5), 3)};transform:rotate(${n((1 - cp) * 4 - 1.2, 2)}deg)">
+<div style="position:absolute;inset:0;border-radius:20px;background:#151a26;border:5px solid ${kp > 0 ? "#ff2d3d" : "rgba(255,255,255,0.85)"};box-shadow:0 0 ${n(34 * Math.max(0, 1 - kk / 30) * (kp > 0 ? 1 : 0))}px rgba(255,45,61,0.7)"></div>
+<div style="position:absolute;left:28px;top:20px;font-family:${mono};font-weight:700;font-size:22px;letter-spacing:3px;color:#ff7a1a">PERMINTAAN IZIN</div>
+<div style="position:absolute;left:28px;top:56px;font-family:${mono};font-weight:700;font-size:28px;letter-spacing:2px;color:#fff">AWAL OKT 2026</div>
+<div style="position:absolute;left:28px;top:112px;display:flex;align-items:center;gap:0">
+${chip("AS", sp, "#ffd23f")}
+<svg width="96" height="60" viewBox="0 0 96 60" style="margin:0 6px"><path d="M8 30 H80" stroke="${ap > 0 ? "#ffd23f" : "rgba(255,255,255,0.25)"}" stroke-width="8" stroke-linecap="round" stroke-dasharray="76" stroke-dashoffset="${n(76 * (1 - ap))}"/><path d="M62 10 L84 30 L62 50" fill="none" stroke="#ffd23f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="${n(ap > 0.7 ? 1 : 0, 3)}"/></svg>
+${chip("SU", su, "#ffd23f")}
+</div>
+<div style="position:absolute;left:28px;top:250px;font-family:${osw};font-weight:700;font-size:54px;line-height:1.05;letter-spacing:2px;color:#ffd23f;opacity:${n(ip, 3)};transform:translateY(${n((1 - ip) * 24)}px)">IZIN HAPUS?</div>
+<div style="position:absolute;left:28px;top:364px;padding:5px 14px;border-radius:8px;background:#ffd23f;font-family:${mono};font-weight:700;font-size:22px;letter-spacing:2px;color:#111">KATA POLISI</div>
+${kp > 0 ? `<div style="position:absolute;left:244px;top:278px;padding:0 22px;border:8px solid #ff2d3d;border-radius:14px;background:rgba(21,26,38,0.55);transform:rotate(-9deg) scale(${n(2.6 - 1.6 * kp, 3)});opacity:${n(Math.min(1, kp * 2), 3)};font-family:${osw};font-weight:700;font-size:84px;line-height:1.1;letter-spacing:5px;color:#ff2d3d">ACC</div>` : ""}
+</div>`;
+
+        // ---------- location tag ----------
+        const tp = F1.ramp(f, lingkungan - 2, 12, F1.expoOut);
+        const TAG =
+          tp <= 0
+            ? ""
+            : `<div style="position:absolute;left:72px;top:${n(1310 + (1 - tp) * 40)}px;width:888px;box-sizing:border-box;padding:16px 26px 18px 34px;border-radius:14px;background:#151a26;border:4px solid rgba(255,255,255,0.85);opacity:${n(tp, 3)}">
+<div style="position:absolute;left:0;top:0;bottom:0;width:14px;border-radius:10px 0 0 10px;background:#ff2d3d"></div>
+<div style="font-family:${osw};font-weight:700;font-size:56px;line-height:1.1;letter-spacing:2px;color:#fff">DI LINGKUNGAN POLRI</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px"><div style="font-family:${mono};font-weight:700;font-size:26px;letter-spacing:2px;color:#ffd23f">BUKAN MARKAS KHUSUS</div><div style="padding:4px 12px;border-radius:8px;background:#ffd23f;font-family:${mono};font-weight:700;font-size:22px;letter-spacing:2px;color:#111">KATA POLISI</div></div></div>`;
+
+        return F1.join(
+          C.stage(f, D, SVG + CARD + TAG, {
+            zoom: 0.025,
+            whip: false,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 45 },
+              { at: acc, scale: 1.035, ox: 62, oy: 44, ease: 14 },
+              { at: hapusAt, scale: 1.04, ox: 50, oy: 56, ease: 16 },
+            ],
+          }),
+          C.vignette(0.35, "50% 50%", 55),
+          C.hud(f, { at: 4, kicker: "PENGHAPUSAN", big: "HAPUS SADAPAN", sub: "MENURUT POLISI · OKT 2026", src: "detik, Kompas, CNN Indonesia", bigSize: 46 }),
+          C.progress(f, { step: 3, label: "FILE DIHAPUS" }),
+        );
+      });
+    })();
+  </script>
+</template>

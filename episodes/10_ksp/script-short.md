@@ -109,7 +109,7 @@ All photos come from Wikimedia Commons and are stored in `assets/photos/`.
 
 - **Ahrie's lawyer (Krisna Murti, Tempo) denying the tapping or saying he followed a superior.** It comes from one paywalled source and couldn't be confirmed. The "superior" part would also point at an unnamed person.
 - **Yusril's "tidak ada indikasi-indikasi ke arah sana".** In detik it may refer to foreign involvement, not makar, so it is too ambiguous to use. Use only his "pasal makar sama sekali tidak digunakan" (S13).
-- **Mahfud's "produk final sampai ke Solo", Hanum Rais's "J", the Gibran coup theory, and the afu.id extra suspects (Slamet Uliandi, Nunung Syaifuddin).** Each names someone who is not a suspect or asserts guilt.
+- **Mahfud's "produk final sampai ke Solo", Hanum Rais's "J", the Gibran coup theory, and the afu.id extra suspect Nunung Syaifuddin.** Each names someone who is not a suspect or asserts guilt. (Update 6 Nov: Slamet Uliandi, also on afu.id's list, was officially named the fourth suspect on 5 Nov; see `episodes/12_hapus`. Nunung Syaifuddin is still unconfirmed.)
 - **"Kenapa Gibran tidak disadap?"** It tilts toward one camp, and Yusril answered only "Wallahu a'lam".
 - **Oegroseno's anonymous general ("semua HP kami dipantau").** Rumor.
 - **The Jokowi 2014 "saya disadap" quote presented as a reaction.** It is old.

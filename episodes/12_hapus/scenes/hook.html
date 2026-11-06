@@ -1,0 +1,134 @@
+<!-- Hook (HotWizz #03): frame 0 is the thumbnail: red UPDATE bar + HOTWIZZ bug, headline "TERSANGKA KE-4", then "IZINKAN HAPUS SADAPAN?" with a KATA POLISI tag, all at full opacity from frame 0. A silhouette card with "?" sits on the left; on "keempat" it flips to the name card IRJEN SLAMET ULIANDI + TERSANGKA. On the right a file icon (HASIL SADAPAN) waits dim from "penyadapan", on "mengizinkan" it turns red and drains line by line, and on "dihapus" a DIHAPUS stamp slams onto the FILE (never on the person card). Silhouette before the flip, then Slamet's photo (public/photos/slamet.jpg) with credit. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-keempat" class="clip" src="public/sfx/pop-in.wav" data-at="word:keempat" data-track-index="16" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-izin" class="clip" src="public/sfx/whoosh.wav" data-at="word:mengizinkan" data-track-index="17" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hook-sfx-hapus" class="clip" src="public/sfx/stamp.wav" data-at="word:dihapus" data-track-index="18" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const RED = "#ff2d3d";
+      const YEL = "#ffd23f";
+      const ORG = "#ff7a1a";
+      const mono = "'JetBrains Mono', monospace";
+      const osw = "Oswald, sans-serif";
+      // person card (left) and file column (right)
+      const CX = 72, CY = 880, CW = 430, CH = 520;
+      const FX = 540, FY = 880, FW = 420, FH = 520;
+
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+
+      // identical silhouette name card (same for all four suspects); side = "front" (?) or "back" (name)
+      const PERSON = (side, glow) => {
+        const sil = `<svg width="${CW}" height="${CH}" viewBox="0 0 ${CW} ${CH}" style="position:absolute;left:0;top:0">
+<defs><linearGradient id="hook-cardbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232a3d"/><stop offset="1" stop-color="#151a26"/></linearGradient></defs>
+<rect x="0" y="0" width="${CW}" height="${CH}" rx="16" fill="url(#hook-cardbg)"/>
+<circle cx="${CW / 2}" cy="205" r="82" fill="#3a4256"/>
+<path d="M${CW / 2 - 175} 400 Q${CW / 2 - 175} 300 ${CW / 2 - 70} 292 Q${CW / 2} 330 ${CW / 2 + 70} 292 Q${CW / 2 + 175} 300 ${CW / 2 + 175} 400 Z" fill="#3a4256"/>
+${side === "front" ? `<text x="${CW / 2}" y="262" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="190" fill="${YEL}">?</text>` : ""}
+</svg>`;
+        const photo = side === "back" ? `<img src="public/photos/slamet.jpg" style="position:absolute;left:0;top:0;width:${CW}px;height:${CH - 120}px;object-fit:cover;object-position:50% 20%;filter:saturate(0.9) contrast(1.05);border-radius:13px 13px 0 0" />` : "";
+        const chip = `<div style="position:absolute;left:18px;top:18px;padding:6px 14px;background:${RED};border-radius:6px;font-family:${mono};font-weight:700;font-size:24px;letter-spacing:3px;color:#fff">TERSANGKA</div>`;
+        const plate = side === "front"
+          ? `<div style="position:absolute;left:0;top:${CH - 120}px;width:${CW}px;height:120px;padding:16px 22px;box-sizing:border-box;background:#fff;border-left:10px solid ${RED};border-radius:0 0 16px 0;font-family:${mono};font-weight:700;font-size:28px;line-height:1.4;color:#0d0f16">TERSANGKA KE-4<br><span style="color:${RED}">SIAPA DIA?</span></div>`
+          : `<div style="position:absolute;left:0;top:${CH - 120}px;width:${CW}px;height:120px;padding:16px 22px;box-sizing:border-box;background:#fff;border-left:10px solid ${RED};border-radius:0 0 16px 0;font-family:${mono};font-weight:700;font-size:26px;line-height:1.4;color:#0d0f16">IRJEN SLAMET ULIANDI<br><span style="color:${RED}">· TERSANGKA</span></div>`;
+        return `<div style="position:absolute;inset:0;border:5px solid ${RED};border-radius:18px;box-sizing:border-box;box-shadow:0 0 ${n(26 + glow)}px rgba(255,45,61,0.5)">${sil}${photo}${chip}${plate}</div>`;
+      };
+
+      // file icon: rows drain from the right, top to bottom, with bits falling out
+      const ROWS = 7;
+      const FILE = (f, o) => {
+        const hot = o.drain > 0;
+        const col = hot ? RED : "#8d97ad";
+        const dx = 80, dy = 90, dw = 260, dh = 340;
+        const rows = Array.from({ length: ROWS }, (_, i) => {
+          const p = Math.max(0, Math.min(1, (o.drain * (ROWS + 2) - i) / 2));
+          const full = i % 3 === 2 ? 130 : i % 3 === 1 ? 170 : 200;
+          const w = full * (1 - p);
+          const y = dy + 80 + i * 36;
+          return `<rect x="${dx + 30}" y="${y}" width="${n(Math.max(w, 0))}" height="14" rx="7" fill="${hot ? "#ff7a86" : "#aab3c7"}"/>${p > 0 && p < 1 ? `<rect x="${n(dx + 30 + w - 4)}" y="${y - 3}" width="8" height="20" rx="3" fill="${YEL}"/>` : ""}`;
+        }).join("");
+        const bits = o.drain > 0 && o.drain < 1.2 ? Array.from({ length: 12 }, (_, i) => {
+          const h = (k) => W.hash(900 + i * 7 + k);
+          const k = ((o.dt / 24) + h(1)) % 1;
+          return `<rect x="${n(dx + 20 + dw * h(2) + 10 * Math.sin(k * 6 + i))}" y="${n(dy + dh - 20 + k * 120)}" width="${n(8 + 8 * h(3))}" height="${n(8 + 8 * h(3))}" fill="${i % 2 ? RED : ORG}" opacity="${n((1 - k) * 0.8 * Math.min(1, o.drain * 4), 2)}" transform="rotate(${n(k * 200 * (h(4) - 0.5))} ${n(dx + dw * h(2))} ${n(dy + dh + k * 120)})"/>`;
+        }).join("") : "";
+        const a = 0.35 + 0.65 * o.show;
+        return `<svg width="${FW}" height="${FH}" viewBox="0 0 ${FW} ${FH}" style="position:absolute;left:0;top:0;opacity:${n(a, 3)}">
+<text x="${FW / 2}" y="50" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="26" letter-spacing="2" fill="#fff">FILE HASIL SADAPAN</text>
+<g transform="translate(${n(2 * Math.sin(f * 1.7) * Math.min(1, o.drain * 3) * (o.drain < 1 ? 1 : 0), 1)} 0)">
+<path d="M${dx} ${dy} H${dx + dw - 70} L${dx + dw} ${dy + 70} V${dy + dh} H${dx} Z" fill="${hot ? "#2a1218" : "#1b2133"}" stroke="${col}" stroke-width="7" stroke-linejoin="round"/>
+<path d="M${dx + dw - 70} ${dy} V${dy + 70} H${dx + dw}" fill="none" stroke="${col}" stroke-width="7" stroke-linejoin="round"/>
+<rect x="${dx + 30}" y="${dy + 28}" width="62" height="28" rx="6" fill="${col}"/><text x="${dx + 61}" y="${dy + 49}" text-anchor="middle" font-family="${mono}" font-weight="700" font-size="18" fill="#0d0f16">REC</text>
+${rows}${bits}</g></svg>`;
+      };
+
+      window.__timelines["hook"] = F1.scene("hook", (f, { S, D }) => {
+        const C = F1.cine;
+        const keempat = F1.wordFrame(S, "keempat");
+        const penyadapan = F1.wordFrame(S, "penyadapan");
+        const izin = F1.wordFrame(S, "mengizinkan");
+        const hapus = F1.wordFrame(S, "dihapus");
+
+        const pulse = 0.5 + 0.5 * Math.sin(f / 5);
+        const flip = F1.ramp(f, keempat, 16, F1.expoOut);
+        const fileShow = F1.ramp(f, penyadapan, 12, F1.expoOut);
+        const drain = F1.ramp(f, izin, Math.max(12, hapus - izin), (t) => t);
+        const chipP = F1.ramp(f, izin, 12, F1.expoOut);
+        const kePop = 1 + 0.06 * Math.sin(Math.PI * F1.ramp(f, keempat, 14));
+
+        const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,#1b2133 0%,#0d0f16 70%)"></div>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+${DRIFT(f, { seed: 120, count: 7, y0: 460, y1: 1400, color: ORG, a: 0.2 })}
+${SWEEP(f, { color: RED, a: 0.18, y0: 300, y1: 1400 })}
+<g opacity="0.5" stroke="${RED}" stroke-width="2">${Array.from({ length: 6 }, (_, i) => `<line x1="${n(-200 + i * 260 + (f * 0.6) % 260)}" y1="1440" x2="${n(100 + i * 260 + (f * 0.6) % 260)}" y2="1160" opacity="${n(0.15 + 0.1 * W.hash(i), 2)}"/>`).join("")}</g>
+</svg>
+<!-- UPDATE bar + HOTWIZZ bug -->
+<div style="position:absolute;left:72px;top:268px;width:888px;height:84px;background:${RED};display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-sizing:border-box;box-shadow:0 0 ${n(24 + 14 * pulse)}px rgba(255,45,61,0.55)">
+<div style="font-family:${osw};font-weight:700;font-size:58px;letter-spacing:8px;color:#fff"><span style="display:inline-block;width:22px;height:22px;border-radius:50%;background:#fff;margin-right:18px;opacity:${n(0.5 + 0.5 * pulse, 2)}"></span>UPDATE</div>
+<div style="font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:#0d0f16;background:${YEL};padding:6px 14px;border-radius:6px">HOTWIZZ</div></div>
+<!-- headline: always full opacity -->
+<div style="position:absolute;left:72px;top:364px;width:888px;font-family:${osw};font-weight:700;line-height:1.0;letter-spacing:2px;color:#fff;text-shadow:0 6px 0 rgba(0,0,0,0.5)">
+<div style="font-size:156px;white-space:nowrap">TERSANGKA</div>
+<div style="font-size:156px;white-space:nowrap;color:${YEL};transform-origin:0 60%;transform:scale(${n(kePop, 3)})">KE-4</div></div>
+<div style="position:absolute;left:72px;top:664px;width:120px;height:8px;background:${ORG}"></div>
+<div style="position:absolute;left:72px;top:694px;width:888px;font-family:${osw};font-weight:700;font-size:66px;line-height:1.05;letter-spacing:2px;white-space:nowrap;color:#fff;text-shadow:0 5px 0 rgba(0,0,0,0.5)">IZINKAN <span style="color:${ORG}">HAPUS</span> SADAPAN?</div>
+<div style="position:absolute;left:72px;top:782px;padding:6px 16px;background:${YEL};border-radius:6px;font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:#0d0f16">KATA POLISI</div>`;
+
+        // person card flip
+        const sx = flip < 0.5 ? 1 - 2 * flip : 2 * flip - 1;
+        const lift = 1 + 0.05 * Math.sin(Math.PI * flip);
+        const card = `<div style="position:absolute;left:${CX}px;top:${CY}px;width:${CW}px;height:${CH}px;transform:scale(${n(Math.max(sx, 0.001) * lift, 3)},${n(lift, 3)})">${PERSON(flip < 0.5 ? "front" : "back", flip >= 0.5 ? 14 * pulse : 0)}</div>`;
+
+        const credit = flip >= 0.5 ? `<div style="position:absolute;left:${CX}px;top:${CY + CH + 10}px;width:${CW}px;opacity:${n(0.7 * F1.ramp(f, keempat + 8, 8), 3)};font-family:${mono};font-weight:500;font-size:18px;line-height:1.3;color:#fff">Foto: CNN Indonesia via Wikimedia Commons · CC BY-SA 4.0</div>` : "";
+
+        // file column
+        const stamp = C.stamp(f, { at: hapus, x: 66, y: 250, rot: -9, text: "DIHAPUS", size: 66, color: RED });
+        const chip = chipP > 0 ? `<div style="position:absolute;left:0;top:${FH - 64}px;width:${FW}px;text-align:center;opacity:${n(chipP, 3)};transform:translateY(${n(14 * (1 - chipP))}px)"><div style="display:inline-block;padding:8px 18px;border:4px solid ${YEL};border-radius:10px;font-family:${mono};font-weight:700;font-size:26px;letter-spacing:2px;color:${YEL};background:rgba(13,15,22,0.85)">DIIZINKAN HAPUS?</div></div>` : "";
+        const file = `<div style="position:absolute;left:${FX}px;top:${FY}px;width:${FW}px;height:${FH}px;opacity:${n(fileShow > 0 ? 1 : 0, 0)}">${FILE(f, { show: fileShow, drain, dt: f - izin })}${stamp}${chip}</div>`;
+
+        return F1.join(
+          C.stage(f, D, BG + card + credit + file, {
+            whip: false,
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 45 },
+              { at: izin - 4, scale: 1.03, ox: 62, oy: 55, ease: 14 },
+            ],
+          }),
+          C.vignette(0.35, "50% 50%", 45),
+          C.progress(f, { step: 1, label: "UPDATE" }),
+        );
+      });
+    })();
+  </script>
+</template>
