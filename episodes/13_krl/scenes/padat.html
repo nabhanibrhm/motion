@@ -1,0 +1,172 @@
+<!-- Padat (BUKTI 1 · PENUMPANG): a cutaway KRL car packed with squeezed passengers (they fill in as the counter rolls to 1,1 JUTA / HARI), people streaming through fare gates on the platform below. +11% tag on "sebelas", OKT card on "Oktober", 303,8 JUTA card on "Tiga", the small need-vs-supply card on "Pantas". Muklis, Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e7d3;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="padat" data-width="1080" data-height="1920">
+    <div id="padat-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="3.0" id="padat-sfx-pct" class="clip" src="public/sfx/pop-in.wav" data-at="word:sebelas" data-track-index="15" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6.0" id="padat-sfx-need" class="clip" src="public/sfx/click.wav" data-at="word:Pantas" data-track-index="16" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="9.0" id="padat-sfx-okt" class="clip" src="public/sfx/pop-in.wav" data-at="word:Oktober" data-track-index="17" data-volume="0.15"></audio>
+    <audio data-hf-media-start-basis="local" data-start="11.0" id="padat-sfx-tiga" class="clip" src="public/sfx/ding.wav" data-at="word:Tiga" data-track-index="18" data-volume="0.2"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#d0413a";
+      const hh = (k) => W.hash(k);
+      const SILC = ["#4a4f5c", "#6b4a3a", "#3c5a4a", "#7a4a52", "#55606e", "#8a6a3a", "#3f4468", "#5a3f3f"];
+      // a passenger bust (head and shoulders) with its base at (x, y)
+      const BUST = (x, y, s, c) => `<g transform="translate(${n(x, 1)} ${n(y, 1)}) scale(${n(s, 2)})" fill="${c}"><circle cx="0" cy="-27" r="10"/><path d="M-16 0 Q-16 -17 0 -17 Q16 -17 16 0 Z"/></g>`;
+      // one side-view KRL car (generic: silver body, red and yellow stripe, no marks). Car origin = left end, y = rail level
+      const CAR = (f, i, o) => {
+        const { packed, spin, pan, seed } = o;
+        const w = 324;
+        let g = `<rect x="0" y="-222" width="${w}" height="176" rx="22" fill="#eceae4" stroke="${INK}" stroke-width="6"/>`;
+        g += `<rect x="6" y="-232" width="${w - 12}" height="14" rx="6" fill="#9a9a9a" stroke="${INK}" stroke-width="4"/>`;
+        g += `<rect x="3" y="-84" width="${w - 6}" height="18" fill="${RED}"/><rect x="3" y="-66" width="${w - 6}" height="8" fill="#f2b705"/><rect x="0" y="-222" width="${w}" height="176" rx="22" fill="none" stroke="${INK}" stroke-width="6"/>`;
+        const people = (x0, x1, yb, sc, k) => {
+          const cnt = packed <= 0 ? 0 : Math.max(1, Math.round(1 + 2.2 * packed * (0.5 + hh(seed + k))));
+          let s = "";
+          for (let p = 0; p < cnt; p++) {
+            const px = x0 + ((x1 - x0) * (p + 0.5 + 0.3 * (hh(seed + k + p * 7) - 0.5))) / cnt;
+            s += BUST(px + 1.5 * Math.sin(f * 0.09 + k + p), yb + 6 * hh(seed + k + p * 3), sc * (0.9 + 0.3 * hh(seed + k + p * 5)), SILC[Math.floor(hh(seed + k * 3 + p) * SILC.length)]);
+          }
+          return s;
+        };
+        // windows (sky-blue glass, passengers inside)
+        [72, 140, 208].forEach((wx, k) => {
+          g += `<clipPath id="${o.id}-c${i}w${k}"><rect x="${wx}" y="-192" width="60" height="72" rx="8"/></clipPath><rect x="${wx}" y="-192" width="60" height="72" rx="8" fill="#cfe3ea" stroke="${INK}" stroke-width="5"/><g clip-path="url(#${o.id}-c${i}w${k})">${people(wx + 6, wx + 54, -118, 1.15, k + 1 + i * 9)}</g>`;
+        });
+        // two doors, glass with passengers pressed against it
+        [12, 276].forEach((dx, k) => {
+          g += `<clipPath id="${o.id}-c${i}d${k}"><rect x="${dx + 4}" y="-192" width="40" height="124" rx="6"/></clipPath><rect x="${dx}" y="-200" width="48" height="152" rx="8" fill="#b9bcc2" stroke="${INK}" stroke-width="5"/><rect x="${dx + 4}" y="-192" width="40" height="124" rx="6" fill="#cfe3ea" stroke="${INK}" stroke-width="3"/><g clip-path="url(#${o.id}-c${i}d${k})">${people(dx + 8, dx + 40, -70, 1.5, 40 + k + i * 9)}</g><line x1="${dx + 24}" y1="-200" x2="${dx + 24}" y2="-48" stroke="${INK}" stroke-width="3"/>`;
+        });
+        // pantograph on the middle car
+        if (pan) g += `<g stroke="${INK}" stroke-width="5" stroke-linecap="round" fill="none"><path d="M${w / 2 - 34} -232 L${w / 2} -262 L${w / 2 + 34} -232"/><path d="M${w / 2 - 22} -262 H${w / 2 + 22}" stroke-width="7"/></g>`;
+        // bogies with turning wheels
+        [58, 266].forEach((bx) => {
+          g += `<rect x="${bx - 46}" y="-50" width="92" height="22" rx="6" fill="#3a3a40"/>`;
+          [-26, 26].forEach((d) => {
+            g += `<g transform="translate(${bx + d} -22) rotate(${n(spin, 1)})"><circle r="21" fill="#4a4a52" stroke="${INK}" stroke-width="5"/><path d="M0 -17 V17 M-17 0 H17" stroke="#c9c6c0" stroke-width="4"/><circle r="5" fill="#c9c6c0"/></g>`;
+          });
+        });
+        return g;
+      };
+      // a trainset: (x, y) = left end, rail level; swings a little on its springs
+      const TRAIN = (f, { x, y, cars = 3, packed = 1, spin = 0, id = "tr", seed = 5, sway = 1, s = 1 }) => {
+        const roll = sway * 0.28 * Math.sin(f * 0.11);
+        const bob = sway * 1.6 * Math.sin(f * 0.17 + 1);
+        let g = "";
+        for (let i = 0; i < cars; i++) g += `<g transform="translate(${i * 330} 0)">${CAR(f, i, { packed, spin, pan: i % 2 === 1, seed: seed + i * 31, id })}</g>`;
+        const cx = (cars * 330) / 2;
+        return `<g transform="translate(${n(x)} ${n(y)}) scale(${n(s, 3)})"><g transform="translate(0 ${n(bob, 2)}) rotate(${n(roll, 2)} ${cx} -20)">${g}<rect x="318" y="-130" width="18" height="10" fill="${INK}" opacity="0"/></g></g>`;
+      };
+      // rails, sleepers and the overhead wire (scrolls with `off` when a train moves)
+      const TRACK = (f, { y, wireY, off = 0 }) => {
+        let g = `<rect x="-20" y="${y}" width="1120" height="30" fill="#6a5f55"/>`;
+        for (let k = -1; k < 24; k++) g += `<rect x="${n(((k * 52 + off) % 1248) - 40)}" y="${y + 6}" width="26" height="14" fill="#4a4038"/>`;
+        g += `<rect x="-20" y="${y - 3}" width="1120" height="7" fill="#9a9a9a" stroke="${INK}" stroke-width="2"/>`;
+        // wire and masts
+        g += `<line x1="-20" y1="${wireY}" x2="1100" y2="${wireY}" stroke="${INK}" stroke-width="4"/><line x1="-20" y1="${wireY - 22}" x2="1100" y2="${wireY - 22}" stroke="#6b6b70" stroke-width="3" opacity="0.7"/>`;
+        for (let k = -1; k < 4; k++) {
+          const mx = ((k * 420 + off * 0.6) % 1680) - 60;
+          g += `<g stroke="${INK}" stroke-width="7"><line x1="${n(mx)}" y1="${wireY - 40}" x2="${n(mx)}" y2="${y}"/><line x1="${n(mx - 26)}" y1="${wireY - 40}" x2="${n(mx + 26)}" y2="${wireY - 40}"/></g>`;
+        }
+        return g;
+      };
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+      const SKY = (y) => `<g style="filter:blur(3px)" fill="#e6d3ad">${[0, 1, 2, 3, 4, 5, 6, 7].map((k) => `<rect x="${k * 140 - 20}" y="${y - 90 - 120 * hh(k + 40)}" width="${100 + 30 * hh(k + 3)}" height="${300}"/>`).join("")}</g>`;
+      const mono = "font-family:JetBrains Mono,monospace";
+      // a dark info card that slides in from the right at frame `at`
+      const CARD = (f, { at, x, y, w, kicker, big, sub, src, bigSize = 52 }) => {
+        const p = F1.ramp(f, at, 14, F1.expoOut);
+        if (p <= 0) return "";
+        return `<div style="position:absolute;left:${n(x + (1 - p) * 70)}px;top:${y}px;width:${w}px;padding:16px 22px;border-radius:16px;background:rgba(18,18,22,0.88);opacity:${n(p, 3)};display:flex;flex-direction:column;gap:4px;box-sizing:border-box">
+<div style="${mono};font-weight:700;font-size:19px;letter-spacing:2px;color:#ff5a5f">● ${kicker}</div>
+<div style="${mono};font-weight:700;font-size:${bigSize}px;line-height:1.05;color:#fff">${big}</div>
+<div style="${mono};font-weight:500;font-size:19px;letter-spacing:1px;color:#c9c6c0">${sub}</div>
+<div style="${mono};font-weight:500;font-size:16px;color:#8d8a84;margin-top:2px">Sumber: ${src}</div></div>`;
+      };
+      // a cutaway KRL car: back wall with windows, grab rail with straps, standing passengers who fill in with `fill` (0..1)
+      const CUTAWAY = (f, fill) => {
+        let g = `<rect x="30" y="690" width="1020" height="360" rx="30" fill="#e8e2d4" stroke="${INK}" stroke-width="8"/>`;
+        g += `<rect x="60" y="720" width="960" height="110" rx="12" fill="#cfe3ea" stroke="${INK}" stroke-width="5"/>`;
+        for (let k = 1; k < 5; k++) g += `<line x1="${60 + k * 192}" y1="720" x2="${60 + k * 192}" y2="830" stroke="${INK}" stroke-width="5"/>`;
+        g += `<rect x="30" y="990" width="1020" height="60" fill="#8a7f70" stroke="${INK}" stroke-width="6"/><rect x="40" y="920" width="1000" height="10" fill="#d0413a" opacity="0.85"/>`;
+        g += `<rect x="52" y="945" width="120" height="48" rx="10" fill="#b8473f" stroke="${INK}" stroke-width="5"/><rect x="908" y="945" width="120" height="48" rx="10" fill="#b8473f" stroke="${INK}" stroke-width="5"/>`;
+        g += `<line x1="60" y1="760" x2="1020" y2="760" stroke="#9a9a9a" stroke-width="9"/>`;
+        const ppl = [];
+        const N = 34;
+        for (let i = 0; i < N; i++) {
+          const order = hh(i * 3 + 70);
+          const a = F1.ramp(fill, order * 0.7, 0.3, F1.expoOut);
+          if (a <= 0) continue;
+          const x = 75 + (930 * (i + 0.5 + 0.5 * (hh(i + 5) - 0.5))) / N + 4 * Math.sin(f * 0.07 + i * 1.3);
+          const y = 984 + 24 * hh(i + 11) - 40 * (1 - a);
+          ppl.push({ y, x, i, a });
+        }
+        ppl.sort((p, q) => p.y - q.y);
+        const KINDS = ["man", "hijab", "peci", "man", "hijab", "old"];
+        ppl.forEach((p) => {
+          const strap = hh(p.i + 90) < 0.55 ? `<path d="M${n(p.x + 4)} 760 L${n(p.x + 4)} 800 q14 0 14 18" fill="none" stroke="#6b6b70" stroke-width="5"/>` : "";
+          g += strap + `<g opacity="${n(p.a, 3)}">${W.person(f, { x: p.x, y: p.y, s: 0.86, kind: KINDS[p.i % 6], cloth: ["#c2463b", "#3f78b5", "#5fae7a", "#d9a441", "#7fa88a", "#4e6a8f", "#e2b6c0", "#8a6f55"][Math.floor(hh(p.i + 31) * 8)], skin: ["#c68a5e", "#a8724c", "#8c5a3c", "#d9a07a"][p.i % 4], amp: 0, phase: 0 })}</g>`;
+        });
+        g += `<rect x="60" y="1050" width="960" height="26" rx="8" fill="#3a3a40"/>`;
+        [190, 360, 720, 890].forEach((wx) => (g += `<g transform="translate(${wx} 1078) rotate(${n(f * -9, 1)})"><circle r="24" fill="#4a4a52" stroke="${INK}" stroke-width="5"/><path d="M0 -19 V19 M-19 0 H19" stroke="#c9c6c0" stroke-width="4"/></g>`));
+        return g;
+      };
+      const GATES = () => [150, 360, 570, 780, 990].map((gx) => `<g stroke="${INK}" stroke-width="5"><rect x="${gx - 14}" y="1070" width="28" height="74" rx="6" fill="#8a8f98"/><rect x="${gx - 10}" y="1076" width="20" height="14" rx="3" fill="#5fae7a"/></g>`).join("");
+      window.__timelines["padat"] = F1.scene("padat", (f, { S, D }) => {
+        const C = F1.cine;
+        const sebelas = F1.wordFrame(S, "sebelas");
+        const pantas = F1.wordFrame(S, "Pantas");
+        const okt = F1.wordFrame(S, "Oktober");
+        const tiga = F1.wordFrame(S, "Tiga");
+        const roll = F1.ramp(f, 6, 54, F1.easeOut);
+        const val = (1.1 * roll).toFixed(1).replace(".", ",");
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+${DRIFT(f, { seed: 330, count: 7, y0: 420, y1: 1050, color: "#f2c27a", a: 0.26 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
+<g transform="translate(0 85)">${CUTAWAY(f, F1.ramp(f, 4, 90, F1.easeOut))}</g>
+<rect x="-20" y="1150" width="1120" height="770" fill="#cdb898"/><rect x="-20" y="1150" width="1120" height="12" fill="#e0b13a"/>
+${W.row(f, { y: 1186, s: 0.58, count: 12, seed: 41, speed: 1.5, dir: 1 })}${GATES()}
+</svg>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            whip: false,
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1, ox: 50, oy: 50 },
+              { at: sebelas - 4, scale: 1.08, ox: 40, oy: 45, ease: 12 },
+              { at: okt - 4, scale: 1.04, ox: 60, oy: 55, ease: 12 },
+              { at: tiga - 4, scale: 1.08, ox: 55, oy: 45, ease: 12 },
+            ],
+          }),
+          C.vignette(0.22, "50% 55%", 50),
+          C.progress(f, { step: 2, label: "BUKTI 1 · PENUMPANG" }),
+          C.hud(f, { at: -14, kicker: "BUKTI 1 · PENUMPANG", big: `${val} JUTA/HARI`, sub: "RATA-RATA 2026 · JABODETABEK", src: "detik, CNBC", w: 500, bigSize: 42 }),
+          C.tag(f, { at: sebelas, x: 80, y: 486, rot: -3, size: 44, text: `<span style="color:#ff5a5f">▲ +11%</span> <span style="font-size:24px">VS 2025</span>` }),
+          CARD(f, { at: pantas, x: 72, y: 590, w: 500, kicker: "KEBUTUHAN VS TERSEDIA", big: "±105 vs 102", sub: "RANGKAIAN · KEBUTUHAN 2026", src: "Kompas.id, Suara", bigSize: 40 }),
+          CARD(f, { at: okt, x: 610, y: 250, w: 400, kicker: "OKTOBER 2026", big: "OKT: 32,3 JUTA", sub: "PERJALANAN DALAM SEBULAN", src: "iNews", bigSize: 36 }),
+          CARD(f, { at: tiga, x: 610, y: 410, w: 400, kicker: "JAN–OKT 2026", big: "303,8 JUTA", sub: "PERJALANAN · 10 BULAN", src: "iNews", bigSize: 46 }),
+          C.cast(S, f, [
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380, at: -14 },
+            { src: C.CAST.beni, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

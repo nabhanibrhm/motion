@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "krl",
+  "number": 13,
+  "title": "Impor KRL Bekas Batal: Kereta Baru, Tapi Kapan?",
+  "category": "Ekonomi_keuangan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #10",
+      "steps": 7
+    }
+  },
+  "scenes": [
+    { "id": "hook", "file": "scenes/hook.html" },
+    { "id": "padat", "file": "scenes/padat.html" },
+    { "id": "batal", "file": "scenes/batal.html" },
+    { "id": "inka", "file": "scenes/inka.html" },
+    { "id": "hitung", "file": "scenes/hitung.html" },
+    { "id": "sisi", "file": "scenes/sisi.html" },
+    { "id": "vonis", "file": "scenes/vonis.html" }
+  ],
+  "audio": {
+    "bed": "music/bed.mp3",
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

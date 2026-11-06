@@ -1,0 +1,170 @@
+<!-- Batal (KRONOLOGI): a generic used commuter train from Japan rolls in on the rail while two timeline cards stack up (23 SEP: DPR green light; 5 NOV: cancelled after meeting the President). On "membatalkannya" the train brakes, a BATAL stamp slams and it turns into a crossed-out ghost. Quote card "Buat rakyat harus yang baru." (Bobby Rasyidin, Dirut KAI) on "rakyat", then a new white-and-red trainset rolls in with the "23 RANGKAIAN BARU" tag. No logos, no Prabowo face. Nisa, Muklis, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e7d3;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="batal" data-width="1080" data-height="1920">
+    <div id="batal-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="batal-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.25"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3" id="batal-sfx-a" class="clip" src="public/sfx/pop-in.wav" data-at="word:Dua" data-track-index="12" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="6" id="batal-sfx-b" class="clip" src="public/sfx/pop-in.wav" data-at="word:Lima" data-track-index="13" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8" id="batal-sfx-stamp" class="clip" src="public/sfx/stamp.wav" data-at="word:membatalkannya" data-track-index="14" data-volume="0.4"></audio>
+    <audio data-hf-media-start-basis="local" data-start="10" id="batal-sfx-quote" class="clip" src="public/sfx/pop-in.wav" data-at="word:rakyat" data-track-index="15" data-volume="0.13"></audio>
+    <audio data-hf-media-start-basis="local" data-start="12" id="batal-sfx-new" class="clip" src="public/sfx/whoosh.wav" data-at="word:pesan" data-track-index="16" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13" id="batal-sfx-card" class="clip" src="public/sfx/ding.wav" data-at="word:rangkaian" data-track-index="17" data-volume="0.15"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#d0413a";
+      const GREEN = "#4e8a4f";
+      const SUB = "#8a6f55";
+      const clamp01 = (v) => Math.max(0, Math.min(1, v));
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+      const mix = (a, b, p) => {
+        const pa = [1, 3, 5].map((i) => parseInt(a.slice(i, i + 2), 16));
+        const pb = [1, 3, 5].map((i) => parseInt(b.slice(i, i + 2), 16));
+        return `rgb(${pa.map((v, i) => Math.round(v + (pb[i] - v) * p)).join(",")})`;
+      };
+      const CLOTH = ["#3f78b5", "#c0563f", "#5b8a5f", "#8a6f55", "#6b5b95", "#d9a441", "#3d4a5c"];
+      const SKIN = ["#a8724c", "#d9a77d", "#8a5a3c"];
+      // a generic commuter trainset in side view (white/silver body, red-and-yellow stripe, no logos).
+      // (x, y) = left end and top of the rail; `wheel` in degrees; riders = share of window slots with a standing passenger
+      const TRAIN = (f, o) => {
+        const { x, y, cars = 3, w = 250, s = 1, body = "#eef0f2", stripe = RED, sway = 0, wheel = 0, riders = 0.6, seed = 1, ghost = false, wheels = true, op = 1, pant = true } = o;
+        const gap = 6;
+        const sk = ghost ? `stroke="${INK}" stroke-width="5" stroke-dasharray="14 10"` : `stroke="${INK}" stroke-width="5"`;
+        let out = "";
+        for (let c = 0; c < cars; c++) {
+          let g = `<g transform="translate(${c * (w + gap)} 0)">`;
+          if (c < cars - 1) g += `<rect x="${w - 2}" y="-62" width="${gap + 4}" height="16" fill="#555" stroke="${INK}" stroke-width="3"/>`;
+          if (wheels) {
+            for (const bx of [w * 0.2, w * 0.8]) {
+              for (const dx of [-17, 17]) {
+                g += `<g transform="translate(${n(bx + dx)} -14)"><circle r="14" fill="#3b3d44" stroke="${INK}" stroke-width="3"/><g transform="rotate(${n(wheel, 1)})"><line x1="-11" y1="0" x2="11" y2="0" stroke="#d9d4c8" stroke-width="3"/><line x1="0" y1="-11" x2="0" y2="11" stroke="#d9d4c8" stroke-width="3"/></g><circle r="3" fill="#d9d4c8"/></g>`;
+              }
+            }
+          }
+          g += `<rect x="6" y="-30" width="${w - 12}" height="14" rx="4" fill="#4a4d55" ${ghost ? "opacity=\"0.4\"" : ""}/>`;
+          g += `<rect x="0" y="-152" width="${w}" height="124" rx="18" fill="${ghost ? "rgba(255,250,240,0.4)" : body}" ${sk}/>`;
+          if (!ghost) {
+            g += `<rect x="3" y="-66" width="${w - 6}" height="15" fill="${stripe}"/><rect x="3" y="-49" width="${w - 6}" height="7" fill="#f2c14e"/>`;
+          }
+          // doors
+          const dx0 = w * 0.4;
+          g += `<rect x="${dx0}" y="-138" width="${w * 0.2}" height="106" rx="5" fill="${ghost ? "none" : "#dfe3e6"}" stroke="${INK}" stroke-width="3"/><line x1="${dx0 + w * 0.1}" y1="-136" x2="${dx0 + w * 0.1}" y2="-34" stroke="${INK}" stroke-width="3"/>`;
+          // windows with standing passengers
+          const wxs = [w * 0.05, w * 0.22, w * 0.66, w * 0.83];
+          wxs.forEach((wx, wi) => {
+            g += `<rect x="${n(wx)}" y="-136" width="34" height="50" rx="6" fill="#bfe3ee" stroke="${INK}" stroke-width="3"/>`;
+            if (ghost) return;
+            for (let k = 0; k < 2; k++) {
+              const h = (j) => W.hash(seed * 31 + c * 17 + wi * 5 + k * 3 + j);
+              if (h(1) > riders) continue;
+              const px = wx + (k ? 23 : 11);
+              g += `<path d="M${n(px - 9)} -87 Q${n(px - 9)} -101 ${n(px)} -101 Q${n(px + 9)} -101 ${n(px + 9)} -87 Z" fill="${CLOTH[Math.floor(h(2) * CLOTH.length)]}"/><circle cx="${n(px)}" cy="-111" r="8" fill="${SKIN[Math.floor(h(3) * SKIN.length)]}"/>`;
+            }
+          });
+          g += `<rect x="${w * 0.04}" y="-164" width="${w * 0.2}" height="12" rx="4" fill="#c4c8cc" stroke="${INK}" stroke-width="3"/><rect x="${w * 0.74}" y="-164" width="${w * 0.2}" height="12" rx="4" fill="#c4c8cc" stroke="${INK}" stroke-width="3"/>`;
+          if (pant && c === Math.min(1, cars - 1)) {
+            g += `<path d="M${w / 2 - 26} -152 L${w / 2 - 4} -190 L${w / 2 + 22} -152" fill="none" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M${w / 2 - 34} -192 H${w / 2 + 30}" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>`;
+          }
+          if (c === cars - 1) g += `<circle cx="${w - 9}" cy="-52" r="6" fill="#ffe08a" stroke="${INK}" stroke-width="2"/>`;
+          out += g + "</g>";
+        }
+        return `<g opacity="${n(op, 3)}" transform="translate(${n(x, 1)} ${n(y + sway, 1)}) scale(${n(s, 3)})">${out}</g>`;
+      };
+      const RAIL = (y) => `<rect x="0" y="${y}" width="1080" height="48" fill="#b9a27d"/>${Array.from({ length: 25 }, (_, i) => `<rect x="${i * 46 + 6}" y="${y + 14}" width="30" height="12" rx="2" fill="#8a6f55"/>`).join("")}<rect x="0" y="${y}" width="1080" height="8" fill="#6b6f78"/><rect x="0" y="${y - 2}" width="1080" height="3" fill="${INK}"/>`;
+      const SPARKS = (f, { x, y, seed, count = 9, color = "#ffb703" }) => `<g fill="${color}">${Array.from({ length: count }, (_, i) => {
+        const h = (k) => W.hash(seed + i * 7 + k);
+        const age = (((f * 0.06 + h(1) * 3) % 1) + 1) % 1;
+        const a = -0.4 - h(2) * 2.3;
+        const sp = 40 + h(3) * 90;
+        return `<circle cx="${n(x + Math.cos(a) * sp * age * 1.2, 1)}" cy="${n(y + Math.sin(a) * sp * age + 140 * age * age, 1)}" r="${n(4.5 * (1 - age) + 1, 1)}" opacity="${n(1 - age, 2)}"/>`;
+      }).join("")}<circle cx="${x}" cy="${y}" r="${n(9 + 3 * Math.sin(f * 1.7), 1)}" fill="#fff4c2"/></g>`;
+      const CARD = (x, y, w, h, p, inner, fill = "#fffaf0") => (p <= 0 ? "" : `<g opacity="${n(clamp01(p), 3)}" transform="translate(${n(x)} ${n(y + 34 * (1 - p), 1)})"><rect x="0" y="0" width="${w}" height="${h}" rx="18" fill="${fill}" stroke="${INK}" stroke-width="6"/>${inner}</g>`);
+      const SRC = (x, y, text) => `<text x="${x}" y="${y}" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="${SUB}">Sumber: ${text}</text>`;
+      const OSW = (x, y, size, text, fill = INK, extra = "") => `<text x="${x}" y="${y}" font-family="Oswald" font-weight="600" font-size="${size}" letter-spacing="1" fill="${fill}" ${extra}>${text}</text>`;
+      const LABEL = (cx, y, text, p, color = INK) => (p <= 0 ? "" : `<g opacity="${n(clamp01(p), 3)}"><rect x="${n(cx - 250)}" y="${y}" width="500" height="58" rx="12" fill="#fffaf0" stroke="${color}" stroke-width="5"/>${OSW(n(cx), y + 42, 36, text, color, 'text-anchor="middle" letter-spacing="3"')}</g>`);
+      const BG = (f, o) => {
+        const usedX = -800 + 910 * o.arrive + o.jolt;
+        const newX = 1180 - 1030 * o.newIn;
+        const solid = 1 - o.ghost;
+        const wy = 888;
+        return `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+${DRIFT(f, { seed: 410, count: 7, y0: 600, y1: 1050, color: "#f2c27a", a: 0.26 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
+<g fill="#e3d4b6">${[[20, 700, 120, 380], [150, 780, 90, 300], [260, 650, 140, 430], [420, 760, 110, 320], [560, 690, 100, 390], [680, 790, 130, 290], [830, 660, 120, 420], [960, 740, 120, 340]].map((b) => `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}"/>`).join("")}</g>
+<g stroke="#8a6f55" stroke-width="10">${[90, 560, 1030].map((px) => `<line x1="${px}" y1="1080" x2="${px}" y2="820"/><line x1="${px - 40}" y1="830" x2="${px + 40}" y2="830"/>`).join("")}</g>
+<path d="M0 ${wy} Q270 ${wy + 16} 540 ${wy} T1080 ${wy}" fill="none" stroke="${INK}" stroke-width="4"/>
+${RAIL(1080)}
+<rect x="0" y="1128" width="1080" height="792" fill="#cdb898"/>
+${TRAIN(f, { x: usedX, y: 1080, cars: 3, body: "#d5d9d3", stripe: GREEN, sway: 1.3 * Math.sin(f * 0.45) * (1 - 0.7 * o.arrive), wheel: usedX * 4.1, riders: 0.35, seed: 4, op: solid })}
+${o.ghost > 0 ? `<g opacity="${n(o.ghost * (1 - o.ghostOut), 3)}">${TRAIN(f, { x: 110, y: 1080, cars: 3, ghost: true, wheels: true })}<path d="M110 890 L878 1076 M878 890 L110 1076" stroke="${RED}" stroke-width="16" stroke-linecap="round"/></g>` : ""}
+${LABEL(Math.max(300, usedX + 384), 1136, "KRL BEKAS JEPANG", o.label * (1 - o.ghostOut), "#6b5b45")}
+${o.newIn > 0 ? TRAIN(f, { x: newX, y: 1080, cars: 3, sway: 1.3 * Math.sin(f * 0.45) * (1 - o.newIn * 0.7), wheel: newX * 4.1, riders: 0.25, seed: 9 }) : ""}
+${LABEL(Math.max(300, newX + 384), 1136, "KRL BARU · INKA", o.newIn, RED)}
+${CARD(60, 330, 460, 230, o.a, `${OSW(30, 82, 66, "23 SEP", INK, 'font-weight="700"')}${OSW(30, 136, 38, "USUL IMPOR BEKAS")}${OSW(30, 182, 32, "✓ KOMISI VI DPR SETUJU", GREEN)}${SRC(30, 214, "Kompas, CNBC")}`)}
+${CARD(560, 330, 460, 230, o.b, `${OSW(30, 82, 66, "5 NOV", RED, 'font-weight="700"')}${OSW(30, 136, 34, "USAI BERTEMU PRESIDEN")}${OSW(30, 182, 38, "✕ DIBATALKAN", RED)}${SRC(30, 214, "Suara, CNN Indonesia")}`)}
+${o.b > 0 ? `<path d="M522 445 H558" stroke="${INK}" stroke-width="8" stroke-linecap="round"/><path d="M546 430 L560 445 L546 460" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>` : ""}
+${CARD(60, 600, 960, 200, o.q, `<text x="480" y="84" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="62" letter-spacing="1" fill="${INK}">“Buat rakyat harus yang baru.”</text><text x="480" y="130" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="24" fill="${RED}">— BOBBY RASYIDIN, DIRUT KAI</text>${SRC(30, 178, "Suara, CNN Indonesia")}`)}
+</svg>`;
+      };
+      window.__timelines["batal"] = F1.scene("batal", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const jepang = w("Jepang");
+        const dua = w("Dua");
+        const lima = w("Lima");
+        const batalK = w("membatalkannya");
+        const rakyat = w("rakyat");
+        const pesan = w("pesan");
+        const rangk = w("rangkaian");
+        const arriveEnd = Math.max(40, F1.line(S, 1).start - 6);
+        const t = f - batalK;
+        const o = {
+          arrive: F1.ramp(f, 4, arriveEnd, F1.easeOut),
+          jolt: t >= 0 ? 12 * Math.sin(t * 1.9) * Math.exp(-t / 5) : 0,
+          label: F1.ramp(f, jepang, 10, F1.expoOut),
+          ghost: F1.ramp(f, batalK + 6, 14),
+          ghostOut: F1.ramp(f, rakyat - 10, 10),
+          a: F1.ramp(f, dua, 12, F1.expoOut),
+          b: F1.ramp(f, lima, 12, F1.expoOut),
+          q: F1.ramp(f, rakyat, 12, F1.expoOut),
+          newIn: F1.ramp(f, pesan, 26, F1.easeOut),
+        };
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1.02, ox: 50, oy: 62 },
+              { at: dua - 2, scale: 1.03, ox: 50, oy: 38, ease: 12 },
+              { at: batalK - 4, scale: 1.05, ox: 36, oy: 66, ease: 10 },
+              { at: rakyat - 4, scale: 1.03, ox: 50, oy: 48, ease: 12 },
+              { at: pesan - 4, scale: 1.04, ox: 62, oy: 66, ease: 12 },
+            ],
+          }),
+          C.vignette(0.22, "50% 58%", 55),
+          C.progress(f, { step: 3, label: "KRONOLOGI" }),
+          `<div style="opacity:${n(1 - F1.ramp(f, pesan - 8, 8), 3)}">${C.stamp(f, { at: batalK, x: 300, y: 900, rot: -9, text: "BATAL", size: 110 })}</div>`,
+          C.tag(f, { at: rangk, x: 250, y: 818, rot: -2, light: true, size: 48, text: `<span style="color:#d0413a">23 RANGKAIAN BARU</span><div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:16px;color:#8a6f55">Sumber: CNBC</div>` }),
+          C.cast(S, f, [
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>

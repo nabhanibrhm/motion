@@ -1,0 +1,159 @@
+<!-- Hitung: "HITUNGAN SEDERHANA". Two lanes of 23 cells (the 23 new trainsets) fill like progress bars: at 3 per year it takes about 8 TAHUN (fills from "tiga"), at the 15-per-year target about 1,5 TAHUN (from "lima"). From Beni's line the lanes give way to a depot: old trainsets roll behind the shed sign PENSIUN, the counter climbs to >90 RANGKAIAN on "sembilan", and on "kecepatan" the card YANG HARUS NAIK: KECEPATAN PRODUKSI lands. Sources: Harian Jogja, Investortrust, Kompas.id, Kompas, Kontan. Nisa, Muklis, Beni, Muklis. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #f1e7d3;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="hitung" data-width="1080" data-height="1920">
+    <div id="hitung-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="0" id="hitung-sfx-in" class="clip" src="public/sfx/swoosh-soft.wav" data-at="0" data-track-index="20" data-volume="0.22"></audio>
+    <audio data-hf-media-start-basis="local" data-start="5" id="hitung-sfx-a" class="clip" src="public/sfx/tick.wav" data-at="word:Hitungan" data-track-index="12" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="8" id="hitung-sfx-a2" class="clip" src="public/sfx/ding.wav" data-at="word:delapan" data-track-index="13" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="11" id="hitung-sfx-b" class="clip" src="public/sfx/riser.wav" data-at="word:lima" data-track-index="14" data-volume="0.12"></audio>
+    <audio data-hf-media-start-basis="local" data-start="13" id="hitung-sfx-b2" class="clip" src="public/sfx/ding.wav" data-at="word:setengah" data-track-index="15" data-volume="0.22"></audio>
+    <audio data-hf-media-start-basis="local" data-start="16" id="hitung-sfx-depot" class="clip" src="public/sfx/whoosh.wav" data-at="word:pensiun" data-track-index="16" data-volume="0.2"></audio>
+    <audio data-hf-media-start-basis="local" data-start="19" id="hitung-sfx-count" class="clip" src="public/sfx/pop-in.wav" data-at="word:sembilan" data-track-index="17" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="23" id="hitung-sfx-card" class="clip" src="public/sfx/stamp.wav" data-at="word:kecepatan+0" data-track-index="18" data-volume="0.3"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#d0413a";
+      // generic KRL trainset, side view, facing right: white/silver body, red-yellow stripe, packed windows, spinning wheels, pantograph.
+      // (x, y) = left end of the first car at rail level; wheel = wheel angle in degrees; pure function of f.
+      const TRAIN = (f, { x, y, cars = 3, s = 1, body = "#f4f1ea", stripe = RED, pack = 0.6, seed = 1, wheel = 0, sway = 1 }) => {
+        const CW = 260;
+        const GAP = 8;
+        let out = "";
+        for (let c = 0; c < cars; c++) {
+          const sw = sway * Math.sin(f * 0.21 + c * 1.3);
+          let wins = "";
+          [10, 94, 132, 216].forEach((wx, k) => {
+            const h = (j) => W.hash(seed * 97 + c * 13 + k * 5 + j);
+            wins += `<rect x="${wx}" y="-118" width="34" height="42" rx="6" fill="#cfe3ee" stroke="${INK}" stroke-width="3"/>`;
+            [0, 1].forEach((j) => {
+              if (h(j) < pack) {
+                const px = wx + 10 + 14 * j;
+                const col = h(j + 3) < 0.5 ? "#3a3a40" : "#5a4a44";
+                wins += `<circle cx="${px}" cy="-99" r="6.5" fill="${col}"/><path d="M${px - 9} -76 Q${px - 9} -90 ${px} -90 Q${px + 9} -90 ${px + 9} -76 Z" fill="${col}"/>`;
+              }
+            });
+          });
+          [52, 170].forEach((dx, k) => {
+            const has = W.hash(seed * 31 + c * 7 + k) < pack;
+            wins += `<rect x="${dx}" y="-120" width="34" height="90" rx="4" fill="#d8dcdf" stroke="${INK}" stroke-width="3"/><line x1="${dx + 17}" y1="-120" x2="${dx + 17}" y2="-30" stroke="${INK}" stroke-width="3"/><rect x="${dx + 4}" y="-112" width="10" height="30" rx="3" fill="#cfe3ee"/><rect x="${dx + 20}" y="-112" width="10" height="30" rx="3" fill="#cfe3ee"/>${has ? `<circle cx="${dx + 9}" cy="-98" r="5" fill="#3a3a40"/><path d="M${dx + 1} -82 Q${dx + 1} -92 ${dx + 9} -92 Q${dx + 17} -92 ${dx + 17} -82 Z" fill="#3a3a40"/>` : ""}`;
+          });
+          const wheels = [44, 216].map((wx) => `<g transform="translate(${wx} -13) rotate(${n(wheel, 1)})"><circle r="13" fill="${INK}"/><circle r="5" fill="#9aa0a6"/><line x1="-11" y1="0" x2="11" y2="0" stroke="#9aa0a6" stroke-width="3"/><line x1="0" y1="-11" x2="0" y2="11" stroke="#9aa0a6" stroke-width="3"/></g>`).join("");
+          const pan = c === Math.min(1, cars - 1) ? `<path d="M110 -146 L130 -176 L150 -146 M118 -160 L142 -160" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 -178 H148" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>` : "";
+          const nose = c === cars - 1 ? `<circle cx="252" cy="-62" r="5" fill="#ffe9a0" stroke="${INK}" stroke-width="2"/>` : "";
+          out += `<g transform="translate(${n(c * (CW + GAP))} ${n(0.8 * sw, 2)}) rotate(${n(0.25 * sw, 2)} 130 0)"><rect x="14" y="-30" width="232" height="10" rx="3" fill="${INK}"/>${wheels}<rect x="0" y="-136" width="${CW}" height="108" rx="16" fill="${body}" stroke="${INK}" stroke-width="5"/><rect x="18" y="-146" width="224" height="12" rx="5" fill="#b9bec2" stroke="${INK}" stroke-width="3"/>${wins}<rect x="3" y="-56" width="254" height="9" fill="${stripe}"/><rect x="3" y="-47" width="254" height="5" fill="#f2b632"/>${pan}${nose}</g>`;
+        }
+        return `<g transform="translate(${n(x)} ${n(y)}) scale(${n(s, 3)})">${out}</g>`;
+      };
+      const RAIL = (y, x0 = 0, x1 = 1080, shift = 0) => {
+        let t = "";
+        for (let k = -1; k < Math.ceil((x1 - x0) / 56) + 1; k++) t += `<rect x="${n(x0 + k * 56 + (shift % 56))}" y="${y + 6}" width="30" height="9" fill="#8a6f55"/>`;
+        return `<g>${t}<rect x="${x0}" y="${y}" width="${x1 - x0}" height="7" fill="#6d6a6c"/></g>`;
+      };
+      const LANE = (f, { y, title, p, years, label, color, alpha }) => {
+        const cells = Array.from({ length: 23 }, (_, i) => {
+          const fr = Math.max(0, Math.min(1, p * 23 - i));
+          const cx = 66 + i * 41.5;
+          return `<rect x="${n(cx)}" y="${y + 104}" width="35" height="52" rx="6" fill="none" stroke="#b9aa90" stroke-width="3" stroke-dasharray="6 5"/>${fr > 0 ? `<g opacity="${n(Math.min(1, fr * 2), 3)}"><rect x="${n(cx)}" y="${y + 104}" width="35" height="52" rx="6" fill="#f4f1ea" stroke="${INK}" stroke-width="4"/><rect x="${n(cx + 4)}" y="${y + 112}" width="12" height="14" rx="3" fill="#cfe3ee"/><rect x="${n(cx + 19)}" y="${y + 112}" width="12" height="14" rx="3" fill="#cfe3ee"/><rect x="${n(cx)}" y="${y + 135}" width="35" height="8" fill="${RED}"/><rect x="${n(cx)}" y="${y + 143}" width="35" height="4" fill="#f2b632"/></g>` : ""}`;
+        }).join("");
+        const done = p >= 0.999;
+        const yr = (p * years).toFixed(1).replace(".", ",");
+        return `<g opacity="${n(alpha, 3)}"><rect x="40" y="${y}" width="1000" height="290" rx="22" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<text x="66" y="${y + 66}" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="2" fill="${INK}">${title}</text>
+${cells}
+<text x="66" y="${y + 244}" font-family="JetBrains Mono" font-weight="700" font-size="30" fill="#6f6a66">TAHUN KE-${yr}</text>
+<g opacity="${done ? 1 : 0}"><rect x="552" y="${y + 190}" width="440" height="78" rx="16" fill="${color}"/><text x="772" y="${y + 249}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="58" letter-spacing="3" fill="#fff">${label}</text></g></g>`;
+      };
+      const DEPOT = (f, o) => {
+        const ty = 960;
+        let trains = "";
+        for (let i = 0; i < 6; i++) {
+          const t = F1.ramp(f, o.go + i * 55, 90, (u) => u * u * (3 - 2 * u));
+          const x = -360 + 1100 * t;
+          trains += TRAIN(f, { x, y: ty, cars: 2, s: 0.62, body: "#ddd6c6", stripe: "#8d8780", pack: 0.15, seed: 20 + i, wheel: x * 3.4, sway: t > 0 && t < 1 ? 1.4 : 0.3 });
+        }
+        const shed = `<g><rect x="700" y="${ty - 190}" width="380" height="200" fill="#9b8d78" stroke="${INK}" stroke-width="6"/><path d="M684 ${ty - 190} L890 ${ty - 252} L1096 ${ty - 190} Z" fill="#6d5f4d" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/><rect x="722" y="${ty - 170}" width="336" height="14" fill="#7d705e"/><rect x="740" y="${ty - 140}" width="300" height="52" rx="8" fill="#fffaf0" stroke="${INK}" stroke-width="4"/><text x="890" y="${ty - 101}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="6" fill="${RED}">PENSIUN</text></g>`;
+        const poles = [150, 520].map((px) => `<rect x="${px}" y="${ty - 250}" width="8" height="262" fill="#6d6a6c"/>`).join("");
+        const cnt = Math.round(90 * o.count);
+        return `<g opacity="${n(o.p, 3)}">${poles}<rect x="0" y="${ty - 188}" width="1080" height="4" fill="#6d6a6c"/>${RAIL(ty)}${trains}${shed}
+<g transform="translate(40 330)"><rect width="1000" height="330" rx="24" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<text x="60" y="84" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="4" fill="#6f6a66">KERETA LAMA PENSIUN BERTAHAP</text>
+<text x="60" y="274" font-family="Oswald" font-weight="700" font-size="176" fill="${RED}">&gt;${cnt}</text>
+<text x="500" y="216" font-family="Oswald" font-weight="600" font-size="48" letter-spacing="2" fill="${INK}">RANGKAIAN</text><text x="500" y="268" font-family="JetBrains Mono" font-weight="700" font-size="34" fill="${INK}">2026–2034</text>
+<text x="60" y="304" font-family="JetBrains Mono" font-weight="500" font-size="19" fill="#8a6f55">Sumber: Kompas Money (28 Sep 2026), Kontan TV</text></g></g>`;
+      };
+      const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+<rect width="1080" height="1920" fill="#f1e7d3"/>
+${DRIFT(f, { seed: 520, count: 7, y0: 420, y1: 1050, color: "#f2c27a", a: 0.26 })}
+${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
+${W.dust(f, { x: 120, y: 420, w: 840, h: 640, count: 16, seed: 9, color: "#fff3cf", alpha: 0.45 })}
+<g opacity="${n(1 - o.out, 3)}"><text x="60" y="362" font-family="Oswald" font-weight="700" font-size="52" letter-spacing="6" fill="${INK}">HITUNGAN SEDERHANA</text><rect x="60" y="376" width="300" height="8" rx="4" fill="#C6F432"/>
+${LANE(f, { y: 410, title: "INKA SEKARANG · ±3 RANGKAIAN / TAHUN", p: o.pa, years: 8, label: "≈ 8 TAHUN", color: RED, alpha: 1 })}
+${LANE(f, { y: 720, title: "SESUAI TARGET · 15 RANGKAIAN / TAHUN", p: o.pb, years: 1.5, label: "≈ 1,5 TAHUN", color: INK, alpha: 0.4 + 0.6 * o.bIn })}
+<text x="60" y="1066" font-family="JetBrains Mono" font-weight="500" font-size="20" fill="#8a6f55">Sumber: Harian Jogja, Investortrust, Kompas.id</text></g>
+${o.out > 0 ? DEPOT(f, o) : ""}</svg>`;
+      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+      window.__timelines["hitung"] = F1.scene("hitung", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, occ = 0) => F1.wordFrame(S, x, occ);
+        const start = w("Hitungan");
+        const delapan = w("delapan");
+        const lima = w("lima");
+        const setengah = w("setengah");
+        const sembilan = w("sembilan");
+        const kecep = w("kecepatan", 1);
+        const l2 = F1.line(S, 2).start;
+        const lin = (u) => u;
+        const o = {
+          pa: F1.ramp(f, start, delapan + 14 - start, lin),
+          pb: F1.ramp(f, lima - 4, setengah + 12 - (lima - 4), lin),
+          bIn: F1.ramp(f, lima - 14, 10),
+          out: F1.ramp(f, l2 - 4, 10),
+          p: F1.ramp(f, l2 - 4, 10),
+          go: l2 + 6,
+          count: F1.ramp(f, sembilan - 2, 34, F1.expoOut),
+        };
+        const k = F1.ramp(f, kecep, 12, F1.expoOut);
+        const card =
+          k <= 0
+            ? ""
+            : `<div style="${F1.css({ position: "absolute", left: 40, top: 1030, width: 1000, boxSizing: "border-box", padding: "18px 30px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(k, 3), transform: `translateY(${n(30 * (1 - k))}px) rotate(-1deg)` })}"><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:22px;letter-spacing:2px;color:#ff5a5f">YANG HARUS NAIK</div><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:62px;line-height:1.1;letter-spacing:2px;color:${C.ACCENT}">KECEPATAN PRODUKSI</div></div>`;
+        return F1.join(
+          C.stage(f, D, BG(f, o), {
+            zoom: 0.03,
+            shots: [
+              { at: 0, scale: 1.0, ox: 50, oy: 40 },
+              { at: start, scale: 1.05, ox: 40, oy: 38, ease: 14 },
+              { at: lima - 6, scale: 1.05, ox: 55, oy: 52, ease: 14 },
+              { at: l2 - 4, scale: 1.0, ox: 50, oy: 50, ease: 12 },
+              { at: kecep - 4, scale: 1.05, ox: 50, oy: 58, ease: 12 },
+            ],
+          }),
+          C.vignette(0.22, "50% 55%", 50),
+          card,
+          C.progress(f, { step: 5, label: "HITUNGAN SEDERHANA" }),
+          C.cast(S, f, [
+            { src: C.CAST.nisa, x: 540, y: 1200, w: 380, at: 0 },
+            { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
+            { src: C.CAST.beniKaget, x: 540, y: 1200, w: 400 },
+            { src: C.CAST.muklisSenyum, x: 540, y: 1200, w: 380 },
+          ]),
+        );
+      });
+    })();
+  </script>
+</template>
