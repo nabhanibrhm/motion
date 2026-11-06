@@ -1,10 +1,17 @@
-# Handoff: production status (5 Nov 2026, evening)
+# Handoff: production status (6 Nov 2026)
 
 Commit only when requested. Before changes, read `ai-routing.md` and route by the current shared-module responsibilities there.
 
 ## Claude: start here
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
+
+**Changed on 6 Nov 2026 (WSL machine, no code changes):**
+- **06 `emas` was posted on the morning of 6 Nov**, a day earlier than planned; it had 19 views after 30 minutes. Pre-post check of the master: -14.0 LUFS, true peak -0.1 dBTP from one moment at about 0:22 (every other second is below -0.5 dB), and no clipping. The caption `out/caption/06-emas.txt` was posted unchanged; its figures match the rewritten narration. Ask for 24-hour analytics on 06 and 07 (average watch time, completion rate, For You share, first-3-second drop-off) before making the 60 fps KSP format standard.
+- **Windows machine to do:** move `out/06-emas-short.mp4` to `out/uploaded/`. Google Drive's "Other computers" copy is a one-way backup, so it was not changed from this machine.
+- This WSL `out/` now mirrors the Windows layout. 06, 08 and 11 and every caption were copied from `G:\Other computers\My Laptop\out` (reachable from WSL only through `powershell.exe`; G: is not mounted). 06, 09 and 10 are in `out/uploaded/`, 08 and 11 are in `out/`, and all captions are in `out/caption/` (HotWizz keeps the `<NN>-<id>-caption.txt` file name).
+- **Cartesia:** the user plans to generate the voice with Cartesia, but no clips were found on Drive. They go into files mode: `episodes/<NN>_<id>/voice-lines/<section>-<i>.mp3|wav`, each clip reading its line exactly as written, with `narration.source: "files"`. Back up an existing master before re-rendering. 06 was posted with the Supertonic voice and is not re-voiced.
+- This machine has no voice cache for `emas`; `sync emas` reports it missing. Re-rendering 06 here would synthesize new Supertonic takes.
 
 **Changed on 5 Nov 2026 evening (Windows machine):**
 - **06 `emas` rewritten in KSP pacing and rendered at 60 fps** (`out/06-emas-short.mp4` on this machine only: 1080×1920, 60 fps, 8,034 frames, 133.9 s, -14.0 LUFS, **-0.1 dBTP** — above the -1 target, listen for distortion). Ready for 7 Nov.
@@ -23,13 +30,13 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - **Listyo check (5 Nov): no hard development, no HOTWIZZ #03.** Since #02: Yusril said there was "keinginan melumpuhkan Presiden" (Kompas, 4 Nov 15:36). That is a minister's reading; police still haven't stated a motive, so "motif belum diungkap" holds if it's attributed to police. Liputan6 alone reports that politicians, journalists and businesspeople were also tapped, so leave it out until a second outlet confirms it. "SU" is a witness, not a suspect. Nothing yet from Listyo or a lawyer, no praperadilan filing, no new suspects.
 - **Trending research (5 Nov) for the next KASUS (#10):** recommended **PPN 11% on sanitary pads** (viral since 25 Oct; DJP says it isn't a "menstruation tax"; the DPR and Komnas Perempuan are pushing for an exemption). Other candidates: Q3-2026 GDP (BPS, 5 Nov 11.00 WIB; consensus 5.20%), the rupiah strengthening to about Rp18.070. Rejected: the foaming-tea protest story (names a brand, BPOM results pending) and "Prabowo Tidak Sendiri" (one-sided politics).
 - **Cartesia voice clone (exploring):** the user is setting up a voice clone on cartesia.ai (Models → Voices → Clone; whether clones speak Indonesian is unconfirmed). There's no integration yet; to try it, use files mode (`voice-lines/<section>-<i>.mp3|wav`, narration source `files`). A direct API provider would need a change in `tools/voice/generate.py`. The current TTS is Supertonic 1.3.1 (M1 Muklis, F2 Nisa, M4 Beni), with faster-whisper 1.2.1 for alignment.
-- This WSL `out/` still holds the posted 09 and 10 and has no `out/uploaded/` folder yet; moving them is the user's choice.
+- (Resolved 6 Nov: this WSL `out/` now has `out/uploaded/` holding 06, 09 and 10.)
 
 **Changed on 4 Nov 2026 (WSL machine):**
 - New channel line **HotWizz** (breaking news, category `Berita`, theme `config/themes/hotwizz.json`, single narrator Nisa / `wec`, Supertonic F2, speed 1, range 1.4). Case ids are `HOTWIZZ #NN`, not KASUS.
   - **#01 `sadap`** (ep 09): "Eks Kapolri Ditahan: Diduga Sadap Presiden", 130.0 s. Published; passed 40k views.
   - **#02 `ksp`** (ep 10): "Listyo Dicopot dari KSP: Sadapannya ke Mana?", 123.8 s, -14.0 LUFS / -1.0 dBTP. Facts rechecked about 15:00 WIB on 4 Nov. Published on 4 Nov.
-  - Captions are in `out/<NN>-<id>-caption.txt` (git-ignored): sources by outlet and date, no URLs, photo credits, hashtags `#HotWizz #listyosigitprabowo #fyp #trending #polri`.
+  - Captions are in `out/caption/<NN>-<id>-caption.txt` (git-ignored): sources by outlet and date, no URLs, photo credits, hashtags `#HotWizz #listyosigitprabowo #fyp #trending #polri`.
 - **Neutrality rules for HotWizz** (see each `script-short.md`): every person is "tersangka" with praduga tak bersalah; equal card and photo treatment for both political sides; contested readings are attributed (e.g. Istana's "mengarah ke makar" beside Yusril's "pasal makar tidak digunakan"); a claim needs two outlets or it is dropped. Photos are Wikimedia Commons (public domain or CC BY-SA, credited); use a silhouette when none is found.
 - **Voice pacing rule:** the user wants an even pace, above all in the hook. Supertonic rushes short chunks, so write narration with **no `[pause]` markers**, keep the hook as one chunk, use few commas (full stops and colons are fine). Measure syllables/sec per chunk after `voice` and re-punctuate outliers (ep 10 spread about 3.4%, ep 09 was 13.7%). Verify proper nouns with Whisper; add `say` entries (ep 10 uses `Letjen`→`let-jen`, `update`→`apdet`, `Nasution`→`nasutiyon`).
 - **No baked music for HotWizz:** ep 10 sets `audio.bed: null`; the user adds a TikTok sound at upload. If they link a TikTok sound, check whether it is a "suara asli" with speech before using it.
@@ -41,7 +48,7 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - **Episode 11 `diskon`** ("Diskon 11.11: Hemat atau Boros?", KASUS #09) is rendered: `out/11-diskon-short.mp4`, 84.2 s, -14.0 LUFS / -0.8 dBTP, lint 0 errors. Its caption is `out/caption/11-diskon.txt`. Publish before 11 Nov; the promo terms it cites run until 12 Nov. It was first numbered 09 and was renumbered to 11 to avoid colliding with `09_sadap`.
   - **Editorial rules:** no bank, marketplace, shop or brand appears on screen, and marketplaces read "e-commerce" everywhere. The cart is a labelled simulation. 11.11 is not Harbolnas (10–16 Dec 2026). The caption still names BRI as the source of the example promo terms; the user hasn't said whether to change it to "promo bank".
 - **TikTok took down KASUS 05 (judol)** for a Community Guidelines violation. The automated appeal was rejected. Rule from now on: censor sensitive words in captions, hashtags and on-screen text (`j*dol`, `j*di`, `pinj*l`), and never open a video, cover or caption with a sales pitch for a harmful product. Do not re-upload 05; a reworked version can go up after the strike expires (around early Feb 2027).
-- **Upload status and plan (user, 4 Nov; updated 5 Nov):** 01–04, 07 (posted the morning of 5 Nov), 09 and 10 are on TikTok (09 and 10 passed 100k views); 05 was removed. Plan: 7 Nov 06 Emas, 9 Nov 11 Diskon (recheck its promo terms on 8–9 Nov). Hold 08 until it is fixed. HOTWIZZ #03 only on a hard development; the 4 Nov evening check found commentary only.
+- **Upload status and plan (user, 4 Nov; updated 5 Nov):** 01–04, 07 (posted the morning of 5 Nov), 09 and 10 are on TikTok (09 and 10 passed 100k views); 05 was removed. Plan: 06 Emas was posted on 6 Nov (moved up from 7 Nov), 9 Nov 11 Diskon (recheck its promo terms on 8–9 Nov). Hold 08 until it is fixed. HOTWIZZ #03 only on a hard development; the 4 Nov evening check found commentary only.
 - **07 `kelas` rewritten in KSP pacing and re-rendered** (`out/07-kelas-short.mp4`, 117.6 s, -14.1 LUFS; the old master is at `.cache/backup/07-kelas-short.before-ksp-pacing.mp4`). The new hook is one Nisa chunk ("Sembilan setengah juta orang turun kelas…"). Beni's lines were lengthened, and Nisa's questions in `siapa` and `kalau` were folded into Muklis's lines; those two scenes' cast lists now have only Muklis, since a cast entry without a matching line blanks the scene. Per-line pace spread fell from 24.8% to 7.7%. Facts are unchanged. Still to check by ear: "informal" and "lalu terus" (Whisper misheard them) and the bed restart at 1:15. The hook art still shows the old payslip; a "9,5 JUTA TURUN KELAS" card was offered.
 - **KSP pacing rule applies to KASUS too:** no line under about 12 words, the hook as one chunk, no `[pause]`, few commas, and measure per-line syllables/s after `voice`, aiming for a spread under 10%.
 - **Music bed now loops:** `src/pipeline/master.mjs` adds `-stream_loop -1` before the bed input; `atrim` and the 1.5 s fade still cut it to the video length. A synthetic 110 s test kept the bed level at 40–100 s, and `npm test` passes 21/21. Every future bedded render loops; already-posted videos keep the cutoff until re-rendered.
@@ -98,7 +105,7 @@ Use the CLI's scoped dry run for routine cleanup. Never delete all of `.cache/`:
 
 ## Finished episodes and outputs
 
-Eleven mastered outputs exist. 01–08 and 11 are in `out/` on the Windows machine (synced to Google Drive); this WSL checkout's `out/` holds only 09 and 10:
+Eleven mastered outputs exist, all on the Windows machine (synced to Google Drive). Unposted: 08 and 11 in `out/`. Posted: the rest, in `out/uploaded/` (05 was removed by TikTok). This WSL checkout has 08 and 11 in `out/` and 06, 09 and 10 in `out/uploaded/`:
 
 | File | Episode | Length |
 |---|---|---:|
