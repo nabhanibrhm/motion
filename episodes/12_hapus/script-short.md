@@ -28,9 +28,9 @@
 
 **NARATOR:** Dia adalah Irjen Slamet Uliandi, Kepala Divisi TIK Polri, yang sebelumnya hanya berstatus saksi dalam kasus ini.
 
-**NARATOR:** Dirtipidsiber Bareskrim Brigjen Suhermanto menyebut gelar perkara menyimpulkan unsur perbuatan melawan hukumnya sudah terpenuhi.
+**NARATOR:** Direktur Direktorat Tindak Pidana Siber Bareskrim Brigjen Suhermanto menyebut gelar perkara menyimpulkan unsur perbuatan melawan hukumnya sudah terpenuhi.
 
-**NARATOR:** Tapi Slamet belum ditahan. Menurut polisi dia sedang sakit pascastroke sehingga penahanan belum bisa dilakukan.
+**NARATOR:** Tapi Slamet belum ditahan. Menurut polisi dia sedang sakit pasca stroke sehingga penahanan belum bisa dilakukan.
 
 ### 3 · The deletion (`hapus`, FILE DIHAPUS)
 *[A server rack labelled "LIMS · SERVER PENYADAPAN" (lawful interception system). A request card "AWAL OKT 2026 · AS → SU: IZIN HAPUS?" gets an "ACC" stamp; files drain into a bin. Then a document "LAPORAN POLISI · 30 OKT 2026".]* [S4]⚠ [S5]
