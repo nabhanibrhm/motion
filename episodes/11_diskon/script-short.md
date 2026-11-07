@@ -2,7 +2,7 @@
 
 Idea #11 from [PIPELINE.md](../../content_idea/PIPELINE.md) (KASUS #09), in the "Kasus" format. **Vertical 9:16, 1080×1920**, Bahasa Indonesia, about **190 spoken words**, **about 90 s**, over the quiet music bed. **Shopping decision, not debt** (that was paylater, KASUS #04). **No bank, platform, shop or product brand is named or drawn on screen**: the voucher is a generic "PROMO BANK" modelled on real terms [D1]; Beni's cart, list and receipts are a labelled **simulasi**, without shipping or other fees. Never claim that promos are fake or that prices were raised; the law only *forbids* that [D3].
 
-Cast: **Nisa** (`wec`, F2) explains and leads the maths, **Muklis** (`mog`, M1) brings the facts, **Beni** (`bog`, M4) is the shopper; speed 1.0, widened pitch range. "Populix" is said "popiuliks" (`say`). Lines in *[brackets]* are on-screen notes. Every on-screen figure carries a "Sumber: …" line. **[D#]** = sources table. Facts checked on 3 Nov 2026.
+Cast: **Nisa** (`wec`, F2) explains and leads the maths, **Muklis** (`mog`, M1) brings the facts, **Beni** (`bog`, M4) is the shopper; speed 1.0, widened pitch range. "Populix" is said "popiuliks" (`say`). Lines in *[brackets]* are on-screen notes. Every on-screen figure carries a "Sumber: …" line. **[D#]** = sources table. Facts checked on 3 Nov 2026; rechecked 7 Nov 2026 (D1 live and unchanged, D2–D5 reachable, no new official 11.11 finding).
 
 **Publish window:** before 11 Nov 2026 (the promo terms in [D1] run 25 Okt–12 Nov 2026).
 

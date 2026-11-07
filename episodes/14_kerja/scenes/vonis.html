@@ -1,0 +1,147 @@
+<!-- Vonis: Nisa closes the case. Stamp KASUS DITUTUP SEMENTARA on "ditutup", KASUS #11 line, a calendar with 12 teal days (red rings draw on "kepotong"/"bersama"), the question card CUTI TAHUNANMU MASIH UTUH? on "Cuti" (UTUH lights up on "utuh"), TULIS DI KOMENTAR on "Tulis", and the small disclaimer Bukan nasihat hukum with the text sources. After Nisa's last word a title-only cover card (TikTok cover). Nisa only. -->
+<template>
+  <link rel="stylesheet" href="lib/f1/f1.css" />
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #dfe8ee;
+      overflow: hidden;
+    }
+  </style>
+  <div id="root" data-composition-id="vonis" data-width="1080" data-height="1920">
+    <div id="vonis-art" class="f1-layer"></div>
+    <audio data-hf-media-start-basis="local" data-start="1" id="vonis-sfx-tutup" class="clip" src="public/sfx/stamp.wav" data-at="word:ditutup" data-track-index="12" data-volume="0.45"></audio>
+    <audio data-hf-media-start-basis="local" data-start="2" id="vonis-sfx-cuti" class="clip" src="public/sfx/pop-in.wav" data-at="word:Cuti" data-track-index="13" data-volume="0.1"></audio>
+    <audio data-hf-media-start-basis="local" data-start="3" id="vonis-sfx-tulis" class="clip" src="public/sfx/pop-in.wav" data-at="word:Tulis" data-track-index="14" data-volume="0.1"></audio>
+  </div>
+  <script>
+    (() => {
+      const n = F1.n;
+      const W = F1.world;
+      const INK = "#2a2a2e";
+      const RED = "#d0413a";
+      const TEAL = "#3d7480";
+      const TEAL2 = "#2f6a6e";
+      const PAPER = "#f3f7fa";
+      const mono = "font-family:'JetBrains Mono',monospace";
+      const osw = "font-family:Oswald,sans-serif";
+      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+      // office backdrop: soft towers, drifting light, concrete floor from y 1190
+      const OFFICE = (f, seed) => `<rect width="1080" height="1920" fill="#dfe8ee"/>
+${DRIFT(f, { seed, count: 7, y0: 300, y1: 1100, color: "#8fd0d2", a: 0.26 })}
+${SWEEP(f, { color: "#f3f7fa", a: 0.22, y0: 240, y1: 1180 })}
+<g style="filter:blur(3px)" fill="#c4d3dd">${[0, 1, 2, 3, 4, 5, 6, 7].map((k) => `<rect x="${k * 140 - 20}" y="${600 - 140 * W.hash(k + seed)}" width="${100 + 30 * W.hash(k + 3)}" height="700"/>`).join("")}</g>
+<rect x="-20" y="1190" width="1120" height="740" fill="#b3bcc3"/><rect x="-20" y="1190" width="1120" height="12" fill="#9aa6ae"/>`;
+      // a sourced card: kicker, big text, optional sub, "Sumber:" line
+      const CARD = (f, { at, x, y, w, kicker, big, sub = "", src = "", bigSize = 48, bg = PAPER, color = INK, kc = TEAL, rot = 0, dir = 0, extra = "" }) => {
+        const p = F1.ramp(f, at, 12, F1.expoOut);
+        if (p <= 0) return "";
+        const dark = color !== INK;
+        return `<div style="${F1.css({ position: "absolute", left: x, top: y, width: w, boxSizing: "border-box", padding: "16px 24px 16px", borderRadius: 16, background: bg, border: `5px solid ${INK}`, boxShadow: "0 8px 0 rgba(42,42,46,0.18)", opacity: n(p, 3), transform: `translate(${n(dir * 50 * (1 - p))}px, ${n(dir ? 0 : 36 * (1 - p))}px) rotate(${rot}deg)` })}">
+${kicker ? `<div style="${mono};font-weight:700;font-size:20px;letter-spacing:2px;color:${kc}">${kicker}</div>` : ""}<div style="${osw};font-weight:700;font-size:${bigSize}px;line-height:1.08;color:${color};margin-top:4px">${big}</div>${sub ? `<div style="${mono};font-weight:500;font-size:21px;letter-spacing:1px;color:${dark ? "#d3dde3" : "#55606a"};margin-top:6px">${sub}</div>` : ""}${extra}${src ? `<div style="${mono};font-weight:500;font-size:16px;color:${dark ? "#9fb0ba" : "#5f6a72"};margin-top:8px">Sumber: ${src}</div>` : ""}</div>`;
+      };
+      const BADGE = (f, { at, x, y, text, bg = RED, color = "#fff", size = 30, rot = 0 }) => {
+        const p = F1.ramp(f, at, 10, F1.expoOut);
+        if (p <= 0) return "";
+        return `<div style="${F1.css({ position: "absolute", left: x, top: y, padding: "8px 18px", borderRadius: 10, background: bg, color, fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: size, letterSpacing: 2, opacity: n(p, 3), transform: `rotate(${rot}deg) scale(${n(0.6 + 0.4 * p, 3)})`, whiteSpace: "nowrap" })}">${text}</div>`;
+      };
+      // month grid: day 1 sits in column 2. ring = days with a red ring (draws in), fill = days filled teal (grows in)
+      const CAL = (f, { x, y, w, ring = [], fill = [], ringP = 1, fillP = 1, rows = 5 }) => {
+        const cw = w / 7;
+        const ch = 62;
+        let g = `<g transform="translate(${x} ${y})"><rect width="${w}" height="${rows * ch + 56}" rx="18" fill="${PAPER}" stroke="${INK}" stroke-width="6"/><rect x="0" y="0" width="${w}" height="52" rx="18" fill="${TEAL2}"/><rect x="0" y="30" width="${w}" height="22" fill="${TEAL2}"/>`;
+        ["S", "S", "R", "K", "J", "S", "M"].forEach((d, i) => (g += `<text x="${n(cw * i + cw / 2)}" y="36" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="24" fill="#fff">${d}</text>`));
+        for (let d = 1; d <= 30; d++) {
+          const idx = d + 1;
+          const c = idx % 7;
+          const r = Math.floor(idx / 7);
+          if (r >= rows) break;
+          const cx = cw * c + cw / 2;
+          const cy = 56 + ch * r + ch / 2;
+          const fi = fill.indexOf(d);
+          let fp = 0;
+          if (fi >= 0) {
+            fp = Math.max(0, Math.min(1, fillP * (fill.length + 1) - fi));
+            g += `<rect x="${n(cx - 40)}" y="${n(cy - 24)}" width="80" height="48" rx="12" fill="${TEAL}" opacity="${n(fp, 3)}"/>`;
+          }
+          g += `<text x="${n(cx)}" y="${n(cy + 9)}" text-anchor="middle" font-family="Oswald" font-weight="600" font-size="30" fill="${fp > 0.5 ? "#fff" : c === 5 || c === 6 ? "#9aa6ae" : INK}">${d}</text>`;
+          const ri = ring.indexOf(d);
+          if (ri >= 0) {
+            const p = Math.max(0, Math.min(1, ringP * (ring.length + 1) - ri));
+            g += `<circle cx="${n(cx)}" cy="${n(cy)}" r="29" fill="none" stroke="${RED}" stroke-width="7" stroke-dasharray="183" stroke-dashoffset="${n(183 * (1 - p))}" transform="rotate(-90 ${n(cx)} ${n(cy)})"/>`;
+          }
+        }
+        return g + "</g>";
+      };
+      const ICON = {
+        broom: (c) => `<path d="M-6 -50 L6 -50 L10 -6 L-10 -6 Z" fill="${c}"/><path d="M-26 -6 H26 L34 40 H-34 Z" fill="${c}" opacity="0.75"/><path d="M-18 6 V36 M0 6 V36 M18 6 V36" stroke="#fff" stroke-width="4"/>`,
+        pot: (c) => `<path d="M-34 -14 H34 V24 Q34 40 18 40 H-18 Q-34 40 -34 24 Z" fill="${c}"/><rect x="-42" y="-24" width="84" height="12" rx="6" fill="${c}"/><path d="M-14 -34 q-8 -12 0 -22 M6 -34 q-8 -12 0 -22 M24 -34 q-8 -12 0 -22" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round"/>`,
+        shield: (c) => `<path d="M0 -50 L38 -36 V4 Q38 34 0 52 Q-38 34 -38 4 V-36 Z" fill="${c}"/><path d="M-16 2 L-4 16 L18 -14" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+        bus: (c) => `<rect x="-48" y="-36" width="96" height="62" rx="12" fill="${c}"/><rect x="-38" y="-26" width="24" height="22" rx="4" fill="#dfe8ee"/><rect x="-8" y="-26" width="24" height="22" rx="4" fill="#dfe8ee"/><rect x="22" y="-26" width="18" height="22" rx="4" fill="#dfe8ee"/><circle cx="-26" cy="30" r="11" fill="${INK}"/><circle cx="26" cy="30" r="11" fill="${INK}"/>`,
+        pick: (c) => `<path d="M-40 -22 Q0 -54 40 -22" stroke="${c}" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M0 -36 V50" stroke="${INK}" stroke-width="9" stroke-linecap="round"/><path d="M-18 44 H18" stroke="${INK}" stroke-width="9" stroke-linecap="round"/>`,
+        person: (c) => `<circle cx="0" cy="-30" r="13" fill="${c}"/><path d="M-20 12 Q-20 -14 0 -14 Q20 -14 20 12 Z" fill="${c}"/>`,
+        doc: (c) => `<path d="M-30 -44 H14 L34 -24 V44 H-30 Z" fill="${PAPER}" stroke="${c}" stroke-width="6" stroke-linejoin="round"/><path d="M-18 -8 H22 M-18 10 H22 M-18 28 H6" stroke="${c}" stroke-width="5" stroke-linecap="round"/>`,
+        gavel: (c) => `<g transform="rotate(-35)"><rect x="-34" y="-48" width="68" height="34" rx="8" fill="${c}"/><rect x="-6" y="-14" width="12" height="70" rx="5" fill="${INK}"/></g><rect x="-44" y="48" width="88" height="10" rx="5" fill="${INK}"/>`,
+        building: (c) => `<rect x="-36" y="-50" width="72" height="100" fill="${c}"/><path d="M-24 -36 h12 v12 h-12z M-4 -36 h12 v12 h-12z M16 -36 h12 v12 h-12z M-24 -12 h12 v12 h-12z M-4 -12 h12 v12 h-12z M16 -12 h12 v12 h-12z" fill="#dfe8ee"/><rect x="-10" y="20" width="20" height="30" fill="#dfe8ee"/>`,
+      };
+      const IC = (name, x, y, s, c) => `<g transform="translate(${n(x)} ${n(y)}) scale(${n(s, 3)})">${ICON[name](c)}</g>`;
+      const header = (id, desc) => desc;
+
+      window.__timelines["vonis"] = F1.scene("vonis", (f, { S, D }) => {
+        const C = F1.cine;
+        const w = (x, o = 0) => F1.wordFrame(S, x, o);
+        const ditutup = w("ditutup");
+        const cuti = w("Cuti");
+        const utuh = w("utuh");
+        const kepotong = w("kepotong");
+        const tulis = w("Tulis");
+        const FILL = [6, 7, 8, 9, 10, 13, 14, 15, 16, 17, 20, 21];
+        const fillP = F1.ramp(f, 0, 40, (u) => u);
+        const ringP = F1.ramp(f, kepotong, 30, (u) => u);
+        const slam = F1.ramp(f, ditutup, 8, F1.expoOut);
+        const ask = F1.ramp(f, cuti, 12, F1.expoOut);
+        const cm = F1.ramp(f, tulis, 12, F1.expoOut);
+        const dis = F1.ramp(f, ditutup + 10, 14, F1.expoOut);
+        const hot = (p, base, color) => (p > 0 ? color : base);
+        const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
+${OFFICE(f, 1010)}
+${CAL(f, { x: 180, y: 510, w: 720, ring: [24, 27, 28], fill: FILL, ringP, fillP })}
+</svg>`;
+        const stamp = `<div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 262, display: "flex", flexDirection: "column", alignItems: "center", gap: 12 })}"><div style="${F1.css({ padding: "10px 28px", border: `6px solid ${RED}`, borderRadius: 12, background: "rgba(243,247,250,0.8)", transform: `rotate(-4deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 60, letterSpacing: 5, color: RED, whiteSpace: "nowrap" })}">KASUS DITUTUP SEMENTARA</div><div style="${mono};font-weight:500;font-size:24px;letter-spacing:2px;color:#55606a;opacity:${n(slam, 3)}">KASUS #11 · CUTI BERSAMA</div></div>`;
+        const askCard = `<div style="${F1.css({ position: "absolute", left: 60, top: 920, width: 960, boxSizing: "border-box", padding: "20px 30px", borderRadius: 20, background: INK, textAlign: "center", opacity: n(ask, 3), transform: `translateY(${n(30 * (1 - ask))}px)` })}"><div style="${osw};font-weight:700;font-size:70px;line-height:1.1;color:#fff">CUTI TAHUNANMU<br>MASIH <span style="color:${hot(F1.ramp(f, utuh, 6), "#fff", "#7fd0c4")}">UTUH</span>?</div></div>`;
+        const cmCard = `<div style="${F1.css({ position: "absolute", left: 230, top: 1110, padding: "8px 26px", borderRadius: 12, background: RED, opacity: n(cm, 3), transform: `translateY(${n(24 * (1 - cm))}px)`, fontFamily: "JetBrains Mono, monospace", fontWeight: 700, fontSize: 28, letterSpacing: 2, color: "#fff", whiteSpace: "nowrap" })}">● TULIS DI KOMENTAR</div>`;
+        const disclaimer = `<div style="${F1.css({ position: "absolute", left: 60, right: 60, top: 1166, textAlign: "center", opacity: n(dis, 3), fontFamily: "JetBrains Mono, monospace", fontWeight: 500, fontSize: 19, letterSpacing: 1, color: "#3c474f" })}"><b>Bukan nasihat hukum</b> · naskah: peraturan.bpk.go.id / JDIH Setneg</div>`;
+        // Title-only cover card over the outro tail (after Nisa's last word), for TikTok's "Select cover".
+        // Text stays inside the centred 3:4 crop (y 240-1680) used by the profile grid.
+        const lastEnd = F1.line(S, 0).end;
+        const cv = F1.ramp(f, lastEnd + 4, 5);
+        const cover =
+          cv <= 0
+            ? ""
+            : `<div style="${F1.css({ position: "absolute", inset: 0, zIndex: 50, background: "#dfe8ee", opacity: n(cv, 3), display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 34 })}">
+<div style="${F1.css({ padding: "10px 26px", border: `6px solid ${RED}`, borderRadius: 12, transform: "rotate(-5deg)", fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 52, letterSpacing: 6, color: RED })}">KASUS #11</div>
+<div style="${F1.css({ textAlign: "center", fontFamily: "Oswald, sans-serif", fontWeight: 700, color: INK, lineHeight: 1.04, letterSpacing: 2 })}"><div style="font-size:128px">Cuti Bersama</div><div style="font-size:128px">Tak Potong</div><div style="font-size:128px">Cuti <span style="display:inline-block;line-height:1.1;color:#fff;background:${TEAL2};padding:0 18px;border-radius:16px">Tahunan?</span></div></div></div>`;
+        return F1.join(
+          C.stage(f, D, BG, {
+            zoom: 0.04,
+            shots: [
+              { at: 0, scale: 1.03, ox: 50, oy: 36 },
+              { at: cuti - 6, scale: 1.05, ox: 50, oy: 50, ease: 14 },
+            ],
+          }),
+          C.vignette(0.2, "50% 58%", 55),
+          stamp,
+          askCard,
+          cmCard,
+          disclaimer,
+          C.progress(f, { step: 8, label: "VONIS" }),
+          C.cast(S, f, [{ src: C.CAST.nisa, x: 540, y: 1200, w: 380, at: 0 }]),
+          cover,
+        );
+      });
+
+    })();
+  </script>
+</template>

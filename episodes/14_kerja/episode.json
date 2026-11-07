@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "kerja",
+  "number": 14,
+  "title": "Cuti Bersama Tak Potong Cuti Tahunan?",
+  "category": "Ketenagakerjaan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #11",
+      "steps": 8
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.html"
+    },
+    {
+      "id": "status",
+      "file": "scenes/status.html"
+    },
+    {
+      "id": "kontrak",
+      "file": "scenes/kontrak.html"
+    },
+    {
+      "id": "alihdaya",
+      "file": "scenes/alihdaya.html"
+    },
+    {
+      "id": "cuti",
+      "file": "scenes/cuti.html"
+    },
+    {
+      "id": "sisi",
+      "file": "scenes/sisi.html"
+    },
+    {
+      "id": "cek",
+      "file": "scenes/cek.html"
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.html"
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

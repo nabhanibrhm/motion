@@ -1,8 +1,8 @@
 {
  "comment": "Short 'Diskon 11.11: Hemat atau Boros?' (script-short.md, sources there). The cart, list and receipts are a labelled simulation; no bank, platform or shop is named on screen. Per-line speaker; `after` = seconds of silence after the line (the last line's `after` becomes the section tail). Inline [pause s] markers add silence inside a line.",
- "source": "supertonic",
+ "source": "cartesia",
  "say": {
-  "Populix": "popiuliks"
+  "Populix": "populiks"
  },
  "speakers": {
   "mog": {
@@ -33,6 +33,9 @@
     "voice": "M4",
     "speed": 1,
     "range": 1.4
+   },
+   "cartesia": {
+    "speed": 0.85
    }
   }
  },

@@ -1,0 +1,172 @@
+{
+ "comment": "Short 'Cuti Bersama Tak Potong Cuti Tahunan?' (KASUS #11; script-short.md, sources there). KSP pacing.",
+ "source": "cartesia",
+ "say": {
+  "KSPI": "ka es pe i",
+  "BUMN": "be u em en"
+ },
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1,
+    "range": 1.5
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1,
+    "range": 1.4
+   },
+   "cartesia": {
+    "speed": 0.85
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Cuti Bersama"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Cuti bersama sekarang tidak boleh memotong cuti tahunan kamu menurut undang-undang ketenagakerjaan baru. Terus hak cuti apa saja yang kamu punya?",
+     "after": 0.25
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "DPR mengesahkannya enam Oktober dan Presiden menandatanganinya dua puluh delapan Oktober sebagai Undang-Undang Nomor dua puluh tujuh yang mencabut Undang-Undang Ketenagakerjaan lama.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kontrak",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Soal kontrak, masa awalnya paling lama dua tahun lalu boleh diperpanjang dua kali masing-masing paling lama satu tahun jadi totalnya empat tahun, turun dari lima tahun.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "alihdaya",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Alih daya dibatasi untuk lima jenis jasa penunjang, yaitu kebersihan, makanan, keamanan, angkutan pekerja, dan penunjang tambang migas."
+    },
+    {
+     "speaker": "bog",
+     "text": "Jadi di luar itu perusahaan tidak boleh pakai alih daya? Kalau di BUMN gimana?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Untuk BUMN, alih daya wajib lewat anak usaha yang berbentuk perseroan terbatas.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "cuti",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Cuti tahunan paling sedikit dua belas hari kerja setelah dua belas bulan bekerja, dibayar penuh, dan cuti bersama dari pemerintah tidak memotongnya."
+    },
+    {
+     "speaker": "bog",
+     "text": "Terus kalau istriku melahirkan aku dapat cuti berapa hari? Dan cutinya dibayar nggak?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Dua hari dan bisa ditambah sampai tiga hari, sedangkan ibunya mendapat cuti melahirkan paling singkat tiga bulan dengan upah penuh.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "sisi",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "KSPI menerima undang-undang ini dengan tiga catatan dan membuka opsi uji materi, sedangkan Apindo menunggu naskah resmi.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "cek",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Cek kontrakmu: maksimal empat tahun, magang paling lama enam bulan, ijazah tidak ditahan, dan cuti tahunan dua belas hari."
+    },
+    {
+     "speaker": "bog",
+     "text": "Terus kapan ini berlaku? Katanya ada masa transisi satu tahun."
+    },
+    {
+     "speaker": "wec",
+     "text": "Teksnya berlaku sejak diundangkan dua puluh delapan Oktober dan aturan turunan paling lama setahun, jadi pantau Kemnaker.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "vonis",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup sementara karena aturan turunannya masih ditunggu. Cuti tahunanmu tahun ini masih utuh atau sudah kepotong cuti bersama? Tulis di komentar ya!",
+     "after": 1.6
+    }
+   ]
+  }
+ ]
+}
