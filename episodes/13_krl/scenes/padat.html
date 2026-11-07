@@ -5,7 +5,7 @@
     #root {
       position: absolute;
       inset: 0;
-      background: #f1e7d3;
+      background: #dfe8ee;
       overflow: hidden;
     }
   </style>
@@ -23,7 +23,7 @@
       const INK = "#2a2a2e";
       const RED = "#d0413a";
       const hh = (k) => W.hash(k);
-      const SILC = ["#4a4f5c", "#6b4a3a", "#3c5a4a", "#7a4a52", "#55606e", "#8a6a3a", "#3f4468", "#5a3f3f"];
+      const SILC = ["#4a4f5c", "#4b5a66", "#2f6a6e", "#57606e", "#55606e", "#3d7480", "#3f4468", "#4a4f5c"];
       // a passenger bust (head and shoulders) with its base at (x, y)
       const BUST = (x, y, s, c) => `<g transform="translate(${n(x, 1)} ${n(y, 1)}) scale(${n(s, 2)})" fill="${c}"><circle cx="0" cy="-27" r="10"/><path d="M-16 0 Q-16 -17 0 -17 Q16 -17 16 0 Z"/></g>`;
       // one side-view KRL car (generic: silver body, red and yellow stripe, no marks). Car origin = left end, y = rail level
@@ -72,8 +72,8 @@
       };
       // rails, sleepers and the overhead wire (scrolls with `off` when a train moves)
       const TRACK = (f, { y, wireY, off = 0 }) => {
-        let g = `<rect x="-20" y="${y}" width="1120" height="30" fill="#6a5f55"/>`;
-        for (let k = -1; k < 24; k++) g += `<rect x="${n(((k * 52 + off) % 1248) - 40)}" y="${y + 6}" width="26" height="14" fill="#4a4038"/>`;
+        let g = `<rect x="-20" y="${y}" width="1120" height="30" fill="#5b6168"/>`;
+        for (let k = -1; k < 24; k++) g += `<rect x="${n(((k * 52 + off) % 1248) - 40)}" y="${y + 6}" width="26" height="14" fill="#3e4449"/>`;
         g += `<rect x="-20" y="${y - 3}" width="1120" height="7" fill="#9a9a9a" stroke="${INK}" stroke-width="2"/>`;
         // wire and masts
         g += `<line x1="-20" y1="${wireY}" x2="1100" y2="${wireY}" stroke="${INK}" stroke-width="4"/><line x1="-20" y1="${wireY - 22}" x2="1100" y2="${wireY - 22}" stroke="#6b6b70" stroke-width="3" opacity="0.7"/>`;
@@ -85,7 +85,7 @@
       };
       const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
       const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
-      const SKY = (y) => `<g style="filter:blur(3px)" fill="#e6d3ad">${[0, 1, 2, 3, 4, 5, 6, 7].map((k) => `<rect x="${k * 140 - 20}" y="${y - 90 - 120 * hh(k + 40)}" width="${100 + 30 * hh(k + 3)}" height="${300}"/>`).join("")}</g>`;
+      const SKY = (y) => `<g style="filter:blur(3px)" fill="#c4d3dd">${[0, 1, 2, 3, 4, 5, 6, 7].map((k) => `<rect x="${k * 140 - 20}" y="${y - 90 - 120 * hh(k + 40)}" width="${100 + 30 * hh(k + 3)}" height="${300}"/>`).join("")}</g>`;
       const mono = "font-family:JetBrains Mono,monospace";
       // a dark info card that slides in from the right at frame `at`
       const CARD = (f, { at, x, y, w, kicker, big, sub, src, bigSize = 52 }) => {
@@ -99,10 +99,10 @@
       };
       // a cutaway KRL car: back wall with windows, grab rail with straps, standing passengers who fill in with `fill` (0..1)
       const CUTAWAY = (f, fill) => {
-        let g = `<rect x="30" y="690" width="1020" height="360" rx="30" fill="#e8e2d4" stroke="${INK}" stroke-width="8"/>`;
+        let g = `<rect x="30" y="690" width="1020" height="360" rx="30" fill="#d6dfe4" stroke="${INK}" stroke-width="8"/>`;
         g += `<rect x="60" y="720" width="960" height="110" rx="12" fill="#cfe3ea" stroke="${INK}" stroke-width="5"/>`;
         for (let k = 1; k < 5; k++) g += `<line x1="${60 + k * 192}" y1="720" x2="${60 + k * 192}" y2="830" stroke="${INK}" stroke-width="5"/>`;
-        g += `<rect x="30" y="990" width="1020" height="60" fill="#8a7f70" stroke="${INK}" stroke-width="6"/><rect x="40" y="920" width="1000" height="10" fill="#d0413a" opacity="0.85"/>`;
+        g += `<rect x="30" y="990" width="1020" height="60" fill="#78858c" stroke="${INK}" stroke-width="6"/><rect x="40" y="920" width="1000" height="10" fill="#d0413a" opacity="0.85"/>`;
         g += `<rect x="52" y="945" width="120" height="48" rx="10" fill="#b8473f" stroke="${INK}" stroke-width="5"/><rect x="908" y="945" width="120" height="48" rx="10" fill="#b8473f" stroke="${INK}" stroke-width="5"/>`;
         g += `<line x1="60" y1="760" x2="1020" y2="760" stroke="#9a9a9a" stroke-width="9"/>`;
         const ppl = [];
@@ -119,7 +119,7 @@
         const KINDS = ["man", "hijab", "peci", "man", "hijab", "old"];
         ppl.forEach((p) => {
           const strap = hh(p.i + 90) < 0.55 ? `<path d="M${n(p.x + 4)} 760 L${n(p.x + 4)} 800 q14 0 14 18" fill="none" stroke="#6b6b70" stroke-width="5"/>` : "";
-          g += strap + `<g opacity="${n(p.a, 3)}">${W.person(f, { x: p.x, y: p.y, s: 0.86, kind: KINDS[p.i % 6], cloth: ["#c2463b", "#3f78b5", "#5fae7a", "#d9a441", "#7fa88a", "#4e6a8f", "#e2b6c0", "#8a6f55"][Math.floor(hh(p.i + 31) * 8)], skin: ["#c68a5e", "#a8724c", "#8c5a3c", "#d9a07a"][p.i % 4], amp: 0, phase: 0 })}</g>`;
+          g += strap + `<g opacity="${n(p.a, 3)}">${W.person(f, { x: p.x, y: p.y, s: 0.86, kind: KINDS[p.i % 6], cloth: ["#c2463b", "#3f78b5", "#5fae7a", "#d9a441", "#7fa88a", "#4e6a8f", "#e2b6c0", "#5f7683"][Math.floor(hh(p.i + 31) * 8)], skin: ["#c68a5e", "#a8724c", "#8c5a3c", "#d9a07a"][p.i % 4], amp: 0, phase: 0 })}</g>`;
         });
         g += `<rect x="60" y="1050" width="960" height="26" rx="8" fill="#3a3a40"/>`;
         [190, 360, 720, 890].forEach((wx) => (g += `<g transform="translate(${wx} 1078) rotate(${n(f * -9, 1)})"><circle r="24" fill="#4a4a52" stroke="${INK}" stroke-width="5"/><path d="M0 -19 V19 M-19 0 H19" stroke="#c9c6c0" stroke-width="4"/></g>`));
@@ -135,11 +135,11 @@
         const roll = F1.ramp(f, 6, 54, F1.easeOut);
         const val = (1.1 * roll).toFixed(1).replace(".", ",");
         const BG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
-<rect width="1080" height="1920" fill="#f1e7d3"/>
-${DRIFT(f, { seed: 330, count: 7, y0: 420, y1: 1050, color: "#f2c27a", a: 0.26 })}
-${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
+<rect width="1080" height="1920" fill="#dfe8ee"/>
+${DRIFT(f, { seed: 330, count: 7, y0: 420, y1: 1050, color: "#8fd0d2", a: 0.26 })}
+${SWEEP(f, { color: "#f3f7fa", a: 0.22, y0: 300, y1: 1100 })}
 <g transform="translate(0 85)">${CUTAWAY(f, F1.ramp(f, 4, 90, F1.easeOut))}</g>
-<rect x="-20" y="1150" width="1120" height="770" fill="#cdb898"/><rect x="-20" y="1150" width="1120" height="12" fill="#e0b13a"/>
+<rect x="-20" y="1150" width="1120" height="770" fill="#b3bcc3"/><rect x="-20" y="1150" width="1120" height="12" fill="#e0b13a"/>
 ${W.row(f, { y: 1186, s: 0.58, count: 12, seed: 41, speed: 1.5, dir: 1 })}${GATES()}
 </svg>`;
         return F1.join(

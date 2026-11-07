@@ -12,7 +12,20 @@ async function rejectLinks(root) {
   if (st.isDirectory()) for (const name of await fs.readdir(root)) await rejectLinks(path.join(root,name));
   else if (!st.isFile()) throw new Error(`Refusing special file: ${root}`);
 }
-function effectiveNarration(ctx) { return ctx.narration; }
+export const CARTESIA_DEFAULTS = { model: 'sonic-3.6', language: 'id-ID', speed: 1, sampleRate: 44100, dictionary: 'config/cartesia-pronunciation.json' };
+/** Cartesia narrations inherit provider defaults and each speaker's Cartesia voice from config/speakers.json. */
+export function effectiveNarration(ctx) {
+  const n = ctx.narration;
+  if (n?.source !== 'cartesia') return n;
+  const known = ctx.config?.voice?.speakers || {};
+  const speakers = Object.fromEntries(Object.entries(n.speakers || {}).map(([k, s]) => [k, { ...s, cartesia: { ...(known[k]?.cartesia || {}), ...(s.cartesia || {}) } }]));
+  return { ...n, cartesia: { ...CARTESIA_DEFAULTS, ...(n.cartesia || {}) }, speakers };
+}
+function dictionaryPath(ctx, rel) {
+  const abs = path.resolve(ctx.repoRoot, rel), back = path.relative(ctx.repoRoot, abs);
+  if (path.isAbsolute(rel) || back.startsWith('..')) throw new Error(`Cartesia dictionary escapes the repository: ${rel}`);
+  return abs;
+}
 async function fingerprint(ctx, manifestPath, voiceDir) {
   await rejectLinks(manifestPath);
   await rejectLinks(path.join(voiceDir, 'voice'));
@@ -27,14 +40,20 @@ async function fingerprint(ctx, manifestPath, voiceDir) {
     files[rel] = await hashFile(p);
   }
   const narration = effectiveNarration(ctx), sources = {};
-  if (narration.source === 'files') for (const section of narration.sections) for (let i=0; i<section.lines.length; i++) {
+  const cartesia = narration.source === 'cartesia';
+  if (narration.source === 'files' || cartesia) for (const section of narration.sections) for (let i=0; i<section.lines.length; i++) {
     if (!/^[a-z0-9][a-z0-9-]*$/.test(section.id || '')) throw new Error('Invalid section id');
     await rejectLinks(path.join(ctx.episodeDir,'voice-lines'));
     const base = path.join(ctx.episodeDir,'voice-lines',`${section.id}-${i}`);
-    const file = await present(`${base}.mp3`) ? `${base}.mp3` : `${base}.wav`;
+    const file = !cartesia && await present(`${base}.mp3`) ? `${base}.mp3` : `${base}.wav`;
     sources[path.basename(file)] = await hashFile(file);
   }
-  return { version: 3, narration: digest(JSON.stringify(narration)), models: { supertonic: 'supertonic-3', whisper: process.env.WHISPER_MODEL || 'small', language: 'id' }, sources, generator: await hashFile(path.join(ctx.repoRoot, 'tools', 'voice', 'generate.py')), dependencies: await hashFile(path.join(ctx.repoRoot, 'requirements-lock.txt')), manifest: digest(manifestBytes), files };
+  const extra = {};
+  if (cartesia) {
+    const dict = narration.cartesia.dictionary;
+    extra.cartesia = { provider: await hashFile(path.join(ctx.repoRoot, 'tools', 'voice', 'cartesia.py')), dictionary: dict ? await hashFile(dictionaryPath(ctx, dict)) : null };
+  }
+  return { version: 3, ...extra, narration: digest(JSON.stringify(narration)), models: { supertonic: 'supertonic-3', whisper: process.env.WHISPER_MODEL || 'small', language: 'id' }, sources, generator: await hashFile(path.join(ctx.repoRoot, 'tools', 'voice', 'generate.py')), dependencies: await hashFile(path.join(ctx.repoRoot, 'requirements-lock.txt')), manifest: digest(manifestBytes), files };
 }
 async function same(ctx) {
   try { const state = JSON.parse(await fs.readFile(ctx.paths.voiceState, 'utf8')); const now = await fingerprint(ctx, ctx.paths.voiceManifest, ctx.paths.voiceDir); return JSON.stringify(state) === JSON.stringify(now); } catch { return false; }
@@ -79,7 +98,13 @@ async function ensureVoiceLocked(ctx, { generate = false, force = false, importL
       const win = process.platform === 'win32';
       const python = path.join(ctx.repoRoot, '.venv', ...(win ? ['Scripts', 'python.exe'] : ['bin', 'python']));
       const narration = path.join(tmp, 'effective-narration.json');
-      await fs.writeFile(narration, JSON.stringify(effectiveNarration(ctx))); 
+      const effective = effectiveNarration(ctx);
+      await fs.writeFile(narration, JSON.stringify(effective));
+      if (effective.source === 'cartesia') {
+        // Synthesise changed lines into voice-lines/, then align them exactly like a files-mode episode.
+        await execute(python, [path.join(ctx.repoRoot, 'tools', 'voice', 'cartesia.py'), 'lines', narration, '--lines', path.join(ctx.episodeDir, 'voice-lines'), '--cache', ctx.paths.chunkCacheDir, ...(force ? ['--force'] : [])], { cwd: ctx.repoRoot, env: process.env });
+        await fs.writeFile(narration, JSON.stringify({ ...effective, source: 'files' }));
+      }
       await execute(python, [path.join(ctx.repoRoot, 'tools', 'voice', 'generate.py'), narration], { cwd: ctx.repoRoot, env: { ...process.env, MOTION_VOICE_ROOT: tmp, MOTION_CHUNK_CACHE: ctx.paths.chunkCacheDir, MOTION_EPISODE_ID: ctx.id, MOTION_LEGACY_CHUNKS: path.join(ctx.paths.voiceDir, 'legacy-chunks'), VOICE_LINES: path.join(ctx.episodeDir, 'voice-lines') } });
     }
     await fs.rm(path.join(tmp, 'effective-narration.json'), { force: true });

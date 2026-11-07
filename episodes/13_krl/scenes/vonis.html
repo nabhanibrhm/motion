@@ -5,7 +5,7 @@
     #root {
       position: absolute;
       inset: 0;
-      background: #f1e7d3;
+      background: #dfe8ee;
       overflow: hidden;
     }
   </style>
@@ -41,7 +41,7 @@
             [0, 1].forEach((j) => {
               if (h(j) < pack) {
                 const px = wx + 10 + 14 * j;
-                const col = h(j + 3) < 0.5 ? "#3a3a40" : "#5a4a44";
+                const col = h(j + 3) < 0.5 ? "#3a3a40" : "#4a5560";
                 wins += `<circle cx="${px}" cy="-99" r="6.5" fill="${col}"/><path d="M${px - 9} -76 Q${px - 9} -90 ${px} -90 Q${px + 9} -90 ${px + 9} -76 Z" fill="${col}"/>`;
               }
             });
@@ -59,11 +59,11 @@
       };
       const RAIL = (y, x0 = 0, x1 = 1080, shift = 0) => {
         let t = "";
-        for (let k = -1; k < Math.ceil((x1 - x0) / 56) + 1; k++) t += `<rect x="${n(x0 + k * 56 + (shift % 56))}" y="${y + 6}" width="30" height="9" fill="#8a6f55"/>`;
+        for (let k = -1; k < Math.ceil((x1 - x0) / 56) + 1; k++) t += `<rect x="${n(x0 + k * 56 + (shift % 56))}" y="${y + 6}" width="30" height="9" fill="#5f7683"/>`;
         return `<g>${t}<rect x="${x0}" y="${y}" width="${x1 - x0}" height="7" fill="#6d6a6c"/></g>`;
       };
       const ITEMS = ["KEMUNGKINAN MASIH PADAT", "BERANGKAT LEBIH PAGI", "PANTAU INFO RESMI KAI COMMUTER"];
-      const LIST = (f, o) => `<g transform="translate(60 320)"><rect x="0" y="0" width="960" height="440" rx="22" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+      const LIST = (f, o) => `<g transform="translate(60 320)"><rect x="0" y="0" width="960" height="440" rx="22" fill="#f3f7fa" stroke="${INK}" stroke-width="6"/>
 <text x="44" y="70" font-family="Oswald" font-weight="600" font-size="44" letter-spacing="4" fill="${INK}">BUAT PENUMPANG KRL</text>
 ${ITEMS.map((t, i) => {
   const p = F1.ramp(f, o.ticks[i] - 2, 10, F1.expoOut);
@@ -76,7 +76,7 @@ ${ITEMS.map((t, i) => {
         const x = 120 + 1000 * o.go;
         const px = [800, 850, 905];
         return `<g transform="translate(60 810)"><clipPath id="vonis-clip"><rect width="960" height="360" rx="24"/></clipPath><g clip-path="url(#vonis-clip)">
-<defs><linearGradient id="vonis-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fa9c9"/><stop offset="0.55" stop-color="#f6c48e"/><stop offset="1" stop-color="#fbe3b6"/></linearGradient></defs>
+<defs><linearGradient id="vonis-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fa9c9"/><stop offset="0.55" stop-color="#b9d4dc"/><stop offset="1" stop-color="#dbe9ee"/></linearGradient></defs>
 <rect width="960" height="360" fill="url(#vonis-sky)"/>
 <circle cx="700" cy="${n(sunY)}" r="${n(60 + 6 * Math.sin(f * 0.05), 1)}" fill="#fff1c9" opacity="0.95"/><circle cx="700" cy="${n(sunY)}" r="120" fill="#fff1c9" opacity="0.25"/>
 <g fill="#7a7f96" opacity="0.8"><rect x="30" y="180" width="70" height="140"/><rect x="110" y="140" width="56" height="180"/><rect x="176" y="200" width="90" height="120"/><rect x="290" y="160" width="60" height="160"/><rect x="520" y="190" width="80" height="130"/><rect x="620" y="170" width="64" height="150"/></g>
@@ -84,14 +84,14 @@ ${ITEMS.map((t, i) => {
 <rect x="0" y="162" width="960" height="3" fill="#4a484c"/>
 ${RAIL(298, 0, 960, 0)}
 ${TRAIN(f, { x, y: 298, cars: 3, s: 0.78, pack: 0.7, seed: 41, wheel: x * 3.6, sway: o.go > 0 ? 1.5 : 0.4 })}
-<rect x="0" y="312" width="960" height="48" fill="#c8bfb0"/><rect x="0" y="312" width="960" height="5" fill="#8a8274"/>
-${px.map((p, k) => PERSON(f, p, 352, k, k % 2 ? "#3a3a40" : "#5a4a44")).join("")}
+<rect x="0" y="312" width="960" height="48" fill="#b6c0c6"/><rect x="0" y="312" width="960" height="5" fill="#78858c"/>
+${px.map((p, k) => PERSON(f, p, 352, k, k % 2 ? "#3a3a40" : "#4a5560")).join("")}
 </g><rect width="960" height="360" rx="24" fill="none" stroke="${INK}" stroke-width="6"/></g>`;
       };
       const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
-<defs><radialGradient id="vonis-glow" cx="50%" cy="38%" r="62%"><stop offset="0" stop-color="#fff1d4"/><stop offset="1" stop-color="#ead9bb"/></radialGradient></defs>
+<defs><radialGradient id="vonis-glow" cx="50%" cy="38%" r="62%"><stop offset="0" stop-color="#f2f7fa"/><stop offset="1" stop-color="#c3d3dd"/></radialGradient></defs>
 <rect width="1080" height="1920" fill="url(#vonis-glow)"/>
-${DRIFT(f, { seed: 710, count: 7, y0: 420, y1: 1050, color: "#f2c27a", a: 0.26 })}
+${DRIFT(f, { seed: 710, count: 7, y0: 420, y1: 1050, color: "#8fd0d2", a: 0.26 })}
 ${SWEEP(f, { color: "#ffffff", a: 0.22, y0: 300, y1: 1100 })}
 ${W.dust(f, { x: 120, y: 340, w: 840, h: 800, count: 16, seed: 11, color: "#fff3cf", alpha: 0.45 })}
 ${LIST(f, o)}${DAWN(f, o)}</svg>`;
@@ -123,11 +123,11 @@ ${LIST(f, o)}${DAWN(f, o)}</svg>`;
         const end =
           paper <= 0
             ? ""
-            : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#f6efe1", opacity: n(paper, 3) })}"></div>
+            : `<div style="${F1.css({ position: "absolute", inset: 0, background: "#eaf1f5", opacity: n(paper, 3) })}"></div>
 <div style="${F1.css({ position: "absolute", left: 0, right: 0, top: 330, display: "flex", flexDirection: "column", alignItems: "center", gap: 22, opacity: n(paper, 3) })}">
 <div style="${F1.css({ marginTop: 56, padding: "12px 30px", border: "6px solid #c0392b", borderRadius: 12, transform: `rotate(-6deg) scale(${n(2.2 - 1.2 * slam, 3)})`, opacity: n(slam, 3), fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 72, letterSpacing: 6, color: "#c0392b" })}">KASUS DITUTUP</div>
 <div style="${mono};font-weight:500;font-size:26px;letter-spacing:2px;color:#6f6a66">KASUS #10 · KRL</div>
-<div style="${F1.css({ marginTop: 6, padding: "18px 38px", borderRadius: 18, background: "#fffaf0", border: "6px solid #2a2a2e", textAlign: "center", opacity: n(slogan, 3), transform: `translateY(${n(30 * (1 - slogan))}px) rotate(-1.5deg)` })}"><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:62px;line-height:1.3;letter-spacing:2px;color:#2a2a2e">KERETA BARU,<br>TAPI <span style="background:${C.ACCENT};padding:0 12px;border-radius:10px">KAPAN?</span></div></div>
+<div style="${F1.css({ marginTop: 6, padding: "18px 38px", borderRadius: 18, background: "#f3f7fa", border: "6px solid #2a2a2e", textAlign: "center", opacity: n(slogan, 3), transform: `translateY(${n(30 * (1 - slogan))}px) rotate(-1.5deg)` })}"><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:62px;line-height:1.3;letter-spacing:2px;color:#2a2a2e">KERETA BARU,<br>TAPI <span style="background:${C.ACCENT};padding:0 12px;border-radius:10px">KAPAN?</span></div></div>
 <div style="${F1.css({ marginTop: 14, padding: "24px 40px", borderRadius: 20, background: "#2a2a2e", textAlign: "center", opacity: n(ask, 3), transform: `translateY(${n(30 * (1 - ask))}px)` })}"><div style="${mono};font-weight:700;font-size:24px;letter-spacing:2px;color:#ff5a5f">● TULIS DI KOMENTAR</div><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:58px;line-height:1.15;color:#fff"><span style="color:${hot(F1.ramp(f, bekas, 6), "#fff", "#ff7a70")}">BEKAS</span> TAPI CEPAT<br>ATAU <span style="color:${hot(F1.ramp(f, baru, 6), "#fff", C.ACCENT)}">BARU</span> TAPI LAMA?</div></div>
 <div style="${mono};font-weight:500;font-size:20px;letter-spacing:1px;color:#6f6a66;opacity:${n(src, 3)}">SUMBER LENGKAP DI DESKRIPSI</div></div>`;
         // Title-only cover card over the outro tail (after Beni's last word), for TikTok's "Select cover".
@@ -138,7 +138,7 @@ ${LIST(f, o)}${DAWN(f, o)}</svg>`;
         const cover =
           cv <= 0
             ? ""
-            : `<div style="${F1.css({ position: "absolute", inset: 0, zIndex: 50, background: "#f1e7d3", opacity: n(cv, 3), display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 30 })}">
+            : `<div style="${F1.css({ position: "absolute", inset: 0, zIndex: 50, background: "#dfe8ee", opacity: n(cv, 3), display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 30 })}">
 <div style="${F1.css({ padding: "10px 26px", border: "6px solid #c0392b", borderRadius: 12, transform: "rotate(-5deg)", fontFamily: "Oswald, sans-serif", fontWeight: 600, fontSize: 52, letterSpacing: 6, color: "#c0392b" })}">KASUS #10</div>
 <div style="${F1.css({ textAlign: "center", fontFamily: "Oswald, sans-serif", fontWeight: 700, color: "#2a2a2e", lineHeight: 1.04, letterSpacing: 2 })}"><div style="font-size:84px;color:#6f6a66">IMPOR KRL BEKAS BATAL</div><div style="font-size:124px;margin-top:26px">KERETA BARU,</div><div style="font-size:124px">TAPI <span style="display:inline-block;line-height:1.1;color:#fff;background:#d0413a;padding:0 18px;border-radius:16px">KAPAN?</span></div></div>
 <svg width="300" height="90" viewBox="0 -70 290 80"><g>${car(0)}${car(1)}${car(2)}</g></svg></div>`;

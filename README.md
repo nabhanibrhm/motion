@@ -56,6 +56,22 @@ node scripts/motion.mjs render <id>
 
 `voice` explicitly generates or reuses speech. `render` automatically ensures missing or stale voice before building. `sync`, preview, lint, still capture, and check require a valid voice cache and never synthesize. `sync` builds the disposable `.cache/build/<id>/` project. Stills go under `.cache/stills/<id>/`. Render produces a fresh raw video in the build cache and masters it into `out/<NN>-<id>-short.mp4`. Existing finished outputs are replaced only after a successful render/master operation.
 
+### Cartesia voice (`narration.source: "cartesia"`)
+
+`voice <id>` (and `render`) synthesise each line through the Cartesia API into `episodes/<NN>_<id>/voice-lines/<section>-<i>.wav`, then align them exactly like `source: "files"`. Put `CARTESIA_API_KEY=...` in the git-ignored root `.env` (each machine needs its own). Billing is one credit per character; the CLI prints the estimate before calling the API. Each clip's cache key (spoken text, voice, model, language, speed, sample rate, dictionary content) is recorded in `voice-lines/cartesia.json`, so only changed lines are re-synthesised; commit the clips with that file. `voice <id> --force` re-synthesises and re-bills every line. A clip in `voice-lines/` that the provider did not make stops the run instead of being overwritten.
+
+```json
+{
+  "source": "cartesia",
+  "cartesia": { "model": "sonic-3.6", "language": "id-ID", "speed": 1, "dictionary": "config/cartesia-pronunciation.json", "say": {} },
+  "speakers": { "wec": { "cartesia": { "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90" } } }
+}
+```
+
+The `cartesia` block and each speaker's `cartesia.voice` are optional: defaults are the values shown, and voice ids come from `config/speakers.json` (Nisa/`wec` = Intan; Muklis/`mog` and Beni/`bog` stay `null` until chosen, and the provider stops if a speaker without an id has a line). Top-level `say` is for Supertonic and is ignored; `cartesia.say` respells whole words before synthesis. `[pause]` markers are dropped as in files mode. The pronunciation dictionary is a JSON array of `{"text", "pronunciation"}` (IPA as `<<k|a|ʔ|ɛ|r|ˈ|ɛ|l>>` or sounds-like text); it is uploaded once per content as `motion-<hash>` and passed as `pronunciation_dict_id`; `"dictionary": null` turns it off.
+
+Helpers: `.venv/Scripts/python tools/voice/cartesia.py voices [--gender masculine]` lists Indonesian voices; `... samples [--gender masculine] [--limit 4]` writes one sample per voice to `%TEMP%/motion-cartesia-samples/` (about 120 credits each); `... dict` prints the dictionary id.
+
 For batch commands that support it, use `--all`, for example `node scripts/motion.mjs validate --all` or `node scripts/motion.mjs render --all`. Inspect cleanup targets before executing cleanup:
 
 ```powershell

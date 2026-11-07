@@ -45,7 +45,21 @@ export function validateEpisode(ctx,{voice=null}={}) {
   check(new Set(sections.map(s=>s.id)).size===sections.length,'Duplicate narration section ids');
   for(const chapter of n.chapters || []) check(ID.test(chapter.id || '')&&typeof chapter.title==='string'&&chapter.title.trim(),`Invalid chapter: ${chapter.id}`);
   const speakers=n.speakers || {};
-  check(['supertonic','files'].includes(n.source),'narration.source must be supertonic or files');
+  check(['supertonic','files','cartesia'].includes(n.source),'narration.source must be supertonic, files or cartesia');
+  if(n.source==='cartesia') {
+    const cc=n.cartesia;
+    check(cc===undefined||(cc&&typeof cc==='object'&&!Array.isArray(cc)),'narration.cartesia must be an object');
+    if(cc&&typeof cc==='object') {
+      for(const key of Object.keys(cc)) check(['model','language','speed','sampleRate','dictionary','say'].includes(key),`narration.cartesia.${key} is not supported`);
+      if(cc.speed!==undefined) check(Number.isFinite(cc.speed)&&cc.speed>=0.6&&cc.speed<=1.5,'narration.cartesia.speed must be 0.6..1.5');
+      if(cc.sampleRate!==undefined) check([8000,16000,22050,24000,44100,48000].includes(cc.sampleRate),'narration.cartesia.sampleRate is not supported');
+      if(cc.dictionary!==undefined&&cc.dictionary!==null) check(typeof cc.dictionary==='string'&&/\.json$/.test(cc.dictionary),'narration.cartesia.dictionary must be a .json path or null');
+    }
+    for(const [speaker,settings] of Object.entries(speakers)) {
+      const v=settings?.cartesia;
+      if(v!==undefined) check(v&&typeof v==='object'&&(v.voice===undefined||v.voice===null||typeof v.voice==='string')&&(v.speed===undefined||(Number.isFinite(v.speed)&&v.speed>=0.6&&v.speed<=1.5)),`Speaker ${speaker}: invalid cartesia settings`);
+    }
+  }
   const canonicalVoices={mog:'M1',wec:'F2',bog:'M4'};
   if(n.source==='supertonic') for(const [speaker,settings] of Object.entries(speakers)) {
     check(typeof settings.supertonic?.voice==='string',`Speaker ${speaker}: Supertonic voice is required`);

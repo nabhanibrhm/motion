@@ -16,7 +16,7 @@ Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 
 ### 2 · Crowded (`padat`)
 *[Ridership counter "1,1 JUTA/HARI", "+11%" [S5]; card "303,8 JUTA PERJALANAN JAN–OKT", "OKT 32,3 JUTA" [S6]; small card "KEBUTUHAN 2026 ±105 RANGKAIAN · TERSEDIA 102" [S7].]*
 
-**MUKLIS:** Menurut KAI rata-rata penumpang KRL Jabodetabek tahun ini sekitar satu koma satu juta orang per hari. Naik lebih dari sebelas persen dibanding tahun lalu.
+**MUKLIS:** KAI mencatat penumpang KRL Jabodetabek tahun ini naik lebih dari sebelas persen dibanding tahun lalu.
 
 **BENI:** Pantas tiap pagi aku nggak pernah dapat tempat duduk. Terus sampai bulan Oktober totalnya sudah berapa banyak?
 
@@ -38,7 +38,7 @@ Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 
 
 **MUKLIS:** Pesanan lama enam belas rangkaian seharusnya beres tahun ini. Yang datang baru tujuh dan terlambat lebih dari setahun.
 
-**MUKLIS:** Targetnya delapan rangkaian setahun tapi kenyataannya cuma dua sampai tiga. Tujuh rangkaian itu juga sempat ditarik September karena ada retakan di rangka bawah.
+**MUKLIS:** Targetnya delapan rangkaian setahun tapi kenyataannya cuma dua sampai tiga. Tujuh rangkaian itu juga sempat ditarik September karena retakan di rangka bawah.
 
 ### 5 · The sum (`hitung`)
 *[Two progress bars: "23 ÷ 3 ≈ 8 TAHUN" vs "23 ÷ 15 ≈ 1,5 TAHUN", label "HITUNGAN SEDERHANA" [S9, S12]; ">90 RANGKAIAN PENSIUN 2026–2034" [S11].]*
@@ -51,15 +51,19 @@ Cast: **Muklis** (`mog`, M1), **Nisa** (`wec`, F2), **Beni** (`bog`, M4), speed 
 
 **MUKLIS:** Lebih dari sembilan puluh rangkaian akan pensiun bertahap sampai dua ribu tiga puluh empat. Jadi yang harus naik itu kecepatan produksi, bukan cuma jumlah pesanan.
 
-### 6 · Other side (`sisi`)
-*[Used train "±10 TAHUN PAKAI" [S11]; "INDUSTRI DALAM NEGERI"; "KERJA SAMA INKA–PABRIK ASING" [S4].]*
+### 6 · Why they wanted it (`sisi`)
+*[Balance "KRL BEKAS" vs "KRL BARU": "TERSEDIA 102 RANGKAIAN, KURANG DARI KEBUTUHAN" [S7, S13]; "BEKAS 1–2 BULAN / BARU 1–2 TAHUN" [S14]; "TRANSISI ±10 TAHUN" [S11, S14]; "INDUSTRI DALAM NEGERI"; "KERJA SAMA INKA–PABRIK ASING" [S4]. Dilemma: cepat tapi bekas vs baru tapi lama.]*
 
-**MUKLIS:** Tapi ada sisi lainnya. Kereta bekas itu rencananya cuma dipakai sekitar sepuluh tahun. Pesanan baru menghidupkan industri dalam negeri dan KAI membuka kerja sama INKA dengan pabrik luar negeri.
+**NISA:** Tapi kenapa sih dulu KAI sampai mau impor kereta bekas dari Jepang?
+
+**MUKLIS:** Rangkaian yang tersedia cuma seratus dua, kurang dari kebutuhan. Kata Bobby kereta bekas bisa tiba satu sampai dua bulan sedangkan impor kereta baru satu sampai dua tahun.
+
+**MUKLIS:** Dia menyebutnya transisi sekitar sepuluh tahun. Pesanan baru menghidupkan industri dalam negeri dan KAI membuka kerja sama INKA dengan pabrik luar negeri.
 
 ### 7 · Verdict (`vonis`)
 *[Tips (berangkat lebih pagi, pantau info resmi KAI Commuter); "KASUS DITUTUP"; question "BEKAS TAPI CEPAT / BARU TAPI LAMA"; title cover card in the last ~1 s.]*
 
-**MUKLIS:** Jadi buat kamu yang naik KRL, kemungkinan kereta masih padat beberapa tahun lagi. Berangkat lebih pagi dan pantau info resmi dari KAI Commuter.
+**MUKLIS:** Jadi buat kamu yang naik KRL, kemungkinan masih padat beberapa tahun lagi. Berangkat lebih pagi dan pantau info resmi dari KAI Commuter.
 
 **BENI:** Kasus ditutup. Kamu pilih kereta bekas tapi cepat atau kereta baru tapi lama? Tulis jawabanmu di komentar ya!
 
@@ -82,6 +86,8 @@ All 2026.
 | S9 | Projected 8/yr, actual ~2–3 | Harian Jogja; Investortrust |
 | S10 | 7 INKA trainsets recalled Sep, fracture in underframe | CNN Indonesia 24 Sep; Kumparan |
 | S11 | >90 trainsets retire in stages 2026–2034; used import planned ~10 years use | Kompas Money 28 Sep; Kontan TV |
+| S13 | 102 trainsets at start of 2026 (need ~104–105); Bobby's "bridging" | Fortune IDN 26 Sep; Industry.co.id; (S7 Kompas.id, Suara) |
+| S14 | Bobby at 23 Sep RDP: used trains 1–2 months after approval, new import 1–2 years; used = "hanya untuk transisi", ~10 years of use while domestic capacity improves (note: the 1–2 years is for imported new trains, not INKA) | Katadata; RCTI+/iNews; Investortrust |
 | S12 | INKA target >15/yr, capacity rising from 2027 | Investortrust; Kompas.id |
 
 **Our arithmetic:** 23 / 3 ≈ 7,7, spoken as "sekitar delapan tahun". 23 / 15 ≈ 1,5 years.
@@ -91,4 +97,5 @@ All 2026.
 - **Rp3,85 T contract value**: unclear whether it covers 11 or 16 trainsets.
 - **Kemenhub 35 trainsets by 2027**: one source only.
 - **Bogor line most crowded**: one source only.
+- **"105 rangkaian" exact need**: Fortune says 104, Kompas/Suara ~105; narration says only "kurang dari kebutuhan".
 - **Prabowo "ordering" the cancellation**: not reported by any outlet.

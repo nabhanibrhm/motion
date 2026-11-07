@@ -1,5 +1,5 @@
 {
-  "mog":{"supertonic":{"voice":"M1","speed":1}},
-  "wec":{"supertonic":{"voice":"F2","speed":1}},
-  "bog":{"supertonic":{"voice":"M4","speed":1}}
+  "mog":{"supertonic":{"voice":"M1","speed":1},"cartesia":{"voice":"04b567df-2923-4b0c-896b-4b7df0a07e1a"}},
+  "wec":{"supertonic":{"voice":"F2","speed":1},"cartesia":{"voice":"f3b7c445-d015-40f7-a665-9595e0bc0c90"}},
+  "bog":{"supertonic":{"voice":"M4","speed":1},"cartesia":{"voice":"a053f6bc-7df4-40de-96d4-de026bc47ce8"}}
 }

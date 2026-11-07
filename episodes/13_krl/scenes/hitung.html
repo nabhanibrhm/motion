@@ -5,7 +5,7 @@
     #root {
       position: absolute;
       inset: 0;
-      background: #f1e7d3;
+      background: #dfe8ee;
       overflow: hidden;
     }
   </style>
@@ -41,7 +41,7 @@
             [0, 1].forEach((j) => {
               if (h(j) < pack) {
                 const px = wx + 10 + 14 * j;
-                const col = h(j + 3) < 0.5 ? "#3a3a40" : "#5a4a44";
+                const col = h(j + 3) < 0.5 ? "#3a3a40" : "#4a5560";
                 wins += `<circle cx="${px}" cy="-99" r="6.5" fill="${col}"/><path d="M${px - 9} -76 Q${px - 9} -90 ${px} -90 Q${px + 9} -90 ${px + 9} -76 Z" fill="${col}"/>`;
               }
             });
@@ -59,18 +59,18 @@
       };
       const RAIL = (y, x0 = 0, x1 = 1080, shift = 0) => {
         let t = "";
-        for (let k = -1; k < Math.ceil((x1 - x0) / 56) + 1; k++) t += `<rect x="${n(x0 + k * 56 + (shift % 56))}" y="${y + 6}" width="30" height="9" fill="#8a6f55"/>`;
+        for (let k = -1; k < Math.ceil((x1 - x0) / 56) + 1; k++) t += `<rect x="${n(x0 + k * 56 + (shift % 56))}" y="${y + 6}" width="30" height="9" fill="#5f7683"/>`;
         return `<g>${t}<rect x="${x0}" y="${y}" width="${x1 - x0}" height="7" fill="#6d6a6c"/></g>`;
       };
       const LANE = (f, { y, title, p, years, label, color, alpha }) => {
         const cells = Array.from({ length: 23 }, (_, i) => {
           const fr = Math.max(0, Math.min(1, p * 23 - i));
           const cx = 66 + i * 41.5;
-          return `<rect x="${n(cx)}" y="${y + 104}" width="35" height="52" rx="6" fill="none" stroke="#b9aa90" stroke-width="3" stroke-dasharray="6 5"/>${fr > 0 ? `<g opacity="${n(Math.min(1, fr * 2), 3)}"><rect x="${n(cx)}" y="${y + 104}" width="35" height="52" rx="6" fill="#f4f1ea" stroke="${INK}" stroke-width="4"/><rect x="${n(cx + 4)}" y="${y + 112}" width="12" height="14" rx="3" fill="#cfe3ee"/><rect x="${n(cx + 19)}" y="${y + 112}" width="12" height="14" rx="3" fill="#cfe3ee"/><rect x="${n(cx)}" y="${y + 135}" width="35" height="8" fill="${RED}"/><rect x="${n(cx)}" y="${y + 143}" width="35" height="4" fill="#f2b632"/></g>` : ""}`;
+          return `<rect x="${n(cx)}" y="${y + 104}" width="35" height="52" rx="6" fill="none" stroke="#a3b0b7" stroke-width="3" stroke-dasharray="6 5"/>${fr > 0 ? `<g opacity="${n(Math.min(1, fr * 2), 3)}"><rect x="${n(cx)}" y="${y + 104}" width="35" height="52" rx="6" fill="#f4f1ea" stroke="${INK}" stroke-width="4"/><rect x="${n(cx + 4)}" y="${y + 112}" width="12" height="14" rx="3" fill="#cfe3ee"/><rect x="${n(cx + 19)}" y="${y + 112}" width="12" height="14" rx="3" fill="#cfe3ee"/><rect x="${n(cx)}" y="${y + 135}" width="35" height="8" fill="${RED}"/><rect x="${n(cx)}" y="${y + 143}" width="35" height="4" fill="#f2b632"/></g>` : ""}`;
         }).join("");
         const done = p >= 0.999;
         const yr = (p * years).toFixed(1).replace(".", ",");
-        return `<g opacity="${n(alpha, 3)}"><rect x="40" y="${y}" width="1000" height="290" rx="22" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+        return `<g opacity="${n(alpha, 3)}"><rect x="40" y="${y}" width="1000" height="290" rx="22" fill="#f3f7fa" stroke="${INK}" stroke-width="6"/>
 <text x="66" y="${y + 66}" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="2" fill="${INK}">${title}</text>
 ${cells}
 <text x="66" y="${y + 244}" font-family="JetBrains Mono" font-weight="700" font-size="30" fill="#6f6a66">TAHUN KE-${yr}</text>
@@ -82,27 +82,27 @@ ${cells}
         for (let i = 0; i < 6; i++) {
           const t = F1.ramp(f, o.go + i * 55, 90, (u) => u * u * (3 - 2 * u));
           const x = -360 + 1100 * t;
-          trains += TRAIN(f, { x, y: ty, cars: 2, s: 0.62, body: "#ddd6c6", stripe: "#8d8780", pack: 0.15, seed: 20 + i, wheel: x * 3.4, sway: t > 0 && t < 1 ? 1.4 : 0.3 });
+          trains += TRAIN(f, { x, y: ty, cars: 2, s: 0.62, body: "#cdd6db", stripe: "#8d8780", pack: 0.15, seed: 20 + i, wheel: x * 3.4, sway: t > 0 && t < 1 ? 1.4 : 0.3 });
         }
-        const shed = `<g><rect x="700" y="${ty - 190}" width="380" height="200" fill="#9b8d78" stroke="${INK}" stroke-width="6"/><path d="M684 ${ty - 190} L890 ${ty - 252} L1096 ${ty - 190} Z" fill="#6d5f4d" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/><rect x="722" y="${ty - 170}" width="336" height="14" fill="#7d705e"/><rect x="740" y="${ty - 140}" width="300" height="52" rx="8" fill="#fffaf0" stroke="${INK}" stroke-width="4"/><text x="890" y="${ty - 101}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="6" fill="${RED}">PENSIUN</text></g>`;
+        const shed = `<g><rect x="700" y="${ty - 190}" width="380" height="200" fill="#8a979e" stroke="${INK}" stroke-width="6"/><path d="M684 ${ty - 190} L890 ${ty - 252} L1096 ${ty - 190} Z" fill="#5b6870" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/><rect x="722" y="${ty - 170}" width="336" height="14" fill="#6c7a82"/><rect x="740" y="${ty - 140}" width="300" height="52" rx="8" fill="#f3f7fa" stroke="${INK}" stroke-width="4"/><text x="890" y="${ty - 101}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="40" letter-spacing="6" fill="${RED}">PENSIUN</text></g>`;
         const poles = [150, 520].map((px) => `<rect x="${px}" y="${ty - 250}" width="8" height="262" fill="#6d6a6c"/>`).join("");
         const cnt = Math.round(90 * o.count);
         return `<g opacity="${n(o.p, 3)}">${poles}<rect x="0" y="${ty - 188}" width="1080" height="4" fill="#6d6a6c"/>${RAIL(ty)}${trains}${shed}
-<g transform="translate(40 330)"><rect width="1000" height="330" rx="24" fill="#fffaf0" stroke="${INK}" stroke-width="6"/>
+<g transform="translate(40 330)"><rect width="1000" height="330" rx="24" fill="#f3f7fa" stroke="${INK}" stroke-width="6"/>
 <text x="60" y="84" font-family="Oswald" font-weight="600" font-size="38" letter-spacing="4" fill="#6f6a66">KERETA LAMA PENSIUN BERTAHAP</text>
 <text x="60" y="274" font-family="Oswald" font-weight="700" font-size="176" fill="${RED}">&gt;${cnt}</text>
 <text x="500" y="216" font-family="Oswald" font-weight="600" font-size="48" letter-spacing="2" fill="${INK}">RANGKAIAN</text><text x="500" y="268" font-family="JetBrains Mono" font-weight="700" font-size="34" fill="${INK}">2026–2034</text>
-<text x="60" y="304" font-family="JetBrains Mono" font-weight="500" font-size="19" fill="#8a6f55">Sumber: Kompas Money (28 Sep 2026), Kontan TV</text></g></g>`;
+<text x="60" y="304" font-family="JetBrains Mono" font-weight="500" font-size="19" fill="#5f7683">Sumber: Kompas Money (28 Sep 2026), Kontan TV</text></g></g>`;
       };
       const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
-<rect width="1080" height="1920" fill="#f1e7d3"/>
-${DRIFT(f, { seed: 520, count: 7, y0: 420, y1: 1050, color: "#f2c27a", a: 0.26 })}
-${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
+<rect width="1080" height="1920" fill="#dfe8ee"/>
+${DRIFT(f, { seed: 520, count: 7, y0: 420, y1: 1050, color: "#8fd0d2", a: 0.26 })}
+${SWEEP(f, { color: "#f3f7fa", a: 0.22, y0: 300, y1: 1100 })}
 ${W.dust(f, { x: 120, y: 420, w: 840, h: 640, count: 16, seed: 9, color: "#fff3cf", alpha: 0.45 })}
 <g opacity="${n(1 - o.out, 3)}"><text x="60" y="362" font-family="Oswald" font-weight="700" font-size="52" letter-spacing="6" fill="${INK}">HITUNGAN SEDERHANA</text><rect x="60" y="376" width="300" height="8" rx="4" fill="#C6F432"/>
 ${LANE(f, { y: 410, title: "INKA SEKARANG · ±3 RANGKAIAN / TAHUN", p: o.pa, years: 8, label: "≈ 8 TAHUN", color: RED, alpha: 1 })}
 ${LANE(f, { y: 720, title: "SESUAI TARGET · 15 RANGKAIAN / TAHUN", p: o.pb, years: 1.5, label: "≈ 1,5 TAHUN", color: INK, alpha: 0.4 + 0.6 * o.bIn })}
-<text x="60" y="1066" font-family="JetBrains Mono" font-weight="500" font-size="20" fill="#8a6f55">Sumber: Harian Jogja, Investortrust, Kompas.id</text></g>
+<text x="60" y="1066" font-family="JetBrains Mono" font-weight="500" font-size="20" fill="#5f7683">Sumber: Harian Jogja, Investortrust, Kompas.id</text></g>
 ${o.out > 0 ? DEPOT(f, o) : ""}</svg>`;
       // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
       const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;

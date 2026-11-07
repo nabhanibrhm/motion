@@ -1,6 +1,6 @@
 {
  "comment": "Short 'Impor KRL Bekas Batal: Kereta Baru, Tapi Kapan?' (KASUS #10; script-short.md, sources there). KSP pacing: one-chunk hook, no [pause], lines of 12+ words.",
- "source": "supertonic",
+ "source": "cartesia",
  "say": {
   "KRL": "ka er el",
   "KAI": "ka a i",
@@ -37,6 +37,9 @@
     "voice": "M4",
     "speed": 1,
     "range": 1.4
+   },
+   "cartesia": {
+    "speed": 0.85
    }
   }
  },
@@ -73,7 +76,7 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Menurut KAI rata-rata penumpang KRL Jabodetabek tahun ini sekitar satu koma satu juta orang per hari. Naik lebih dari sebelas persen dibanding tahun lalu."
+     "text": "KAI mencatat penumpang KRL Jabodetabek tahun ini naik lebih dari sebelas persen dibanding tahun lalu."
     },
     {
      "speaker": "bog",
@@ -119,7 +122,7 @@
     },
     {
      "speaker": "mog",
-     "text": "Targetnya delapan rangkaian setahun tapi kenyataannya cuma dua sampai tiga. Tujuh rangkaian itu juga sempat ditarik September karena ada retakan di rangka bawah.",
+     "text": "Targetnya delapan rangkaian setahun tapi kenyataannya cuma dua sampai tiga. Tujuh rangkaian itu juga sempat ditarik September karena retakan di rangka bawah.",
      "after": 0.2
     }
    ]
@@ -152,8 +155,16 @@
    "chapter": "kasus",
    "lines": [
     {
+     "speaker": "wec",
+     "text": "Tapi kenapa sih dulu KAI sampai mau impor kereta bekas dari Jepang?"
+    },
+    {
      "speaker": "mog",
-     "text": "Tapi ada sisi lainnya. Kereta bekas itu rencananya cuma dipakai sekitar sepuluh tahun. Pesanan baru menghidupkan industri dalam negeri dan KAI membuka kerja sama INKA dengan pabrik luar negeri.",
+     "text": "Rangkaian yang tersedia cuma seratus dua, kurang dari kebutuhan. Kata Bobby kereta bekas bisa tiba satu sampai dua bulan sedangkan impor kereta baru satu sampai dua tahun."
+    },
+    {
+     "speaker": "mog",
+     "text": "Dia menyebutnya transisi sekitar sepuluh tahun. Pesanan baru menghidupkan industri dalam negeri dan KAI membuka kerja sama INKA dengan pabrik luar negeri.",
      "after": 0.2
     }
    ]
@@ -164,7 +175,7 @@
    "lines": [
     {
      "speaker": "mog",
-     "text": "Jadi buat kamu yang naik KRL, kemungkinan kereta masih padat beberapa tahun lagi. Berangkat lebih pagi dan pantau info resmi dari KAI Commuter.",
+     "text": "Jadi buat kamu yang naik KRL kemungkinan masih padat beberapa tahun lagi. Berangkat lebih pagi dan pantau info resmi dari KAI Commuter.",
      "after": 0.1
     },
     {

@@ -5,7 +5,7 @@
     #root {
       position: absolute;
       inset: 0;
-      background: #f1e7d3;
+      background: #dfe8ee;
       overflow: hidden;
     }
   </style>
@@ -26,7 +26,7 @@
       const INK = "#2a2a2e";
       const RED = "#d0413a";
       const GREEN = "#4e8a4f";
-      const SUB = "#8a6f55";
+      const SUB = "#5f7683";
       const clamp01 = (v) => Math.max(0, Math.min(1, v));
       // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
       const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
@@ -36,7 +36,7 @@
         const pb = [1, 3, 5].map((i) => parseInt(b.slice(i, i + 2), 16));
         return `rgb(${pa.map((v, i) => Math.round(v + (pb[i] - v) * p)).join(",")})`;
       };
-      const CLOTH = ["#3f78b5", "#c0563f", "#5b8a5f", "#8a6f55", "#6b5b95", "#d9a441", "#3d4a5c"];
+      const CLOTH = ["#3f78b5", "#c0563f", "#5b8a5f", "#5f7683", "#6b5b95", "#d9a441", "#3d4a5c"];
       const SKIN = ["#a8724c", "#d9a77d", "#8a5a3c"];
       // a generic commuter trainset in side view (white/silver body, red-and-yellow stripe, no logos).
       // (x, y) = left end and top of the rail; `wheel` in degrees; riders = share of window slots with a standing passenger
@@ -51,12 +51,12 @@
           if (wheels) {
             for (const bx of [w * 0.2, w * 0.8]) {
               for (const dx of [-17, 17]) {
-                g += `<g transform="translate(${n(bx + dx)} -14)"><circle r="14" fill="#3b3d44" stroke="${INK}" stroke-width="3"/><g transform="rotate(${n(wheel, 1)})"><line x1="-11" y1="0" x2="11" y2="0" stroke="#d9d4c8" stroke-width="3"/><line x1="0" y1="-11" x2="0" y2="11" stroke="#d9d4c8" stroke-width="3"/></g><circle r="3" fill="#d9d4c8"/></g>`;
+                g += `<g transform="translate(${n(bx + dx)} -14)"><circle r="14" fill="#3b3d44" stroke="${INK}" stroke-width="3"/><g transform="rotate(${n(wheel, 1)})"><line x1="-11" y1="0" x2="11" y2="0" stroke="#d3d9dd" stroke-width="3"/><line x1="0" y1="-11" x2="0" y2="11" stroke="#d3d9dd" stroke-width="3"/></g><circle r="3" fill="#d3d9dd"/></g>`;
               }
             }
           }
           g += `<rect x="6" y="-30" width="${w - 12}" height="14" rx="4" fill="#4a4d55" ${ghost ? "opacity=\"0.4\"" : ""}/>`;
-          g += `<rect x="0" y="-152" width="${w}" height="124" rx="18" fill="${ghost ? "rgba(255,250,240,0.4)" : body}" ${sk}/>`;
+          g += `<rect x="0" y="-152" width="${w}" height="124" rx="18" fill="${ghost ? "rgba(243,247,250,0.4)" : body}" ${sk}/>`;
           if (!ghost) {
             g += `<rect x="3" y="-66" width="${w - 6}" height="15" fill="${stripe}"/><rect x="3" y="-49" width="${w - 6}" height="7" fill="#f2c14e"/>`;
           }
@@ -84,7 +84,7 @@
         }
         return `<g opacity="${n(op, 3)}" transform="translate(${n(x, 1)} ${n(y + sway, 1)}) scale(${n(s, 3)})">${out}</g>`;
       };
-      const RAIL = (y) => `<rect x="0" y="${y}" width="1080" height="48" fill="#b9a27d"/>${Array.from({ length: 25 }, (_, i) => `<rect x="${i * 46 + 6}" y="${y + 14}" width="30" height="12" rx="2" fill="#8a6f55"/>`).join("")}<rect x="0" y="${y}" width="1080" height="8" fill="#6b6f78"/><rect x="0" y="${y - 2}" width="1080" height="3" fill="${INK}"/>`;
+      const RAIL = (y) => `<rect x="0" y="${y}" width="1080" height="48" fill="#98a3ab"/>${Array.from({ length: 25 }, (_, i) => `<rect x="${i * 46 + 6}" y="${y + 14}" width="30" height="12" rx="2" fill="#5f7683"/>`).join("")}<rect x="0" y="${y}" width="1080" height="8" fill="#6b6f78"/><rect x="0" y="${y - 2}" width="1080" height="3" fill="${INK}"/>`;
       const SPARKS = (f, { x, y, seed, count = 9, color = "#ffb703" }) => `<g fill="${color}">${Array.from({ length: count }, (_, i) => {
         const h = (k) => W.hash(seed + i * 7 + k);
         const age = (((f * 0.06 + h(1) * 3) % 1) + 1) % 1;
@@ -92,27 +92,27 @@
         const sp = 40 + h(3) * 90;
         return `<circle cx="${n(x + Math.cos(a) * sp * age * 1.2, 1)}" cy="${n(y + Math.sin(a) * sp * age + 140 * age * age, 1)}" r="${n(4.5 * (1 - age) + 1, 1)}" opacity="${n(1 - age, 2)}"/>`;
       }).join("")}<circle cx="${x}" cy="${y}" r="${n(9 + 3 * Math.sin(f * 1.7), 1)}" fill="#fff4c2"/></g>`;
-      const CARD = (x, y, w, h, p, inner, fill = "#fffaf0") => (p <= 0 ? "" : `<g opacity="${n(clamp01(p), 3)}" transform="translate(${n(x)} ${n(y + 34 * (1 - p), 1)})"><rect x="0" y="0" width="${w}" height="${h}" rx="18" fill="${fill}" stroke="${INK}" stroke-width="6"/>${inner}</g>`);
+      const CARD = (x, y, w, h, p, inner, fill = "#f3f7fa") => (p <= 0 ? "" : `<g opacity="${n(clamp01(p), 3)}" transform="translate(${n(x)} ${n(y + 34 * (1 - p), 1)})"><rect x="0" y="0" width="${w}" height="${h}" rx="18" fill="${fill}" stroke="${INK}" stroke-width="6"/>${inner}</g>`);
       const SRC = (x, y, text) => `<text x="${x}" y="${y}" font-family="JetBrains Mono" font-weight="500" font-size="17" fill="${SUB}">Sumber: ${text}</text>`;
       const OSW = (x, y, size, text, fill = INK, extra = "") => `<text x="${x}" y="${y}" font-family="Oswald" font-weight="600" font-size="${size}" letter-spacing="1" fill="${fill}" ${extra}>${text}</text>`;
-      const LABEL = (cx, y, text, p, color = INK) => (p <= 0 ? "" : `<g opacity="${n(clamp01(p), 3)}"><rect x="${n(cx - 250)}" y="${y}" width="500" height="58" rx="12" fill="#fffaf0" stroke="${color}" stroke-width="5"/>${OSW(n(cx), y + 42, 36, text, color, 'text-anchor="middle" letter-spacing="3"')}</g>`);
+      const LABEL = (cx, y, text, p, color = INK) => (p <= 0 ? "" : `<g opacity="${n(clamp01(p), 3)}"><rect x="${n(cx - 250)}" y="${y}" width="500" height="58" rx="12" fill="#f3f7fa" stroke="${color}" stroke-width="5"/>${OSW(n(cx), y + 42, 36, text, color, 'text-anchor="middle" letter-spacing="3"')}</g>`);
       const BG = (f, o) => {
         const usedX = -800 + 910 * o.arrive + o.jolt;
         const newX = 1180 - 1030 * o.newIn;
         const solid = 1 - o.ghost;
         const wy = 888;
         return `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
-<rect width="1080" height="1920" fill="#f1e7d3"/>
-${DRIFT(f, { seed: 410, count: 7, y0: 600, y1: 1050, color: "#f2c27a", a: 0.26 })}
-${SWEEP(f, { color: "#fffaf0", a: 0.22, y0: 300, y1: 1100 })}
-<g fill="#e3d4b6">${[[20, 700, 120, 380], [150, 780, 90, 300], [260, 650, 140, 430], [420, 760, 110, 320], [560, 690, 100, 390], [680, 790, 130, 290], [830, 660, 120, 420], [960, 740, 120, 340]].map((b) => `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}"/>`).join("")}</g>
-<g stroke="#8a6f55" stroke-width="10">${[90, 560, 1030].map((px) => `<line x1="${px}" y1="1080" x2="${px}" y2="820"/><line x1="${px - 40}" y1="830" x2="${px + 40}" y2="830"/>`).join("")}</g>
+<rect width="1080" height="1920" fill="#dfe8ee"/>
+${DRIFT(f, { seed: 410, count: 7, y0: 600, y1: 1050, color: "#8fd0d2", a: 0.26 })}
+${SWEEP(f, { color: "#f3f7fa", a: 0.22, y0: 300, y1: 1100 })}
+<g fill="#c9d6de">${[[20, 700, 120, 380], [150, 780, 90, 300], [260, 650, 140, 430], [420, 760, 110, 320], [560, 690, 100, 390], [680, 790, 130, 290], [830, 660, 120, 420], [960, 740, 120, 340]].map((b) => `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}"/>`).join("")}</g>
+<g stroke="#5f7683" stroke-width="10">${[90, 560, 1030].map((px) => `<line x1="${px}" y1="1080" x2="${px}" y2="820"/><line x1="${px - 40}" y1="830" x2="${px + 40}" y2="830"/>`).join("")}</g>
 <path d="M0 ${wy} Q270 ${wy + 16} 540 ${wy} T1080 ${wy}" fill="none" stroke="${INK}" stroke-width="4"/>
 ${RAIL(1080)}
-<rect x="0" y="1128" width="1080" height="792" fill="#cdb898"/>
+<rect x="0" y="1128" width="1080" height="792" fill="#b3bcc3"/>
 ${TRAIN(f, { x: usedX, y: 1080, cars: 3, body: "#d5d9d3", stripe: GREEN, sway: 1.3 * Math.sin(f * 0.45) * (1 - 0.7 * o.arrive), wheel: usedX * 4.1, riders: 0.35, seed: 4, op: solid })}
 ${o.ghost > 0 ? `<g opacity="${n(o.ghost * (1 - o.ghostOut), 3)}">${TRAIN(f, { x: 110, y: 1080, cars: 3, ghost: true, wheels: true })}<path d="M110 890 L878 1076 M878 890 L110 1076" stroke="${RED}" stroke-width="16" stroke-linecap="round"/></g>` : ""}
-${LABEL(Math.max(300, usedX + 384), 1136, "KRL BEKAS JEPANG", o.label * (1 - o.ghostOut), "#6b5b45")}
+${LABEL(Math.max(300, usedX + 384), 1136, "KRL BEKAS JEPANG", o.label * (1 - o.ghostOut), "#4a6670")}
 ${o.newIn > 0 ? TRAIN(f, { x: newX, y: 1080, cars: 3, sway: 1.3 * Math.sin(f * 0.45) * (1 - o.newIn * 0.7), wheel: newX * 4.1, riders: 0.25, seed: 9 }) : ""}
 ${LABEL(Math.max(300, newX + 384), 1136, "KRL BARU · INKA", o.newIn, RED)}
 ${CARD(60, 330, 460, 230, o.a, `${OSW(30, 82, 66, "23 SEP", INK, 'font-weight="700"')}${OSW(30, 136, 38, "USUL IMPOR BEKAS")}${OSW(30, 182, 32, "✓ KOMISI VI DPR SETUJU", GREEN)}${SRC(30, 214, "Kompas, CNBC")}`)}
@@ -158,7 +158,7 @@ ${CARD(60, 600, 960, 200, o.q, `<text x="480" y="84" text-anchor="middle" font-f
           C.vignette(0.22, "50% 58%", 55),
           C.progress(f, { step: 3, label: "KRONOLOGI" }),
           `<div style="opacity:${n(1 - F1.ramp(f, pesan - 8, 8), 3)}">${C.stamp(f, { at: batalK, x: 300, y: 900, rot: -9, text: "BATAL", size: 110 })}</div>`,
-          C.tag(f, { at: rangk, x: 250, y: 818, rot: -2, light: true, size: 48, text: `<span style="color:#d0413a">23 RANGKAIAN BARU</span><div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:16px;color:#8a6f55">Sumber: CNBC</div>` }),
+          C.tag(f, { at: rangk, x: 250, y: 818, rot: -2, light: true, size: 48, text: `<span style="color:#d0413a">23 RANGKAIAN BARU</span><div style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:16px;color:#5f7683">Sumber: CNBC</div>` }),
           C.cast(S, f, [
             { src: C.CAST.nisa, x: 540, y: 1200, w: 380, at: 0 },
             { src: C.CAST.muklis, x: 540, y: 1200, w: 380 },
