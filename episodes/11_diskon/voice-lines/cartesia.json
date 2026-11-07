@@ -1,7 +1,7 @@
 {
  "cek-0.wav": {
-  "key": "f23ba2dc6d7bba29d612c471451689d11148b4c67c986aadfd4df2b62409db46",
-  "sha256": "1bf5d7dd105c6f3c5ca57ec966c161c084aa7c66e71eefc914130c23c0790d0c",
+  "key": "fbb70ad62de79834cfdde8a361748421b2564da8cbd2f50956866ffc8a8ebe13",
+  "sha256": "f1b1d88874c6f42c6ed7c8ee153fe588dd4096d9339e224f7e6ad3979f890186",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 110
  },
@@ -12,8 +12,8 @@
   "chars": 86
  },
  "hook-0.wav": {
-  "key": "a752963284698f214b5f4e8c825eed86e8efe23389f1390fc2357f50573c2e36",
-  "sha256": "f84d947719e8b9ef3cd0c469fb1a70534971c116028e8b54dccc913f8e1ec744",
+  "key": "78be27b7339b4bd5fa122e127323e414e0fb4de27def518edf49109efb97f278",
+  "sha256": "7582ec52ed5e677ded6b1c51a1c0d06fce3b5045bed78621668b8b73810140fe",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 40
  },
@@ -24,14 +24,14 @@
   "chars": 40
  },
  "kenapa-0.wav": {
-  "key": "fa92f8d6dd91c99675e78c969feb9cdccf5f79646590c5604cd8a04beccd79a7",
-  "sha256": "34ab52bf19ed3c3cbabee9d802423c00e920eb0d34bbfa98b6bb180dd4ded0f8",
+  "key": "621ef927becd3fccf9d1220ad33f71f95a32354e0c52614a4489d87fd2db12db",
+  "sha256": "15a0e4b790cddec607d0693e295e1fb6e3e264db54c56f766c7e17cdeae680bb",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 24
  },
  "kenapa-1.wav": {
-  "key": "5aa4121c04288aa3f9187f423fccb7c1133508f28cce627b33a4ce6e6e961625",
-  "sha256": "0af55dd3f65368176c1fccf50d85ac8d7f0778f1359134ed50e42c4cc36bb6bc",
+  "key": "5ed942ec05c239424ad36ba879faafcbe235ec3c671820428cf9a8e9d2ed8c3d",
+  "sha256": "1bc947f35b328b8bddd7150ebd39b3af49fc20ac1adc3f6691cafa427e9caa76",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 130
  },
@@ -42,8 +42,8 @@
   "chars": 63
  },
  "keranjang-0.wav": {
-  "key": "85d7830f63873212238a4bdee0b22e81310e629b6e86eeac7e8bdeb2f7f5c842",
-  "sha256": "e4e0c69fcf2c94992ae12d05056bc1124ac37ef368b699e9d372c6aeb48595f7",
+  "key": "99e1623c61484d0ff730d042212fa68497d956b5ec4b106d782b6eeecabac417",
+  "sha256": "47a45f74cd97dce8c45f0e81a06bb0f63abf4899180a37c55be0dd3dec87a19d",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 55
  },
@@ -60,8 +60,8 @@
   "chars": 127
  },
  "pelajaran-1.wav": {
-  "key": "6529856e99aa1e1f9fe6cd0eb36ecbde53281838737f759ab0b02a2ec8521ca0",
-  "sha256": "86d47c6b572e87fd266342f1aca7146d6c764f5e37c5a1a7dab055d739564b58",
+  "key": "196849099e893649b431372acbe9dc6a0b08b21414b591263a6fcbcccb44b7f7",
+  "sha256": "f4350dd444dd0cf53dd79c67f20bbf58709c33754bbfe87655896f22df095347",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 43
  },
@@ -78,8 +78,8 @@
   "chars": 112
  },
  "struk-1.wav": {
-  "key": "263e0b5812e8237cbbc3d7b01afc8db5b92c845d0caa02bffa17ee42093a0577",
-  "sha256": "358708b883d5debbce2d13ec4bb02208ccbb9d64046b64081d19e098db93f434",
+  "key": "2bc5ac74067fae139bd7f16b38be9ee20b819390b6e8d2854faacd1f388fce58",
+  "sha256": "b139e5f320d551ddeaca07879e43881b0c8efbf11486fc5b79cafba70aa3e412",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 13
  },
@@ -90,14 +90,14 @@
   "chars": 40
  },
  "syarat-0.wav": {
-  "key": "320f989df94927a9568e7cec9a43ce45303c918b0b106f24e4d9e0150909de71",
-  "sha256": "af40b9445e089f7149d4f6f054556caecd151a555734f89cfa4c76e810477a53",
+  "key": "9c421a931bb559c4269bd649538e2babcb9ea148dc43af7de6a12c04b609c026",
+  "sha256": "082ead3f82a379373cfa76641d2c36d8c5aa12ccf84ff34d6c06a8e1469ec5e7",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 121
  },
  "syarat-1.wav": {
-  "key": "4cf20d7621a9f7ef8865ea0843eede12c7f90c751173ae1d8c7a57e4e2d2d3fe",
-  "sha256": "edbc12759b027147ef4d6466455d2754e2fbea4db840db8675c20d258687b94b",
+  "key": "64787efe78f896433d3899dbff0b235f36781cf8508249964cc653f1f56bb972",
+  "sha256": "7443f7074f1a26a2d697b4a26f3bb6e017a299ee109266751560d55fd2ea369f",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 42
  }

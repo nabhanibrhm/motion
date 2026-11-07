@@ -1,31 +1,31 @@
 {
  "alihdaya-0.wav": {
-  "key": "13178342a34b0635ff1c0d8169a281dacc6eb088d965d917e270919569a3cb7f",
-  "sha256": "4dc92aeb2ff6f392f15bcd9493941df8f69235ef70e0a90d36fb5f45666b4888",
+  "key": "c35679b2c03e9ddd87353fd660df2be2611bc2e8667b192ed2fa925b3054ee1c",
+  "sha256": "5a0c49d3deac8877f09a9f7e1ac2a127da8488302e95bf1cf4087af7acdfc509",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 135
  },
  "alihdaya-1.wav": {
-  "key": "5a0ba600019ee6dd6ffa23bfec61077dac6bc8b276e00a844ee522e6e458117b",
-  "sha256": "953b26e8acfced540ec3b09f7f2f3aec18be178ca83ede196d803eb1de3603a6",
+  "key": "039d8dceaa4dfd7aff49eaa4aef2021530f06fabbf3cd7b5ac63c30ca2b443ee",
+  "sha256": "758fdd3dc02833083e51bf556dac2c84a921287b02c775c4f6b6e59045752bee",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 78
  },
  "alihdaya-2.wav": {
-  "key": "afc841b68496017c4b330a6155a70aff8237e4a111b8b93392023aa02b66b3b2",
-  "sha256": "db65d502d5ab2776bb292e3e7526c9b6d69ff0bcd719c92c4a33275f0050ae3e",
+  "key": "03c4e58cb5cef78c226ee537cb9685901d61f44ee6f75947ba48180506f524e1",
+  "sha256": "016a516d02ba3d6d9c9644abec5f6fd24853537984042076e3180b8066e18259",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 79
  },
  "cek-0.wav": {
-  "key": "ce815113ab22ff38903625c03a2cc63a4b9a9b00ef9c5cc9994718819bc26ede",
-  "sha256": "4eba6eba47723cd1ffca088efdbb762f3075944bd9e4babb315694a413d6a82a",
+  "key": "5ab875317aae93f2b60fde657357df53129bceaef672d1c5411a42e9063abc81",
+  "sha256": "7ad9c99e13919f2a2d2dbc13726a906bf1f462ff2e2ab2b19f7438dfd259b686",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 122
  },
  "cek-1.wav": {
-  "key": "ed62d96e0cca62b9829581b01914e60df47263d60f09c850cd95d48fde8f9f6c",
-  "sha256": "8fcbe85c4564630cbfded205f6205b82069a7178f423ed1de9dfedfc527f1223",
+  "key": "62818459d0b3c59725f648e45b02133a9e4025b17e4c17ea93f079bb00c3cf80",
+  "sha256": "ebcccf43d5edcf3634ed92ecdef8874cd436e057720f9245234b4da4ef80098b",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 62
  },
@@ -36,14 +36,14 @@
   "chars": 121
  },
  "cuti-0.wav": {
-  "key": "525106c81900eb2267a946790f9c4b44fc39e0a36fce526a363569757036741b",
-  "sha256": "694a7e75cae3ff4f6ff41609a1866924ac2a3f622aa0e681aa3e68d3cb26196b",
+  "key": "e6fde85666cdf6978acc7aa518ffbbe51e197ad09348424ce83751aee3b4e747",
+  "sha256": "fa829e38f240ed60708b6c4daffd86adf75889817c1aebb7b46c574401b97a0b",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 148
  },
  "cuti-1.wav": {
-  "key": "b59fda14443eb467347cf690976245e9a01504135db9dca2ba11532a50ef90a9",
-  "sha256": "aabd95aed07e8fcbd76f3ae6134bf07038e952648bfca58ace5ede92a90c6132",
+  "key": "0ca3b5d4192c5b01fb8616b0c2950ecc6ba85a19f6bb635946ef3eda59bc47cc",
+  "sha256": "3979f4ba6da03789e80a401664d9bb0bd1144c39ab099d47830cbbbe806dc1ba",
   "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
   "chars": 85
  },
@@ -60,8 +60,8 @@
   "chars": 145
  },
  "kontrak-0.wav": {
-  "key": "6108b4c87c4209ad2ebdf7d4bd61af29b786002b7bf0959114a559dafe7fe824",
-  "sha256": "d413daab9a6316118d777db4e79303fa21a47ccca03d7568dba0b87980db399f",
+  "key": "aedd1e33493ade5d13c64ecf8bcc8bcf324184ae502e21e87451ee957a5351a2",
+  "sha256": "4fb8811e1d0b3c92c37e018e90341b17ac60fed95706697e9ba3bb1d0e114dd8",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 168
  },
@@ -72,8 +72,8 @@
   "chars": 120
  },
  "status-0.wav": {
-  "key": "a9014600b76589ef54e4fe786e17b30d17b7fe707daab6bf0028836519d8b780",
-  "sha256": "38e7f313dee5bd838c7435cb84a0d495c38f40281c5ab5f23341dd18be26db40",
+  "key": "dc64a20e5d9a9792a9c3455f2d20bf35f872b972dd4fc2e3aac7e63443bf3d6d",
+  "sha256": "3a727077b94fb5612dc7bd52f65f471367d2851e05d239fbb0ed913bdc19b0b3",
   "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
   "chars": 182
  },

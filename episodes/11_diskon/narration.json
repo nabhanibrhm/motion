@@ -13,6 +13,9 @@
     "voice": "M1",
     "speed": 1,
     "range": 1.5
+   },
+   "cartesia": {
+    "speed": 1.08
    }
   },
   "wec": {
@@ -35,7 +38,7 @@
     "range": 1.4
    },
    "cartesia": {
-    "speed": 0.85
+    "speed": 1.0
    }
   }
  },
