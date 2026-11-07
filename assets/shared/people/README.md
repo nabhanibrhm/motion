@@ -21,3 +21,20 @@ Portraits for the `hw-hook` and `hw-quote` templates, referenced from `episode.j
 
 | File | Person | Source URL | Author | Licence |
 |---|---|---|---|---|
+| prabowo.jpg | Prabowo Subianto | https://commons.wikimedia.org/wiki/File:Prabowo_Subianto_2024_official_portrait.jpg | Darwis Triadi & Ministry of State Secretariat | Public domain |
+| gibran.jpg | Gibran Rakabuming Raka | https://commons.wikimedia.org/wiki/File:Gibran_Rakabuming_2024_official_portrait.jpg | Darwis Triadi & Ministry of State Secretariat | Public domain |
+| jokowi.jpg | Joko Widodo | https://commons.wikimedia.org/wiki/File:Joko_Widodo_2019_official_portrait.jpg | Ministry of State Secretariat of the Republic of Indonesia (Kementerian Sekretariat Negara Republik Indonesia) | Public domain |
+| listyo-sigit.jpg | Listyo Sigit Prabowo | https://commons.wikimedia.org/wiki/File:Listyo_Sigit_Prabowo,_Kepala_Staf_Presiden_(2026).jpg | Kantor Staf Presiden Republik Indonesia | Public domain |
+| listyo-kapolri.jpg | Listyo Sigit Prabowo | https://commons.wikimedia.org/wiki/File:Kapolri_Jenderal_Polisi_Listyo_Sigit_Prabowo.jpg | Indonesian National Police | Public domain |
+| suyudi.jpg | Suyudi Ario Seto | https://commons.wikimedia.org/wiki/File:Kapolri_Jenderal_Polisi_Suyudi_Ario_Seto.jpg | Divisi Hubungan Masyarakat Kepolisian Negara Republik Indonesia | Public domain |
+| agus-subiyanto.jpg | Agus Subiyanto | https://commons.wikimedia.org/wiki/File:Panglima_TNI_Jenderal_TNI_Agus_Subiyanto.jpg | Indonesian National Armed Forces | Public domain |
+| ksal-muhammad-ali.jpg | Muhammad Ali | https://commons.wikimedia.org/wiki/File:KASAL,Laksamana_TNI_Muhammad_Ali.jpg | Indonesian Navy Information Service | Public domain |
+| prasetyo.jpg | Prasetyo Hadi | https://commons.wikimedia.org/wiki/File:Mensetneg_Prasetyo_Hadi.jpg | Minsitry of State Secretariat | Public domain |
+| yusril.jpg | Yusril Ihza Mahendra | https://commons.wikimedia.org/wiki/File:Yusril_Ihza_Mahendra,_Menko_Kumham-Imipas_2026.jpg | PPID Kemenko Kumham-Imipas | Public domain |
+| pramono.jpg | Pramono Anung | https://commons.wikimedia.org/wiki/File:Pramono_Anung_Gubernur_DKI.jpg | Government of Jakarta | Public domain |
+| puan.jpg | Puan Maharani | https://commons.wikimedia.org/wiki/File:Puan_Maharani,_Ketua_DPR-RI_(2024%E2%80%932029).jpg | House of Representatives of the Republic of Indonesia | Public domain |
+| dasco.jpg | Sufmi Dasco Ahmad | https://commons.wikimedia.org/wiki/File:Sufmi_Dasco_Ahmad,_Wakil_Ketua_DPR-RI_(2024%E2%80%932029).jpg | House of Representatives of the Republic of Indonesia | Public domain |
+| suahasil.jpg | Suahasil Nazara | https://commons.wikimedia.org/wiki/File:Suahasil_Nazara,_Menteri_Keuangan_RI_(2026).jpg | Ministry of Finance, Republic of Indonesia | Public domain |
+| bahlil.jpg | Bahlil Lahadalia | https://commons.wikimedia.org/wiki/File:Bahlil_Lahadalia_Official_Portrait.png | Indonesian Investment Ministry | Public domain |
+
+Roles and on-screen `credit` strings per file: `people.json`. Roles as of Nov 2026 (Kapolri changed 1 Oct 2026; Listyo Sigit is now Kepala Staf Kepresidenan). Not included: Roy Suryo (only a 2017 DPR portrait, 550 px, formal costume, framing inconsistent with the rest) and Tifauzia Tyassuma (only a video screenshot); both use the silhouette.

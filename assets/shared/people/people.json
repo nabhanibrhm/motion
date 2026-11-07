@@ -1,0 +1,170 @@
+{
+  "spec": "450x600 JPEG, see README.md",
+  "people": [
+    {
+      "slug": "prabowo",
+      "file": "people/prabowo.jpg",
+      "name": "Prabowo Subianto",
+      "role": "Presiden Republik Indonesia",
+      "roleAsOf": "2026-11",
+      "credit": "Darwis Triadi / Kemensetneg (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Prabowo_Subianto_2024_official_portrait.jpg",
+      "author": "Darwis Triadi & Ministry of State Secretariat",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "gibran",
+      "file": "people/gibran.jpg",
+      "name": "Gibran Rakabuming Raka",
+      "role": "Wakil Presiden Republik Indonesia",
+      "roleAsOf": "2026-11",
+      "credit": "Darwis Triadi / Kemensetneg (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Gibran_Rakabuming_2024_official_portrait.jpg",
+      "author": "Darwis Triadi & Ministry of State Secretariat",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "jokowi",
+      "file": "people/jokowi.jpg",
+      "name": "Joko Widodo",
+      "role": "Presiden ke-7 Republik Indonesia",
+      "roleAsOf": "2026-11",
+      "credit": "Kemensetneg RI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Joko_Widodo_2019_official_portrait.jpg",
+      "author": "Ministry of State Secretariat of the Republic of Indonesia (Kementerian Sekretariat Negara Republik Indonesia)",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "listyo-sigit",
+      "file": "people/listyo-sigit.jpg",
+      "name": "Listyo Sigit Prabowo",
+      "role": "Kepala Staf Kepresidenan (Kapolri sampai 1 Okt 2026)",
+      "roleAsOf": "2026-11",
+      "credit": "Kantor Staf Presiden (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Listyo_Sigit_Prabowo,_Kepala_Staf_Presiden_(2026).jpg",
+      "author": "Kantor Staf Presiden Republik Indonesia",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "listyo-kapolri",
+      "file": "people/listyo-kapolri.jpg",
+      "name": "Listyo Sigit Prabowo",
+      "role": "Kepala Staf Kepresidenan (Kapolri sampai 1 Okt 2026); foto berseragam Kapolri",
+      "roleAsOf": "2026-11",
+      "credit": "Divisi Humas Polri (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Kapolri_Jenderal_Polisi_Listyo_Sigit_Prabowo.jpg",
+      "author": "Indonesian National Police",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "suyudi",
+      "file": "people/suyudi.jpg",
+      "name": "Suyudi Ario Seto",
+      "role": "Kapolri (sejak 1 Okt 2026)",
+      "roleAsOf": "2026-11",
+      "credit": "Divisi Humas Polri (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Kapolri_Jenderal_Polisi_Suyudi_Ario_Seto.jpg",
+      "author": "Divisi Hubungan Masyarakat Kepolisian Negara Republik Indonesia",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "agus-subiyanto",
+      "file": "people/agus-subiyanto.jpg",
+      "name": "Agus Subiyanto",
+      "role": "Panglima TNI",
+      "roleAsOf": "2026-11",
+      "credit": "TNI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Panglima_TNI_Jenderal_TNI_Agus_Subiyanto.jpg",
+      "author": "Indonesian National Armed Forces",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "ksal-muhammad-ali",
+      "file": "people/ksal-muhammad-ali.jpg",
+      "name": "Muhammad Ali",
+      "role": "Kepala Staf TNI Angkatan Laut (KSAL)",
+      "roleAsOf": "2026-11",
+      "credit": "Dispenal TNI AL (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:KASAL,Laksamana_TNI_Muhammad_Ali.jpg",
+      "author": "Indonesian Navy Information Service",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "prasetyo",
+      "file": "people/prasetyo.jpg",
+      "name": "Prasetyo Hadi",
+      "role": "Menteri Sekretaris Negara",
+      "roleAsOf": "2026-11",
+      "credit": "Kemensetneg RI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Mensetneg_Prasetyo_Hadi.jpg",
+      "author": "Minsitry of State Secretariat",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "yusril",
+      "file": "people/yusril.jpg",
+      "name": "Yusril Ihza Mahendra",
+      "role": "Menko Hukum, HAM, Imigrasi dan Pemasyarakatan",
+      "roleAsOf": "2026-11",
+      "credit": "Kemenko Kumham-Imipas (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Yusril_Ihza_Mahendra,_Menko_Kumham-Imipas_2026.jpg",
+      "author": "PPID Kemenko Kumham-Imipas",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "pramono",
+      "file": "people/pramono.jpg",
+      "name": "Pramono Anung",
+      "role": "Gubernur DKI Jakarta",
+      "roleAsOf": "2026-11",
+      "credit": "Pemprov DKI Jakarta (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Pramono_Anung_Gubernur_DKI.jpg",
+      "author": "Government of Jakarta",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "puan",
+      "file": "people/puan.jpg",
+      "name": "Puan Maharani",
+      "role": "Ketua DPR RI",
+      "roleAsOf": "2026-11",
+      "credit": "DPR RI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Puan_Maharani,_Ketua_DPR-RI_(2024%E2%80%932029).jpg",
+      "author": "House of Representatives of the Republic of Indonesia",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "dasco",
+      "file": "people/dasco.jpg",
+      "name": "Sufmi Dasco Ahmad",
+      "role": "Wakil Ketua DPR RI",
+      "roleAsOf": "2026-11",
+      "credit": "DPR RI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Sufmi_Dasco_Ahmad,_Wakil_Ketua_DPR-RI_(2024%E2%80%932029).jpg",
+      "author": "House of Representatives of the Republic of Indonesia",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "suahasil",
+      "file": "people/suahasil.jpg",
+      "name": "Suahasil Nazara",
+      "role": "Menteri Keuangan",
+      "roleAsOf": "2026-11",
+      "credit": "Kemenkeu RI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Suahasil_Nazara,_Menteri_Keuangan_RI_(2026).jpg",
+      "author": "Ministry of Finance, Republic of Indonesia",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "bahlil",
+      "file": "people/bahlil.jpg",
+      "name": "Bahlil Lahadalia",
+      "role": "Menteri ESDM dan Menko Hilirisasi dan Transisi Energi",
+      "roleAsOf": "2026-11",
+      "credit": "Kementerian Investasi/BKPM (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Bahlil_Lahadalia_Official_Portrait.png",
+      "author": "Indonesian Investment Ministry",
+      "licence": "Public domain"
+    }
+  ]
+}
