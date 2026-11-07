@@ -82,6 +82,41 @@ node scripts/motion.mjs clean <id> --execute --target build
 
 Build and still caches can be removed explicitly. Voice caches are valuable generated speech and are always protected; the CLI rejects `clean --target voice`. Migration evidence and original source archive under `.cache/migration-baseline/` are not cleanup targets.
 
+## HotWizz Flash (breaking news in ≤30 minutes)
+
+A Flash episode is 45–70 s, one narrator (Nisa, `wec`, Cartesia), 30 fps, no baked bed, and has **no hand-drawn scenes**: every scene is a shared `hw-*` template filled from `episode.json` props (`src/templates/hotwizz.mjs`, browser kit `src/templates/hotwizz-kit.js`). Neutrality rules from HANDOFF.md still apply: two outlets per claim, equal card/photo treatment for every side, attributed readings, "tersangka" + praduga tak bersalah.
+
+News-day recipe (times from an approved script):
+
+1. **Scaffold (1 min).** `git pull`, check the highest episode number on `origin`, then `node scripts/motion.mjs new <id> --title "Judul" --flash`. This writes the hotwizz theme, `HOTWIZZ #NN` (counted from existing hotwizz episodes), `audio.bed: null`, 30 fps, `narration.source: "cartesia"` with speaker `wec`, and five scenes: `hook` (hw-hook), `resmi` (hw-resmi), `belum` (hw-split), `kutipan` (hw-quote, optional) and `penutup` (hw-cover). Plain `new` without `--flash` is unchanged.
+2. **Narration + sources (5 min).** One line per section in `narration.json` (hook as one chunk, no `[pause]`, few commas; keep `after: 1.2` on the last line for the cover). Sources table S1–Sn in `script-short.md`. To drop the quote, delete the `kutipan` scene and section and set `runtime.case.steps` to 4; to add a number card, add an `hw-number` scene with a matching section.
+3. **Photos (5 min, optional).** Put graded 450×600 crops in `assets/shared/people/<slug>.jpg` (rules in `assets/shared/people/README.md`), set `person.photo` and `person.credit`. Without a photo use `"photo": null` for the silhouette, for everyone in the video.
+4. **Fill props (8 min)** and `node scripts/motion.mjs validate <id>`. Validation names unknown props, missing photos, photos without credit and cue words not in the narration.
+5. **Voice (2–3 min, Cartesia credits).** `node scripts/motion.mjs voice <id>`.
+6. **Stills (≈1 min).** `node scripts/motion.mjs stills <id> --at 0,<a few times>,<last second>`; frame 0 must show the claim, the last second the cover. `sync` takes <1 s and 15 stills about 13 s.
+7. **Render (5–8 min)** `node scripts/motion.mjs render <id>`, then caption in `out/caption/`.
+
+Template props (`*text*` marks an accent colour, `\n` a line break; a cue is a spoken word, or `word:x#1`, `line:0`, `line:0:end`, `word:x+6`, or a frame number; without cues items reveal evenly; every template also takes `label` (progress strip text), `step`, `sfx: false`):
+
+| Template | Props |
+|---|---|
+| `hw-hook` | `headline`, `claim`, `person {name, role?, status?, photo?, credit?}`, `kicker?` (bar, default UPDATE), `tag?`, `cue?` (headline pop), `stamp? {text, cue}` (beside the name, never on a face). Everything is visible at frame 0. |
+| `hw-resmi` | `items` 2–4 × `{text, source, cue?}`, `title?` (YANG RESMI), `kicker?` |
+| `hw-split` | `left {title? = RESMI, items 1–4 × {text, source?, cue?}}`, `right {title? = BELUM JELAS, items}`, `headline?`, `source?`, `kicker?`. Both columns have the same size and style. |
+| `hw-quote` | `person`, `quote`, `source`, `date?`, `cue?`, `kicker?` |
+| `hw-number` | `value` (e.g. `"20.980"`, `"Rp1,5 T"`), `caption`, `source`, `unit?`, `cue?`, `countUp?` (default true), `kicker?` |
+| `hw-cover` | `cover {title, chip?, stamp? = case id}`, `lines` 0–6 × `{text, cue?, style? big|text|kicker|chip|cta}`, `footer?`, `coverAt?`. The title-only cover starts 4 frames after the last word, inside the 3:4 crop. |
+
+```json
+"scenes": [
+  { "id": "hook", "template": "hw-hook", "props": { "headline": "NAMA TOKOH\n*KLAIM UTAMA*", "claim": "Kata sumber: *angka* atau klaim", "tag": "KATA POLISI", "person": { "name": "Nama Tokoh", "role": "Jabatan", "photo": "people/nama-tokoh.jpg", "credit": "Pemotret via Wikimedia Commons (CC BY-SA 4.0)" }, "cue": "klaim" } },
+  { "id": "resmi", "template": "hw-resmi", "props": { "items": [ { "text": "Fakta *pertama*", "source": "Kompas, detik (7 Nov)", "cue": "pertama" }, { "text": "Fakta kedua", "source": "Antara, CNN Indonesia", "cue": "kedua" } ] } },
+  { "id": "belum", "template": "hw-split", "props": { "left": { "items": [ { "text": "Yang dikonfirmasi", "source": "Kompas" } ] }, "right": { "items": [ { "text": "Alasan belum dijelaskan", "cue": "alasan" } ] } } },
+  { "id": "kutipan", "template": "hw-quote", "props": { "person": { "name": "Nama", "role": "Jabatan", "photo": null }, "quote": "Kutipan persis.", "source": "Kompas", "date": "7 Nov 2026" } },
+  { "id": "penutup", "template": "hw-cover", "props": { "lines": [ { "text": "INGAT", "style": "kicker" }, { "text": "*PRADUGA* TAK BERSALAH" }, { "text": "FOLLOW UNTUK UPDATE", "style": "cta", "cue": "follow" } ], "cover": { "title": "NAMA TOKOH\n*KLAIM UTAMA*", "chip": "INI YANG RESMI" } } }
+]
+```
+
 ## Current production set
 
 The seven finished outputs are `01-inflasi-short.mp4` through `07-kelas-short.mp4` under `out/`. Review status and episode-specific notes are in [HANDOFF.md](HANDOFF.md). Before publishing, include the full sources list from the episode's `script-short.md` in the video description.

@@ -13,7 +13,7 @@ import {withEpisodeLock} from '../src/pipeline/lock.mjs';
 import {randomUUID} from 'node:crypto';
 
 const commands=new Set(['list','new','validate','voice','sync','preview','stills','lint','check','render','clean']);
-const flags={list:[],new:['title','number','category'],validate:['all'],voice:['all','force'],sync:['all','check'],preview:[],stills:['at','scene'],lint:['all'],check:['all'],render:['all','no-master'],clean:['all','execute','dry-run','target']};
+const flags={list:[],new:['title','number','category','flash'],validate:['all'],voice:['all','force'],sync:['all','check'],preview:[],stills:['at','scene'],lint:['all'],check:['all'],render:['all','no-master'],clean:['all','execute','dry-run','target']};
 const values=new Set(['title','number','category','at','scene','target']);
 const hfValues={preview:new Set(['port']),render:new Set(['quality','workers','crf','video-bitrate','keyframe-interval','max-bitrate','buffer-size','browser-timeout','protocol-timeout','player-ready-timeout'])};
 const hfFlags={preview:new Set(['force-new','background','foreground','status','stop','no-open','lint-verbose','json','context','selection','browser-gpu','no-browser-gpu','proxy','no-proxy']),render:new Set(['gpu','browser-gpu','no-browser-gpu','quiet','lint-verbose','debug','best-effort','no-best-effort','low-memory-mode','no-low-memory-mode']),lint:new Set(['json','verbose']),check:new Set(['json'])};
@@ -68,6 +68,7 @@ const help=`motion — shared HyperFrames 0.8.210 episode pipeline
 Usage: node scripts/motion.mjs <command> <episode> [options]
   list                           List authored episodes
   new <id> --title "Title"        Create an episode using a shared title-card
+      [--flash]                  HotWizz Flash skeleton (hotwizz theme, Nisa/Cartesia, hw-* templates)
   validate <id>|--all             Validate configuration and source references
   voice <id>|--all [--force]      Explicitly generate/reuse the voice cache
   sync <id>|--all [--check]       Build the disposable HyperFrames project
@@ -82,7 +83,8 @@ Voice caches are retained by clean. Diagnostic frames use .cache/stills.
 Use -- before extra preview/lint/check/render HyperFrames arguments.
 `;
 
-export function createEpisode(id,{title,number,category='Ekonomi_keuangan',repoRoot=REPO_ROOT}={}) {
+export function createEpisode(id,{title,number,category=undefined,flash=false,repoRoot=REPO_ROOT}={}) {
+  category??=flash?'Berita':'Ekonomi_keuangan';
   if(!ID.test(id || '')) throw new Error('new requires a lowercase episode id');
   if(!title?.trim()) throw new Error('new requires --title');
   const ids=listEpisodes({repoRoot});
@@ -93,6 +95,14 @@ export function createEpisode(id,{title,number,category='Ekonomi_keuangan',repoR
   const dir=within(repoRoot,`episodes/${episodeFolder(id,next)}`);
   if(existsSync(dir)) throw new Error(`Episode folder already exists: ${dir}`);
   if(!/^[\p{L}\p{N}][\p{L}\p{N}_ -]*$/u.test(category)) throw new Error('Invalid category name');
+  if(flash) {
+    const hotwizz=ids.filter(x=>loadEpisode(x,{repoRoot}).config.theme==='hotwizz').length+1;
+    const {config,narration,script}=flashSkeleton({id,number:next,title,category,caseId:`HOTWIZZ #${String(hotwizz).padStart(2,'0')}`});
+    mkdirSync(dir,{recursive:true});
+    for(const [name,data] of [['episode.json',config],['narration.json',narration]]) writeFileSync(join(dir,name),JSON.stringify(data,null,2)+'\n');
+    writeFileSync(join(dir,'script-short.md'),script);
+    return loadEpisode(id,{repoRoot});
+  }
   const config={schemaVersion:1,id,number:next,title,category,narration:'narration.json',script:'script-short.md',video:{width:1080,height:1920,fps:30},runtime:{profile:'modern',case:{id:`KASUS #${String(next).padStart(2,'0')}`,steps:1}},scenes:[{id:'hook',template:'title-card',props:{title}}],audio:{bed:null,bedGain:.3,loudness:{integrated:-14,truePeak:-1,range:11}}};
   const narration={source:'supertonic',speakers:{mog:{supertonic:{voice:'M1',speed:1,range:1.5}}},chapters:[{id:'kasus',title}],defaults:{lead:.15,tail:.1,gapSameSpeaker:.1,gapNewSpeaker:.1,firstLead:.2,chapterLead:.1,chapterEndTail:.1},sections:[{id:'hook',chapter:'kasus',lines:[{speaker:'mog',text:title}]}]};
   mkdirSync(dir,{recursive:true});
@@ -100,10 +110,57 @@ export function createEpisode(id,{title,number,category='Ekonomi_keuangan',repoR
   writeFileSync(join(dir,'script-short.md'),`# ${title}\n\nReplace this starter narration and scene before production. Add full sources for every claim here.\n`);
   return loadEpisode(id,{repoRoot});
 }
+/** HotWizz Flash starter: 5 data-only scenes (hw-* templates), one narrator (Nisa, Cartesia), 30 fps, no bed. */
+export function flashSkeleton({id,number,title,category,caseId}) {
+  const line=text=>[{speaker:'wec',text}];
+  const sections=[
+    ['hook','Ganti: nama tokoh terkenal dan klaim utama dalam satu kalimat, tanpa koma berlebihan.'],
+    ['resmi','Ganti: fakta resmi pertama, kedua dan ketiga, masing-masing dari dua media.'],
+    ['belum','Ganti: yang resmi dan yang belum jelas, dengan bobot yang sama.'],
+    ['kutipan','Ganti: kutipan tokoh dengan sumber dan tanggal, atau hapus adegan ini.'],
+    ['penutup','Ganti: status hukum, praduga tak bersalah, lalu ajakan follow untuk update.'],
+  ];
+  const config={schemaVersion:1,id,number,title,category,theme:'hotwizz',narration:'narration.json',script:'script-short.md',video:{width:1080,height:1920,fps:30},
+    runtime:{profile:'modern',case:{id:caseId,steps:sections.length}},
+    scenes:[
+      {id:'hook',template:'hw-hook',props:{headline:'TOKOH\n*KLAIM UTAMA*',claim:'GANTI DENGAN KLAIM HOOK',tag:'KATA SUMBER',person:{name:'NAMA TOKOH',role:'Jabatan',photo:null}}},
+      {id:'resmi',template:'hw-resmi',props:{items:[{text:'Fakta resmi pertama',source:'Media A, Media B'},{text:'Fakta resmi kedua',source:'Media A, Media C'},{text:'Fakta resmi ketiga',source:'Media B, Media C'}]}},
+      {id:'belum',template:'hw-split',props:{left:{items:[{text:'Yang sudah dikonfirmasi'},{text:'Pernyataan resmi'}]},right:{items:[{text:'Yang belum dijelaskan'},{text:'Pertanyaan terbuka'}]}}},
+      {id:'kutipan',template:'hw-quote',props:{person:{name:'NAMA TOKOH',role:'Jabatan',photo:null},quote:'Kutipan persis dari sumber.',source:'Media A'}},
+      {id:'penutup',template:'hw-cover',props:{lines:[{text:'INGAT',style:'kicker'},{text:'*PRADUGA* TAK BERSALAH'},{text:'FOLLOW UNTUK UPDATE',style:'cta'}],cover:{title:'JUDUL\n*COVER*',chip:'KLAIM SINGKAT?'}}},
+    ],
+    audio:{bed:null,bedGain:.3,loudness:{integrated:-14,truePeak:-1,range:11}}};
+  const narration={source:'cartesia',speakers:{wec:{supertonic:{voice:'F2',speed:1,range:1.4}}},chapters:[{id:'update',title}],
+    defaults:{lead:.15,tail:.1,gapSameSpeaker:.1,gapNewSpeaker:.1,firstLead:.2,chapterLead:.1,chapterEndTail:.1},
+    sections:sections.map(([sid,text],i)=>({id:sid,chapter:'update',lines:i===sections.length-1?[{speaker:'wec',text,after:1.2}]:line(text)}))};
+  const script=`# ${title} (${caseId})
+
+HotWizz Flash. Narrator: Nisa (wec, Cartesia). 45-70 s, 30 fps, no baked bed.
+
+## Script
+
+One line per section in narration.json; hook as one chunk, no [pause], few commas.
+
+## Sources (two outlets per claim, or drop it)
+
+| # | Claim | Outlets, date |
+|---|---|---|
+| S1 | | |
+
+## Do not use
+
+- 
+
+## Photo credits
+
+- 
+`;
+  return {config,narration,script};
+}
 export async function main(argv=process.argv.slice(2)) {
   const {command,options:o,positionals:pos,forward}=parseArgs(argv);
   if(command==='help'){console.log(help);return;}
-  if(command==='new'){const ctx=createEpisode(pos[0],o);console.log(`Created ${ctx.episodeDir}`);return;}
+  if(command==='new'){const ctx=createEpisode(pos[0],{...o,flash:!!o.flash});console.log(`Created ${ctx.episodeDir}`);return;}
   const ids=o.all?listEpisodes():pos[0]?[pos[0]]:[];
   if(command==='list') {
     for(const id of listEpisodes()){const {config:c}=loadEpisode(id);console.log(`${String(c.number).padStart(2,'0')}  ${id}  ${c.title}`);}return;

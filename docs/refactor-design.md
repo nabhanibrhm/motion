@@ -138,7 +138,7 @@ or, for a reusable built-in scene supported by the template registry:
 { "id": "hook", "template": "title-card", "props": { "title": "Example" } }
 ```
 
-The `new` command may scaffold an episode using the reusable template. New bespoke scenes can choose `file` without modifying the CLI or shared runtime. Validate unknown template names and missing section mappings before attempting to render. A template must produce the same HyperFrames composition contract and use frame-based animation.
+The registry is `src/templates/registry.mjs`: `title-card` plus the HotWizz Flash templates `hw-hook`, `hw-resmi`, `hw-split`, `hw-quote`, `hw-number` and `hw-cover` (`src/templates/hotwizz.mjs`, props listed in README "HotWizz Flash"). Each validates its props and cue anchors in `validateEpisode` and renders a composition that inlines `src/templates/hotwizz-kit.js`. The `new` command may scaffold an episode using the reusable template, or the five-scene Flash skeleton with `--flash`. New bespoke scenes can choose `file` without modifying the CLI or shared runtime. Validate unknown template names and missing section mappings before attempting to render. A template must produce the same HyperFrames composition contract and use frame-based animation.
 
 Synchronization reads authored HTML, updates anchored audio start times in memory, and writes its generated composition. It must not hardlink a scene source and then mutate the link. No build operation edits `episodes/`.
 

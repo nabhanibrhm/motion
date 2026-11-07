@@ -2,6 +2,7 @@ import {existsSync,readFileSync} from 'node:fs';
 import {join} from 'node:path';
 import {ID,within} from './episodes.mjs';
 import {loadTiming} from '../runtime/timing.mjs';
+import {checkTemplate} from '../templates/registry.mjs';
 const reserved=new Set(['root','background','captions','chapter-card']);
 export function validateEpisode(ctx,{voice=null}={}) {
   const {config:c,narration:n,episodeDir,paths}=ctx, errors=[];
@@ -87,7 +88,7 @@ export function validateEpisode(ctx,{voice=null}={}) {
     check(!ids.has(s.id),`Duplicate scene id: ${s.id}`);ids.add(s.id);
     check(s.id===sections[i]?.id,`Scene order must equal narration section order at ${s.id}`);
     check(!!s.file !== !!s.template,`${s.id}: use exactly one file or template`);
-    if(s.template) check(s.template==='title-card'&&typeof s.props?.title==='string'&&s.props.title.trim(),`${s.id}: invalid template/props`);
+    if(s.template) {const r=checkTemplate(s,ctx);errors.push(...r.errors);if(!r.errors.length) for(const spec of r.anchors) validateAnchor(s.id,spec);}
     if(s.file) try {
       const path=within(episodeDir,s.file);check(existsSync(path),`Missing scene: ${s.file}`);
       if(existsSync(path)) {
