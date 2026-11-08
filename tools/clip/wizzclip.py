@@ -64,7 +64,8 @@ def cmd_fetch(a):
     out = wdir(slug)
     cmd = [sys.executable, "-m", "yt_dlp", "-f",
            "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/b[height<=1080]",
-           "--merge-output-format", "mp4", "-o", str(out / "source.%(ext)s"), "--no-playlist"]
+           "--merge-output-format", "mp4", "-o", str(out / "source.%(ext)s"), "--no-playlist",
+           "--js-runtimes", "node"]  # YouTube needs a JS runtime; Node is installed for motion
     if a.from_ or a.to:
         cmd += ["--download-sections", f"*{a.from_ or '0'}-{a.to or 'inf'}", "--force-keyframes-at-cuts"]
     subprocess.run(cmd + [a.url], check=True)
@@ -88,6 +89,8 @@ def cmd_streamer(a):
         if len(rect) != 4:
             die("--facecam needs x,y,w,h")
         db[a.name] = {"facecam": rect, "credit": a.credit or a.name}
+        if a.focus is not None:
+            db[a.name]["focus"] = a.focus
         p.write_text(json.dumps(db, indent=2), encoding="utf-8")
         print(f"saved {a.name}: {db[a.name]}")
     else:
@@ -291,7 +294,7 @@ def clean(t):
     return re.sub(r"[{}\\]", "", t).upper()
 
 
-def build_ass(groups, dur, cap_y, title, credit):
+def build_ass(groups, dur, cap_y, title, credit, title_y=330):
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -301,7 +304,7 @@ WrapStyle: 2
 [V4+ Styles]
 Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
 Style: Cap,{FONT},84,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,9,2,5,40,40,0,1
-Style: Title,{FONT},66,&H00FFFFFF,&H00FFFFFF,&H002020E0,&H00000000,0,0,0,0,100,100,0,0,1,26,0,5,60,60,0,1
+Style: Title,{FONT},76,&H00FFFFFF,&H00FFFFFF,&H002020E0,&H00000000,0,0,0,0,100,100,0,0,1,26,0,5,60,60,0,1
 Style: Brand,{FONT},40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,4,0,5,40,40,0,1
 
 [Events]
@@ -315,9 +318,9 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
             txt = " ".join((YELLOW + clean(w[0]) + WHITE) if j == i else clean(w[0]) for j, w in enumerate(g))
             ev.append(f"Dialogue: 1,{ts_ass(max(s, 0))},{ts_ass(end)},Cap,,0,0,0,,{{\\pos({W // 2},{cap_y})}}{txt}")
     if title:  # rounded red box = thick red round-joined outline around white text
-        lines = r"\N".join(textwrap.wrap(clean(title), 16))
+        lines = r"\N".join(textwrap.wrap(clean(title), 18))
         ev.append(f"Dialogue: 2,{ts_ass(0)},{ts_ass(min(3, dur))},Title,,0,0,0,,"
-                  f"{{\\pos({W // 2},330)\\fad(150,250)}}{lines}")
+                  f"{{\\pos({W // 2},{title_y})\\fad(150,250)}}{lines}")
     ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1790)\\3c&H2020E0&\\bord6}}WIZZ CLIP ID")
     if credit:
         ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1850)\\fs32}}{clean(credit)}")
@@ -368,14 +371,19 @@ def cmd_cut(a):
         print(f"editable captions: {srt_out}")
     cap_y = int(H * (0.72 if a.layout == "blur" else 0.62))
     credit = f"Sumber: {preset['credit'] if preset else a.streamer}" if a.streamer else ""
-    (d / "clip.ass").write_text(build_ass(groups, dur, cap_y, a.title, credit), encoding="utf-8")
+    top = round(H * 0.38)
+    title_y = top if a.layout == "stack" else 330  # stack: hook sits on the facecam/gameplay seam
+    (d / "clip.ass").write_text(build_ass(groups, dur, cap_y, a.title, credit, title_y), encoding="utf-8")
 
     if a.layout == "stack":
         sc = sw / 1920
         x, y, w, h = (round(v * sc) for v in preset["facecam"])
-        top = round(H * 0.38)
-        vf = (f"[0:v]split=2[f][g];[f]crop={w}:{h}:{x}:{y},scale={W}:{top}:force_original_aspect_ratio=increase,"
-              f"crop={W}:{top}[top];[g]scale=-2:{H - top},crop={W}:{H - top}[bot];[top][bot]vstack[v0]")
+        focus = a.focus if a.focus is not None else preset.get("focus", 0.5)
+        # facecam fitted (not cropped) over a blurred fill, so cut-out cams keep the whole head
+        vf = (f"[0:v]split=2[f][g];[f]crop={w}:{h}:{x}:{y},split=2[fa][fb];"
+              f"[fa]scale={W}:{top}:force_original_aspect_ratio=increase,crop={W}:{top},boxblur=20:4,eq=brightness=-0.15[fbg];"
+              f"[fb]scale={W}:{top}:force_original_aspect_ratio=decrease[ffg];[fbg][ffg]overlay=(W-w)/2:(H-h)/2[top];"
+              f"[g]scale=-2:{H - top},crop={W}:{H - top}:(iw-{W})*{focus:.3f}:0[bot];[top][bot]vstack[v0]")
     elif a.layout == "blur":
         vf = (f"[0:v]split=2[a][b];[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
               f"boxblur=25:5,eq=brightness=-0.1[bg];[b]scale={W}:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2[v0]")
@@ -424,12 +432,14 @@ def main():
     f.add_argument("--mute", help="e.g. 12.0-18.5,40-44 (seconds relative to clip start)")
     f.add_argument("--srt")
     f.add_argument("--out")
+    f.add_argument("--focus", type=float, help="stack: gameplay crop centre 0=left..1=right (default: preset focus or 0.5)")
     f.set_defaults(fn=cmd_cut)
     f = sp.add_parser("streamer", help="add/list facecam presets")
     f.add_argument("action", choices=["add", "list"])
     f.add_argument("name", nargs="?")
     f.add_argument("--facecam", help="x,y,w,h in 1920x1080 pixels")
     f.add_argument("--credit")
+    f.add_argument("--focus", type=float, help="default gameplay crop centre 0..1 for stack")
     f.set_defaults(fn=cmd_streamer)
     f = sp.add_parser("frame", help="save a PNG of the source at time t")
     f.add_argument("slug")
