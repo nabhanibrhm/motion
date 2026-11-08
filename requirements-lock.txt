@@ -38,3 +38,4 @@ tqdm==4.70.1
 truststore==0.10.5
 typing_extensions==4.16.0
 yarl==1.25.1
+yt-dlp==2026.10.26
