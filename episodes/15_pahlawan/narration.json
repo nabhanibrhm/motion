@@ -1,0 +1,96 @@
+{
+  "source": "cartesia",
+  "say": {
+    "PTMA": "pe te em a",
+    "BEM": "bem"
+  },
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "10 November: Mahasiswa Turun, Apa Tuntutannya?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Hari ini sepuluh November, Hari Pahlawan, dan mahasiswa turun ke jalan di Jakarta. Sebenarnya apa yang mereka tuntut?"
+        }
+      ]
+    },
+    {
+      "id": "resmi",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "BEM PTMA, gabungan mahasiswa kampus Muhammadiyah, menggelar aksi Pulihkan Indonesia di Tugu Tani mulai siang hari ini."
+        },
+        {
+          "speaker": "wec",
+          "text": "Lima tuntutan mereka mencakup krisis ekologi dan karhutla, korupsi dan hak dasar rakyat, serta keadilan hukum dan undang-undang yang pro rakyat."
+        },
+        {
+          "speaker": "wec",
+          "text": "Mereka juga meminta Menteri Kehutanan Raja Juli Antoni dicopot. Koordinatornya menegaskan aksi ini murni kritik dan tidak ditunggangi."
+        }
+      ]
+    },
+    {
+      "id": "fmn",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Front Mahasiswa Nasional juga menyerukan aksi nasional bertajuk Sepuluh November Memanggil, soal harga kebutuhan pokok, biaya pendidikan, kesehatan dan pajak."
+        }
+      ]
+    },
+    {
+      "id": "belum",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Menko Polkam Dudung Abdurachman menyebut ini bukan demo besar dan sudah diantisipasi. TNI disiagakan, tapi Jakarta dipastikan bukan Siaga Satu."
+        },
+        {
+          "speaker": "wec",
+          "text": "Yang belum jelas adalah jumlah massa, perkiraannya lima ratus sampai delapan ratus orang, dan daftar lengkap tuntutan FMN belum dirilis resmi."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Hari Pahlawan mengenang Pertempuran Surabaya seribu sembilan ratus empat puluh lima. Menurutmu tuntutan mana yang paling penting? Tulis di komentar dan follow untuk update.",
+          "after": 1.2
+        }
+      ]
+    }
+  ]
+}
