@@ -111,7 +111,8 @@ test('a lock whose owner process died on this host is broken with a notice; live
   assert.equal(notices.length,1);
 });
 
-test('SIGINT/SIGTERM during a child process is an Interrupted error that still releases the lock',async t=>{
+// Windows has no POSIX signals: process.kill(pid,"SIGINT") just terminates with exit code 1, no signal reported.
+test('SIGINT/SIGTERM during a child process is an Interrupted error that still releases the lock',{skip:process.platform==='win32'&&'POSIX signals only'},async t=>{
   const root=fixture(t);
   const ctx={id:'demo',repoRoot:root};
   assert.throws(()=>runNode(['-e','process.kill(process.pid,"SIGINT")']),Interrupted);

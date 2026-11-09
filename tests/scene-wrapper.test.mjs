@@ -25,7 +25,7 @@ const BODY_DUA=`scene((f, { w }) => \`<p>\${f + w("contoh", 1)}</p>\${"line:0"}\
 async function wrappedFixture(t) {
   await fs.mkdir(join(REPO_ROOT,'.cache'),{recursive:true});
   const root=await fs.mkdtemp(join(REPO_ROOT,'.cache/wrapper-test-'));
-  t.after(async()=>{assert.ok(resolve(root).startsWith(resolve(REPO_ROOT,'.cache')));await fs.rm(root,{recursive:true,force:true});});
+  t.after(async()=>{assert.ok(resolve(root).startsWith(resolve(REPO_ROOT,'.cache')));await fs.rm(root,{recursive:true,force:true,maxRetries:10,retryDelay:200});}); // retries: Windows briefly holds locks (EBUSY) after lint/build
   for(const name of ['src/runtime','src/templates','config']) await fs.cp(join(REPO_ROOT,name),join(root,name),{recursive:true});
   for(const name of ['tools/voice','assets/shared/fonts','assets/shared/sfx']) await fs.mkdir(join(root,name),{recursive:true});
   await fs.writeFile(join(root,'tools/voice/generate.py'),'fixture');

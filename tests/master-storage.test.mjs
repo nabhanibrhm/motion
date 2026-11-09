@@ -45,7 +45,7 @@ test('mix and loudnorm argument arrays are unchanged from HEAD (bed and no bed)'
     for (const [name, bedPath] of [['bed', path.join(D, 'bed.wav')], ['nobed', null]]) {
       const calls = [];
       const r = await masterVideo({ input: path.join(D, 'in/raw.mp4'), output: path.join(D, 'out/ep.mp4'), bedPath, bedGain: .3, integrated: -14, truePeak: -1, range: 11 }, { run: fakeRun(calls) });
-      const norm = calls.slice(0, 3).map(c => c.map(s => s.split(D).join('<DIR>').replace(/\.ep-\d+-\d+\.mp4$/, '.ep-<PID>-<TS>.mp4')));
+      const norm = calls.slice(0, 3).map(c => c.map(s => s.split(D).join('<DIR>').replaceAll('\\', '/').replace(/\.ep-\d+-\d+\.mp4$/, '.ep-<PID>-<TS>.mp4')));
       assert.deepEqual(norm, HEAD[name], name);
       assert.equal(await fs.readFile(path.join(D, 'out/ep.mp4'), 'utf8'), 'mastered');
       assert.deepEqual(r.measured, { duration: 3, fps: 30, frames: 90, lufs: -14, truePeak: -1.2, lra: 5.3, size: 8 });
