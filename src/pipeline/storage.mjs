@@ -96,7 +96,24 @@ export async function clean(ctx, { execute = false, target = 'all' } = {}) {
     }
     allowed.push(expected);
   }
-  const protectedPaths = target === 'voice' || target === 'all' ? [ctx.paths.voiceDir] : [];
+  const protectedPaths = target === 'all' ? [ctx.paths.voiceDir] : [];
+  const staleVoice = await staleVoiceTemps(ctx);
   if (execute) for (const dir of allowed) await fs.rm(dir,{recursive:true,force:true});
-  return { execute, paths: allowed, protected: protectedPaths };
+  return { execute, paths: allowed, protected: protectedPaths, staleVoice };
+}
+export const STALE_VOICE_LABEL = 'stale voice temp (not removed)';
+// Leftovers of an interrupted voice run (`<id>-tmp-*` staging, `<id>-previous-*` backup) beside .cache/voice/<id>.
+// They are only reported: a -previous- dir can be the last good cache after a failed swap, so a person decides.
+export async function staleVoiceTemps(ctx) {
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(ctx.id)) throw new Error('Invalid episode id');
+  const parent = path.resolve(ctx.repoRoot,'.cache','voice');
+  let names; try { names = await fs.readdir(parent); } catch (e) { if (e.code === 'ENOENT') return []; throw e; }
+  return names.filter(n => n.startsWith(`${ctx.id}-tmp-`) || n.startsWith(`${ctx.id}-previous-`)).sort().map(n => path.join(parent,n));
+}
+// Text the CLI prints for clean (dry run or executed).
+export function cleanReport(id, r) {
+  const lines = [`${id}: ${r.execute?'cleaned':'dry run'}`, ...r.paths];
+  if (r.protected.length) lines.push('Retained voice: '+r.protected.join(', '));
+  for (const p of r.staleVoice || []) lines.push(`${STALE_VOICE_LABEL}: ${p}`);
+  return lines.join('\n');
 }

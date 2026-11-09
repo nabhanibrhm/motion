@@ -27,7 +27,8 @@ Use the host's model controls for Claude. If a required tier is unavailable, exp
 | Routine docs, `README.md`, `CLAUDE.md`, `HANDOFF.md`, this file, `.gitignore`, unchanged-fact copy | Haiku / default |
 | One authored scene `episodes/<NN>_<id>/scenes/<scene>.html`, local art or styling | Sonnet / medium |
 | Shared browser runtime `src/runtime/**`; templates `src/templates/**`; CLI, config/schema, staging/build orchestration in `scripts/motion.mjs`, `src/config/**`, `src/pipeline/build.mjs` | Sonnet / high |
-| Voice tools/cache/alignment, mastering/audio, dependencies, Python environment, storage and cleanup safety: `tools/voice/**`, `src/pipeline/voice.mjs`, `master.mjs`, `storage.mjs`, root manifests and lockfiles | Opus / high |
+| Regression harness `scripts/regress.mjs`; scene wrapper `src/templates/scene-wrapper.mjs`; episode formats `config/formats/**`; their tests | Sonnet / high |
+| Voice tools/cache/alignment, mastering/audio, dependencies, Python environment, storage and cleanup safety: `tools/voice/**` (including `tools/voice/versions.json`), `src/pipeline/voice.mjs`, `master.mjs`, `storage.mjs`, root manifests and lockfiles | Opus / high |
 | New financial facts or claims in episode scripts, narration, captions or scenes; unexplained preview/render failures | Opus / high |
 | Whole-project architecture, config/API contracts, engine or TTS changes, migration cutover and rollback | Opus / max |
 
@@ -61,8 +62,8 @@ The model IDs and tiers below describe this repository's routing policy. They do
 |---|---|
 | Routine docs, `README.md`, `CLAUDE.md`, `HANDOFF.md`, this file, `.gitignore`, unchanged-fact copy | C1 |
 | One `episodes/<NN>_<id>/scenes/<scene>.html`, local art or styling | C2 |
-| `src/runtime/**`, `src/templates/**`, root CLI, config/schema, episode manifests and migrations, build orchestration | C3 |
-| `tools/voice/**`, voice/cache/alignment, audio mastering, root dependency manifests/locks, storage/cleanup safety, new factual claims | C4 |
+| `src/runtime/**`, `src/templates/**`, `scripts/regress.mjs`, `config/formats/**`, root CLI, config/schema, episode manifests and migrations, build orchestration | C3 |
+| `tools/voice/**` (including `tools/voice/versions.json`), voice/cache/alignment, audio mastering, root dependency manifests/locks, storage/cleanup safety, new factual claims | C4 |
 | Architecture, cross-module contracts, engine or TTS changes, cutover/rollback, final integration and fidelity review | C5 |
 
 Route by responsibility, not file extension. A documentation edit that changes architecture or factual claims inherits the higher tier. Legacy paths under `out/Ekonomi_keuangan/<id>/` remain read-only except for explicitly assigned migration/import work.
@@ -99,7 +100,7 @@ Assignment tiers remain: inventory and workflow documentation C1; architecture C
 - Preserve Supertonic-3 voice identity: MOG `M1`, WEC `F2`, BOG `M4`. Files mode uses episode recordings under `voice-lines/`.
 - Keep the lower ~15% and right ~120 px of the 1080×1920 frame clear of UI overlays.
 - Add a source in the episode script for each financial figure or claim. Investment topics retain “Bukan saran investasi”.
-- The current output format is fixed at 1080×1920, 30 fps. Profiles are `modern` and `legacy-inflasi`; arbitrary palettes are not configurable.
+- The output size is fixed at 1080×1920, at 30 fps (default) or 60 fps (opt-in via `video.fps`). Profiles are `modern` and `legacy-inflasi`; palettes are configurable only through the fixed `runtime.palette` key set.
 - `render` ensures missing or stale voice is generated/reused. `sync`, `preview`, `stills`, `lint`, and `check` never synthesize and require a valid voice cache. `clean` is dry-run by default; voice caches cannot be cleaned, including through an explicit target.
 - Finished outputs are `out/<NN>-<id>-short.mp4`; diagnostic frames are under `.cache/stills/<id>/`. Old per-episode `renders/` folders are legacy.
 - Commit only when the user asks, and never add a Claude co-author line.

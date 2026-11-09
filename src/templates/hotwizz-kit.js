@@ -40,18 +40,11 @@ if (!F1.hw) {
     const spread = (D, i, count, from = 6) => Math.round(from + (i * D * 0.7) / Math.max(1, count));
     const show = (p, dy = 30) => `opacity:${n(Math.min(1, p), 3)};transform:translateY(${n((1 - Math.min(1, p)) * dy)}px)`;
 
-    // background-only ambient motion (same DRIFT/SWEEP helpers as the HotWizz episodes), continuous in f
-    const DRIFT = (f, { seed, count, y0, y1, color, a }) =>
-      `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => {
-        const h = (k) => F1.world.hash(seed + i * 5 + k);
-        return `<circle cx="${n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${n(8 + 18 * h(7), 1)}"/>`;
-      }).join("")}</g>`;
-    const SWEEP = (f, { color, a, y0, y1 }) =>
-      `<g style="filter:blur(26px)" opacity="${n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+    // background-only ambient motion: the shared F1.world helpers, continuous in f
     const bg = (f, seed) =>
       `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,#1b2133 0%,${INK} 70%)"></div>` +
       `<div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 2px,transparent 2px 6px)"></div>` +
-      `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">${DRIFT(f, { seed, count: 7, y0: 420, y1: 1420, color: ORG, a: 0.18 })}${SWEEP(f, { color: RED, a: 0.14, y0: 280, y1: 1420 })}</svg>`;
+      `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">${F1.world.drift(f, { seed, count: 7, y0: 420, y1: 1420, color: ORG, a: 0.18 })}${F1.world.sweep(f, { color: RED, a: 0.14, y0: 280, y1: 1420 })}</svg>`;
 
     /** Scene frame: camera stage (with theme watermark), vignette, case-progress strip, then overlays (not zoomed). */
     const frame = (f, D, p, body, { whip = true, overlay = "" } = {}) =>

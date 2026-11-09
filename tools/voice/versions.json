@@ -1,0 +1,12 @@
+{
+  "assembly": 1,
+  "align": 1,
+  "pitch": 1,
+  "cartesia": 1,
+  "guard": {
+    "align": "8f5394b02a91938fc1d65858028908387d33a1875e1adfcbe46d34df54afc50e",
+    "pitch": "d16e15ba2af520e37c96108c117afea0a4607a93fe26c185dc9eae21b16bb4c8",
+    "assembly": "d9ee14fa92af08c399c3640f4422a11e74c8a2d40de9febb45bfff03c1085cda",
+    "cartesia": "ef440931e77852bbcfd195295d68e66cd628d69e354eefcd78b5512f95077b1a"
+  }
+}

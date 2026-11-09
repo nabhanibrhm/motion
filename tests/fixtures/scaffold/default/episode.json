@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "gold-default",
+  "number": 7,
+  "title": "Judul Emas",
+  "category": "Ekonomi_keuangan",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #07",
+      "steps": 1
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "title-card",
+      "props": {
+        "title": "Judul Emas"
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

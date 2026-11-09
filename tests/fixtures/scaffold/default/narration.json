@@ -1,0 +1,39 @@
+{
+  "source": "supertonic",
+  "speakers": {
+    "mog": {
+      "supertonic": {
+        "voice": "M1",
+        "speed": 1,
+        "range": 1.5
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "kasus",
+      "title": "Judul Emas"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Judul Emas"
+        }
+      ]
+    }
+  ]
+}

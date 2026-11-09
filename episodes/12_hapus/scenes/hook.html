@@ -23,9 +23,6 @@
       const CX = 72, CY = 880, CW = 430, CH = 520;
       const FX = 540, FY = 880, FW = 420, FH = 520;
 
-      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
-      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
-      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
 
       // identical silhouette name card (same for all four suspects); side = "front" (?) or "back" (name)
       const PERSON = (side, glow) => {
@@ -88,8 +85,8 @@ ${rows}${bits}</g></svg>`;
 
         const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,#1b2133 0%,#0d0f16 70%)"></div>
 <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
-${DRIFT(f, { seed: 120, count: 7, y0: 460, y1: 1400, color: ORG, a: 0.2 })}
-${SWEEP(f, { color: RED, a: 0.18, y0: 300, y1: 1400 })}
+${W.drift(f, { seed: 120, count: 7, y0: 460, y1: 1400, color: ORG, a: 0.2 })}
+${W.sweep(f, { color: RED, a: 0.18, y0: 300, y1: 1400 })}
 <g opacity="0.5" stroke="${RED}" stroke-width="2">${Array.from({ length: 6 }, (_, i) => `<line x1="${n(-200 + i * 260 + (f * 0.6) % 260)}" y1="1440" x2="${n(100 + i * 260 + (f * 0.6) % 260)}" y2="1160" opacity="${n(0.15 + 0.1 * W.hash(i), 2)}"/>`).join("")}</g>
 </svg>
 <!-- UPDATE bar + HOTWIZZ bug -->

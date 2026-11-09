@@ -10,6 +10,10 @@
  *                                        `time` (default f) warps their clock, to speed a crowd up without a jump
  *   W.steam(f, { x, y, n, rise, size })  puffs rising and fading
  *   W.dust(f, { x, y, w, h, n, seed })   motes drifting in a light beam
+ *   W.drift(f, { seed, count, y0, y1, color, a })   big soft light motes wandering between y0 and y1 (background only)
+ *   W.sweep(f, { color, a, y0, y1 })     a blurred light beam sliding slowly across the frame (background only)
+ *   W.checklist(f, { x, y, w, title, items, ticks, tone, size, check })   a card whose items slide in and get ticked
+ *                                        at the frames in `ticks`; items = [{ t, s?, src?, color? }]
  */
 (function (F1) {
   const n = F1.n;
@@ -114,4 +118,45 @@
     }
     return out;
   };
+
+  /**
+   * Ambient motion for the backdrop (SVG, goes inside the background <svg>). Both are sines of f, so they stay smooth at
+   * fractional frames (60 fps). Their output is byte-identical to the DRIFT / SWEEP copies pasted in the 06-14 scenes.
+   */
+  W.drift = (f, { seed, count, y0, y1, color, a }) =>
+    `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => W.hash(seed + i * 5 + k); return `<circle cx="${n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
+  W.sweep = (f, { color, a, y0, y1 }) =>
+    `<g style="filter:blur(26px)" opacity="${n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+
+  /**
+   * Checklist card (HTML, absolutely positioned: put it in a scene's background html or an overlay). Item i slides 20 px
+   * and fades in from `0.25` to full as its tick is drawn, starting 2 frames before ticks[i]; an item without a tick frame
+   * is shown ticked. tone 'paper' is a light card with a green tick; 'dark' is an ink card with an accent tick.
+   * items[i] = { t: label, s: small mono line, src: "Sumber:" line, color: label colour }.
+   */
+  W.checklist = (f, { x = 90, y = 330, w = 900, title = "", items = [], ticks = [], tone = "paper", size = 38, check = null, bg = null }) => {
+    const P = F1.PAL;
+    const dark = tone === "dark";
+    const ink = dark ? "#fff" : P.ink;
+    const tick = check || (dark ? P.accent : "#4e8a4f");
+    const box = Math.round(size * 1.5);
+    const mono = "'JetBrains Mono', monospace";
+    const osw = "Oswald, sans-serif";
+    const rows = items
+      .map((it, i) => {
+        const p = Number.isFinite(ticks[i]) ? F1.ramp(f, ticks[i] - 2, 10, F1.expoOut) : 1;
+        const d = Math.round(box * 1.1);
+        const mark =
+          p > 0
+            ? `<path d="M${n(box * 0.2)} ${n(box * 0.52)} L${n(box * 0.42)} ${n(box * 0.76)} L${n(box * 0.8)} ${n(box * 0.24)}" stroke="${tick}" stroke-width="${n(box * 0.16, 1)}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${d}" stroke-dashoffset="${n(d * (1 - p), 2)}"/>`
+            : "";
+        const sub = it.s ? `<div style="font-family:${mono};font-weight:700;font-size:${Math.round(size * 0.52)}px;color:${dark ? "#c9c6c0" : "#6b5f52"};margin-top:2px">${it.s}</div>` : "";
+        const src = it.src ? `<div style="font-family:${mono};font-weight:500;font-size:16px;color:${dark ? "#9fb0ba" : P.source};margin-top:4px">Sumber: ${it.src}</div>` : "";
+        return `<div style="${F1.css({ display: "flex", alignItems: "center", gap: 24, marginTop: i ? 20 : 0, opacity: n(0.25 + 0.75 * p, 3), transform: `translateX(${n(-20 * (1 - p))}px)` })}"><svg width="${box}" height="${box}" viewBox="0 0 ${box} ${box}" style="flex:none"><rect x="3" y="3" width="${box - 6}" height="${box - 6}" rx="10" fill="${dark ? "rgba(255,255,255,0.1)" : "#fff"}" stroke="${ink}" stroke-width="5"/>${mark}</svg><div><div style="font-family:${osw};font-weight:600;font-size:${size}px;letter-spacing:1px;line-height:1.1;color:${it.color || ink}">${it.t}</div>${sub}${src}</div></div>`;
+      })
+      .join("");
+    const head = title ? `<div style="font-family:${osw};font-weight:600;font-size:${Math.round(size * 1.05)}px;letter-spacing:4px;color:${ink};margin-bottom:26px">${title}</div>` : "";
+    return `<div style="${F1.css({ position: "absolute", left: x, top: y, width: w, boxSizing: "border-box", padding: "34px 40px 36px", borderRadius: 22, background: bg || (dark ? P.ink : P.paper), border: `6px solid ${dark ? P.paper : P.ink}` })}">${head}${rows}</div>`;
+  };
+
 })((globalThis.F1 = globalThis.F1 || {}));

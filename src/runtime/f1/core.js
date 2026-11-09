@@ -8,6 +8,10 @@
  *   F1.css, F1.esc                                    markup helpers for components that return HTML/SVG strings
  *   F1.morph(el, html)                                patch el's children to match html (keeps <img> elements alive)
  *   F1.scene(id, render, opts)                        run a scene: one paused GSAP timeline that redraws its layer(s)
+ *   F1.PAL                                            episode palette (frozen): DEFAULT_PAL merged with F1.CONFIG.palette
+ *   F1.fmt.id(v, d) / F1.fmt.rp(v, d)                 Indonesian number format: 1.234.567 / 1.234,50 / Rp1.234
+ *   F1.countUp(f, at, frames, from, to, ease)         counter value that eases from `from` to `to` (a number: round it yourself)
+ *   F1.sceneCtx(id, S, D)                             the context F1.scene hands to render(): { S, D, id, n, w, C, W, PAL, FONT }
  *
  * Determinism: everything is a function of the frame. No Date, Math.random, timers or CSS animation.
  * Components are plain functions `(props, f) => string` where f is the frame of the containing scene.
@@ -158,6 +162,46 @@
   F1.driftPx = (t, pxPerSec = -2) => t * pxPerSec;
   F1.clamp01 = (n) => Math.min(1, Math.max(0, n));
   F1.lerp = (a, b, t) => a + (b - a) * t;
+  /** 0 -> 1 progress -> a number: eases from `from` to `to` over `frames` starting at frame `at` (continuous in f). */
+  F1.countUp = (f, at, frames, from, to, ease = F1.expoOut) => from + (to - from) * F1.ramp(f, at, frames, ease);
+
+  /* ================================================================ episode palette (runtime.palette) */
+
+  /**
+   * Named colours shared by the kit helpers (C.verdict, C.cover, C.card, W.checklist) and available to scenes as PAL.
+   * Defaults are the warm-desk palette; an episode (or its theme) overrides single keys through `runtime.palette`.
+   * Keys are fixed (see PALETTE_KEYS in src/runtime/timing.mjs, which a test keeps in step with this object).
+   */
+  const DEFAULT_PAL = Object.freeze({
+    bg: "#f6efe1", // backdrop of cards and end screens
+    paper: "#fffaf0", // card surface
+    ink: "#2a2a2e", // text and outlines
+    muted: "#6f6a66", // secondary text
+    source: "#8a6f55", // "Sumber:" lines
+    red: "#c0392b", // stamps and alerts
+    accent: "#c6f432", // highlighter
+    teal: "#3d7480",
+    tealDark: "#2f6a6e",
+    drift: "#8fd0d2", // ambient light motes
+    haze: "#c4d3dd", // soft backdrop shapes
+  });
+  F1.DEFAULT_PAL = DEFAULT_PAL;
+  F1.PAL = Object.freeze({ ...DEFAULT_PAL, ...(F1.CONFIG?.palette || {}) });
+
+  /* ================================================================ number formats (no toLocaleString: ICU-independent) */
+
+  const GROUP = /\B(?=(\d{3})+(?!\d))/g;
+  F1.fmt = {
+    /** Indonesian grouping: id(1234567) = "1.234.567"; with d decimals the comma separates them: id(1234.5, 2) = "1.234,50". */
+    id: (v, d = 0) => {
+      if (!Number.isFinite(v)) return "0";
+      if (d <= 0) return String(Math.round(v)).replace(GROUP, ".");
+      const [int, dec] = v.toFixed(d).split(".");
+      return `${int.replace(GROUP, ".")},${dec}`;
+    },
+    /** Rupiah: rp(1500000) = "Rp1.500.000". */
+    rp: (v, d = 0) => `Rp${F1.fmt.id(v, d)}`,
+  };
 
   /* ================================================================ timed values (mascot/timed.ts) */
 
@@ -327,7 +371,7 @@
   /**
    * Build a scene's paused timeline. `render(f, ctx)` returns the markup of the procedural layer `#<id>-art`, or an
    * object { art, top, ... } for several layers `#<id>-art`, `#<id>-top` ... (interleave them with native elements by
-   * z-index). ctx = { S (voice section or null), D (scene length in frames), id }.
+   * z-index). ctx = { S (voice section or null), D (scene length in frames), id } plus the F1.sceneCtx shortcuts (n, w, C, W, PAL, FONT).
    *   opts.frames  scene length for compositions that are not voice sections
    *   opts.build   (tl, ctx) => add native GSAP tweens to the same timeline
    *   opts.root    for a file mounted several times: its mount root (layers are then [data-f1-layer="art"] inside it)
@@ -335,12 +379,28 @@
    *   window.__timelines["hook-1"] = F1.scene("hook-1", (f, { S, D }) => ...);
    * (Composition scripts get a scoped `window`/`document`; this library does not, so it never registers itself.)
    */
+  /**
+   * What F1.scene passes to render(f, ctx). Scenes can destructure just { S, D } as before, or take the shortcuts:
+   *   n    F1.n (round for attributes)       w(word, occ)  F1.wordFrame(S, word, occ)
+   *   C    F1.cine      W  F1.world           PAL  F1.PAL    FONT  { mono, osw } font-family values
+   */
+  F1.sceneCtx = (id, S, D) => ({
+    S,
+    D,
+    id,
+    n: F1.n,
+    w: (x, o = 0) => F1.wordFrame(S, x, o),
+    C: F1.cine,
+    W: F1.world,
+    PAL: F1.PAL,
+    FONT: { mono: "'JetBrains Mono', monospace", osw: "Oswald, sans-serif" },
+  });
   let sceneCount = 0;
   F1.scene = (id, render, opts = {}) => {
     const S = F1.VOICE && F1.VOICE.sections.some((s) => s.id === id) ? F1.section(id) : null;
     const D = opts.frames ?? (S ? F1.sceneFrames(id) : 0);
     if (!D) throw new Error(`[f1] scene ${id}: unknown length (pass opts.frames)`);
-    const ctx = { S, D, id };
+    const ctx = F1.sceneCtx(id, S, D);
     const scope = `${id}_${sceneCount++}`;
     const layers = {};
     const layer = (key) => {

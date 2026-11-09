@@ -11,20 +11,22 @@ async function fixture() {
   const narration={source:'supertonic',speakers:{},sections:[{id:'part',lines:[]}]};
   for(const dir of ['voiceover/.cache','src/data','public/voice/demo']) await fs.mkdir(path.join(legacy,dir),{recursive:true});
   await fs.mkdir(path.join(root,'tools/voice'),{recursive:true});
-  await fs.writeFile(path.join(root,'tools/voice/generate.py'),'v1'); await fs.writeFile(path.join(root,'requirements-lock.txt'),'deps');
+  await fs.writeFile(path.join(root,'tools/voice/generate.py'),'v1'); await fs.writeFile(path.join(root,'requirements-lock.txt'),'numpy==2.5.4\n');
+  await fs.writeFile(path.join(root,'tools/voice/versions.json'),JSON.stringify({assembly:1,align:1,pitch:1,cartesia:1}));
   await fs.writeFile(path.join(legacy,'voiceover/demo.json'),JSON.stringify(narration));
   await fs.writeFile(path.join(legacy,'src/data/demo-voice.json'),JSON.stringify({sections:[{id:'part',audio:'voice/demo/part.mp3'}]}));
   await fs.writeFile(path.join(legacy,'public/voice/demo/part.mp3'),'audio'); await fs.writeFile(path.join(legacy,'voiceover/.cache/chunk.wav'),'chunk');
   const ctx={repoRoot:root,episodeDir,id,narration,config:{},paths:{voiceDir,voiceManifest:path.join(voiceDir,'manifest.json'),voiceState:path.join(voiceDir,'state.json'),chunkCacheDir:path.join(root,'.cache/voice/chunks'),buildDir:path.join(root,'.cache/build/demo'),stillsDir:path.join(root,'.cache/stills/demo')}};
   return {root,ctx,legacy};
 }
-test('imports unchanged bytes, detects output and generator changes',async()=>{const {root,ctx,legacy}=await fixture();try {
+test('imports unchanged bytes, detects output and generator-version changes',async()=>{const {root,ctx,legacy}=await fixture();try {
   assert.equal((await ensureVoice(ctx,{importLegacy:legacy})).cacheHit,false);
   assert.equal(await fs.readFile(path.join(ctx.paths.voiceDir,'voice/demo/part.mp3'),'utf8'),'audio');
   assert.equal(await fs.readFile(path.join(ctx.paths.voiceDir,'legacy-chunks/chunk.wav'),'utf8'),'chunk');
   assert.equal((await ensureVoice(ctx)).cacheHit,true);
   await fs.writeFile(ctx.paths.voiceDir+'/voice/demo/part.mp3','changed'); await assert.rejects(ensureVoice(ctx),/stale/);
-  await ensureVoice(ctx,{importLegacy:legacy,force:true}); await fs.writeFile(root+'/tools/voice/generate.py','v2'); await assert.rejects(ensureVoice(ctx),/stale/);
+  await ensureVoice(ctx,{importLegacy:legacy,force:true}); await fs.writeFile(root+'/tools/voice/generate.py','v2'); assert.equal((await ensureVoice(ctx)).cacheHit,true);
+  await fs.writeFile(root+'/tools/voice/versions.json',JSON.stringify({assembly:2,align:1,pitch:1,cartesia:1})); await assert.rejects(ensureVoice(ctx),/stale for demo \(inputs\.versions\.assembly 1 -> 2\)/);
 }finally{await fs.rm(root,{recursive:true,force:true});}});
 test('rejects traversal and concurrent lock',async()=>{const {root,ctx,legacy}=await fixture();try {
   await fs.writeFile(legacy+'/src/data/demo-voice.json',JSON.stringify({sections:[{id:'part',audio:'voice/demo/../part.mp3'}]}));

@@ -96,17 +96,14 @@ ${cells}
       };
       const BG = (f, o) => `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <rect width="1080" height="1920" fill="#dfe8ee"/>
-${DRIFT(f, { seed: 520, count: 7, y0: 420, y1: 1050, color: "#8fd0d2", a: 0.26 })}
-${SWEEP(f, { color: "#f3f7fa", a: 0.22, y0: 300, y1: 1100 })}
+${W.drift(f, { seed: 520, count: 7, y0: 420, y1: 1050, color: "#8fd0d2", a: 0.26 })}
+${W.sweep(f, { color: "#f3f7fa", a: 0.22, y0: 300, y1: 1100 })}
 ${W.dust(f, { x: 120, y: 420, w: 840, h: 640, count: 16, seed: 9, color: "#fff3cf", alpha: 0.45 })}
 <g opacity="${n(1 - o.out, 3)}"><text x="60" y="362" font-family="Oswald" font-weight="700" font-size="52" letter-spacing="6" fill="${INK}">HITUNGAN SEDERHANA</text><rect x="60" y="376" width="300" height="8" rx="4" fill="#C6F432"/>
 ${LANE(f, { y: 410, title: "INKA SEKARANG · ±3 RANGKAIAN / TAHUN", p: o.pa, years: 8, label: "≈ 8 TAHUN", color: RED, alpha: 1 })}
 ${LANE(f, { y: 720, title: "SESUAI TARGET · 15 RANGKAIAN / TAHUN", p: o.pb, years: 1.5, label: "≈ 1,5 TAHUN", color: INK, alpha: 0.4 + 0.6 * o.bIn })}
 <text x="60" y="1066" font-family="JetBrains Mono" font-weight="500" font-size="20" fill="#5f7683">Sumber: Harian Jogja, Investortrust, Kompas.id</text></g>
 ${o.out > 0 ? DEPOT(f, o) : ""}</svg>`;
-      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
-      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
-      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
       window.__timelines["hitung"] = F1.scene("hitung", (f, { S, D }) => {
         const C = F1.cine;
         const w = (x, occ = 0) => F1.wordFrame(S, x, occ);

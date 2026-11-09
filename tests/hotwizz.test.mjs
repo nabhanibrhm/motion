@@ -61,6 +61,11 @@ test('new --flash scaffolds a valid HotWizz manifest; plain new is unchanged',as
   const next=createEpisode('kedua',{title:'Kedua',flash:true,repoRoot:root});
   assert.equal(next.config.runtime.case.id,'HOTWIZZ #02');
   assert.equal(parseArgs(['new','x','--title','X','--flash']).options.flash,true);
+  // --flash is an alias of --format hotwizz-flash: same manifest and narration apart from the id, number and title
+  const viaFormat=createEpisode('lewat',{title:'Lewat',format:'hotwizz-flash',repoRoot:root});
+  assert.equal(viaFormat.config.runtime.case.id,'HOTWIZZ #03');
+  assert.deepEqual(viaFormat.config.scenes.map(s=>s.template),c.scenes.map(s=>s.template));
+  assert.deepEqual(viaFormat.narration.sections.map(s=>s.id),ctx.narration.sections.map(s=>s.id));
 });
 
 test('hw-* templates build with resolved SFX anchors, staged photos and no interpolated src attributes',async t=>{

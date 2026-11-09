@@ -8,7 +8,10 @@ Billing is 1 credit per character, so every line is cached by a key over its spo
 voice, model, language, speed, sample rate and pronunciation dictionary. The key and the
 file's SHA-256 are recorded in ``voice-lines/cartesia.json`` (committed with the clips, so the
 other laptop reuses them too); an unchanged line is never sent again. ``--force`` re-synthesises
-(and re-bills) every line.
+(and re-bills) every line. ``--offline`` never calls the API: it reuses locally cached clips and
+exits 3 if any line would need synthesis. ``--verify`` writes nothing and exits 3 unless every
+line's clip is already current (used by ``voice --restamp`` / ``--adopt``). The sidecar is only
+rewritten when its content changes.
 
 The API key is read from the CARTESIA_API_KEY environment variable or the repository's
 git-ignored ``.env``; it is never printed.
@@ -226,11 +229,18 @@ def write_atomic(path: Path, data: bytes) -> None:
     os.replace(tmp, path)
 
 
+def write_sidecar(path: Path, side: dict) -> None:
+    text = json.dumps(dict(sorted(side.items())), indent=1, ensure_ascii=False) + "\n"
+    if not path.exists() or path.read_text(encoding="utf-8") != text:
+        path.write_text(text, encoding="utf-8")
+
+
 def cmd_lines(args) -> None:
     cfg = json.loads(Path(args.narration).read_text(encoding="utf-8"))
     lines_dir, cache = Path(args.lines), Path(args.cache)
+    if args.force and (args.verify or args.offline):
+        sys.exit("cartesia.py: --force cannot be combined with --verify or --offline")
     opts, rows = plan(cfg)
-    lines_dir.mkdir(parents=True, exist_ok=True)
     side_path = lines_dir / SIDECAR
     side = json.loads(side_path.read_text(encoding="utf-8")) if side_path.exists() else {}
     todo, reuse = [], []
@@ -241,6 +251,9 @@ def cmd_lines(args) -> None:
         rec = side.get(r["name"])
         current = target.exists() and rec is not None and rec.get("sha256") == sha(target)
         if target.exists() and not current and not args.force:
+            if args.verify:
+                print(f"    {target.name} exists but was not made by this provider (or was edited)")
+                sys.exit(3)
             sys.exit(f"cartesia.py: {target.name} exists but was not made by this provider (or was edited); "
                      "move it away, or run voice with --force to replace every clip")
         if not args.force and current and rec.get("key") == r["key"]:
@@ -253,10 +266,21 @@ def cmd_lines(args) -> None:
     chars = sum(len(r["spoken"]) for r in todo)
     print(f'  cartesia: {len(rows)} lines, {len(rows) - len(todo) - len(reuse)} unchanged, {len(reuse)} from cache, '
           f'{len(todo)} to synthesise (~{chars} characters = ~{chars} credits; {opts["model"]}, {opts["language"]})')
-    if args.dry_run:
+    if args.dry_run or args.verify:
         for r in todo:
             print(f'    {r["name"]:16s} {r["speaker"]} {len(r["spoken"]):4d} chars  {r["spoken"][:60]}')
+        if args.verify:
+            for r, _ in reuse:
+                print(f'    {r["name"]:16s} {r["speaker"]} not current (a cached clip exists)')
+            if todo or reuse:
+                sys.exit(3)
         return
+    if args.offline and todo:
+        for r in todo:
+            print(f'    {r["name"]:16s} {r["speaker"]} needs the API: {r["spoken"][:60]}')
+        print("  cartesia: offline, nothing written")
+        sys.exit(3)
+    lines_dir.mkdir(parents=True, exist_ok=True)
     cache.mkdir(parents=True, exist_ok=True)
     dict_id = ensure_dictionary(opts["items"], cache) if todo else None
     for r, cached in reuse:
@@ -268,10 +292,9 @@ def cmd_lines(args) -> None:
         write_atomic(cache / f'cartesia-{r["key"][:32]}.wav', audio)
         write_atomic(lines_dir / r["name"], audio)
         side[r["name"]] = {"key": r["key"], "sha256": sha(lines_dir / r["name"]), "voice": r["voice"], "chars": len(r["spoken"])}
-        side_path.write_text(json.dumps(dict(sorted(side.items())), indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+        write_sidecar(side_path, side)
     live = {r["name"] for r in rows}
-    side = {k: v for k, v in sorted(side.items()) if k in live}
-    side_path.write_text(json.dumps(side, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    write_sidecar(side_path, {k: v for k, v in side.items() if k in live})
 
 
 # --- helpers ---------------------------------------------------------------------------------
@@ -308,6 +331,8 @@ def main() -> None:
     s.add_argument("--cache", required=True)
     s.add_argument("--force", action="store_true")
     s.add_argument("--dry-run", action="store_true")
+    s.add_argument("--offline", action="store_true", help="never call the API; exit 3 if a line needs synthesis")
+    s.add_argument("--verify", action="store_true", help="write nothing; exit 3 unless every clip is current")
     s.set_defaults(fn=cmd_lines)
     s = sub.add_parser("voices", help="list voices (default: Indonesian)")
     s.add_argument("--language", default="id")

@@ -1,0 +1,86 @@
+{
+  "description": "Starter episode: one title-card scene, Supertonic narrator mog.",
+  "category": "Ekonomi_keuangan",
+  "case": {
+    "prefix": "KASUS",
+    "counter": "number"
+  },
+  "episode": {
+    "schemaVersion": 1,
+    "id": "{{id}}",
+    "number": "{{number}}",
+    "title": "{{title}}",
+    "category": "{{category}}",
+    "narration": "narration.json",
+    "script": "script-short.md",
+    "video": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30
+    },
+    "runtime": {
+      "profile": "modern",
+      "case": {
+        "id": "{{caseId}}",
+        "steps": "{{steps}}"
+      }
+    },
+    "scenes": [
+      {
+        "id": "hook",
+        "template": "title-card",
+        "props": {
+          "title": "{{title}}"
+        }
+      }
+    ],
+    "audio": {
+      "bed": null,
+      "bedGain": 0.3,
+      "loudness": {
+        "integrated": -14,
+        "truePeak": -1,
+        "range": 11
+      }
+    }
+  },
+  "narration": {
+    "source": "supertonic",
+    "speakers": {
+      "mog": {
+        "supertonic": {
+          "voice": "M1",
+          "speed": 1,
+          "range": 1.5
+        }
+      }
+    },
+    "chapters": [
+      {
+        "id": "kasus",
+        "title": "{{title}}"
+      }
+    ],
+    "defaults": {
+      "lead": 0.15,
+      "tail": 0.1,
+      "gapSameSpeaker": 0.1,
+      "gapNewSpeaker": 0.1,
+      "firstLead": 0.2,
+      "chapterLead": 0.1,
+      "chapterEndTail": 0.1
+    },
+    "sections": [
+      {
+        "id": "hook",
+        "chapter": "kasus",
+        "lines": [
+          {
+            "speaker": "mog",
+            "text": "{{title}}"
+          }
+        ]
+      }
+    ]
+  }
+}

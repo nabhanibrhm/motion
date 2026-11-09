@@ -1,0 +1,17 @@
+{
+  "runtime": {
+    "palette": {
+      "bg": "#dfe8ee",
+      "paper": "#f3f7fa",
+      "ink": "#2a2a2e",
+      "muted": "#5f7683",
+      "source": "#5f6a72",
+      "red": "#d0413a",
+      "accent": "#c6f432",
+      "teal": "#3d7480",
+      "tealDark": "#2f6a6e",
+      "drift": "#8fd0d2",
+      "haze": "#c4d3dd"
+    }
+  }
+}

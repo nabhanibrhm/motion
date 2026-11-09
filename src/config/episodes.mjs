@@ -44,17 +44,33 @@ function parseFolder(name) {
   if(m) return ID.test(m[2]) ? {id:m[2],number:Number(m[1])} : null;
   return ID.test(name) ? {id:name,number:null} : null;
 }
+// Folder scan, memoised per repo root. An entry is reused only while the `episodes/` directory listing is unchanged
+// (one cheap readdir) so folders created in-process (`new`) are seen at once; resetEpisodeCache() drops it explicitly.
+const scanCache=new Map();
+let scanCount=0;
+export function resetEpisodeCache() { scanCache.clear(); }
+/** Number of full folder scans done since start (test seam for the memo). */
+export const episodeScanCount=()=>scanCount;
 function episodeFolders(repoRoot) {
+  repoRoot=resolve(repoRoot);
   const dir=join(repoRoot,'episodes');
-  return existsSync(dir) ? readdirSync(dir,{withFileTypes:true}).filter(x=>x.isDirectory() && existsSync(join(dir,x.name,'episode.json'))).map(x=>({name:x.name,...parseFolder(x.name)})).filter(x=>x.id) : [];
+  if(!existsSync(dir)) return [];
+  const entries=readdirSync(dir,{withFileTypes:true}), signature=entries.map(x=>`${x.isDirectory()?'d':'f'}${x.name}`).sort().join('\n');
+  const hit=scanCache.get(repoRoot);
+  if(hit&&hit.signature===signature) return hit.folders;
+  scanCount++;
+  const folders=entries.filter(x=>x.isDirectory() && existsSync(join(dir,x.name,'episode.json'))).map(x=>({name:x.name,...parseFolder(x.name)})).filter(x=>x.id);
+  scanCache.set(repoRoot,{signature,folders});
+  return folders;
 }
 export function listEpisodes({repoRoot=REPO_ROOT}={}) {
-  return episodeFolders(repoRoot).sort((a,b)=>(a.number ?? Infinity)-(b.number ?? Infinity) || a.id.localeCompare(b.id)).map(x=>x.id);
+  return [...episodeFolders(repoRoot)].sort((a,b)=>(a.number ?? Infinity)-(b.number ?? Infinity) || a.id.localeCompare(b.id)).map(x=>x.id);
 }
 export function loadEpisode(id,{repoRoot=REPO_ROOT}={}) {
   if(!ID.test(id || '')) throw new Error(`Invalid episode id: ${id}`);
   repoRoot=resolve(repoRoot);
-  const folders=episodeFolders(repoRoot).filter(x=>x.id===id);
+  let folders=episodeFolders(repoRoot).filter(x=>x.id===id);
+  if(!folders.length) {resetEpisodeCache();folders=episodeFolders(repoRoot).filter(x=>x.id===id);} // an episode.json added to an existing folder
   if(folders.length>1) throw new Error(`Episode ${id} has more than one folder: ${folders.map(x=>x.name).join(', ')}`);
   if(!folders.length) throw new Error(`Episode not found: ${id}`);
   const episodeDir=within(repoRoot,`episodes/${folders[0].name}`), manifest=join(episodeDir,'episode.json');

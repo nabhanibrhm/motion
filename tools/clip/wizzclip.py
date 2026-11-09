@@ -321,7 +321,7 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         lines = r"\N".join(textwrap.wrap(clean(title), 18))
         ev.append(f"Dialogue: 2,{ts_ass(0)},{ts_ass(min(3, dur))},Title,,0,0,0,,"
                   f"{{\\pos({W // 2},{title_y})\\fad(150,250)}}{lines}")
-    ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1790)\\3c&H2020E0&\\bord6}}WIZZ CLIP ID")
+    ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1790)\\3c&H2020E0&\\bord6}}WIZZ CLIP")
     if credit:
         ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1850)\\fs32}}{clean(credit)}")
     return head + "\n".join(ev) + "\n"

@@ -1,6 +1,6 @@
 # wizzclip
 
-Turn a 16:9 stream VOD into vertical (1080x1920, 30 fps) YouTube Shorts clips for Wizz Clip ID.
+Turn a 16:9 stream VOD into vertical (1080x1920, 30 fps) YouTube Shorts clips for the Wizz Clip channel.
 
 ## Setup
 ```powershell

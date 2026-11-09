@@ -234,3 +234,69 @@ On Windows, resolve and validate every recursive cleanup target under its intend
 Acceptance checks include all seven manifests loading, narration and source-content preservation, identical imported audio hashes, identical section durations and timeline frames, captions/SFX equivalence for each profile, all-episode builds in different orders, repeat builds without unnecessary writes, staging copy fallback, files-mode and cache invalidation checks, zero HyperFrames lint errors, snapshot comparison and a full render where the environment supports them. Final-output files must remain unchanged until intentionally replaced by successful fresh renders.
 
 Renderer failures caused by host access controls are reported as limitations, not passing fidelity evidence. During initial baseline attempts in this session, the installed renderer could not access its loopback page (`net::ERR_NETWORK_ACCESS_DENIED`) and also encountered a cache-directory permission error. Offline extraction from existing finished MP4s can preserve reference frames, but does not prove a new browser render matches. Structural/timing tests and audio hashes remain useful while rendering is blocked; the verification report must distinguish those checks from visual sign-off.
+
+## v2 contracts (Nov 2026)
+
+The v2 refactor (9 Nov 2026) hardened the shared engine without changing the output format. Full plan, audits and verification: [docs/refactor-v2/plan.md](refactor-v2/plan.md), [audit-engine.md](refactor-v2/audit-engine.md), [audit-scenes.md](refactor-v2/audit-scenes.md) and [results.md](refactor-v2/results.md). Where this section and the v1 text above differ, this section wins. Output stays HyperFrames 0.8.210 at 1080 × 1920; the frame rate is 30 fps by default, with 60 fps opt-in through `video.fps: 60`.
+
+### Voice state v4
+
+- `state.json` is `{ version: 4, inputs, outputs, restamp? }`. `inputs` holds: the narration digest (canonical source, chapters, defaults, sections, Supertonic `say` or Cartesia effective options, the dictionary entries the episode uses, and only the speakers the episode uses); the versions in `tools/voice/versions.json` (`assembly`, `align`, `pitch` for Supertonic, `cartesia`); pinned packages from `requirements-lock.txt`; the Whisper model; and clip hashes for `files`/`cartesia` sources.
+- Excluded from the key: `comment` fields, unused speakers, the yt-dlp pin, and whole-file hashes of `tools/voice/cartesia.py` and `generate.py`.
+- `tools/voice/versions.json` holds a `guard` hash for each output-affecting function group (align, pitch, assembly, cartesia). `npm test` fails when those functions change without a version bump.
+- Cache keys use `ALIGN_TAG`/`PITCH_TAG` instead of the generator file hash. A miss under a new key falls back to the legacy key and copies the record atomically. `MOTION_NO_SYNTH=1` fails before any Supertonic synthesis; `MOTION_NO_MODELS=1` fails on any Supertonic, Whisper or PSOLA cache miss. Supertonic chunks are seeded from their key before synthesis.
+- Re-keying: `--restamp` (reproduce offline, keep the cache if byte-identical), `--adopt` (narration digest and outputs match, stamped `restamp.mode: 'adopted'`), `--adopt-structural` (files/Cartesia only), `--offline` (no Cartesia API, no Supertonic synthesis). `--force` cannot combine with them. Details: README "Voice cache (state v4)".
+- `ensureVoice` returns `{manifest, manifestPath, cacheHit, restamped?}`. Build, sync, preview, lint, check and stills only verify the cache and never synthesize.
+
+### Scene wrapper
+
+- A manifest scene is `.html` (the original contract), `.js` (wrapped), or a template. Wrapped scenes have `bg` and `sfx: [{at, file, vol}]`; both are rejected on `.html` and template scenes.
+- A `.js` file contains one `scene((f, ctx) => markup, opts?)` call. The build (`compositionSource` in `src/pipeline/build.mjs`, also used by the regression harness) emits the same composition skeleton as hand-written scenes. Each SFX entry becomes one `<audio>` clip on track `20 + index*16 + k`.
+- Validation checks the call count, SFX anchors and files, and volume range. Scene source is never rewritten. Only generated copies receive resolved `data-start` values.
+- Migrating posted `.html` scenes to `.js` is deferred.
+
+### Runtime additions
+
+Additive only. Existing scenes keep working.
+
+- `F1.PAL`: frozen palette, `DEFAULT_PAL` merged with `F1.CONFIG.palette`. Fixed keys: `bg`, `paper`, `ink`, `muted`, `source`, `red`, `accent`, `teal`, `tealDark`, `drift`, `haze` (`PALETTE_KEYS` in `src/runtime/timing.mjs`; a test keeps it equal to `DEFAULT_PAL`).
+- `runtimeConfig` emits `palette` only when it is set, so default output is unchanged. `runtime.case.name` passes through as `C.CASE.name`.
+- `F1.fmt.id`, `F1.fmt.rp`, `F1.countUp`, `F1.sceneCtx(id, S, D)` (returns `{S, D, id, n, w, C, W, PAL, FONT}`).
+- `W.drift`, `W.sweep` (byte-identical to the former pasted copies), `W.checklist`.
+- `C.card`, `C.verdict`, `C.cover`: continuous in `f`, no `f % N`.
+- Themes in `config/themes/`: `warm-desk` and `transit` (palette sets), plus `hotwizz`.
+
+### Config and schema
+
+- Strict per-object allow-lists for the manifest (`top`, `video`, `runtime`, `case`, `watermark`, `palette`, `audio`, `loudness`, `scene`, `sfx`, `narration`, `speaker`, `supertonic`, `cartesia`, `defaults`, `chapter`, `section`, `line`). Unknown keys fail with a "did you mean" suggestion. Legacy keys are accepted: top-level `theme`, narration `comment`, speaker `voice`/`rate`/`pitch`, `say`, and speaker `cartesia.speed`.
+- Supertonic voices come from `config/speakers.json`.
+- `validateEpisodes` requires unique ids and numbers across episodes. The episode-folder scan is memoised per repository root; `resetEpisodeCache()` clears it.
+
+### Formats
+
+- `config/formats/<name>/format.json` (`category`, optional `theme`, `case: {prefix, counter}`, `episode`, `narration`) and `config/formats/<name>/files/**`. `{{id}}`, `{{number}}`, `{{title}}`, `{{category}}`, `{{caseId}}` and `{{steps}}` are substituted in parsed strings and file contents. Symlinks in a format are rejected.
+- Case counters: `number` (the episode number), `max` (highest existing prefix number plus one), or `{theme}` (count of episodes with that theme plus one).
+- Shipped formats: `default` (plain `new`), `hotwizz-flash` (`--flash`), `kasus` (`--format kasus`, four wrapped `.js` scenes with case verdict and cover).
+
+### Regression harness
+
+- `scripts/regress.mjs` supersedes `scripts/verify-migration.mjs` for scene checks. It records each scene's draw output hashes at sampled frames (0, 1, 8, 14, D/2, D-1, and each word start ±1; for 60 fps also +0.5 at 0, D/2 and the first word), plus caption and timeline hashes. Output goes to `.cache/regress/<label>/`, which `clean` never touches.
+- Commands: `capture`, `compare`, `stills`, `stills-compare`. `--timing synthetic` derives timings from the narration (0.32 s per word, minimum 0.6 s per line, plus defaults); it needs no voice cache.
+
+### Output safety
+
+- `measureMedia` reads duration, fps, frames, integrated loudness, true peak, LRA and size with ffprobe and `ebur128`. `masterVideo` returns `measured`. `FFMPEG` and `FFPROBE` environment variables are honoured.
+- On cross-device rename (EXDEV), the output is copied to a hidden temp in the output folder, then renamed there. The mix graph is unchanged.
+- `render` prints the QA line and an "already posted" notice when `out/uploaded/<name>` exists; it never writes to `out/uploaded/`.
+- `clean` reports `.cache/voice/<id>-tmp-*` and `-previous-*` leftovers as stale and does not remove them.
+
+### Deferred (not done in v2)
+
+- DRIFT/SWEEP dedupe in episodes 06 and 07 (12, 13 and 14 are done).
+- Skeleton-to-`.js` migration of posted scenes.
+- Unifying cover and HotWizz cover (`cover` and `hw-cover`).
+- Episode-specific kits (CAL, ICON, BADGE, trains, bars).
+- Pruning dead runtime code.
+- Archiving the migration scripts and removing edge-tts and `importLegacy`.
+- Raw deletion, FLAC output, declarative tighten, per-line dictionary key, and a requirements split.
+- `toLocaleString` and `f % 2` in posted episodes 01 and 02.

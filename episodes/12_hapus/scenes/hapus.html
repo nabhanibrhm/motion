@@ -19,9 +19,6 @@
       const osw = "Oswald, sans-serif";
       const smooth = (t) => t * t * (3 - 2 * t);
 
-      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
-      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
-      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
 
       // file icon centred on (x,y)
       const FILE = (x, y, s, rot, a) => `<g transform="translate(${n(x)} ${n(y)}) rotate(${n(rot, 1)}) scale(${n(s, 3)})" opacity="${n(a, 3)}"><path d="M-22 -28 H8 L22 -14 V28 H-22 Z" fill="#dfe5f2" stroke="#0d0f16" stroke-width="3" stroke-linejoin="round"/><path d="M8 -28 V-14 H22 Z" fill="#9aa6c2"/><path d="M-12 -2 H12 M-12 8 H12 M-12 18 H4" stroke="#6b7794" stroke-width="4" stroke-linecap="round"/></g>`;
@@ -84,8 +81,8 @@
         const SVG = `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">
 <defs><radialGradient id="hapus-glow" cx="50%" cy="42%" r="70%"><stop offset="0" stop-color="#1b2132"/><stop offset="1" stop-color="#0d0f16"/></radialGradient></defs>
 <rect width="1080" height="1920" fill="url(#hapus-glow)"/>
-${DRIFT(f, { seed: 410, count: 8, y0: 300, y1: 1400, color: "#ff7a1a", a: 0.2 })}
-${SWEEP(f, { color: "#ff2d3d", a: 0.16, y0: 280, y1: 1400 })}
+${W.drift(f, { seed: 410, count: 8, y0: 300, y1: 1400, color: "#ff7a1a", a: 0.2 })}
+${W.sweep(f, { color: "#ff2d3d", a: 0.16, y0: 280, y1: 1400 })}
 <rect x="72" y="520" width="398" height="86" rx="12" fill="#151a26" stroke="#ff7a1a" stroke-width="4"/>
 <text x="92" y="556" font-family="JetBrains Mono" font-weight="700" font-size="22" letter-spacing="1" fill="#ff7a1a">LIMS · SERVER PENYADAPAN</text>
 <text x="92" y="590" font-family="JetBrains Mono" font-weight="500" font-size="20" letter-spacing="2" fill="#c9c6c0">LAWFUL INTERCEPTION</text>

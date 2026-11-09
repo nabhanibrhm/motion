@@ -1,0 +1,106 @@
+{
+  "description": "KASUS explainer: four wrapped .js scenes (hook, fakta, sisi, vonis), transit theme, narrators mog/wec/bog (Cartesia), case verdict and cover.",
+  "category": "Hukum",
+  "theme": "transit",
+  "case": {
+    "prefix": "KASUS",
+    "counter": "max"
+  },
+  "episode": {
+    "schemaVersion": 1,
+    "id": "{{id}}",
+    "number": "{{number}}",
+    "title": "{{title}}",
+    "category": "{{category}}",
+    "theme": "transit",
+    "narration": "narration.json",
+    "script": "script-short.md",
+    "video": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30
+    },
+    "runtime": {
+      "profile": "modern",
+      "case": {
+        "id": "{{caseId}}",
+        "steps": "{{steps}}",
+        "name": "GANTI NAMA KASUS"
+      }
+    },
+    "scenes": [
+      {
+        "id": "hook",
+        "file": "scenes/hook.js",
+        "bg": "#dfe8ee",
+        "sfx": [
+          {"at": "0", "file": "pop-in", "vol": 0.2},
+          {"at": "word:klaim", "file": "click", "vol": 0.2}
+        ]
+      },
+      {
+        "id": "fakta",
+        "file": "scenes/fakta.js",
+        "bg": "#dfe8ee",
+        "sfx": [
+          {"at": "word:pertama", "file": "tick", "vol": 0.2},
+          {"at": "word:kedua", "file": "tick", "vol": 0.2},
+          {"at": "word:ketiga", "file": "tick", "vol": 0.2}
+        ]
+      },
+      {
+        "id": "sisi",
+        "file": "scenes/sisi.js",
+        "bg": "#dfe8ee",
+        "sfx": [
+          {"at": "word:sisi", "file": "pop-in", "vol": 0.2},
+          {"at": "word:bantahan", "file": "pop-in", "vol": 0.2}
+        ]
+      },
+      {
+        "id": "vonis",
+        "file": "scenes/vonis.js",
+        "bg": "#dfe8ee",
+        "sfx": [
+          {"at": "word:ditutup", "file": "stamp", "vol": 0.45},
+          {"at": "word:Tulis", "file": "pop-in", "vol": 0.1}
+        ]
+      }
+    ],
+    "audio": {
+      "bed": null,
+      "bedGain": 0.3,
+      "loudness": {
+        "integrated": -14,
+        "truePeak": -1,
+        "range": 11
+      }
+    }
+  },
+  "narration": {
+    "source": "cartesia",
+    "speakers": {
+      "mog": {"supertonic": {"voice": "M1", "speed": 1, "range": 1.5}, "cartesia": {"speed": 1.08}},
+      "wec": {"supertonic": {"voice": "F2", "speed": 1, "range": 1.4}},
+      "bog": {"supertonic": {"voice": "M4", "speed": 1, "range": 1.4}, "cartesia": {"speed": 1}}
+    },
+    "chapters": [
+      {"id": "kasus", "title": "{{title}}"}
+    ],
+    "defaults": {
+      "lead": 0.15,
+      "tail": 0.1,
+      "gapSameSpeaker": 0.1,
+      "gapNewSpeaker": 0.1,
+      "firstLead": 0.2,
+      "chapterLead": 0.1,
+      "chapterEndTail": 0.1
+    },
+    "sections": [
+      {"id": "hook", "chapter": "kasus", "lines": [{"speaker": "mog", "text": "Ganti: klaim utama kasus ini dalam satu kalimat tanpa koma berlebihan."}]},
+      {"id": "fakta", "chapter": "kasus", "lines": [{"speaker": "wec", "text": "Ganti: fakta resmi pertama lalu kedua dan ketiga dengan sumbernya."}]},
+      {"id": "sisi", "chapter": "kasus", "lines": [{"speaker": "bog", "text": "Ganti: sisi lain atau bantahan dari pihak yang berbeda dengan bobot yang sama."}]},
+      {"id": "vonis", "chapter": "kasus", "lines": [{"speaker": "wec", "text": "Ganti: kesimpulan singkat. Jadi kasus ini ditutup. Tulis pendapatmu di komentar ya!", "after": 1.2}]}
+    ]
+  }
+}

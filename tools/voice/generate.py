@@ -12,6 +12,16 @@ Supertonic-3 preserves each speaker's voice, speed and pitch range; a narration
 ``say`` map changes pronunciation while captions retain the original text.
 Faster-whisper aligns speech to script words. FFmpeg is required on PATH, or
 may be specified by the FFMPEG environment variable.
+
+Cache keys: Whisper alignments (``file-*``) and pitch-widened clips (``pitch-*``) are keyed
+with ``ALIGN_TAG`` / ``PITCH_TAG`` from ``tools/voice/versions.json`` instead of a hash of this
+whole file, so edits that do not change the output keep every cache entry. Entries written
+under an older whole-file hash (``LEGACY_GENERATOR_HASHES``) are found and copied to the new
+name. Bump ``align`` / ``pitch`` / ``assembly`` in versions.json (and its ``guard``) whenever
+an output-affecting function changes; tests/voice-key.test.mjs enforces this.
+
+``MOTION_NO_SYNTH=1`` fails before any Supertonic synthesis; ``MOTION_NO_MODELS=1`` fails on
+any Supertonic, Whisper or PSOLA cache miss (used by ``voice --offline`` / ``--restamp``).
 """
 
 import asyncio
@@ -40,7 +50,13 @@ PEAK_CEIL = 0.89
 MARKER = re.compile(r"\[(?:pause|hold)\s+([\d.]+)\]")
 LINES_DIR = Path(os.environ.get("VOICE_LINES") or ROOT / "voiceover" / "lines")  # VOICE_LINES: test with another folder
 WHISPER_MODEL = os.environ.get("WHISPER_MODEL", "small")  # "small" handles Indonesian well on CPU
-GENERATOR_HASH = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+VERSIONS = json.loads(Path(__file__).with_name("versions.json").read_text(encoding="utf-8"))
+ALIGN_TAG = f'align-v{VERSIONS["align"]}'
+PITCH_TAG = f'pitch-v{VERSIONS["pitch"]}'
+# Whole-file hashes of earlier generate.py versions; their file-*/pitch-* entries are reused.
+LEGACY_GENERATOR_HASHES = ("7905da790a3bc097f182e4bf5dcaeeddc163afc998a00ed50834cf4ed4539422",)
+NO_SYNTH = os.environ.get("MOTION_NO_SYNTH") == "1"
+NO_MODELS = os.environ.get("MOTION_NO_MODELS") == "1"
 SUPERTONIC_STEPS = 16  # denoising steps: 8 is the library default, 16 is cleaner and still a few seconds a line on CPU
 _whisper = None
 _supertonic = None
@@ -128,14 +144,50 @@ def span(tokens: list[str], times: list, i1: int, i2: int, t0: float, t1: float)
         t += d
 
 
+def adopt_legacy(target: Path, candidates: list[Path], ok) -> bool:
+    """Copy the first valid legacy cache entry to the new name (tmp + atomic rename); the old entry is kept."""
+    for old in candidates:
+        if old.exists() and ok(old):
+            tmp = target.with_name(target.stem + ".tmp-" + str(os.getpid()) + target.suffix)
+            shutil.copyfile(old, tmp)
+            os.replace(tmp, target)
+            return True
+    return False
+
+
+def valid_json(path: Path) -> bool:
+    try:
+        json.loads(path.read_text(encoding="utf-8"))
+        return True
+    except (OSError, ValueError):
+        return False
+
+
+def align_key(data: bytes, text: str, tag: str) -> str:
+    whisper_version = importlib.metadata.version("faster-whisper")
+    return hashlib.sha256(data + text.encode() + WHISPER_MODEL.encode() + whisper_version.encode() + tag.encode() + b"motion-align-v1").hexdigest()[:24]
+
+
 def from_file(path: Path, text: str) -> dict:
     """A ready-made line (cached by file content). Returns {"words": [{word,start,end}], "mp3": Path}."""
-    global _whisper
-    whisper_version = importlib.metadata.version("faster-whisper")
-    key = hashlib.sha256(path.read_bytes() + text.encode() + WHISPER_MODEL.encode() + whisper_version.encode() + GENERATOR_HASH.encode() + b"motion-align-v1").hexdigest()[:24]
-    meta = CACHE / f"file-{key}.json"
+    data = path.read_bytes()
+    meta = CACHE / f"file-{align_key(data, text, ALIGN_TAG)}.json"
+    if not meta.exists():
+        adopt_legacy(meta, [CACHE / f"file-{align_key(data, text, h)}.json" for h in LEGACY_GENERATOR_HASHES], valid_json)
     if meta.exists():
         return {"words": json.loads(meta.read_text(encoding="utf-8")), "mp3": path}
+    if NO_MODELS:
+        sys.exit(f"generate.py: MOTION_NO_MODELS=1 but {path.name} has no cached Whisper alignment for: {text[:60]}")
+    words = align_file(path, text)
+    tmp = meta.with_name(meta.name + ".tmp-" + str(os.getpid()))
+    tmp.write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
+    os.replace(tmp, meta)
+    return {"words": words, "mp3": path}
+
+
+def align_file(path: Path, text: str) -> list[dict]:
+    """Whisper word timings for one recording, matched to the script text (output-affecting: guard "align")."""
+    global _whisper
     if _whisper is None:
         from faster_whisper import WhisperModel
 
@@ -149,11 +201,7 @@ def from_file(path: Path, text: str) -> dict:
     heard = [{"word": w.word.strip(), "start": w.start, "end": w.end} for s in segments for w in s.words if w.word.strip()]
     if not heard:
         print(f"    warn: no words recognised in {path.name}; timing spread over the speech")
-    words = snap_onsets(align(text, heard, speech_bounds(audio16, 16000)), audio16, 16000)
-    tmp = meta.with_name(meta.name + ".tmp-" + str(os.getpid()))
-    tmp.write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
-    os.replace(tmp, meta)
-    return {"words": words, "mp3": path}
+    return snap_onsets(align(text, heard, speech_bounds(audio16, 16000)), audio16, 16000)
 
 
 def respell(text: str, say: dict) -> str:
@@ -209,30 +257,61 @@ def synth_supertonic_unlocked(text: str, spk: dict, say: dict | None = None) -> 
         shutil.copyfile(legacy, tmp)
         os.replace(tmp, wav)
     if not valid_wav(wav):
+        if NO_SYNTH or NO_MODELS:
+            sys.exit(f"generate.py: Supertonic synthesis is disabled (MOTION_NO_SYNTH/MOTION_NO_MODELS) and st2-{key}.wav is not cached: {spoken[:60]}")
         if _supertonic is None:
             from supertonic import TTS
 
             print("    loading Supertonic-3 (first run downloads it)")
             _supertonic = TTS(model="supertonic-3")
-        x, _ = _supertonic.synthesize(spoken, voice_style=_supertonic.get_voice_style(st["voice"]), lang="id",
-                                      speed=speed, total_steps=SUPERTONIC_STEPS)
         tmp = wav.with_name(wav.stem + ".tmp-" + str(os.getpid()) + ".wav")
-        _supertonic.save_audio(x, str(tmp))
+        supertonic_render(spoken, st["voice"], speed, key, tmp)
         os.replace(tmp, wav)
     rng = st.get("range", 1.0)
     if rng != 1.0:
-        wav = expand_pitch(wav, rng, (100, 500) if st["voice"].startswith("F") else (60, 300))
+        wav = expand_pitch(wav, rng, pitch_window(st["voice"]))
     return from_file(wav, text)
+
+
+def supertonic_render(spoken: str, voice: str, speed: float, key: str, out: Path) -> None:
+    """One Supertonic-3 chunk. The noise is seeded from the chunk's cache key, so a cache miss reproduces the
+    same draw; onnxruntime may still round differently on another CPU or OS, so audio across machines can
+    differ slightly (output-affecting: guard "assembly")."""
+    np.random.seed(int(key, 16) % 2**32)
+    x, _ = _supertonic.synthesize(spoken, voice_style=_supertonic.get_voice_style(voice), lang="id",
+                                  speed=speed, total_steps=SUPERTONIC_STEPS)
+    _supertonic.save_audio(x, str(out))
+
+
+def pitch_window(voice: str) -> tuple[int, int]:
+    return (100, 500) if voice.startswith("F") else (60, 300)
 
 
 def expand_pitch(wav: Path, k: float, window: tuple[int, int]) -> Path:
     """Supertonic reads flat: widen the pitch contour around the line's median by `k` (in semitones, each point
     capped at ±9 st first so octave errors in the tracking are not blown up) and resynthesise with PSOLA, which
     keeps every sample in place, so word timings are unchanged. Cached next to the raw wav."""
-    pitch_key = hashlib.sha256(wav.read_bytes() + f"|pitch-v1|{GENERATOR_HASH}|{importlib.metadata.version('praat-parselmouth')}|{k}|{window}".encode()).hexdigest()[:24]
-    out = CACHE / f"pitch-{pitch_key}.wav"
+    data = wav.read_bytes()
+
+    def pitch_key(tag: str) -> str:
+        return hashlib.sha256(data + f"|pitch-v1|{tag}|{importlib.metadata.version('praat-parselmouth')}|{k}|{window}".encode()).hexdigest()[:24]
+
+    out = CACHE / f"pitch-{pitch_key(PITCH_TAG)}.wav"
+    if not valid_wav(out):
+        adopt_legacy(out, [CACHE / f"pitch-{pitch_key(h)}.wav" for h in LEGACY_GENERATOR_HASHES], valid_wav)
     if valid_wav(out):
         return out
+    if NO_MODELS:
+        sys.exit(f"generate.py: MOTION_NO_MODELS=1 but the pitch-widened copy of {wav.name} is not cached")
+    snd = widen_pitch(wav, k, window)
+    tmp = out.with_name(out.stem + ".tmp-" + str(os.getpid()) + ".wav")
+    snd.save(str(tmp), "WAV")
+    os.replace(tmp, out)
+    return out
+
+
+def widen_pitch(wav: Path, k: float, window: tuple[int, int]):
+    """The PSOLA body of expand_pitch (output-affecting: guard "pitch")."""
     import parselmouth
     from parselmouth.praat import call
 
@@ -250,10 +329,7 @@ def expand_pitch(wav: Path, k: float, window: tuple[int, int]) -> Path:
             call(tier, "Add point", t, med * 2 ** (s / 12))
         call([man, tier], "Replace pitch tier")
         snd = call(man, "Get resynthesis (overlap-add)")
-    tmp = out.with_name(out.stem + ".tmp-" + str(os.getpid()) + ".wav")
-    snd.save(str(tmp), "WAV")
-    os.replace(tmp, out)
-    return out
+    return snd
 
 
 def write_list(cfg: dict) -> None:

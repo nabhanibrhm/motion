@@ -16,9 +16,7 @@
       const n = F1.n;
       const mono = "'JetBrains Mono', monospace";
       const osw = "Oswald, sans-serif";
-      // background-only ambient motion: deterministic, continuous in f (works with fractional frames at 60 fps)
-      const DRIFT = (f, { seed, count, y0, y1, color, a }) => `<g fill="${color}" opacity="${a}">${Array.from({ length: count }, (_, i) => { const h = (k) => F1.world.hash(seed + i * 5 + k); return `<circle cx="${F1.n(60 + 960 * h(1) + 26 * Math.sin(f * 0.035 * (0.6 + h(2)) + h(3) * 6.28), 1)}" cy="${F1.n(y0 + (y1 - y0) * h(4) + 34 * Math.sin(f * 0.026 * (0.6 + h(5)) + h(6) * 6.28), 1)}" r="${F1.n(8 + 18 * h(7), 1)}"/>`; }).join("")}</g>`;
-      const SWEEP = (f, { color, a, y0, y1 }) => `<g style="filter:blur(26px)" opacity="${F1.n(a * (0.65 + 0.35 * Math.sin(f * 0.021)), 3)}" transform="translate(${F1.n(-260 + 1000 * (0.5 + 0.5 * Math.sin(f * 0.0175)), 1)} 0)"><polygon points="0,${y0} 200,${y0} 100,${y1} -100,${y1}" fill="${color}"/></g>`;
+      const W = F1.world;
 
       const PHOTOS = ["public/photos/listyo-ksp.jpg", "public/photos/ahrie.jpg", "public/photos/eko.jpg", "public/photos/slamet.jpg"];
       const NAMES = [
@@ -111,7 +109,7 @@
         const FOOT = ft <= 0 ? "" : `<div style="position:absolute;left:72px;top:${PY + PH + 30}px;width:888px;text-align:center;opacity:${n(ft, 3)};font-family:${mono};font-weight:700;font-size:24px;letter-spacing:3px;color:#c9c6c0">STATUS PER 6 NOV 2026 · MENURUT PEMBERITAAN</div>`;
 
         const BG = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #1b2132 0%, #0d0f16 75%)"></div>
-<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">${DRIFT(f, { seed: 520, count: 8, y0: 480, y1: 1400, color: "#ff7a1a", a: 0.18 })}${SWEEP(f, { color: "#ffffff", a: 0.14, y0: 300, y1: 1400 })}</svg>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">${W.drift(f, { seed: 520, count: 8, y0: 480, y1: 1400, color: "#ff7a1a", a: 0.18 })}${W.sweep(f, { color: "#ffffff", a: 0.14, y0: 300, y1: 1400 })}</svg>
 ${[0, 1, 2, 3].map(card).join("")}${CREDIT}${PASAL}${BANNER}${PANEL}${items.map(row).join("")}${FOOT}`;
 
         return F1.join(

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "gold-flash",
+  "number": 8,
+  "title": "Judul Kilat",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #01",
+      "steps": 5
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "headline": "TOKOH\n*KLAIM UTAMA*",
+        "claim": "GANTI DENGAN KLAIM HOOK",
+        "tag": "KATA SUMBER",
+        "person": {
+          "name": "NAMA TOKOH",
+          "role": "Jabatan",
+          "photo": null
+        }
+      }
+    },
+    {
+      "id": "resmi",
+      "template": "hw-resmi",
+      "props": {
+        "items": [
+          {
+            "text": "Fakta resmi pertama",
+            "source": "Media A, Media B"
+          },
+          {
+            "text": "Fakta resmi kedua",
+            "source": "Media A, Media C"
+          },
+          {
+            "text": "Fakta resmi ketiga",
+            "source": "Media B, Media C"
+          }
+        ]
+      }
+    },
+    {
+      "id": "belum",
+      "template": "hw-split",
+      "props": {
+        "left": {
+          "items": [
+            {
+              "text": "Yang sudah dikonfirmasi"
+            },
+            {
+              "text": "Pernyataan resmi"
+            }
+          ]
+        },
+        "right": {
+          "items": [
+            {
+              "text": "Yang belum dijelaskan"
+            },
+            {
+              "text": "Pertanyaan terbuka"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "kutipan",
+      "template": "hw-quote",
+      "props": {
+        "person": {
+          "name": "NAMA TOKOH",
+          "role": "Jabatan",
+          "photo": null
+        },
+        "quote": "Kutipan persis dari sumber.",
+        "source": "Media A"
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "lines": [
+          {
+            "text": "INGAT",
+            "style": "kicker"
+          },
+          {
+            "text": "*PRADUGA* TAK BERSALAH"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
+            "style": "cta"
+          }
+        ],
+        "cover": {
+          "title": "JUDUL\n*COVER*",
+          "chip": "KLAIM SINGKAT?"
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}
