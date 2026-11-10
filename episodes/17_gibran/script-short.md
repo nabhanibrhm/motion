@@ -9,15 +9,15 @@ Retention rules (README "Retention rules"): shock fact by second 5, no setup lin
 | Section | Line | Sources |
 |---|---|---|
 | hook | Wakil Presiden Gibran menyampaikan niat mundur kepada Presiden Prabowo pagi ini. Istana membenarkan, dan Prabowo tidak menolak. | S1, S2 |
-| resmi | Menurut Mensesneg Prasetyo Hadi, pertemuan berlangsung sekitar dua setengah jam dan alasannya dinamika putusan MK dan MA. | S1, S3 |
-| resmi | Tapi Gibran juga meminta kesempatan membuktikan keabsahan dokumen pendidikannya lewat PTUN. | S4 |
+| kutipan | Menurut Menteri Sekretaris Negara Prasetyo Hadi, pertemuan berlangsung sekitar dua setengah jam dan alasannya dinamika putusan MK dan MA. | S1, S3 |
+| ptun | Tapi Gibran juga meminta kesempatan membuktikan keabsahan dokumen pendidikannya lewat PTUN. | S4 |
 | sebab | Mahkamah Agung membatalkan surat penyetaraan ijazah SMA yang dipakai Gibran saat mendaftar Pilpres dua ribu dua puluh empat. | S5 |
 | sebab | Sebelumnya Mahkamah Konstitusi menyatakan tidak menemukan ijazah setara SMA itu, tapi tidak bisa mendiskualifikasi Gibran. | S6 |
-| belum | Di DPR, puluhan anggota lintas fraksi meneken usul hak menyatakan pendapat, dan Ketua DPR Puan Maharani berjanji menindaklanjutinya. | S7, S8 |
-| belum | Yang belum jelas: surat pengunduran diri resmi belum ada, dan Gibran belum bicara langsung soal ini. | S9 |
-| penutup | Kalau kursi Wapres kosong, Presiden mengusulkan dua nama dan MPR memilih paling lambat enam puluh hari. Menurutmu mundur atau buktikan di PTUN? Tulis di komentar dan follow untuk update. | S10 |
+| belum | Di DPR, puluhan anggota lintas fraksi menandatangani usul hak menyatakan pendapat, dan Ketua DPR Puan Maharani berjanji menindaklanjutinya. | S7, S8 |
+| belum | Istana menegaskan Gibran masih menjabat dan belum resmi mundur. Surat pengunduran diri belum ada, dan Gibran belum bicara langsung. | S9 (+ Bisnis 10 Nov: "masih menjabat, belum resmi mundur") |
+| penutup | Menurutmu Gibran sebaiknya mundur atau membuktikan dokumennya di PTUN? Tulis di komentar dan follow untuk update. | — (MPR 60-day rule, S10, moved to the caption) |
 
-Frame 0: Gibran photo + "GIBRAN · NIAT MUNDUR" + "Prabowo tidak menolak" + tag "KATA ISTANA · 10 NOV". Cover: "GIBRAN / NIAT MUNDUR / DARI WAPRES" + chip "KATA ISTANA". Photos: only Gibran (official PD portrait); Prabowo is not pictured, so equal treatment is not an issue. If a Prabowo card is added, use `people/prabowo.jpg` with the same template.
+Frame 0: Gibran photo + "GIBRAN · NIAT MUNDUR" + "Prabowo tidak menolak" + tag "KATA ISTANA · 10 NOV". Cover: "GIBRAN / NIAT MUNDUR / DARI WAPRES" + chip "KATA ISTANA". Photos: Gibran (hook, ptun) and Prasetyo (kutipan: hw-quote with his verbatim detik quote; ptun shows Gibran's request as relayed by Prasetyo, kicker "DISAMPAIKAN MENSESNEG"), official PD portraits; Prabowo is not pictured, so equal treatment is not an issue. If a Prabowo card is added, use `people/prabowo.jpg` with the same template.
 
 ## Sources (two outlets per claim, or drop it)
 

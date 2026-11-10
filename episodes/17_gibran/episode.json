@@ -16,7 +16,7 @@
     "profile": "modern",
     "case": {
       "id": "HOTWIZZ #06",
-      "steps": 5
+      "steps": 6
     }
   },
   "scenes": [
@@ -39,29 +39,39 @@
       }
     },
     {
-      "id": "resmi",
-      "template": "hw-resmi",
+      "id": "kutipan",
+      "template": "hw-quote",
       "props": {
-        "label": "YANG RESMI",
-        "title": "KATA MENSESNEG",
+        "label": "KATA ISTANA",
         "kicker": "KONFERENSI PERS ISTANA",
-        "items": [
-          {
-            "text": "Bertemu Prabowo *±2,5 jam*, Selasa pagi",
-            "source": "detik, Kompas, CNN Indonesia (10 Nov)",
-            "cue": "jam"
-          },
-          {
-            "text": "Alasan: dinamika *putusan MK & MA*",
-            "source": "Kompas, detik (10 Nov)",
-            "cue": "putusan"
-          },
-          {
-            "text": "Gibran minta kesempatan *buktikan dokumen di PTUN*",
-            "source": "detik, Republika, Jakarta Globe (10 Nov)",
-            "cue": "PTUN"
-          }
-        ]
+        "person": {
+          "name": "Prasetyo Hadi",
+          "role": "Menteri Sekretaris Negara",
+          "photo": "people/prasetyo.jpg",
+          "credit": "Kemensetneg RI (domain publik)"
+        },
+        "quote": "Beliau menyatakan *niat untuk mengundurkan diri* menghadapi dinamika yang berkembang.",
+        "source": "detik, Kompas, CNN Indonesia",
+        "date": "10 Nov 2026",
+        "cue": "Menurut"
+      }
+    },
+    {
+      "id": "ptun",
+      "template": "hw-quote",
+      "props": {
+        "label": "PERMINTAAN GIBRAN",
+        "kicker": "DISAMPAIKAN MENSESNEG",
+        "person": {
+          "name": "Gibran Rakabuming Raka",
+          "role": "Wakil Presiden RI",
+          "photo": "people/gibran.jpg",
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+        },
+        "quote": "Memohon untuk diberi kesempatan untuk dapat *membuktikan keabsahan dokumen* yang dimiliki.",
+        "source": "detik, Republika, Jakarta Globe",
+        "date": "10 Nov 2026 (lewat PTUN)",
+        "cue": "Tapi"
       }
     },
     {
@@ -110,9 +120,9 @@
           "title": "BELUM JELAS",
           "items": [
             {
-              "text": "*Surat* pengunduran diri resmi",
-              "source": "Jakarta Globe, CNN",
-              "cue": "surat"
+              "text": "Masih menjabat, *belum resmi mundur*",
+              "source": "Bisnis, Jakarta Globe (10 Nov)",
+              "cue": "menjabat"
             },
             {
               "text": "Gibran *belum bicara* langsung",
@@ -130,20 +140,21 @@
         "label": "MENURUTMU?",
         "lines": [
           {
-            "text": "KALAU KURSI WAPRES KOSONG",
-            "style": "kicker"
-          },
-          {
-            "text": "Presiden usulkan *2 nama*, MPR pilih *≤ 60 hari*",
-            "cue": "MPR"
-          },
-          {
-            "text": "MUNDUR ATAU PTUN?",
-            "style": "chip",
+            "text": "MENURUTMU?",
+            "style": "kicker",
             "cue": "Menurutmu"
           },
           {
-            "text": "KOMENTAR & FOLLOW",
+            "text": "*MUNDUR* ATAU *PTUN*?",
+            "cue": "mundur"
+          },
+          {
+            "text": "TULIS DI KOMENTAR",
+            "style": "chip",
+            "cue": "Tulis"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
             "style": "cta",
             "cue": "follow"
           }

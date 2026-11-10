@@ -40,11 +40,10 @@ if (!F1.hw) {
     const spread = (D, i, count, from = 6) => Math.round(from + (i * D * 0.7) / Math.max(1, count));
     const show = (p, dy = 30) => `opacity:${n(Math.min(1, p), 3)};transform:translateY(${n((1 - Math.min(1, p)) * dy)}px)`;
 
-    // background-only ambient motion: the shared F1.world helpers, continuous in f
-    const bg = (f, seed) =>
+    // plain background: gradient + scanlines (no drifting dots or red light sweep since 10 Nov 2026, user request)
+    const bg = () =>
       `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,#1b2133 0%,${INK} 70%)"></div>` +
-      `<div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 2px,transparent 2px 6px)"></div>` +
-      `<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0">${F1.world.drift(f, { seed, count: 7, y0: 420, y1: 1420, color: ORG, a: 0.18 })}${F1.world.sweep(f, { color: RED, a: 0.14, y0: 280, y1: 1420 })}</svg>`;
+      `<div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 2px,transparent 2px 6px)"></div>`;
 
     /** Scene frame: camera stage (with theme watermark), vignette, case-progress strip, then overlays (not zoomed). */
     const frame = (f, D, p, body, { whip = true, overlay = "" } = {}) =>

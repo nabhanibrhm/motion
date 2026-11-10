@@ -36,13 +36,19 @@
       ]
     },
     {
-      "id": "resmi",
+      "id": "kutipan",
       "chapter": "update",
       "lines": [
         {
           "speaker": "wec",
-          "text": "Menurut Mensesneg Prasetyo Hadi, pertemuan berlangsung sekitar dua setengah jam dan alasannya dinamika putusan MK dan MA."
-        },
+          "text": "Menurut Menteri Sekretaris Negara Prasetyo Hadi, pertemuan berlangsung sekitar dua setengah jam dan alasannya dinamika putusan MK dan MA."
+        }
+      ]
+    },
+    {
+      "id": "ptun",
+      "chapter": "update",
+      "lines": [
         {
           "speaker": "wec",
           "text": "Tapi Gibran juga meminta kesempatan membuktikan keabsahan dokumen pendidikannya lewat PTUN."
@@ -69,11 +75,11 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Di DPR, puluhan anggota lintas fraksi meneken usul hak menyatakan pendapat, dan Ketua DPR Puan Maharani berjanji menindaklanjutinya."
+          "text": "Di DPR, puluhan anggota lintas fraksi menandatangani usul hak menyatakan pendapat, dan Ketua DPR Puan Maharani berjanji menindaklanjutinya."
         },
         {
           "speaker": "wec",
-          "text": "Yang belum jelas: surat pengunduran diri resmi belum ada, dan Gibran belum bicara langsung soal ini."
+          "text": "Istana menegaskan Gibran masih menjabat dan belum resmi mundur. Surat pengunduran diri belum ada, dan Gibran belum bicara langsung."
         }
       ]
     },
@@ -83,7 +89,7 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Kalau kursi Wapres kosong, Presiden mengusulkan dua nama dan MPR memilih paling lambat enam puluh hari. Menurutmu mundur atau buktikan di PTUN? Tulis di komentar dan follow untuk update.",
+          "text": "Menurutmu Gibran sebaiknya mundur atau membuktikan dokumennya di PTUN? Tulis di komentar dan follow untuk update.",
           "after": 1.2
         }
       ]
@@ -93,7 +99,6 @@
     "MK": "em ka",
     "MA": "em a",
     "PTUN": "pe te u en",
-    "MPR": "em pe er",
-    "Mensesneg": "men ses neg"
+    "MPR": "em pe er"
   }
 }

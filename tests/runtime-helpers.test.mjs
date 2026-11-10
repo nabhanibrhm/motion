@@ -69,10 +69,10 @@ test('W.drift and W.sweep are byte-identical to both pasted variants',()=>{
   assert.ok(checked>10000);
 });
 
-test('hotwizz-kit draws the background with F1.world.drift/sweep and no private copy',()=>{
+test('hotwizz-kit background is plain (no drift dots or red sweep since 10 Nov 2026) and has no private copy',()=>{
   const kit=readFileSync(join(REPO_ROOT,'src/templates/hotwizz-kit.js'),'utf8');
-  assert.ok(kit.includes('F1.world.drift(f, { seed, count: 7, y0: 420, y1: 1420, color: ORG, a: 0.18 })'));
-  assert.ok(kit.includes('F1.world.sweep(f, { color: RED, a: 0.14, y0: 280, y1: 1420 })'));
+  assert.ok(!kit.includes('F1.world.drift('));
+  assert.ok(!kit.includes('F1.world.sweep('));
   assert.ok(!/const (DRIFT|SWEEP) =/.test(kit));
 });
 
