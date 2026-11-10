@@ -24,7 +24,7 @@ Frame 0: "RP14,7 MILIAR · KE PERUSAHAAN RAFFI?" with Raffi's photo. Cover card:
 |---|---|---|
 | S1 | ICW release Mon 9 Nov; data.inaproc.id (LKPP) realisasi 2023–2026; 8 packages to PT Rans Animasi Indonesia | Warta Ekonomi 9 Nov 20:31; Maklumat; Arusbawah; Senator 9 Nov; Fajar 9 Nov |
 | S2 | Total Rp14.696.955.002 | Warta Ekonomi; Senator; Lingkar; Gelora |
-| S3 | KKP ~Rp10,8 M: 2025 two packages Rp7,2 M (Setditjen PKRL Rp3.596.955.000; Setditjen Perikanan Budidaya, BINS Rp3,6 M), 2026 one package Rp3,6 M (Setditjen Perikanan Tangkap, Kampung Nelayan Merah Putih Cemaga Utara, Natuna). Kemendikbudristek 2024 (Museum dan Cagar Budaya) five packages = Rp3.900.000.002: YouTube RANS Rp452,7 jt, IG Reels Rp205,9 jt, IG Story Rp575,7 jt, event attendance Rp2,52 M, TikTok Rp144,4 jt | Per-package table: Warta Ekonomi only. KKP Rp10,8 M also Senator and others. Kemendikbud subtotal derived (total − KKP). Only rounded subtotals on screen |
+| S3 | KKP ~Rp10,8 M: 2025 two packages Rp7,2 M (Setditjen PKRL Rp3.596.955.000; Setditjen Perikanan Budidaya, BINS Rp3,6 M), 2026 one package Rp3,6 M (Setditjen Perikanan Tangkap, Kampung Nelayan Merah Putih Cemaga Utara, Natuna). Kemendikbudristek 2024 (Museum dan Cagar Budaya) five packages = Rp3.900.000.002: YouTube RANS Rp452,7 jt, IG Reels Rp205,9 jt, IG Story Rp575,7 jt, event attendance Rp2,52 M, TikTok Rp144,4 jt | Per-package values: Warta Ekonomi 9 Nov + Suara 10 Nov 09:11 ("Pajak Rakyat Rp14,7 M untuk Bayar Influencer…"). Shown on screen as our own table in `scenes/resmi.js` (no outlet graphic) |
 | S4 | Raffi Utusan Khusus Presiden Bidang Pembinaan Generasi Muda dan Pekerja Seni since 22 Oct 2024; KKP contracts after it | Warta Ekonomi; Maklumat; Fajar |
 | S5 | Package names cite RANS YouTube and @raffinagita1717; ICW: limits competition | Warta Ekonomi; Maklumat; Arusbawah |
 | S6 | ICW asks BPKP + inspectorate audit, publish documents, Raffi to disclose ownership, President to stop unrelated influencer spending | Maklumat; Arusbawah; Warta Ekonomi |
@@ -38,7 +38,8 @@ Not verified: ICW's own release (antikorupsi.org unreachable 10 Nov) and the ina
 - "korupsi", "terbukti", "buzzer" (Harian Massa headline), or "Raffi dapat Rp14,7 M" as personal income (the payee is the company).
 - Old Raffi quotes (2024 "influencer pemerintah", RANS Carnival, 29 Oct Sumpah Pemuda rally): different issues.
 - Contract start "2023" (Harian Massa only; the package table starts 2024).
-- Per-package Rp values on screen (single source).
+- "Per story" pricing (Suara headline framing; the Rp575,65 jt is one package of Instagram Stories, count not given). "Desta cs" (Suara headline only, not in its body).
+- Screenshots of outlet tables or graphics.
 
 ## Before posting
 

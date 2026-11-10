@@ -180,7 +180,7 @@ Helpers: `.venv/Scripts/python tools/voice/cartesia.py voices [--gender masculin
 
 ## HotWizz Flash (breaking news in ≤30 minutes)
 
-A Flash episode is 45–70 s, one narrator (Nisa, `wec`, Cartesia), 30 fps, no baked bed, and has **no hand-drawn scenes**: every scene is a shared `hw-*` template filled from `episode.json` props (`src/templates/hotwizz.mjs`, browser kit `src/templates/hotwizz-kit.js`). Neutrality rules from HANDOFF.md still apply: two outlets per claim, equal card/photo treatment for every side, attributed readings, "tersangka" + praduga tak bersalah.
+A Flash episode is 45–60 s (6–7 lines), one narrator (Nisa, `wec`, Cartesia), 30 fps, no baked bed, and has **no hand-drawn scenes**: every scene is a shared `hw-*` template filled from `episode.json` props (`src/templates/hotwizz.mjs`, browser kit `src/templates/hotwizz-kit.js`). Neutrality rules from HANDOFF.md still apply: two outlets per claim, equal card/photo treatment for every side, attributed readings, "tersangka" + praduga tak bersalah.
 
 News-day recipe (times from an approved script):
 
@@ -191,6 +191,18 @@ News-day recipe (times from an approved script):
 5. **Voice (2–3 min, Cartesia credits).** `node scripts/motion.mjs voice <id>`.
 6. **Stills (≈1 min).** `node scripts/motion.mjs stills <id> --at 0,<a few times>,<last second>`; frame 0 must show the claim, the last second the cover. `sync` takes <1 s and 15 stills about 13 s.
 7. **Render (5–8 min)** `node scripts/motion.mjs render <id>`, then caption in `out/caption/`.
+
+### Retention rules (from `rans`, 10 Nov 2026)
+
+`rans` held its hook, then viewers left at 0:14 (average watch 14 s of 83 s, 3.7% full) during a setup line over an empty table; `hapus` showed the same late-post drop. Every HotWizz (and KASUS hook) follows these:
+
+1. **Freshness gate.** Post within about 12 h of the story breaking. If it would go up later than about 12–18 h, skip it or find a new angle (a response, a new number).
+2. **Shock fact by second 5.** The hook line carries the most specific, surprising fact (a number on a named thing, e.g. "Rp575 juta untuk Instagram Story"), not only the headline total. Frame 0 shows it.
+3. **No setup line after the hook.** The line after the hook is already a number, a name or a concrete fact on screen; never a "who researched what" line. Attribution ("temuan ICW", "kata polisi") goes in the kicker, tag or source line, not in its own spoken sentence.
+4. **Something new on screen every ~3 s.** No scene sits on an empty or placeholder layout for more than ~3 s; the first card or row lands on the line's first word.
+5. **45–60 s, 6–7 lines.** Cut background lines first; the caption carries the detail and the full sources.
+6. **Check stills at 0, 5 and 10 s** before rendering: each must show a different concrete fact.
+7. After posting, record views at 1 h and 2 h plus average watch time and % full; under ~200 views at 2 h means no push.
 
 Template props (`*text*` marks an accent colour, `\n` a line break; a cue is a spoken word, or `word:x#1`, `line:0`, `line:0:end`, `word:x+6`, or a frame number; without cues items reveal evenly; every template also takes `label` (progress strip text), `step`, `sfx: false`):
 

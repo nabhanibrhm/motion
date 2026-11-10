@@ -40,29 +40,25 @@
     },
     {
       "id": "resmi",
-      "template": "hw-resmi",
-      "props": {
-        "label": "DATA PENGADAAN",
-        "title": "8 PAKET INFLUENCER",
-        "items": [
-          {
-            "text": "*8 paket* jasa influencer, data LKPP 2023–2026",
-            "source": "Warta Ekonomi, Maklumat, Senator (9 Nov)",
-            "cue": "portal"
-          },
-          {
-            "text": "Kemendikbudristek 2024: *±Rp3,9 M* · YouTube, IG, TikTok, acara",
-            "source": "Warta Ekonomi, Senator (9 Nov)",
-            "cue": "Sekitar"
-          },
-          {
-            "text": "KKP 2025–2026: *±Rp10,8 M* · 3 paket",
-            "source": "Warta Ekonomi, Senator (9 Nov)",
-            "cue": "Sisanya"
-          }
-        ],
-        "kicker": "DATA LKPP VIA ICW"
-      }
+      "file": "scenes/resmi.js",
+      "bg": "#0d0f16",
+      "sfx": [
+        {
+          "at": 0,
+          "file": "swoosh-soft",
+          "vol": 0.18
+        },
+        {
+          "at": "line:1",
+          "file": "pop-in",
+          "vol": 0.14
+        },
+        {
+          "at": "line:2",
+          "file": "pop-in",
+          "vol": 0.14
+        }
+      ]
     },
     {
       "id": "soal",
