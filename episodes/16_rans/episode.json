@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "rans",
+  "number": 16,
+  "title": "Rp14,7 Miliar ke Perusahaan Raffi Ahmad?",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #05",
+      "steps": 5
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "TEMUAN ICW",
+        "kicker": "TEMUAN ICW",
+        "headline": "*RP14,7 MILIAR*\nKE PERUSAHAAN RAFFI?",
+        "claim": "Uang *2 kementerian* untuk jasa influencer",
+        "tag": "DATA PENGADAAN LKPP",
+        "person": {
+          "name": "Raffi Ahmad",
+          "role": "Utusan Khusus Presiden",
+          "photo": "people/raffi-ahmad.jpg",
+          "credit": "Lautner of the king via Wikimedia Commons (CC BY 3.0)"
+        },
+        "cue": "Raffi"
+      }
+    },
+    {
+      "id": "resmi",
+      "template": "hw-resmi",
+      "props": {
+        "label": "DATA PENGADAAN",
+        "title": "8 PAKET INFLUENCER",
+        "items": [
+          {
+            "text": "*8 paket* jasa influencer, data LKPP 2023–2026",
+            "source": "Warta Ekonomi, Maklumat, Senator (9 Nov)",
+            "cue": "portal"
+          },
+          {
+            "text": "Kemendikbudristek 2024: *±Rp3,9 M* · YouTube, IG, TikTok, acara",
+            "source": "Warta Ekonomi, Senator (9 Nov)",
+            "cue": "Sekitar"
+          },
+          {
+            "text": "KKP 2025–2026: *±Rp10,8 M* · 3 paket",
+            "source": "Warta Ekonomi, Senator (9 Nov)",
+            "cue": "Sisanya"
+          }
+        ],
+        "kicker": "DATA LKPP VIA ICW"
+      }
+    },
+    {
+      "id": "soal",
+      "template": "hw-resmi",
+      "props": {
+        "label": "YANG DISOROT",
+        "title": "YANG DISOROT ICW",
+        "kicker": "KATA ICW",
+        "items": [
+          {
+            "text": "Raffi *Utusan Khusus Presiden* sejak 22 Okt 2024, kontrak KKP sesudahnya",
+            "source": "Warta Ekonomi, Maklumat, Fajar (9 Nov)",
+            "cue": "Utusan"
+          },
+          {
+            "text": "Nama paket menyebut *kanal RANS* & akun Raffi–Nagita",
+            "source": "Warta Ekonomi, Maklumat, Arusbawah (9 Nov)",
+            "cue": "kanal"
+          }
+        ]
+      }
+    },
+    {
+      "id": "belum",
+      "template": "hw-split",
+      "props": {
+        "label": "DIMINTA VS BELUM ADA",
+        "headline": "LANGKAH BERIKUTNYA",
+        "left": {
+          "title": "DIMINTA ICW",
+          "items": [
+            {
+              "text": "Audit *BPKP* & inspektorat",
+              "source": "Maklumat, Arusbawah",
+              "cue": "audit"
+            },
+            {
+              "text": "Raffi buka *kepemilikan* di perusahaan",
+              "source": "Maklumat, Warta Ekonomi",
+              "cue": "kepemilikannya"
+            }
+          ]
+        },
+        "right": {
+          "title": "BELUM ADA",
+          "items": [
+            {
+              "text": "Tanggapan *Raffi & RANS*",
+              "source": "per 10 Nov",
+              "cue": "tanggapan"
+            },
+            {
+              "text": "Tanggapan *KKP & Kemendikbud*",
+              "source": "per 10 Nov",
+              "cue": "kedua"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "MENURUTMU?",
+        "lines": [
+          {
+            "text": "INGAT",
+            "style": "kicker"
+          },
+          {
+            "text": "Ini *dugaan ICW*, bukan putusan",
+            "cue": "Menurutmu"
+          },
+          {
+            "text": "PANTAS PAKAI UANG PAJAK?",
+            "style": "chip",
+            "cue": "pantas"
+          },
+          {
+            "text": "KOMENTAR & FOLLOW",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "cover": {
+          "title": "*RP14,7 MILIAR*\nKE PERUSAHAAN\nRAFFI AHMAD?",
+          "chip": "TEMUAN ICW"
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

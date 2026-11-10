@@ -36,5 +36,6 @@ Portraits for the `hw-hook` and `hw-quote` templates, referenced from `episode.j
 | dasco.jpg | Sufmi Dasco Ahmad | https://commons.wikimedia.org/wiki/File:Sufmi_Dasco_Ahmad,_Wakil_Ketua_DPR-RI_(2024%E2%80%932029).jpg | House of Representatives of the Republic of Indonesia | Public domain |
 | suahasil.jpg | Suahasil Nazara | https://commons.wikimedia.org/wiki/File:Suahasil_Nazara,_Menteri_Keuangan_RI_(2026).jpg | Ministry of Finance, Republic of Indonesia | Public domain |
 | bahlil.jpg | Bahlil Lahadalia | https://commons.wikimedia.org/wiki/File:Bahlil_Lahadalia_Official_Portrait.png | Indonesian Investment Ministry | Public domain |
+| raffi-ahmad.jpg | Raffi Ahmad | https://commons.wikimedia.org/wiki/File:Raffi-Ahmad-2020_(cropped).jpg | Lautner of the king at Indonesian Wikipedia | CC BY 3.0 (2020 photo; the 2024 Setpres-style PD files are only ~190×280) |
 
 Roles and on-screen `credit` strings per file: `people.json`. Roles as of Nov 2026 (Kapolri changed 1 Oct 2026; Listyo Sigit is now Kepala Staf Kepresidenan). Not included: Roy Suryo (only a 2017 DPR portrait, 550 px, formal costume, framing inconsistent with the rest) and Tifauzia Tyassuma (only a video screenshot); both use the silhouette.

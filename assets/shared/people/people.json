@@ -165,6 +165,17 @@
       "commonsUrl": "https://commons.wikimedia.org/wiki/File:Bahlil_Lahadalia_Official_Portrait.png",
       "author": "Indonesian Investment Ministry",
       "licence": "Public domain"
+    },
+    {
+      "slug": "raffi-ahmad",
+      "file": "people/raffi-ahmad.jpg",
+      "name": "Raffi Ahmad",
+      "role": "Utusan Khusus Presiden Bidang Pembinaan Generasi Muda dan Pekerja Seni",
+      "roleAsOf": "2026-11",
+      "credit": "Lautner of the king via Wikimedia Commons (CC BY 3.0)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Raffi-Ahmad-2020_(cropped).jpg",
+      "author": "Lautner of the king at Indonesian Wikipedia",
+      "licence": "CC BY 3.0"
     }
   ]
 }

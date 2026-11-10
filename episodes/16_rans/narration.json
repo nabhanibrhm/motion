@@ -1,0 +1,104 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "Rp14,7 Miliar ke Perusahaan Raffi Ahmad?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Empat belas koma tujuh miliar rupiah dari dua kementerian mengalir ke perusahaan yang terkait Raffi Ahmad untuk jasa influencer. Kok bisa?"
+        }
+      ]
+    },
+    {
+      "id": "resmi",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Indonesia Corruption Watch menelusuri data pengadaan pemerintah di portal LKPP dan menemukan delapan paket jasa influencer untuk PT Rans Animasi Indonesia."
+        },
+        {
+          "speaker": "wec",
+          "text": "Sekitar tiga koma sembilan miliar berasal dari Kemendikbudristek pada tahun dua ribu dua puluh empat, untuk konten YouTube, Instagram, TikTok dan kehadiran di acara."
+        },
+        {
+          "speaker": "wec",
+          "text": "Sisanya sekitar sepuluh koma delapan miliar dari Kementerian Kelautan dan Perikanan lewat tiga paket pada tahun dua ribu dua puluh lima dan dua ribu dua puluh enam."
+        }
+      ]
+    },
+    {
+      "id": "soal",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "ICW menyoroti jabatan Raffi sebagai Utusan Khusus Presiden sejak Oktober dua ribu dua puluh empat, karena kontrak dari KKP datang sesudah pelantikan itu."
+        },
+        {
+          "speaker": "wec",
+          "text": "Nama paketnya juga langsung menyebut kanal RANS dan akun Raffi dan Nagita, sehingga menurut ICW penyedia lain tidak punya peluang bersaing."
+        }
+      ]
+    },
+    {
+      "id": "belum",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "ICW meminta audit oleh BPKP dan inspektorat kementerian, dan meminta Raffi membuka kepemilikannya di perusahaan tersebut."
+        },
+        {
+          "speaker": "wec",
+          "text": "Sampai video ini dibuat belum ada tanggapan dari Raffi, RANS, maupun kedua kementerian. Ini masih dugaan ICW, bukan putusan."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Menurutmu pantas tidak kementerian membayar influencer pakai uang pajak? Tulis di komentar dan follow untuk update.",
+          "after": 1.2
+        }
+      ]
+    }
+  ],
+  "say": {
+    "ICW": "i ce we",
+    "LKPP": "el ka pe pe",
+    "BPKP": "be pe ka pe",
+    "KKP": "ka ka pe",
+    "RANS": "rens",
+    "PT": "pe te"
+  }
+}
