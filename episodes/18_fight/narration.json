@@ -1,0 +1,100 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "Gibran Buka Suara: Tetap Fight di PTUN?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Gibran akhirnya buka suara soal niat mundurnya. Katanya, Presiden Prabowo menyarankan ia tetap fight di PTUN."
+        }
+      ]
+    },
+    {
+      "id": "kutipan",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Di Istana Wakil Presiden, Gibran mengatakan ia tidak ingin dinamika ini menjadi polemik politik yang berkepanjangan."
+        }
+      ]
+    },
+    {
+      "id": "saran",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Menurut Gibran, sarannya: bawa dokumen pendidikan dari SD sampai S1 ke PTUN, dan minta Kementerian Pendidikan Dasar dan Menengah mengajukan PK ke Mahkamah Agung."
+        }
+      ]
+    },
+    {
+      "id": "yusril",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Tapi Menko Yusril Ihza Mahendra menilai putusan MA sudah final, dan Gibran tidak bisa mengajukan PK karena bukan pihak dalam perkara."
+        }
+      ]
+    },
+    {
+      "id": "belum",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Sampai malam ini, Gibran masih menjabat. Ia belum menyatakan mundur atau bertahan, dan surat pengunduran diri belum ada."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Menurutmu Gibran sebaiknya mundur atau tetap fight di PTUN? Tulis di komentar dan follow untuk update.",
+          "after": 1.4
+        }
+      ]
+    }
+  ],
+  "say": {
+    "MK": "em ka",
+    "MA": "em a",
+    "PTUN": "pe te u en",
+    "MPR": "em pe er",
+    "PDIP": "pe de i pe",
+    "fight": "fait",
+    "S1": "es satu",
+    "PK": "pe ka"
+  }
+}

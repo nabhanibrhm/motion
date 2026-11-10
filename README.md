@@ -203,17 +203,18 @@ News-day recipe (times from an approved script):
 5. **45–60 s, 6–7 lines.** Cut background lines first; the caption carries the detail and the full sources.
 6. **Check stills at 0, 5 and 10 s** before rendering: each must show a different concrete fact.
 7. After posting, record views at 1 h and 2 h plus average watch time and % full; under ~200 views at 2 h means no push.
+8. **Loop (from `fight`, 10 Nov 2026).** Frame 0 equals the last frame, and both are the title cover card (face, stamp, title, chip), which is also the TikTok cover: set `introCover: true` on the `hw-hook` (it holds the `hw-cover` card for ~0.5 s, then reveals the hook). Check the 0 s still matches the last-frame still. (`hw-cover` `loop: true` is the other variant: the last frame repeats the hook layout instead.)
 
 Template props (`*text*` marks an accent colour, `\n` a line break; a cue is a spoken word, or `word:x#1`, `line:0`, `line:0:end`, `word:x+6`, or a frame number; without cues items reveal evenly; every template also takes `label` (progress strip text), `step`, `sfx: false`):
 
 | Template | Props |
 |---|---|
-| `hw-hook` | `headline`, `claim`, `person {name, role?, status?, photo?, credit?}`, `kicker?` (bar, default UPDATE), `tag?`, `cue?` (headline pop), `stamp? {text, cue}` (beside the name, never on a face). Everything is visible at frame 0. |
+| `hw-hook` | `headline`, `claim`, `person {name, role?, status?, photo?, credit?}`, `kicker?` (bar, default UPDATE), `tag?`, `cue?` (headline pop), `stamp? {text, cue}` (beside the name, never on a face). Everything is visible at frame 0. `introCover?: true` opens on the episode's `hw-cover` card (frame 0 = last frame = cover). |
 | `hw-resmi` | `items` 2–4 × `{text, source, cue?}`, `title?` (YANG RESMI), `kicker?` |
 | `hw-split` | `left {title? = RESMI, items 1–4 × {text, source?, cue?}}`, `right {title? = BELUM JELAS, items}`, `headline?`, `source?`, `kicker?`. Both columns have the same size and style. |
 | `hw-quote` | `person`, `quote`, `source`, `date?`, `cue?`, `kicker?` |
 | `hw-number` | `value` (e.g. `"20.980"`, `"Rp1,5 T"`), `caption`, `source`, `unit?`, `cue?`, `countUp?` (default true), `kicker?` |
-| `hw-cover` | `cover {title, chip?, stamp? = case id, person? {name, photo, credit}}` (person adds the face above the stamp, same frame as other cards), `lines` 0–6 × `{text, cue?, style? big|text|kicker|chip|cta}`, `footer?`, `coverAt?`. The title-only cover starts 4 frames after the last word, inside the 3:4 crop. |
+| `hw-cover` | `cover {title, chip?, stamp? = case id, person? {name, photo, credit}}` (person adds the face above the stamp, same frame as other cards), `lines` 0–6 × `{text, cue?, style? big|text|kicker|chip|cta}`, `footer?`, `coverAt?`, `loop?`. The title-only cover starts 4 frames after the last word, inside the 3:4 crop. With `loop: true` (and no `cover`) the tail instead redraws the episode's first `hw-hook` at its frame 0, so the last frame equals the first and the TikTok replay is seamless (from `fight`, 10 Nov 2026). |
 
 ```json
 "scenes": [

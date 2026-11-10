@@ -101,7 +101,9 @@ ${P.status ? `<div style="align-self:flex-start;padding:6px 14px;background:${OR
 <div style="font-family:${osw};font-weight:700;font-size:${ns}px;line-height:1.02;letter-spacing:1px;color:#fff;text-transform:uppercase">${rich(P.name)}</div>
 ${P.role ? `<div style="font-family:${mono};font-weight:500;font-size:26px;line-height:1.3;color:#c9c6c0">${esc(P.role)}</div>` : ""}</div>` +
         (p.stamp ? C.stamp(f, { at: cue(S, p.stamp.cue, 0), x: RX, y: PY + PH - 110, rot: -7, text: esc(p.stamp.text), size: 54, color: RED }) : "");
-      return frame(f, D, p, body, { whip: false });
+      // introCover: hold the cover card (= the last frame) for ~0.5 s, then fade to the hook layout over 6 frames
+      const overlay = p.introCover ? coverCard(p.introCover, 1 - F1.ramp(f, 15, 6)) : "";
+      return frame(f, D, p, body, { whip: false, overlay });
     };
 
     /* ---------------------------------------------------------------- hw-resmi: 2-4 confirmed facts with sources */
@@ -231,6 +233,20 @@ ${p.unit ? `<div style="margin-top:18px;padding:6px 30px;border-radius:14px;back
       chip: (t) => `<span style="display:inline-block;padding:8px 32px;border-radius:14px;border:5px solid ${RED};background:rgba(255,45,61,0.14);font-family:${osw};font-weight:700;font-size:50px;letter-spacing:3px;color:#fff;white-space:nowrap">${rich(t)}</span>`,
       cta: (t) => `<span style="display:inline-block;padding:8px 40px;border-radius:14px;background:${YEL};font-family:${osw};font-weight:700;font-size:52px;letter-spacing:4px;color:${INK};white-space:nowrap">${esc(plain(t))}</span>`,
     };
+    /** Title-only cover card (z 50, over everything, centred 3:4 crop y 240-1680) at opacity cv; shared by hw-cover's tail and hw-hook's introCover. */
+    const coverCard = (c, cv) => {
+      const cp = c.person;
+      const ts = fit(c.title, 880, cp ? 400 : 520, cp ? 112 : 124, 60, { lh: 1.04, cw: 0.56 });
+      // optional face (cover.person): same frame and grade as every other person card, credit along the bottom
+      const face = cp ? `<div style="position:relative;width:300px;height:400px;flex:none">${person(cp, 0, 0, 300, 400)}</div>` : "";
+      const faceCredit = cp && cp.credit ? `<div style="position:absolute;left:0;right:0;bottom:250px;text-align:center;opacity:0.6;font-family:${mono};font-weight:500;font-size:18px;color:#fff">Foto: ${esc(cp.credit)}</div>` : "";
+      return cv <= 0
+        ? ""
+        : `<div style="position:absolute;inset:0;z-index:50;background:radial-gradient(ellipse 80% 55% at 50% 48%,#1b2132 0%,${INK} 80%);opacity:${n(cv, 3)};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:${cp ? 30 : 40}px">${face}
+<div style="padding:10px 26px;border:6px solid ${RED};border-radius:12px;transform:rotate(-5deg);font-family:${osw};font-weight:600;font-size:52px;letter-spacing:6px;color:${RED};white-space:nowrap">${esc(c.stamp)}</div>
+<div style="width:900px;text-align:center;font-family:${osw};font-weight:700;font-size:${ts}px;line-height:1.04;letter-spacing:2px;color:#fff;text-transform:uppercase">${rich(c.title)}</div>
+${c.chip ? `<div style="padding:6px 34px;border-radius:16px;background:${RED};font-family:${osw};font-weight:700;font-size:${fit(c.chip, 860, 110, 84, 40, { wrap: false })}px;letter-spacing:3px;color:#fff;white-space:nowrap;text-transform:uppercase">${esc(plain(c.chip))}</div>` : ""}${faceCredit}</div>`;
+    };
     T.cover = (f, { S, D }, p) => {
       const lines = p.lines;
       const ats = lines.map((l, i) => cue(S, l.cue, spread(D, i, lines.length, 2)));
@@ -248,19 +264,10 @@ ${p.unit ? `<div style="margin-top:18px;padding:6px 30px;border-radius:14px;back
 <div style="opacity:${n(fp, 3)};text-align:center"><span style="font-family:${mono};font-weight:700;font-size:26px;letter-spacing:3px;color:${GREY};white-space:nowrap">${esc(p.footer)}</span></div></div>`;
       // Title-only cover over the tail (TikTok "Select cover"); everything inside the centred 3:4 crop, y 240-1680.
       const cv = F1.ramp(f, cAt, 5);
-      const c = p.cover;
-      const cp = c.person;
-      const ts = fit(c.title, 880, cp ? 400 : 520, cp ? 112 : 124, 60, { lh: 1.04, cw: 0.56 });
-      // optional face (cover.person): same frame and grade as every other person card, credit along the bottom
-      const face = cp ? `<div style="position:relative;width:300px;height:400px;flex:none">${person(cp, 0, 0, 300, 400)}</div>` : "";
-      const faceCredit = cp && cp.credit ? `<div style="position:absolute;left:0;right:0;bottom:250px;text-align:center;opacity:0.6;font-family:${mono};font-weight:500;font-size:18px;color:#fff">Foto: ${esc(cp.credit)}</div>` : "";
-      const overlay =
-        cv <= 0
-          ? ""
-          : `<div style="position:absolute;inset:0;z-index:50;background:radial-gradient(ellipse 80% 55% at 50% 48%,#1b2132 0%,${INK} 80%);opacity:${n(cv, 3)};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:${cp ? 30 : 40}px">${face}
-<div style="padding:10px 26px;border:6px solid ${RED};border-radius:12px;transform:rotate(-5deg);font-family:${osw};font-weight:600;font-size:52px;letter-spacing:6px;color:${RED};white-space:nowrap">${esc(c.stamp)}</div>
-<div style="width:900px;text-align:center;font-family:${osw};font-weight:700;font-size:${ts}px;line-height:1.04;letter-spacing:2px;color:#fff;text-transform:uppercase">${rich(c.title)}</div>
-${c.chip ? `<div style="padding:6px 34px;border-radius:16px;background:${RED};font-family:${osw};font-weight:700;font-size:${fit(c.chip, 860, 110, 84, 40, { wrap: false })}px;letter-spacing:3px;color:#fff;white-space:nowrap;text-transform:uppercase">${esc(plain(c.chip))}</div>` : ""}${faceCredit}</div>`;
+      // loop: the tail is the hook's frame 0 (whole frame, own progress strip), so the replay starts where it ended
+      if (p.loopHook)
+        return frame(f, D, p, body, { overlay: cv <= 0 ? "" : `<div style="position:absolute;inset:0;z-index:50;overflow:hidden;background:${INK};opacity:${n(cv, 3)}">${T.hook(0, { S: null, D }, p.loopHook)}</div>` });
+      const overlay = coverCard(p.cover, cv);
       return frame(f, D, p, body, { overlay });
     };
 

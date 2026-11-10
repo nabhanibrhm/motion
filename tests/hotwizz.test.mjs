@@ -142,4 +142,14 @@ test('the browser kit draws every template deterministically at 30 and fractiona
   assert.match(hw.draw('hook',0,{S,D},props.hook),/Klaim/); // frame 0 carries the claim
   assert.match(hw.draw('cover',D-1,{S,D},props.cover),/z-index:50/); // cover over the tail
   assert.doesNotMatch(hw.draw('cover',0,{S,D},props.cover),/z-index:50/);
+  // loop: the tail redraws the hook's frame 0 exactly (cue-only effects dropped, they are not visible at frame 0)
+  const loop={...props.cover,cover:null,loopHook:{...props.hook,cue:null,stamp:null}};
+  assert.ok(hw.draw('cover',D-1,{S,D},loop).includes(hw.draw('hook',0,{S,D},props.hook)),'loop tail = hook frame 0');
+  assert.doesNotMatch(hw.draw('cover',0,{S,D},loop),/z-index:50/);
+  // introCover: the hook opens on the closing cover card, so frame 0 carries the same card as the cover's last frame
+  const card=props.cover.cover,intro={...props.hook,introCover:card};
+  const tail=hw.draw('cover',D-1,{S,D},props.cover),head=hw.draw('hook',0,{S,D},intro);
+  const cardHtml=h=>h.slice(h.indexOf('<div style="position:absolute;inset:0;z-index:50'));
+  assert.ok(cardHtml(tail).startsWith(cardHtml(head).slice(0,600)),'hook frame 0 shows the cover card');
+  assert.doesNotMatch(hw.draw('hook',40,{S,D},intro),/z-index:50/);
 });

@@ -1,0 +1,38 @@
+{
+ "belum-0.wav": {
+  "key": "21e7bb843b67ee6cfd48c6520bd5c16190540c3c657ecdd4059f6ce4a3bd73df",
+  "sha256": "7699edd4c221fb6533941ebd72381c2f8514d4cddb88ec3624b56a8552a1cbbb",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 120
+ },
+ "hook-0.wav": {
+  "key": "cf837e5897625e6d0ce787f62ce3c5a52e527b78bd47e18846e58f6d162e498e",
+  "sha256": "33d16cc54dc79253bf79e0fd5d76580cd7b02439693f3cd16055b00606dcda0d",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 109
+ },
+ "kutipan-0.wav": {
+  "key": "d5e68bad1c362454910f1061d2421c046560d50648b8340cea7533727b888beb",
+  "sha256": "3098bd6028387bddadf71c95e8410d7e6167113586c9cac040018f047ffdfb7a",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 116
+ },
+ "penutup-0.wav": {
+  "key": "5cf4029eae72a75c3c282ad5274548df76035685ed927e5edd73d0604d775f83",
+  "sha256": "d6c906f649c0cf06fe28071d41d1734b60da2485cde81a188db83d547eb269f8",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 102
+ },
+ "saran-0.wav": {
+  "key": "f73fe152eba281e51f271facfb5a05db8a19c458c3d490a54634948cb2d928e0",
+  "sha256": "71cabca60d2bfac475dd8c691e8f35078f21da9d8009a01723eb1f55f858264d",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 161
+ },
+ "yusril-0.wav": {
+  "key": "840d01bc4f4ebb930b0e60284286600cb5db6f1e4f66589971aeadfa33d81c23",
+  "sha256": "dddc8e10d422485a83f9cd845939482a78c367adbfc2cf31ab187978eefbe3b2",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 133
+ }
+}

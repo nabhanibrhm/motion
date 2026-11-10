@@ -76,9 +76,9 @@ const items=list=>(list||[]).map(it=>({...it,cue:cueSpec(it.cue)}));
 export const HOTWIZZ_TEMPLATES={
   'hw-hook':{
     type:'hook',
-    spec:{...common,headline:'text',claim:'text',kicker:'text?',tag:'text?',person:'person',cue:'cue',
+    spec:{...common,headline:'text',claim:'text',kicker:'text?',tag:'text?',person:'person',cue:'cue',introCover:'bool',
       stamp:(v,{err,cue,text})=>{if(v===undefined) return;if(!obj(v)) return err('stamp must be {text, cue}');text(v.text,'stamp.text',true);cue(v.cue,'stamp.cue');}},
-    normalize:p=>({kicker:'UPDATE',label:p.kicker||'UPDATE',...p,person:photo(p.person),cue:cueSpec(p.cue),stamp:p.stamp?{text:p.stamp.text,cue:cueSpec(p.stamp.cue)}:null}),
+    normalize:(p,ctx)=>({kicker:'UPDATE',label:p.kicker||'UPDATE',...p,person:photo(p.person),cue:cueSpec(p.cue),stamp:p.stamp?{text:p.stamp.text,cue:cueSpec(p.stamp.cue)}:null,introCover:p.introCover?introCover(ctx):null}),
     sfx:p=>[...(p.cue?[{at:p.cue,file:SFX.pop,volume:.18}]:[]),...(p.stamp?.cue?[{at:p.stamp.cue,file:SFX.stamp,volume:.2}]:[])],
   },
   'hw-resmi':{
@@ -107,21 +107,46 @@ export const HOTWIZZ_TEMPLATES={
   },
   'hw-cover':{
     type:'cover',
-    spec:{...common,footer:'text?',coverAt:'cue',
+    spec:{...common,footer:'text?',coverAt:'cue',loop:'bool',
       lines:(v,{err,cue,text})=>{
         if(v===undefined) return;
         if(!Array.isArray(v)||v.length>6) return err('lines must list 0-6 items');
         v.forEach((l,i)=>{if(!obj(l)) return err(`lines[${i}] must be {text, cue?, style?}`);for(const key of Object.keys(l)) if(!['text','cue','style'].includes(key)) err(`lines[${i}].${key} is not supported`);text(l.text,`lines[${i}].text`,true);cue(l.cue,`lines[${i}].cue`);if(l.style!==undefined&&!COVER_STYLES.includes(l.style)) err(`lines[${i}].style must be ${COVER_STYLES.join('|')}`);});
       },
-      cover:(v,{err,text,personCheck})=>{if(!obj(v)) return err('cover must be {title, stamp?, chip?, person?}');for(const key of Object.keys(v)) if(!['title','stamp','chip','person'].includes(key)) err(`cover.${key} is not supported`);text(v.title,'cover.title',true);text(v.stamp,'cover.stamp');text(v.chip,'cover.chip');if(v.person!==undefined) personCheck(v.person,'cover.person');}},
-    normalize:(p,ctx)=>({label:'PENUTUP',footer:`${ctx.config.runtime.case.id} · SUMBER DI DESKRIPSI`,...p,lines:(p.lines||[]).map(l=>({style:'big',...l,cue:cueSpec(l.cue)})),coverAt:cueSpec(p.coverAt),cover:{stamp:ctx.config.runtime.case.id,...p.cover,person:p.cover?.person?photo(p.cover.person):null}}),
+      cover:(v,{err,text,personCheck})=>{if(v===undefined) return;if(!obj(v)) return err('cover must be {title, stamp?, chip?, person?}');for(const key of Object.keys(v)) if(!['title','stamp','chip','person'].includes(key)) err(`cover.${key} is not supported`);text(v.title,'cover.title',true);text(v.stamp,'cover.stamp');text(v.chip,'cover.chip');if(v.person!==undefined) personCheck(v.person,'cover.person');}},
+    normalize:(p,ctx)=>({label:'PENUTUP',footer:`${ctx.config.runtime.case.id} · SUMBER DI DESKRIPSI`,...p,lines:(p.lines||[]).map(l=>({style:'big',...l,cue:cueSpec(l.cue)})),coverAt:cueSpec(p.coverAt),cover:p.cover?coverCard(p.cover,ctx):null,loopHook:p.loop?loopHook(ctx):null}),
     sfx:p=>[{at:'0',file:SFX.swoosh,volume:.18},...p.lines.filter(l=>l.cue).map(l=>({at:l.cue,file:SFX.pop,volume:.14}))],
   },
 };
 
+const coverCard=(c,ctx)=>({stamp:ctx.config.runtime.case.id,...c,person:c.person?photo(c.person):null});
+/** introCover: the hw-hook opens on the episode's hw-cover title card (same card as the last frame), then reveals the
+ * hook layout, so frame 0 = last frame = the TikTok cover. */
+function introCover(ctx) {
+  const s=(ctx.config.scenes||[]).find(x=>x.template==='hw-cover'&&obj(x.props?.cover));
+  return s?coverCard(s.props.cover,ctx):null;
+}
+/** loop: the hw-cover tail redraws the episode's first hw-hook at its frame 0, so the last frame equals the first
+ * (TikTok replays straight into the hook). Same seed/step as renderHotwizz gives that scene; cues that only fire later
+ * (hook pop, a cued stamp) are dropped because they are not visible at frame 0. */
+function loopHook(ctx) {
+  const scenes=ctx.config.scenes||[];
+  const i=scenes.findIndex(s=>s.template==='hw-hook');
+  const s=scenes[i],h=HOTWIZZ_TEMPLATES['hw-hook'].normalize(s.props,ctx);
+  return {seed:100+i*97,...h,step:s.props.step??Math.min(i+1,ctx.config.runtime.case.steps),cue:null,stamp:h.stamp&&h.stamp.cue===null?h.stamp:null};
+}
+
 export function checkHotwizz(scene,ctx) {
   const t=HOTWIZZ_TEMPLATES[scene.template];
-  return checker(scene.template,scene.id,scene.props,ctx,t.spec);
+  const r=checker(scene.template,scene.id,scene.props,ctx,t.spec);
+  if(scene.template==='hw-cover'&&obj(scene.props)) {
+    const at=`${scene.id} (hw-cover)`;
+    if(scene.props.loop===true&&!(ctx.config.scenes||[]).some(s=>s.template==='hw-hook')) r.errors.push(`${at}: loop needs an hw-hook scene in the episode`);
+    if(scene.props.loop===true&&(ctx.config.scenes||[]).some(s=>s.template==='hw-hook'&&s.props?.introCover===true)) r.errors.push(`${at}: use loop or the hook's introCover, not both`);
+    if(scene.props.loop!==true&&scene.props.cover===undefined) r.errors.push(`${at}: cover must be {title, stamp?, chip?, person?} (or set loop: true)`);
+  }
+  if(scene.template==='hw-hook'&&scene.props?.introCover===true&&!(ctx.config.scenes||[]).some(s=>s.template==='hw-cover'&&obj(s.props?.cover))) r.errors.push(`${scene.id} (hw-hook): introCover needs an hw-cover scene with cover`);
+  return r;
 }
 
 const attr=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');

@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "id": "fight",
+  "number": 18,
+  "title": "Gibran Buka Suara: Tetap Fight di PTUN?",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #07",
+      "steps": 6
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "KATA GIBRAN",
+        "kicker": "BUKA SUARA",
+        "headline": "GIBRAN:\n*TETAP FIGHT*",
+        "claim": "Saran Prabowo: *lewat PTUN*",
+        "tag": "KATA GIBRAN · 10 NOV",
+        "person": {
+          "name": "Gibran Rakabuming Raka",
+          "role": "Wakil Presiden RI",
+          "photo": "people/gibran.jpg",
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+        },
+        "cue": "fight",
+        "introCover": true
+      }
+    },
+    {
+      "id": "kutipan",
+      "template": "hw-quote",
+      "props": {
+        "label": "KATA GIBRAN",
+        "kicker": "ISTANA WAPRES",
+        "person": {
+          "name": "Gibran Rakabuming Raka",
+          "role": "Wakil Presiden RI",
+          "photo": "people/gibran.jpg",
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+        },
+        "quote": "Saya tidak ingin dinamika yang terjadi saat ini menjadi *polemik politik yang berkepanjangan*.",
+        "source": "CNBC Indonesia, CNN Indonesia",
+        "date": "10 Nov 2026",
+        "cue": "Di"
+      }
+    },
+    {
+      "id": "saran",
+      "template": "hw-resmi",
+      "props": {
+        "label": "SARAN PRESIDEN",
+        "title": "SARAN PRESIDEN",
+        "kicker": "MENURUT GIBRAN",
+        "items": [
+          {
+            "text": "Bawa *dokumen SD sampai S1* ke PTUN",
+            "source": "CNBC, Beritasatu, Media Indonesia (10 Nov)",
+            "cue": "Menurut"
+          },
+          {
+            "text": "Kemendikdasmen diminta *ajukan PK* ke MA",
+            "source": "CNBC, iNews, Bloomberg Technoz (10 Nov)",
+            "cue": "dari"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yusril",
+      "template": "hw-quote",
+      "props": {
+        "label": "KATA MENKO",
+        "kicker": "MENKO KUMHAM IMIPAS",
+        "person": {
+          "name": "Yusril Ihza Mahendra",
+          "role": "Menko Hukum, HAM, Imigrasi dan Pemasyarakatan",
+          "photo": "people/yusril.jpg",
+          "credit": "Kemenko Kumham-Imipas (domain publik)"
+        },
+        "quote": "Memang ini sudah *tidak bisa diapa-apakan lagi*.",
+        "source": "Republika, Antara, Suara, CNN",
+        "date": "10 Nov 2026",
+        "cue": "Tapi"
+      }
+    },
+    {
+      "id": "belum",
+      "template": "hw-split",
+      "props": {
+        "label": "RESMI VS BELUM JELAS",
+        "headline": "LALU BAGAIMANA?",
+        "left": {
+          "title": "RESMI",
+          "items": [
+            {
+              "text": "Gibran *masih menjabat* Wapres",
+              "source": "Bisnis, Jakarta Globe (10 Nov)",
+              "cue": "Sampai"
+            }
+          ]
+        },
+        "right": {
+          "title": "BELUM JELAS",
+          "items": [
+            {
+              "text": "*Mundur atau bertahan*: belum dinyatakan",
+              "source": "CNN, CNBC Indonesia (10 Nov)",
+              "cue": "belum"
+            },
+            {
+              "text": "Surat pengunduran diri *belum ada*",
+              "source": "CNN, Jakarta Globe (10 Nov)",
+              "cue": "surat"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "MENURUTMU?",
+        "lines": [
+          {
+            "text": "MENURUTMU?",
+            "style": "kicker",
+            "cue": "Menurutmu"
+          },
+          {
+            "text": "*MUNDUR* ATAU *FIGHT*?",
+            "cue": "mundur"
+          },
+          {
+            "text": "TULIS DI KOMENTAR",
+            "style": "chip",
+            "cue": "Tulis"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "cover": {
+          "title": "GIBRAN\n*TETAP FIGHT*\nDI PTUN",
+          "chip": "KATA GIBRAN",
+          "person": {
+            "name": "Gibran Rakabuming Raka",
+            "photo": "people/gibran.jpg",
+            "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+          }
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}
