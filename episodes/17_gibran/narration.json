@@ -56,12 +56,22 @@
       ]
     },
     {
+      "id": "respons",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Responsnya terbelah. PDIP menilai langkah ke PTUN hanya mengulur waktu, sementara kuasa hukum Gibran, Andi Azwan, sebelumnya membantah Gibran akan mundur."
+        }
+      ]
+    },
+    {
       "id": "sebab",
       "chapter": "update",
       "lines": [
         {
           "speaker": "wec",
-          "text": "Mahkamah Agung membatalkan surat penyetaraan ijazah SMA yang dipakai Gibran saat mendaftar Pilpres dua ribu dua puluh empat."
+          "text": "Mahkamah Agung membatalkan surat penyetaraan ijazah SMA yang dipakai Gibran untuk mendaftar di Pilpres dua ribu dua puluh empat lalu."
         },
         {
           "speaker": "wec",
@@ -99,6 +109,7 @@
     "MK": "em ka",
     "MA": "em a",
     "PTUN": "pe te u en",
-    "MPR": "em pe er"
+    "MPR": "em pe er",
+    "PDIP": "pe de i pe"
   }
 }

@@ -16,7 +16,7 @@
     "profile": "modern",
     "case": {
       "id": "HOTWIZZ #06",
-      "steps": 6
+      "steps": 7
     }
   },
   "scenes": [
@@ -72,6 +72,35 @@
         "source": "detik, Republika, Jakarta Globe",
         "date": "10 Nov 2026 (lewat PTUN)",
         "cue": "Tapi"
+      }
+    },
+    {
+      "id": "respons",
+      "template": "hw-split",
+      "props": {
+        "label": "RESPONS TERBELAH",
+        "kicker": "DUA SISI",
+        "headline": "MUNDUR ATAU ULUR WAKTU?",
+        "left": {
+          "title": "PDIP",
+          "items": [
+            {
+              "text": "Deddy Sitorus: PTUN *tak bisa anulir putusan MA*, cuma *ulur waktu*",
+              "source": "Kompas, kumparan, Suara (10 Nov)",
+              "cue": "PDIP"
+            }
+          ]
+        },
+        "right": {
+          "title": "KUASA HUKUM",
+          "items": [
+            {
+              "text": "Andi Azwan: *\"Buat apa mundur?\"* (sebelum konfirmasi Istana)",
+              "source": "KompasTV, Bloomberg Technoz (10 Nov)",
+              "cue": "Andi"
+            }
+          ]
+        }
       }
     },
     {
@@ -161,7 +190,12 @@
         ],
         "cover": {
           "title": "GIBRAN\n*NIAT MUNDUR*\nDARI WAPRES",
-          "chip": "KATA ISTANA"
+          "chip": "KATA ISTANA",
+          "person": {
+            "name": "Gibran Rakabuming Raka",
+            "photo": "people/gibran.jpg",
+            "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+          }
         }
       }
     }

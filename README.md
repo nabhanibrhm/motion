@@ -213,7 +213,7 @@ Template props (`*text*` marks an accent colour, `\n` a line break; a cue is a s
 | `hw-split` | `left {title? = RESMI, items 1–4 × {text, source?, cue?}}`, `right {title? = BELUM JELAS, items}`, `headline?`, `source?`, `kicker?`. Both columns have the same size and style. |
 | `hw-quote` | `person`, `quote`, `source`, `date?`, `cue?`, `kicker?` |
 | `hw-number` | `value` (e.g. `"20.980"`, `"Rp1,5 T"`), `caption`, `source`, `unit?`, `cue?`, `countUp?` (default true), `kicker?` |
-| `hw-cover` | `cover {title, chip?, stamp? = case id}`, `lines` 0–6 × `{text, cue?, style? big|text|kicker|chip|cta}`, `footer?`, `coverAt?`. The title-only cover starts 4 frames after the last word, inside the 3:4 crop. |
+| `hw-cover` | `cover {title, chip?, stamp? = case id, person? {name, photo, credit}}` (person adds the face above the stamp, same frame as other cards), `lines` 0–6 × `{text, cue?, style? big|text|kicker|chip|cta}`, `footer?`, `coverAt?`. The title-only cover starts 4 frames after the last word, inside the 3:4 crop. |
 
 ```json
 "scenes": [

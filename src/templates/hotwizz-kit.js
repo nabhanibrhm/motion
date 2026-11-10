@@ -249,14 +249,18 @@ ${p.unit ? `<div style="margin-top:18px;padding:6px 30px;border-radius:14px;back
       // Title-only cover over the tail (TikTok "Select cover"); everything inside the centred 3:4 crop, y 240-1680.
       const cv = F1.ramp(f, cAt, 5);
       const c = p.cover;
-      const ts = fit(c.title, 880, 520, 124, 60, { lh: 1.04, cw: 0.56 });
+      const cp = c.person;
+      const ts = fit(c.title, 880, cp ? 400 : 520, cp ? 112 : 124, 60, { lh: 1.04, cw: 0.56 });
+      // optional face (cover.person): same frame and grade as every other person card, credit along the bottom
+      const face = cp ? `<div style="position:relative;width:300px;height:400px;flex:none">${person(cp, 0, 0, 300, 400)}</div>` : "";
+      const faceCredit = cp && cp.credit ? `<div style="position:absolute;left:0;right:0;bottom:250px;text-align:center;opacity:0.6;font-family:${mono};font-weight:500;font-size:18px;color:#fff">Foto: ${esc(cp.credit)}</div>` : "";
       const overlay =
         cv <= 0
           ? ""
-          : `<div style="position:absolute;inset:0;z-index:50;background:radial-gradient(ellipse 80% 55% at 50% 48%,#1b2132 0%,${INK} 80%);opacity:${n(cv, 3)};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px">
+          : `<div style="position:absolute;inset:0;z-index:50;background:radial-gradient(ellipse 80% 55% at 50% 48%,#1b2132 0%,${INK} 80%);opacity:${n(cv, 3)};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:${cp ? 30 : 40}px">${face}
 <div style="padding:10px 26px;border:6px solid ${RED};border-radius:12px;transform:rotate(-5deg);font-family:${osw};font-weight:600;font-size:52px;letter-spacing:6px;color:${RED};white-space:nowrap">${esc(c.stamp)}</div>
 <div style="width:900px;text-align:center;font-family:${osw};font-weight:700;font-size:${ts}px;line-height:1.04;letter-spacing:2px;color:#fff;text-transform:uppercase">${rich(c.title)}</div>
-${c.chip ? `<div style="padding:6px 34px;border-radius:16px;background:${RED};font-family:${osw};font-weight:700;font-size:${fit(c.chip, 860, 110, 84, 40, { wrap: false })}px;letter-spacing:3px;color:#fff;white-space:nowrap;text-transform:uppercase">${esc(plain(c.chip))}</div>` : ""}</div>`;
+${c.chip ? `<div style="padding:6px 34px;border-radius:16px;background:${RED};font-family:${osw};font-weight:700;font-size:${fit(c.chip, 860, 110, 84, 40, { wrap: false })}px;letter-spacing:3px;color:#fff;white-space:nowrap;text-transform:uppercase">${esc(plain(c.chip))}</div>` : ""}${faceCredit}</div>`;
       return frame(f, D, p, body, { overlay });
     };
 

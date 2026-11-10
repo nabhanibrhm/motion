@@ -11,7 +11,8 @@ Retention rules (README "Retention rules"): shock fact by second 5, no setup lin
 | hook | Wakil Presiden Gibran menyampaikan niat mundur kepada Presiden Prabowo pagi ini. Istana membenarkan, dan Prabowo tidak menolak. | S1, S2 |
 | kutipan | Menurut Menteri Sekretaris Negara Prasetyo Hadi, pertemuan berlangsung sekitar dua setengah jam dan alasannya dinamika putusan MK dan MA. | S1, S3 |
 | ptun | Tapi Gibran juga meminta kesempatan membuktikan keabsahan dokumen pendidikannya lewat PTUN. | S4 |
-| sebab | Mahkamah Agung membatalkan surat penyetaraan ijazah SMA yang dipakai Gibran saat mendaftar Pilpres dua ribu dua puluh empat. | S5 |
+| respons | Responsnya terbelah. PDIP menilai langkah ke PTUN hanya mengulur waktu, sementara kuasa hukum Gibran, Andi Azwan, sebelumnya membantah Gibran akan mundur. | S11, S12 |
+| sebab | Mahkamah Agung membatalkan surat penyetaraan ijazah SMA yang dipakai Gibran untuk mendaftar di Pilpres dua ribu dua puluh empat lalu. | S5 |
 | sebab | Sebelumnya Mahkamah Konstitusi menyatakan tidak menemukan ijazah setara SMA itu, tapi tidak bisa mendiskualifikasi Gibran. | S6 |
 | belum | Di DPR, puluhan anggota lintas fraksi menandatangani usul hak menyatakan pendapat, dan Ketua DPR Puan Maharani berjanji menindaklanjutinya. | S7, S8 |
 | belum | Istana menegaskan Gibran masih menjabat dan belum resmi mundur. Surat pengunduran diri belum ada, dan Gibran belum bicara langsung. | S9 (+ Bisnis 10 Nov: "masih menjabat, belum resmi mundur") |
@@ -33,6 +34,8 @@ Frame 0: Gibran photo + "GIBRAN · NIAT MUNDUR" + "Prabowo tidak menolak" + tag 
 | S8 | Puan Maharani: DPR will follow up the proposal after hearing the factions | CNN 10 Nov ("DPR Bakal Proses…"); Kompas |
 | S9 | No formal resignation letter confirmed; Gibran has not spoken: CNN "Sejauh ini, Gibran belum buka suara langsung"; Jakarta Globe "did not announce a formal resignation" | CNN; Jakarta Globe; Radar Banyuwangi |
 | S10 | UUD 1945 Pasal 8 ayat (2): VP vacancy → MPR session within 60 days to elect from two candidates proposed by the President | CNN 16:11; Kompas.id ("Mundur atau Dimakzulkan…") |
+| S11 | PDIP Ketua DPP Deddy Yevri Sitorus: "PTUN tidak bisa menganulir Putusan MA karena beda kamar" … "upaya mengulur waktu saja" | Kompas 17:10; kumparan; Suara 17:28; Jawapos; Jurnas |
+| S12 | Andi Azwan (Ketua Militan 08, kuasa hukum Gibran): "Tidak ada kata mundur sama sekali … buat apa beliau mundur?"; said **before** Istana's confirmation (Koran Jakarta) | KompasTV; Bloomberg Technoz; Koran Jakarta |
 
 Context (not narrated): Gerindra freed its DPR members to take their own stance (CNN 10 Nov 10:45); a group of demonstrators asking Gibran to resign was received by DPR's Badan Aspirasi Masyarakat (Kompas 14:59); Reuters notes a widening rift between Prabowo and Jokowi. No statement found from Gibran, Setwapres or Jokowi as of ~16:30.
 
@@ -42,6 +45,8 @@ Context (not narrated): Gerindra freed its DPR members to take their own stance 
 - "Prabowo enggan melepas" (Wartakota framing; Istana says only "tidak menolak" + advice).
 - A single HMP number on screen (12 / 25 / ~50 conflict).
 - "Ijazah palsu", "terbukti", "pemakzulan pasti"; the MK ruling did not find a forgery, it found no proof of an SMA-equivalent diploma.
+- "Sarannya kalau memang putusan MK dan MA sudah kuat, ya mundur saja" (CNN 17:12 only, unnamed "petinggi negara", not Prasetyo).
+- "Gibran minta tetap menjabat" (Suara paraphrase; Istana said only "diberi kesempatan … melalui proses PTUN").
 - The Prabowo–Jokowi "rift" (Reuters analysis only).
 - Any call to join demonstrations; demonstrator photos.
 

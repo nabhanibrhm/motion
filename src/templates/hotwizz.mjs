@@ -113,8 +113,8 @@ export const HOTWIZZ_TEMPLATES={
         if(!Array.isArray(v)||v.length>6) return err('lines must list 0-6 items');
         v.forEach((l,i)=>{if(!obj(l)) return err(`lines[${i}] must be {text, cue?, style?}`);for(const key of Object.keys(l)) if(!['text','cue','style'].includes(key)) err(`lines[${i}].${key} is not supported`);text(l.text,`lines[${i}].text`,true);cue(l.cue,`lines[${i}].cue`);if(l.style!==undefined&&!COVER_STYLES.includes(l.style)) err(`lines[${i}].style must be ${COVER_STYLES.join('|')}`);});
       },
-      cover:(v,{err,text})=>{if(!obj(v)) return err('cover must be {title, stamp?, chip?}');for(const key of Object.keys(v)) if(!['title','stamp','chip'].includes(key)) err(`cover.${key} is not supported`);text(v.title,'cover.title',true);text(v.stamp,'cover.stamp');text(v.chip,'cover.chip');}},
-    normalize:(p,ctx)=>({label:'PENUTUP',footer:`${ctx.config.runtime.case.id} · SUMBER DI DESKRIPSI`,...p,lines:(p.lines||[]).map(l=>({style:'big',...l,cue:cueSpec(l.cue)})),coverAt:cueSpec(p.coverAt),cover:{stamp:ctx.config.runtime.case.id,...p.cover}}),
+      cover:(v,{err,text,personCheck})=>{if(!obj(v)) return err('cover must be {title, stamp?, chip?, person?}');for(const key of Object.keys(v)) if(!['title','stamp','chip','person'].includes(key)) err(`cover.${key} is not supported`);text(v.title,'cover.title',true);text(v.stamp,'cover.stamp');text(v.chip,'cover.chip');if(v.person!==undefined) personCheck(v.person,'cover.person');}},
+    normalize:(p,ctx)=>({label:'PENUTUP',footer:`${ctx.config.runtime.case.id} · SUMBER DI DESKRIPSI`,...p,lines:(p.lines||[]).map(l=>({style:'big',...l,cue:cueSpec(l.cue)})),coverAt:cueSpec(p.coverAt),cover:{stamp:ctx.config.runtime.case.id,...p.cover,person:p.cover?.person?photo(p.cover.person):null}}),
     sfx:p=>[{at:'0',file:SFX.swoosh,volume:.18},...p.lines.filter(l=>l.cue).map(l=>({at:l.cue,file:SFX.pop,volume:.14}))],
   },
 };
