@@ -1,0 +1,99 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "Gibran Mau Mundur dari Wapres?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Wakil Presiden Gibran menyampaikan niat mundur kepada Presiden Prabowo pagi ini. Istana membenarkan, dan Prabowo tidak menolak."
+        }
+      ]
+    },
+    {
+      "id": "resmi",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Menurut Mensesneg Prasetyo Hadi, pertemuan berlangsung sekitar dua setengah jam dan alasannya dinamika putusan MK dan MA."
+        },
+        {
+          "speaker": "wec",
+          "text": "Tapi Gibran juga meminta kesempatan membuktikan keabsahan dokumen pendidikannya lewat PTUN."
+        }
+      ]
+    },
+    {
+      "id": "sebab",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Mahkamah Agung membatalkan surat penyetaraan ijazah SMA yang dipakai Gibran saat mendaftar Pilpres dua ribu dua puluh empat."
+        },
+        {
+          "speaker": "wec",
+          "text": "Sebelumnya Mahkamah Konstitusi menyatakan tidak menemukan ijazah setara SMA itu, tapi tidak bisa mendiskualifikasi Gibran."
+        }
+      ]
+    },
+    {
+      "id": "belum",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Di DPR, puluhan anggota lintas fraksi meneken usul hak menyatakan pendapat, dan Ketua DPR Puan Maharani berjanji menindaklanjutinya."
+        },
+        {
+          "speaker": "wec",
+          "text": "Yang belum jelas: surat pengunduran diri resmi belum ada, dan Gibran belum bicara langsung soal ini."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kalau kursi Wapres kosong, Presiden mengusulkan dua nama dan MPR memilih paling lambat enam puluh hari. Menurutmu mundur atau buktikan di PTUN? Tulis di komentar dan follow untuk update.",
+          "after": 1.2
+        }
+      ]
+    }
+  ],
+  "say": {
+    "MK": "em ka",
+    "MA": "em a",
+    "PTUN": "pe te u en",
+    "MPR": "em pe er",
+    "Mensesneg": "men ses neg"
+  }
+}

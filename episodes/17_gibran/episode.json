@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "gibran",
+  "number": 17,
+  "title": "Gibran Mau Mundur dari Wapres?",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #06",
+      "steps": 5
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "KATA ISTANA",
+        "kicker": "BREAKING",
+        "headline": "GIBRAN\n*NIAT MUNDUR*",
+        "claim": "Prabowo *tidak menolak*",
+        "tag": "KATA ISTANA · 10 NOV",
+        "person": {
+          "name": "Gibran Rakabuming Raka",
+          "role": "Wakil Presiden RI",
+          "photo": "people/gibran.jpg",
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+        },
+        "cue": "mundur"
+      }
+    },
+    {
+      "id": "resmi",
+      "template": "hw-resmi",
+      "props": {
+        "label": "YANG RESMI",
+        "title": "KATA MENSESNEG",
+        "kicker": "KONFERENSI PERS ISTANA",
+        "items": [
+          {
+            "text": "Bertemu Prabowo *±2,5 jam*, Selasa pagi",
+            "source": "detik, Kompas, CNN Indonesia (10 Nov)",
+            "cue": "jam"
+          },
+          {
+            "text": "Alasan: dinamika *putusan MK & MA*",
+            "source": "Kompas, detik (10 Nov)",
+            "cue": "putusan"
+          },
+          {
+            "text": "Gibran minta kesempatan *buktikan dokumen di PTUN*",
+            "source": "detik, Republika, Jakarta Globe (10 Nov)",
+            "cue": "PTUN"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sebab",
+      "template": "hw-resmi",
+      "props": {
+        "label": "PEMICUNYA",
+        "title": "DUA PUTUSAN",
+        "kicker": "PERKARA IJAZAH",
+        "items": [
+          {
+            "text": "MA (kasasi 742 K/TUN/2026): *suket setara SMA batal*",
+            "source": "Kompas, CNN, detik (30 Okt–10 Nov)",
+            "cue": "Agung"
+          },
+          {
+            "text": "MK (6 Okt): *tak temukan ijazah setara SMA*, tapi tak bisa diskualifikasi",
+            "source": "detik, CNBC Indonesia (6 Okt)",
+            "cue": "Konstitusi"
+          }
+        ]
+      }
+    },
+    {
+      "id": "belum",
+      "template": "hw-split",
+      "props": {
+        "label": "RESMI VS BELUM JELAS",
+        "headline": "LALU BAGAIMANA?",
+        "left": {
+          "title": "RESMI",
+          "items": [
+            {
+              "text": "Usul *hak menyatakan pendapat* diteken anggota DPR",
+              "source": "Kompas, CNN, detik (10 Nov)",
+              "cue": "DPR"
+            },
+            {
+              "text": "Puan: usul akan *ditindaklanjuti*",
+              "source": "CNN, Kompas (10 Nov)",
+              "cue": "Puan"
+            }
+          ]
+        },
+        "right": {
+          "title": "BELUM JELAS",
+          "items": [
+            {
+              "text": "*Surat* pengunduran diri resmi",
+              "source": "Jakarta Globe, CNN",
+              "cue": "surat"
+            },
+            {
+              "text": "Gibran *belum bicara* langsung",
+              "source": "CNN Indonesia (10 Nov)",
+              "cue": "bicara"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "MENURUTMU?",
+        "lines": [
+          {
+            "text": "KALAU KURSI WAPRES KOSONG",
+            "style": "kicker"
+          },
+          {
+            "text": "Presiden usulkan *2 nama*, MPR pilih *≤ 60 hari*",
+            "cue": "MPR"
+          },
+          {
+            "text": "MUNDUR ATAU PTUN?",
+            "style": "chip",
+            "cue": "Menurutmu"
+          },
+          {
+            "text": "KOMENTAR & FOLLOW",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "cover": {
+          "title": "GIBRAN\n*NIAT MUNDUR*\nDARI WAPRES",
+          "chip": "KATA ISTANA"
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}
