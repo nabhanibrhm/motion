@@ -33,4 +33,19 @@ The user works from two laptops (Windows and a WSL work laptop) that share sourc
 
 `render` ensures missing or stale voice is generated/reused. `sync`, `preview`, `stills`, `lint`, and `check` require a valid voice cache and never synthesize. Cleanup is dry-run by default; `--dry-run` makes that explicit and `--execute` performs the displayed cleanup. Voice caches cannot be selected for cleanup.
 
+## Content rules
+
+These apply to every episode. Details and examples are in README "Retention rules" (HotWizz Flash section) and "KASUS casefile look".
+
+- **Sources:** every claim needs two independent outlets or the primary text (UU, putusan), recorded in `script-short.md`. Otherwise drop it or attribute it ("kata …", "dikabarkan"). Keep a law's conditions and exceptions. Intent is not the official act ("niat mundur", not "resmi mundur").
+- **Wording:** neutral and attributed. Never name platforms or companies ("e-commerce", "aplikasi"). Censor sensitive words, with no gambling-style hooks. Investment topics carry "Bukan saran investasi"; legal topics carry "bukan nasihat hukum".
+- **Hook:** frame 0 shows the hook's claim or number, and the shock fact lands by second 5. No setup line after the hook (attribution goes in the kicker/tag), and something new on screen every ~3 s. Check stills at 0, 5 and 10 s (three different facts) and the last frame before rendering.
+- **Length and shape:** HotWizz runs 45–60 s with 6–7 lines and posts within ~12 h of the story. Keep procedure explainers to one line or an on-screen beat (news viewers leave there). Put the comment question where most viewers still are, not only at the end.
+- **Cover:** every video ends on a title cover card for the last ~1 s; it is the TikTok cover. The cover shows the subject's photo: the named person for HotWizz (`hw-cover` `cover.person`, credited in the caption), or the subject object shown large for KASUS. HotWizz loops: `introCover: true`, so frame 0 equals the last frame.
+- **Voice:** never end a narration line on a spoken number (aligner bug). Write numbers as words and use the `say` map for acronyms. Cartesia costs credits, so voice only with the user's go-ahead and re-voice only the changed lines.
+- **Look:** HotWizz uses the minimal look (near-black, off-white, one red, B&W photos except the person quoted; the flag is always `#e70011` over `#ffffff`). KASUS uses the casefile look (theme `casefile`; red only for stamps, pen marks and strikes). Keep the lower ~15% and the right ~120 px clear.
+- **Posting:** 1–2 posts a day, at least 3–4 h apart, never while another video is spiking. Record views at 1 h and 2 h plus average watch time and % full.
+
+## Voice code
+
 After editing voice code (`tools/voice/**`, `src/pipeline/voice.mjs`), run `npm test`; its guard test fails when output-affecting code changes without a bump. Bump `tools/voice/versions.json` only when the user asks for it.

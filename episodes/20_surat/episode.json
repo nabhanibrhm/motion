@@ -153,7 +153,12 @@
         ],
         "cover": {
           "title": "*SURAT MUNDUR*\nGIBRAN\nSUDAH ADA?",
-          "chip": "KATA PROJO"
+          "chip": "KATA PROJO",
+          "person": {
+            "name": "Gibran Rakabuming Raka",
+            "photo": "people/gibran.jpg",
+            "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+          }
         }
       }
     }
