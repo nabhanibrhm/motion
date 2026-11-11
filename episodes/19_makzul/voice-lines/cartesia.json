@@ -1,0 +1,44 @@
+{
+ "alur-0.wav": {
+  "key": "b6d5567e7002b6fe66dffcc0999d87c8373a95edd79767add7e776ae1666ab6d",
+  "sha256": "e46f4ecca5402d187fc12ab2b35dd24b748175802484c8f7b00e4a5e365e8d3d",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 141
+ },
+ "alur-1.wav": {
+  "key": "f2c18f3990ae22bcb09b5f83920e126e143a1a39c03308561885e942c7d686e3",
+  "sha256": "b9d4b80398f11ee5af8186d8e685c3b6ee52e2e230e1f2a236095be7d9077f28",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 138
+ },
+ "alur-2.wav": {
+  "key": "6cab12a41c7e8d12cf755170c717c1e7d3bd734974797737d5c5f3a20e8fa8c0",
+  "sha256": "20b04d0cf305034dc7991dad161d73e53e6c61f4eea67538d961bce22cf59401",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 139
+ },
+ "hook-0.wav": {
+  "key": "aec87a04ff7ad3f0377474d3f8d00ce767131a70b9fc1cdc739634f7cb3d95af",
+  "sha256": "6dce696e46c3c234a3c0927cccecebffe4da22c2f28929939acd6e0e0e9ad8fc",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 107
+ },
+ "mundur-0.wav": {
+  "key": "a10dfda028422fecb147ba5624263915e2664dd8533ef3e4c09b4b146f6ee0c6",
+  "sha256": "82eacca8138bdc62f208876f4adca1e0a9245e53ca10f6ce968a5df18600f07a",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 147
+ },
+ "penutup-0.wav": {
+  "key": "055316be3794c710a38a557335bc0eb3cde0c7f35fb0e80240031ebd948fef63",
+  "sha256": "3a47fe4549228b85dcb84a8439b66f8a8279d26d0737abd53ea98da83ecb9bff",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 95
+ },
+ "status-0.wav": {
+  "key": "1a9f39d9417cd97cf70711f6a9714c2d873b15605c4f8594a07d6bbcad4588f0",
+  "sha256": "82509ee0f6d2d475c6b01377f2858712e1511af9fcb22e88bb76ef86d74ad7ac",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 132
+ }
+}

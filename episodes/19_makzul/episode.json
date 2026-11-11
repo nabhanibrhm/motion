@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "makzul",
+  "number": 19,
+  "title": "Gibran: Mundur atau Dimakzulkan?",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #08",
+      "steps": 5
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "MUNDUR ATAU MAKZUL",
+        "kicker": "UPDATE",
+        "headline": "MUNDUR ATAU\n*DIMAKZULKAN*?",
+        "claim": "Niat mundur sudah, *usul makzul* tetap jalan",
+        "tag": "MENSESNEG · DPR · 10–11 NOV",
+        "person": {
+          "name": "Gibran Rakabuming Raka",
+          "role": "Wakil Presiden RI",
+          "photo": "people/gibran.jpg",
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+        },
+        "cue": "pemakzulannya",
+        "introCover": true
+      }
+    },
+    {
+      "id": "status",
+      "template": "hw-resmi",
+      "props": {
+        "label": "STATUS HARI INI",
+        "title": "STATUS HARI INI",
+        "kicker": "RABU 11 NOV",
+        "items": [
+          {
+            "text": "Puan: usulan *akan diproses*",
+            "source": "NU Online, BangsaOnline, Media Indonesia (10 Nov)",
+            "cue": "Puan"
+          },
+          {
+            "text": "Rapat Bamus *belum digelar*",
+            "source": "NU Online, BangsaOnline (10 Nov)",
+            "cue": "rapat"
+          },
+          {
+            "text": "Surat pengunduran diri *belum diterima*",
+            "source": "Liputan6, TribunWow (10 Nov)",
+            "cue": "surat"
+          }
+        ]
+      }
+    },
+    {
+      "id": "alur",
+      "file": "scenes/alur.js"
+    },
+    {
+      "id": "mundur",
+      "file": "scenes/mundur.js"
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "MENURUTMU?",
+        "lines": [
+          {
+            "text": "MENURUTMU?",
+            "style": "kicker",
+            "cue": "Menurutmu"
+          },
+          {
+            "text": "*MUNDUR* ATAU *DIMAKZULKAN*?",
+            "cue": "mundur"
+          },
+          {
+            "text": "TULIS DI KOMENTAR",
+            "style": "chip",
+            "cue": "Tulis"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "cover": {
+          "title": "MUNDUR\nATAU\n*DIMAKZULKAN*?",
+          "chip": "MUNDUR VS MAKZUL"
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

@@ -6,6 +6,23 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**Changed on 11 Nov 2026, evening (Windows): HOTWIZZ #08 `makzul` built and RENDERED (not posted).**
+- **19 `makzul` "Gibran: Mundur atau Dimakzulkan?"** explains the impeachment process next to the resignation route. The user asked for "good visualisation" of impeachment. 5 scenes:
+  - hook: hw-hook with `introCover`, Gibran photo.
+  - status: hw-resmi. Puan will process it; Bamus not met yet; no resignation letter received.
+  - **alur:** custom wrapped `scenes/alur.js`. A 4-station route visible from frame 0: USUL HMP ≥25 (dots), PARIPURNA DPR 2/3·2/3 (seat arc), MK ≤90 HARI (day counter + TERBUKTI? → DITERUSKAN stamp), MPR 3/4·2/3 (seat arc + "WAPRES BOLEH MEMBELA DIRI"). A red marker travels between stations on the cue words Pertama / paripurna / Mahkamah / terbukti / Terakhir.
+  - **mundur:** custom `scenes/mundur.js`. The impeachment route dimmed (4 TAHAP) vs the resignation track (1 SIDANG MPR): kursi kosong → MPR pilih dari 2 calon usulan Presiden → ≤ 60 HARI stamp.
+  - penutup: hw-cover, no person; cover "MUNDUR ATAU DIMAKZULKAN?", chip MUNDUR VS MAKZUL.
+- **Sources** (`episodes/19_makzul/script-short.md`): law checked against the UUD 1945 one-text PDF (Pasal 7A, 7B ayat 1, 3-7, Pasal 8 ayat 2) and UU 17/2014 Pasal 210-211. News S1-S5 from CNN, Kompas, Tirto, TribunWow, NU Online, BangsaOnline, Beritasatu, Liputan6, as of 11 Nov ~10:00 WIB.
+- **Do not use:** Doli Kurnia's "DPR/MPR cannot refuse a resignation" (one outlet); Jimly's "only impeachment" (not found); signature counts (12/25/48 conflict). Mahfud MD (CNN 08:54, Suara) is context only.
+- Built with delegation per ai-routing.md: an Opus agent did research and script, a Sonnet agent built alur/mundur, a Haiku agent wrote the caption.
+- **Voice:** Cartesia Nisa, ~900 chars, 63.0 s narration.
+- **Master:** `out/19-makzul-short.mp4` (Windows only), 64.0 s, 30 fps, -14.0 LUFS, -1.0 dBTP.
+- **Caption:** `out/caption/19-makzul-caption.txt`, with the photo credit added.
+- **Check by ear:** "pemakzulan", "Mahkamah Konstitusi", "Badan Musyawarah", "Puan Maharani".
+- **Freshness:** post the evening of 11 Nov. If a resignation letter arrives or HMP is formally filed or scheduled before posting, update `status-0` (re-voice one line).
+- **Other lead for 12 Nov:** Komisi III DPR questions the Kapolri on the Listyo wiretap case. Polri's special team (Kabareskrim) is looking into a "makar" angle (Okezone/detik 11 Nov). Avoid "makar" on screen.
+
 **Changed on 11 Nov 2026, afternoon (Windows): KASUS "casefile" look built and test-rendered on kerja; user picked it.**
 - **User's choice:** theme `casefile` (paper `#f2efe9`, cards `#fbf9f5`, ink `#151515`, one teal `#1d6b6b`, red `#e8192c` only for stamps, pen rings, strikes and red chips). The red was brightened from `#c8282e` at the user's request ("its enough"). Three alternatives were shown as stills and not picked, but are kept: `casefile-biru` (navy/cobalt), `casefile-manila` (manila/green), `casefile-malam` (dark/amber).
 - **How it works (opt-in, other episodes build byte-identical):** new `runtime.look` (only `"casefile"`, validated in `src/config/validate.mjs`, passed through `runtimeConfig`). A theme with `runtime.look` makes `build.mjs` copy `src/templates/casefile-kit.js` to `lib/f1/casefile.js` and load it after cine. `captions.mjs` gets a casefile caption style: paper box, ink outline, spoken word paper-on-teal, key words teal, colours from `runtime.palette`. The themes in `config/themes/casefile*.json` set look + palette.

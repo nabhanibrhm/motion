@@ -1,0 +1,93 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "Gibran: Mundur atau Dimakzulkan?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Gibran sudah menyampaikan niat mundur ke Presiden Prabowo, tapi usulan pemakzulannya tetap bergulir di DPR."
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Ketua DPR Puan Maharani berjanji memprosesnya, tapi rapat Badan Musyawarah belum digelar, dan surat pengunduran diri belum diterima."
+        }
+      ]
+    },
+    {
+      "id": "alur",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Begini alurnya. Pertama, minimal dua puluh lima anggota DPR mengusulkan. Lalu paripurna DPR harus setuju dengan dua pertiga suara yang hadir."
+        },
+        {
+          "speaker": "wec",
+          "text": "Setelah itu, Mahkamah Konstitusi memutus paling lama sembilan puluh hari. Kalau terbukti tidak memenuhi syarat, usulnya diteruskan ke MPR."
+        },
+        {
+          "speaker": "wec",
+          "text": "Terakhir, di MPR, tiga perempat anggota harus hadir, dan dua pertiga yang hadir harus setuju, setelah Gibran diberi kesempatan menjelaskan."
+        }
+      ]
+    },
+    {
+      "id": "mundur",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Jalan mundur lebih pendek: begitu kursi wakil presiden kosong, MPR memilih pengganti dari dua calon usulan Presiden, paling lambat enam puluh hari."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Menurutmu, Gibran sebaiknya mundur atau dimakzulkan? Tulis di komentar dan follow untuk update.",
+          "after": 1.4
+        }
+      ]
+    }
+  ],
+  "say": {
+    "DPR": "de pe er",
+    "MPR": "em pe er",
+    "fight": "fait"
+  }
+}
