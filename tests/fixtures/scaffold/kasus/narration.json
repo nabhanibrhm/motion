@@ -1,0 +1,90 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "mog": {
+      "supertonic": {
+        "voice": "M1",
+        "speed": 1,
+        "range": 1.5
+      },
+      "cartesia": {
+        "speed": 1.08
+      }
+    },
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    },
+    "bog": {
+      "supertonic": {
+        "voice": "M4",
+        "speed": 1,
+        "range": 1.4
+      },
+      "cartesia": {
+        "speed": 1
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "kasus",
+      "title": "Judul Kasus"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Ganti: klaim utama kasus ini dalam satu kalimat tanpa koma berlebihan."
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Ganti: fakta resmi pertama lalu kedua dan ketiga dengan sumbernya."
+        }
+      ]
+    },
+    {
+      "id": "sisi",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "bog",
+          "text": "Ganti: sisi lain atau bantahan dari pihak yang berbeda dengan bobot yang sama."
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Ganti: kesimpulan singkat. Jadi kasus ini ditutup. Tulis pendapatmu di komentar ya!",
+          "after": 1.2
+        }
+      ]
+    }
+  ]
+}

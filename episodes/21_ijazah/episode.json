@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "ijazah",
+  "number": 21,
+  "title": "Ijazah Ditahan Kantor? Kini Dilarang UU",
+  "category": "Ketenagakerjaan",
+  "theme": "casefile",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #12",
+      "steps": 6,
+      "name": "IJAZAH DITAHAN"
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.js",
+      "sfx": [
+        {"at": "word:undang-undang", "file": "swoosh-soft", "vol": 0.16},
+        {"at": "word:ijazah", "file": "click", "vol": 0.18},
+        {"at": "word:jaminan", "file": "pop-in", "vol": 0.16},
+        {"at": "word:paspor", "file": "tick", "vol": 0.22},
+        {"at": "word:nikah", "file": "tick", "vol": 0.22},
+        {"at": "word:BPKB", "file": "stamp", "vol": 0.4}
+      ]
+    },
+    {
+      "id": "ijazah",
+      "file": "scenes/ijazah.js",
+      "sfx": [
+        {"at": "word:Pasal", "file": "pop-in", "vol": 0.14},
+        {"at": "word:pengecualian", "file": "swoosh-soft", "vol": 0.16},
+        {"at": "word:tertulis", "file": "ding", "vol": 0.18},
+        {"at": "word:kantorku", "file": "pop-in", "vol": 0.14},
+        {"at": "word:sanksinya", "file": "pop-in", "vol": 0.16},
+        {"at": "word:peringatan", "file": "tick", "vol": 0.22},
+        {"at": "word:denda", "file": "tick", "vol": 0.22},
+        {"at": "word:pembatasan", "file": "tick", "vol": 0.22},
+        {"at": "word:mengembalikan", "file": "stamp", "vol": 0.4}
+      ]
+    },
+    {
+      "id": "pesangon",
+      "file": "scenes/pesangon.js",
+      "sfx": [
+        {"at": "word:skalanya", "file": "pop-in", "vol": 0.14},
+        {"at": "word:pailit", "file": "pop-in", "vol": 0.16},
+        {"at": "word:rugi", "file": "pop-in", "vol": 0.16},
+        {"at": "word:tidak", "file": "click", "vol": 0.2},
+        {"at": "word:setengah", "file": "click", "vol": 0.2},
+        {"at": "word:satu#1", "file": "ding", "vol": 0.18},
+        {"at": "word:penuh", "file": "ding", "vol": 0.18}
+      ]
+    },
+    {
+      "id": "cadangan",
+      "file": "scenes/cadangan.js",
+      "sfx": [
+        {"at": "word:bangkrut", "file": "stamp", "vol": 0.3},
+        {"at": "word:pengusaha", "file": "pop-in", "vol": 0.16},
+        {"at": "word:pemerintah", "file": "pop-in", "vol": 0.16},
+        {"at": "word:mikro", "file": "click", "vol": 0.2},
+        {"at": "word:sanksi", "file": "tick", "vol": 0.2},
+        {"at": "word:pencabutan", "file": "ding", "vol": 0.18}
+      ]
+    },
+    {
+      "id": "cek",
+      "file": "scenes/cek.js",
+      "sfx": [
+        {"at": "word:peraturan", "file": "swoosh-soft", "vol": 0.16},
+        {"at": "word:Oktober", "file": "click", "vol": 0.2},
+        {"at": "word:ijazah", "file": "tick", "vol": 0.22},
+        {"at": "word:pesangon", "file": "tick", "vol": 0.22}
+      ]
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.js",
+      "sfx": [
+        {"at": "word:ditutup", "file": "stamp", "vol": 0.45},
+        {"at": "word:Cerita", "file": "pop-in", "vol": 0.1}
+      ]
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

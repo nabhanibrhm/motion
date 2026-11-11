@@ -1,0 +1,56 @@
+{
+ "cadangan-0.wav": {
+  "key": "bf3044179ba5bcef636008e65188e5e191e2faf530a281518202555e6df71d62",
+  "sha256": "b9e3ce1712de21c15dbee960941cf12d804925f2005d46e93bf4306adaf94678",
+  "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
+  "chars": 73
+ },
+ "cadangan-1.wav": {
+  "key": "8c6fd9eb64509a0f4beeeda2e663316b6bc1c5b5ccddf04746d7942d31e2e264",
+  "sha256": "7f21b568dd9778cb313795edd4732c2961ddcb505930e0e1a6ec7ecef33ad04d",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 170
+ },
+ "cek-0.wav": {
+  "key": "16d4defc1cf0a4f07e4af6a2706bfd9e310eee8e2a8e1e09e9031f63aff34362",
+  "sha256": "dc6f67319b5c4d0f5b0caa5d4d45a8f113577e8c686e3fab77b67b96b8414b06",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 141
+ },
+ "hook-0.wav": {
+  "key": "135da74aaa321a6756832e1d4276fd44fbcc40b8bdce2f5bc63392e3a82ad85b",
+  "sha256": "8e1e6c14b6809d810db5e82b7b71dc0c13683507a737c282957767c59a01c227",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 141
+ },
+ "ijazah-0.wav": {
+  "key": "f0bbd7d3435117b55ed47ed575696722ea9216e23f1fb54b729355ef6ed43b92",
+  "sha256": "4cda87b5fe1b4fcee7c57108b1801e6b79a9926f58aba2c892c31ab3486a5b2b",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 174
+ },
+ "ijazah-1.wav": {
+  "key": "5d43c5bff41732dd0410ac9be6e1bd006828c272365d51e69c9fe571e08424ff",
+  "sha256": "8171a8023bf51f61969c13ce3fb9388611ac5ff9a1112e5e26ca7c0ac322ae40",
+  "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
+  "chars": 81
+ },
+ "ijazah-2.wav": {
+  "key": "b4e40216e45a1b799699b1dd6425ca70446a22c8836dba202bfe9723554a3ecb",
+  "sha256": "79dcddfa256c515b382fa3f77c8e4d2fa6ec2611db95c650c9791ecc90933596",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 150
+ },
+ "pesangon-0.wav": {
+  "key": "4bfc8f866f10f26f7985f3f90e9ec1bb5c08450981d98345bd04dc33e07b58d2",
+  "sha256": "10b6974b64dbe325e5a777cbdae595c8b7c9837c4b554c56ef44041533b41650",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 179
+ },
+ "vonis-0.wav": {
+  "key": "75c54b27409cc29ad4dee367c08fd6f66353b8682d90f8f156ac0380197919c2",
+  "sha256": "855a3fd56a362144d287d8117049f5a135e5487fded770589bf23838f232d553",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 97
+ }
+}

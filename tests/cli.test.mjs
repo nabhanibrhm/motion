@@ -39,10 +39,16 @@ test('default and hotwizz-flash scaffolds are byte-identical to the goldens, und
   assert.deepEqual(readTree(d.episodeDir),readTree(path.join(GOLDEN,'flash')));
 });
 
+test('the kasus scaffold is byte-identical to its golden (casefile look)',t=>{
+  const root=fixture(t);
+  const k=createEpisode('gold-kasus',{title:'Judul Kasus',number:21,category:'Hukum',format:'kasus',repoRoot:root});
+  assert.deepEqual(readTree(k.episodeDir),readTree(path.join(GOLDEN,'kasus')));
+});
+
 test('formats: listing, unknown names, placeholders and the flash conflict',t=>{
   const root=fixture(t);
   assert.deepEqual(listFormats({repoRoot:root}),['default','hotwizz-flash','kasus']);
-  assert.equal(loadFormat('kasus',{repoRoot:root}).format.theme,'transit');
+  assert.equal(loadFormat('kasus',{repoRoot:root}).format.theme,'casefile');
   assert.throws(()=>createEpisode('x',{title:'X',format:'nope',repoRoot:root}),/Unknown format: nope; available: default, hotwizz-flash, kasus/);
   assert.throws(()=>createEpisode('x',{title:'X',format:'../default',repoRoot:root}),/Invalid format name/);
   assert.throws(()=>createEpisode('x',{title:'X',flash:true,format:'kasus',repoRoot:root}),/same as --format hotwizz-flash/);
@@ -67,17 +73,20 @@ test('the kasus format scaffolds a valid wrapped-scene episode with the next KAS
   assert.equal(ctx.config.runtime.case.id,'KASUS #21');
   assert.equal(ctx.config.runtime.case.name,'GANTI NAMA KASUS');
   assert.equal(ctx.config.runtime.case.steps,4);
-  assert.equal(ctx.config.theme,'transit');
-  assert.equal(ctx.config.runtime.palette.bg,'#dfe8ee');
+  assert.equal(ctx.config.theme,'casefile');
+  assert.equal(ctx.config.runtime.look,'casefile'); // merged from config/themes/casefile.json
+  assert.equal(ctx.config.runtime.palette.bg,'#f2efe9');
+  assert.equal(ctx.config.runtime.palette.teal,'#1d6b6b');
   assert.deepEqual(ctx.config.scenes.map(s=>s.file),['scenes/hook.js','scenes/fakta.js','scenes/sisi.js','scenes/vonis.js']);
-  assert.ok(ctx.config.scenes.every(s=>/^#[0-9a-f]{6}$/i.test(s.bg)&&s.sfx.length>0));
+  assert.ok(ctx.config.scenes.every(s=>s.bg===undefined&&s.sfx.length>0)); // the casefile page paints its own ground
   assert.equal(ctx.narration.source,'cartesia');
   assert.deepEqual(Object.keys(ctx.narration.speakers),['mog','wec','bog']);
   assert.deepEqual(ctx.narration.sections.map(s=>s.id),ctx.config.scenes.map(s=>s.id));
   assert.equal(validateEpisode(ctx).valid,true);
   const vonis=fs.readFileSync(path.join(ctx.episodeDir,'scenes/vonis.js'),'utf8');
-  assert.match(vonis,/C\.verdict\(/);assert.match(vonis,/C\.cover\(/);
-  assert.match(fs.readFileSync(path.join(ctx.episodeDir,'scenes/hook.js'),'utf8'),/at: -12/); // frame 0 shows the claim card
+  assert.match(vonis,/K\.folder\(/);assert.match(vonis,/KASUS DITUTUP/);assert.match(vonis,/K\.cover\(/);
+  assert.match(fs.readFileSync(path.join(ctx.episodeDir,'scenes/hook.js'),'utf8'),/K\.title\(f, \{ at: -20/); // frame 0 shows the claim headline
+  for(const sc of ctx.config.scenes) assert.match(fs.readFileSync(path.join(ctx.episodeDir,sc.file),'utf8'),/F1\.casefile/);
   assert.match(fs.readFileSync(path.join(ctx.episodeDir,'script-short.md'),'utf8'),/^# Baru \(KASUS #21\)/);
   assert.ok(!/\{\{/.test(Object.values(readTree(ctx.episodeDir)).join('')));
   // the next kasus counts on from the last, and a manual --number does not change the case counter

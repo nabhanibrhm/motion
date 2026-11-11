@@ -1,0 +1,141 @@
+{
+ "comment": "Short 'Ijazah Ditahan Kantor? Kini Dilarang UU' (KASUS #12; script-short.md, sources there). KSP pacing, sequel to kerja.",
+ "source": "cartesia",
+ "say": {
+  "BPKB": "be pe ka be",
+  "PHK": "pe ha ka"
+ },
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1,
+    "range": 1.5
+   },
+   "cartesia": {
+    "speed": 1.08
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1,
+    "range": 1.4
+   },
+   "cartesia": {
+    "speed": 1.0
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Ijazah Ditahan"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Perusahaan sekarang dilarang undang-undang meminta atau menahan ijazah karyawan sebagai jaminan kerja, termasuk paspor, buku nikah, dan BPKB.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "ijazah",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Larangan di Pasal tujuh puluh delapan ini cuma punya satu pengecualian, yaitu ijazah atau sertifikat dari pelatihan yang dibiayai perusahaan dengan perjanjian kerja tertulis."
+    },
+    {
+     "speaker": "bog",
+     "text": "Kalau kantorku tetap menahan ijazahku, sanksinya apa? Ijazahnya bisa balik nggak?"
+    },
+    {
+     "speaker": "wec",
+     "text": "Sanksinya peringatan tertulis, denda administratif, sampai pembatasan kegiatan usaha, dan sanksi itu tidak menghapus kewajiban mengembalikan ijazahmu.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "pesangon",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Soal pesangon, skalanya tetap satu sampai sembilan bulan upah, tapi PHK karena pailit atau tutup akibat rugi dua tahun kini tidak lagi dibayar setengah, melainkan satu kali penuh.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "cadangan",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Kalau perusahaannya sudah bangkrut, pesangonnya dibayar pakai uang siapa?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Karena itu pengusaha wajib menyediakan dana cadangan pesangon yang dikelola lembaga pemerintah, kecuali usaha mikro dan kecil, dengan sanksi sampai pencabutan izin usaha.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "cek",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Rincian dana cadangan itu masih menunggu peraturan pemerintah paling lambat Oktober tahun depan, jadi cek kontrakmu soal ijazah dan pesangon.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "vonis",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup: ijazah bukan jaminan kerja. Ijazahmu pernah ditahan kantor? Cerita di komentar ya!",
+     "after": 1.4
+    }
+   ]
+  }
+ ]
+}

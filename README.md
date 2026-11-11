@@ -51,7 +51,7 @@ node scripts/motion.mjs new umumnya --title "Topik Episode Berikutnya" --categor
 |---|---|
 | (none) or `--format default` | One shared title-card scene, `modern` runtime. Output is unchanged from earlier versions. |
 | `--format hotwizz-flash` or `--flash` | HotWizz Flash skeleton: hotwizz theme, Nisa (`wec`) on Cartesia, five `hw-*` scenes (see "HotWizz Flash"). `--flash` and `--format hotwizz-flash` are the same; do not combine `--flash` with another format. |
-| `--format kasus` | KASUS explainer: four wrapped `.js` scenes (`hook`, `fakta`, `sisi`, `vonis`), `transit` theme, narrators `mog`, `wec`, `bog` on Cartesia, case verdict and cover. Category `Hukum`. Set the case name in `runtime.case.name` (the scaffold has the placeholder `GANTI NAMA KASUS`). |
+| `--format kasus` | KASUS explainer in the casefile look (see "KASUS casefile look"): four wrapped `.js` scenes (`hook`, `fakta`, `sisi`, `vonis`) on `F1.casefile`, `casefile` theme, narrators `mog`, `wec`, `bog` on Cartesia, case folder, KASUS DITUTUP stamp and title cover. Category `Hukum`. Set the case name in `runtime.case.name` (the scaffold has the placeholder `GANTI NAMA KASUS`). |
 
 Case numbers differ by format. Plain `new` (default format) sets `runtime.case.id` to `KASUS #<episode number>`. The `kasus` format uses the next free `KASUS #NN` (highest existing KASUS number plus one). `--flash` numbers `HOTWIZZ #NN` by counting existing hotwizz-theme episodes. Check the printed case id after creating an episode.
 
@@ -102,6 +102,10 @@ Shared helpers available to scenes (`src/runtime/f1/`, `src/templates/hotwizz-ki
 | `W.drift(f, {seed, count, y0, y1, color, a})`, `W.sweep(f, {color, a, y0, y1})` | Background light motes and light beam (byte-identical to the former copies in HotWizz/posted scenes). |
 
 Helpers are pure functions of the frame. Do not use `Math.random`, timers, or CSS transitions/animations.
+
+### KASUS casefile look
+
+`--format kasus` scaffolds scenes in the casefile look: paper ground, ink type, one teal accent, red only for stamps and pen marks. It is opt-in per theme: `config/themes/casefile.json` sets `runtime.look: "casefile"` (the only accepted value, checked in `src/config/validate.mjs`) plus the palette. A theme with a look makes the build copy `src/templates/casefile-kit.js` to `lib/f1/casefile.js` (loaded after `cine.js`) and switches the captions to the casefile style (paper box, ink outline, teal spoken word, colours from `runtime.palette`); episodes on other themes build exactly as before. Scenes use `const K = F1.casefile;` (`page`, `head`, `kicker`, `title`, `card`, `box`, `chip`, `src`, `stamp`, `pen`, `strike`, `tick`, `hl`, `redact`, `icon`, `cast`, `calendar`, `checkRow`, `tile`, `folder`, `cover`); the layout contract is in the kit header (text x 72-960, right 120 px and the lower ~15% clear). The scaffold's hook draws the claim fully at frame 0, and `vonis` ends with `K.cover` (title-only card, the TikTok cover pick). Alternative colourways: `casefile-biru`, `casefile-manila`, `casefile-malam` (set `theme` in the episode).
 
 ## Voice, build, review, and render
 

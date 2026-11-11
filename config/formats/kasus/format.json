@@ -1,7 +1,7 @@
 {
-  "description": "KASUS explainer: four wrapped .js scenes (hook, fakta, sisi, vonis), transit theme, narrators mog/wec/bog (Cartesia), case verdict and cover.",
+  "description": "KASUS explainer in the casefile look: four wrapped .js scenes (hook, fakta, sisi, vonis) on F1.casefile, casefile theme, narrators mog/wec/bog (Cartesia), case folder, KASUS DITUTUP stamp and title cover.",
   "category": "Hukum",
-  "theme": "transit",
+  "theme": "casefile",
   "case": {
     "prefix": "KASUS",
     "counter": "max"
@@ -12,7 +12,7 @@
     "number": "{{number}}",
     "title": "{{title}}",
     "category": "{{category}}",
-    "theme": "transit",
+    "theme": "casefile",
     "narration": "narration.json",
     "script": "script-short.md",
     "video": {
@@ -32,7 +32,6 @@
       {
         "id": "hook",
         "file": "scenes/hook.js",
-        "bg": "#dfe8ee",
         "sfx": [
           {"at": "0", "file": "pop-in", "vol": 0.2},
           {"at": "word:klaim", "file": "click", "vol": 0.2}
@@ -41,7 +40,6 @@
       {
         "id": "fakta",
         "file": "scenes/fakta.js",
-        "bg": "#dfe8ee",
         "sfx": [
           {"at": "word:pertama", "file": "tick", "vol": 0.2},
           {"at": "word:kedua", "file": "tick", "vol": 0.2},
@@ -51,7 +49,6 @@
       {
         "id": "sisi",
         "file": "scenes/sisi.js",
-        "bg": "#dfe8ee",
         "sfx": [
           {"at": "word:sisi", "file": "pop-in", "vol": 0.2},
           {"at": "word:bantahan", "file": "pop-in", "vol": 0.2}
@@ -60,7 +57,6 @@
       {
         "id": "vonis",
         "file": "scenes/vonis.js",
-        "bg": "#dfe8ee",
         "sfx": [
           {"at": "word:ditutup", "file": "stamp", "vol": 0.45},
           {"at": "word:Tulis", "file": "pop-in", "vol": 0.1}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "gold-kasus",
+  "number": 21,
+  "title": "Judul Kasus",
+  "category": "Hukum",
+  "theme": "casefile",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #01",
+      "steps": 4,
+      "name": "GANTI NAMA KASUS"
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.js",
+      "sfx": [
+        {
+          "at": "0",
+          "file": "pop-in",
+          "vol": 0.2
+        },
+        {
+          "at": "word:klaim",
+          "file": "click",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "file": "scenes/fakta.js",
+      "sfx": [
+        {
+          "at": "word:pertama",
+          "file": "tick",
+          "vol": 0.2
+        },
+        {
+          "at": "word:kedua",
+          "file": "tick",
+          "vol": 0.2
+        },
+        {
+          "at": "word:ketiga",
+          "file": "tick",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "sisi",
+      "file": "scenes/sisi.js",
+      "sfx": [
+        {
+          "at": "word:sisi",
+          "file": "pop-in",
+          "vol": 0.2
+        },
+        {
+          "at": "word:bantahan",
+          "file": "pop-in",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.js",
+      "sfx": [
+        {
+          "at": "word:ditutup",
+          "file": "stamp",
+          "vol": 0.45
+        },
+        {
+          "at": "word:Tulis",
+          "file": "pop-in",
+          "vol": 0.1
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

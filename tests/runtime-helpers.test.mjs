@@ -125,6 +125,9 @@ test('runtimeConfig is unchanged for every episode without a palette, and emits 
     if(ctx.config.runtime.palette){ // a theme/episode that sets a palette opts in; everything else is unchanged
       assert.deepEqual(out.palette,ctx.config.runtime.palette,id);delete out.palette;
     } else assert.ok(!('palette' in out),id);
+    if(ctx.config.runtime.look){ // opt-in look (casefile) is passed through as-is
+      assert.equal(out.look,ctx.config.runtime.look,id);delete out.look;
+    } else assert.ok(!('look' in out),id);
     assert.deepEqual(out,headRuntimeConfig(ctx.config),id);
   }
   const base=loadEpisode(episodes[0]).config;

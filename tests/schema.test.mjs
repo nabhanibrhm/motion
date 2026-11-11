@@ -189,12 +189,12 @@ test('the kasus scaffold warns about placeholder text but stays valid',async t=>
   assert.equal(placeholderWarnings({...clean,narration:{...clean.narration,sections:[]},config:{...clean.config,runtime:{...clean.config.runtime,case:{...clean.config.runtime.case,name:'X'}}}}).filter(w=>/episode\.json/.test(w)).length,0);
 });
 
-test('kasus scenes keep content inside the safe area (right edge <= 960) and the hook progress is full at frame 0',()=>{
+test('kasus scenes keep content inside the safe area (right edge <= 960) and the hook shows the claim at frame 0',()=>{
   const dir=join(REPO_ROOT,'config/formats/kasus/files/scenes');
-  for(const name of ['hook.js','sisi.js','fakta.js']) {
+  for(const name of ['hook.js','sisi.js','fakta.js','vonis.js']) {
     const src=readFileSync(join(dir,name),'utf8');
-    for(const m of src.matchAll(/x:\s*(\d+),[\s\S]*?\bw:\s*(\d+)/g)) assert.ok(Number(m[1])+Number(m[2])<=960,`${name}: x ${m[1]} + w ${m[2]}`);
-    for(const m of src.matchAll(/\by:\s*(\d+)/g)) assert.ok(Number(m[1])<1400,`${name}: y ${m[1]}`);
+    for(const m of src.matchAll(/\bx:\s*(\d+),[^\n]*?\bw:\s*(\d+)/g)) assert.ok(Number(m[1])+Number(m[2])<=960,`${name}: x ${m[1]} + w ${m[2]}`);
+    for(const m of src.matchAll(/\by:\s*(\d+)/g)) assert.ok(Number(m[1])<=1200,`${name}: y ${m[1]}`);
   }
-  assert.match(readFileSync(join(dir,'hook.js'),'utf8'),/C\.progress\(f \+ 24,/);
+  assert.match(readFileSync(join(dir,'hook.js'),'utf8'),/K\.title\(f, \{ at: -20/);
 });
