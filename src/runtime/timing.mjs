@@ -10,6 +10,8 @@ export function runtimeConfig(config) {
   if(config.runtime.watermark) out.watermark=structuredClone(config.runtime.watermark);
   // Opt-in palette (episode or theme); omitted when unset so F1.PAL stays the defaults and F1.CONFIG identical.
   if(config.runtime.palette) out.palette=structuredClone(config.runtime.palette);
+  // Opt-in look (casefile): omitted when unset.
+  if(config.runtime.look) out.look=config.runtime.look;
   return out;
 }
 /** Fresh globals on every call, including when multiple episodes build in one process. */

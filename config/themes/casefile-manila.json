@@ -1,0 +1,18 @@
+{
+  "runtime": {
+    "look": "casefile",
+    "palette": {
+      "bg": "#eee2c4",
+      "paper": "#fbf5e6",
+      "ink": "#1f1a12",
+      "muted": "#5a4e3a",
+      "source": "#5a4e3a",
+      "red": "#b8322a",
+      "accent": "#2f6b3a",
+      "teal": "#2f6b3a",
+      "tealDark": "#23522c",
+      "drift": "#c9b88f",
+      "haze": "#e2d3ae"
+    }
+  }
+}

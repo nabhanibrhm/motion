@@ -8,11 +8,13 @@ const reserved=new Set(['root','background','captions','chapter-card']);
 export {PALETTE_KEYS};
 const HEX=/^#[0-9a-fA-F]{6}$/;
 
+/** Opt-in scene looks; each adds a browser kit (src/templates/<look>-kit.js) and its caption style. */
+export const LOOKS=['casefile'];
 /** Allow-list per object of the episode manifest and narration; any other key is an error with a did-you-mean hint. */
 export const SCHEMA={
   top:['schemaVersion','id','number','title','category','narration','script','video','runtime','scenes','audio','theme','voice'],
   video:['width','height','fps'],
-  runtime:['profile','case','watermark','palette'],
+  runtime:['profile','case','watermark','palette','look'],
   case:['id','steps','name'],
   watermark:['src','opacity','width','height','pulse'],
   pulse:['period','scale','glow'],
@@ -110,6 +112,7 @@ export function checkSchema(c,n) {
     if(r.watermark!==undefined) {
       if(strictKeys(errors,'runtime.watermark',r.watermark,SCHEMA.watermark)&&r.watermark.pulse!==undefined) strictKeys(errors,'runtime.watermark.pulse',r.watermark.pulse,SCHEMA.pulse);
     }
+    if(r.look!==undefined&&!LOOKS.includes(r.look)) errors.push(`runtime.look must be one of: ${LOOKS.join(', ')}`);
     if(r.palette!==undefined&&strictKeys(errors,'runtime.palette',r.palette,SCHEMA.palette)) for(const [k,v] of Object.entries(r.palette)) if(!(typeof v==='string'&&HEX.test(v))) errors.push(`runtime.palette.${k} must be a #rrggbb colour`);
   }
   if(c.audio!==undefined&&strictKeys(errors,'audio',c.audio,SCHEMA.audio)&&c.audio.loudness!==undefined) strictKeys(errors,'audio.loudness',c.audio.loudness,SCHEMA.loudness);
