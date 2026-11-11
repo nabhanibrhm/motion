@@ -9,7 +9,7 @@ Angle: explainer of the two roads (impeachment steps per UUD 1945, resignation p
 | Section | Line | Sources |
 |---|---|---|
 | hook | Gibran sudah menyampaikan niat mundur ke Presiden Prabowo, tapi usulan pemakzulannya tetap bergulir di DPR. | S1, S2 |
-| status | Ketua DPR Puan Maharani berjanji memprosesnya, tapi rapat Badan Musyawarah belum digelar, dan surat pengunduran diri belum diterima. | S3, S4, S5 |
+| status | Rabu siang, seratus dua puluh anggota DPR dari delapan fraksi resmi mengajukan hak menyatakan pendapat. Surat pengunduran diri Gibran belum diterima. | S6, S5 |
 | alur 1 | Begini alurnya. Pertama, minimal dua puluh lima anggota DPR mengusulkan. Lalu paripurna DPR harus setuju dengan dua pertiga suara yang hadir. | L2, L1 |
 | alur 2 | Setelah itu, Mahkamah Konstitusi memutus paling lama sembilan puluh hari. Kalau terbukti tidak memenuhi syarat, usulnya diteruskan ke MPR. | L1 |
 | alur 3 | Terakhir, di MPR, tiga perempat anggota harus hadir, dan dua pertiga yang hadir harus setuju, setelah Gibran diberi kesempatan menjelaskan. | L1 |
@@ -35,7 +35,8 @@ Say map: DPR → "de pe er", MPR → "em pe er". No line ends on a spoken number
 | S2 | HMP/impeachment proposal keeps moving in DPR despite the intent | Tirto ("Usulan HMP Pemakzulan Gibran Bergulir di DPR"); TribunWow (DPR tetap lanjutkan HMP sebelum ada surat resmi); CNN 11 Nov (Saan: HMP can run parallel to PTUN) |
 | S3 | Puan: received the report of the HMP signature drive, "akan tindak lanjuti" after the sitting opens; Gibran "masih wapres" | NU Online 10 Nov 15:30; BangsaOnline 10 Nov 12:33; Media Indonesia; Okezone |
 | S4 | No Bamus meeting yet (Puan: agenda "belum ada"; Dasco: no rapim or Bamus yet). Saan, 11 Nov: leaders wait 1–2 days for members' formal HMP; checked for ≥25 proposers, then Bamus, then paripurna | NU Online, BangsaOnline (10 Nov); Beritasatu 11 Nov 09:36; Liputan6 10 Nov 19:01 |
-| S5 | DPR has no official resignation letter | Liputan6 ("DPR tunggu surat resmi"); TribunWow; Mahfud (CNN, Suara 11 Nov): impeachment continues until a letter arrives |
+| S6 | 11 Nov midday: 120 members from 8 factions (PKS 28, NasDem 19, PKB 18, Demokrat 18, PDIP 14, Golkar 11, Gerindra 11, PAN 1) formally handed the HMP to pimpinan (Saan Mustopa, Cucun); to be read at paripurna Thu 12 Nov | CNN 11 Nov 13:39 and 14:57; detik d-8748297; kumparan; CNBC 11 Nov 15:27; Antara 5846439; Republika; Media Indonesia 954903 |
+| S5 | DPR has no official resignation letter (Doli Kurnia, 11 Nov: DPR does not know whether one exists; viral "letter to DPR" video is a hoax per Jalahoaks) | Liputan6 ("DPR tunggu surat resmi"); TribunWow; Mahfud (CNN, Suara 11 Nov): impeachment continues until a letter arrives |
 
 Context (not narrated): Mahfud MD (Terus Terang podcast; CNN 08:54, Suara 09:59, 11 Nov): "pilihannya mundur atau dimakzulkan"; once a letter arrives "semua proses berpindah ke soal berhenti karena mengundurkan diri"; "mundur saja, itu terhormat". PDIP (Andreas Hugo Parera) pushes resign-or-impeach (detik). Yusril: a formal resignation needs a written statement to MPR, then MPR asks the President for two candidates (search summaries; not checked in two outlets). Background: MA kasasi 742 K/TUN/2026 (30 Oct) voided the SMA equivalency letter; MK 01/PHPU.PRES-XXIV/2026 (6 Oct). MPR must sit within 30 days of receiving DPR's proposal (Pasal 7B (6)), cut from narration for length.
 

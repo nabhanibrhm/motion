@@ -48,18 +48,18 @@
         "kicker": "RABU 11 NOV",
         "items": [
           {
-            "text": "Puan: usulan *akan diproses*",
-            "source": "NU Online, BangsaOnline, Media Indonesia (10 Nov)",
-            "cue": "Puan"
+            "text": "120 anggota · 8 fraksi *resmi mengusulkan*",
+            "source": "CNN, detik, kumparan (11 Nov)",
+            "cue": "seratus"
           },
           {
-            "text": "Rapat Bamus *belum digelar*",
-            "source": "NU Online, BangsaOnline (10 Nov)",
-            "cue": "rapat"
+            "text": "HMP dibawa ke *paripurna Kamis*",
+            "source": "Antara, Republika (11 Nov)",
+            "cue": "hak"
           },
           {
             "text": "Surat pengunduran diri *belum diterima*",
-            "source": "Liputan6, TribunWow (10 Nov)",
+            "source": "Liputan6 (11 Nov)",
             "cue": "surat"
           }
         ]
