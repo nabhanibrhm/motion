@@ -29,5 +29,5 @@ Other options: `--mute 12-18.5,40-44` (seconds from clip start), `--srt file.srt
 - Only clip creators whose campaign or permission allows it.
 - Mute licensed in-game radio music with `--mute` (Content ID risk).
 - To translate an English clip: edit `.cache/clips/<slug>/clip-NN.srt` (translate the text, keep the timings), then re-run `cut` with `--srt .cache/clips/<slug>/clip-NN.srt`.
-- Captions: 3 words per line, current word yellow. Audio normalised to -14 LUFS / -1 dBTP (two-pass).
+- Look (Wizz Clip brand): captions 3 words per line, current word brand yellow `#FFD21F`; hook title is a slanted yellow bar with near-black italic text (first 3 s); "SUMBER: @credit" sits in a near-black pill at the bottom. No burned-in channel name: upload `out/design/wizz-clip-watermark.png` as the YouTube video watermark instead. Audio normalised to -14 LUFS / -1 dBTP (two-pass).
 - Scratch goes to `.cache/clips/<slug>/`, finished clips to `out/clips/` (both git-ignored; `out/` syncs to Google Drive).

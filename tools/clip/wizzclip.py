@@ -10,7 +10,7 @@ OUT = REPO / "out" / "clips"  # finished clips (out/ is Drive-synced)
 CFG = TOOL / "config"
 W, H = 1080, 1920
 FONT = "Arial Black"
-YELLOW, WHITE = r"{\c&H00FFFF&}", r"{\c&HFFFFFF&}"
+YELLOW, WHITE = r"{\c&H1FD2FF&}", r"{\c&HFFFFFF&}"  # brand yellow #FFD21F (ASS colours are BGR)
 
 
 def die(msg):
@@ -304,8 +304,8 @@ WrapStyle: 2
 [V4+ Styles]
 Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
 Style: Cap,{FONT},84,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,9,2,5,40,40,0,1
-Style: Title,{FONT},76,&H00FFFFFF,&H00FFFFFF,&H002020E0,&H00000000,0,0,0,0,100,100,0,0,1,26,0,5,60,60,0,1
-Style: Brand,{FONT},40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,4,0,5,40,40,0,1
+Style: Title,{FONT},76,&H000C0B0B,&H000C0B0B,&H001FD2FF,&H00000000,0,1,0,0,100,100,0,0,1,26,0,5,60,60,0,1
+Style: Brand,{FONT},34,&H00FFFFFF,&H00FFFFFF,&H000C0B0B,&H00000000,0,0,0,0,100,100,0,0,1,16,0,5,40,40,0,1
 
 [Events]
 Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
@@ -317,13 +317,16 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
             end = g[i + 1][1] if i + 1 < len(g) else min(g[-1][2] + 0.15, nxt)  # never overlap next group
             txt = " ".join((YELLOW + clean(w[0]) + WHITE) if j == i else clean(w[0]) for j, w in enumerate(g))
             ev.append(f"Dialogue: 1,{ts_ass(max(s, 0))},{ts_ass(end)},Cap,,0,0,0,,{{\\pos({W // 2},{cap_y})}}{txt}")
-    if title:  # rounded red box = thick red round-joined outline around white text
+    if title:  # slanted yellow bar = thick yellow round-joined outline around near-black italic text, sheared
         lines = r"\N".join(textwrap.wrap(clean(title), 18))
         ev.append(f"Dialogue: 2,{ts_ass(0)},{ts_ass(min(3, dur))},Title,,0,0,0,,"
-                  f"{{\\pos({W // 2},{title_y})\\fad(150,250)}}{lines}")
-    ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1790)\\3c&H2020E0&\\bord6}}WIZZ CLIP")
-    if credit:
-        ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1850)\\fs32}}{clean(credit)}")
+                  f"{{\\pos({W // 2},{title_y})\\fax-0.12\\fad(150,250)}}{lines}")
+    # no burned-in brand text: the YouTube channel watermark (out/design/wizz-clip-watermark.png) covers it
+    if credit:  # "Sumber" pill: near-black rounded box, label in brand yellow
+        c = clean(credit)
+        if c.startswith("SUMBER:"):
+            c = YELLOW + "SUMBER:" + WHITE + c[len("SUMBER:"):]
+        ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1800)}}{c}")
     return head + "\n".join(ev) + "\n"
 
 
