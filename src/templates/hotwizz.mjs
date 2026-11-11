@@ -17,6 +17,8 @@ export const cueSpec=v=>v===undefined||v===null?null:typeof v==='number'?String(
 
 const SFX={pop:'sfx/pop-in.wav',stamp:'sfx/stamp.wav',swoosh:'sfx/swoosh-soft.wav',ding:'sfx/ding.wav',whoosh:'sfx/whoosh.wav'};
 const COVER_STYLES=['kicker','big','text','chip','cta'];
+/** hw-art icons (monoline, drawn in hotwizz-kit.js ICONS). */
+export const ART=['istana','dpr','gavel','dokumen','kotak-suara','uang','hp','kalender'];
 
 /** Shared prop checker. `spec` maps key -> 'text' | 'text?' | 'cue' | 'bool' | 'int' | 'person' | 'person?' | fn. */
 function checker(name,id,props,ctx,spec) {
@@ -76,7 +78,7 @@ const items=list=>(list||[]).map(it=>({...it,cue:cueSpec(it.cue)}));
 export const HOTWIZZ_TEMPLATES={
   'hw-hook':{
     type:'hook',
-    spec:{...common,headline:'text',claim:'text',kicker:'text?',tag:'text?',person:'person',cue:'cue',introCover:'bool',
+    spec:{...common,headline:'text',claim:'text',kicker:'text?',tag:'text?',search:'text?',person:'person',cue:'cue',introCover:'bool',
       stamp:(v,{err,cue,text})=>{if(v===undefined) return;if(!obj(v)) return err('stamp must be {text, cue}');text(v.text,'stamp.text',true);cue(v.cue,'stamp.cue');}},
     normalize:(p,ctx)=>({kicker:'UPDATE',label:p.kicker||'UPDATE',...p,person:photo(p.person),cue:cueSpec(p.cue),stamp:p.stamp?{text:p.stamp.text,cue:cueSpec(p.stamp.cue)}:null,introCover:p.introCover?introCover(ctx):null}),
     sfx:p=>[...(p.cue?[{at:p.cue,file:SFX.pop,volume:.18}]:[]),...(p.stamp?.cue?[{at:p.stamp.cue,file:SFX.stamp,volume:.2}]:[])],
@@ -89,7 +91,8 @@ export const HOTWIZZ_TEMPLATES={
   },
   'hw-split':{
     type:'split',
-    spec:{...common,headline:'text?',kicker:'text?',source:'text?',left:side('left'),right:side('right')},
+    spec:{...common,headline:'text?',kicker:'text?',source:'text?',left:side('left'),right:side('right'),
+      toggle:(v,{err,text})=>{if(v===undefined) return;if(!obj(v)) return err('toggle must be {left, right}');for(const key of Object.keys(v)) if(!['left','right'].includes(key)) err(`toggle.${key} is not supported`);text(v.left,'toggle.left',true);text(v.right,'toggle.right',true);}},
     normalize:p=>({kicker:'PETA FAKTA',label:'RESMI VS BELUM JELAS',...p,left:{title:'RESMI',...p.left,items:items(p.left.items)},right:{title:'BELUM JELAS',...p.right,items:items(p.right.items)}}),
     sfx:p=>[{at:'0',file:SFX.swoosh,volume:.18},...[...p.left.items,...p.right.items].filter(it=>it.cue).map(it=>({at:it.cue,file:SFX.pop,volume:.12}))],
   },
@@ -104,6 +107,12 @@ export const HOTWIZZ_TEMPLATES={
     spec:{...common,value:'text',unit:'text?',caption:'text',source:'text',kicker:'text?',cue:'cue',countUp:'bool'},
     normalize:p=>({kicker:'ANGKA',label:'ANGKA',countUp:true,...p,cue:cueSpec(p.cue)}),
     sfx:p=>[{at:'0',file:SFX.swoosh,volume:.18},...(p.cue?[{at:p.cue,file:SFX.ding,volume:.14}]:[])],
+  },
+  'hw-art':{
+    type:'art',
+    spec:{...common,art:(v,{err})=>{if(!ART.includes(v)) err(`art must be one of ${ART.join('|')}`);},headline:'text',sub:'text?',kicker:'text?',source:'text?',stamp:'text?',cue:'cue'},
+    normalize:p=>({kicker:'KONTEKS',label:p.kicker||'KONTEKS',...p,cue:cueSpec(p.cue)}),
+    sfx:p=>[{at:'0',file:SFX.swoosh,volume:.18},...(p.cue?[{at:p.cue,file:SFX.pop,volume:.14}]:[]),...(p.stamp?[{at:p.cue?`${p.cue}+9`:'36',file:SFX.stamp,volume:.2}]:[])],
   },
   'hw-cover':{
     type:'cover',
@@ -164,7 +173,7 @@ export function renderHotwizz(scene,ctx,index) {
   return `<!-- GENERATED from template ${scene.template}. Edit the episode.json props, not this file. -->
 <template>
   <link rel="stylesheet" href="lib/f1/f1.css" />
-  <style>#root { position: absolute; inset: 0; background: #0d0f16; overflow: hidden; }</style>
+  <style>#root { position: absolute; inset: 0; background: #0b0b0c; overflow: hidden; }</style>
   <div id="root" data-composition-id="${id}" data-width="1080" data-height="1920">
     <div id="${id}-art" class="f1-layer"></div>
     ${audio}

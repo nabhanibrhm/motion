@@ -109,6 +109,8 @@ test('template validation names bad props, cues, photos and unknown templates',a
   bad(s=>{s[4].props.lines[0].style='huge';},/style must be/);
   bad(s=>{s[0].props.step=9;},/step must be an integer/);
   bad(s=>{s[0].template='hw-nope';},/unknown template hw-nope/);
+  bad(s=>{s.push({id:'ilus',template:'hw-art',props:{art:'roket',headline:'X'}});},/art must be one of/);
+  bad(s=>{s[2].props.toggle={left:'A'};},/toggle\.right/);
   assert.ok(TEMPLATE_NAMES.includes('title-card'));
   assert.equal(cueSpec('resmi'),'word:resmi');assert.equal(cueSpec('line:1:end'),'line:1:end');assert.equal(cueSpec(12),'12');assert.equal(cueSpec(null),null);
 });
@@ -133,11 +135,17 @@ test('the browser kit draws every template deterministically at 30 and fractiona
     quote:{seed:4,step:4,label:'L',kicker:'K',person:{...person,photo:null},quote:'Q *q*',source:'S',date:'1 Nov',cue:null},
     number:{seed:5,step:5,label:'L',kicker:'K',value:'Rp1.250,5',unit:'T',caption:'C',source:'S',cue:null,countUp:true},
     cover:{seed:6,step:5,label:'L',footer:'F',lines:[{text:'INGAT',style:'kicker',cue:null},{text:'x',style:'cta',cue:null}],coverAt:null,cover:{stamp:'HOTWIZZ #01',title:'T',chip:'C'}},
+    // minimal redesign (11 Nov 2026): search bar hook, toggle split, monoline art
+    searchHook:{seed:7,step:1,label:'UPDATE',kicker:'UPDATE',headline:'A',claim:'Klaim *x*',person,cue:null,stamp:null,search:'apa benar?'},
+    toggleSplit:{seed:8,step:3,label:'L',kicker:'K',headline:'H',left:{title:'RESMI',items:[{text:'a',cue:null}]},right:{title:'BELUM JELAS',items:[{text:'b',cue:null}]},toggle:{left:'MUNDUR',right:'BERTAHAN'}},
+    ...Object.fromEntries(['istana','dpr','gavel','dokumen','kotak-suara','uang','hp','kalender'].map((art,i)=>[`art-${art}`,{seed:9+i,step:2,label:'L',kicker:'K',art,headline:'H\n*I*',sub:'S',source:'X',stamp:i%2?'STEMPEL':undefined,cue:null}])),
   };
-  for(const [type,p] of Object.entries(props)) for(const f of [0,7.5,33.25,D-1]) {
+  const typeOf=k=>k==='searchHook'?'hook':k==='toggleSplit'?'split':k.startsWith('art-')?'art':k;
+  for(const [key,p] of Object.entries(props)) for(const f of [0,7.5,33.25,D-1]) {
+    const type=typeOf(key);
     const a=hw.draw(type,f,{S,D},p),b=hw.draw(type,f,{S,D},p);
-    assert.equal(a,b,`${type} @${f} is not deterministic`);
-    assert.doesNotMatch(a,/NaN|undefined|\[object/,`${type} @${f}`);
+    assert.equal(a,b,`${key} @${f} is not deterministic`);
+    assert.doesNotMatch(a,/NaN|undefined|\[object/,`${key} @${f}`);
   }
   assert.match(hw.draw('hook',0,{S,D},props.hook),/Klaim/); // frame 0 carries the claim
   assert.match(hw.draw('cover',D-1,{S,D},props.cover),/z-index:50/); // cover over the tail
@@ -152,4 +160,10 @@ test('the browser kit draws every template deterministically at 30 and fractiona
   const cardHtml=h=>h.slice(h.indexOf('<div style="position:absolute;inset:0;z-index:50'));
   assert.ok(cardHtml(tail).startsWith(cardHtml(head).slice(0,600)),'hook frame 0 shows the cover card');
   assert.doesNotMatch(hw.draw('hook',40,{S,D},intro),/z-index:50/);
+  // Merah Putih is fixed solid red over white in every flag icon
+  for(const art of ['istana','dpr']) {const h=hw.draw('art',D-1,{S,D},props[`art-${art}`]);assert.match(h,/fill="#e70011"/);assert.match(h,/fill="#ffffff"/);}
+  // the search bar types the query; RESMI/BELUM JELAS keeps tick vs "?", other side pairs get the same neutral mark
+  assert.match(hw.draw('hook',D-1,{S,D},props.searchHook),/apa benar\?/);
+  const pair={...props.split,left:{title:'PDIP',items:[{text:'a',cue:null}]},right:{title:'KUASA HUKUM',items:[{text:'b',cue:null}]}};
+  assert.doesNotMatch(hw.draw('split',D-1,{S,D},pair),/>\?</);
 });
