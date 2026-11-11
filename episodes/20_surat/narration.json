@@ -1,0 +1,94 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "Gibran Serahkan Surat Mundur?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Ketua Projo Budi Arie menyebut Gibran sudah menyerahkan surat pengunduran diri ke Presiden Prabowo di Halim."
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Sampai Rabu malam, Istana belum mengonfirmasi surat itu. Yang resmi baru niat mundur Gibran, kata Mensesneg hari Selasa, dan usulan hak menyatakan pendapat dari seratus dua puluh anggota DPR."
+        }
+      ]
+    },
+    {
+      "id": "besok",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kamis besok jadi penentu. Surat itu dikabarkan dibawa ke MPR, dan di hari yang sama, paripurna DPR membahas usulan tersebut."
+        }
+      ]
+    },
+    {
+      "id": "mundur",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kalau surat sampai ke MPR dan kursi wakil presiden kosong, MPR bersidang memilih pengganti dari dua calon usulan Presiden, paling lambat enam puluh hari."
+        }
+      ]
+    },
+    {
+      "id": "hmp",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Usulan pemakzulan sendiri belum berhenti. Sejumlah anggota DPR dan Mahfud menyebut prosesnya tetap jalan sampai surat resmi diterima."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Menurutmu, usulan pemakzulan sebaiknya tetap jalan? Tulis di komentar dan follow untuk update.",
+          "after": 1.4
+        }
+      ]
+    }
+  ],
+  "say": {
+    "DPR": "de pe er",
+    "MPR": "em pe er"
+  }
+}

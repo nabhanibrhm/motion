@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "id": "surat",
+  "number": 20,
+  "title": "Gibran Serahkan Surat Mundur?",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #09",
+      "steps": 6
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "KATA PROJO",
+        "kicker": "KATA PROJO",
+        "headline": "SURAT MUNDUR\n*SUDAH DISERAHKAN*?",
+        "claim": "Projo: surat diserahkan ke *Prabowo di Halim*",
+        "tag": "KETUM PROJO BUDI ARIE · RABU 11 NOV",
+        "person": {
+          "name": "Gibran Rakabuming Raka",
+          "role": "Wakil Presiden RI",
+          "photo": "people/gibran.jpg",
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+        },
+        "cue": "menyerahkan",
+        "stamp": {
+          "text": "BELUM RESMI",
+          "cue": "Halim"
+        },
+        "introCover": true
+      }
+    },
+    {
+      "id": "status",
+      "template": "hw-resmi",
+      "props": {
+        "label": "STATUS RABU MALAM",
+        "title": "STATUS RABU MALAM",
+        "kicker": "11 NOV · 20.30 WIB",
+        "items": [
+          {
+            "text": "Surat: *belum dikonfirmasi* Istana",
+            "source": "Republika, Suara, Katadata (11 Nov malam)",
+            "cue": "Istana"
+          },
+          {
+            "text": "Yang resmi: *niat mundur* (Mensesneg)",
+            "source": "CNN Indonesia, Kompas, detik (10 Nov)",
+            "cue": "niat"
+          },
+          {
+            "text": "120 anggota DPR *ajukan HMP*",
+            "source": "CNN Indonesia, Kompas, Katadata (11 Nov)",
+            "cue": "seratus"
+          }
+        ]
+      }
+    },
+    {
+      "id": "besok",
+      "template": "hw-split",
+      "props": {
+        "label": "KAMIS 12 NOV",
+        "kicker": "BESOK",
+        "headline": "KAMIS *12 NOV*",
+        "left": {
+          "title": "MPR",
+          "items": [
+            {
+              "text": "Surat mundur *dikabarkan* dibawa",
+              "source": "Katadata, Kaidah.id (sumber tak disebut)",
+              "cue": "MPR"
+            }
+          ]
+        },
+        "right": {
+          "title": "DPR",
+          "items": [
+            {
+              "text": "Paripurna bahas *usulan HMP*",
+              "source": "Suara, Beritasatu, Antara (11 Nov)",
+              "cue": "paripurna"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mundur",
+      "template": "hw-art",
+      "props": {
+        "label": "JIKA KURSI KOSONG",
+        "art": "dokumen",
+        "kicker": "PASAL 8 AYAT 2 UUD 1945",
+        "headline": "MPR PILIH\n*PENGGANTI*",
+        "sub": "Dari dua calon usulan Presiden, paling lambat 60 hari",
+        "source": "UUD 1945 Pasal 8 ayat (2)",
+        "stamp": "MAKS 60 HARI",
+        "cue": "memilih"
+      }
+    },
+    {
+      "id": "hmp",
+      "template": "hw-art",
+      "props": {
+        "label": "NASIB HMP",
+        "art": "dpr",
+        "kicker": "KATA ANGGOTA DPR · MAHFUD MD",
+        "headline": "HMP\n*TETAP JALAN*",
+        "sub": "Sampai surat resmi diterima",
+        "source": "TribunWow, detik, CNN Indonesia, Suara (10–11 Nov)",
+        "cue": "jalan"
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "MENURUTMU?",
+        "lines": [
+          {
+            "text": "MENURUTMU?",
+            "style": "kicker",
+            "cue": "Menurutmu"
+          },
+          {
+            "text": "HMP *TETAP JALAN*?",
+            "cue": "usulan"
+          },
+          {
+            "text": "TULIS DI KOMENTAR",
+            "style": "chip",
+            "cue": "Tulis"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "cover": {
+          "title": "*SURAT MUNDUR*\nGIBRAN\nSUDAH ADA?",
+          "chip": "KATA PROJO"
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}
