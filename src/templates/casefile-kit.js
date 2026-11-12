@@ -192,9 +192,9 @@
 
   /**
    * The TikTok cover card (z 50, full bleed) from `at` (default: 4 frames after the last word) to the end:
-   * red case stamp, title lines (accent line in teal), rule, tag, icon. Centred in y 240-1680.
+   * red case stamp, title lines (accent line in teal), rule, tag, icon (or `art`: raw HTML shown large under the tag, e.g. the subject object). Centred in y 240-1680.
    */
-  K.cover = (f, S, { at = null, lines = [], tag = "", icon = "kalender", size = 132 }) => {
+  K.cover = (f, S, { at = null, lines = [], tag = "", icon = "kalender", size = 132, art = "" }) => {
     const last = S.lines[S.lines.length - 1];
     const t0 = at ?? Math.round(last.end * F1.FPS) + 4;
     const cv = ramp(f, t0, 5);
@@ -204,6 +204,6 @@
 <div style="align-self:flex-start;transform:rotate(-4deg)"><div style="${css({ fontFamily: OSW, fontWeight: 700, fontSize: 50, letterSpacing: 3, color: T.red, border: `6px solid ${T.red}`, borderRadius: 10, padding: "6px 22px" })}">${F1.esc(caseId())}</div></div>
 <div style="${css({ fontFamily: OSW, fontWeight: 700, fontSize: size, lineHeight: 0.98, textTransform: "uppercase", marginTop: 44 })}">${rows}</div>
 <div style="${css({ height: 6, background: T.ink, marginTop: 44 })}"></div>
-<div style="${css({ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginTop: 28 })}"><div style="${css({ fontFamily: MONO, fontWeight: 700, fontSize: 32, color: T.ink2 })}">${tag}</div>${icon ? K.icon(icon, 240) : ""}</div></div></div>`;
+<div style="${css({ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginTop: 28 })}"><div style="${css({ fontFamily: MONO, fontWeight: 700, fontSize: 32, color: T.ink2 })}">${tag}</div>${art ? "" : icon ? K.icon(icon, 240) : ""}</div>${art}</div></div>`;
   };
 })((globalThis.F1 = globalThis.F1 || {}));

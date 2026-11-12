@@ -16,7 +16,7 @@
     "profile": "modern",
     "case": {
       "id": "HOTWIZZ #09",
-      "steps": 6
+      "steps": 5
     }
   },
   "scenes": [
@@ -24,21 +24,21 @@
       "id": "hook",
       "template": "hw-hook",
       "props": {
-        "label": "KATA PROJO",
-        "kicker": "KATA PROJO",
-        "headline": "SURAT MUNDUR\n*SUDAH DISERAHKAN*?",
-        "claim": "Projo: surat diserahkan ke *Prabowo di Halim*",
-        "tag": "KETUM PROJO BUDI ARIE · RABU 11 NOV",
+        "label": "KE MPR SIANG INI",
+        "kicker": "KATA KETUA KOMISI III",
+        "headline": "SURAT MUNDUR\n*KE MPR HARI INI*",
+        "claim": "Habiburokhman: surat diserahkan ke *MPR siang ini*",
+        "tag": "KETUA KOMISI III DPR HABIBUROKHMAN · KAMIS 12 NOV",
         "person": {
           "name": "Gibran Rakabuming Raka",
-          "role": "Wakil Presiden RI",
           "photo": "people/gibran.jpg",
-          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)",
+          "role": "Wakil Presiden RI"
         },
         "cue": "menyerahkan",
         "stamp": {
           "text": "BELUM RESMI",
-          "cue": "Halim"
+          "cue": "siang"
         },
         "introCover": true
       }
@@ -47,55 +47,40 @@
       "id": "status",
       "template": "hw-resmi",
       "props": {
-        "label": "STATUS RABU MALAM",
-        "title": "STATUS RABU MALAM",
-        "kicker": "11 NOV · 20.30 WIB",
+        "label": "STATUS 12 NOV",
+        "title": "STATUS 12 NOV",
+        "kicker": "12 NOV · 10.30 WIB",
         "items": [
           {
-            "text": "Surat: *belum dikonfirmasi* Istana",
+            "text": "Projo: surat *sudah ke Prabowo*",
+            "source": "kumparan, Suara, Viva (11 Nov); CNN: orang dekat Gibran",
+            "cue": "Projo"
+          },
+          {
+            "text": "Istana *belum konfirmasi*",
             "source": "Republika, Suara, Katadata (11 Nov malam)",
             "cue": "Istana"
           },
           {
-            "text": "Yang resmi: *niat mundur* (Mensesneg)",
-            "source": "CNN Indonesia, Kompas, detik (10 Nov)",
-            "cue": "niat"
-          },
-          {
-            "text": "120 anggota DPR *ajukan HMP*",
-            "source": "CNN Indonesia, Kompas, Katadata (11 Nov)",
-            "cue": "seratus"
+            "text": "Ketua MPR: *belum lihat surat*",
+            "source": "Suara, IDN Times (11 Nov malam)",
+            "cue": "Muzani"
           }
         ]
       }
     },
     {
-      "id": "besok",
-      "template": "hw-split",
+      "id": "paripurna",
+      "template": "hw-art",
       "props": {
-        "label": "KAMIS 12 NOV",
-        "kicker": "BESOK",
-        "headline": "KAMIS *12 NOV*",
-        "left": {
-          "title": "MPR",
-          "items": [
-            {
-              "text": "Surat mundur *dikabarkan* dibawa",
-              "source": "Katadata, Kaidah.id (sumber tak disebut)",
-              "cue": "MPR"
-            }
-          ]
-        },
-        "right": {
-          "title": "DPR",
-          "items": [
-            {
-              "text": "Paripurna bahas *usulan HMP*",
-              "source": "Suara, Beritasatu, Antara (11 Nov)",
-              "cue": "paripurna"
-            }
-          ]
-        }
+        "label": "PARIPURNA DPR",
+        "art": "dpr",
+        "kicker": "PARIPURNA DPR · 14.00 WIB",
+        "headline": "HMP\n*TETAP DIUMUMKAN*",
+        "sub": "Usulan 120 anggota DPR",
+        "source": "Kompas, Suara, IDN Times (12 Nov)",
+        "stamp": "MENURUTMU?",
+        "cue": "pemakzulan"
       }
     },
     {
@@ -113,47 +98,29 @@
       }
     },
     {
-      "id": "hmp",
-      "template": "hw-art",
-      "props": {
-        "label": "NASIB HMP",
-        "art": "dpr",
-        "kicker": "KATA ANGGOTA DPR · MAHFUD MD",
-        "headline": "HMP\n*TETAP JALAN*",
-        "sub": "Sampai surat resmi diterima",
-        "source": "TribunWow, detik, CNN Indonesia, Suara (10–11 Nov)",
-        "cue": "jalan"
-      }
-    },
-    {
       "id": "penutup",
       "template": "hw-cover",
       "props": {
-        "label": "MENURUTMU?",
+        "label": "UPDATE",
         "lines": [
           {
-            "text": "MENURUTMU?",
+            "text": "UPDATE HARI INI",
             "style": "kicker",
-            "cue": "Menurutmu"
+            "cue": "Follow"
           },
           {
-            "text": "HMP *TETAP JALAN*?",
-            "cue": "usulan"
-          },
-          {
-            "text": "TULIS DI KOMENTAR",
-            "style": "chip",
-            "cue": "Tulis"
+            "text": "SURAT *SAMPAI MPR*?",
+            "cue": "hasilnya"
           },
           {
             "text": "FOLLOW UNTUK UPDATE",
             "style": "cta",
-            "cue": "follow"
+            "cue": "hari"
           }
         ],
         "cover": {
-          "title": "*SURAT MUNDUR*\nGIBRAN\nSUDAH ADA?",
-          "chip": "KATA PROJO",
+          "title": "*SURAT MUNDUR*\nGIBRAN\nKE MPR HARI INI?",
+          "chip": "KATA KOMISI III DPR",
           "person": {
             "name": "Gibran Rakabuming Raka",
             "photo": "people/gibran.jpg",

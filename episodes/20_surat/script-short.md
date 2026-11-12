@@ -4,7 +4,27 @@ HotWizz Flash, fast follow-up to #08 `makzul` (posted 11 Nov ~19:20 WIB). Narrat
 
 Angle: the news is a **claim by Projo's chairman**, not yet official. Hook = the claim, attributed. Then what is confirmed vs not, what happens Thursday, the resignation road (Pasal 8 ayat 2), and whether the HMP still runs. Retention rules apply; loop: `introCover: true` on the hook, so frame 0 = last frame = the title cover ("SURAT MUNDUR / GIBRAN / SUDAH ADA?", red on the first line, chip KATA PROJO, stamp HOTWIZZ #09, **no face**; #06/#07 had the face, #08 had no face with red on the last line).
 
-## Script (Variant A, in narration.json now)
+## Script: Thursday version "KE MPR HARI INI" (in narration.json now, 12 Nov ~09:30)
+
+Tightened per the #08 lesson: 5 lines, 651 chars (~42 s), one procedure line, comment question in line 3 of 5. `besok` and `hmp` merged into `paripurna`. Variant A files backed up to `.cache/backup/20-surat-{narration,episode}.variantA.json`.
+
+| Section | Scene | Line | Sources |
+|---|---|---|---|
+| hook | hw-hook (stamp BELUM DITERIMA on **hari**) | Wakil Ketua MPR menyebut Gibran dijadwalkan menyerahkan surat pengunduran diri ke pimpinan MPR hari ini. | S8 |
+| status | hw-resmi STATUS KAMIS PAGI | Surat itu disebut sudah diserahkan ke Presiden Prabowo di Halim, kata Ketua Projo Budi Arie. Tapi Istana belum mengonfirmasi, dan Ketua MPR Ahmad Muzani mengaku belum melihat suratnya. | S1, S2, S9 |
+| paripurna | hw-art dpr, stamp MENURUTMU? | Siang ini, paripurna DPR tetap mengumumkan usulan pemakzulan dari seratus dua puluh anggota. Menurutmu, usulan itu masih perlu jalan kalau Gibran mundur? Tulis di komentar. | S4, S10, S11 |
+| mundur | hw-art dokumen (unchanged) | Kalau surat sampai ke MPR dan kursi wakil presiden kosong, MPR bersidang memilih pengganti dari dua calon usulan Presiden, paling lambat enam puluh hari. | L1 |
+| penutup | hw-cover "*SURAT MUNDUR* / GIBRAN / KE MPR HARI INI?", chip KATA PIMPINAN MPR, Gibran photo | Follow untuk update hasilnya hari ini. (`after: 1.4`) | — |
+
+"Siang ini" holds only if posted before the 14:00 paripurna; after it, rewrite `paripurna` to what it did.
+
+### Switch after the MPR handover (5-line shape)
+
+- **MPR confirms receipt (B-2):** hook "MPR menyatakan sudah menerima surat pengunduran diri Gibran dari jabatan wakil presiden." status "[Nama, jabatan] menyampaikannya Kamis [jam]. Sebelumnya, Ketua Projo Budi Arie menyebut surat itu diserahkan ke Presiden Prabowo di Halim." paripurna: keep, or "Sementara itu, paripurna DPR siang ini tetap mengumumkan usulan pemakzulan. Menurutmu, usulan itu masih perlu jalan? Tulis di komentar." (Mardani/PKS: HMP runs until the resignation is final at the MPR, S11). Cover "*SURAT MUNDUR*\nGIBRAN\nDITERIMA MPR", chip KATA MPR, hook stamp DITERIMA MPR. Re-voice hook, status (and paripurna if changed).
+- **Gibran comes/hands over but MPR has not announced:** keep this version, swap "dijadwalkan menyerahkan" for the verified fact.
+- **Denial (Istana/Setwapres):** hook "Istana membantah klaim bahwa Gibran sudah menyerahkan surat pengunduran diri." chip ISTANA MEMBANTAH.
+
+## Script (Variant A, superseded 12 Nov 09:30)
 
 | Section | Scene | Line | Sources |
 |---|---|---|---|
@@ -74,6 +94,11 @@ If instead Istana/Setwapres **denies** the letter: hook "Istana membantah klaim 
 | S5 | HMP proposal goes to the DPR paripurna on Thu 12 Nov (Saan: "berdasarkan jadwal, rapat paripurna itu kita besok akan lakukan"; via rapim and Bamus or a replacement consultation meeting). | Suara 11 Nov 15:29 (suara.com/news/2026/11/11/152944/…); Beritasatu 11 Nov 14:59 (beritasatu.com/nasional/3040304); TIMES Indonesia/Antara (timesindonesia.co.id/politik/617183); Suara Surabaya 11 Nov 17:05 |
 | S6 | Letter **reportedly** to be taken to MPR on Thu 12 Nov (unnamed sources). | Katadata 11 Nov 19:20 ("Setelah meneken surat pengunduran diri, Gibran akan menyerahkannya kepada MPR, Kamis (12/11)"; no clock time); Kaidah.id headline "…Surat Pengunduran Diri Diserahkan ke MPR Kamis Besok" (kaidah.id/headline/read/24087; page refused connection, seen via search; the search snippet says 10.00 WIB and "belum ada konfirmasi resmi") |
 | S7 | HMP keeps running until an official resignation letter exists; DPR would drop it once there is one. | TribunWow ("DPR Tegaskan Tetap Lanjutkan Hak Menyatakan Pendapat Pemakzulan Gibran sebelum Ada Surat Resmi", wow.tribunnews.com/news/413349); Tribunnews ("DPR akan Batalkan Hak Menyatakan Pendapat jika Sudah Ada Surat Resmi…", tribunnews.com/nasional/7909533); PKB Khozin: "mekanisme di DPR jalan terus meski Gibran berniat mundur" (detik d-8747880; Suara 11 Nov 13:26); Mahfud MD: impeachment continues until a letter arrives, then "semua proses berpindah ke soal berhenti karena mengundurkan diri" (CNN 11 Nov 08:54, Suara 11 Nov 09:59; see #08 Context) |
+| S8 | Wakil Ketua MPR Bambang Wuryanto (Pacul): Gibran "dijadwalkan menyerahkan surat pengunduran dirinya secara langsung kepada pimpinan MPR pada Kamis (12/11/2026)"; "Iya bener sudah terinfo"; "Ya pimpinan MPR standby menerima kedatangan Mas Wapres". **No time**: "Jam kedatangan belum dipastikan." | Liputan6 12 Nov 07:59 (liputan6.com/news/read/8333600); Merdeka 12 Nov 08:21 (merdeka.com/politik/read/8333609). Also Suara 11 Nov 22:39 (PAN's Sudding: "Iya infonya seperti itu") |
+| S9 | Ketua MPR Ahmad Muzani, Wed 11 Nov evening: "Saya belum dengar, saya belum lihat. Jadi belum bisa ngambil (kesimpulan)." | Suara 12 Nov 05:28 (suara.com/news/2026/11/12/052811); IDN Times 12 Nov 07:15 (at NasDem's HUT event); Tribunnews 7910252 (403, seen via search) |
+| S10 | DPR paripurna Thu 12 Nov, agenda "pengumuman usul penggunaan hak anggota" (HMP); moved from 10.00 to **14.00 WIB** by DPR letter B/15920/LG.01.01/11/2026. Announcement is not a decision to impeach. | Kompas.com 12 Nov 06:09 (nasional.kompas.com/read/2026/11/12/06094411); Suara 12 Nov 08:31 (suara.com/news/2026/11/12/083100); IDN Times 12 Nov 07:15; TIMES Indonesia 617310 |
+| S11 | Mardani Ali Sera (PKS): "Jika pengunduran diri belum final maka kami akan terus jalan dengan HMP (di rapat paripurna)." | IDN Times 12 Nov 07:15 (idntimes.com/news/indonesia/pks-gibran-mundur-tak-hentikan-hmp-…); with S7 (PKB Khozin, Mahfud) for "tetap jalan" |
+| S1+ | CNN Indonesia 11 Nov 19:39: "Betul (mundur), surat sudah diserahkan ke Presiden tadi sore di Halim," kata orang dekat Gibran (anonymous). Supports S1; still not official. | cnnindonesia.com/nasional/20261111180550-32-1426022 |
 
 Context (not narrated):
 - Halim timing: Prabowo flew from Halim to Aceh (Nagan Raya) on Wed morning (CNBC 11 Nov 09:38; Republika); Suara 19:05/19:37 says the letter was reportedly given as Prabowo landed back at Halim, with Gibran waiting for him. The hook says only "di Halim".
@@ -93,6 +118,8 @@ Context (not narrated):
 - Mediakompeten "12 Nov" Budi Arie quote ("Mas Gibran sudah mengundurkan diri"): unverified date, single outlet.
 - 122 signatories (Beritasatu); use 120 (CNN, Kompas, Katadata, Suara).
 - "makar", "Jokowi menahan Gibran", platform names.
+- (12 Nov) "Surat ke MPR pukul 10.00": only Suara 22:39's unattributed lead and IDN's "diisukan"; Liputan6/Merdeka say the time is not set. Narration says "hari ini" only.
+- (12 Nov) "172 anggota" (Kompas, said orally); use 120. IDN Times labels Muzani PKS (wrong: Gerindra). CNN photo caption "resmi mundur" (body says "dikabarkan"). Any claim that Gibran himself confirmed the letter (search summary only, no article).
 
 ## Photo credits
 

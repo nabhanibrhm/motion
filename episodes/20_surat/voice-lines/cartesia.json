@@ -1,0 +1,32 @@
+{
+ "hook-0.wav": {
+  "key": "42ba9ab344b9acdda43437aab3aadfaa308ae71d9b04f03d7672a0ff1887fb68",
+  "sha256": "0f4bbee91b39bbb97a401ab740c5de87a99679d8837c305151acc2e70e981db5",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 156
+ },
+ "mundur-0.wav": {
+  "key": "b3798e941168074f82e01060affa05ad3852e6f5ba1d6ff8bbbc4515ae27653f",
+  "sha256": "ee4cde635b5077b3eeb684166cc1fe36496c2ab9ac2a5cc99fe3c72e0a6ccacc",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 153
+ },
+ "paripurna-0.wav": {
+  "key": "19b04b7f59cfef9428ca89a991277bd12665d1d3f28e7fce535616875a9ce2ff",
+  "sha256": "388545487625536027965222652e80138037f29bf0f1eb3d8f807c26eb5002d7",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 172
+ },
+ "penutup-0.wav": {
+  "key": "37d1dd5093d80a25ed90a178f9b857aa0ca71d7361f7c0eec53cf18d7e94bc9d",
+  "sha256": "44fbdcf60242526c3bb66447e2092fdd797f1d71904a3597769c30c7f306cd25",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 38
+ },
+ "status-0.wav": {
+  "key": "451e063d88b2e01952640a535af1d36671859b1b9ce1fe53343c1fa69a5369cf",
+  "sha256": "bfda514632c637b1aaf7082b287b3d75ee8867d5d71ec98cbe6de753528ae083",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 195
+ }
+}

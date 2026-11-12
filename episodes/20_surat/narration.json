@@ -31,7 +31,7 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Ketua Projo Budi Arie menyebut Gibran sudah menyerahkan surat pengunduran diri ke Presiden Prabowo di Halim."
+          "text": "Ketua Komisi III DPR Habiburokhman menyebut Gibran akan menyerahkan surat pengunduran diri ke MPR siang ini, dan pimpinan MPR sudah berdatangan ke parlemen."
         }
       ]
     },
@@ -41,17 +41,17 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Sampai Rabu malam, Istana belum mengonfirmasi surat itu. Yang resmi baru niat mundur Gibran, kata Mensesneg hari Selasa, dan usulan hak menyatakan pendapat dari seratus dua puluh anggota DPR."
+          "text": "Surat itu disebut sudah diserahkan ke Presiden Prabowo di Halim, kata Ketua Projo Budi Arie. Tapi Istana belum mengonfirmasi, dan Ketua MPR Ahmad Muzani mengaku Rabu malam belum melihat suratnya."
         }
       ]
     },
     {
-      "id": "besok",
+      "id": "paripurna",
       "chapter": "update",
       "lines": [
         {
           "speaker": "wec",
-          "text": "Kamis besok jadi penentu. Surat itu dikabarkan dibawa ke MPR, dan di hari yang sama, paripurna DPR membahas usulan tersebut."
+          "text": "Siang ini, paripurna DPR tetap mengumumkan usulan pemakzulan dari seratus dua puluh anggota. Menurutmu, usulan itu masih perlu jalan kalau Gibran mundur? Tulis di komentar."
         }
       ]
     },
@@ -66,22 +66,12 @@
       ]
     },
     {
-      "id": "hmp",
-      "chapter": "update",
-      "lines": [
-        {
-          "speaker": "wec",
-          "text": "Usulan pemakzulan sendiri belum berhenti. Sejumlah anggota DPR dan Mahfud menyebut prosesnya tetap jalan sampai surat resmi diterima."
-        }
-      ]
-    },
-    {
       "id": "penutup",
       "chapter": "update",
       "lines": [
         {
           "speaker": "wec",
-          "text": "Menurutmu, usulan pemakzulan sebaiknya tetap jalan? Tulis di komentar dan follow untuk update.",
+          "text": "Follow untuk update hasilnya hari ini.",
           "after": 1.4
         }
       ]
