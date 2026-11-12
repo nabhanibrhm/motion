@@ -16,7 +16,7 @@
     "profile": "modern",
     "case": {
       "id": "HOTWIZZ #09",
-      "steps": 5
+      "steps": 6
     }
   },
   "scenes": [
@@ -24,21 +24,21 @@
       "id": "hook",
       "template": "hw-hook",
       "props": {
-        "label": "KE MPR SIANG INI",
-        "kicker": "KATA KETUA KOMISI III",
-        "headline": "SURAT MUNDUR\n*KE MPR HARI INI*",
-        "claim": "Habiburokhman: surat diserahkan ke *MPR siang ini*",
-        "tag": "KETUA KOMISI III DPR HABIBUROKHMAN · KAMIS 12 NOV",
+        "label": "SUDAH DI MPR",
+        "kicker": "KATA KETUA MPR",
+        "headline": "SURAT MUNDUR\n*SUDAH DI MPR*",
+        "claim": "Gibran menyampaikan surat pengunduran diri ke *MPR*",
+        "tag": "KETUA MPR AHMAD MUZANI · KAMIS 12 NOV",
         "person": {
           "name": "Gibran Rakabuming Raka",
-          "photo": "people/gibran.jpg",
-          "credit": "Darwis Triadi / Kemensetneg (domain publik)",
-          "role": "Wakil Presiden RI"
+          "role": "Wakil Presiden RI",
+          "photo": "people/gibran-mpr-cnbc.jpg",
+          "credit": "CNBC Indonesia"
         },
-        "cue": "menyerahkan",
+        "cue": "menyampaikan",
         "stamp": {
-          "text": "BELUM RESMI",
-          "cue": "siang"
+          "text": "KATA MUZANI",
+          "cue": "menyatakan"
         },
         "introCover": true
       }
@@ -49,22 +49,22 @@
       "props": {
         "label": "STATUS 12 NOV",
         "title": "STATUS 12 NOV",
-        "kicker": "12 NOV · 10.30 WIB",
+        "kicker": "12 NOV · 12.00 WIB",
         "items": [
           {
-            "text": "Projo: surat *sudah ke Prabowo*",
-            "source": "kumparan, Suara, Viva (11 Nov); CNN: orang dekat Gibran",
-            "cue": "Projo"
+            "text": "MPR: *pimpinan akan rapat*",
+            "source": "detik, Republika, CNN Indonesia, Kompas (12 Nov)",
+            "cue": "rapat"
           },
           {
-            "text": "Istana *belum konfirmasi*",
-            "source": "Republika, Suara, Katadata (11 Nov malam)",
+            "text": "Istana *belum bicara*",
+            "source": "Belum ada pernyataan Istana/Setwapres (12 Nov siang)",
             "cue": "Istana"
           },
           {
-            "text": "Ketua MPR: *belum lihat surat*",
-            "source": "Suara, IDN Times (11 Nov malam)",
-            "cue": "Muzani"
+            "text": "Projo: *diserahkan di Halim*",
+            "source": "kumparan, Suara, Viva (11 Nov)",
+            "cue": "Projo"
           }
         ]
       }
@@ -80,7 +80,7 @@
         "sub": "Usulan 120 anggota DPR",
         "source": "Kompas, Suara, IDN Times (12 Nov)",
         "stamp": "MENURUTMU?",
-        "cue": "pemakzulan"
+        "cue": "Menurutmu"
       }
     },
     {
@@ -96,6 +96,10 @@
         "stamp": "MAKS 60 HARI",
         "cue": "memilih"
       }
+    },
+    {
+      "id": "pensiun",
+      "file": "scenes/pensiun.js"
     },
     {
       "id": "penutup",
@@ -119,8 +123,8 @@
           }
         ],
         "cover": {
-          "title": "*SURAT MUNDUR*\nGIBRAN\nKE MPR HARI INI?",
-          "chip": "KATA KOMISI III DPR",
+          "title": "*SURAT MUNDUR*\nGIBRAN\nSUDAH SAMPAI MPR?",
+          "chip": "KATA KETUA MPR",
           "person": {
             "name": "Gibran Rakabuming Raka",
             "photo": "people/gibran.jpg",

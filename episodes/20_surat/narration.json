@@ -31,7 +31,7 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Ketua Komisi III DPR Habiburokhman menyebut Gibran akan menyerahkan surat pengunduran diri ke MPR siang ini, dan pimpinan MPR sudah berdatangan ke parlemen."
+          "text": "Ketua MPR Ahmad Muzani menyatakan Gibran telah menyampaikan surat pengunduran diri dari jabatan wakil presiden."
         }
       ]
     },
@@ -41,7 +41,7 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Surat itu disebut sudah diserahkan ke Presiden Prabowo di Halim, kata Ketua Projo Budi Arie. Tapi Istana belum mengonfirmasi, dan Ketua MPR Ahmad Muzani mengaku Rabu malam belum melihat suratnya."
+          "text": "Muzani menyebut pimpinan MPR akan rapat untuk memproses surat itu, dan Istana belum memberi pernyataan. Sebelumnya, Ketua Projo Budi Arie menyebut surat itu diserahkan ke Presiden Prabowo di Halim."
         }
       ]
     },
@@ -51,7 +51,7 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Siang ini, paripurna DPR tetap mengumumkan usulan pemakzulan dari seratus dua puluh anggota. Menurutmu, usulan itu masih perlu jalan kalau Gibran mundur? Tulis di komentar."
+          "text": "Siang ini, paripurna DPR dijadwalkan mengumumkan usulan pemakzulan dari seratus dua puluh anggota. Menurutmu, usulan itu masih perlu jalan kalau Gibran mundur? Tulis di komentar."
         }
       ]
     },
@@ -62,6 +62,16 @@
         {
           "speaker": "wec",
           "text": "Kalau surat sampai ke MPR dan kursi wakil presiden kosong, MPR bersidang memilih pengganti dari dua calon usulan Presiden, paling lambat enam puluh hari."
+        }
+      ]
+    },
+    {
+      "id": "pensiun",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Soal pensiun, mundur atau dimakzulkan tidak otomatis beda. Menurut UU tahun seribu sembilan ratus tujuh puluh delapan, wapres yang berhenti dengan hormat dapat pensiun, rumah, dan mobil negara. Hak itu gugur kalau MPR tegas menyatakan pemberhentiannya tidak dengan hormat."
         }
       ]
     },

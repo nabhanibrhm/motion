@@ -39,3 +39,5 @@ Portraits for the `hw-hook` and `hw-quote` templates, referenced from `episode.j
 | raffi-ahmad.jpg | Raffi Ahmad | https://commons.wikimedia.org/wiki/File:Raffi-Ahmad-2020_(cropped).jpg | Lautner of the king at Indonesian Wikipedia | CC BY 3.0 (2020 photo; the 2024 Setpres-style PD files are only ~190×280) |
 
 Roles and on-screen `credit` strings per file: `people.json`. Roles as of Nov 2026 (Kapolri changed 1 Oct 2026; Listyo Sigit is now Kepala Staf Kepresidenan). Not included: Roy Suryo (only a 2017 DPR portrait, 550 px, formal costume, framing inconsistent with the rest) and Tifauzia Tyassuma (only a video screenshot); both use the silhouette.
+
+| gibran-mpr-cnbc.jpg | Gibran Rakabuming Raka (12 Nov 2026, Gedung Nusantara III) | CNBC Indonesia press photo, supplied by the user | CNBC Indonesia | **Not public domain.** Used cropped (520x366) in HOTWIZZ #09 `surat` only; credit "Foto: CNBC Indonesia" in the caption. Not listed in people.json |
