@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "saham",
+  "number": 22,
+  "title": "300 Saham Tak Dihitung IHSG",
+  "category": "Pasar Modal",
+  "theme": "casefile",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #13",
+      "steps": 6,
+      "name": "300 SAHAM HSC"
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.js",
+      "sfx": [
+        {
+          "at": "word:dihitung",
+          "file": "swoosh-soft",
+          "vol": 0.16
+        },
+        {
+          "at": "word:Kata",
+          "file": "click",
+          "vol": 0.18
+        },
+        {
+          "at": "word:delisting",
+          "file": "stamp",
+          "vol": 0.4
+        }
+      ]
+    },
+    {
+      "id": "total",
+      "file": "scenes/total.js",
+      "sfx": [
+        {
+          "at": "word:delapan",
+          "file": "pop-in",
+          "vol": 0.14
+        },
+        {
+          "at": "word:tambahan",
+          "file": "pop-in",
+          "vol": 0.16
+        },
+        {
+          "at": "word:totalnya",
+          "file": "ding",
+          "vol": 0.18
+        }
+      ]
+    },
+    {
+      "id": "kenapa",
+      "file": "scenes/kenapa.js",
+      "sfx": [
+        {
+          "at": "word:Kepemilikannya",
+          "file": "swoosh-soft",
+          "vol": 0.16
+        },
+        {
+          "at": "word:Sepuluh",
+          "file": "pop-in",
+          "vol": 0.16
+        },
+        {
+          "at": "word:menguasai",
+          "file": "ding",
+          "vol": 0.18
+        }
+      ]
+    },
+    {
+      "id": "arti",
+      "file": "scenes/arti.js",
+      "sfx": [
+        {
+          "at": "word:tercatat",
+          "file": "tick",
+          "vol": 0.22
+        },
+        {
+          "at": "word:dibeli",
+          "file": "tick",
+          "vol": 0.22
+        },
+        {
+          "at": "word:pelanggaran",
+          "file": "tick",
+          "vol": 0.22
+        }
+      ]
+    },
+    {
+      "id": "dampak",
+      "file": "scenes/dampak.js",
+      "sfx": [
+        {
+          "at": "word:Bobotnya",
+          "file": "pop-in",
+          "vol": 0.14
+        },
+        {
+          "at": "word:pembagi",
+          "file": "click",
+          "vol": 0.2
+        },
+        {
+          "at": "word:Analis",
+          "file": "pop-in",
+          "vol": 0.14
+        },
+        {
+          "at": "word:Menurutmu",
+          "file": "swoosh-soft",
+          "vol": 0.16
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.js",
+      "sfx": [
+        {
+          "at": "word:ditutup",
+          "file": "stamp",
+          "vol": 0.45
+        },
+        {
+          "at": "word:investasi",
+          "file": "pop-in",
+          "vol": 0.12
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

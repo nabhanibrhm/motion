@@ -44,6 +44,7 @@ These apply to every episode. Details and examples are in README "Retention rule
 - **Cover:** every video ends on a title cover card for the last ~1 s; it is the TikTok cover. The cover shows the subject's photo: the named person for HotWizz (`hw-cover` `cover.person`, credited in the caption), or the subject object shown large for KASUS. HotWizz loops: `introCover: true`, so frame 0 equals the last frame.
 - **Voice:** never end a narration line on a spoken number (aligner bug). Write numbers as words and use the `say` map for acronyms. Cartesia costs credits, so voice only with the user's go-ahead and re-voice only the changed lines.
 - **Look:** HotWizz uses the minimal look (near-black, off-white, one red, B&W photos except the person quoted; the flag is always `#e70011` over `#ffffff`). KASUS uses the casefile look (theme `casefile`; red only for stamps, pen marks and strikes). Keep the lower ~15% and the right ~120 px clear.
+- **Caption:** at most 700 characters (count it before handing it over; emoji and hashtags count). Keep the sources line short (notice + outlet names), plus the disclaimer and the comment question.
 - **Posting:** 1–2 posts a day, at least 3–4 h apart, never while another video is spiking. Record views at 1 h and 2 h plus average watch time and % full.
 
 ## Voice code

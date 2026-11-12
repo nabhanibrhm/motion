@@ -1,0 +1,137 @@
+{
+ "comment": "Short '300 Saham Tak Dihitung IHSG' (KASUS #13; script-short.md, sources there). Hook 1 picked by the user 12 Nov.",
+ "source": "cartesia",
+ "say": {
+  "IHSG": "i ha es ge",
+  "BEI": "be e i"
+ },
+ "speakers": {
+  "mog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "-2%",
+   "pitch": "-4Hz",
+   "supertonic": {
+    "voice": "M1",
+    "speed": 1,
+    "range": 1.5
+   },
+   "cartesia": {
+    "speed": 1.08
+   }
+  },
+  "wec": {
+   "voice": "id-ID-GadisNeural",
+   "rate": "+6%",
+   "pitch": "+2Hz",
+   "supertonic": {
+    "voice": "F2",
+    "speed": 1,
+    "range": 1.4
+   }
+  },
+  "bog": {
+   "voice": "id-ID-ArdiNeural",
+   "rate": "+6%",
+   "pitch": "+10Hz",
+   "supertonic": {
+    "voice": "M4",
+    "speed": 1,
+    "range": 1.4
+   },
+   "cartesia": {
+    "speed": 1.0
+   }
+  }
+ },
+ "chapters": [
+  {
+   "id": "kasus",
+   "title": "Kasus Saham HSC"
+  }
+ ],
+ "defaults": {
+  "lead": 0.15,
+  "tail": 0.1,
+  "gapSameSpeaker": 0.1,
+  "gapNewSpeaker": 0.1,
+  "firstLead": 0.2,
+  "chapterLead": 0.1,
+  "chapterEndTail": 0.1
+ },
+ "sections": [
+  {
+   "id": "hook",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Tiga ratus saham, mulai Jumat ini tidak lagi dihitung di IHSG. Kata BEI, ini bukan delisting.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "total",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Sejak awal November, delapan puluh tiga saham sudah lebih dulu dikeluarkan. Dengan tambahan ini, totalnya tiga ratus delapan puluh tiga saham di luar hitungan indeks.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "kenapa",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "bog",
+     "text": "Memangnya saham-saham itu salah apa?"
+    },
+    {
+     "speaker": "mog",
+     "text": "Kepemilikannya terlalu terkumpul. Sepuluh pemegang saham atau kurang menguasai sembilan puluh dua koma lima persen sahamnya, atau lebih.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "arti",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Sahamnya tetap tercatat dan tetap bisa dibeli atau dijual. BEI juga menegaskan, masuk daftar ini tidak serta merta berarti ada pelanggaran.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "dampak",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "mog",
+     "text": "Bobotnya sekitar enam persen dari nilai pasar IHSG, dan BEI menyesuaikan pembagi indeks. Analis berbeda pendapat soal dampaknya ke harga."
+    },
+    {
+     "speaker": "wec",
+     "text": "Menurutmu, aturan ini perlu nggak? Tulis di komentar.",
+     "after": 0.2
+    }
+   ]
+  },
+  {
+   "id": "vonis",
+   "chapter": "kasus",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kasus ditutup: tiga ratus saham keluar dari hitungan, bukan dari bursa. Bukan saran investasi.",
+     "after": 1.4
+    }
+   ]
+  }
+ ]
+}
