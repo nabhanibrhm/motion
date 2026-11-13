@@ -1,0 +1,126 @@
+{
+  "comment": "Short 'Gaji di Bawah Rp10 Juta Bebas Pajak?' (KASUS #15; script-short.md, sources there). Say map sits under cartesia.say: the top-level say is only read by Supertonic (see 23_bsu script-short.md).",
+  "source": "cartesia",
+  "cartesia": {
+    "say": {
+      "PPh": "pe pe ha",
+      "PTKP": "pe te ka pe"
+    }
+  },
+  "speakers": {
+    "mog": {
+      "supertonic": {
+        "voice": "M1",
+        "speed": 1,
+        "range": 1.5
+      },
+      "cartesia": {
+        "speed": 1.08
+      }
+    },
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    },
+    "bog": {
+      "supertonic": {
+        "voice": "M4",
+        "speed": 1,
+        "range": 1.4
+      },
+      "cartesia": {
+        "speed": 1
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "kasus",
+      "title": "Kasus PPh 21 gaji di bawah Rp10 juta"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Gajimu di bawah sepuluh juta katanya bebas pajak tahun depan, tapi aturannya belum ada.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "slip",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Kalau skemanya sama seperti tahun ini, PPh dua puluh satu di slip gajimu tetap dihitung, tapi pemerintah yang menanggung dan kantormu membayarkannya tunai ke kamu. Jadi gaji yang kamu terima tetap utuh."
+        },
+        {
+          "speaker": "bog",
+          "text": "Gajimu di bawah sepuluh juta atau nggak? Tulis di komentar.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "sektor",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Tahun ini cuma pekerja industri padat karya dan pariwisata yang dapat, dan aturannya berakhir Desember.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "rencana",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Senin lalu Menko Airlangga bilang tahun depan diperluas ke semua sektor. Tapi Ditjen Pajak masih menghitung dampaknya dan bentuknya belum diputuskan.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "ptkp",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "PTKP alias batas penghasilan bebas pajak juga tidak naik Januari nanti. Kata Airlangga pembahasannya belum selesai.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kasus ditutup: rencananya ada tapi aturannya belum terbit. Gajimu di bawah sepuluh juta? Tulis di komentar ya!",
+          "after": 1.2
+        }
+      ]
+    }
+  ]
+}
