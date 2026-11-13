@@ -11,6 +11,7 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - **Voice:** Cartesia, 7 lines, ~825 credits, narration 56.7 s. Check by ear: BSU, BPJS Ketenagakerjaan, UMK, HRD, "tiga koma lima juta", "memperbaikinya".
 - **Master** `out/23-bsu-short.mp4` (WSL; copied to the user's `G:\Other computers\My Laptop\out\`): 57.8 s, 30 fps, -14.0 LUFS, -1.0 dBTP. Caption `out/caption/23-bsu-caption.txt` (694 chars; also on G:). **Before posting:** re-check the news (if paid, the verdict is wrong); after Sun 15 Nov "Pekan ini" (status line, ~107 credits) and the "STATUS 13 NOV" chip go stale. Post once saham flattens.
 - **Bug (not fixed, voice code):** for Cartesia, the top-level `say` map in `narration.json` is ignored: `src/pipeline/voice.mjs` passes `n.say` only for Supertonic; Cartesia reads `cartesia.say`. So saham's IHSG/BEI and ijazah's BPKB/PHK respellings were never applied. `bsu` puts its map under `cartesia.say`. A fix needs `npm test` (and a version bump only if the user asks).
+- **New rule (CLAUDE.md):** on WSL, every render's master and caption are also copied to `G:\Other computers\My Laptop\out\` (+ `caption\`) via `powershell.exe Copy-Item`; check first, ask before overwriting.
 - **saham at 11:48 (4.3 h):** 480 views, 7 likes, 1 share, 2 saves, avg watch 6.8 s, 1.85% full (09:04: 63 views, 9.9 s, 2.94%). Wider batch leaves at ~7 s: topic too narrow, as the KASUS shape rule says.
 
 **Changed on 13 Nov 2026, ~09:30 (WSL): `saham` POSTED 07:33 WIB; KASUS script-shape rule.**
