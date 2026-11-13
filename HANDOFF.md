@@ -9,6 +9,8 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 **Changed on 13 Nov 2026, ~14:10 (WSL): `bsu` POSTED ~14:05 WIB; KASUS cover shade.**
 - **KASUS cover shade (user):** `K.cover` in `src/templates/casefile-kit.js` now darkens the bottom (gradient from y 1440 to ~0.5-0.6 black) so the profile grid's view count is readable; on by default, `shade: false` turns it off. Applies to KASUS renders from now on (posted videos unchanged). `npm test` 103 pass.
 - **`bsu` re-rendered** with the shade (57.8 s, -14.0 LUFS, -1.0 dBTP), copy on G: replaced (sizes match), then **posted ~14:05** after saham flattened. News check at 14:00: still no payout date, "belum cair" holds. Master moved to `out/uploaded/23-bsu-short.mp4` (WSL). To do: 1 h / 2 h views, avg watch (target > 10 s; saham 7.2 s), % full.
+- **bsu at 17:01 (~3 h):** 2,249 views, 8 likes, 2 shares, avg watch **15.7 s**, **4.75% full**, 66% still watching at 2 s then a slow decline (no cliff); traffic **Search 91.6%**, For You 8.1%; 99% non-followers; age 25-34 39%, 35-44 21%, 18-24 19%; M 50 / F 49. New CLAUDE.md rule "KASUS search intent" from this. Next: BSU follow-up "sudah cair: cara cek" the day payout starts.
+- **Cartesia credits ran out (user, 17:15).** Next episodes are built without voice until topped up.
 - **saham:** 12:53 667 views, 7.5 s, 2.01%, 1 follower; 14:00 685 (flat), 7.2 s, 1.73%, 12 likes.
 - **Profile 14:06:** 1,112 followers, 21.5K likes; kerja 352.4K (pinned), ijazah 640, surat 964, makzul 229. Next post ≥ ~17:00-18:00.
 
