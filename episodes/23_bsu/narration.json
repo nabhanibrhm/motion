@@ -1,0 +1,130 @@
+{
+  "comment": "Short 'BSU Rp900 Ribu: Kamu Dapat?' (KASUS #14; script-short.md, sources there). Say map sits under cartesia.say: the top-level say is only read by Supertonic (see script-short.md, Suara).",
+  "source": "cartesia",
+  "cartesia": {
+    "say": {
+      "BSU": "be es u",
+      "BPJS": "be pe je es",
+      "UMK": "u em ka",
+      "ASN": "a es en",
+      "TNI": "te en i",
+      "HRD": "ha er de"
+    }
+  },
+  "speakers": {
+    "mog": {
+      "supertonic": {
+        "voice": "M1",
+        "speed": 1,
+        "range": 1.5
+      },
+      "cartesia": {
+        "speed": 1.08
+      }
+    },
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    },
+    "bog": {
+      "supertonic": {
+        "voice": "M4",
+        "speed": 1,
+        "range": 1.4
+      },
+      "cartesia": {
+        "speed": 1
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "kasus",
+      "title": "Kasus BSU 2026"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kamu bisa dapat BSU sembilan ratus ribu rupiah, tapi sampai sekarang uangnya belum cair.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "syarat",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Syaratnya kamu peserta aktif BPJS Ketenagakerjaan sampai Agustus dan gajimu paling banyak tiga koma lima juta atau UMK daerahmu kalau lebih tinggi. Kamu juga bukan ASN, TNI, atau Polri."
+        },
+        {
+          "speaker": "bog",
+          "text": "Kamu masuk syarat ini atau nggak? Tulis jawabanmu di komentar.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "patokan",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Patokannya upah pokok plus tunjangan tetap yang dilaporkan kantormu ke BPJS. Kalau datanya keliru minta HRD memperbaikinya.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Pekan ini Menaker bilang prosesnya masih di Kementerian Keuangan. Rencananya cair November sampai Desember.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "waspada",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "BSU tidak membuka pendaftaran mandiri. Abaikan tautan yang meminta data atau biaya di luar situs resmi pemerintah.",
+          "after": 0.2
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kasus ditutup: aturannya sudah berlaku tapi uangnya belum cair. Kamu masuk syaratnya? Tulis di komentar ya!",
+          "after": 1.2
+        }
+      ]
+    }
+  ]
+}

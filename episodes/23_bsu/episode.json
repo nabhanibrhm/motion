@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "id": "bsu",
+  "number": 23,
+  "title": "BSU Rp900 Ribu: Kamu Dapat?",
+  "category": "Hukum",
+  "theme": "casefile",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #14",
+      "steps": 6,
+      "name": "BSU RP900 RIBU"
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.js",
+      "sfx": [
+        { "at": "word:sembilan", "file": "cash", "vol": 0.16 },
+        { "at": "word:sekarang", "file": "click", "vol": 0.18 },
+        { "at": "word:cair", "file": "stamp", "vol": 0.4 }
+      ]
+    },
+    {
+      "id": "syarat",
+      "file": "scenes/syarat.js",
+      "sfx": [
+        { "at": "word:aktif", "file": "tick", "vol": 0.22 },
+        { "at": "word:gajimu", "file": "tick", "vol": 0.22 },
+        { "at": "word:daerahmu", "file": "pop-in", "vol": 0.14 },
+        { "at": "word:bukan", "file": "tick", "vol": 0.22 },
+        { "at": "word:masuk", "file": "pop-in", "vol": 0.16 },
+        { "at": "word:jawabanmu", "file": "swoosh-soft", "vol": 0.16 }
+      ]
+    },
+    {
+      "id": "patokan",
+      "file": "scenes/patokan.js",
+      "sfx": [
+        { "at": "word:pokok", "file": "pop-in", "vol": 0.14 },
+        { "at": "word:tunjangan", "file": "pop-in", "vol": 0.14 },
+        { "at": "word:dilaporkan", "file": "swoosh-soft", "vol": 0.16 },
+        { "at": "word:keliru", "file": "click", "vol": 0.2 }
+      ]
+    },
+    {
+      "id": "status",
+      "file": "scenes/status.js",
+      "sfx": [
+        { "at": "word:Menaker", "file": "pop-in", "vol": 0.14 },
+        { "at": "word:Keuangan", "file": "click", "vol": 0.2 },
+        { "at": "word:Rencananya", "file": "swoosh-soft", "vol": 0.16 },
+        { "at": "word:Desember", "file": "ding", "vol": 0.18 }
+      ]
+    },
+    {
+      "id": "waspada",
+      "file": "scenes/waspada.js",
+      "sfx": [
+        { "at": "word:pendaftaran", "file": "stamp", "vol": 0.35 },
+        { "at": "word:tautan", "file": "pop-in", "vol": 0.14 },
+        { "at": "word:biaya", "file": "tick", "vol": 0.22 },
+        { "at": "word:resmi", "file": "ding", "vol": 0.18 }
+      ]
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.js",
+      "sfx": [
+        { "at": "word:ditutup", "file": "stamp", "vol": 0.45 },
+        { "at": "word:Tulis", "file": "pop-in", "vol": 0.1 }
+      ]
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}
