@@ -10,7 +10,7 @@ scene((f, { S, D, w }) => {
   });
   const art = F1.join(
     K.chip(f, { at: -20, x: 72, y: 250, text: "KLAIM · PPh 21 DTP 2027", teal: true, size: 26 }),
-    K.title(f, { at: -20, y: 322, size: 98, lh: 0.98, html: `GAJI DI BAWAH RP10 JUTA<br><span style="${K.hl(f, w("bebas"))}">BEBAS PAJAK</span> 2027?` }),
+    K.title(f, { at: -20, y: 322, size: 98, lh: 0.98, html: `GAJI DI BAWAH<br>RP10 JUTA<br><span style="${K.hl(f, w("bebas"))}">BEBAS PAJAK</span> 2027?` }),
     slip,
     K.stamp(f, { at: w("belum"), x: 380, y: 975, rot: -6, text: "BARU RENCANA", size: 64 }),
     K.chip(f, { at: w("belum") + 4, x: 72, y: 1100, text: "PMK 2027: BELUM TERBIT (CEK 13 NOV)", size: 24, red: true }),

@@ -1,10 +1,18 @@
-# Handoff: production status (12 Nov 2026)
+# Handoff: production status (14 Nov 2026)
 
 Commit only when requested. Before changes, read `ai-routing.md` and route by the current shared-module responsibilities there.
 
 ## Claude: start here
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
+
+**Changed on 14 Nov 2026, ~01:30 (Windows): `pajak` VOICED and RENDERED (not posted); new Cartesia key; bsu analytics.**
+- **New Cartesia key** (user, `.env` 14 Nov 01:09). The pronunciation-dictionary memo of the previous key was moved to `.cache/backup/cartesia-dict-5a855bb8a38137f4d581ad4c.key2.txt`; the pipeline created `pdict_LciFNUJZa3Pi66gniK2S21` under the new key. **If the WSL laptop switches to this key, move its memo in `.cache/voice/chunks/` aside the same way** (otherwise HTTP 404).
+- **`pajak` voiced:** 7 lines, ~837 credits. Muklis (`mog`) sounded halting (0.2-0.6 s pauses mid-line, 4.8 syl/s vs Nisa 5.1-6.3), so `tools/voice/tighten.py` was run on `mog` + `bog` (04b567df a053f6bc): 32.5 → 30.0 s, 0 credits. Narration 54.0 s. Hook title re-broken to "GAJI DI BAWAH / RP10 JUTA / BEBAS PAJAK 2027?" (orphan "JUTA" before). Stills 0/5/10/15 s + last frame checked.
+- **Master** `out/24-pajak-short.mp4` (Windows only): 55.1 s, 30 fps, -14.0 LUFS, -1.0 dBTP. Caption `out/caption/24-pajak-caption.txt` (684 chars, from `script-short.md`). Backups: `.cache/backup/24-pajak-short.before-tighten.mp4`, `24-pajak-voice-lines-before-tighten/`. Check by ear: "pe pe ha", "pe te ka pe", Airlangga, Ditjen, word starts after the tightened pauses ("Jadi gaji…", "padat karya", "Tulis di komentar"). If Muklis still sounds slow: `mog` `cartesia.speed` 1.08 → ~1.15 and re-voice his 3 lines (~430 credits), then tighten again.
+- **Post by Sun 15 Nov** ("Senin lalu" on line 5, "Senin (9/11)" in the caption); not overnight while bsu is on For You; e.g. 14 Nov 11:30-13:00 or evening.
+- **bsu at 14 Nov 00:33 (~10.5 h):** 12.4K views, 69 likes, 5 comments, 8 shares, 7 saves, avg watch 12.8 s, 3.02% full, 44% still watching at 5 s, **Search 59.3% / For You 40.6%** (For You up from 8.1%: the algorithm now pushes it beyond search), 5 new followers (weak). Advised a pinned comment "Begitu BSU cair, kami bikin video cara ceknya. Follow biar nggak ketinggalan 🔔".
+- **Windows `out/`:** `22-saham` and `23-bsu` moved to `out/uploaded/` (both posted).
 
 **Changed on 13 Nov 2026, ~20:30 (WSL): KASUS #15 `pajak` BUILT, NOT VOICED; bsu spiking.**
 - **24 `pajak` (KASUS #15) "Pajak Gaji di Bawah Rp10 Jt"** (from the to-do list). Research/script by an Opus agent (sources S1-S8 incl. PMK 105/2025 in `script-short.md`, caption 684 chars, switch-over note). Verdict: "bebas pajak tahun depan" is only a plan; today PPh 21 is still calculated and borne by the government (DTP, paid in cash) only for padat karya and pariwisata, ending Desember; Menko Airlangga ("Senin lalu") said Ditjen Pajak is still calculating, form not decided; PTKP not rising in January. 7 lines (Nisa/Muklis/Beni, Beni's comment ask on line 3), `cartesia.say` PPh "pe pe ha", PTKP "pe te ka pe". 6 scenes (hook slip, sektor, rencana, ptkp, vonis + cover). `validate pajak` passes. **Not voiced** (Cartesia credits out; ~850 credits, only with the user's go). Then: stills 0/5/10 s + last frame, render, copy master + caption to G:. **"Senin lalu" only holds if it posts by Sun 15 Nov**; otherwise reword line 5 before voicing.

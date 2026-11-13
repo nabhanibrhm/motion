@@ -1,0 +1,44 @@
+{
+ "hook-0.wav": {
+  "key": "abe159bb46d301d3503933c05f4cdf601955e0438f41f8e88081761eeb027e28",
+  "sha256": "433a5c541d9ef07186ca12cee8c30b612fa46070d60b9d304cdf03d9ad6d03cc",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 87
+ },
+ "ptkp-0.wav": {
+  "key": "1341c68697ed1eaf95396cc63e94b170945a7d5a467da618a803bfb3ef760723",
+  "sha256": "99045f3148b7cdc2c68e6b6f570efd640e6d15d4abb1680e55b067ec87397c1f",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 122
+ },
+ "rencana-0.wav": {
+  "key": "1046b244188235ad0c4538764614aa159f3f1b927d58c96d7c8f8074ad45c40d",
+  "sha256": "15734101f5af23fd43038279cbb697b9eecf4ea0390a6042e82022d07cd82b69",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 149
+ },
+ "sektor-0.wav": {
+  "key": "63a7f78f8049c7beade2ac821d48ec2c24b467d4064a1ca8acca51e8427f8f43",
+  "sha256": "f26ab63634e0c6d7c90e6aec32de1f2a9f2fd5ce0e75e68ccb98f50a13deaa82",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 103
+ },
+ "slip-0.wav": {
+  "key": "e448aeba8c06a3471d9523f9f93b839823e532b9da904255dd51a701559b86b2",
+  "sha256": "57633b083c768534b6478e999f85f8f6f5bf34a2f7aba456ce84988a8fc0f243",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 207
+ },
+ "slip-1.wav": {
+  "key": "7788c697d6f97a8805e15632ab4689e37dad6d0c05cbf463591fc6d4a924ad5b",
+  "sha256": "380c98529440506e546477560cba1e49da7a7f4bd7e88a0be62bceac2cbcd52c",
+  "voice": "a053f6bc-7df4-40de-96d4-de026bc47ce8",
+  "chars": 59
+ },
+ "vonis-0.wav": {
+  "key": "1e1ca0b53f77b67a989150b21f830d2f7f4240b1469aa6a1d1ce9084c198ccd3",
+  "sha256": "98b5ab8704d6e485a59aec1a5c4bdb0224371602b5925449d5ffe9a818a5c43f",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 110
+ }
+}
