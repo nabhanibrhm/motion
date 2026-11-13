@@ -1,6 +1,13 @@
 # {{title}} ({{caseId}})
 
-Narator: Muklis (mog), Nisa (wec), Beni (bog), Cartesia. 45-70 detik, 30 fps, tanpa bed.
+Narator: Muklis (mog), Nisa (wec), Beni (bog), Cartesia. 45-60 detik, 6-7 baris, 30 fps, tanpa bed.
+
+## Retensi (cek sebelum voice)
+
+- Topik: mengubah sesuatu buat penonton biasa (gaji, cuti, harga, dokumen, denda). Topik pasar/prosedur hanya kalau ada sudut "kamu".
+- Hook: klaim dengan "kamu" di dalamnya ("Kantor nahan ijazahmu? Sekarang dilarang UU."), bukan lembaganya.
+- Baris 2: apa artinya buat kamu. Latar, angka pembukuan dan prosedur belakangan, atau cukup di layar.
+- Pertanyaan komentar sekitar detik 20 (Beni bertanya), lalu diulang di vonis.
 
 ## Naskah
 

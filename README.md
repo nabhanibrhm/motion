@@ -107,6 +107,8 @@ Helpers are pure functions of the frame. Do not use `Math.random`, timers, or CS
 
 `--format kasus` scaffolds scenes in the casefile look: paper ground, ink type, one teal accent, red only for stamps and pen marks. It is opt-in per theme: `config/themes/casefile.json` sets `runtime.look: "casefile"` (the only accepted value, checked in `src/config/validate.mjs`) plus the palette. A theme with a look makes the build copy `src/templates/casefile-kit.js` to `lib/f1/casefile.js` (loaded after `cine.js`) and switches the captions to the casefile style (paper box, ink outline, teal spoken word, colours from `runtime.palette`); episodes on other themes build exactly as before. Scenes use `const K = F1.casefile;` (`page`, `head`, `kicker`, `title`, `card`, `box`, `chip`, `src`, `stamp`, `pen`, `strike`, `tick`, `hl`, `redact`, `icon`, `cast`, `calendar`, `checkRow`, `tile`, `folder`, `cover`); the layout contract is in the kit header (text x 72-960, right 120 px and the lower ~15% clear). The scaffold's hook draws the claim fully at frame 0, and `vonis` ends with `K.cover` (title-only card, the TikTok cover pick). Alternative colourways: `casefile-biru`, `casefile-manila`, `casefile-malam` (set `theme` in the episode).
 
+KASUS script shape (the scaffold's `script-short.md` carries it as a checklist): a topic that changes something for an ordinary viewer; a hook with "kamu" in the claim; line 2 = what it means for the viewer (background, bookkeeping numbers and procedure later or on screen only); the comment question by ~20 s, repeated at the verdict; 45–60 s, 6–7 lines.
+
 ## Voice, build, review, and render
 
 ```powershell
