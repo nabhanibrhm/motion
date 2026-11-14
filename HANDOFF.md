@@ -6,6 +6,10 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**Changed on 14 Nov 2026, ~13:15 (Windows): `ump` (08) and `pahlawan` (15) deleted (user).**
+- Never posted and stale (UMP 2027 not announced; pahlawan's hook said "hari ini" for 10 Nov). Deleted on the user's request: Windows `out/08-ump-short.mp4`, `out/15-pahlawan-short.mp4`, captions `out/caption/08-ump.txt`, `15-pahlawan-caption.txt`, and the sources `episodes/08_ump/`, `episodes/15_pahlawan/` (recoverable from git history before this commit). Voice caches `.cache/voice/ump|pahlawan` kept (not selectable for cleanup). `validate --all` 22 ok; `npm test` 102 pass, 1 skipped. **WSL: delete its own `out/` copies of these two if present.** Episode numbers 08 and 15 are now free gaps; keep numbering from the highest (next is 25).
+- PHK "batal demi hukum" research not started (user stopped it); stays on the KASUS to-do list.
+
 **Changed on 14 Nov 2026, ~12:50 (Windows): `pajak` POSTED 12:39 WIB; bsu levelling off.**
 - **`pajak` posted 12:39** (Studio time); TikTok used the title cover card as the thumbnail. Master moved to `out/uploaded/24-pajak-short.mp4` (Windows). At 12:44: 21 views, 1 like. To do: 1 h / 2 h views (~13:40 / ~14:40), avg watch, % full and **Search vs For You** (tests the search-intent rule a second time); suggested pinned comment "Begitu aturannya terbit, kami update di sini. Gajimu di bawah 10 juta? Tulis di komentar."
 - **bsu at 14 Nov 12:36 (~22.5 h):** 14.9K views (+2.5K in 12 h, ~200/h: levelling off), 84 likes, 6 comments, 9 shares, **11 saves** (fastest-growing: people keep it for payout day), avg watch 12.6 s, 2.85% full, 8 new followers (still weak; follow-ask pinned comment advised).
