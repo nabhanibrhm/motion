@@ -27,6 +27,11 @@
 //   coverVideo { src, start, dim?, focusX? }  same, behind the cover card (default dim 0.68)
 //   audio     false = output has no audio track (you add the soundtrack in TikTok/YouTube); music and sfx are skipped at mastering
 //   placeholder  true = the build prints a PLACEHOLDER warning
+//   music     false = no music bed (sfxDefault/coverSfx false = no sfx)
+//   narration { speaker: "wec", say?: {WORD: respelling}, speed?, tail? }  voice-over (Cartesia, costs credits):
+//             each beat's say: "text" is one line, voiced by `voice <id>` into <id>/voice/b<i>-0.wav (committed, cached);
+//             a voiced beat lasts max(seconds ?? 2, clip + tail) (tail default 0.3 s) and the clip starts at the cut.
+//   voice <id> [--dry-run]  synthesise changed narration lines (prints the credit cost first with --dry-run)
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
@@ -103,12 +108,26 @@ function load(id) {
   need(typeof d.title === 'string' && d.title.trim(), 'title is required');
   need(['GAMING', 'SPORT'].includes(d.category), 'category must be GAMING or SPORT');
   need(['BERITA', 'FAKTA'].includes(d.kind), 'kind must be BERITA or FAKTA');
-  need(Array.isArray(d.beats) && d.beats.length >= 2 && d.beats.length <= 12, 'beats must hold 2 to 12 entries');
-  const music = { src: 'assets/shared/music/bed.mp3', volume: 0.35, ...(d.music || {}) };
+  need(Array.isArray(d.beats) && d.beats.length >= 2 && d.beats.length <= 18, 'beats must hold 2 to 18 entries');
+  const music = d.music === false ? null : { src: 'assets/shared/music/bed.mp3', volume: 0.35, ...(d.music || {}) };
   const sfxDefault = d.sfxDefault === undefined ? 'whoosh' : d.sfxDefault;
+  const narr = d.narration || null;
+  if (narr) need(typeof narr.speaker === 'string' && narr.speaker, 'narration.speaker is required');
   const beats = d.beats.map((b, i) => {
     const n = `beats[${i}]`;
     need(typeof b.text === 'string' && b.text.trim(), `${n}.text is required`);
+    let voice = null;
+    if (b.say !== undefined) {
+      need(narr, `${n}.say needs a top-level narration block`);
+      need(typeof b.say === 'string' && b.say.trim(), `${n}.say must be text`);
+      const wav = join(HERE, id, 'voice', `b${i}-0.wav`);
+      need(existsSync(wav), `${n}.say has no voice clip yet: run "node tools/wizzclip/news/render.mjs voice ${id}"`);
+      const rate = Number(b.rate ?? 1);
+      need(rate >= 0.8 && rate <= 1.25, `${n}.rate must be 0.8 to 1.25`);
+      const dur = Number(tool('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', wav]).trim()) / rate;
+      voice = { wav, dur, rate };
+      b = { ...b, seconds: r3(Math.max(Number(b.seconds ?? 2), dur + Number(narr.tail ?? 0.3))) };
+    }
     need(Number(b.seconds) >= 2 && Number(b.seconds) <= 12, `${n}.seconds must be 2 to 12`);
     if (b.big && /\*/.test(b.text)) warn.push(`${n}: has "big" (Volt), so *accent* in text is shown Paper (one Volt use per screen)`);
     let image = null;
@@ -117,12 +136,13 @@ function load(id) {
       need(image, `${n}.image not found: ${b.image}`);
     }
     const video = parseVideo(b.video, `${n}.video`, 0.55, need);
+    if (b.video?.win && Number(b.seconds) > Number(b.video.win) + 0.05) warn.push(`${n} lasts ${b.seconds}s but its clean shot (video.win) is ${b.video.win}s: it crosses a cut`);
     const sfxName = b.sfx === undefined ? (i === 0 ? false : sfxDefault) : b.sfx;
-    return { ...b, i, seconds: Number(b.seconds), image, video, sfxName };
+    return { ...b, i, seconds: Number(b.seconds), image, video, sfxName, voice };
   });
   const coverVideo = parseVideo(d.coverVideo, 'coverVideo', 0.68, need);
   const total = r3(beats.reduce((s, b) => s + b.seconds, 0) + COVER);
-  if (total < 25 || total > 45) warn.push(`total ${total}s is outside the usual 32-38 s`);
+  if (narr ? (total < 25 || total > 60) : (total < 25 || total > 45)) warn.push(`total ${total}s is outside the usual ${narr ? '30-55' : '32-38'} s`);
   if (d.placeholder) warn.push('PLACEHOLDER content: replace the beats in news.json before posting');
   return { id, file, d, beats, coverVideo, music, total, warn, sfxDefault };
 }
@@ -141,9 +161,9 @@ function stage(ctx) {
   if (!existsSync(gsap)) throw new Error('Pinned HyperFrames local GSAP 3.15.0 is missing; run npm ci');
   copy(gsap, 'lib/gsap.min.js');
   copy(join(HERE, 'template/news.js'), 'lib/news.js');
-  const musicSrc = resolve(ROOT, music.src);
-  if (!existsSync(musicSrc)) throw new Error(`Music not found: ${music.src}`);
-  copy(musicSrc, `assets/music/${basename(musicSrc)}`);
+  const musicSrc = music ? resolve(ROOT, music.src) : null;
+  if (music && !existsSync(musicSrc)) throw new Error(`Music not found: ${music.src}`);
+  if (music) copy(musicSrc, `assets/music/${basename(musicSrc)}`);
 
   // timing
   let t = 0;
@@ -188,8 +208,15 @@ function stage(ctx) {
   const sources = (d.sources || []).length ? `SUMBER: ${d.sources.join(', ')}` : '';
 
   const audio = [];
-  audio.push(`  <audio id="music" src="assets/music/${basename(musicSrc)}" data-start="0" data-duration="${total}" data-track-index="10" data-volume="${music.volume}" data-fade-out="1.5"></audio>`);
+  if (music) audio.push(`  <audio id="music" src="assets/music/${basename(musicSrc)}" data-start="0" data-duration="${total}" data-track-index="10" data-volume="${music.volume}" data-fade-out="1.5"></audio>`);
   const sfxVol = d.sfxVolume ?? 0.5, sfxUsed = new Set(); let tr = 11;
+  beats.forEach((b, i) => {
+    if (!b.voice) return;
+    const rel = `assets/voice/b${i}.wav`;
+    if (b.voice.rate === 1) copy(b.voice.wav, rel);
+    else { mkdirSync(join(out, 'assets/voice'), { recursive: true }); tool('ffmpeg', ['-v', 'error', '-y', '-i', b.voice.wav, '-af', `atempo=${b.voice.rate}`, join(out, rel)]); }
+    audio.push(`  <audio id="vo-${i}" src="${rel}" data-start="${plan[i].start}" data-duration="${r3(b.voice.dur)}" data-track-index="${tr++}" data-volume="1"></audio>`);
+  });
   const addSfx = (name, at, label) => {
     if (!name) return;
     const f = join(ROOT, 'assets/shared/sfx', `${name}.wav`);
@@ -287,6 +314,24 @@ const [cmd, id] = pos;
 try {
   if (cmd === 'list') {
     for (const e of readdirSync(HERE, { withFileTypes: true })) if (e.isDirectory() && existsSync(join(HERE, e.name, 'news.json'))) console.log(e.name);
+  } else if (cmd === 'voice') {
+    // One narration line per beat with "say", voiced by the repo's cached Cartesia provider (tools/voice/cartesia.py).
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(id || '')) throw new Error(`Invalid id "${id}"`);
+    const d = JSON.parse(readFileSync(join(HERE, id, 'news.json'), 'utf8'));
+    const narr = d.narration;
+    if (!narr?.speaker) throw new Error(`${id}/news.json has no narration.speaker`);
+    const known = JSON.parse(readFileSync(join(ROOT, 'config/speakers.json'), 'utf8'))[narr.speaker]?.cartesia;
+    if (!known?.voice) throw new Error(`config/speakers.json has no Cartesia voice for "${narr.speaker}"`);
+    const sections = d.beats.map((b, i) => b.say ? { id: `b${i}`, lines: [{ speaker: narr.speaker, text: b.say }] } : null).filter(Boolean);
+    if (!sections.length) throw new Error('no beat has "say"');
+    const vdir = join(HERE, id, 'voice'); mkdirSync(vdir, { recursive: true });
+    const nfile = join(vdir, 'narration.json');
+    const nj = { source: 'cartesia', cartesia: { ...(narr.say ? { say: narr.say } : {}) },
+      speakers: { [narr.speaker]: { cartesia: { ...known, ...(narr.speed ? { speed: narr.speed } : {}) } } }, sections };
+    writeFileSync(nfile, JSON.stringify(nj, null, 1) + '\n', 'utf8');
+    const py = join(ROOT, process.platform === 'win32' ? '.venv/Scripts/python.exe' : '.venv/bin/python');
+    const r = spawnSync(py, [join(ROOT, 'tools/voice/cartesia.py'), 'lines', nfile, '--lines', vdir, '--cache', join(ROOT, '.cache/wizzclip/voice-cache'), ...(o['dry-run'] ? ['--dry-run'] : [])], { cwd: ROOT, stdio: 'inherit' });
+    if (r.status !== 0) throw new Error(`cartesia.py failed (exit ${r.status})`);
   } else if (['build', 'check', 'stills', 'preview', 'render'].includes(cmd)) {
     const ctx = load(id);
     const b = stage(ctx);

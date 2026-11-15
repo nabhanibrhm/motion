@@ -1,5 +1,5 @@
 {
-  "_note": "Research 15 Nov 2026: .cache/wizzclip/gta6-explore/research.md (official Rockstar trailers; Grassrivers/Leonida Keys/Jason & Lucia official; 6-star cap from the Extended Look per press, so 'sampai 6 bintang'). Footage: muted official trailers in .cache/wizzclip/gta6-trailer/ (not in git); frames checked, windows avoid text cards and bikini/club shots.",
+  "_note": "Research 15 Nov 2026: .cache/wizzclip/gta6-explore/research.md. Footage (not in git, video only): official trailers trailer1/trailer2 and Rockstar \"An Extended Look\" (tJbzMqJGH4k, extended.mp4, age-gated: yt-dlp --cookies-from-browser firefox --js-runtimes node --remote-components ejs:github). Beats 00,01,05-10 from the Extended Look (frames checked 15 Nov), 02-04 from the trailers; windows avoid text cards, HUD crops out at 9:16.",
   "title": "10 HAL DI *GTA 6*",
   "category": "GAMING",
   "kind": "FAKTA",
@@ -8,20 +8,20 @@
       "big": "10 HAL",
       "text": "Hal yang bisa kamu *jelajahi* saat GTA 6 rilis",
       "sub": "Kamis 19 Nov · 00.00 WIB",
-      "seconds": 3.0,
+      "seconds": 3,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
-        "start": 3
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1133
       }
     },
     {
       "big": "01",
       "text": "Rawa *Grassrivers*",
-      "sub": "Kabur naik airboat, dikejar helikopter",
+      "sub": "Ngebut naik airboat di rawa",
       "seconds": 2.5,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
-        "start": 138.3
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1030
       }
     },
     {
@@ -31,7 +31,7 @@
       "seconds": 4,
       "video": {
         "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
-        "start": 6.0
+        "start": 6
       }
     },
     {
@@ -41,7 +41,7 @@
       "seconds": 2.4,
       "video": {
         "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
-        "start": 19.0
+        "start": 19
       }
     },
     {
@@ -60,28 +60,28 @@
       "sub": "Jalan neon & mobil sport",
       "seconds": 2.2,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
-        "start": 31.4
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1545.5
       }
     },
     {
       "big": "06",
       "text": "Jet ski & *speedboat*",
       "sub": "Ngebut di laut sampai pelabuhan",
-      "seconds": 2.5,
+      "seconds": 2,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
-        "start": 23.5
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1045
       }
     },
     {
       "big": "07",
-      "text": "Nge-gym di *pantai*",
-      "sub": "Angkat beban di pinggir laut",
+      "text": "*Nge-gym*",
+      "sub": "Angkat beban sampai berotot",
       "seconds": 2.5,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
-        "start": 38.8
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1038.6
       }
     },
     {
@@ -90,18 +90,19 @@
       "sub": "Dua tokoh utama, bisa gonta-ganti",
       "seconds": 4,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
-        "start": 63.5
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1013
       }
     },
     {
       "big": "09",
       "text": "*Rampok* toko",
       "sub": "Beraksi berdua, lalu kabur",
-      "seconds": 2.0,
+      "seconds": 2,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
-        "start": 76.5
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 717,
+        "focusX": 0.45
       }
     },
     {
@@ -110,8 +111,9 @@
       "sub": "Mana yang kamu coba duluan? Tulis di komentar",
       "seconds": 2.9,
       "video": {
-        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
-        "start": 108.0
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 847.2,
+        "focusX": 0.4
       }
     }
   ],
@@ -122,7 +124,7 @@
   ],
   "coverVideo": {
     "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
-    "start": 6.0,
+    "start": 6,
     "dim": 0.7
   },
   "audio": false

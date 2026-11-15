@@ -1,0 +1,98 @@
+{
+ "b0-0.wav": {
+  "key": "04eb17e1422551f20ab227956dd54c55716728905666c887cf07888fca3c15fd",
+  "sha256": "7ef203db998ba960229d7fb7373466b207d42a8a07b8e50f022465221c8e1229",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 80
+ },
+ "b1-0.wav": {
+  "key": "3fa20e923344b07ef319d06e1d6435fb94320024b55882d7ae0f230e5ea97201",
+  "sha256": "c9ab06c18fa296a741e5064c32ba05cba85f7f1b25b96da13588650ff70d1cba",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 32
+ },
+ "b10-0.wav": {
+  "key": "cf112c02ce34f06299b9efec7e36591c39d3861d75bccb8b4eee8aa9bbb8b040",
+  "sha256": "c36537272b17266641559779328c428973b3dd8e42f89195c3a82b0b766d3748",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 34
+ },
+ "b11-0.wav": {
+  "key": "d9cbb3de2b8edb451e7abf06258484a7d862585ddd74f6b25cb932b6aba3ce74",
+  "sha256": "896939c36fe47414c60c69b91173bf0c196473163916d292f967a845f2d63a6a",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 34
+ },
+ "b12-0.wav": {
+  "key": "cd53c1fad8563d944ba78145d70b90920ae14e8ea4b26cd7af2ee550b08e7a25",
+  "sha256": "51f28abba667e078fccc180fa8ce6cd2ecf45bc2f6300873e4f286722b3abf41",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 35
+ },
+ "b13-0.wav": {
+  "key": "5102ddecf735883a9a3ab6197548f1a27c2201f6f86444ca24e2c15ac3460ba3",
+  "sha256": "d2dd1f1fbfb3eaa0d6293127658be9c5c0d3f2d93e678d498e04d15469cf3b3f",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 30
+ },
+ "b14-0.wav": {
+  "key": "74300ee19540d06e937ba53f5ab693883000db29517a417adea5287869af38d8",
+  "sha256": "7618b490b13176d2d1e8764e4fa369e41a23f4744ebacbf983d679c3b03c7a78",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 40
+ },
+ "b15-0.wav": {
+  "key": "b803ff4669779050a843a0ae7d5778a1fb6f339fe30b181b8449c079924361b3",
+  "sha256": "b830f37e36b476ee8de8ea27853c8021e18c574b7646eea60e36f3734f459494",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 93
+ },
+ "b2-0.wav": {
+  "key": "3aac7c33b873a80dc6f73700578d2cf2be3e9b95db35be5fc988cbf45196a7af",
+  "sha256": "4aeda604b13f474684e7179a64306e2e2105aba79825b5fb3eacc1b9151f6e42",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 27
+ },
+ "b3-0.wav": {
+  "key": "a0c71aea4740d5565bfe6b62eeff6c6c380106fc0c8e371ea7921b09cc53e980",
+  "sha256": "8c9c6c610357ec15e1ca1c9bf98d6dcc57d5a7c11a9c8ca2fc8a6bfaee17cb20",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 38
+ },
+ "b4-0.wav": {
+  "key": "b17498cfac1d9a557bd26b91751b6cb4a6ae8d5b66d64e0a7e5b726a51a46d7d",
+  "sha256": "3c6791370369ae0bedde6fc16a3e1ed4945b758e60afeb92877d3638037a2c2d",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 27
+ },
+ "b5-0.wav": {
+  "key": "7b271ceef1d62cf7f56c9df3aaa85bfd56359303dd3675d07eb16c241210db53",
+  "sha256": "38c746fab2c425a171871b4ef9257489c7d75fdf7f995b87353b84b7cf2fea38",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 20
+ },
+ "b6-0.wav": {
+  "key": "064a0315ac9e199a537e7431482db7bdb6d8650a1bbaef6b9d275239244f06bb",
+  "sha256": "61c0a1780d2dab1ff7674cdf9614f7f522a8cd7d2016875571660a0a1f4fc8b7",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 37
+ },
+ "b7-0.wav": {
+  "key": "b430324023817569146e8a9e962a03985cf2d79a9b8bfee3ead0fe1df94d350e",
+  "sha256": "e7826ab218024ff1d50ea26250b25ccebd48eb0471afac5a7a7ea4fb833efee3",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 23
+ },
+ "b8-0.wav": {
+  "key": "421b732053d48a99719aed1817a250e9ef6e8168a8bf07b3571dab38bd728719",
+  "sha256": "79769a5078055aae8a2a126305ed847a5974f8108f05818a060a6b14c651a257",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 25
+ },
+ "b9-0.wav": {
+  "key": "778ab4dc4c82e0c30d126a475768cd372ba4520fdeebd927530eb365a8b0f2d5",
+  "sha256": "7bbd9babab54a2469e6b8485cdf03d2fef20bcdb3e7038f9f9a78368630da4cd",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 24
+ }
+}

@@ -1,0 +1,169 @@
+{
+ "source": "cartesia",
+ "cartesia": {
+  "say": {
+   "GTA": "ji ti ei",
+   "Vice": "Vais",
+   "City": "Siti",
+   "airboat": "erbot",
+   "Grassrivers": "Gras Rivers",
+   "Keys": "Kis",
+   "Jason": "Jeisen",
+   "nge-gym": "nge-jim",
+   "motokros": "motokros"
+  }
+ },
+ "speakers": {
+  "wec": {
+   "cartesia": {
+    "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90"
+   }
+  }
+ },
+ "sections": [
+  {
+   "id": "b0",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Jangan langsung main misi pas GTA enam rilis! Coba lima belas hal ini dulu."
+    }
+   ]
+  },
+  {
+   "id": "b1",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Terjun payung di atas Vice City."
+    }
+   ]
+  },
+  {
+   "id": "b2",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Menyelam ke gua bawah laut."
+    }
+   ]
+  },
+  {
+   "id": "b3",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Ngebut naik airboat di rawa Grassrivers."
+    }
+   ]
+  },
+  {
+   "id": "b4",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Rampok toko bareng partner."
+    }
+   ]
+  },
+  {
+   "id": "b5",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Ngebut naik jet ski."
+    }
+   ]
+  },
+  {
+   "id": "b6",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Main basket di kolong rumah panggung."
+    }
+   ]
+  },
+  {
+   "id": "b7",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Nge-gym sampai berotot."
+    }
+   ]
+  },
+  {
+   "id": "b8",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Balapan mobil di sirkuit."
+    }
+   ]
+  },
+  {
+   "id": "b9",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Motokros di jalur tanah."
+    }
+   ]
+  },
+  {
+   "id": "b10",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Latihan nembak di lapangan tembak."
+    }
+   ]
+  },
+  {
+   "id": "b11",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Jelajahi pulau tropis Leonida Keys."
+    }
+   ]
+  },
+  {
+   "id": "b12",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Nongkrong di kapal, di tengah laut."
+    }
+   ]
+  },
+  {
+   "id": "b13",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Keliling Vice City malam hari."
+    }
+   ]
+  },
+  {
+   "id": "b14",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Gonta-ganti main jadi Jason atau Lucia."
+    }
+   ]
+  },
+  {
+   "id": "b15",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kabur dari kejaran polisi sampai enam bintang. Mana yang kamu coba duluan? Tulis di komentar!"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,201 @@
+{
+  "_note": "15 Nov 2026. Topics merged from the user's reference video (T5G 'GTA 6 - Everything you need to know', reference only, no footage used) and .cache/wizzclip/gta6-explore/research.md; every item is shown in Rockstar's own footage. Footage (not in git, video only): .cache/wizzclip/gta6-trailer/extended.mp4 = Rockstar 'An Extended Look' (tJbzMqJGH4k), trailer2.mp4 (VQRLujxTm3c). Windows checked frame by frame at 0.5 s; each window's clean length is in 'win' (seconds) and must stay >= the beat length after voicing. Voice: Nisa (wec), Cartesia.",
+  "title": "15 HAL DI *GTA 6*",
+  "category": "GAMING",
+  "kind": "FAKTA",
+  "music": false,
+  "sfxDefault": false,
+  "coverSfx": false,
+  "narration": {
+    "speaker": "wec",
+    "tail": 0.25,
+    "say": {
+      "GTA": "ji ti ei",
+      "Vice": "Vais",
+      "City": "Siti",
+      "airboat": "erbot",
+      "Grassrivers": "Gras Rivers",
+      "Keys": "Kis",
+      "Jason": "Jeisen",
+      "nge-gym": "nge-jim"
+    }
+  },
+  "beats": [
+    {
+      "big": "15 HAL",
+      "text": "Coba ini dulu sebelum main misi GTA 6",
+      "sub": "Rilis Kamis 19 Nov · 00.00 WIB",
+      "say": "Jangan langsung main misi pas GTA enam rilis! Coba lima belas hal ini dulu.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1127.6,
+        "win": 5.3
+      }
+    },
+    {
+      "big": "01",
+      "text": "Terjun payung",
+      "say": "Terjun payung di atas Vice City.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1133,
+        "win": 5.3
+      }
+    },
+    {
+      "big": "02",
+      "text": "Menyelam ke gua laut",
+      "say": "Menyelam ke gua bawah laut.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1036,
+        "win": 2.4
+      }
+    },
+    {
+      "big": "03",
+      "text": "Airboat di rawa",
+      "say": "Ngebut naik airboat di rawa Grassrivers.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1030,
+        "win": 2.9
+      },
+      "rate": 1.1
+    },
+    {
+      "big": "04",
+      "text": "Rampok toko",
+      "say": "Rampok toko bareng partner.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 715.5,
+        "focusX": 0.45,
+        "win": 5.9
+      }
+    },
+    {
+      "big": "05",
+      "text": "Jet ski",
+      "say": "Ngebut naik jet ski.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1044.9,
+        "win": 2
+      }
+    },
+    {
+      "big": "06",
+      "text": "Main basket",
+      "say": "Main basket di kolong rumah panggung.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1033,
+        "win": 2.9
+      }
+    },
+    {
+      "big": "07",
+      "text": "Nge-gym",
+      "say": "Nge-gym sampai berotot.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1038.6,
+        "win": 3.3
+      }
+    },
+    {
+      "big": "08",
+      "text": "Balapan di sirkuit",
+      "say": "Balapan mobil di sirkuit.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1062,
+        "win": 3.9
+      }
+    },
+    {
+      "big": "09",
+      "text": "Motokros",
+      "say": "Motokros di jalur tanah.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1115,
+        "win": 3.9
+      }
+    },
+    {
+      "big": "10",
+      "text": "Lapangan tembak",
+      "say": "Latihan nembak di lapangan tembak.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1112,
+        "win": 2.9
+      }
+    },
+    {
+      "big": "11",
+      "text": "Leonida Keys",
+      "say": "Jelajahi pulau tropis Leonida Keys.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 6,
+        "win": 3.8
+      }
+    },
+    {
+      "big": "12",
+      "text": "Nongkrong di kapal",
+      "say": "Nongkrong di kapal, di tengah laut.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1573,
+        "win": 2.9
+      }
+    },
+    {
+      "big": "13",
+      "text": "Vice City malam",
+      "say": "Keliling Vice City malam hari.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1545,
+        "win": 3.4
+      }
+    },
+    {
+      "big": "14",
+      "text": "Jason & Lucia",
+      "say": "Gonta-ganti main jadi Jason atau Lucia.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1013,
+        "win": 3.9
+      },
+      "rate": 1.05
+    },
+    {
+      "big": "15",
+      "text": "Kabur sampai 6 bintang",
+      "sub": "Mana yang kamu coba duluan? Tulis di komentar",
+      "say": "Kabur dari kejaran polisi sampai enam bintang. Mana yang kamu coba duluan? Tulis di komentar!",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 844.5,
+        "focusX": 0.4,
+        "win": 25
+      }
+    }
+  ],
+  "sources": [
+    "Rockstar Games",
+    "Game Informer",
+    "IGN"
+  ],
+  "coverVideo": {
+    "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+    "start": 1134,
+    "dim": 0.7
+  }
+}
