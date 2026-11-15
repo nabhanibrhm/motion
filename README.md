@@ -240,3 +240,7 @@ Template props (`*text*` marks the red accent (an underline in `claim`, a highli
 Finished outputs are `out/<NN>-<id>-short.mp4` (not posted yet) and `out/uploaded/` (posted). Review status and episode-specific notes are in [HANDOFF.md](HANDOFF.md). Before publishing, include the full sources list from the episode's `script-short.md` in the video description.
 
 Engineering contracts and the refactor v2 record: [docs/refactor-design.md](docs/refactor-design.md) and [docs/refactor-v2/results.md](docs/refactor-v2/results.md).
+
+## Wizz Clip clips
+
+The clip tool lives in `tools/wizzclip/` (`wizzclip.py`, `README.md`, `config/`). Scratch work goes to `.cache/wizzclip/<slug>/` and finished clips to `out/wizzclip/` (both git-ignored). MotionKlip campaign assets and rules are in `tools/wizzclip/campaigns/motionklip/`; tracked clip recipes are in `tools/wizzclip/recipes/`. From the repo root, run a recipe with `.venv\Scripts\python tools/wizzclip/wizzclip.py recipe <name>`. `recipe` alone lists them; add `--force` to overwrite an existing output. See [tools/wizzclip/README.md](tools/wizzclip/README.md).

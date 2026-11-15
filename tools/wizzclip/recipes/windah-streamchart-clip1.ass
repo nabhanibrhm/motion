@@ -1,0 +1,31 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Arial Black,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,7,3,5,60,140,0,1
+Style: Title,Arial Black,76,&H0000E5FF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,8,4,8,40,120,0,1
+Style: Big,Impact,120,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,2,0,1,8,5,5,40,120,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,0:00:03.00,Title,,0,0,0,,{\pos(500,850)\fad(0,250)}WINDAH #1 STREAMER\N{\c&HFFFFFF&}INDONESIA SEPT & OKT!
+Dialogue: 0,0:00:00.03,0:00:02.73,Sub,,0,0,0,,{\pos(500,640)}DENGAN WAKTU 63 JAM STREAMING
+Dialogue: 0,0:00:03.51,0:00:06.45,Sub,,0,0,0,,{\pos(500,640)}KITA ADA DI {\c&H0000E5FF&}PERINGKAT SATU{\c&HFFFFFF&},\NTEMAN-TEMAN
+Dialogue: 0,0:00:06.45,0:00:10.80,Sub,,0,0,0,,{\pos(500,640)}THANK YOU VERY MUCH,\NREALLY APPRECIATE IT
+Dialogue: 0,0:00:10.89,0:00:13.45,Sub,,0,0,0,,{\pos(500,640)}RUPANYA GAK CUMA\NDI OKTOBER DOANG
+Dialogue: 0,0:00:13.45,0:00:15.05,Sub,,0,0,0,,{\pos(500,640)}RUPANYA DARI SEPTEMBER JUGA
+Dialogue: 0,0:00:16.67,0:00:21.19,Sub,,0,0,0,,{\pos(500,640)}DARI SEPTEMBER JUGA,\N{\c&H0000E5FF&}73 JAM STREAMING
+Dialogue: 0,0:00:21.19,0:00:24.80,Sub,,0,0,0,,{\pos(500,640)}CHANNEL WINDAH BASUDARA\NADA DI {\c&H0000E5FF&}SATU{\c&HFFFFFF&} JUGA
+Dialogue: 0,0:00:24.87,0:00:28.49,Sub,,0,0,0,,{\pos(500,640)}DAN INI BELUM GTA 6
+Dialogue: 0,0:00:29.23,0:00:32.53,Sub,,0,0,0,,{\pos(500,640)}BELUM GTA 6, NOVEMBER INI\NGTA 6, TEMAN-TEMAN
+Dialogue: 0,0:00:33.49,0:00:36.95,Sub,,0,0,0,,{\pos(500,640)}YA MUNGKIN BISA DAPET\N{\c&H0000E5FF&}WATCH TIME 2 JUTA
+Dialogue: 0,0:00:38.51,0:00:41.80,Sub,,0,0,0,,{\pos(500,640)}SO WE WILL SEE, YA
+Dialogue: 1,0:00:24.87,0:00:29.20,Big,,0,0,0,,{\pos(500,1050)\fs100}SEPTEMBER {\c&H0000E5FF&}#1\N{\c&HFFFFFF&}OKTOBER {\c&H0000E5FF&}#1
+Dialogue: 1,0:00:26.20,0:00:29.20,Big,,0,0,0,,{\pos(500,1300)\fs80\c&HC0C0C0&}NOVEMBER...?
+Dialogue: 1,0:00:29.23,0:00:41.80,Big,,0,0,0,,{\pos(500,960)\fs110}NOVEMBER
+Dialogue: 1,0:00:29.23,0:00:41.80,Big,,0,0,0,,{\pos(500,1170)\fs260\c&H7A3CFF&\fscx160\fscy160\t(0,350,\fscx100\fscy100)}GTA VI
+Dialogue: 1,0:00:33.49,0:00:41.80,Big,,0,0,0,,{\pos(500,1380)\fs86\c&H0000E5FF&\fad(150,0)}WATCH TIME 2 JUTA?

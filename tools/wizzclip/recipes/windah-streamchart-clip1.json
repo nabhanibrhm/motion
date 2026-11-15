@@ -1,0 +1,39 @@
+{
+  "description": "Windah Streamchart clip: Oct + Sep #1 charts, bridge to GTA VI. Audio/face from iMqt1bgNrLk 30:40-32:20 (source local t = abs - 1840).",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah Streamchart",
+  "source": {
+    "slug": "windah-streamchart",
+    "youtube": "iMqt1bgNrLk",
+    "url": "https://www.youtube.com/watch?v=iMqt1bgNrLk",
+    "section": ["00:30:40", "00:32:20"]
+  },
+  "inputs": [
+    { "path": "source" },
+    { "path": "campaign:windah-streamchart/streamchart-oct-2026.jpeg", "args": ["-loop", "1", "-t", "10.8"] },
+    { "path": "campaign:windah-streamchart/streamchart-sep-2026.jpeg", "args": ["-loop", "1", "-t", "14.0"] },
+    { "path": "campaign:windah-streamchart/streamchart-sep-2026.jpeg", "args": ["-loop", "1", "-t", "17.0"] },
+    { "path": "campaign:watermark-motionklip.png" }
+  ],
+  "subtitles": "windah-streamchart-clip1.ass",
+  "fonts": ["ariblk.ttf", "impact.ttf"],
+  "filter_complex": [
+    "[0:v]trim=14.7:25.5,setpts=PTS-STARTPTS,fps=30[va];[0:a]atrim=14.7:25.5,asetpts=PTS-STARTPTS[aa];",
+    "[0:v]trim=28.9:42.9,setpts=PTS-STARTPTS,fps=30[vb];[0:a]atrim=28.9:42.9,asetpts=PTS-STARTPTS[ab];",
+    "[0:v]trim=47.0:64.0,setpts=PTS-STARTPTS,fps=30[vc];[0:a]atrim=47.0:64.0,asetpts=PTS-STARTPTS[ac];",
+    "[va][aa][vb][ab][vc][ac]concat=n=3:v=1:a=1[rv][ra];",
+    "[rv]crop=345:345:1575:735,split[fa][fb];",
+    "[fa]scale=1080:640:force_original_aspect_ratio=increase,crop=1080:640,boxblur=18,eq=brightness=-0.25[fbg];",
+    "[fb]scale=640:640[ff];",
+    "[fbg][ff]overlay=220:0,format=yuv420p[top];",
+    "[1:v]fps=30,scale=1024:1280,pad=1080:1280:28:0:color=0x120c08,format=yuv420p,scale=w='trunc(1080*(1+0.35*clip((2.5-t)/2.5,0,1)+0.05*t/10.8)/2)*2':h=-2:eval=frame,crop=1080:1280:0:(ih-1280)*0.3[ca];",
+    "[2:v]fps=30,scale=1080:1080,pad=1080:1280:0:100:color=0x161826,format=yuv420p,scale=w='trunc(1080*(1+0.4*clip((t-5.9)/1.0,0,1))/2)*2':h=-2:eval=frame,crop=1080:1280:0:(ih-1280)*0.3[cb];",
+    "[3:v]fps=30,scale=1080:1280:force_original_aspect_ratio=increase,crop=1080:1280,boxblur=22,eq=brightness=-0.38,format=yuv420p,scale=w='trunc(1080*(1+0.04*t/17)/2)*2':h=-2:eval=frame,crop=1080:1280[cc];",
+    "[ca][cb][cc]concat=n=3:v=1:a=0[bot];",
+    "[top][bot]vstack,drawbox=x=0:y=0:w=iw:h=ih:color=white@0.85:t=fill:enable='between(t,10.8,10.93)+between(t,24.8,24.93)+between(t,29.2,29.33)'[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][4:v]overlay=0:0,format=yuv420p[v];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11[a]"
+  ],
+  "output": "windah-streamchart-clip1.mp4"
+}

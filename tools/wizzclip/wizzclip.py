@@ -1,16 +1,22 @@
 #!/usr/bin/env python
 """wizzclip: 16:9 stream VOD -> vertical YouTube Shorts clips."""
-import argparse, hashlib, json, re, statistics, subprocess, sys, textwrap, wave
+import argparse, hashlib, json, os, re, statistics, subprocess, sys, textwrap, wave
 from pathlib import Path
 
 TOOL = Path(__file__).resolve().parent
 REPO = TOOL.parents[1]  # motion repo root
-WORK = REPO / ".cache" / "clips"  # git-ignored scratch per slug
-OUT = REPO / "out" / "clips"  # finished clips (out/ is Drive-synced)
+WORK = REPO / ".cache" / "wizzclip"  # git-ignored scratch per slug
+OUT = REPO / "out" / "wizzclip"  # finished clips (out/ is Drive-synced)
 CFG = TOOL / "config"
+RECIPES = TOOL / "recipes"
+CAMPAIGNS = TOOL / "campaigns"
+FONTS = WORK / "_fonts"  # proprietary Arial Black / Impact for the recipe .ass files; never committed
 W, H = 1080, 1920
-FONT = "Arial Black"
-YELLOW, WHITE = r"{\c&H1FD2FF&}", r"{\c&HFFFFFF&}"  # brand yellow #FFD21F (ASS colours are BGR)
+FONT = "Audex"  # tools/wizzclip/fonts/Audex-Regular.ttf, one weight: never set Bold/Italic (no faux bold)
+FONTS_BRAND = TOOL / "fonts"
+# Wizz Clip brand colours as ASS &HBBGGRR&: Ink #0E0F12, Mist #8C9099, Paper #F4F3EF, Volt #E6FC29 (the one accent)
+INK, MIST, PAPER, VOLT = "&H00120F0E", "&H0099908C", "&H00EFF3F4", "&H0029FCE6"
+VOLT_T, PAPER_T = r"{\c&H29FCE6&}", r"{\c&HEFF3F4&}"  # inline colour overrides
 
 
 def die(msg):
@@ -69,7 +75,7 @@ def cmd_fetch(a):
     if a.from_ or a.to:
         cmd += ["--download-sections", f"*{a.from_ or '0'}-{a.to or 'inf'}", "--force-keyframes-at-cuts"]
     subprocess.run(cmd + [a.url], check=True)
-    print(f"saved {out / 'source.mp4'}\nnext: python tools/clip/wizzclip.py find {slug}")
+    print(f"saved {out / 'source.mp4'}\nnext: python tools/wizzclip/wizzclip.py find {slug}")
 
 
 def cmd_frame(a):
@@ -232,7 +238,7 @@ def cmd_find(a):
     for c in cands:
         print(f"{c['rank']:>2} {mmss(c['start']):>8} {mmss(c['end']):>8} {c['end'] - c['start']:4.0f} {c['score']:5.2f}"
               f"  {'; '.join(c['reasons'])}\n{'':32}\"{c['text'][:90]}\"")
-    print(f"\nwrote {d / 'candidates.json'}\nnext: python tools/clip/wizzclip.py cut {a.slug} --start <t> --end <t> --layout stack")
+    print(f"\nwrote {d / 'candidates.json'}\nnext: python tools/wizzclip/wizzclip.py cut {a.slug} --start <t> --end <t> --layout stack")
 
 
 # ---------------------------------------------------------------- captions
@@ -294,6 +300,30 @@ def clean(t):
     return re.sub(r"[{}\\]", "", t).upper()
 
 
+HOOK_LH = 60  # approx rendered line height of the 76 px Audex Title style (measured on a still)
+
+
+def hook_lines(title, width=18):
+    """Wrap the hook at `width` chars; words wrapped in *asterisks* (one or several) turn Volt."""
+    ws, hl, on = [], [], False
+    for raw in title.split():
+        if raw.startswith("*"):
+            on = True
+        ws.append(clean(raw.strip("*")))
+        hl.append(on)
+        if raw.endswith("*"):
+            on = False
+    rows, cur = [], []
+    for w, h in zip(ws, hl):
+        if cur and len(" ".join(x for x, _ in cur + [(w, h)])) > width:
+            rows.append(cur)
+            cur = []
+        cur.append((w, h))
+    if cur:
+        rows.append(cur)
+    return r"\N".join(" ".join(VOLT_T + w + PAPER_T if h else w for w, h in r) for r in rows)
+
+
 def build_ass(groups, dur, cap_y, title, credit, title_y=330):
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -303,9 +333,9 @@ WrapStyle: 2
 
 [V4+ Styles]
 Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
-Style: Cap,{FONT},84,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,9,2,5,40,40,0,1
-Style: Title,{FONT},76,&H000C0B0B,&H000C0B0B,&H001FD2FF,&H00000000,0,1,0,0,100,100,0,0,1,26,0,5,60,60,0,1
-Style: Brand,{FONT},34,&H00FFFFFF,&H00FFFFFF,&H000C0B0B,&H00000000,0,0,0,0,100,100,0,0,1,16,0,5,40,40,0,1
+Style: Cap,{FONT},84,{PAPER},{PAPER},{INK},&H80{INK[4:]},0,0,0,0,100,100,0,0,1,9,2,5,40,40,0,1
+Style: Title,{FONT},76,{PAPER},{PAPER},{INK},{INK},0,0,0,0,100,100,0,0,1,26,0,5,60,60,0,1
+Style: Brand,{FONT},34,{MIST},{MIST},{INK},{INK},0,0,0,0,100,100,0,0,1,16,0,5,40,40,0,1
 
 [Events]
 Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
@@ -315,18 +345,19 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         nxt = groups[gi + 1][0][1] if gi + 1 < len(groups) else dur
         for i, (_, s, _e) in enumerate(g):
             end = g[i + 1][1] if i + 1 < len(g) else min(g[-1][2] + 0.15, nxt)  # never overlap next group
-            txt = " ".join((YELLOW + clean(w[0]) + WHITE) if j == i else clean(w[0]) for j, w in enumerate(g))
+            txt = " ".join((VOLT_T + clean(w[0]) + PAPER_T) if j == i else clean(w[0]) for j, w in enumerate(g))
             ev.append(f"Dialogue: 1,{ts_ass(max(s, 0))},{ts_ass(end)},Cap,,0,0,0,,{{\\pos({W // 2},{cap_y})}}{txt}")
-    if title:  # slanted yellow bar = thick yellow round-joined outline around near-black italic text, sheared
-        lines = r"\N".join(textwrap.wrap(clean(title), 18))
+    if title:  # Paper text on an Ink rounded box (thick round-joined Ink outline); *key word* turns Volt
+        lines = hook_lines(title)
         ev.append(f"Dialogue: 2,{ts_ass(0)},{ts_ass(min(3, dur))},Title,,0,0,0,,"
-                  f"{{\\pos({W // 2},{title_y})\\fax-0.12\\fad(150,250)}}{lines}")
+                  f"{{\\pos({W // 2},{title_y})\\fad(150,250)}}{lines}")
+        # short Volt cut line under the box: box half-height ~ lines * HOOK_LH/2 + 26 px outline
+        ly = int(title_y + (lines.count(r"\N") + 1) * HOOK_LH / 2 + 26 + 16)
+        ev.append(f"Dialogue: 3,{ts_ass(0)},{ts_ass(min(3, dur))},Title,,0,0,0,,"
+                  f"{{\\an7\\pos({W // 2 - 60},{ly})\\fad(150,250)\\bord0\\shad0\\c&H{VOLT[4:]}&\\p1}}m 0 0 l 120 0 120 8 0 8")
     # no burned-in brand text: the YouTube channel watermark (out/design/wizz-clip-watermark.png) covers it
-    if credit:  # "Sumber" pill: near-black rounded box, label in brand yellow
-        c = clean(credit)
-        if c.startswith("SUMBER:"):
-            c = YELLOW + "SUMBER:" + WHITE + c[len("SUMBER:"):]
-        ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1800)}}{c}")
+    if credit:  # "SUMBER: @credit" in Mist on an Ink pill (thick Ink outline)
+        ev.append(f"Dialogue: 0,{ts_ass(0)},{ts_ass(dur)},Brand,,0,0,0,,{{\\pos({W // 2},1800)}}{clean(credit)}")
     return head + "\n".join(ev) + "\n"
 
 
@@ -392,7 +423,8 @@ def cmd_cut(a):
               f"boxblur=25:5,eq=brightness=-0.1[bg];[b]scale={W}:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2[v0]")
     else:
         vf = f"[0:v]scale=-2:{H},crop={W}:{H}[v0]"
-    vf += ";[v0]fps=30,ass=filename=clip.ass[v]"  # cwd=work/<slug>, relative path avoids drive-colon escaping
+    fonts = Path(os.path.relpath(FONTS_BRAND, d)).as_posix()  # relative to cwd: no drive-colon escaping, same on Windows/WSL
+    vf += f";[v0]fps=30,ass=filename=clip.ass:fontsdir={fonts}[v]"  # cwd=work/<slug>; Audex needs no system install
 
     af = mute_filter(a.mute.split(",")) if a.mute else ""
     seek = ["-ss", f"{start:.3f}", "-t", f"{dur:.3f}", "-i", str(src)]
@@ -406,6 +438,61 @@ def cmd_cut(a):
          "-c:v", "libx264", "-crf", "20", "-preset", "fast", "-pix_fmt", "yuv420p", "-r", "30",
          "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(out)], cwd=d)
     print(f"wrote {out} ({dur:.1f}s)")
+
+
+# ---------------------------------------------------------------- recipes (campaign clips)
+def cmd_recipe(a):
+    """Render a tracked campaign clip from recipes/<name>.json (cwd = repo root, so every path is repo-relative)."""
+    if a.name is None:
+        for p in sorted(RECIPES.glob("*.json")):
+            r = json.loads(p.read_text(encoding="utf-8"))
+            print(f"{p.stem:32} {r.get('campaign_brief', '')} -> out/wizzclip/{r['output']}")
+        return
+    rp = RECIPES / f"{a.name}.json"
+    if not rp.exists():
+        die(f"no recipe {rp} (python tools/wizzclip/wizzclip.py recipe  lists them)")
+    r = json.loads(rp.read_text(encoding="utf-8"))
+    src = r["source"]
+    sp = WORK / src["slug"] / "source.mp4"
+    if not sp.exists():
+        sec = f" --from {src['section'][0]} --to {src['section'][1]}" if src.get("section") else ""
+        die(f"source {sp.relative_to(REPO)} not found. Fetch it with:\n"
+            f"  python tools/wizzclip/wizzclip.py fetch {src['url']}{sec} --name {src['slug']}")
+    missing = [f for f in r.get("fonts", []) if not (FONTS / f).exists()]
+    if missing:
+        die(f"missing font(s) {', '.join(missing)} in {FONTS.relative_to(REPO)} (the .ass subtitles use Arial Black / "
+            f"Impact; copy ariblk.ttf / impact.ttf from C:/Windows/Fonts there; they are proprietary, never commit them)")
+    ass = RECIPES / r["subtitles"]
+    if not ass.exists():
+        die(f"subtitle file {ass} not found")
+    out_dir = OUT
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out = out_dir / (f"{a.out}.mp4" if a.out else r["output"])
+    if out.exists() and not a.force:
+        die(f"{out.relative_to(REPO)} already exists (use --out <name> for a different file, or --force to replace it)")
+    cmd = ["ffmpeg", "-v", "error", "-stats", "-y"]
+    for i in r["inputs"]:
+        p = i["path"]
+        if p == "source":
+            path = sp
+        elif p.startswith("campaign:"):
+            path = CAMPAIGNS / r["campaign"] / p[len("campaign:"):]
+        else:
+            die(f"recipe input {p!r} must be 'source' or 'campaign:<file>'")
+        if not path.exists():
+            die(f"recipe input {path} not found")
+        cmd += i.get("args", []) + ["-i", str(path)]
+    rel = lambda p: Path(os.path.relpath(p, REPO)).as_posix()  # repo-relative, forward slashes: no drive-colon escaping
+    graph = "".join(r["filter_complex"]).replace("{ass}", rel(ass)).replace("{fontsdir}", rel(FONTS))
+    cmd += ["-filter_complex", graph, "-map", "[v]", "-map", "[a]",
+            "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+            "-movflags", "+faststart", str(out)]
+    print(f"rendering {r['output'] if not a.out else a.out + '.mp4'} ...")
+    if subprocess.run(cmd, cwd=REPO).returncode:
+        out.unlink(missing_ok=True)
+        die("ffmpeg failed (see output above)")
+    w, h, d = probe(out)
+    print(f"wrote {out} ({w}x{h}, {d:.1f}s)")
 
 
 def main():
@@ -448,6 +535,11 @@ def main():
     f.add_argument("slug")
     f.add_argument("--at", required=True)
     f.set_defaults(fn=cmd_frame)
+    f = sp.add_parser("recipe", help="render a tracked campaign clip (recipes/<name>.json); no name lists them")
+    f.add_argument("name", nargs="?")
+    f.add_argument("--out", help="output name (no .mp4) instead of the recipe's; for test renders")
+    f.add_argument("--force", action="store_true", help="replace an existing output file")
+    f.set_defaults(fn=cmd_recipe)
     a = p.parse_args()
     a.fn(a)
 

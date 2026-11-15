@@ -1,0 +1,30 @@
+{
+  "description": "KOF Legend x Windah clip 1: O. Iori gacha reveal. Source 1066.5-1101.0 s, cold-open hook 1075.5-1077.1 s.",
+  "campaign": "motionklip",
+  "campaign_brief": "KOF Legend x Windah",
+  "source": {
+    "slug": "kof-windah",
+    "youtube": "x2cS00dnpYc",
+    "url": "https://www.youtube.com/watch?v=x2cS00dnpYc",
+    "section": null
+  },
+  "inputs": [
+    { "path": "source" },
+    { "path": "campaign:watermark-motionklip.png" }
+  ],
+  "subtitles": "kof-clip1-orochi-iori.ass",
+  "fonts": ["ariblk.ttf"],
+  "filter_complex": [
+    "[0:v]trim=1075.5:1077.1,setpts=PTS-STARTPTS,fps=30[hv];[0:a]atrim=1075.5:1077.1,asetpts=PTS-STARTPTS[ha];",
+    "[0:v]trim=1066.5:1101.0,setpts=PTS-STARTPTS,fps=30[mv];[0:a]atrim=1066.5:1101.0,asetpts=PTS-STARTPTS[ma];",
+    "[hv][ha][mv][ma]concat=n=2:v=1:a=1[cv][ca];",
+    "[cv]split[g0][f0];",
+    "[g0]crop=1080:1080:420:0,scale=w='trunc(1080*(1+0.2*(lt(t,1.6)+clip((t-8.6)/0.3,0,1)*clip((13.1-t)/0.3,0,1)))/2)*2':h=-2:eval=frame,crop=1080:1080:(iw-1080)/2:(ih-1080)/2[game];",
+    "[f0]crop=375:292:1545:788,scale=1080:840[face];",
+    "[face][game]vstack[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p[v];",
+    "[ca]loudnorm=I=-14:TP=-1.0:LRA=11[a]"
+  ],
+  "output": "kof-clip1-orochi-iori.mp4"
+}

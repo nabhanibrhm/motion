@@ -30,6 +30,7 @@ Use the host's model controls for Claude. If a required tier is unavailable, exp
 | Regression harness `scripts/regress.mjs`; scene wrapper `src/templates/scene-wrapper.mjs`; episode formats `config/formats/**`; their tests | Sonnet / high |
 | Voice tools/cache/alignment, mastering/audio, dependencies, Python environment, storage and cleanup safety: `tools/voice/**` (including `tools/voice/versions.json`), `src/pipeline/voice.mjs`, `master.mjs`, `storage.mjs`, root manifests and lockfiles | Opus / high |
 | New financial facts or claims in episode scripts, narration, captions or scenes; unexplained preview/render failures | Opus / high |
+| Wizz Clip clip tool and campaign recipes `tools/wizzclip/**` (`wizzclip.py`, `campaigns/`, `recipes/`, `config/`); recipe/campaign JSON data-only edits use the same row | Sonnet / high |
 | Whole-project architecture, config/API contracts, engine or TTS changes, migration cutover and rollback | Opus / max |
 
 ### Legacy path reference
@@ -63,6 +64,7 @@ The model IDs and tiers below describe this repository's routing policy. They do
 | Routine docs, `README.md`, `CLAUDE.md`, `HANDOFF.md`, this file, `.gitignore`, unchanged-fact copy | C1 |
 | One `episodes/<NN>_<id>/scenes/<scene>.html`, local art or styling | C2 |
 | `src/runtime/**`, `src/templates/**`, `scripts/regress.mjs`, `config/formats/**`, root CLI, config/schema, episode manifests and migrations, build orchestration | C3 |
+| `tools/wizzclip/**` (Wizz Clip clip tool and campaign recipes; recipe/campaign JSON data-only edits use the same row) | C3 |
 | `tools/voice/**` (including `tools/voice/versions.json`), voice/cache/alignment, audio mastering, root dependency manifests/locks, storage/cleanup safety, new factual claims | C4 |
 | Architecture, cross-module contracts, engine or TTS changes, cutover/rollback, final integration and fidelity review | C5 |
 

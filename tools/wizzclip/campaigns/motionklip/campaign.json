@@ -1,0 +1,41 @@
+{
+  "campaign": "MotionKlip",
+  "watermark": "watermark-motionklip.png",
+  "watermark_note": "full-frame 1080x1920 overlay, required on every campaign upload (recipes overlay it last)",
+  "rules_all": [
+    "MotionKlip watermark on every upload",
+    "footage only from the campaign brief",
+    "no AI auto-clippers",
+    "no paid views",
+    "keep the videos up",
+    "claim once per video through the campaign's Google Form after the minimum views"
+  ],
+  "briefs": {
+    "kof-legend-x-windah": {
+      "title": "KOF Legend x Windah",
+      "cpm_idr": 7000,
+      "min_views": 2000,
+      "max_claim_views_per_video": 350000,
+      "hashtags": ["#KOFLegend", "#KingOfFighters", "#KOFXWINDAH", "#motionklip", "#ezklip"],
+      "hashtags_note": "use exactly this order",
+      "source_youtube": "x2cS00dnpYc",
+      "recipes": ["kof-clip1-orochi-iori"]
+    },
+    "windah-streamchart": {
+      "title": "Windah Streamchart",
+      "cpm_idr": 10000,
+      "min_views": 2000,
+      "max_claim_views_per_video": 30000,
+      "required_images": [
+        "windah-streamchart/streamchart-sep-2026.jpeg",
+        "windah-streamchart/streamchart-oct-2026.jpeg"
+      ],
+      "required_images_note": "both Streamcharts images must appear in the video",
+      "hashtags": ["#windahbasudara", "#WindahStreamchart", "#motionklip", "#ezklip"],
+      "hashtags_note": "use exactly this order",
+      "source_youtube": "iMqt1bgNrLk",
+      "source_section": ["00:30:40", "00:32:20"],
+      "recipes": ["windah-streamchart-clip1"]
+    }
+  }
+}
