@@ -1,0 +1,120 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "mog": {
+      "supertonic": {
+        "voice": "M1",
+        "speed": 1,
+        "range": 1.5
+      },
+      "cartesia": {
+        "speed": 1.08
+      }
+    },
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    },
+    "bog": {
+      "supertonic": {
+        "voice": "M4",
+        "speed": 1,
+        "range": 1.4
+      },
+      "cartesia": {
+        "speed": 1
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "kasus",
+      "title": "PHK Sepihak Batal Demi Hukum?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kamu di-PHK tanpa kesepakatan? Menurut undang-undang ketenagakerjaan baru, PHK seperti itu batal demi hukum."
+        }
+      ]
+    },
+    {
+      "id": "hak",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Perusahaan wajib mempekerjakan kamu kembali, dan pengusaha yang menolak bisa dipidana. Tapi ini tidak otomatis, kamu menuntutnya lewat jalur perselisihan hubungan industrial."
+        },
+        {
+          "speaker": "wec",
+          "text": "Kamu pernah di-PHK sepihak? Tulis di komentar."
+        }
+      ]
+    },
+    {
+      "id": "syarat",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "PHK baru sah kalau ada kesepakatan, atau putusan pengadilan hubungan industrial yang berkekuatan hukum tetap."
+        }
+      ]
+    },
+    {
+      "id": "larangan",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Ada sepuluh alasan PHK yang dilarang, misalnya sakit dengan surat dokter, menikah, hamil, ikut serikat pekerja, atau melaporkan kejahatan perusahaan."
+        }
+      ]
+    },
+    {
+      "id": "boleh",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Terus kalau kontrakmu habis, perusahaan harus berunding dulu juga?"
+        },
+        {
+          "speaker": "mog",
+          "text": "Tidak. Mengundurkan diri, kontrak habis, pensiun, atau meninggal dunia tidak perlu perundingan."
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kasus ditutup: PHK sepihak batal demi hukum, tapi haknya diperjuangkan lewat jalur resmi. Pernah di-PHK tanpa kesepakatan? Tulis di komentar ya!"
+        }
+      ]
+    }
+  ],
+  "say": {
+    "PHK": "pe ha ka"
+  }
+}

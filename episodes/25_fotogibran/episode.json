@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "fotogibran",
+  "number": 25,
+  "title": "Foto Gibran Dibalik di DPRD",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #10",
+      "steps": 5
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "DPRD JABAR",
+        "kicker": "KATA GUBERNUR JABAR",
+        "headline": "FOTO GIBRAN\n*DIBALIK DI DPRD*",
+        "claim": "Dedi Mulyadi *menyesalkan* foto Gibran diletakkan terbalik di kursi",
+        "tag": "RUANG BANGGAR DPRD JABAR · KAMIS 12 NOV",
+        "person": {
+          "name": "Dedi Mulyadi",
+          "role": "Gubernur Jawa Barat",
+          "photo": "people/dedi-mulyadi.jpg",
+          "credit": "Pemprov Jawa Barat (domain publik)"
+        },
+        "cue": "menyesalkan",
+        "stamp": {
+          "text": "KATA KDM",
+          "cue": "terbalik"
+        },
+        "introCover": true
+      }
+    },
+    {
+      "id": "kutipan",
+      "template": "hw-quote",
+      "props": {
+        "label": "KATA DEDI MULYADI",
+        "kicker": "VIDEO DI MEDSOS · SABTU 14 NOV",
+        "person": {
+          "name": "Dedi Mulyadi",
+          "role": "Gubernur Jawa Barat",
+          "photo": "people/dedi-mulyadi.jpg",
+          "credit": "Pemprov Jawa Barat (domain publik)"
+        },
+        "quote": "Semestinya diturunkan oleh *petugas yang ditunjuk*.",
+        "source": "Kompas, kumparan",
+        "date": "14 Nov 2026",
+        "cue": "Kata"
+      }
+    },
+    {
+      "id": "kronologi",
+      "file": "scenes/kronologi.js"
+    },
+    {
+      "id": "respons",
+      "template": "hw-split",
+      "props": {
+        "label": "DUA PENJELASAN",
+        "kicker": "DUA SISI",
+        "headline": "SIAPA YANG MENYURUH?",
+        "left": {
+          "title": "KETUA DPRD JABAR",
+          "items": [
+            {
+              "text": "*Bukan keputusan* lembaga",
+              "source": "detik, kumparan (13 Nov)",
+              "cue": "Ketua"
+            },
+            {
+              "text": "Tidak tahu fotonya *dibalik*",
+              "source": "detik, kumparan (13 Nov)",
+              "cue": "tahu"
+            }
+          ]
+        },
+        "right": {
+          "title": "KOORDINATOR KOALISI",
+          "items": [
+            {
+              "text": "Aksi *spontan* peserta",
+              "source": "detik (14 Nov)",
+              "cue": "spontan"
+            },
+            {
+              "text": "*Bukan rencana* rombongan",
+              "source": "detik (14 Nov)",
+              "cue": "rencana"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "UPDATE",
+        "lines": [
+          {
+            "text": "JAWAB DI KOMENTAR",
+            "style": "kicker",
+            "cue": "Jawab"
+          },
+          {
+            "text": "PROTES *PANTAS*?",
+            "cue": "komentar"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "cover": {
+          "title": "*FOTO GIBRAN*\nDIBALIK\nDI DPRD JABAR",
+          "chip": "KATA DEDI MULYADI",
+          "person": {
+            "name": "Dedi Mulyadi",
+            "role": "Gubernur Jawa Barat",
+            "photo": "people/dedi-mulyadi.jpg",
+            "credit": "Pemprov Jawa Barat (domain publik)"
+          }
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

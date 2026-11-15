@@ -16,7 +16,8 @@
     { "path": "campaign:watermark-motionklip.png" }
   ],
   "subtitles": "windah-streamchart-clip1.ass",
-  "fonts": ["ariblk.ttf", "impact.ttf"],
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": ["Audex-Regular.ttf"],
   "filter_complex": [
     "[0:v]trim=14.7:25.5,setpts=PTS-STARTPTS,fps=30[va];[0:a]atrim=14.7:25.5,asetpts=PTS-STARTPTS[aa];",
     "[0:v]trim=28.9:42.9,setpts=PTS-STARTPTS,fps=30[vb];[0:a]atrim=28.9:42.9,asetpts=PTS-STARTPTS[ab];",

@@ -13,7 +13,8 @@
     { "path": "campaign:watermark-motionklip.png" }
   ],
   "subtitles": "kof-clip1-orochi-iori.ass",
-  "fonts": ["ariblk.ttf"],
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": ["Audex-Regular.ttf"],
   "filter_complex": [
     "[0:v]trim=1075.5:1077.1,setpts=PTS-STARTPTS,fps=30[hv];[0:a]atrim=1075.5:1077.1,asetpts=PTS-STARTPTS[ha];",
     "[0:v]trim=1066.5:1101.0,setpts=PTS-STARTPTS,fps=30[mv];[0:a]atrim=1066.5:1101.0,asetpts=PTS-STARTPTS[ma];",

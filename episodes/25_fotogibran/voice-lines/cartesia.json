@@ -1,0 +1,32 @@
+{
+ "hook-0.wav": {
+  "key": "0f9fee82d348db9452379ff30ffbfb9f96bf09038ad0f2c2e93fd32dc427c52c",
+  "sha256": "89e89e061a66871c6045796a1bc1dc47ebe62b31fdfd85aba6254a15be52b788",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 135
+ },
+ "kronologi-0.wav": {
+  "key": "8ca24fd89ac168397fe1e85c577726ad4e10cd9145ac9ed513b3d9008220b5f8",
+  "sha256": "005a014aeca433086d2ea9a09c5ae14b6571a5d6f982e93500e927e89d969cad",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 140
+ },
+ "kutipan-0.wav": {
+  "key": "5ebfd949e680657659d18964544463e150d14ba14de21c2c481e56d7d48a9996",
+  "sha256": "1701229fc1a7cde360b4561ad56cbc273624c0b902bed16ad7b384c2f2f97697",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 162
+ },
+ "penutup-0.wav": {
+  "key": "1a4e9047abe0906aac366317747361c22db89193caee305b94ccee4952e5dd46",
+  "sha256": "4df40eafeffc0e6700f79d75c90b3b642c2e17d847d7f7a88dba6ad5da2e91e0",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 54
+ },
+ "respons-0.wav": {
+  "key": "c16aa3227621f0265c7001ce9aea6914faac690939e51a11ce43bbabee0ceb2b",
+  "sha256": "19fb67f4b7ded65b6e490badede9390c5d5312e258e4b3f9faabe62cf465fe62",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 184
+ }
+}

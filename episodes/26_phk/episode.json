@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "phk",
+  "number": 26,
+  "title": "PHK Sepihak Batal Demi Hukum?",
+  "category": "Ketenagakerjaan",
+  "theme": "casefile",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #16",
+      "steps": 6,
+      "name": "PHK SEPIHAK BATAL DEMI HUKUM"
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.js",
+      "sfx": [
+        {
+          "at": "word:batal",
+          "file": "click",
+          "vol": 0.18
+        },
+        {
+          "at": "word:hukum",
+          "file": "stamp",
+          "vol": 0.4
+        }
+      ]
+    },
+    {
+      "id": "hak",
+      "file": "scenes/hak.js",
+      "sfx": [
+        {
+          "at": "word:mempekerjakan",
+          "file": "pop-in",
+          "vol": 0.14
+        },
+        {
+          "at": "word:dipidana",
+          "file": "stamp",
+          "vol": 0.3
+        },
+        {
+          "at": "word:otomatis",
+          "file": "click",
+          "vol": 0.2
+        },
+        {
+          "at": "word:pernah",
+          "file": "pop-in",
+          "vol": 0.16
+        },
+        {
+          "at": "word:komentar",
+          "file": "swoosh-soft",
+          "vol": 0.16
+        }
+      ]
+    },
+    {
+      "id": "syarat",
+      "file": "scenes/syarat.js",
+      "sfx": [
+        {
+          "at": "word:kesepakatan",
+          "file": "tick",
+          "vol": 0.22
+        },
+        {
+          "at": "word:tetap",
+          "file": "tick",
+          "vol": 0.22
+        }
+      ]
+    },
+    {
+      "id": "larangan",
+      "file": "scenes/larangan.js",
+      "sfx": [
+        {
+          "at": "word:sepuluh",
+          "file": "pop-in",
+          "vol": 0.14
+        },
+        {
+          "at": "word:perusahaan",
+          "file": "click",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "boleh",
+      "file": "scenes/boleh.js",
+      "sfx": [
+        {
+          "at": "word:Tidak",
+          "file": "stamp",
+          "vol": 0.35
+        },
+        {
+          "at": "word:pensiun",
+          "file": "tick",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.js",
+      "sfx": [
+        {
+          "at": "word:ditutup",
+          "file": "stamp",
+          "vol": 0.45
+        },
+        {
+          "at": "word:Tulis",
+          "file": "pop-in",
+          "vol": 0.1
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

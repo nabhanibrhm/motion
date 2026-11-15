@@ -448,6 +448,7 @@ def cmd_recipe(a):
             r = json.loads(p.read_text(encoding="utf-8"))
             print(f"{p.stem:32} {r.get('campaign_brief', '')} -> out/wizzclip/{r['output']}")
         return
+    rel_repo = lambda p: Path(os.path.relpath(p, REPO)).as_posix()
     rp = RECIPES / f"{a.name}.json"
     if not rp.exists():
         die(f"no recipe {rp} (python tools/wizzclip/wizzclip.py recipe  lists them)")
@@ -458,10 +459,12 @@ def cmd_recipe(a):
         sec = f" --from {src['section'][0]} --to {src['section'][1]}" if src.get("section") else ""
         die(f"source {sp.relative_to(REPO)} not found. Fetch it with:\n"
             f"  python tools/wizzclip/wizzclip.py fetch {src['url']}{sec} --name {src['slug']}")
-    missing = [f for f in r.get("fonts", []) if not (FONTS / f).exists()]
+    # fonts dir: recipe "fontsdir" (repo-relative; the brand recipes use tools/wizzclip/fonts), else the legacy proprietary dir
+    fdir = (REPO / r["fontsdir"]) if r.get("fontsdir") else FONTS
+    missing = [f for f in r.get("fonts", []) if not (fdir / f).exists()]
     if missing:
-        die(f"missing font(s) {', '.join(missing)} in {FONTS.relative_to(REPO)} (the .ass subtitles use Arial Black / "
-            f"Impact; copy ariblk.ttf / impact.ttf from C:/Windows/Fonts there; they are proprietary, never commit them)")
+        die(f"missing font(s) {', '.join(missing)} in {rel_repo(fdir)} (proprietary fonts such as Arial Black / Impact: "
+            f"copy them from C:/Windows/Fonts there, never commit them)")
     ass = RECIPES / r["subtitles"]
     if not ass.exists():
         die(f"subtitle file {ass} not found")
@@ -483,7 +486,7 @@ def cmd_recipe(a):
             die(f"recipe input {path} not found")
         cmd += i.get("args", []) + ["-i", str(path)]
     rel = lambda p: Path(os.path.relpath(p, REPO)).as_posix()  # repo-relative, forward slashes: no drive-colon escaping
-    graph = "".join(r["filter_complex"]).replace("{ass}", rel(ass)).replace("{fontsdir}", rel(FONTS))
+    graph = "".join(r["filter_complex"]).replace("{ass}", rel(ass)).replace("{fontsdir}", rel(fdir))
     cmd += ["-filter_complex", graph, "-map", "[v]", "-map", "[a]",
             "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
             "-movflags", "+faststart", str(out)]

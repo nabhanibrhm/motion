@@ -1,0 +1,129 @@
+{
+  "_note": "Research 15 Nov 2026: .cache/wizzclip/gta6-explore/research.md (official Rockstar trailers; Grassrivers/Leonida Keys/Jason & Lucia official; 6-star cap from the Extended Look per press, so 'sampai 6 bintang'). Footage: muted official trailers in .cache/wizzclip/gta6-trailer/ (not in git); frames checked, windows avoid text cards and bikini/club shots.",
+  "title": "10 HAL DI *GTA 6*",
+  "category": "GAMING",
+  "kind": "FAKTA",
+  "beats": [
+    {
+      "big": "10 HAL",
+      "text": "Hal yang bisa kamu *jelajahi* saat GTA 6 rilis",
+      "sub": "Kamis 19 Nov · 00.00 WIB",
+      "seconds": 3.0,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 3
+      }
+    },
+    {
+      "big": "01",
+      "text": "Rawa *Grassrivers*",
+      "sub": "Kabur naik airboat, dikejar helikopter",
+      "seconds": 2.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 138.3
+      }
+    },
+    {
+      "big": "02",
+      "text": "*Leonida Keys*",
+      "sub": "Pulau tropis & rumah panggung",
+      "seconds": 4,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 6.0
+      }
+    },
+    {
+      "big": "03",
+      "text": "Flamingo *liar*",
+      "sub": "Kawanan flamingo di rawa",
+      "seconds": 2.4,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 19.0
+      }
+    },
+    {
+      "big": "04",
+      "text": "Pantai *Vice City*",
+      "sub": "Pantai ramai & gedung tinggi",
+      "seconds": 3.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 10.9
+      }
+    },
+    {
+      "big": "05",
+      "text": "Vice City *malam*",
+      "sub": "Jalan neon & mobil sport",
+      "seconds": 2.2,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 31.4
+      }
+    },
+    {
+      "big": "06",
+      "text": "Jet ski & *speedboat*",
+      "sub": "Ngebut di laut sampai pelabuhan",
+      "seconds": 2.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 23.5
+      }
+    },
+    {
+      "big": "07",
+      "text": "Nge-gym di *pantai*",
+      "sub": "Angkat beban di pinggir laut",
+      "seconds": 2.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 38.8
+      }
+    },
+    {
+      "big": "08",
+      "text": "Jason & *Lucia*",
+      "sub": "Dua tokoh utama, bisa gonta-ganti",
+      "seconds": 4,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 63.5
+      }
+    },
+    {
+      "big": "09",
+      "text": "*Rampok* toko",
+      "sub": "Beraksi berdua, lalu kabur",
+      "seconds": 2.0,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 76.5
+      }
+    },
+    {
+      "big": "10",
+      "text": "Wanted sampai *6 bintang*",
+      "sub": "Mana yang kamu coba duluan? Tulis di komentar",
+      "seconds": 2.9,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 108.0
+      }
+    }
+  ],
+  "sources": [
+    "Rockstar Games",
+    "Game Informer",
+    "IGN"
+  ],
+  "coverVideo": {
+    "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+    "start": 6.0,
+    "dim": 0.7
+  },
+  "audio": false
+}

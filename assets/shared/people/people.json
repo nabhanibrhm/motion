@@ -176,6 +176,17 @@
       "commonsUrl": "https://commons.wikimedia.org/wiki/File:Raffi-Ahmad-2020_(cropped).jpg",
       "author": "Lautner of the king at Indonesian Wikipedia",
       "licence": "CC BY 3.0"
+    },
+    {
+      "slug": "dedi-mulyadi",
+      "file": "people/dedi-mulyadi.jpg",
+      "name": "Dedi Mulyadi",
+      "role": "Gubernur Jawa Barat",
+      "roleAsOf": "2026-11",
+      "credit": "Pemprov Jawa Barat (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Dedi_Mulyadi,_Gubernur_Jawa_barat_2025-2030_(cropped).jpg",
+      "author": "Government of West Java",
+      "licence": "Public domain"
     }
   ]
 }

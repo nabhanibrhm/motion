@@ -1,0 +1,63 @@
+/* Wizz Clip news template. Palette tokens are substituted by render.mjs (__INK__ etc.). 1080x1920.
+   Safe zones: top 170 px clear, bottom 288 px (y > 1632) clear, right 120 px clear. */
+@font-face { font-family: "Audex"; src: url("assets/fonts/Audex-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VF.ttf") format("truetype"); font-weight: 100 800; font-style: normal; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: __INK__; }
+body { font-family: "Audex", sans-serif; font-weight: 400; font-synthesis: none; letter-spacing: 0; color: __PAPER__; }
+b { font-weight: 400; }
+
+#bg { position: absolute; inset: 0; background: __INK__; }
+/* ==SCENE== (everything below goes into every scene template) */
+#root { position: absolute; inset: 0; }
+
+/* brand lockup + chip (top band y 190-260) */
+.brand { display: flex; align-items: center; gap: 14px; }
+#hdr { position: absolute; left: 84px; top: 192px; height: 64px; }
+.brand .mark { width: 60px; height: 60px; display: block; }
+.brand .wm { font-size: 54px; line-height: 1; color: __PAPER__; }
+.brand .wm b { color: __VOLT__; }
+.chip { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px; line-height: 1; letter-spacing: 0; color: __PAPER__; background: __GRAPHITE__; padding: 15px 22px; border-radius: 10px; white-space: nowrap; }
+#chip { position: absolute; right: 120px; top: 194px; }
+
+/* progress: one segment per beat, Paper fill */
+#prog { position: absolute; left: 84px; top: 292px; width: 876px; height: 6px; display: flex; gap: 8px; }
+.seg { flex: 1; height: 6px; background: __GRAPHITE__; overflow: hidden; border-radius: 3px; }
+.seg i { display: block; width: 100%; height: 100%; background: __PAPER__; transform-origin: 0 50%; }
+
+/* content zone y 340-1500, x 84-930 */
+.beat, .cover { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.zone { position: absolute; left: 84px; top: 340px; width: 846px; height: 1160px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 40px; }
+.b-img { position: relative; width: 846px; height: 520px; border-radius: 20px; overflow: hidden; background: __GRAPHITE__; flex: none; }
+.b-img img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+.b-big { color: __VOLT__; line-height: 0.98; white-space: nowrap; }
+.b-text { color: __PAPER__; line-height: 1.08; width: 846px; }
+.vo { color: __VOLT__; }
+.b-sub { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 32px; line-height: 1.35; color: __MIST__; width: 846px; }
+
+/* sources line (above y 1632) */
+#src { position: absolute; left: 68px; top: 1522px; max-width: 878px; width: fit-content; padding: 10px 16px; border-radius: 10px; background: __INK__; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 28px; line-height: 1.35; color: __MIST__; }
+
+/* Volt cut line (transition accent) */
+#cut { position: absolute; left: 0; top: 917px; width: 1080px; height: 6px; background: __VOLT__; transform-origin: 0 50%; }
+
+/* cover card = TikTok cover */
+.cover { background: __INK__; }
+.cv-zone { gap: 56px; }
+.cv-chip { font-size: 34px; padding: 18px 28px; }
+.cv-title { color: __PAPER__; line-height: 1.04; width: 846px; }
+.cv-brand { gap: 20px; margin-top: 8px; }
+.cv-brand .mark { width: 120px; height: 120px; }
+.cv-brand .wm { font-size: 108px; }
+
+/* the mark's polygons sit inset in their 100-box: pull the lockup so the visible edge aligns at x=84 */
+#hdr { left: 72px; }
+.cv-brand { margin-left: -24px; }
+
+/* video backgrounds (pre-cut 1080x1920, muted) + Ink dim overlay; the wrapper gets the slow push-in */
+.b-vid { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+.b-vid video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+.b-dim { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: __INK__; }
+/* small mono lines over footage sit on an Ink pill (as the credit pill in clips): Mist stays readable */
+.b-sub.pill { width: fit-content; max-width: 846px; margin-left: -16px; padding: 10px 16px; border-radius: 10px; background: __INK__; }

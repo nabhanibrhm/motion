@@ -33,7 +33,7 @@ Other options: `--mute 12-18.5,40-44` (seconds from clip start), `--srt file.srt
 - Scratch goes to `.cache/wizzclip/<slug>/`, finished clips to `out/wizzclip/` (both git-ignored; `out/` syncs to Google Drive).
 
 ## Campaign recipes
-Paid clipping campaigns (MotionKlip) use tracked recipes instead of `cut`: `recipes/<name>.json` holds the source (slug + YouTube id/section), the ffmpeg filter graph with its timings, the `.ass` subtitle file and the output name. They keep their own look (Arial Black / Impact subtitles) so the finished clips stay reproducible; they do not use the brand restyle above.
+Paid clipping campaigns (MotionKlip) use tracked recipes instead of `cut`: `recipes/<name>.json` holds the source (slug + YouTube id/section), the ffmpeg filter graph with its timings, the `.ass` subtitle file and the output name. Their `.ass` files use the Wizz Clip brand look (Audex, Paper text with Ink outline, Paper-on-Ink title box, Volt as the one accent word), so they stay reproducible without any system font.
 ```powershell
 python tools/wizzclip/wizzclip.py recipe                        # list recipes
 python tools/wizzclip/wizzclip.py recipe kof-clip1-orochi-iori  # -> out/wizzclip/kof-clip1-orochi-iori.mp4
@@ -41,6 +41,7 @@ python tools/wizzclip/wizzclip.py recipe windah-streamchart-clip1 --out _test   
 ```
 - Run from the repo root. Sources come from `.cache/wizzclip/<slug>/source.mp4`; if missing, the command prints the exact `fetch` call (kof-windah: full video `x2cS00dnpYc`; windah-streamchart: `iMqt1bgNrLk` section `00:30:40`-`00:32:20`, whose local time is absolute minus 1840 s).
 - An existing output is never overwritten without `--force`.
-- The `.ass` files need Arial Black and Impact: copy `ariblk.ttf` and `impact.ttf` from `C:\Windows\Fonts` into `.cache/wizzclip/_fonts/` (proprietary, git-ignored, never commit them). The recipe stops with a clear error if they are missing.
+- Fonts: a recipe's `fontsdir` (repo-relative) is passed to libass; the brand recipes use `tools/wizzclip/fonts` (Audex, committed). A recipe without `fontsdir` falls back to `.cache/wizzclip/_fonts/` (proprietary fonts such as Arial Black / Impact; never commit them), and the command stops with a clear error if a font listed in `fonts` is missing.
+- **Caption rule (all Wizz Clip posts): at most 5 hashtags.** Campaign clips use exactly the campaign's required hashtags in its order (KOF 5, Streamchart 4); if a campaign ever requires more than 5, ask before posting.
 - Campaign assets live in `campaigns/motionklip/` (watermark, Streamcharts images). `campaigns/motionklip/campaign.json` records the rules: CPM, minimum and maximum claimable views, required hashtags in exact order, and the rules for all campaigns (MotionKlip watermark on every upload, footage only from the brief, no AI auto-clippers, no paid views, keep videos up, claim once per video via the campaign's Google Form after the minimum views).
-- Re-rendering the recipes reproduces the existing clips bit-for-bit in video (SSIM 1.0 against both finished clips).
+- Before the brand restyle (Arial Black / Impact look) the recipes reproduced the then-finished clips bit-for-bit in video (SSIM 1.0); the filter graph, timings and encode settings are unchanged, only the subtitle styling differs.

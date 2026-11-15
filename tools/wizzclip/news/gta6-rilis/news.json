@@ -1,0 +1,84 @@
+{
+  "_note": "Facts verified 15 Nov 2026 (research in .cache/wizzclip/gta6-release/research.md): Rockstar Newswire 3 Nov + Rockstar Support (midnight local time, all regions; pre-load 10 Nov, up to 212 GB); 00.00 WIB from IDN Times, Uzone, VIVA, Medcom; PS Store ID price from detikINET, Uzone, Bisnis.com. Re-check Rockstar Support 'Last Updated' and the PS Store price on 17-18 Nov before posting. Backgrounds: muted official Rockstar trailers in .cache/wizzclip/gta6-trailer/ (not in git).",
+  "title": "GTA 6 RILIS *JAM BERAPA*?",
+  "category": "GAMING",
+  "kind": "BERITA",
+  "beats": [
+    {
+      "big": "00.00 WIB",
+      "text": "GTA 6 rilis di Indonesia, Kamis 19 November",
+      "sub": "Rabu malam, lewat jam 12",
+      "seconds": 4.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 3
+      }
+    },
+    {
+      "text": "Rockstar: rilis *tengah malam* waktu lokal, di semua wilayah",
+      "sub": "PS5 & Xbox Series X|S",
+      "seconds": 5.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 18.6
+      }
+    },
+    {
+      "text": "Begadang Rabu malam atau main besoknya? *Tulis di komentar*",
+      "sub": "Kamu tim yang mana?",
+      "seconds": 5.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 6
+      }
+    },
+    {
+      "big": "212 GB",
+      "text": "Pre-load sudah dibuka sejak 10 November",
+      "sub": "Siapkan ruang penyimpanan",
+      "seconds": 5.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 36
+      }
+    },
+    {
+      "big": "Rp1.190.000",
+      "text": "Harga GTA 6 di PS Store Indonesia",
+      "sub": "Ultimate Rp1.490.000 · PC belum diumumkan",
+      "seconds": 5.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 27
+      }
+    },
+    {
+      "text": "Kalau jadwal berubah, kami *update* di sini",
+      "sub": "Follow biar nggak ketinggalan",
+      "seconds": 4.5,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+        "start": 147
+      }
+    }
+  ],
+  "sources": [
+    "Rockstar Games",
+    "detikINET",
+    "IDN Times",
+    "Uzone"
+  ],
+  "music": {
+    "src": "assets/shared/music/bed.mp3",
+    "volume": 0.35
+  },
+  "sfxDefault": "whoosh",
+  "coverSfx": "pop",
+  "coverVideo": {
+    "src": ".cache/wizzclip/gta6-trailer/trailer2.mp4",
+    "start": 153,
+    "dim": 0.7
+  },
+  "sfxVolume": 0.3,
+  "audio": false
+}

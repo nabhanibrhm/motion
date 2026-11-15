@@ -1,0 +1,83 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "Foto Gibran Dibalik di DPRD"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Gubernur Jawa Barat Dedi Mulyadi menyesalkan foto Gibran yang diturunkan, lalu dibiarkan terbalik di kursi ruang rapat DPRD Jawa Barat."
+        }
+      ]
+    },
+    {
+      "id": "kutipan",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kata Dedi, foto itu semestinya diturunkan oleh petugas yang ditunjuk, dan peristiwa ini patut disesalkan. Menurutmu, protes seperti itu pantas? Tulis di komentar."
+        }
+      ]
+    },
+    {
+      "id": "kronologi",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kejadiannya Kamis, usai audiensi koalisi masyarakat sipil dengan pimpinan DPRD, saat sesi foto bersama. Jumat, foto itu sudah dipasang lagi."
+        }
+      ]
+    },
+    {
+      "id": "respons",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Ketua DPRD Jawa Barat Buky Wibawa bilang itu bukan keputusan lembaga, dan ia tidak tahu fotonya dibalik. Koordinator koalisi menyebut itu aksi spontan peserta, bukan rencana rombongan."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Jawab di komentar, dan follow untuk update berikutnya.",
+          "after": 1.4
+        }
+      ]
+    }
+  ],
+  "say": {
+    "DPRD": "de pe er de"
+  }
+}
