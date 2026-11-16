@@ -1,10 +1,14 @@
-# Handoff: production status (15 Nov 2026)
+# Handoff: production status (16 Nov 2026)
 
 Commit only when requested. Before changes, read `ai-routing.md` and route by the current shared-module responsibilities there.
 
 ## Claude: start here
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
+
+**Changed on 16 Nov 2026, ~07:45 (WSL): Wizz Clip `gta6-15hal` POSTED.**
+- User posted `gta6-15hal` by ~07:45 WIB (earlier than the planned 11:30-13:00 slot). **On Windows: move `out/wizzclip/news-gta6-15hal.mp4` + `news-gta6-15hal-caption.txt` to `out/wizzclip/uploaded/`** (not present on WSL). Record views at 1 h / 2 h, avg watch, % full; claim nothing (no active GTA campaign yet). `gta6-jelajah` stays unposted (superseded).
+- Today still: KASUS #16 `phk` 18:00-21:00 (Windows `out/26-phk-short.mp4`), at least 3-4 h after this post and not while it is spiking.
 
 **Changed on 15 Nov 2026, ~21:00-23:30 (Windows): Wizz Clip GTA 6 "15 hal" with Nisa narration; news template gets voice-over; "10 hal" reshot from the Extended Look.**
 - **Rockstar "An Extended Look"** (YouTube `tJbzMqJGH4k`, 26:48, PS5 in-game, age-gated) downloaded video-only to `.cache/wizzclip/gta6-trailer/extended.mp4` (232 MB, not in git). Age gate needs a signed-in browser + JS solver: `.venv/Scripts/yt-dlp.exe --js-runtimes node --remote-components ejs:github --cookies-from-browser firefox -f "bv[height<=1080][ext=mp4]" -o ".cache/wizzclip/gta6-trailer/extended.mp4" "https://www.youtube.com/watch?v=tJbzMqJGH4k"` (Chrome cookies fail on Windows: DPAPI; the user runs it with `!`). Contact sheets + checked shot windows in `.cache/wizzclip/gta6-explore/el/` (parachute 1127.5-1138.4, airboat 1030-1032.9, basket 1033-1035.9, dive 1036-1038.4, gym 1038.5-1041.9, jet ski 1045-1046.9, race 1062-1065.9, shooting range 1112-1114.9, motocross 1115-1118.9, robbery 715.5-721.4, police shootout 840-850.4, J&L 1013-1016.9, dusk skyline 1545-1548.4, boat 1573-1576; skip the 1106 livestream (person in a trunk), 1108 bikini beach, club scenes).
