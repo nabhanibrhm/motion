@@ -6,8 +6,12 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
-**Changed on 16 Nov 2026, ~07:45 (WSL): Wizz Clip `gta6-15hal` POSTED.**
-- User posted `gta6-15hal` by ~07:45 WIB (earlier than the planned 11:30-13:00 slot). **On Windows: move `out/wizzclip/news-gta6-15hal.mp4` + `news-gta6-15hal-caption.txt` to `out/wizzclip/uploaded/`** (not present on WSL). Record views at 1 h / 2 h, avg watch, % full; claim nothing (no active GTA campaign yet). `gta6-jelajah` stays unposted (superseded).
+**Changed on 16 Nov 2026, ~07:45-14:30 (WSL): Wizz Clip `gta6-15hal` POSTED; view counts.**
+- User posted `gta6-15hal` at **06:02 WIB** (TikTok analytics; earlier than the planned 11:30-13:00 slot). **On Windows: move `out/wizzclip/news-gta6-15hal.mp4` + `news-gta6-15hal-caption.txt` to `out/wizzclip/uploaded/`** (not present on WSL). Record views at 1 h / 2 h, avg watch, % full; claim nothing (no active GTA campaign yet). `gta6-jelajah` stays unposted (superseded).
+- **Views at 16 Nov 14:12 WIB (profile grids):**
+  - Wizz Clip (@thewizzclip, 1 follower, 24 likes): `gta6-15hal` 167 (~8 h), Streamchart clip 212, KOF clip 17x (count partly hidden by a popup), both ~1 day old. All far below the 2K claim minimum: nothing to claim yet.
+  - Wizz Indonesia (@wizzindonesia, 1,134 followers, 21.8K likes): `cuti` (KASUS #11, pinned) 358.3K, `bsu` 17.6K, `fotogibran` (HOTWIZZ #10, ~19 h) 1,102, `ijazah` 671, `pajak` 666; `saham` and older not readable.
+- **`gta6-15hal` analytics 14:22 (~8.3 h):** 167 views, 11 likes, 0 comments, 0 shares, 2 saves, avg watch **10.0 s of 49.95 s (20%)**, **3.23% full**, total play 31m07s, 0 new followers. Views came in one first-hour burst (~130) then stalled: new-account test batch, not pushed further. Read: hook holds ~10 s (same as KASUS bsu 12.6 s), but a 15-item list is too long to finish; try shorter (5-7 items, 25-35 s) for the next news clip.
 - Today still: KASUS #16 `phk` 18:00-21:00 (Windows `out/26-phk-short.mp4`), at least 3-4 h after this post and not while it is spiking.
 
 **Changed on 15 Nov 2026, ~21:00-23:30 (Windows): Wizz Clip GTA 6 "15 hal" with Nisa narration; news template gets voice-over; "10 hal" reshot from the Extended Look.**
