@@ -19,12 +19,17 @@
 //             text: main line (Audex). big: huge number/time (Volt). image: path (repo-root or news dir relative).
 //             video: { src, start, dim?, focusX? } muted footage behind the beat (pre-cut to .cache/.../clips, video only).
 //               src repo-root relative; start = seconds into the source; dim = Ink overlay opacity (default 0.55); focusX 0..1 = horizontal crop (default 0.5).
+//             split: { top: {src,start,speed?,dim?,focusX?,win?}, bottom: {...}, labels?: [top, bottom] }  two stacked halves
+//               (1080x960 each), label pill on each, text on an Ink box over the seam. speed 0.25..1 slows a short shot
+//               (0.5 = half speed: a 1.2 s shot fills 2.4 s); win = clean shot length in SOURCE seconds. No big/image/video with split.
 //             sub: one small mono line, appears subAt seconds into the beat (default ~45% of the beat, max 2.4 s).
 //             sfx: file name (no extension) in assets/shared/sfx, played at the cut into this beat; false = none.
 //   sources[] outlet names (shown as "SUMBER: a, b")
 //   music     { src, volume }  default assets/shared/music/bed.mp3 at 0.35 (pre-loudnorm)
 //   sfxDefault (cut sound, default "whoosh"), sfxVolume (default 0.5), coverSfx (default "pop")
 //   coverVideo { src, start, dim?, focusX? }  same, behind the cover card (default dim 0.68)
+//   coverSplit { top, bottom, labels? }  split footage behind the cover card instead (default dim 0.55; labels shown)
+//   splitLabels [top, bottom]  default labels for split beats (default ["DULU", "SEKARANG"])
 //   audio     false = output has no audio track (you add the soundtrack in TikTok/YouTube); music and sfx are skipped at mastering
 //   placeholder  true = the build prints a PLACEHOLDER warning
 //   music     false = no music bed (sfxDefault/coverSfx false = no sfx)
@@ -42,7 +47,7 @@ import { masterVideo, masterQa } from '../../../src/pipeline/master.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '../../..');
-const W = 1080, H = 1920, FPS = 30, COVER = 1.2, ZONE_W = 846;
+const W = 1080, H = 1920, FPS = 30, COVER = 1.2, ZONE_W = 846, SEAM_PAD = 22, SEAM_W = 816;
 const C = { ink: '#0E0F12', graphite: '#1A1C21', mist: '#8C9099', paper: '#F4F3EF', volt: '#E6FC29' };
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const r3 = n => +n.toFixed(3);
@@ -77,19 +82,33 @@ function parseVideo(v, label, defDim, need) {
   need(Number.isFinite(start) && start >= 0, `${label}.start must be seconds >= 0`);
   need(dim >= 0 && dim <= 1, `${label}.dim must be 0..1`);
   need(focusX >= 0 && focusX <= 1, `${label}.focusX must be 0..1`);
-  return { src, start, dim, focusX };
+  const speed = Number(v.speed ?? 1);
+  need(speed >= 0.25 && speed <= 1, `${label}.speed must be 0.25..1`);
+  return { src, start, dim, focusX, speed, win: v.win === undefined ? null : Number(v.win) };
+}
+function parseSplit(s, label, defDim, need, defLabels) {
+  const labels = s.labels ?? defLabels ?? ['DULU', 'SEKARANG'];
+  need(Array.isArray(labels) && labels.length === 2 && labels.every(x => typeof x === 'string' && x.trim()), `${label}.labels must be two strings`);
+  need(s.top && s.bottom, `${label} needs top and bottom`);
+  return { top: parseVideo(s.top, `${label}.top`, defDim, need), bottom: parseVideo(s.bottom, `${label}.bottom`, defDim, need), labels };
 }
 const tool = (bin, args) => { const r = spawnSync(bin, args, { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }); if (r.error) throw r.error; if (r.status !== 0) throw new Error(`${bin} failed: ${r.stderr.slice(-1500)}`); return r.stdout; };
 // Pre-cut one segment: video only (-an: source audio is never used), 30 fps, exact frame count, cover-cropped to 1080x1920,
 // short GOP so seeks are cheap. Cached by a hash of its parameters in <build>/clips/.
-function cutClip(v, dur, clipsDir, label) {
+function cutClip(v, dur, clipsDir, label, w = W, h = H) {
   const srcDur = Number(tool('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', v.src]).trim());
-  if (!(v.start + dur <= srcDur - 0.05)) throw new Error(`${label}: needs ${v.start}s + ${dur}s but ${basename(v.src)} is only ${srcDur.toFixed(2)}s long`);
-  const key = createHash('sha1').update(JSON.stringify([v.src, statSync(v.src).size, v.start, dur, v.focusX, 'v2'])).digest('hex').slice(0, 12);
+  const speed = v.speed ?? 1, need = dur * speed;
+  if (!(v.start + need <= srcDur - 0.05)) throw new Error(`${label}: needs ${v.start}s + ${r3(need)}s but ${basename(v.src)} is only ${srcDur.toFixed(2)}s long`);
+  // full-frame cuts keep their old cache key; split halves and slowed shots get their own
+  const key = createHash('sha1').update(JSON.stringify(w === W && h === H && speed === 1 ? [v.src, statSync(v.src).size, v.start, dur, v.focusX, 'v2'] : [v.src, statSync(v.src).size, v.start, dur, v.focusX, speed, w, h, 'v3'])).digest('hex').slice(0, 12);
   const file = join(clipsDir, `${key}.mp4`);
   if (existsSync(file)) return file;
   mkdirSync(clipsDir, { recursive: true });
-  const vf = `scale=-2:${H}:flags=lanczos,crop=${W}:${H}:(iw-${W})*${v.focusX}:0,fps=${FPS},setsar=1,format=yuv420p`;
+  // full frame: scale to 1920 high, crop at focusX. Split half (1080x960): cover-fit, crop the overflow at focusX, centred
+  // vertically. speed < 1 = slow motion (setpts before fps, so frames are repeated, not blended).
+  const fitVf = w === W && h === H ? `scale=-2:${H}:flags=lanczos,crop=${W}:${H}:(iw-${W})*${v.focusX}:0`
+    : `scale=w='max(${w},iw*${h}/ih)':h='max(${h},ih*${w}/iw)':flags=lanczos,crop=${w}:${h}:(iw-${w})*${v.focusX}:(ih-${h})/2`;
+  const vf = `${speed !== 1 ? `setpts=PTS/${speed},` : ''}${fitVf},fps=${FPS},setsar=1,format=yuv420p`;
   const tmp = file + '.part.mp4';
   tool('ffmpeg', ['-hide_banner', '-nostdin', '-y', '-loglevel', 'error', '-ss', String(v.start), '-i', v.src, '-an', '-sn', '-vf', vf, '-frames:v', String(Math.round(dur * FPS)),
     '-c:v', 'libx264', '-preset', 'fast', '-crf', '20', '-g', '6', '-keyint_min', '6', '-sc_threshold', '0', '-movflags', '+faststart', tmp]);
@@ -136,20 +155,29 @@ function load(id) {
       need(image, `${n}.image not found: ${b.image}`);
     }
     const video = parseVideo(b.video, `${n}.video`, 0.55, need);
+    let split = null;
+    if (b.split) {
+      need(!b.big && !b.image && !b.video, `${n}: split cannot be combined with big, image or video`);
+      split = parseSplit(b.split, `${n}.split`, 0.12, need, d.splitLabels);
+      for (const [k, v] of [['top', split.top], ['bottom', split.bottom]])
+        if (v.win && Number(b.seconds) * v.speed > v.win + 0.05) warn.push(`${n}.split.${k} needs ${r3(Number(b.seconds) * v.speed)}s of source but its clean shot (win) is ${v.win}s: it crosses a cut`);
+    }
     if (b.video?.win && Number(b.seconds) > Number(b.video.win) + 0.05) warn.push(`${n} lasts ${b.seconds}s but its clean shot (video.win) is ${b.video.win}s: it crosses a cut`);
     const sfxName = b.sfx === undefined ? (i === 0 ? false : sfxDefault) : b.sfx;
-    return { ...b, i, seconds: Number(b.seconds), image, video, sfxName, voice };
+    return { ...b, i, seconds: Number(b.seconds), image, video, split, sfxName, voice };
   });
   const coverVideo = parseVideo(d.coverVideo, 'coverVideo', 0.68, need);
+  need(!(d.coverVideo && d.coverSplit), 'use coverVideo or coverSplit, not both');
+  const coverSplit = d.coverSplit ? parseSplit(d.coverSplit, 'coverSplit', 0.55, need, d.splitLabels) : null;
   const total = r3(beats.reduce((s, b) => s + b.seconds, 0) + COVER);
   if (narr ? (total < 25 || total > 60) : (total < 25 || total > 45)) warn.push(`total ${total}s is outside the usual ${narr ? '30-55' : '32-38'} s`);
   if (d.placeholder) warn.push('PLACEHOLDER content: replace the beats in news.json before posting');
-  return { id, file, d, beats, coverVideo, music, total, warn, sfxDefault };
+  return { id, file, d, beats, coverVideo, coverSplit, music, total, warn, sfxDefault };
 }
 
 // ---------- stage a build ----------
 function stage(ctx) {
-  const { id, d, beats, coverVideo, music, total } = ctx;
+  const { id, d, beats, coverVideo, coverSplit, music, total } = ctx;
   const out = join(ROOT, '.cache/wizzclip/news', id);
   const put = (rel, text) => { const p = join(out, rel); mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, text, 'utf8'); };
   const copy = (src, rel) => { const p = join(out, rel); mkdirSync(dirname(p), { recursive: true }); copyFileSync(src, p); };
@@ -169,9 +197,9 @@ function stage(ctx) {
   let t = 0;
   const plan = beats.map(b => {
     const start = r3(t); t += b.seconds;
-    const text = b.big ? fit(b.text, 88, 56, 3) : b.image ? fit(b.text, 84, 56, 3) : fit(b.text, 108, 60, 5);
+    const text = b.split ? fit(b.text, 72, 48, 3, SEAM_W) : b.big ? fit(b.text, 88, 56, 3) : b.image ? fit(b.text, 84, 56, 3) : fit(b.text, 108, 60, 5);
     const subAt = b.subAt ?? r3(Math.min(2.4, b.seconds * 0.45));
-    return { i: b.i, start, dur: b.seconds, vid: !!b.video, img: !!b.image, big: !!b.big, sub: !!b.sub, subAt, text };
+    return { i: b.i, start, dur: b.seconds, vid: !!b.video, split: !!b.split, img: !!b.image, big: !!b.big, sub: !!b.sub, subAt, text };
   });
   const coverStart = r3(t);
   const sw = []; // build-time overflow warnings
@@ -185,12 +213,24 @@ function stage(ctx) {
     const f = cutClip(v, dur, clipsDir, label); usedClips.add(basename(f)); copy(f, rel);
     return `<div class="b-vid" id="${key}-vid"><video id="${key}-video" class="clip" data-start="0" data-duration="${dur}" data-track-index="0" src="${rel}" muted playsinline></video></div><div class="b-dim" style="opacity:${v.dim}"></div>`;
   };
-  const bgs = beats.map((b, i) => vidHTML(`b${i}`, b.video, plan[i].dur, `beats[${i}].video`));
-  const coverBg = vidHTML('cv', coverVideo, COVER, 'coverVideo');
+  // split: two 1080x960 halves, each with its own dim; label pills at the outer edge of each half
+  const halfHTML = (key, part, v, dur, label) => {
+    const rel = `assets/clips/${key}-${part}.mp4`;
+    const f = cutClip(v, dur, clipsDir, label, W, H / 2); usedClips.add(basename(f)); copy(f, rel);
+    return `<div class="sp-half sp-${part}"><div class="sp-vid" id="${key}-${part}"><video id="${key}-${part}-video" class="clip" data-start="0" data-duration="${dur}" data-track-index="${part === 'top' ? 0 : 1}" src="${rel}" muted playsinline></video></div><div class="sp-dim" style="opacity:${v.dim}"></div></div>`;
+  };
+  const splitHTML = (key, s, dur, label) => !s ? '' : halfHTML(key, 'top', s.top, dur, `${label}.top`) + halfHTML(key, 'bottom', s.bottom, dur, `${label}.bottom`)
+    + `<div class="sp-seam"></div><div class="sp-label sp-l-top">${esc(s.labels[0])}</div><div class="sp-label sp-l-bot">${esc(s.labels[1])}</div>`;
+  const bgs = beats.map((b, i) => b.split ? splitHTML(`b${i}`, b.split, plan[i].dur, `beats[${i}].split`) : vidHTML(`b${i}`, b.video, plan[i].dur, `beats[${i}].video`));
+  const coverBg = coverSplit ? splitHTML('cv', coverSplit, COVER, 'coverSplit') : vidHTML('cv', coverVideo, COVER, 'coverVideo');
   if (existsSync(clipsDir)) for (const f of readdirSync(clipsDir)) if (!usedClips.has(f)) rmSync(join(clipsDir, f), { force: true }); // drop stale cuts
   const bigFit = s => Math.min(300, Math.floor(ZONE_W / em(s)));
   const zones = beats.map((b, i) => {
     const p = plan[i];
+    if (b.split) { // the line sits on an Ink box centred on the seam (y 960)
+      const boxH = Math.round(p.text.lines * p.text.size * 1.08 + 2 * SEAM_PAD);
+      return `<div class="sp-zone" id="b${i}-zone" style="top:${Math.round(H / 2 - boxH / 2)}px"><div class="b-text sp-text" id="b${i}-text" style="font-size:${p.text.size}px">${accent(b.text)}</div></div>`;
+    }
     let inner = '';
     if (b.image) { const rel = `assets/img/b${i}${extname(b.image).toLowerCase()}`; copy(b.image, rel); inner += `<div class="b-img" id="b${i}-img"><img id="b${i}-pic" src="${rel}" alt="" /></div>`; }
     if (b.big) { const s = bigFit(plain(b.big)); if (s < 90) sw.push(`beats[${i}].big is too wide (${b.big})`); inner += `<div class="b-big" id="b${i}-big" style="font-size:${s}px">${esc(b.big)}</div>`; }
@@ -250,14 +290,14 @@ window.__timelines["${sid}"] = ${script};
   const hosts = [];
   beats.forEach((b, i) => {
     const p = plan[i], sid = `beat-${i + 1}`;
-    put(`compositions/${sid}.html`, scene(sid, bgs[i] + zones[i], `NEWS.beat(${JSON.stringify({ i, dur: p.dur, vid: p.vid, img: p.img, big: p.big, sub: p.sub, subAt: p.subAt })})`));
+    put(`compositions/${sid}.html`, scene(sid, bgs[i] + zones[i], `NEWS.beat(${JSON.stringify({ i, dur: p.dur, vid: p.vid, split: p.split, img: p.img, big: p.big, sub: p.sub, subAt: p.subAt })})`));
     hosts.push(host(sid, p.start, p.dur, 1, 1));
   });
   put('compositions/cover.html', scene('cover', `<div class="cover">${coverBg}<div class="zone cv-zone">
 <div class="chip cv-chip" id="cv-chip">${esc(chipText)}</div>
 <div class="cv-title" id="cv-title" style="font-size:${title.size}px">${accent(d.title)}</div>
 <div class="brand cv-brand" id="cv-brand">${mark('mark')}<span class="wm">wizz<b>clip</b></span></div>
-</div></div>`, `NEWS.cover(${COVER}, ${!!coverVideo})`));
+</div></div>`, `NEWS.cover(${COVER}, ${!!coverVideo}, ${!!coverSplit})`));
   hosts.push(host('cover', coverStart, COVER, 2, 2));
   put('compositions/chrome.html', scene('chrome', `<div id="cut"></div>
 <div id="hdr" class="brand">${mark('mark')}<span class="wm">wizz<b>clip</b></span></div>

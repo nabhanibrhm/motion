@@ -61,3 +61,18 @@ b { font-weight: 400; }
 .b-dim { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: __INK__; }
 /* small mono lines over footage sit on an Ink pill (as the credit pill in clips): Mist stays readable */
 .b-sub.pill { width: fit-content; max-width: 846px; margin-left: -16px; padding: 10px 16px; border-radius: 10px; background: __INK__; }
+
+/* split beat: two stacked 1080x960 halves (then / now), Ink seam, label pills at the outer edge of each half,
+   the line on an Ink box centred on the seam (left-aligned at x 84, clear of the right 120 px and the bottom 288 px) */
+.sp-half { position: absolute; left: 0; width: 1080px; height: 960px; overflow: hidden; }
+.sp-top { top: 0; }
+.sp-bottom { top: 960px; }
+.sp-vid { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; transform-origin: 50% 50%; }
+.sp-vid video { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; object-fit: cover; }
+.sp-dim { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; background: __INK__; }
+.sp-seam { position: absolute; left: 0; top: 956px; width: 1080px; height: 8px; background: __INK__; }
+.sp-label { position: absolute; left: 84px; font-size: 64px; line-height: 1; padding: 12px 22px 10px; border-radius: 12px; background: __INK__; color: __PAPER__; }
+.sp-l-top { top: 340px; }
+.sp-l-bot { top: 1524px; color: __VOLT__; }
+.sp-zone { position: absolute; left: 84px; max-width: 876px; width: fit-content; padding: 22px 30px; border-radius: 16px; background: __INK__; }
+.sp-text { width: auto; max-width: 816px; }

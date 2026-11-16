@@ -11,6 +11,7 @@
   function beat(b) {
     var tl = gsap.timeline({ paused: true }), id = "#b" + b.i + "-";
     if (b.vid) tl.fromTo(id + "vid", { scale: 1 }, { scale: 1.06, duration: b.dur, ease: "none" }, 0);
+    if (b.split) tl.fromTo([id + "top", id + "bottom"], { scale: 1 }, { scale: 1.05, duration: b.dur, ease: "none" }, 0);
     if (b.img) tl.fromTo(id + "pic", { scale: 1 }, { scale: 1.07, duration: b.dur, ease: "none" }, 0);
     if (b.i > 0) {
       var s = 0;
@@ -44,9 +45,10 @@
   }
 
   // cover card (local time): the last ~1 s, settled well before the end; this is the TikTok cover
-  function cover(dur, vid) {
+  function cover(dur, vid, split) {
     var tl = gsap.timeline({ paused: true });
     if (vid) tl.fromTo("#cv-vid", { scale: 1 }, { scale: 1.06, duration: dur, ease: "none" }, 0);
+    if (split) tl.fromTo(["#cv-top", "#cv-bottom"], { scale: 1 }, { scale: 1.04, duration: dur, ease: "none" }, 0);
     tl.fromTo("#cv-chip", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.28, ease: EASE }, 0.02);
     tl.fromTo("#cv-title", { clipPath: "inset(-8% 100% -12% -2%)", x: -44 }, { clipPath: "inset(-8% -4% -12% -2%)", x: 0, duration: 0.38, ease: EASE }, 0.08);
     tl.fromTo("#cv-brand", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: EASE }, 0.2);
