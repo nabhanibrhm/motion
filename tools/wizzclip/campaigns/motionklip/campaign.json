@@ -36,6 +36,22 @@
       "source_youtube": "iMqt1bgNrLk",
       "source_section": ["00:30:40", "00:32:20"],
       "recipes": ["windah-streamchart-clip1"]
+    },
+    "windah-trailer-gta-vi": {
+      "title": "Windah Trailer GTA VI - Motion Klip",
+      "category": "Gaming",
+      "platforms": ["TikTok", "Instagram", "YouTube"],
+      "cpm_idr": 10000,
+      "min_views": 2000,
+      "max_claim_views_per_video": 30000,
+      "payout": "Gopay or DANA; one claim per video, views counted at submission",
+      "announcement_channel": "windah-trailer-gta-announcement",
+      "rules_channel": "windah-trailer-gta-bahan-dan-... (not read yet)",
+      "hashtags": null,
+      "hashtags_note": "TODO from the bahan/rules channel; a 100.9K-view example used #motionklip #windahbasudara #gta6",
+      "source_youtube": null,
+      "source_note": "TODO from the bahan channel; example clip (16 Nov 05:51 WIB) is Windah's GTA 6 stream, radio/copyright answer and 'gue siapin 300.000.000 buat clipper'",
+      "recipes": []
     }
   }
 }
