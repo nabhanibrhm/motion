@@ -16,10 +16,18 @@
       "cpm_idr": 7000,
       "min_views": 2000,
       "max_claim_views_per_video": 350000,
-      "hashtags": ["#KOFLegend", "#KingOfFighters", "#KOFXWINDAH", "#motionklip", "#ezklip"],
+      "hashtags": [
+        "#KOFLegend",
+        "#KingOfFighters",
+        "#KOFXWINDAH",
+        "#motionklip",
+        "#ezklip"
+      ],
       "hashtags_note": "use exactly this order",
       "source_youtube": "x2cS00dnpYc",
-      "recipes": ["kof-clip1-orochi-iori"]
+      "recipes": [
+        "kof-clip1-orochi-iori"
+      ]
     },
     "windah-streamchart": {
       "title": "Windah Streamchart",
@@ -31,27 +39,49 @@
         "windah-streamchart/streamchart-oct-2026.jpeg"
       ],
       "required_images_note": "both Streamcharts images must appear in the video",
-      "hashtags": ["#windahbasudara", "#WindahStreamchart", "#motionklip", "#ezklip"],
+      "hashtags": [
+        "#windahbasudara",
+        "#WindahStreamchart",
+        "#motionklip",
+        "#ezklip"
+      ],
       "hashtags_note": "use exactly this order",
       "source_youtube": "iMqt1bgNrLk",
-      "source_section": ["00:30:40", "00:32:20"],
-      "recipes": ["windah-streamchart-clip1"]
+      "source_section": [
+        "00:30:40",
+        "00:32:20"
+      ],
+      "recipes": [
+        "windah-streamchart-clip1"
+      ]
     },
     "windah-trailer-gta-vi": {
       "title": "Windah Trailer GTA VI - Motion Klip",
       "category": "Gaming",
-      "platforms": ["TikTok", "Instagram", "YouTube"],
+      "platforms": [
+        "TikTok",
+        "Instagram",
+        "YouTube"
+      ],
       "cpm_idr": 10000,
       "min_views": 2000,
       "max_claim_views_per_video": 30000,
       "payout": "Gopay or DANA; one claim per video, views counted at submission",
       "announcement_channel": "windah-trailer-gta-announcement",
-      "rules_channel": "windah-trailer-gta-bahan-dan-... (not read yet)",
-      "hashtags": null,
-      "hashtags_note": "TODO from the bahan/rules channel; a 100.9K-view example used #motionklip #windahbasudara #gta6",
-      "source_youtube": null,
-      "source_note": "TODO from the bahan channel; example clip (16 Nov 05:51 WIB) is Windah's GTA 6 stream, radio/copyright answer and 'gue siapin 300.000.000 buat clipper'",
-      "recipes": []
+      "rules_channel": "windah-trailer-gta-bahan-dan-rules",
+      "hashtags": [
+        "#windahbasudara",
+        "#windahtrailergta",
+        "#motionklip",
+        "#ezklip"
+      ],
+      "source_youtube": "diZ6-kQW_Ok",
+      "source_note": "Windah's own parody trailer 'GTA VI 100% AKU SIAP!' (2:48, posted 17 Nov 2026 16:00 WIB). Brief: clip/'goreng' moments of the Windah trailer, free style; NOT the official Rockstar trailer (MORIES reminder). Example narration: 'Windah mau main GTA VI aja sampe niat bikin trailer'.",
+      "recipes": [
+        "windah-trailer-clip1"
+      ],
+      "eligible_from": "2026-11-17",
+      "watermark_url": "https://drive.google.com/file/d/11fqKW4vg-epXZz2LbD2jRMiejeERDIMN/view (campaign template; not yet compared with watermark-motionklip.png)"
     }
   }
 }

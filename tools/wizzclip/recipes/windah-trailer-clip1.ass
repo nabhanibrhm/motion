@@ -1,0 +1,27 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Audex,45,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H80120F0E,0,0,0,0,100,100,0,0,1,6,3,5,60,140,0,1
+Style: Title,Audex,62,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,22,0,8,40,120,0,1
+Style: Big,Audex,100,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H80120F0E,0,0,0,0,100,100,0,0,1,8,5,5,40,120,0,1
+Style: Tag,Audex,32,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,12,0,8,40,120,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,0:00:02.82,Title,,0,0,0,,{\pos(500,150)\fad(0,250)}WINDAH {\c&H0029FCE6&}NIAT{\c&H00EFF3F4&} BANGET\NBIKIN TRAILER GTA VI
+Dialogue: 1,0:00:00.00,0:00:23.67,Tag,,0,0,0,,{\pos(500,318)}PARODI TRAILER BUATAN WINDAH BASUDARA
+Dialogue: 0,0:00:00.68,0:00:02.82,Sub,,0,0,0,,{\pos(500,1290)}GUYS, PENGEN MAIN {\c&H0029FCE6&}GTA 6
+Dialogue: 0,0:00:03.05,0:00:05.45,Sub,,0,0,0,,{\pos(500,1290)}POKOKNYA DARI BULAN NOVEMBER\NSAMPAI {\c&H0029FCE6&}DESEMBER
+Dialogue: 0,0:00:05.57,0:00:08.02,Sub,,0,0,0,,{\pos(500,1290)}GUA MAU MAIN GTA 6\NSAMPAI {\c&H0029FCE6&}100%
+Dialogue: 0,0:00:08.42,0:00:09.72,Sub,,0,0,0,,{\pos(500,1290)}INI {\c&H0029FCE6&}SENGAJA{\c&H00EFF3F4&} YA, GUYS.
+Dialogue: 0,0:00:09.82,0:00:12.72,Sub,,0,0,0,,{\pos(500,1290)}GUA GAK LANGSUNG NEMBAK JASON\NBIAR VIDEONYA {\c&H0029FCE6&}GAK CEPAT HABIS
+Dialogue: 0,0:00:13.12,0:00:15.72,Sub,,0,0,0,,{\pos(500,1290)}MASIH PADA PAKAI BAJU\N{\c&H0029FCE6&}GTA LAWAS{\c&H00EFF3F4&} LAGI LU PADA
+Dialogue: 0,0:00:15.72,0:00:19.12,Sub,,0,0,0,,{\pos(500,1290)}IYA, BANG. ENTAR KITA GANTI BAJU,\NTAPI {\c&H0029FCE6&}MAIN DULU
+Dialogue: 0,0:00:19.22,0:00:20.82,Sub,,0,0,0,,{\pos(500,1290)}GTA 6 {\c&H0029FCE6&}100%
+Dialogue: 1,0:00:20.88,0:00:23.67,Big,,0,0,0,,{\pos(500,1260)\c&H0029FCE6&\fscx118\fscy118\t(0,300,\fscx100\fscy100)}I'M READY.
+Dialogue: 2,0:00:21.77,0:00:23.67,Title,,0,0,0,,{\pos(500,150)\fad(250,0)}WINDAH {\c&H0029FCE6&}TRAILER{\c&H00EFF3F4&}\NGTA VI

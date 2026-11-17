@@ -1,0 +1,38 @@
+{
+  "description": "Windah Trailer GTA VI clip 1: 'Pengen main GTA 6' -> 'sampai 100%' promise -> self-aware joke -> 'GTA 6 100%. I'm ready.' Source diZ6-kQW_Ok (Windah's own parody trailer, full video): 0-2.82, 12.8-18.0, 125.5-130.5, 142.3-150.75 (+2.2 s freeze with title). The monitor cutaway 2.85-6.5 and the end card (official Rockstar footage) are left out on purpose. Output t: A 0-2.82, B 2.82-8.02, C 8.02-13.02, D 13.02-23.67.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah Trailer GTA VI",
+  "source": {
+    "slug": "windah-trailer",
+    "youtube": "diZ6-kQW_Ok",
+    "url": "https://www.youtube.com/watch?v=diZ6-kQW_Ok",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source"
+    },
+    {
+      "path": "campaign:watermark-motionklip.png"
+    }
+  ],
+  "subtitles": "windah-trailer-clip1.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0:2.82,setpts=PTS-STARTPTS,fps=30,crop=1080:1080:420:0,scale=w='trunc(1080*(1+0.25*clip((2.8-t)/2.8,0,1))/2)*2':h=-2:eval=frame,crop=1080:1080:(iw-1080)/2:(ih-1080)*0.15[va];[0:a]atrim=0:2.82,asetpts=PTS-STARTPTS,afade=t=out:st=2.7:d=0.12[aa];",
+    "[0:v]trim=12.8:18.0,setpts=PTS-STARTPTS,fps=30,crop=1080:1080:780:0,scale=w='trunc(1080*(1+0.06*t/5.2)/2)*2':h=-2:eval=frame,crop=1080:1080[vb];[0:a]atrim=12.8:18.0,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=5.05:d=0.15[ab];",
+    "[0:v]trim=125.5:130.5,setpts=PTS-STARTPTS,fps=30,crop=1080:1080:700:0,scale=w='trunc(1080*(1+0.08*t/5.0)/2)*2':h=-2:eval=frame,crop=1080:1080[vc];[0:a]atrim=125.5:130.5,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=4.85:d=0.15[ac];",
+    "[0:v]trim=142.3:150.75,setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration=2.2,crop=1080:1080:520:0,scale=w='trunc(1080*(1+0.1*t/10.65)/2)*2':h=-2:eval=frame,crop=1080:1080[vd];[0:a]atrim=142.3:152.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=10.05:d=0.6[ad];",
+    "[va][aa][vb][ab][vc][ac][vd][ad]concat=n=4:v=1:a=1[rv][ra];",
+    "[rv]split[fa][fb];",
+    "[fb]scale=1920:1920,crop=1080:1920,boxblur=30:3,eq=brightness=-0.12:saturation=0.9[bg];",
+    "[bg][fa]overlay=0:370,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p[v];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-12.62:measured_TP=0.17:measured_LRA=8.20:measured_thresh=-23.27:offset=0.81:linear=true[a]"
+  ],
+  "output": "windah-trailer-clip1.mp4"
+}

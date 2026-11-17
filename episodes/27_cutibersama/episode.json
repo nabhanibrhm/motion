@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "cutibersama",
+  "number": 27,
+  "title": "Cuti Bersama 2027: Cuti Kamu Dipotong?",
+  "category": "Ketenagakerjaan",
+  "theme": "casefile",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #17",
+      "steps": 4,
+      "name": "CUTI BERSAMA POTONG CUTI TAHUNAN"
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.js",
+      "sfx": [
+        {
+          "at": "0",
+          "file": "pop-in",
+          "vol": 0.2
+        },
+        {
+          "at": "word:dipotong",
+          "file": "click",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "file": "scenes/fakta.js",
+      "sfx": [
+        {
+          "at": "word:Kemnaker",
+          "file": "tick",
+          "vol": 0.2
+        },
+        {
+          "at": "word:utuh",
+          "file": "tick",
+          "vol": 0.2
+        },
+        {
+          "at": "word:komentar",
+          "file": "tick",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "sisi",
+      "file": "scenes/sisi.js",
+      "sfx": [
+        {
+          "at": "word:Masalahnya",
+          "file": "pop-in",
+          "vol": 0.2
+        },
+        {
+          "at": "word:mengurangi",
+          "file": "pop-in",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.js",
+      "sfx": [
+        {
+          "at": "word:ditutup",
+          "file": "stamp",
+          "vol": 0.45
+        },
+        {
+          "at": "word:Tulis",
+          "file": "pop-in",
+          "vol": 0.1
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

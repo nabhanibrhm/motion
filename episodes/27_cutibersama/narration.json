@@ -1,0 +1,110 @@
+{
+  "comment": "KASUS #17 'Cuti Bersama 2027: Cuti Kamu Dipotong?' (script-short.md, sources there). Say map under cartesia.say: top-level say is only read by Supertonic.",
+  "source": "cartesia",
+  "cartesia": {
+    "say": {
+      "SKB": "es ka be",
+      "HRD": "ha er de",
+      "PKB": "pe ka be"
+    }
+  },
+  "speakers": {
+    "mog": {
+      "supertonic": {
+        "voice": "M1",
+        "speed": 1,
+        "range": 1.5
+      },
+      "cartesia": {
+        "speed": 1.08
+      }
+    },
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    },
+    "bog": {
+      "supertonic": {
+        "voice": "M4",
+        "speed": 1,
+        "range": 1.4
+      },
+      "cartesia": {
+        "speed": 1
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "kasus",
+      "title": "Cuti Bersama 2027: Cuti Kamu Dipotong?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kantor kamu libur cuti bersama? Menurut undang-undang baru, jatah cuti tahunan kamu tidak boleh dipotong karenanya."
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Tapi kata Kemnaker, perusahaan swasta tidak wajib ikut cuti bersama. Kalau kantormu ikut, cutimu tetap utuh. Kalau tidak ikut, kamu masuk kerja biasa, dan cutimu juga tidak berkurang."
+        },
+        {
+          "speaker": "wec",
+          "text": "Kantor kamu ikut cuti bersama, atau tetap masuk? Tulis di komentar."
+        },
+        {
+          "speaker": "mog",
+          "text": "Dasarnya Pasal seratus delapan belas Undang-Undang Pelindungan Ketenagakerjaan, yang berlaku sejak dua puluh delapan Oktober. Cuti tahunan minimal dua belas hari kerja setelah setahun bekerja."
+        }
+      ]
+    },
+    {
+      "id": "sisi",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Masalahnya, delapan hari cuti bersama dua ribu dua puluh tujuh ditetapkan lewat SKB bulan September, sebelum undang-undang ini berlaku. Waktu itu Menaker bilang, cuti bersama mengurangi cuti tahunan."
+        },
+        {
+          "speaker": "mog",
+          "text": "Sampai pertengahan November, belum ada pengumuman penyesuaiannya. Jadi cek peraturan perusahaan, atau tanya HRD kamu."
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kasus ditutup: kalau kantormu ikut cuti bersama, cuti tahunanmu tidak boleh dipotong, tapi perusahaan tidak wajib ikut. Kantor kamu ikut? Tulis di komentar ya!",
+          "after": 1.2
+        }
+      ]
+    }
+  ]
+}

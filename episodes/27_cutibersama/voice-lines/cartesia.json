@@ -1,0 +1,44 @@
+{
+ "fakta-0.wav": {
+  "key": "5ae6998f09419b1f1dd1bd039d8d58faa2f477f2293e07850bde82019b680262",
+  "sha256": "15428ba337fe2b1c1e3e8d026bf8f025e8038864a7b211a723108a5f933891e7",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 183
+ },
+ "fakta-1.wav": {
+  "key": "385d29dd793cd920f4136f9827c2dce69e9d2d50081559483525fa52db8cc5c8",
+  "sha256": "86c3ee8d8aeecfc20386664515a7a56efd00d54b401ad8ecfc9cf9ce4772d8c7",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 67
+ },
+ "fakta-2.wav": {
+  "key": "609df59cbce83c0b2aa3fd9ef8084967fe4f04df95706a906d0212f1ea823b3e",
+  "sha256": "efaf844fd09f7174a61e29708ba24679867503fd1a61c523142588246e2943a4",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 192
+ },
+ "hook-0.wav": {
+  "key": "44d54a26cde6955b26138b58c653edbbae69fa8188427d325c64d4d0f51bdb0c",
+  "sha256": "ca3dfd750ccc8bad6b2cd593bff57ac9d118645df2e2563d21f3a93132ee0627",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 115
+ },
+ "sisi-0.wav": {
+  "key": "4ff9feafb600938d8e4de54349eaf6692a89f9a1fdb4ad55842e2a32eebd4b21",
+  "sha256": "9deb3b060ac67be0914f57ccbe4f35d698a0a7865c0a4f95ae15476b6ce816eb",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 204
+ },
+ "sisi-1.wav": {
+  "key": "e9003ac1b65c7500bb2e63cb548ee95ad279192cc051b5c0858d91c5cb834600",
+  "sha256": "fda1343d1b6bfa12fa38c2dd6343eb4fbe1d2371b4f572533b62b2a98b81fecc",
+  "voice": "04b567df-2923-4b0c-896b-4b7df0a07e1a",
+  "chars": 122
+ },
+ "vonis-0.wav": {
+  "key": "718211ab46b3403a4eef9c14e5f0beb2f66d7fbaae9d764551ec65c5d5f12e7d",
+  "sha256": "2526bf90b25f7f43df8fb8362a9ba21626e8f6a5f74a808211469ade22a2a9f1",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 159
+ }
+}
