@@ -1,5 +1,5 @@
 {
-  "description": "Windah's first house tour in GTA VI: detail reactions in Jason's house (his own live stream 45r3OyaxvFE, 18 Nov 2026). Source = stream-1830-1944.mp4 file 52:00-70:00 (source.mp4 local t = file t - 3120 s; local 0 = file 52:00 = WIB 19:22). Main clip = 4 cuts (local t): A 503.0-521.98 fridge (WIB 19:30:23-19:30:42; 'kita coba lagi... rain water... emang keliatan... ah gila attention to detailnya'), B 529.7-536.1 holding two bottles ('put down dulu... 2 botol... kurang attention detail apa lah'), C 554.0-560.45 book ('baca text bro... buku tentang perang, kisah nyata'), D 638.65-644.65 light switch ('nyalain lampu attention to detail men, that's realistic bro, very very realistic'). Output t: A 0-18.98, B 18.98-25.38, C 25.38-31.83, D 31.83-37.83, outro 37.83-41.83. Layout copied from windah-gtavi-open (gameplay crop x60 1440x1080 -> 1080x810, facecam 400x400 at 1475,680 on blurred copy, blurred background, captions y1330, watermark on main only). Original audio kept (no mutes, user decision). Source is input-seeked (-ss 500 -t 150), so trim times in filter_complex = local t - 500.",
+  "description": "Windah's first house tour in GTA VI: detail reactions in Jason's house (his own live stream 45r3OyaxvFE, 18 Nov 2026). Source = stream-1830-1944.mp4 file 52:00-70:00 (source.mp4 local t = file t - 3120 s; local 0 = file 52:00 = WIB 19:22). Main clip = 4 cuts (local t): A 503.0-521.98 fridge (WIB 19:30:23-19:30:42; 'kita coba lagi... rain water... emang keliatan... ah gila attention to detailnya'), B 529.7-536.1 holding two bottles ('put down dulu... 2 botol... kurang attention detail apa lah'), C 554.0-560.45 book ('baca text bro... buku tentang perang, kisah nyata'), D 638.65-644.65 light switch ('nyalain lampu attention to detail men, that's realistic bro, very very realistic'). Output t: A 0-18.98, B 18.98-25.38, C 25.38-31.83, D 31.83-37.83, outro 37.83-41.83. Layout copied from windah-gtavi-open (gameplay crop x60 1440x1080 -> 1080x810, facecam 400x400 at 1475,680 on blurred copy, blurred background, captions y1330, watermark on main only). Original audio kept (no mutes, user decision). Source is input-seeked (-ss 500 -t 150), so trim times in filter_complex = local t - 500. Restyle 18 Nov 2026: hook (3 lines, Volt, Audex 93-100 px) at y~520 and word captions (2 lines max, 3 words per line, Volt with Paper emphasis, Audex 88 px, Ink outline 10) centred on the layout seam at y 830; facecam crop moved up 40 px (y640) so the face sits lower in the panel and stays clear of the captions.",
   "campaign": "motionklip",
   "campaign_brief": "Windah GTA VI",
   "source": {
@@ -44,7 +44,7 @@
     "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
     "[cv]split=3[m1][m2][m3];",
     "[m1]crop=1440:1080:60:0,scale=1080:810[g];",
-    "[m2]crop=400:400:1475:680,split[c1][c2];",
+    "[m2]crop=400:400:1475:640,split[c1][c2];",
     "[c1]scale=1080:600:force_original_aspect_ratio=increase,crop=1080:600,boxblur=18,eq=brightness=-0.25[cbg];",
     "[c2]scale=600:600[cf];",
     "[cbg][cf]overlay=240:0[face];",
