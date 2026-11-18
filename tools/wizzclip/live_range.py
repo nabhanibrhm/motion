@@ -5,6 +5,7 @@ stream start (verified on 45r3OyaxvFE: sq 4400 == second 4400 of the --live-from
 Usage: .venv/Scripts/python tools/wizzclip/live_range.py URL START_SQ END_SQ OUTPUT_TEMPLATE
 Example (stream started 18:30:31, want 21:00-22:00): ... 8969 12569 "stream-2100-2200.%(ext)s"
 Tested with yt-dlp 2026.10.26 (patches YoutubeIE._live_adaptive_fragments)."""
+import os
 import sys
 from urllib.parse import parse_qs, urlparse
 
@@ -30,13 +31,16 @@ YoutubeIE._live_adaptive_fragments = _ranged
 
 opts = {
     'live_from_start': True,
-    'format': '299+140',
+    'format': os.environ.get('FORMAT', '299+140'),
     'merge_output_format': 'mp4',
     'outtmpl': out,
     'js_runtimes': {'node': {}},
     'remote_components': {'ejs:github'},
-    'concurrent_fragment_downloads': 4,
+    'concurrent_fragment_downloads': int(os.environ.get('CONCURRENCY', '4')),
     'noprogress': True,
 }
+# Optional: COOKIES_BROWSER=firefox when YouTube asks "Sign in to confirm you're not a bot".
+if os.environ.get('COOKIES_BROWSER'):
+    opts['cookiesfrombrowser'] = (os.environ['COOKIES_BROWSER'],)
 with yt_dlp.YoutubeDL(opts) as ydl:
     sys.exit(ydl.download([url]))
