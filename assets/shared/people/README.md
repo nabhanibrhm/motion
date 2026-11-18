@@ -38,6 +38,9 @@ Portraits for the `hw-hook` and `hw-quote` templates, referenced from `episode.j
 | bahlil.jpg | Bahlil Lahadalia | https://commons.wikimedia.org/wiki/File:Bahlil_Lahadalia_Official_Portrait.png | Indonesian Investment Ministry | Public domain |
 | raffi-ahmad.jpg | Raffi Ahmad | https://commons.wikimedia.org/wiki/File:Raffi-Ahmad-2020_(cropped).jpg | Lautner of the king at Indonesian Wikipedia | CC BY 3.0 (2020 photo; the 2024 Setpres-style PD files are only ~190×280) |
 | dedi-mulyadi.jpg | Dedi Mulyadi | https://commons.wikimedia.org/wiki/File:Dedi_Mulyadi,_Gubernur_Jawa_barat_2025-2030_(cropped).jpg | Government of West Java | Public domain (official 2025 governor portrait) |
+| hashim.jpg | Hashim Djojohadikusumo | https://commons.wikimedia.org/wiki/File:Dampingi_Hashim_Djojohadikusumo,_Menhut_Raja_Juli_Jadi_Wakil_Ketua_Delegasi_di_COP29_(2024).jpg | Kementerian Kehutanan Republik Indonesia | Public domain (Nov 2024 meeting photo, 750x500 original; crop upscaled ~2.6x, candid with microphone; only usable PD photo, the infobox file is 183x251) |
+| andra-soni.jpg | Andra Soni | https://commons.wikimedia.org/wiki/File:Andra_Soni,_Gubernur_Banten_(2025).png | Pemerintah Provinsi Banten | Public domain (official 2025 governor portrait, transparent background flattened to white) |
+| badak-jawa.jpg | Badak jawa (Rhinoceros sondaicus), not a person | https://commons.wikimedia.org/wiki/File:Rhinoceros_sondaicus_in_London_Zoo.jpg | T. Dixon, The Zoological Society of London | Public domain (1884 photo of a live Javan rhino captured near Jakarta, London Zoo 1874-1885; 550x360 original, crop upscaled ~1.7x) |
 
 Roles and on-screen `credit` strings per file: `people.json`. Roles as of Nov 2026 (Kapolri changed 1 Oct 2026; Listyo Sigit is now Kepala Staf Kepresidenan). Not included: Roy Suryo (only a 2017 DPR portrait, 550 px, formal costume, framing inconsistent with the rest) and Tifauzia Tyassuma (only a video screenshot); both use the silhouette.
 

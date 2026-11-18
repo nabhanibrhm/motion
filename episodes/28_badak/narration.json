@@ -1,0 +1,97 @@
+{
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "Badak Jawa Mau Dipindah"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Badak jawa, yang tinggal sekitar delapan puluh sampai seratus ekor, diusulkan dipindah sebagian dari Ujung Kulon ke Alas Purwo."
+        }
+      ]
+    },
+    {
+      "id": "alasan",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kata utusan khusus presiden Hashim Djojohadikusumo, kalau ada tsunami akibat gempa atau letusan gunung, badak jawa kita bisa punah."
+        }
+      ]
+    },
+    {
+      "id": "tolak",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Gubernur Banten Andra Soni menolak. Ia tak ingin ada Mustafa lain, badak yang mati setelah dipindahkan tahun lalu. Kamu setuju badak dipindah? Tulis di komentar."
+        }
+      ]
+    },
+    {
+      "id": "tambang",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Di sisi lain, ESDM membenarkan laut di sekitar Ujung Kulon masuk wilayah usaha pertambangan, atas usulan Pemprov Banten. Taman nasionalnya tidak, dan belum ada izin tambang."
+        }
+      ]
+    },
+    {
+      "id": "resmi",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kementerian Kehutanan bilang, Alas Purwo baru calon lokasi. Jumlah badak dan waktunya belum ditentukan, dan Ujung Kulon tetap habitat utama."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Jawab di komentar, dan follow untuk update berikutnya.",
+          "after": 1.4
+        }
+      ]
+    }
+  ],
+  "cartesia": {
+    "say": {
+      "ESDM": "e es de em",
+      "Djojohadikusumo": "Joyohadikusumo"
+    }
+  },
+  "say": {}
+}

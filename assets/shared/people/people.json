@@ -187,6 +187,39 @@
       "commonsUrl": "https://commons.wikimedia.org/wiki/File:Dedi_Mulyadi,_Gubernur_Jawa_barat_2025-2030_(cropped).jpg",
       "author": "Government of West Java",
       "licence": "Public domain"
+    },
+    {
+      "slug": "hashim",
+      "file": "people/hashim.jpg",
+      "name": "Hashim Djojohadikusumo",
+      "role": "Utusan Khusus Presiden Bidang Iklim dan Energi",
+      "roleAsOf": "2026-11",
+      "credit": "Kemenhut RI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Dampingi_Hashim_Djojohadikusumo,_Menhut_Raja_Juli_Jadi_Wakil_Ketua_Delegasi_di_COP29_(2024).jpg",
+      "author": "Kementerian Kehutanan Republik Indonesia",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "andra-soni",
+      "file": "people/andra-soni.jpg",
+      "name": "Andra Soni",
+      "role": "Gubernur Banten",
+      "roleAsOf": "2026-11",
+      "credit": "Pemprov Banten (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Andra_Soni,_Gubernur_Banten_(2025).png",
+      "author": "Pemerintah Provinsi Banten",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "badak-jawa",
+      "file": "people/badak-jawa.jpg",
+      "name": "Badak jawa (Rhinoceros sondaicus)",
+      "role": "Satwa, bukan orang; foto 1884 di Kebun Binatang London",
+      "roleAsOf": "2026-11",
+      "credit": "T. Dixon / Zoological Society of London, 1884 (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Rhinoceros_sondaicus_in_London_Zoo.jpg",
+      "author": "T. Dixon, The Zoological Society of London",
+      "licence": "Public domain"
     }
   ]
 }

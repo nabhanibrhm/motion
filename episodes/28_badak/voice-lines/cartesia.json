@@ -1,0 +1,38 @@
+{
+ "alasan-0.wav": {
+  "key": "b028300696518c312e56d5fdb1873c74a4142df659df3887de38ca84cba0e730",
+  "sha256": "8e86c7d5517589b33dec09764e6530337ce4729feebedb716bca4b99670ebc9a",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 130
+ },
+ "hook-0.wav": {
+  "key": "e7191ffcb6049525ac5f92c044de8384b3e8c47274f52d07436beee0e0ff04a5",
+  "sha256": "c969c833966b2f9a6aa98eabf72f3e05858d56e3aa39afbcb4bf666384d6aa38",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 127
+ },
+ "penutup-0.wav": {
+  "key": "1a4e9047abe0906aac366317747361c22db89193caee305b94ccee4952e5dd46",
+  "sha256": "2e2e3b9069bb9cfa9913739248873540ab5184963714dc32d192de59c1fd29fa",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 54
+ },
+ "resmi-0.wav": {
+  "key": "607143a9c8fe982ec77b793c1fbea8199805f0d58155b0de5920b2536f2b63ed",
+  "sha256": "cef5ae3047c50499d95138277fb0516ef90813f402fc9d3f7dce2bd8e6b270cb",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 140
+ },
+ "tambang-0.wav": {
+  "key": "901d859a5de6392acb81ca874593b93f67f4f68b06ae334f418a76b48da86493",
+  "sha256": "4208e94d5206793d2a5c24b1f17310ae3006766504a3a5aa8856c934eacb483d",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 179
+ },
+ "tolak-0.wav": {
+  "key": "51805492646b2b0a690dd181b5fc898cf33e05b9d3b3ecd35c038cb38102582b",
+  "sha256": "58dfc6b40f0b7f63f1a2ca88f20de35241491af45845b7733ae5e3a43b8484e6",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 161
+ }
+}

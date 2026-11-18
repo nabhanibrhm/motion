@@ -1,0 +1,86 @@
+{
+  "_note": "18 Nov 2026. Countdown 'GTA 6 tinggal 1 hari' (post Wed 18, before Thu 19 00.00 WIB). Footage (not in git, video only): .cache/wizzclip/gta6-trailer/extended.mp4 = Rockstar 'An Extended Look' (tJbzMqJGH4k); windows from HANDOFF (checked 15-16 Nov). Short (~19 s) per the vc-nostalgia retention read. No audio: the user adds the sound in TikTok.",
+  "title": "GTA 6 TINGGAL *1 HARI*",
+  "category": "GAMING",
+  "kind": "BERITA",
+  "audio": false,
+  "music": false,
+  "sfxDefault": false,
+  "coverSfx": false,
+  "sources": [
+    "Rockstar Games"
+  ],
+  "coverVideo": {
+    "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+    "start": 1545,
+    "dim": 0.68
+  },
+  "beats": [
+    {
+      "big": "1 HARI",
+      "text": "lagi *GTA 6* rilis",
+      "sub": "Kamis 19 Nov · 00.00 WIB",
+      "seconds": 3,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1127.6,
+        "win": 5.3
+      }
+    },
+    {
+      "text": "Vice City sudah *menunggu*",
+      "seconds": 2.4,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1545,
+        "win": 3.4
+      }
+    },
+    {
+      "text": "Balapan *liar* tengah malam",
+      "seconds": 2.2,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1221.6,
+        "win": 3.9
+      }
+    },
+    {
+      "text": "Dikejar *polisi*",
+      "seconds": 2.2,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 847.1,
+        "win": 2.3
+      }
+    },
+    {
+      "text": "Jason & *Lucia*",
+      "seconds": 2.4,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1013.25,
+        "win": 3.65
+      }
+    },
+    {
+      "text": "Ngebut di *rawa*",
+      "seconds": 2.2,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1030,
+        "win": 2.9
+      }
+    },
+    {
+      "text": "Kamu main *hari pertama*?",
+      "sub": "Jawab di komentar",
+      "seconds": 2.8,
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/extended.mp4",
+        "start": 1570,
+        "win": 2.9
+      }
+    }
+  ]
+}
