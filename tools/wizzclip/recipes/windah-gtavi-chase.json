@@ -1,0 +1,69 @@
+{
+  "description": "Windah's first car-chase mission in GTA VI (his own launch stream 45r3OyaxvFE, 18 Nov 2026). Source = stream-2100-2200.mp4 file 27:30-34:00 (source.mp4 local t = file t - 1650 s; local 0 = WIB 21:27:30; 390 s). New clean layout (19 Nov 2026): solid Ink #0E0F12, the whole 16:9 gameplay frame uncropped scaled to 1080x608 at y=656 (his facecam stays inside the game frame, bottom-right), no blur, no separate face panel. Hook = a short written title, not a quote, on screen from 0.00 s for the whole main clip: Audex 92, 2 lines max, bottom-anchored at (540,600), line 1 Paper 'MISI KEJAR-KEJARAN', line 2 Volt 'PERTAMA WINDAH'. Word captions Audex 72 Volt (Paper emphasis), Ink outline 7, shadow 3, one line, centred at (540,960). Credit line Audex 30 Mist at (540,1290) 'WINDAH BASUDARA · GTA VI' for the whole main clip. Watermark overlays the main clip only, then the 4 s outro, loudnorm two-pass -14 LUFS / -1 dBTP. Story in order: he is chased by police earlier in the stream; here he chases Arnold (a mafia boss's man), not police. Cuts: A local 113.30-119.25 (WIB 21:29:23-21:29:29) -> output 0.00-5.95; D local 133.95-138.20 (WIB 21:29:43-21:29:48) -> output 5.95-10.20; D2 local 143.45-146.25 (WIB 21:29:53-21:29:56) -> output 10.20-13.00; E local 151.85-154.30 (WIB 21:30:01-21:30:04) -> output 13.00-15.45; F local 195.50-197.60 (WIB 21:30:45-21:30:47) -> output 15.45-17.55; G1 local 203.25-206.00 (WIB 21:30:53-21:30:56) -> output 17.55-20.30; G2 local 209.80-213.00 (WIB 21:30:59-21:31:03) -> output 20.30-23.50; G3 local 216.60-219.20 (WIB 21:31:06-21:31:09) -> output 23.50-26.10; H local 236.20-243.30 (WIB 21:31:26-21:31:33) -> output 26.10-33.20; I1 local 252.45-255.20 (WIB 21:31:42-21:31:45) -> output 33.20-35.95; I2 local 256.90-261.35 (WIB 21:31:46-21:31:51) -> output 35.95-40.40. Main 40.40 s + 4.0 s outro. Original audio kept (no mutes, user decision). Sensitive moments (kept unedited): D 134-138 and D2 143.5-146 talk about shooting back (L1) with the gun HUD visible; H 'gua yang aim' mentions aiming; the in-game subtitle line at F may show 'fucking' text (see stills). 'ngem' in the YouTube auto-caption is read as 'aim'. Source is input-seeked (-ss 100 -t 170), so trim times in filter_complex = local t - 100.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-chase",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-ss",
+        "100",
+        "-t",
+        "170",
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-chase.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=13.30:19.25,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=33.95:38.20,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=43.45:46.25,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=51.85:54.30,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=95.50:97.60,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=103.25:106.00,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=109.80:113.00,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=116.60:119.20,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=136.20:143.30,setpts=PTS-STARTPTS,fps=30[v9];",
+    "[0:v]trim=152.45:155.20,setpts=PTS-STARTPTS,fps=30[v10];",
+    "[0:v]trim=156.90:161.35,setpts=PTS-STARTPTS,fps=30[v11];",
+    "[0:a]atrim=13.30:19.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.85:d=0.1[a1];",
+    "[0:a]atrim=33.95:38.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.15:d=0.1[a2];",
+    "[0:a]atrim=43.45:46.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.70:d=0.1[a3];",
+    "[0:a]atrim=51.85:54.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.35:d=0.1[a4];",
+    "[0:a]atrim=95.50:97.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.00:d=0.1[a5];",
+    "[0:a]atrim=103.25:106.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.65:d=0.1[a6];",
+    "[0:a]atrim=109.80:113.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.10:d=0.1[a7];",
+    "[0:a]atrim=116.60:119.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.50:d=0.1[a8];",
+    "[0:a]atrim=136.20:143.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.00:d=0.1[a9];",
+    "[0:a]atrim=152.45:155.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.65:d=0.1[a10];",
+    "[0:a]atrim=156.90:161.35,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.35:d=0.1[a11];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9][v10][a10][v11][a11]concat=n=11:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-4.06:measured_TP=3.53:measured_LRA=3.40:measured_thresh=-14.31:offset=-0.30:linear=true[a]"
+  ],
+  "output": "windah-gtavi-chase.mp4"
+}

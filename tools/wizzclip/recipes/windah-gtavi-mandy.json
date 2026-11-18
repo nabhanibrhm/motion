@@ -1,0 +1,59 @@
+{
+  "description": "Windah's reaction to the Mandy mission ('Pipe Work', chapter 1) in GTA VI (his own launch stream 45r3OyaxvFE, 18 Nov 2026). Source = stream-1944-2100.mp4 file 29:30-41:00 (source.mp4 local t = file t - 1770 s; local 0 = WIB 20:13:30; 690 s). New clean layout (19 Nov 2026): solid Ink #0E0F12, the whole 16:9 gameplay frame uncropped scaled to 1080x608 at y=656 (his facecam stays inside the game frame, bottom-right), no blur, no separate face panel. Hook = a short written title, not a quote, on screen from 0.00 s for the whole main clip: Audex 92, 2 lines max, bottom-anchored at (540,600), line 1 Paper 'MISI DI RUMAH', line 2 Volt 'MANDY'. Word captions Audex 72 Volt (Paper emphasis), Ink outline 7, shadow 3, one line, centred at (540,960). Credit line Audex 30 Mist at (540,1290) 'WINDAH BASUDARA · GTA VI' for the whole main clip. Watermark overlays the main clip only, then the 4 s outro, loudnorm two-pass -14 LUFS / -1 dBTP. Cuts (story in order; A 'Oh my God, Mandy cakep, misinya namanya Pipe Work ya'; B 'gua pernah nonton film... sorry gua pause ya... cewek yang suruh pipanya dibetulin sama tukang pipa' with the game paused; C 'lu kenapa pake bikini, kan lagi gak di pantai, gak di kolam renang'; D 'Mandy just came through... Mandy udah transfer duitnya'; E 'ga bisa dibuka, kayaknya dia ngumpet, dia BT sama kita, gue pengen minta maaf cuy, udah nyakitin perasaan dia'; F 'mending gua makan apelnya Mandy, enak nih gratisan apel'): A local 69.95-73.75 (WIB 20:14:39-20:14:43) -> output 0.00-3.80; B local 146.90-155.30 (WIB 20:15:56-20:16:05) -> output 3.80-12.20; C local 285.20-293.15 (WIB 20:18:15-20:18:23) -> output 12.20-20.15; D local 538.60-544.30 (WIB 20:22:28-20:22:34) -> output 20.15-25.85; E local 589.00-597.30 (WIB 20:23:19-20:23:27) -> output 25.85-34.15; F local 609.20-616.50 (WIB 20:23:39-20:23:46) -> output 34.15-41.45. Main 41.45 s + 4.0 s outro. Original audio kept (no mutes, user decision). Sensitive moments (kept unedited): B (output 3.8-12.2) the 'tukang pipa' innuendo; C (output 12.2-20.15) bikini line, Mandy in a bikini visible only ~1 s, mostly the pause menu. Caption text and timing carried over from the earlier Whisper-checked attempt. Source is input-seeked (-ss 65 -t 560), so trim times in filter_complex = local t - 65.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-mandy",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-ss",
+        "65",
+        "-t",
+        "560",
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-mandy.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=4.95:8.75,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=81.90:90.30,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=220.20:228.15,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=473.60:479.30,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=524.00:532.30,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=544.20:551.50,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:a]atrim=4.95:8.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.70:d=0.1[a1];",
+    "[0:a]atrim=81.90:90.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.30:d=0.1[a2];",
+    "[0:a]atrim=220.20:228.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.85:d=0.1[a3];",
+    "[0:a]atrim=473.60:479.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.60:d=0.1[a4];",
+    "[0:a]atrim=524.00:532.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.20:d=0.1[a5];",
+    "[0:a]atrim=544.20:551.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.20:d=0.1[a6];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6]concat=n=6:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.66:measured_TP=0.70:measured_LRA=10.10:measured_thresh=-17.67:offset=0.26:linear=true[a]"
+  ],
+  "output": "windah-gtavi-mandy.mp4"
+}

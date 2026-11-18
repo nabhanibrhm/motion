@@ -1,0 +1,46 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:40.40,Hook,,0,0,0,,{\an2\pos(540,600)}{\c&H00EFF3F4&}MISI KEJAR-KEJARAN\N{\c&H0029FCE6&}PERTAMA WINDAH
+Dialogue: 0,0:00:00.00,0:00:40.40,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.00,0:00:00.65,Sub,,0,0,0,,{\an5\pos(540,960)}AKHIRNYA KITA
+Dialogue: 1,0:00:00.65,0:00:01.55,Sub,,0,0,0,,{\an5\pos(540,960)}MISI KEJAR-KEJARAN
+Dialogue: 1,0:00:01.55,0:00:03.10,Sub,,0,0,0,,{\an5\pos(540,960)}KITA YANG {\c&H00EFF3F4&}NGEJAR
+Dialogue: 1,0:00:03.15,0:00:04.30,Sub,,0,0,0,,{\an5\pos(540,960)}BUKAN... BUKAN,
+Dialogue: 1,0:00:04.30,0:00:04.85,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}APA NAMANYA?
+Dialogue: 1,0:00:04.85,0:00:05.95,Sub,,0,0,0,,{\an5\pos(540,960)}BUKAN KITA YANG {\c&H00EFF3F4&}DIKEJAR
+Dialogue: 1,0:00:06.25,0:00:07.00,Sub,,0,0,0,,{\an5\pos(540,960)}SEKARANG NEMBAK BALIK
+Dialogue: 1,0:00:07.00,0:00:07.95,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}GIMANA SIH?
+Dialogue: 1,0:00:08.40,0:00:10.15,Sub,,0,0,0,,{\an5\pos(540,960)}OH, {\c&H00EFF3F4&}L1{\c&H0029FCE6&}... OKE
+Dialogue: 1,0:00:10.30,0:00:11.70,Sub,,0,0,0,,{\an5\pos(540,960)}OH, {\c&H00EFF3F4&}L1{\c&H0029FCE6&}, L1, L1
+Dialogue: 1,0:00:11.70,0:00:12.25,Sub,,0,0,0,,{\an5\pos(540,960)}SEKARANG!
+Dialogue: 1,0:00:12.25,0:00:12.95,Sub,,0,0,0,,{\an5\pos(540,960)}NEMBAKNYA {\c&H00EFF3F4&}L1
+Dialogue: 1,0:00:13.10,0:00:13.70,Sub,,0,0,0,,{\an5\pos(540,960)}POTONG JALAN,
+Dialogue: 1,0:00:13.70,0:00:14.75,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}POTONG JALAN!
+Dialogue: 1,0:00:15.50,0:00:16.55,Sub,,0,0,0,,{\an5\pos(540,960)}JANGAN JADI PENGECUT,
+Dialogue: 1,0:00:16.55,0:00:17.50,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}ARNOLD!
+Dialogue: 1,0:00:17.75,0:00:19.30,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}KALEM{\c&H0029FCE6&}, KALEM...
+Dialogue: 1,0:00:21.50,0:00:23.10,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}FOKUS{\c&H0029FCE6&}, FOKUS
+Dialogue: 1,0:00:24.10,0:00:25.75,Sub,,0,0,0,,{\an5\pos(540,960)}GILA, {\c&H00EFF3F4&}NICE DRIVING
+Dialogue: 1,0:00:26.25,0:00:27.20,Sub,,0,0,0,,{\an5\pos(540,960)}INI MISINYA NIH,
+Dialogue: 1,0:00:27.20,0:00:27.95,Sub,,0,0,0,,{\an5\pos(540,960)}KEJAR-KEJARAN,
+Dialogue: 1,0:00:27.95,0:00:29.10,Sub,,0,0,0,,{\an5\pos(540,960)}SUSAH {\c&H00EFF3F4&}AIM
+Dialogue: 1,0:00:29.10,0:00:30.75,Sub,,0,0,0,,{\an5\pos(540,960)}SAMBIL NYETIR
+Dialogue: 1,0:00:30.80,0:00:31.45,Sub,,0,0,0,,{\an5\pos(540,960)}GUA YANG NYETIR,
+Dialogue: 1,0:00:31.45,0:00:33.10,Sub,,0,0,0,,{\an5\pos(540,960)}GUA YANG {\c&H00EFF3F4&}AIM{\c&H0029FCE6&}, GUYS
+Dialogue: 1,0:00:33.35,0:00:34.20,Sub,,0,0,0,,{\an5\pos(540,960)}TAPI KONTROL GUA
+Dialogue: 1,0:00:34.20,0:00:35.45,Sub,,0,0,0,,{\an5\pos(540,960)}MASIH {\c&H00EFF3F4&}OKE{\c&H0029FCE6&} SIH
+Dialogue: 1,0:00:36.40,0:00:37.75,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}INI BARU MISI!
+Dialogue: 1,0:00:37.85,0:00:39.05,Sub,,0,0,0,,{\an5\pos(540,960)}NGAPAIN NYARI {\c&H00EFF3F4&}SEPATU?
+Dialogue: 1,0:00:39.10,0:00:40.35,Sub,,0,0,0,,{\an5\pos(540,960)}KEJAR-KEJARAN {\c&H00EFF3F4&}GINI DONG!

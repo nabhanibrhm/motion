@@ -8,6 +8,34 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **Research 18 Nov ~15:00 (WSL): RUU Perampasan Aset, next HotWizz candidate (not built).** Tingkat I approved Wed 18 Nov (Komisi III + pemerintah, all 8 fraksi); plenary planned **Thu 19 Nov** (may move if Bamus postpones). New title "RUU Perampasan Aset Terkait Tindak Pidana Korupsi dan Tindak Pidana Lainnya"; seizure without waiting for a criminal verdict, through court; scope includes investasi bodong / saham bodong; assets go back to victims, then public use; good-faith third parties protected; 397 DIM. Notes and source tags: `.cache/research/2026-11-18/perampasan-aset.md` (WSL only). Wording conflict: "tanpa putusan pidana" (CNBC, suara) vs "tanpa tuntutan pidana" (kumparan): say "tanpa menunggu putusan pidana" until the bill text is out. Not found anywhere: value threshold, unexplained wealth, objection rights, compensation mechanism, agency name. Plan: build as HotWizz, post right after the plenary (stamp DISAHKAN), comment question "Setuju aset koruptor disita tanpa nunggu vonis?"; keep 3-4 h from any GTA launch clip.
 
+**Changed on 19 Nov 2026, ~05:00-06:30 (Windows): new clean clip design; Windah `chase` + `mandy` recipes ready, RENDER THEM ON THE WORK LAPTOP.**
+- **Render on the work laptop (WSL).** This laptop is too slow, and the work laptop can't reach YouTube, so clip sources travel through Drive `G:\My Drive\GTA6\clip-src\`. That folder holds the exact sections each recipe uses, cut with stream copy: `windah-gtavi-chase.mp4` 201 MB, `windah-gtavi-mandy.mp4` 264 MB, and `GTAVI_OutroVideo.mov` (not in git). Set the big `stream-*.mp4` files to online-only there. Steps:
+  ```bash
+  git pull
+  mkdir -p .cache/wizzclip/windah-gtavi-chase .cache/wizzclip/windah-gtavi-mandy .cache/wizzclip/windah-gtavi
+  powershell.exe Copy-Item "'G:\My Drive\GTA6\clip-src\windah-gtavi-chase.mp4'" "'$(wslpath -w .cache/wizzclip/windah-gtavi-chase)\source.mp4'"
+  powershell.exe Copy-Item "'G:\My Drive\GTA6\clip-src\windah-gtavi-mandy.mp4'" "'$(wslpath -w .cache/wizzclip/windah-gtavi-mandy)\source.mp4'"
+  powershell.exe Copy-Item "'G:\My Drive\GTA6\clip-src\GTAVI_OutroVideo.mov'" "'$(wslpath -w .cache/wizzclip/windah-gtavi)\GTAVI_OutroVideo.mov'"
+  .venv/bin/python tools/wizzclip/wizzclip.py recipe windah-gtavi-chase
+  .venv/bin/python tools/wizzclip/wizzclip.py recipe windah-gtavi-mandy
+  ```
+  Output goes to `out/wizzclip/windah-gtavi-{chase,mandy}.mp4`. The captions are in `out/` on the Windows laptop only, which isn't in git, so the text is copied below. Neither recipe has been run end to end; only single-frame stills and the audio loudness pass were checked. After rendering, check the hook at 0 s, the A/V sync and the cut edges, and copy the masters to `G:\Other computers\My Laptop\out\`. Future clips follow the same flow: cut the section here to `clip-src`, and send the recipe through git.
+- **New clip design** (user's references 19 Nov, a MotionKlip clip they called "clean"; mock `.cache/wizzclip/_refs/nov19/mock.png`):
+  - Solid Ink background. The whole 16:9 gameplay frame uncropped at 1080x608, at y656; Windah's facecam stays inside the frame, with no split panel and no blur.
+  - Hook = a short written title, not a voiceover or quote. Audex 92, Paper line plus Volt line, bottom-anchored at (540,600), on screen for the whole main clip.
+  - Volt one-line word captions, Audex 72, at (540,960).
+  - Mist credit line "WINDAH BASUDARA · GTA VI" at y1290.
+  - Campaign watermark, then the outro.
+- **`windah-gtavi-chase`** (idea #13, first car chase mission, 21:29–21:31 WIB):
+  - 40.4 s plus 4 s outro, 11 cuts. Hook "MISI KEJAR-KEJARAN / PERTAMA WINDAH". It ends on "Ini baru misi! Ngapain nyari sepatu? Kejar-kejaran gini dong!"
+  - Sensitive moments: shooting-back talk with the gun HUD at 6–13 s, "aim" at 26–33 s, and in-game subtitles "fucking balls" (~17 s) and "goddamn" (last frame).
+  - Caption: `Akhirnya Windah yang ngejar, bukan dikejar! 🚗💨 Misi kejar-kejaran pertama Windah di GTA VI: ngejar Arnold, nyetir sambil ngebidik, sampai nyeletuk "ngapain nyari sepatu? Kejar-kejaran gini dong!" 😂 Cuplikan dari live stream peluncuran GTA VI.` + `Sumber: YouTube Windah Basudara` + the 5 tags.
+- **`windah-gtavi-mandy`** (idea #11, Pipe Work mission, 20:14–20:24 WIB):
+  - 41.45 s plus 4 s outro, 6 cuts. Hook "MISI DI RUMAH / MANDY". It runs from "Mandy cakep" to the plumber-film joke, "kenapa pake bikini", Mandy paying, and ends on "mending gua makan apelnya Mandy, gratisan apel".
+  - Sensitive moments: innuendo at 3.8–12.2 s and the bikini line at 12.2–20.2 s (~1 s of Mandy in a bikini). Both happen over the pause menu, so about 16 s is a menu backdrop: watch whether it holds.
+  - Caption: `Windah dapat misi jadi tukang pipa di rumah Mandy 😂 Dari "Mandy cakep" sampai nyeletuk "mending gua makan apelnya Mandy, enak nih gratisan apel!" Cuplikan misi Pipe Work dari live stream peluncuran GTA VI.` + `Sumber: YouTube Windah Basudara` + the 5 tags.
+- The YouTube auto-captions of the whole stream are in `.cache/wizzclip/windah-gtavi/scan/subs.txt` (`seconds WIB-time text`; sq = seconds since 18:30:31). Grep them to find clip moments.
+
 **Changed on 18 Nov 2026, ~23:00-23:25 (Windows): Windah's launch stream complete in Drive.**
 - Stream `45r3OyaxvFE` ended ~22:34 (`post_live`, 14632 s). Last part downloaded with `live_range.py` (fragments 12569–14632) by the user in PowerShell with `COOKIES_BROWSER=firefox CONCURRENCY=1`: YouTube started showing "Sign in to confirm you're not a bot" to this laptop after the night's requests, so cookies are needed. `CONCURRENCY=4` crashed the audio part (`…part-FragNN` not found); post-live video fragments carried absolute timestamps in a separate download (start 12569 s), but the merged file from one run starts both tracks at 0.
 - **`G:\My Drive\GTA6` = the whole stream, 4 synced files:** `stream-1830-1944.mp4`, `stream-1944-2100.mp4`, `stream-2100-2200.mp4`, `stream-2200-2234.mp4` (each checked: decodes, audio and video line up with the separate tracks at the same fragment).
