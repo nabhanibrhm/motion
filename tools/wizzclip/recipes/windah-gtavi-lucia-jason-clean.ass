@@ -1,0 +1,32 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:44.30,Hook,,0,0,0,,{\an2\pos(540,600)}{\c&H00EFF3F4&}PERTAMA KALI JADI\N{\c&H0029FCE6&}LUCIA & JASON
+Dialogue: 0,0:00:00.00,0:00:44.30,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.50,0:00:01.53,Sub,,0,0,0,,{\an5\pos(540,960)}APAKAH BENAR KITA
+Dialogue: 1,0:00:01.53,0:00:02.14,Sub,,0,0,0,,{\an5\pos(540,960)}JADI ORANG
+Dialogue: 1,0:00:02.14,0:00:03.21,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}PERTAMA{\c&H0029FCE6&} YANG MAIN
+Dialogue: 1,0:00:03.21,0:00:03.50,Sub,,0,0,0,,{\an5\pos(540,960)}GTA 6
+Dialogue: 1,0:00:03.60,0:00:05.50,Sub,,0,0,0,,{\an5\pos(540,960)}DI {\c&H00EFF3F4&}PS5 PRO{\c&H0029FCE6&}...
+Dialogue: 1,0:00:05.60,0:00:05.96,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}3, 2, 1{\c&H0029FCE6&}!
+Dialogue: 1,0:00:05.96,0:00:07.90,Sub,,0,0,0,,{\an5\pos(540,960)}GUE GERAKIN KAMERA
+Dialogue: 1,0:00:16.20,0:00:18.60,Sub,,0,0,0,,{\an5\pos(540,960)}OH MY {\c&H00EFF3F4&}GOD{\c&H0029FCE6&}!
+Dialogue: 1,0:00:19.80,0:00:20.76,Sub,,0,0,0,,{\an5\pos(540,960)}GAMEPLAY DULU, BARU
+Dialogue: 1,0:00:20.76,0:00:21.30,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}EXPLORE{\c&H0029FCE6&} YA
+Dialogue: 1,0:00:21.80,0:00:22.45,Sub,,0,0,0,,{\an5\pos(540,960)}GILA, {\c&H00EFF3F4&}DETAIL{\c&H0029FCE6&}
+Dialogue: 1,0:00:22.45,0:00:23.10,Sub,,0,0,0,,{\an5\pos(540,960)}BANGET, GUYS
+Dialogue: 1,0:00:33.40,0:00:35.17,Sub,,0,0,0,,{\an5\pos(540,960)}GILA, {\c&H00EFF3F4&}120{\c&H0029FCE6&} RIBU VIEWER!
+Dialogue: 1,0:00:35.17,0:00:36.40,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}CLIP{\c&H0029FCE6&} ITU, GUYS!
+Dialogue: 1,0:00:40.80,0:00:42.08,Sub,,0,0,0,,{\an5\pos(540,960)}ADA DARAH, ADA
+Dialogue: 1,0:00:42.08,0:00:43.70,Sub,,0,0,0,,{\an5\pos(540,960)}STAMINA, ADA {\c&H00EFF3F4&}MATA{\c&H0029FCE6&}

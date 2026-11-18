@@ -1,0 +1,49 @@
+{
+  "description": "Windah first time fishing in GTA VI and his first catch (his own launch stream 45r3OyaxvFE, 18 Nov 2026). Source = .cache/wizzclip/windah-gtavi-fishing-clean/source.mp4 (also Drive clip-src/windah-gtavi-fishing-clean.mp4): a stream-copy section of the old windah-gtavi-fishing source.mp4 (the re-synced re-encode, video shifted 3.0 s; NOT source-unsynced.mp4; old local = rec1942-h00.mp4 t, WIB = 19:42:00 + t), starting on the keyframe at old local 67.8167 (that file has a keyframe every 4.17 s, so the margin before cut A is 4.6 s), 122.5 s long. Offset: new local t = old local t - 67.7795 (the copy's video starts at 0.0376 and audio at 0.0000, so the old keyframe 67.8167 sits at new 0.0376; 0.0005 s of slack is built into the offset so a frame on a cut boundary is kept like in the old cut). Cuts (WIB = 19:42:00 + old local t): A cast old local 72.40-75.15 (WIB 19:43:12-19:43:15) -> new local 4.62-7.37 -> output 0.00-2.75; B '13 tahun' old local 87.45-91.60 (WIB 19:43:27-19:43:31) -> new local 19.67-23.82 -> output 2.75-6.90; C bite, struggle, first catch, release old local 149.82-187.85 (WIB 19:44:29-19:45:07) -> new local 82.04-120.07 -> output 6.90-44.93. Main 44.93 s + 4.0 s outro. New clean layout (19 Nov 2026), remake of windah-gtavi-fishing: solid Ink #0E0F12, the whole 16:9 gameplay frame uncropped scaled to 1080x608 at y=656 (his facecam stays inside the game frame, bottom-right), no blur, no separate face panel. Hook = a short written title, not a quote, on screen from 0.00 s for the whole main clip: Audex 92 (line sizes noted), 2 lines, bottom-anchored at (540,600), line 1 Paper 'WINDAH DAPET IKAN', line 2 Volt 'PERTAMA KALI DI GTA 6'. Word captions Audex 72 Volt (Paper emphasis), Ink outline 7, shadow 3, one line of 2-4 words, centred at (540,960); same words and windows as windah-gtavi-fishing (its two-line events split in two, time divided by letter count), old Tag lines dropped. Credit line Audex 30 Mist at (540,1290) 'WINDAH BASUDARA · GTA VI' for the whole main clip. Watermark overlays the main clip only, then the 4 s outro, loudnorm two-pass -14 LUFS / -1 dBTP (measured values reused from windah-gtavi-fishing: audio cuts identical). Original audio kept (no mutes, user decision). Hook line 2 is shrunk to Audex 77 so it fits 1080 px with 60 px margins. The old word-by-word karaoke rows were merged into one event per phrase (one key word in Paper), same start and end as the old rows. Loudnorm keeps the old LRA=20 target. Story: cast ('jauh banget itu'), '13 tahun nunggu game ini, bisa mancing', bite 'dapet gue', struggle, 'orang pertama di Indonesia yang dapet ikan', fish caught, 'gua pecinta hewan, gua lepasin lagi'. Sensitive moments: none listed in the old recipe or HANDOFF (original audio is left unmuted by user decision; no swears or NSFW were noted).",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-fishing-clean",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-fishing-clean.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=4.6205:7.3705,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:a]atrim=4.6205:7.3705,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.67:d=0.08[a1];",
+    "[0:v]trim=19.6705:23.8205,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:a]atrim=19.6705:23.8205,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.07:d=0.08[a2];",
+    "[0:v]trim=82.0405:120.0705,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:a]atrim=82.0405:120.0705,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=37.93:d=0.1[a3];",
+    "[v1][a1][v2][a2][v3][a3]concat=n=3:v=1:a=1[cv][ra0];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ra0]aformat=sample_rates=48000:channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][araw];",
+    "[araw]loudnorm=I=-14:TP=-1.0:LRA=20:measured_I=-4.07:measured_TP=3.57:measured_LRA=17.50:measured_thresh=-15.75:offset=-0.74:linear=true[a]"
+  ],
+  "output": "windah-gtavi-fishing-clean.mp4"
+}

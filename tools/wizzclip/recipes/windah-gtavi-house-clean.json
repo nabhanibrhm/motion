@@ -1,0 +1,51 @@
+{
+  "description": "Windah's first house tour in GTA VI: detail reactions in Jason's house (his own launch stream 45r3OyaxvFE, 18 Nov 2026). Source = .cache/wizzclip/windah-gtavi-house-clean/source.mp4 (also Drive clip-src/windah-gtavi-house-clean.mp4): a stream-copy section of the old windah-gtavi-house source.mp4 (old local = file 52:00 = WIB 19:22:00), starting on the keyframe at old local 501.0333 (about 2 s before the first cut), 146 s long. Offset: new local t = old local t - 501.0131 (the copy's video starts at 0.0207 and audio at 0.0000, so the old video keyframe 501.0333 sits at new 0.0207; 0.0005 s of slack is built into the offset so a frame on a cut boundary is kept like in the old cut). Cuts (WIB = 19:22:00 + old local t): A fridge old local 503.00-521.98 (WIB 19:30:23-19:30:41) -> new local 1.99-20.97 -> output 0.00-18.98; B bottles old local 529.70-536.10 (WIB 19:30:49-19:30:56) -> new local 28.69-35.09 -> output 18.98-25.38; C book old local 554.00-560.45 (WIB 19:31:14-19:31:20) -> new local 52.99-59.44 -> output 25.38-31.83; D light switch old local 638.65-644.65 (WIB 19:32:38-19:32:44) -> new local 137.64-143.64 -> output 31.83-37.83. Main 37.83 s + 4.0 s outro. New clean layout (19 Nov 2026), remake of windah-gtavi-house: solid Ink #0E0F12, the whole 16:9 gameplay frame uncropped scaled to 1080x608 at y=656 (his facecam stays inside the game frame, bottom-right), no blur, no separate face panel. Hook = a short written title, not a quote, on screen from 0.00 s for the whole main clip: Audex 92 (line sizes noted), 2 lines, bottom-anchored at (540,600), line 1 Paper 'TOUR RUMAH PERTAMA', line 2 Volt 'WINDAH DI GTA 6'. Word captions Audex 72 Volt (Paper emphasis), Ink outline 7, shadow 3, one line of 2-4 words, centred at (540,960); same words and windows as windah-gtavi-house (its two-line events split in two, time divided by letter count), old Tag lines dropped. Credit line Audex 30 Mist at (540,1290) 'WINDAH BASUDARA · GTA VI' for the whole main clip. Watermark overlays the main clip only, then the 4 s outro, loudnorm two-pass -14 LUFS / -1 dBTP (measured values reused from windah-gtavi-house: audio cuts identical). Original audio kept (no mutes, user decision). Hook line 1 is shrunk to Audex 80 so it fits 1080 px with 60 px margins. Story: 'attention to detail' reactions (fridge rain water, two bottles, book about war, light switch). Sensitive moments: none listed in the old recipe or HANDOFF (no swears or NSFW noted).",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-house-clean",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-house-clean.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=1.9869:20.9669,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=28.6869:35.0869,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=52.9869:59.4369,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=137.6369:143.6369,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:a]atrim=1.9869:20.9669,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=18.88:d=0.1[a1];",
+    "[0:a]atrim=28.6869:35.0869,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.30:d=0.1[a2];",
+    "[0:a]atrim=52.9869:59.4369,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.35:d=0.1[a3];",
+    "[0:a]atrim=137.6369:143.6369,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.90:d=0.1[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.04:measured_TP=1.20:measured_LRA=5.60:measured_thresh=-16.85:offset=0.35:linear=true[a]"
+  ],
+  "output": "windah-gtavi-house-clean.mp4"
+}

@@ -18,6 +18,8 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
   powershell.exe Copy-Item "'G:\My Drive\GTA6\clip-src\GTAVI_OutroVideo.mov'" "'$(wslpath -w .cache/wizzclip/windah-gtavi)\GTAVI_OutroVideo.mov'"
   .venv/bin/python tools/wizzclip/wizzclip.py recipe windah-gtavi-chase
   .venv/bin/python tools/wizzclip/wizzclip.py recipe windah-gtavi-mandy
+  # the 3 earlier clips remade in the clean design (old versions kept):
+  for s in house fishing lucia-jason; do mkdir -p .cache/wizzclip/windah-gtavi-$s-clean; powershell.exe Copy-Item "'G:\My Drive\GTA6\clip-src\windah-gtavi-$s-clean.mp4'" "'$(wslpath -w .cache/wizzclip/windah-gtavi-$s-clean)\source.mp4'"; .venv/bin/python tools/wizzclip/wizzclip.py recipe windah-gtavi-$s-clean; done
   ```
   Output goes to `out/wizzclip/windah-gtavi-{chase,mandy}.mp4`. The captions are in `out/` on the Windows laptop only, which isn't in git, so the text is copied below. Neither recipe has been run end to end; only single-frame stills and the audio loudness pass were checked. After rendering, check the hook at 0 s, the A/V sync and the cut edges, and copy the masters to `G:\Other computers\My Laptop\out\`. Future clips follow the same flow: cut the section here to `clip-src`, and send the recipe through git.
 - **New clip design** (user's references 19 Nov, a MotionKlip clip they called "clean"; mock `.cache/wizzclip/_refs/nov19/mock.png`):
@@ -34,6 +36,16 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
   - 41.45 s plus 4 s outro, 6 cuts. Hook "MISI DI RUMAH / MANDY". It runs from "Mandy cakep" to the plumber-film joke, "kenapa pake bikini", Mandy paying, and ends on "mending gua makan apelnya Mandy, gratisan apel".
   - Sensitive moments: innuendo at 3.8–12.2 s and the bikini line at 12.2–20.2 s (~1 s of Mandy in a bikini). Both happen over the pause menu, so about 16 s is a menu backdrop: watch whether it holds.
   - Caption: `Windah dapat misi jadi tukang pipa di rumah Mandy 😂 Dari "Mandy cakep" sampai nyeletuk "mending gua makan apelnya Mandy, enak nih gratisan apel!" Cuplikan misi Pipe Work dari live stream peluncuran GTA VI.` + `Sumber: YouTube Windah Basudara` + the 5 tags.
+- **`-clean` remakes of the 3 unposted clips** (`windah-gtavi-{house,fishing,lucia-jason}-clean`): the old split-layout recipes, outputs and captions are kept; the user asked to keep the old versions.
+  - Same cuts, audio, caption text and loudnorm values as the old versions. The captions are re-split into one-line events; split timings are estimated by letter count, so watch for small drift.
+  - Hooks:
+    - "TOUR RUMAH PERTAMA / WINDAH DI GTA 6" (user's wording, line 1 at Audex 80)
+    - "WINDAH DAPET IKAN / PERTAMA KALI DI GTA 6" (user's wording, line 2 at Audex 77)
+    - "PERTAMA KALI JADI / LUCIA & JASON"
+  - Lengths: 41.8 / 48.9 / 48.3 s with the outro.
+  - Sources in `clip-src`: small stream-copy sections of the old sources, 57 / 113 / 26 MB. The lucia-jason source is two sections joined; fishing uses the re-synced source. The offsets are in each recipe's description.
+  - Captions: `out/wizzclip/*-clean-caption.txt` on Windows, copied unchanged from the old ones.
+  - Lucia-jason still has an in-game "fuck" at ~26 s and "shit" at ~43 s.
 - The YouTube auto-captions of the whole stream are in `.cache/wizzclip/windah-gtavi/scan/subs.txt` (`seconds WIB-time text`; sq = seconds since 18:30:31). Grep them to find clip moments.
 
 **Changed on 18 Nov 2026, ~23:00-23:25 (Windows): Windah's launch stream complete in Drive.**

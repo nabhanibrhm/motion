@@ -1,0 +1,46 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:37.83,Hook,,0,0,0,,{\an2\pos(540,600)}{\c&H00EFF3F4&}{\fs80}TOUR RUMAH PERTAMA\N{\c&H0029FCE6&}WINDAH DI GTA 6
+Dialogue: 0,0:00:00.00,0:00:37.83,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.18,0:00:01.34,Sub,,0,0,0,,{\an5\pos(540,960)}OKE, KITA COBA
+Dialogue: 1,0:00:01.34,0:00:02.40,Sub,,0,0,0,,{\an5\pos(540,960)}LAGI, LIAT YA
+Dialogue: 1,0:00:02.80,0:00:04.70,Sub,,0,0,0,,{\an5\pos(540,960)}COBA GUE MAU MINUM
+Dialogue: 1,0:00:04.80,0:00:05.83,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}RAIN WATER{\c&H0029FCE6&}, LIAT
+Dialogue: 1,0:00:05.83,0:00:06.30,Sub,,0,0,0,,{\an5\pos(540,960)}YA, LIAT
+Dialogue: 1,0:00:10.60,0:00:11.66,Sub,,0,0,0,,{\an5\pos(540,960)}ITU EMANG ADA,
+Dialogue: 1,0:00:11.66,0:00:13.30,Sub,,0,0,0,,{\an5\pos(540,960)}DARI TADI {\c&H00EFF3F4&}KELIHATAN{\c&H0029FCE6&}
+Dialogue: 1,0:00:13.40,0:00:15.13,Sub,,0,0,0,,{\an5\pos(540,960)}EMANG KELIHATAN KOK
+Dialogue: 1,0:00:15.13,0:00:15.95,Sub,,0,0,0,,{\an5\pos(540,960)}TADI, GUYS
+Dialogue: 1,0:00:16.70,0:00:17.82,Sub,,0,0,0,,{\an5\pos(540,960)}AH GILA, {\c&H00EFF3F4&}ATTENTION{\c&H0029FCE6&}
+Dialogue: 1,0:00:17.82,0:00:18.95,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}TO DETAIL{\c&H0029FCE6&}NYA GILA
+Dialogue: 1,0:00:19.18,0:00:20.25,Sub,,0,0,0,,{\an5\pos(540,960)}HARUS GUA {\c&H00EFF3F4&}PUT{\c&H0029FCE6&}
+Dialogue: 1,0:00:20.25,0:00:21.02,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}DOWN{\c&H0029FCE6&} DULU,
+Dialogue: 1,0:00:21.02,0:00:22.22,Sub,,0,0,0,,{\an5\pos(540,960)}LIAT GUA PEGANG
+Dialogue: 1,0:00:22.22,0:00:22.78,Sub,,0,0,0,,{\an5\pos(540,960)}2 BOTOL
+Dialogue: 1,0:00:23.18,0:00:24.16,Sub,,0,0,0,,{\an5\pos(540,960)}KURANG {\c&H00EFF3F4&}ATTENTION{\c&H0029FCE6&}
+Dialogue: 1,0:00:24.16,0:00:24.95,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}DETAIL{\c&H0029FCE6&} APA LAH
+Dialogue: 1,0:00:25.52,0:00:26.64,Sub,,0,0,0,,{\an5\pos(540,960)}BACA TEXT, BRO, INI
+Dialogue: 1,0:00:26.64,0:00:27.64,Sub,,0,0,0,,{\an5\pos(540,960)}NAMBAH STATUS GA?
+Dialogue: 1,0:00:28.82,0:00:29.70,Sub,,0,0,0,,{\an5\pos(540,960)}OH, {\c&H00EFF3F4&}BUKU{\c&H0029FCE6&} TENTANG
+Dialogue: 1,0:00:29.70,0:00:30.45,Sub,,0,0,0,,{\an5\pos(540,960)}PERANG, KISAH
+Dialogue: 1,0:00:30.45,0:00:31.14,Sub,,0,0,0,,{\an5\pos(540,960)}NYATA, GA GUA
+Dialogue: 1,0:00:31.14,0:00:31.76,Sub,,0,0,0,,{\an5\pos(540,960)}BACA SEMUA
+Dialogue: 1,0:00:31.94,0:00:32.31,Sub,,0,0,0,,{\an5\pos(540,960)}LU BISA
+Dialogue: 1,0:00:32.31,0:00:33.04,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}NYALAIN LAMPU{\c&H0029FCE6&}
+Dialogue: 1,0:00:33.04,0:00:33.73,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}ATTENTION TO{\c&H0029FCE6&}
+Dialogue: 1,0:00:33.73,0:00:34.30,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}DETAIL{\c&H0029FCE6&}, MEN
+Dialogue: 1,0:00:34.36,0:00:35.60,Sub,,0,0,0,,{\an5\pos(540,960)}THAT'S {\c&H00EFF3F4&}REALISTIC{\c&H0029FCE6&}, BRO
+Dialogue: 1,0:00:36.18,0:00:36.78,Sub,,0,0,0,,{\an5\pos(540,960)}VERY, VERY,
+Dialogue: 1,0:00:36.78,0:00:37.75,Sub,,0,0,0,,{\an5\pos(540,960)}VERY {\c&H00EFF3F4&}REALISTIC{\c&H0029FCE6&}

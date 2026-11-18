@@ -1,0 +1,42 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:44.93,Hook,,0,0,0,,{\an2\pos(540,600)}{\c&H00EFF3F4&}WINDAH DAPET IKAN\N{\c&H0029FCE6&}{\fs77}PERTAMA KALI DI GTA 6
+Dialogue: 0,0:00:00.00,0:00:44.93,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.62,0:00:01.55,Sub,,0,0,0,,{\an5\pos(540,960)}JAUH {\c&H00EFF3F4&}BANGET{\c&H0029FCE6&} ITU
+Dialogue: 1,0:00:01.90,0:00:02.70,Sub,,0,0,0,,{\an5\pos(540,960)}BISA JAUH ITU MAN
+Dialogue: 1,0:00:02.87,0:00:03.93,Sub,,0,0,0,,{\an5\pos(540,960)}INI KITA {\c&H00EFF3F4&}NUNGGU{\c&H0029FCE6&}
+Dialogue: 1,0:00:03.93,0:00:04.59,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}13 TAHUN{\c&H0029FCE6&} BUAT
+Dialogue: 1,0:00:04.59,0:00:05.17,Sub,,0,0,0,,{\an5\pos(540,960)}GAME INI MAN
+Dialogue: 1,0:00:05.17,0:00:06.43,Sub,,0,0,0,,{\an5\pos(540,960)}BISA {\c&H00EFF3F4&}MANCING{\c&H0029FCE6&} BY
+Dialogue: 1,0:00:06.43,0:00:06.90,Sub,,0,0,0,,{\an5\pos(540,960)}THE WAY YA
+Dialogue: 1,0:00:06.95,0:00:08.13,Sub,,0,0,0,,{\an5\pos(540,960)}AYO TUH ITU
+Dialogue: 1,0:00:08.19,0:00:08.88,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}DAPET{\c&H0029FCE6&} GUE
+Dialogue: 1,0:00:18.28,0:00:19.00,Sub,,0,0,0,,{\an5\pos(540,960)}GUA ORANG {\c&H00EFF3F4&}PERTAMA{\c&H0029FCE6&}
+Dialogue: 1,0:00:19.00,0:00:20.02,Sub,,0,0,0,,{\an5\pos(540,960)}DI INDONESIA YANG
+Dialogue: 1,0:00:20.02,0:00:20.62,Sub,,0,0,0,,{\an5\pos(540,960)}DAPET {\c&H00EFF3F4&}IKAN{\c&H0029FCE6&} GUYS
+Dialogue: 1,0:00:20.62,0:00:21.78,Sub,,0,0,0,,{\an5\pos(540,960)}GUA ORANG {\c&H00EFF3F4&}PERTAMA{\c&H0029FCE6&}
+Dialogue: 1,0:00:21.78,0:00:22.54,Sub,,0,0,0,,{\an5\pos(540,960)}DI INDONESIA YANG
+Dialogue: 1,0:00:22.54,0:00:23.38,Sub,,0,0,0,,{\an5\pos(540,960)}DAPET {\c&H00EFF3F4&}IKAN{\c&H0029FCE6&}
+Dialogue: 1,0:00:23.76,0:00:24.88,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}LET'S GO{\c&H0029FCE6&}
+Dialogue: 1,0:00:36.87,0:00:38.07,Sub,,0,0,0,,{\an5\pos(540,960)}CUMA GUA {\c&H00EFF3F4&}PECINTA{\c&H0029FCE6&}
+Dialogue: 1,0:00:38.07,0:00:38.55,Sub,,0,0,0,,{\an5\pos(540,960)}HEWAN YA
+Dialogue: 1,0:00:38.55,0:00:39.43,Sub,,0,0,0,,{\an5\pos(540,960)}GUA PECINTA {\c&H00EFF3F4&}HEWAN{\c&H0029FCE6&}
+Dialogue: 1,0:00:39.43,0:00:40.11,Sub,,0,0,0,,{\an5\pos(540,960)}GUA CUMA MAU
+Dialogue: 1,0:00:40.11,0:00:40.74,Sub,,0,0,0,,{\an5\pos(540,960)}NAMBAH FOKUS
+Dialogue: 1,0:00:40.74,0:00:41.08,Sub,,0,0,0,,{\an5\pos(540,960)}GUA OKE
+Dialogue: 1,0:00:41.08,0:00:41.90,Sub,,0,0,0,,{\an5\pos(540,960)}GUA PECINTA
+Dialogue: 1,0:00:41.90,0:00:42.63,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}HEWAN{\c&H0029FCE6&} GUYS
+Dialogue: 1,0:00:42.63,0:00:43.97,Sub,,0,0,0,,{\an5\pos(540,960)}JADI GUA {\c&H00EFF3F4&}LEPASIN{\c&H0029FCE6&}
+Dialogue: 1,0:00:43.97,0:00:44.93,Sub,,0,0,0,,{\an5\pos(540,960)}LAGI NGGA TEGA GUA

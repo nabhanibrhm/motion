@@ -1,0 +1,48 @@
+{
+  "description": "Windah first time playing as Lucia and as Jason (his own launch stream 45r3OyaxvFE, 18 Nov 2026). Source = .cache/wizzclip/windah-gtavi-lucia-jason-clean/source.mp4 (also Drive clip-src/windah-gtavi-lucia-jason-clean.mp4): TWO stream-copy sections of the old windah-gtavi-lucia-jason source.mp4 (old local = file t - 480 s; 18:30 WIB = file 0; WIB = 18:38:00 + old local t) joined with the concat demuxer (-c copy), 54.06 s in total. Section 1 = old local 147.0-167.0 (keyframe 147.0, 20.03 s long, new 0.0-20.03); section 2 = old local 1107.0-1141.0 (keyframe 1107.0, 34 s, new 20.03-54.06). Offsets: section 1 new local t = old local t - 146.9857; section 2 new local t = old local t - 1086.9601 (the join sits at new 20.0314; the small audio gap there, 19.99-20.03, lies outside both cuts). 0.0005 s of slack is built into both offsets so a frame on a cut boundary is kept like in the old cut. Cuts: Lucia (prison opening, first camera control) old local 149.70-164.70 (WIB 18:40:29-18:40:44) -> new local 2.71-17.71 -> output 0.00-15.00; Jason (on the boat, first moments in control) old local 1109.60-1138.90 (WIB 18:56:29-18:56:58) -> new local 22.64-51.94 -> output 15.00-44.30. Main 44.30 s + 4.0 s outro. New clean layout (19 Nov 2026), remake of windah-gtavi-lucia-jason: solid Ink #0E0F12, the whole 16:9 gameplay frame uncropped scaled to 1080x608 at y=656 (his facecam stays inside the game frame, bottom-right), no blur, no separate face panel. Hook = a short written title, not a quote, on screen from 0.00 s for the whole main clip: Audex 92 (line sizes noted), 2 lines, bottom-anchored at (540,600), line 1 Paper 'PERTAMA KALI JADI', line 2 Volt 'LUCIA & JASON'. Word captions Audex 72 Volt (Paper emphasis), Ink outline 7, shadow 3, one line of 2-4 words, centred at (540,960); same words and windows as windah-gtavi-lucia-jason (its two-line events split in two, time divided by letter count), old Tag lines dropped. Credit line Audex 30 Mist at (540,1290) 'WINDAH BASUDARA · GTA VI' for the whole main clip. Watermark overlays the main clip only, then the 4 s outro, loudnorm two-pass -14 LUFS / -1 dBTP (measured values reused from windah-gtavi-lucia-jason: audio cuts identical). Original audio kept (no mutes, user decision). Story: Lucia prison opening ('Apakah benar kita jadi orang pertama yang main GTA 6 di PS5 Pro... 3, 2, 1, gue gerakin kamera'), then Jason on the boat ('Oh my God', 'Gameplay dulu baru explore ya', 'Gila detail banget guys', 'Gila 120 ribu viewer, clip that guys', 'Ada darah, ada stamina, ada mata'). Sensitive moments (carried over from the old recipe/HANDOFF, kept unedited): in-game 'fuck' at about output 26 s and 'shit' at about output 43 s; 'Ada darah, ada stamina, ada mata' (HUD blood/stamina meters, output about 40.8-43.7).",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-lucia-jason-clean",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-lucia-jason-clean.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=2.7143:17.7143,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=22.6399:51.9399,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[v1][v2]concat=n=2:v=1:a=0[cv];",
+    "[0:a]asplit=2[a1][a2];",
+    "[a1]atrim=2.7143:17.7143,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=14.95:d=0.05,aresample=48000,aformat=channel_layouts=stereo[x1];",
+    "[a2]atrim=22.6399:51.9399,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=29.10:d=0.2,aresample=48000,aformat=channel_layouts=stereo[x2];",
+    "[x1][x2]concat=n=2:v=0:a=1[am];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-4.52:measured_TP=1.50:measured_LRA=6.30:measured_thresh=-15.43:offset=-0.49:linear=true[a]"
+  ],
+  "output": "windah-gtavi-lucia-jason-clean.mp4"
+}
