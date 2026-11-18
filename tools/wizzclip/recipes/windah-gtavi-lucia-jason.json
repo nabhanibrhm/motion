@@ -1,0 +1,52 @@
+{
+  "description": "Windah first time playing as Lucia and as Jason (his own live stream 45r3OyaxvFE, 18 Nov 2026). Source = stream-1830-1944.mp4 file 8:00-30:00 (source.mp4 local t = file t - 480 s; 18:30 WIB = file 0). Main clip = local 149.7-164.7 (file 10:29.7-10:44.7, WIB 18:40:30-18:40:45; Lucia prison opening, first camera control: 'Apakah benar kita jadi orang pertama yang main GTA 6 di PS5 Pro... 3, 2, 1, gue gerakin kamera') + local 1109.6-1138.9 (file 26:29.6-26:58.9, WIB 18:56:30-18:57:00; Jason on the boat, first moments in control: 'Oh my God', 'Gameplay dulu baru explore ya', 'Gila detail banget guys', 'Gila 120 ribu viewer, clip that guys', 'Ada darah, ada stamina, ada mata'). Layout identical to windah-gtavi-open: gameplay top (crop x60 of 1440x1080 -> 1080x810), facecam below (crop 400x400 at 1475,680 on blurred copy), blurred background. Outro GTAVI_OutroVideo.mov appended after the main clip, watermark only on the main clip. Output t: Lucia 0-15.0, Jason 15.0-44.3, outro 44.3-48.3. Original audio kept (no mutes, user decision).",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-lucia-jason",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source"
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-lucia-jason.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]split=2[va][vb];",
+    "[va]trim=149.7:164.7,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[vb]trim=1109.6:1138.9,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[v1][v2]concat=n=2:v=1:a=0,split=3[m1][m2][m3];",
+    "[m1]crop=1440:1080:60:0,scale=1080:810[g];",
+    "[m2]crop=400:400:1475:680,split[c1][c2];",
+    "[c1]scale=1080:600:force_original_aspect_ratio=increase,crop=1080:600,boxblur=18,eq=brightness=-0.25[cbg];",
+    "[c2]scale=600:600[cf];",
+    "[cbg][cf]overlay=240:0[face];",
+    "[g][face]vstack[stk0];",
+    "[m3]scale=-2:480,crop=270:480,boxblur=6:2,eq=brightness=-0.25,scale=1080:1920:flags=bilinear[bg];",
+    "[bg][stk0]overlay=0:0,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[0:a]asplit=2[a1][a2];",
+    "[a1]atrim=149.7:164.7,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=14.95:d=0.05,aresample=48000,aformat=channel_layouts=stereo[x1];",
+    "[a2]atrim=1109.6:1138.9,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=29.10:d=0.2,aresample=48000,aformat=channel_layouts=stereo[x2];",
+    "[x1][x2]concat=n=2:v=0:a=1[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-4.52:measured_TP=1.50:measured_LRA=6.30:measured_thresh=-15.43:offset=-0.49:linear=true[a]"
+  ],
+  "output": "windah-gtavi-lucia-jason.mp4"
+}

@@ -1,0 +1,26 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Audex,45,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H80120F0E,0,0,0,0,100,100,0,0,1,6,3,5,60,140,0,1
+Style: Title,Audex,62,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,22,0,8,40,120,0,1
+Style: Tag,Audex,32,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,12,0,8,40,120,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,0:00:03.60,Title,,0,0,0,,{\pos(500,110)\fad(0,250)}13 TAHUN NUNGGU,\NAKHIRNYA {\c&H0029FCE6&}MAIN{\c&H00EFF3F4&} GTA VI
+Dialogue: 1,0:00:00.00,0:00:43.10,Tag,,0,0,0,,{\pos(500,300)}REAKSI PERTAMA WINDAH BUKA GTA VI
+Dialogue: 0,0:00:00.20,0:00:02.70,Sub,,0,0,0,,{\pos(500,1330)}PLEASE {\c&H0029FCE6&}WELCOME
+Dialogue: 0,0:00:02.80,0:00:06.20,Sub,,0,0,0,,{\pos(500,1330)}JASON AND LUCIA\N{\c&H0029FCE6&}GTA 6
+Dialogue: 0,0:00:07.90,0:00:11.10,Sub,,0,0,0,,{\pos(500,1330)}{\c&H0029FCE6&}LET'S GO!{\c&H00EFF3F4&}\NLET'S GO!
+Dialogue: 0,0:00:11.60,0:00:13.30,Sub,,0,0,0,,{\pos(500,1330)}I'M SO {\c&H0029FCE6&}EXCITED{\c&H00EFF3F4&}, GUYS
+Dialogue: 0,0:00:13.40,0:00:15.50,Sub,,0,0,0,,{\pos(500,1330)}GUE STAY COOL,\NTAPI I'M SO {\c&H0029FCE6&}EXCITED
+Dialogue: 0,0:00:21.90,0:00:23.70,Sub,,0,0,0,,{\pos(500,1330)}{\c&H0029FCE6&}W{\c&H00EFF3F4&} INTRO!
+Dialogue: 0,0:00:26.00,0:00:28.50,Sub,,0,0,0,,{\pos(500,1330)}ROCKSTAR! {\c&H0029FCE6&}GAME!
+Dialogue: 0,0:00:34.00,0:00:37.10,Sub,,0,0,0,,{\pos(500,1330)}JASON, GILA!\NINTRONYA {\c&H0029FCE6&}GTA V{\c&H00EFF3F4&} BANGET, MEN!
+Dialogue: 0,0:00:38.50,0:00:40.60,Sub,,0,0,0,,{\pos(500,1330)}NONTON BERAPA INI,\NGUE {\c&H0029FCE6&}PENASARAN{\c&H00EFF3F4&}, GUYS?
+Dialogue: 0,0:00:40.70,0:00:42.90,Sub,,0,0,0,,{\pos(500,1330)}{\c&H0029FCE6&}VICE CITY{\c&H00EFF3F4&},\N2 TAHUN YANG LALU

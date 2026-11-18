@@ -220,6 +220,17 @@
       "commonsUrl": "https://commons.wikimedia.org/wiki/File:Rhinoceros_sondaicus_in_London_Zoo.jpg",
       "author": "T. Dixon, The Zoological Society of London",
       "licence": "Public domain"
+    },
+    {
+      "slug": "habiburokhman",
+      "file": "people/habiburokhman.jpg",
+      "name": "Habiburokhman",
+      "role": "Ketua Komisi III DPR RI",
+      "roleAsOf": "2026-11",
+      "credit": "KPU (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:DPR_Habiburokhman.jpg",
+      "author": "KPU (General Election Commission)",
+      "licence": "Public domain"
     }
   ]
 }

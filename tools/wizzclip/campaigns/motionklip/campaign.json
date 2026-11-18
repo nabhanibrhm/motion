@@ -10,6 +10,23 @@
     "keep the videos up",
     "claim once per video through the campaign's Google Form after the minimum views"
   ],
+  "server_rules": {
+    "source": "Discord #📜┃rules (Motion Klip, posted 25 May 2026), read 18 Nov 2026",
+    "content_relevant": [
+      "H. No NSFW: no pornography, gore, violence, FIREARMS (senjata api) or other content unfit for the public; never sexualise characters or minors",
+      "B. No indecent or inappropriate words in any language; no promoting gambling with money or monetary assets; no provocation/drama; avoid controversial topics (religion, politics, communism, terrorism, war)",
+      "D. No false information; no scams or links that harm people's data, money or privacy",
+      "G. No promoting unverified products/services, own servers, groups, personal social accounts or stores outside the campaign objective; no outside Discord servers",
+      "E. No impersonating members/staff/bots; no sharing other people's personal data"
+    ],
+    "server_conduct": [
+      "A. Respect: no harassment, discrimination, intimidation, racism, mockery, doxxing, hate speech",
+      "C. No abusing access, bots or system bugs",
+      "F. No spam, no needless role pings or mentions",
+      "I. Post in the channel that fits the topic"
+    ],
+    "clip_checks": "Before rendering/posting a campaign clip: mute or cut swears; no shooting, gun-shop or gore-focused moments (GTA guns visible in passing only, never the subject); no sexual frames (club dancers, underwear); no gambling; no own-account promo text burned in"
+  },
   "briefs": {
     "kof-legend-x-windah": {
       "title": "KOF Legend x Windah",
@@ -81,7 +98,48 @@
         "windah-trailer-clip1"
       ],
       "eligible_from": "2026-11-17",
-      "watermark_url": "https://drive.google.com/file/d/11fqKW4vg-epXZz2LbD2jRMiejeERDIMN/view (campaign template; not yet compared with watermark-motionklip.png)"
+      "watermark_url": "https://drive.google.com/file/d/11fqKW4vg-epXZz2LbD2jRMiejeERDIMN/view (same Drive file as the Windah GTA VI brief = watermark-windah-gtavi.png, compared 18 Nov: differs from watermark-motionklip.png, which windah-trailer-clip1 still uses)",
+      "watermark": "watermark-windah-gtavi.png"
+    },
+    "windah-gta-vi": {
+      "title": "Windah GTA VI - Motion Klip",
+      "category": "Gaming",
+      "platforms": [
+        "TikTok",
+        "Instagram",
+        "YouTube",
+        "X",
+        "Threads"
+      ],
+      "cpm_idr": 6000,
+      "rate_note": "Rp30.000 per 5.000 views",
+      "min_views": 5000,
+      "max_claim_views_per_video": 50000,
+      "payout": "Gopay or DANA; one claim per video, views counted at submission",
+      "announcement_channel": "windah-gtavi-announcement",
+      "rules_channel": "windah-gtavi-bahan-dan-rules",
+      "hashtags": [
+        "#windahbasudara",
+        "#GTAVI",
+        "#windahGTAVI",
+        "#motionklip",
+        "#ezklip"
+      ],
+      "hashtags_note": "use exactly this order",
+      "source_channel": "https://www.youtube.com/@WindahBasudara",
+      "source_youtube": "45r3OyaxvFE",
+      "source_note": "Only Windah Basudara playing GTA VI; every clip must show gameplay + Windah (memes, epic moments, etc.). Minimal editing, no effects/filters; clear message, complete moment. Launch stream 45r3OyaxvFE started 18 Nov 2026 18:30 WIB; recordings in G:/My Drive/GTA6 (stream-1830-1944.mp4, rec*-hNN.mp4), not in git.",
+      "watermark": "watermark-windah-gtavi.png",
+      "watermark_url": "https://drive.google.com/file/d/11fqKW4vg-epXZz2LbD2jRMiejeERDIMN/view",
+      "watermark_guide": "https://youtube.com/shorts/ThbIdhbt0M0",
+      "outro": "GTAVI_OutroVideo.mov (4.0 s, 2160x3840, with audio) from https://drive.google.com/drive/folders/1gZiKc3mwSabV4QdWKS2_Ts6zqhnzapTO; required at the very end of every video (brief says 3 s); local copy .cache/wizzclip/windah-gtavi/ (not in git)",
+      "eligible_from": "2026-11-18",
+      "recipes": [
+        "windah-gtavi-open",
+        "windah-gtavi-lucia-jason",
+        "windah-gtavi-fishing",
+        "windah-gtavi-house"
+      ]
     }
   }
 }

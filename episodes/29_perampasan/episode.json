@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "perampasan",
+  "number": 29,
+  "title": "RUU Perampasan Aset",
+  "category": "hukum",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #12",
+      "steps": 6
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "TINGKAT I",
+        "kicker": "KOMISI III · RABU 18 NOV",
+        "headline": "ASET KORUPTOR\n*DIRAMPAS TANPA VONIS*",
+        "claim": "Bisa dirampas *tanpa menunggu putusan pidana*, tetap lewat pengadilan",
+        "tag": "8 FRAKSI SETUJU · PARIPURNA RENCANANYA KAMIS",
+        "person": {
+          "name": "Sufmi Dasco Ahmad",
+          "role": "Wakil Ketua DPR, pimpin rapat tingkat I",
+          "photo": "people/dasco.jpg",
+          "credit": "DPR RI (domain publik)"
+        },
+        "cue": "dirampas",
+        "stamp": {
+          "text": "DISETUJUI TINGKAT I",
+          "cue": "fraksi"
+        },
+        "introCover": true
+      }
+    },
+    {
+      "id": "korban",
+      "template": "hw-quote",
+      "props": {
+        "label": "BUAT KORBAN",
+        "kicker": "KORBAN INVESTASI BODONG",
+        "person": {
+          "name": "Habiburokhman",
+          "role": "Ketua Komisi III DPR",
+          "photo": "people/habiburokhman.jpg",
+          "credit": "KPU (domain publik)"
+        },
+        "quote": "Bisa langsung mendapatkan *ganti kerugian* dengan penjualan aset para pelaku.",
+        "source": "detik, Suara, kumparan",
+        "date": "18 Nov 2026",
+        "cue": "korban"
+      }
+    },
+    {
+      "id": "tanya",
+      "template": "hw-art",
+      "props": {
+        "label": "KAMU SETUJU?",
+        "kicker": "TULIS DI KOMENTAR",
+        "art": "gavel",
+        "headline": "SETUJU DIRAMPAS\n*TANPA VONIS*?",
+        "sub": "Bukan nasihat hukum",
+        "cue": "setuju"
+      }
+    },
+    {
+      "id": "syarat",
+      "template": "hw-resmi",
+      "props": {
+        "label": "SYARATNYA",
+        "kicker": "MENURUT DRAF",
+        "title": "SYARATNYA",
+        "items": [
+          {
+            "text": "Tetap lewat *sidang pengadilan*",
+            "source": "CNBC, Katadata (18 Nov)",
+            "cue": "sidang"
+          },
+          {
+            "text": "Tersangka *kabur, meninggal*, sakit permanen",
+            "source": "Draf: IDN Times 9 Nov, CNBC 12 Nov",
+            "cue": "tersangka"
+          },
+          {
+            "text": "Ancaman pidana *tetap berlaku*",
+            "source": "CNBC, Antara (18 Nov)",
+            "cue": "permanen"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lindung",
+      "template": "hw-resmi",
+      "props": {
+        "label": "ASETNYA KE MANA",
+        "kicker": "10 POKOK RUU",
+        "title": "YANG DIATUR",
+        "items": [
+          {
+            "text": "Dikembalikan ke *korban*",
+            "source": "CNBC, Katadata, kumparan",
+            "cue": "korban"
+          },
+          {
+            "text": "Dipakai untuk *kepentingan umum*",
+            "source": "CNBC, Katadata",
+            "cue": "kepentingan"
+          },
+          {
+            "text": "Pihak ketiga beriktikad baik *dilindungi*",
+            "source": "CNBC, Katadata, IDN Times",
+            "cue": "Pihak"
+          },
+          {
+            "text": "Diawasi *badan independen*",
+            "source": "CNBC, Katadata",
+            "cue": "badan"
+          }
+        ]
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "UPDATE",
+        "lines": [
+          {
+            "text": "JAWAB DI KOMENTAR",
+            "style": "kicker",
+            "cue": "Jadi"
+          },
+          {
+            "text": "SETUJU *TANPA VONIS*?",
+            "cue": "setuju"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "footer": "Bukan nasihat hukum",
+        "cover": {
+          "title": "*RUU PERAMPASAN ASET*\nRAMPAS ASET\nTANPA VONIS",
+          "chip": "DISETUJUI TINGKAT I",
+          "person": {
+            "name": "Habiburokhman",
+            "photo": "people/habiburokhman.jpg",
+            "credit": "KPU (domain publik)"
+          }
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

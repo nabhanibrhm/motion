@@ -1,0 +1,99 @@
+{
+  "comment": "VARIANT B (pre-plenary, true on Wed 18 Nov evening) is in section 'hook'. After the Thu 19 Nov paripurna passes the bill (check two outlets), swap the hook text for VARIANT A in script-short.md. Only the hook line differs.",
+  "source": "cartesia",
+  "speakers": {
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "update",
+      "title": "RUU Perampasan Aset"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Aset koruptor bakal bisa dirampas tanpa menunggu putusan pidana. RUU Perampasan Aset disetujui semua fraksi, dan rencananya besok dibawa ke paripurna."
+        }
+      ]
+    },
+    {
+      "id": "korban",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kalau kamu korban investasi bodong, kata Ketua Komisi Tiga Habiburokhman, ganti ruginya bisa langsung dari penjualan aset pelaku, bukan ke negara dulu."
+        }
+      ]
+    },
+    {
+      "id": "tanya",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kamu setuju aset koruptor dirampas tanpa nunggu vonis? Tulis di komentar, lalu simak syaratnya."
+        }
+      ]
+    },
+    {
+      "id": "syarat",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Prosesnya tetap lewat sidang pengadilan. Di draf yang dibahas, jalur ini untuk tersangka yang kabur, meninggal, atau sakit permanen."
+        }
+      ]
+    },
+    {
+      "id": "lindung",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Aset dikembalikan ke korban dan dipakai untuk kepentingan umum. Pihak ketiga yang beriktikad baik dilindungi, dan badan independen ikut mengawasi."
+        }
+      ]
+    },
+    {
+      "id": "penutup",
+      "chapter": "update",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Jadi, setuju aset koruptor dirampas tanpa nunggu vonis? Jawab di komentar, dan follow untuk update berikutnya.",
+          "after": 1.4
+        }
+      ]
+    }
+  ],
+  "cartesia": {
+    "say": {
+      "RUU": "er u u",
+      "Habiburokhman": "Habiburohman",
+      "DPR": "de pe er"
+    }
+  },
+  "say": {}
+}

@@ -1,0 +1,63 @@
+{
+  "description": "Windah's first house tour in GTA VI: detail reactions in Jason's house (his own live stream 45r3OyaxvFE, 18 Nov 2026). Source = stream-1830-1944.mp4 file 52:00-70:00 (source.mp4 local t = file t - 3120 s; local 0 = file 52:00 = WIB 19:22). Main clip = 4 cuts (local t): A 503.0-521.98 fridge (WIB 19:30:23-19:30:42; 'kita coba lagi... rain water... emang keliatan... ah gila attention to detailnya'), B 529.7-536.1 holding two bottles ('put down dulu... 2 botol... kurang attention detail apa lah'), C 554.0-560.45 book ('baca text bro... buku tentang perang, kisah nyata'), D 638.65-644.65 light switch ('nyalain lampu attention to detail men, that's realistic bro, very very realistic'). Output t: A 0-18.98, B 18.98-25.38, C 25.38-31.83, D 31.83-37.83, outro 37.83-41.83. Layout copied from windah-gtavi-open (gameplay crop x60 1440x1080 -> 1080x810, facecam 400x400 at 1475,680 on blurred copy, blurred background, captions y1330, watermark on main only). Original audio kept (no mutes, user decision). Source is input-seeked (-ss 500 -t 150), so trim times in filter_complex = local t - 500.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-house",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-ss",
+        "500",
+        "-t",
+        "150",
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-house.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=3:21.98,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=29.7:36.1,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=54:60.45,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=138.65:144.65,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:a]atrim=3:21.98,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=18.88:d=0.1[a1];",
+    "[0:a]atrim=29.7:36.1,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.30:d=0.1[a2];",
+    "[0:a]atrim=54:60.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.35:d=0.1[a3];",
+    "[0:a]atrim=138.65:144.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.90:d=0.1[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]split=3[m1][m2][m3];",
+    "[m1]crop=1440:1080:60:0,scale=1080:810[g];",
+    "[m2]crop=400:400:1475:680,split[c1][c2];",
+    "[c1]scale=1080:600:force_original_aspect_ratio=increase,crop=1080:600,boxblur=18,eq=brightness=-0.25[cbg];",
+    "[c2]scale=600:600[cf];",
+    "[cbg][cf]overlay=240:0[face];",
+    "[g][face]vstack[stk0];",
+    "[m3]scale=-2:480,crop=270:480,boxblur=6:2,eq=brightness=-0.25,scale=1080:1920:flags=bilinear[bg];",
+    "[bg][stk0]overlay=0:0,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.04:measured_TP=1.20:measured_LRA=5.60:measured_thresh=-16.85:offset=0.35:linear=true[a]"
+  ],
+  "output": "windah-gtavi-house.mp4"
+}

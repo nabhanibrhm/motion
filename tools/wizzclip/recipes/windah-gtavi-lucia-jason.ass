@@ -1,0 +1,25 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Audex,45,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H80120F0E,0,0,0,0,100,100,0,0,1,6,3,5,60,140,0,1
+Style: Title,Audex,62,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,22,0,8,40,120,0,1
+Style: Tag,Audex,32,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,12,0,8,40,120,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,0:00:03.60,Title,,0,0,0,,{\pos(500,110)\fad(0,250)}WINDAH PERTAMA KALI\NJADI {\c&H0029FCE6&}LUCIA{\c&H00EFF3F4&} & {\c&H0029FCE6&}JASON
+Dialogue: 1,0:00:00.00,0:00:14.95,Tag,,0,0,0,,{\pos(500,300)}BAGIAN 1: WINDAH JADI LUCIA
+Dialogue: 1,0:00:15.00,0:00:44.30,Tag,,0,0,0,,{\pos(500,300)}BAGIAN 2: WINDAH JADI JASON
+Dialogue: 0,0:00:00.50,0:00:03.50,Sub,,0,0,0,,{\pos(500,1330)}APAKAH BENAR KITA JADI\NORANG {\c&H0029FCE6&}PERTAMA{\c&H00EFF3F4&} YANG MAIN GTA 6
+Dialogue: 0,0:00:03.60,0:00:05.50,Sub,,0,0,0,,{\pos(500,1330)}DI {\c&H0029FCE6&}PS5 PRO{\c&H00EFF3F4&}...
+Dialogue: 0,0:00:05.60,0:00:07.90,Sub,,0,0,0,,{\pos(500,1330)}{\c&H0029FCE6&}3, 2, 1{\c&H00EFF3F4&}!\NGUE GERAKIN KAMERA
+Dialogue: 0,0:00:16.20,0:00:18.60,Sub,,0,0,0,,{\pos(500,1330)}OH MY {\c&H0029FCE6&}GOD{\c&H00EFF3F4&}!
+Dialogue: 0,0:00:19.80,0:00:21.30,Sub,,0,0,0,,{\pos(500,1330)}GAMEPLAY DULU,\NBARU {\c&H0029FCE6&}EXPLORE{\c&H00EFF3F4&} YA
+Dialogue: 0,0:00:21.80,0:00:23.10,Sub,,0,0,0,,{\pos(500,1330)}GILA, {\c&H0029FCE6&}DETAIL{\c&H00EFF3F4&} BANGET, GUYS
+Dialogue: 0,0:00:33.40,0:00:36.40,Sub,,0,0,0,,{\pos(500,1330)}GILA, {\c&H0029FCE6&}120 RIBU{\c&H00EFF3F4&} VIEWER!\N{\c&H0029FCE6&}CLIP{\c&H00EFF3F4&} ITU, GUYS!
+Dialogue: 0,0:00:40.80,0:00:43.70,Sub,,0,0,0,,{\pos(500,1330)}ADA DARAH, ADA STAMINA,\NADA {\c&H0029FCE6&}MATA{\c&H00EFF3F4&}

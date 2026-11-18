@@ -1,0 +1,46 @@
+{
+  "description": "Windah first time opening GTA VI (his own live stream 45r3OyaxvFE, 18 Nov 2026). Source = stream-1830-1944.mp4 file 0:00-6:00 (source.mp4 local t = file t; 18:30 WIB = 0). Main clip = local 161.3-204.4 s (WIB 18:32:41-18:33:24): 'Please welcome Jason and Lucia GTA 6', 'Let's go', 'I'm so excited', GTA VI intro art, 'Jason, gila intronya GTA V banget', 'Vice City, 2 tahun yang lalu'. Layout: gameplay top (crop x60 of 1440x1080 -> 1080x810), facecam below (crop 400x400 at 1475,680 on blurred copy), blurred full-frame background. Outro GTAVI_OutroVideo.mov (campaign: path with ../ into .cache) appended after the main clip, watermark only on the main clip. Output t: main 0-43.1, outro 43.1-47.1. Original audio kept (no mutes, user decision).",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-open",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source"
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-open.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=161.3:204.4,setpts=PTS-STARTPTS,fps=30,split=3[m1][m2][m3];",
+    "[m1]crop=1440:1080:60:0,scale=1080:810[g];",
+    "[m2]crop=400:400:1475:680,split[c1][c2];",
+    "[c1]scale=1080:600:force_original_aspect_ratio=increase,crop=1080:600,boxblur=18,eq=brightness=-0.25[cbg];",
+    "[c2]scale=600:600[cf];",
+    "[cbg][cf]overlay=240:0[face];",
+    "[g][face]vstack[stk0];",
+    "[m3]scale=-2:480,crop=270:480,boxblur=6:2,eq=brightness=-0.25,scale=1080:1920:flags=bilinear[bg];",
+    "[bg][stk0]overlay=0:0,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[0:a]atrim=161.3:204.4,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.05,afade=t=out:st=42.90:d=0.2,aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-5.53:measured_TP=2.16:measured_LRA=7.80:measured_thresh=-17.10:offset=-0.84:linear=true[a]"
+  ],
+  "output": "windah-gtavi-open.mp4"
+}
