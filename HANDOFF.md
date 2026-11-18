@@ -44,7 +44,10 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
     - "PERTAMA KALI JADI / LUCIA & JASON"
   - Lengths: 41.8 / 48.9 / 48.3 s with the outro.
   - Sources in `clip-src`: small stream-copy sections of the old sources, 57 / 113 / 26 MB. The lucia-jason source is two sections joined; fishing uses the re-synced source. The offsets are in each recipe's description.
-  - Captions: `out/wizzclip/*-clean-caption.txt` on Windows, copied unchanged from the old ones.
+  - Captions: `out/wizzclip/*-clean-caption.txt` on Windows, copied unchanged from the old ones. Each is the first line below + `Sumber: YouTube Windah Basudara` + `#windahbasudara #GTAVI #windahGTAVI #motionklip #ezklip`:
+    - house: `Windah keliling rumah Jason di GTA VI pertama kali dan terus bilang "attention to detail-nya gila" 🏠🔥 Kulkas, botol, buku, sampai saklar lampu semua ada!`
+    - fishing: `Pertama kali mancing di GTA VI, Windah langsung dapat ikan pertamanya, lalu dilepas lagi karena "ngga tega".`
+    - lucia-jason: `Windah pertama kali main GTA VI jadi Lucia, lalu jadi Jason. Dari "gue gerakin kamera" di penjara sampai "gila, detail banget, guys!" di atas kapal.`
   - Lucia-jason still has an in-game "fuck" at ~26 s and "shit" at ~43 s.
 - The YouTube auto-captions of the whole stream are in `.cache/wizzclip/windah-gtavi/scan/subs.txt` (`seconds WIB-time text`; sq = seconds since 18:30:31). Grep them to find clip moments.
 
