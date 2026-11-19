@@ -1,0 +1,51 @@
+{
+  "description": "Windah is the first to get the 1400-dollar cockatoo mystery reward, and celebrates with 'Alhamdulillah kita berhasil nyolong' (day 2 stream, idea A6). Source = .cache/wizzclip/windah-gtavi-kakatua/source.mp4 (also Drive clip-src/windah-gtavi-kakatua.mp4): FOUR parts of stream-1700-1800.mp4 (Windah live QSPPyA1736U, t 0 = 19 Nov 2026 17:00:13 WIB) re-encoded to 1080p30 and joined IN OUTPUT ORDER (so every cut is in source order on one input): part 1 local 0-8 = t 1178-1186; part 2 local 8-16 = t 645-653; part 3 local 16-26 = t 1047-1057; part 4 local 26-38 = t 1153-1165. Cuts: A1178 t 1179.70-1184.85 = local 1.70-6.85 -> output 0.00-5.15; A645 t 647.00-652.10 = local 10.00-15.10 -> output 5.15-10.25; A1047 t 1048.75-1055.55 = local 17.75-24.55 -> output 10.25-17.05; A1153 t 1154.90-1164.05 = local 27.90-37.05 -> output 17.05-26.20. Beats: 17:19:52 'Nice, Alhamdulillah kita berhasil nyolong. Eh nggak pantes nggak sih ngomong gitu. Maksudnya kita lolos dari polisi' (opener, payoff first; 'lolos' is a best guess, whisper heard 'lulus'/'nggak harus jadi'); 17:11:00 'Nah kemarin ada viewer yang DM gue, guys. Ada yang katanya ketinggalan, mau diambil gak?'; 17:18:22 'Guys, gue orang pertama yang dapet 1400 dolar misteri burung kakatua, please jangan kasih tau siapa-siapa'; 17:19:28 reads chat 'bebaskan burungnya, bang', then 'burungnya nggak bisa dibebaskan, jangan percaya bocil burung bebasin, mereka cuma caper doang, burungnya emang udah ditakdirkan dikurung'. Skipped the in-game 'anjing gila' line (t 1176) right before the opener; no guns in the cuts (sneaking, driving, map). Main 26.20 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Clean layout as windah-gtavi-sepatu; hook line 1 Paper 'ALHAMDULILLAH BERHASIL NYOLONG', line 2 Volt 'EH, GAK PANTES WKWK', Audex 58. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-kakatua",
+    "youtube": "QSPPyA1736U",
+    "url": "https://www.youtube.com/watch?v=QSPPyA1736U",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-kakatua.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=1.70:6.85,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=10.00:15.10,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=17.75:24.55,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=27.90:37.05,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:a]atrim=1.70:6.85,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.05:d=0.1[a1];",
+    "[0:a]atrim=10.00:15.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.00:d=0.1[a2];",
+    "[0:a]atrim=17.75:24.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.70:d=0.1[a3];",
+    "[0:a]atrim=27.90:37.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=9.05:d=0.1[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.31:measured_TP=0.98:measured_LRA=3.40:measured_thresh=-16.84:offset=-0.29:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-kakatua.mp4"
+}

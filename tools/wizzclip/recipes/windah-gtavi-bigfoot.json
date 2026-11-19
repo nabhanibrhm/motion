@@ -1,0 +1,53 @@
+{
+  "description": "Windah hunts Bigfoot the whole stream and finally begs chat for spoilers; he never finds it (day 2 stream, idea B18). Source = .cache/wizzclip/windah-gtavi-bigfoot/source.mp4 (also Drive clip-src/windah-gtavi-bigfoot.mp4): FIVE parts of stream-1800-1852.mp4 (Windah live QSPPyA1736U, t 0 = 19 Nov 2026 18:00:13 WIB) re-encoded to 1080p30 and joined IN OUTPUT ORDER: part 1 local 0-11 = t 2896-2907; part 2 local 11-19 = t 2087-2095; part 3 local 19-27 = t 2228-2236; part 4 local 27-35 = t 2757-2765; part 5 local 35-46 = t 2772-2783. Cuts: B2896 t 2898.20-2906.30 = local 2.20-10.30 -> output 0.00-8.10; B2087 t 2087.50-2091.00 = local 11.50-15.00 -> output 8.10-11.60; B2228 t 2229.55-2233.40 = local 20.55-24.40 -> output 11.60-15.45; B2772 t 2773.55-2781.75 = local 36.55-44.75 -> output 15.45-23.65. Beats: 18:48:18 'pegang omongan gue, pasti buang waktu, nyari Bigfoot buang waktu! makanya kalian kasih tau biar gak buang waktu, biar to the point, gapapa spoilerin aja' (opener, on the plane); 18:34:47 'pertanyaan kedua gua, Bigfoot di mana?' (boat); 18:37:22 'Bigfoot, Bigfoot di mana? bocil Bigfoot' (boat); 18:45:59 'tapi gue belum nemu Bigfoot, Bigfoot-nya belum nemu guys' (island); 18:46:13 'gue mau Bigfoot sekarang, sebelum push misi lagi, kasih tau spoiler, di mana Bigfoot?' and reads chat 'Bigfoot di pojok kanan bawah, bang' (dock); last frame frozen 1.5 s with '...DAN BIGFOOT-NYA TETEP GAK KETEMU WKWK'. Violence check: dropped t 2759-2762 ('belum nemu Bigfoot', a body in blood on the beach) and the swamp shootout (t 2350-2690); in the dock cut a body and a '.38 REVOLVER' pick-up prompt enter the bottom-left from t 2776.4, so source px x0-1450 y720-1080 (the whole lower-left, stopping before the facecam) is box-blurred (radius 30) for the whole dock cut, including the freeze; this also hides the weapon-wheel prompt at the cut start. Small '+Revolver Ammo / +Zombie' pickup notices (top right, tiny text) remain at t 2773-2776. Main 25.15 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Clean layout as windah-gtavi-sepatu; hook line 1 Paper 'WINDAH NYARI BIGFOOT', line 2 Volt 'SAMPE MINTA DISPOILERIN', Audex 68. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-bigfoot",
+    "youtube": "QSPPyA1736U",
+    "url": "https://www.youtube.com/watch?v=QSPPyA1736U",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-bigfoot.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=2.20:10.30,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=11.50:15.00,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=20.55:24.40,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=36.55:44.75,setpts=PTS-STARTPTS,fps=30,split=2[b4a][b4b];",
+    "[b4b]crop=1450:360:0:720,boxblur=luma_radius=30:luma_power=3[b4c];",
+    "[b4a][b4c]overlay=0:720:enable='gte(t,0.00)',tpad=stop_mode=clone:stop_duration=1.5[v4];",
+    "[0:a]atrim=2.20:10.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.00:d=0.1[a1];",
+    "[0:a]atrim=11.50:15.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.40:d=0.1[a2];",
+    "[0:a]atrim=20.55:24.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.75:d=0.1[a3];",
+    "[0:a]atrim=36.55:44.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.10:d=0.1,apad=pad_dur=1.5[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.33:measured_TP=1.71:measured_LRA=4.00:measured_thresh=-16.87:offset=0.62:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-bigfoot.mp4"
+}

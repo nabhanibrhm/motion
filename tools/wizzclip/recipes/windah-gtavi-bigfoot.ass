@@ -1,0 +1,38 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:25.15,Hook,,0,0,0,,{\an2\pos(540,600)\fs68}{\c&H00EFF3F4&}WINDAH NYARI BIGFOOT\N{\c&H0029FCE6&}SAMPE MINTA DISPOILERIN
+Dialogue: 0,0:00:00.00,0:00:25.15,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.08,0:00:01.16,Sub,,0,0,0,,{\an5\pos(540,960)}PEGANG OMONGAN GUE
+Dialogue: 1,0:00:01.16,0:00:01.82,Sub,,0,0,0,,{\an5\pos(540,960)}PASTI {\c&H00EFF3F4&}BUANG WAKTU{\c&H0029FCE6&}
+Dialogue: 1,0:00:01.86,0:00:02.42,Sub,,0,0,0,,{\an5\pos(540,960)}NYARI BIGFOOT
+Dialogue: 1,0:00:02.46,0:00:03.10,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BUANG WAKTU!{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.42,0:00:05.20,Sub,,0,0,0,,{\an5\pos(540,960)}MAKANYA KALIAN KASIH TAU
+Dialogue: 1,0:00:05.20,0:00:06.30,Sub,,0,0,0,,{\an5\pos(540,960)}BIAR GAK BUANG WAKTU
+Dialogue: 1,0:00:06.42,0:00:06.92,Sub,,0,0,0,,{\an5\pos(540,960)}BIAR TO THE POINT
+Dialogue: 1,0:00:06.98,0:00:08.05,Sub,,0,0,0,,{\an5\pos(540,960)}GAPAPA, {\c&H00EFF3F4&}SPOILERIN AJA{\c&H0029FCE6&}
+Dialogue: 1,0:00:08.14,0:00:09.16,Sub,,0,0,0,,{\an5\pos(540,960)}PERTANYAAN KEDUA GUA
+Dialogue: 1,0:00:09.54,0:00:10.20,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BIGFOOT{\c&H0029FCE6&} DI MANA?
+Dialogue: 1,0:00:11.08,0:00:11.58,Sub,,0,0,0,,{\an5\pos(540,960)}BIGFOOT?
+Dialogue: 1,0:00:11.65,0:00:12.09,Sub,,0,0,0,,{\an5\pos(540,960)}BIGFOOT
+Dialogue: 1,0:00:12.09,0:00:12.91,Sub,,0,0,0,,{\an5\pos(540,960)}BIGFOOT DI MANA?
+Dialogue: 1,0:00:13.55,0:00:15.41,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BOCIL BIGFOOT{\c&H0029FCE6&}
+Dialogue: 1,0:00:15.54,0:00:16.60,Sub,,0,0,0,,{\an5\pos(540,960)}BIGFOOT, COBA BIGFOOT
+Dialogue: 1,0:00:16.62,0:00:17.28,Sub,,0,0,0,,{\an5\pos(540,960)}GUE MAU BIGFOOT SEKARANG
+Dialogue: 1,0:00:17.30,0:00:18.94,Sub,,0,0,0,,{\an5\pos(540,960)}SEBELUM PUSH MISI LAGI
+Dialogue: 1,0:00:19.18,0:00:19.80,Sub,,0,0,0,,{\an5\pos(540,960)}KASIH TAU, {\c&H00EFF3F4&}SPOILER{\c&H0029FCE6&}
+Dialogue: 1,0:00:19.84,0:00:20.66,Sub,,0,0,0,,{\an5\pos(540,960)}DI MANA BIGFOOT?
+Dialogue: 1,0:00:21.28,0:00:22.06,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BIGFOOT DI POJOK{\c&H0029FCE6&}
+Dialogue: 1,0:00:22.06,0:00:23.60,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}KANAN BAWAH, BANG{\c&H0029FCE6&}
+Dialogue: 1,0:00:23.25,0:00:25.15,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}...DAN BIGFOOT-NYA{\c&H0029FCE6&}\NTETEP GAK KETEMU WKWK

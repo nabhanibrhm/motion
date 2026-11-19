@@ -1,0 +1,43 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:26.20,Hook,,0,0,0,,{\an2\pos(540,600)\fs58}{\c&H00EFF3F4&}ALHAMDULILLAH BERHASIL NYOLONG\N{\c&H0029FCE6&}EH, GAK PANTES WKWK
+Dialogue: 0,0:00:00.00,0:00:26.20,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.04,0:00:00.48,Sub,,0,0,0,,{\an5\pos(540,960)}NICE!
+Dialogue: 1,0:00:00.48,0:00:00.92,Sub,,0,0,0,,{\an5\pos(540,960)}ALHAMDULILLAH
+Dialogue: 1,0:00:00.92,0:00:01.46,Sub,,0,0,0,,{\an5\pos(540,960)}KITA BERHASIL
+Dialogue: 1,0:00:01.46,0:00:02.10,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}NYOLONG{\c&H0029FCE6&}
+Dialogue: 1,0:00:02.16,0:00:02.92,Sub,,0,0,0,,{\an5\pos(540,960)}EH, NGGAK PANTES
+Dialogue: 1,0:00:02.92,0:00:03.64,Sub,,0,0,0,,{\an5\pos(540,960)}NGGAK SIH NGOMONG GITU
+Dialogue: 1,0:00:03.64,0:00:04.22,Sub,,0,0,0,,{\an5\pos(540,960)}MAKSUDNYA KITA
+Dialogue: 1,0:00:04.22,0:00:05.10,Sub,,0,0,0,,{\an5\pos(540,960)}LOLOS DARI POLISI
+Dialogue: 1,0:00:05.17,0:00:06.41,Sub,,0,0,0,,{\an5\pos(540,960)}NAH, KEMARIN ADA VIEWER
+Dialogue: 1,0:00:06.41,0:00:08.03,Sub,,0,0,0,,{\an5\pos(540,960)}YANG DM GUE, GUYS
+Dialogue: 1,0:00:08.35,0:00:08.77,Sub,,0,0,0,,{\an5\pos(540,960)}ADA YANG KATANYA
+Dialogue: 1,0:00:08.77,0:00:09.55,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}KETINGGALAN{\c&H0029FCE6&}
+Dialogue: 1,0:00:09.63,0:00:10.23,Sub,,0,0,0,,{\an5\pos(540,960)}MAU DIAMBIL GAK?
+Dialogue: 1,0:00:10.28,0:00:10.92,Sub,,0,0,0,,{\an5\pos(540,960)}GUYS, GUE ORANG PERTAMA
+Dialogue: 1,0:00:10.92,0:00:12.12,Sub,,0,0,0,,{\an5\pos(540,960)}YANG DAPET {\c&H00EFF3F4&}1400 DOLAR{\c&H0029FCE6&}
+Dialogue: 1,0:00:12.12,0:00:13.40,Sub,,0,0,0,,{\an5\pos(540,960)}MISTERI BURUNG KAKATUA
+Dialogue: 1,0:00:14.12,0:00:14.68,Sub,,0,0,0,,{\an5\pos(540,960)}PLEASE, JANGAN KASIH TAU
+Dialogue: 1,0:00:14.68,0:00:15.50,Sub,,0,0,0,,{\an5\pos(540,960)}SIAPA-SIAPA, OKE?
+Dialogue: 1,0:00:15.80,0:00:17.00,Sub,,0,0,0,,{\an5\pos(540,960)}JANGAN KASIH TAU, YA
+Dialogue: 1,0:00:17.13,0:00:17.95,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BEBASKAN BURUNGNYA, BANG{\c&H0029FCE6&}
+Dialogue: 1,0:00:18.03,0:00:18.65,Sub,,0,0,0,,{\an5\pos(540,960)}BURUNGNYA NGGAK BISA
+Dialogue: 1,0:00:18.65,0:00:19.15,Sub,,0,0,0,,{\an5\pos(540,960)}DIBEBASKAN
+Dialogue: 1,0:00:19.21,0:00:19.75,Sub,,0,0,0,,{\an5\pos(540,960)}JANGAN PERCAYA
+Dialogue: 1,0:00:19.75,0:00:21.19,Sub,,0,0,0,,{\an5\pos(540,960)}BOCIL BURUNG BEBASIN
+Dialogue: 1,0:00:21.35,0:00:23.05,Sub,,0,0,0,,{\an5\pos(540,960)}MEREKA CUMA {\c&H00EFF3F4&}CAPER{\c&H0029FCE6&} DOANG
+Dialogue: 1,0:00:24.17,0:00:24.95,Sub,,0,0,0,,{\an5\pos(540,960)}BURUNGNYA EMANG UDAH
+Dialogue: 1,0:00:24.95,0:00:26.15,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}DITAKDIRKAN DIKURUNG{\c&H0029FCE6&}

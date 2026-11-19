@@ -11,6 +11,19 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The captions there already existed from Windows, so they were not overwritten; WSL copies are in `out/wizzclip/`.
 - Not posted yet. Suggested order: sepatu2 first (sequel to sepatu), then bunga at least 2 h later.
 
+**20 Nov 2026 ~06:20 (Windows): two more short day-2 recipes. Render on WSL; sources are on Drive `clip-src`.**
+- **Render:**
+  ```
+  git pull
+  for s in kakatua bigfoot; do mkdir -p .cache/wizzclip/windah-gtavi-$s; cp "/mnt/g/My Drive/GTA6/clip-src/windah-gtavi-$s.mp4" .cache/wizzclip/windah-gtavi-$s/source.mp4; python tools/wizzclip/wizzclip.py recipe windah-gtavi-$s; done
+  ```
+  Captions: Windows `out/wizzclip/windah-gtavi-{kakatua,bigfoot}-caption.txt`.
+- **`windah-gtavi-kakatua`** (idea A6, 26.2 s + outro): hook "ALHAMDULILLAH BERHASIL NYOLONG / EH, GAK PANTES WKWK" (Audex 58). Beats: the opener line, then the viewer DM about the mystery, "gue orang pertama yang dapet 1400 dolar misteri burung kakatua, jangan kasih tau siapa-siapa", and "burungnya nggak bisa dibebaskan… ditakdirkan dikurung".
+- **`windah-gtavi-bigfoot`** (idea B18, 25.15 s + outro): hook "WINDAH NYARI BIGFOOT / SAMPE MINTA DISPOILERIN". Beats: "nyari Bigfoot buang waktu… spoilerin aja", then the Bigfoot questions from the boat and the dock, ending on a freeze with "...DAN BIGFOOT-NYA TETEP GAK KETEMU WKWK".
+  - **Violence check:** the beach line was dropped because a body lies in blood there. The dock cut has its lower-left blurred to hide a body and a `.38 REVOLVER` pick-up prompt.
+- **Built the same way as sepatu2:** scratchpad `mk_day2.py` (now also supports a `blurs` box per cut). Sources are re-encoded 1080p30 parts joined in output order, so every cut is in source order on one input. Both were test-rendered on Windows and their frames checked.
+- **Context:** other MotionKlip clippers are clipping the same kakatua and Bigfoot moments (Discord, 20 Nov ~05:00), so post these soon, 2 h apart.
+
 **19 Nov 2026 ~20:00 (Windows):** `bunga` POSTED at ~19:59. Its master and caption are moved to `out/wizzclip/uploaded/`. Next: `sepatu2` at ~22:00 or later (2 h rule). Record bunga's 1 h and 2 h stats; it is the first short-format clip, so compare avg watch and % full with the 45-60 s clips.
 
 **Changed on 19 Nov 2026, ~16:20-19:50 (Windows): day-2 stream recorded and scanned; two short Wizz Clip recipes; HotWizz #12 perampasan rendered.**
