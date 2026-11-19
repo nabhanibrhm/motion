@@ -11,6 +11,8 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The captions there already existed from Windows, so they were not overwritten; WSL copies are in `out/wizzclip/`.
 - Not posted yet. Suggested order: sepatu2 first (sequel to sepatu), then bunga at least 2 h later.
 
+**19 Nov 2026 ~20:00 (Windows):** `bunga` POSTED at ~19:59. Its master and caption are moved to `out/wizzclip/uploaded/`. Next: `sepatu2` at ~22:00 or later (2 h rule). Record bunga's 1 h and 2 h stats; it is the first short-format clip, so compare avg watch and % full with the 45-60 s clips.
+
 **Changed on 19 Nov 2026, ~16:20-19:50 (Windows): day-2 stream recorded and scanned; two short Wizz Clip recipes; HotWizz #12 perampasan rendered.**
 - **Render on WSL:** `bunga` and `sepatu2`. Sources are already on Drive `GTA6/clip-src/`.
   ```
