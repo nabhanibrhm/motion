@@ -1,0 +1,55 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:42.30,Hook,,0,0,0,,{\an2\pos(540,600)\fs76}{\c&H00EFF3F4&}WINDAH UDAH BELI SEPATU\N{\c&H0029FCE6&}MASIH DISURUH LAGI WKWK
+Dialogue: 0,0:00:00.00,0:00:42.30,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.26,0:00:00.75,Sub,,0,0,0,,{\an5\pos(540,960)}KENAPA JADI
+Dialogue: 1,0:00:00.75,0:00:01.80,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU {\c&H00EFF3F4&}TERUS{\c&H0029FCE6&}?
+Dialogue: 1,0:00:01.84,0:00:02.48,Sub,,0,0,0,,{\an5\pos(540,960)}UDAH TADI GUA
+Dialogue: 1,0:00:02.48,0:00:03.70,Sub,,0,0,0,,{\an5\pos(540,960)}UDAH KE TOKO SEPATU
+Dialogue: 1,0:00:03.78,0:00:04.36,Sub,,0,0,0,,{\an5\pos(540,960)}KENAPA JADI
+Dialogue: 1,0:00:04.36,0:00:05.60,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU {\c&H00EFF3F4&}LAGI{\c&H0029FCE6&}?
+Dialogue: 1,0:00:05.84,0:00:06.52,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU
+Dialogue: 1,0:00:06.52,0:00:07.46,Sub,,0,0,0,,{\an5\pos(540,960)}OKE, GUA {\c&H00EFF3F4&}JANJI{\c&H0029FCE6&}
+Dialogue: 1,0:00:07.46,0:00:08.24,Sub,,0,0,0,,{\an5\pos(540,960)}GUA KE TOKO SEPATU
+Dialogue: 1,0:00:08.24,0:00:09.20,Sub,,0,0,0,,{\an5\pos(540,960)}NTAR, JANJI GUA
+Dialogue: 1,0:00:09.39,0:00:10.65,Sub,,0,0,0,,{\an5\pos(540,960)}NAH, INI DIA
+Dialogue: 1,0:00:10.65,0:00:11.43,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU YANG
+Dialogue: 1,0:00:11.43,0:00:12.11,Sub,,0,0,0,,{\an5\pos(540,960)}DIIDAM-IDAMKAN
+Dialogue: 1,0:00:12.11,0:00:13.25,Sub,,0,0,0,,{\an5\pos(540,960)}PARA {\c&H00EFF3F4&}BOCIL{\c&H0029FCE6&} YA
+Dialogue: 1,0:00:13.75,0:00:14.45,Sub,,0,0,0,,{\an5\pos(540,960)}BELI YANG MANA YA?
+Dialogue: 1,0:00:14.60,0:00:16.22,Sub,,0,0,0,,{\an5\pos(540,960)}ITU SEPATU
+Dialogue: 1,0:00:16.22,0:00:17.08,Sub,,0,0,0,,{\an5\pos(540,960)}UDAH GUA INIIN
+Dialogue: 1,0:00:18.58,0:00:18.98,Sub,,0,0,0,,{\an5\pos(540,960)}REQUEST-NYA UDAH
+Dialogue: 1,0:00:18.98,0:00:19.80,Sub,,0,0,0,,{\an5\pos(540,960)}GUA {\c&H00EFF3F4&}PENUHI{\c&H0029FCE6&}
+Dialogue: 1,0:00:19.80,0:00:20.90,Sub,,0,0,0,,{\an5\pos(540,960)}SEPATU!
+Dialogue: 1,0:00:21.07,0:00:22.29,Sub,,0,0,0,,{\an5\pos(540,960)}ADA YANG NYURUH
+Dialogue: 1,0:00:22.29,0:00:23.69,Sub,,0,0,0,,{\an5\pos(540,960)}CARI {\c&H00EFF3F4&}TOKO SEPATU{\c&H0029FCE6&}
+Dialogue: 1,0:00:23.69,0:00:24.79,Sub,,0,0,0,,{\an5\pos(540,960)}ADA YANG NYURUH MISI
+Dialogue: 1,0:00:24.79,0:00:25.50,Sub,,0,0,0,,{\an5\pos(540,960)}GUA {\c&H00EFF3F4&}SERBA SALAH{\c&H0029FCE6&}
+Dialogue: 1,0:00:25.57,0:00:26.65,Sub,,0,0,0,,{\an5\pos(540,960)}GAK ENJOY NIH
+Dialogue: 1,0:00:26.65,0:00:27.81,Sub,,0,0,0,,{\an5\pos(540,960)}JADI {\c&H00EFF3F4&}GAK ENJOY{\c&H0029FCE6&}
+Dialogue: 1,0:00:27.81,0:00:28.80,Sub,,0,0,0,,{\an5\pos(540,960)}JUJUR, GUYS
+Dialogue: 1,0:00:28.92,0:00:29.40,Sub,,0,0,0,,{\an5\pos(540,960)}SESAT, MEN
+Dialogue: 1,0:00:29.40,0:00:31.10,Sub,,0,0,0,,{\an5\pos(540,960)}DARI TADI BOCIL-BOCIL
+Dialogue: 1,0:00:31.10,0:00:32.50,Sub,,0,0,0,,{\an5\pos(540,960)}SEPATU GITU
+Dialogue: 1,0:00:33.44,0:00:34.30,Sub,,0,0,0,,{\an5\pos(540,960)}GAK ADA
+Dialogue: 1,0:00:34.40,0:00:36.10,Sub,,0,0,0,,{\an5\pos(540,960)}ADANYA {\c&H00EFF3F4&}TATO{\c&H0029FCE6&} ITU YA
+Dialogue: 1,0:00:36.24,0:00:37.20,Sub,,0,0,0,,{\an5\pos(540,960)}NGGAK ADA
+Dialogue: 1,0:00:37.20,0:00:38.04,Sub,,0,0,0,,{\an5\pos(540,960)}MISI PENCARIAN SEPATU
+Dialogue: 1,0:00:38.04,0:00:38.60,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}GAGAL{\c&H0029FCE6&}, GUYS!
+Dialogue: 1,0:00:38.60,0:00:39.15,Sub,,0,0,0,,{\an5\pos(540,960)}NGGAK ADA
+Dialogue: 1,0:00:39.15,0:00:40.14,Sub,,0,0,0,,{\an5\pos(540,960)}BOCIL SEPATU
+Dialogue: 1,0:00:40.14,0:00:41.40,Sub,,0,0,0,,{\an5\pos(540,960)}ASBUN, SOTOY
+Dialogue: 1,0:00:41.40,0:00:42.25,Sub,,0,0,0,,{\an5\pos(540,960)}GUA MAU MISI AJA

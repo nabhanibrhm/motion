@@ -8,6 +8,28 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **Research 18 Nov ~15:00 (WSL): RUU Perampasan Aset, next HotWizz candidate (not built).** Tingkat I approved Wed 18 Nov (Komisi III + pemerintah, all 8 fraksi); plenary planned **Thu 19 Nov** (may move if Bamus postpones). New title "RUU Perampasan Aset Terkait Tindak Pidana Korupsi dan Tindak Pidana Lainnya"; seizure without waiting for a criminal verdict, through court; scope includes investasi bodong / saham bodong; assets go back to victims, then public use; good-faith third parties protected; 397 DIM. Notes and source tags: `.cache/research/2026-11-18/perampasan-aset.md` (WSL only). Wording conflict: "tanpa putusan pidana" (CNBC, suara) vs "tanpa tuntutan pidana" (kumparan): say "tanpa menunggu putusan pidana" until the bill text is out. Not found anywhere: value threshold, unexplained wealth, objection rights, compensation mechanism, agency name. Plan: build as HotWizz, post right after the plenary (stamp DISAHKAN), comment question "Setuju aset koruptor disita tanpa nunggu vonis?"; keep 3-4 h from any GTA launch clip.
 
+**Changed on 19 Nov 2026, ~11:30-12:30 (Windows): new clip `windah-gtavi-sepatu` (recipe only, render on WSL).**
+- Running joke from the launch stream: viewers keep asking Windah to find a shoe store, even after he already bought shoes. Hook (user): "WINDAH UDAH BELI SEPATU / MASIH DISURUH LAGI WKWK" (Audex 76). 8 cuts, main 42.30 s + 4 s outro. It opens on the payoff, 20:13 "Kenapa jadi toko sepatu terus?", then goes in order: the promise (18:43), the shoe store (19:47), "udah gua penuhi" (19:48), "serba salah… gak enjoy" (21:02), the tattoo-logo mix-up (21:07), "misi pencarian sepatu gagal… asbun sotoy" (21:11). No swears and no guns. `asetpts` is already in the recipe. Section offsets are in the recipe description.
+- Source: 6 stream-copy sections joined, 195 MB, in Drive `G:\My Drive\GTA6\clip-src\windah-gtavi-sepatu.mp4`. Caption: `out/wizzclip/windah-gtavi-sepatu-caption.txt` (Windows, 244 chars):
+  ```
+  Udah dibeliin sepatu, masih disuruh cari toko sepatu lagi 😭 Windah sampe serba salah wkwk
+
+  Kalian tim misi atau tim toko sepatu? 👇
+
+  Clip dari live Windah Basudara main GTA VI.
+
+  #windahbasudara #GTAVI #windahGTAVI #motionklip #ezklip #GTA6 #fyp
+  ```
+- **Work laptop:**
+  ```bash
+  git pull
+  mkdir -p .cache/wizzclip/windah-gtavi-sepatu
+  powershell.exe Copy-Item "'G:\My Drive\GTA6\clip-src\windah-gtavi-sepatu.mp4'" "'$(wslpath -w .cache/wizzclip/windah-gtavi-sepatu)\source.mp4'"
+  .venv/bin/python tools/wizzclip/wizzclip.py recipe windah-gtavi-sepatu
+  ```
+  Then copy the master to `G:\Other computers\My Laptop\out\wizzclip\`. Check stills at 0, 12 and 38 s. Queue it after mandy-v2 (~18:35), or earlier if a clip stalls.
+- 2.6 h house-clean stats are logged below. fishing-clean was posted ~10:37.
+
 **Changed on 19 Nov 2026, ~06:30-09:30 (WSL): all 5 Windah clips rendered; censored, blurred and Mandy v2 versions; house posted.**
 - **ffmpeg 4.4 fix (work laptop):** after `loudnorm ... linear=true`, ffmpeg 4.4 wrote AAC timestamps that left only 2.2 s of audio in the mp4. `,asetpts=N/SR/TB` is now appended before `[a]` in `windah-gtavi-{chase,mandy,house-clean,fishing-clean,lucia-jason-clean}.json`. Add it to new recipes, or move it into `wizzclip.py`. On this ffmpeg, libass can't draw colour emoji, so emoji go in as a PNG overlay.
 - **Rendered** to `out/wizzclip/` and copied to `G:\Other computers\My Laptop\out\wizzclip\`:
