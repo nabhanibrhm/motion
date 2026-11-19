@@ -23,6 +23,27 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - **New order:** hold the next post while sepatu spikes, then post mandy-v2 (joke hook) before lucia and chase. Claim sepatu near 50K views, or when it stops growing, in `#claim-reward-windah-gtavi`. The claim is one-time, at the views counted on submission.
 - **Discord:** Claude in Chrome works from the WSL session with Windows Chrome. Clip links go in Motion Klip `#windah-gtavi-share-link`.
 
+**Changed on 19 Nov 2026, ~14:30-15:30 (Windows): `windah-gtavi-mandy-v3` recipe (render on WSL); live recorder for tonight.**
+- **mandy-v3** (v2 kept). The user asked for this:
+  - New hook: "JADI TUKANG PIPA NYA MANDY 🔥🔥 / GTAVI WINDAH". Line 1 is Audex 56 and left-aligned, so the text and the emoji PNG sit centred together.
+  - Two added moments, as file times in `stream-1944-2100.mp4`. **Only Mandy's torso is blurred** (shoulders to upper thighs); her face, arms and legs stay sharp (user):
+    - **34:10-34:22:** cut C now starts at local 280 instead of 285.2. Mandy walks behind Jason at local 283.3-285.5, and her torso is box-blurred.
+    - **36:40-36:46** (local 430-436): new cut. Her torso is blurred with moving boxes, keyframed every 0.5 s (`KF` in the description).
+    - **Then 36:44-36:46.5 again** as a close-up of Windah's facecam for his reaction (output 31.35-33.85). It comes from its own seeked input 4 (`-ss 434 -t 3`). Behind it, the small original facecam is blurred.
+    - Windah is silent in both new parts (game dialogue only), so they have no captions.
+  - Main clip 55.15 s + 4 s outro. Input 0 stays in source order (`-ss 65 -t 560`). Loudnorm is re-measured.
+  - Source is unchanged: Drive `clip-src/windah-gtavi-mandy.mp4`.
+  - Checked through the recipe graph itself: the C blur, the 430-436 torso boxes, the close-up replay, and the title with emoji.
+  - Use the mandy caption.
+- **Work laptop:**
+  ```bash
+  git pull
+  .venv/bin/python tools/wizzclip/wizzclip.py recipe windah-gtavi-mandy-v3
+  ```
+  The source is already in `.cache/wizzclip/windah-gtavi-mandy/`. If it isn't, copy it from clip-src as before. Check the blur at output 15.5-17.7 s and 25.4-31.3 s (the boxes move with her), and the close-up at 31.4-33.8 s. Post v3 instead of v2.
+- **Live recorder:** `tools/wizzclip/live_hourly.sh` (new) records Windah's stream "GAMEPLAY #2" (`QSPPyA1736U`, scheduled for 17:00 WIB). It runs `live_range.py` once per finished hour, saves `stream-HHMM-HHMM.mp4` to `.cache/wizzclip/windah-live2/`, and copies each file to `G:\My Drive\GTA6\live2-2026-11-19\`. The log is `hourly.log` in the same folder. It is running on Windows.
+- sepatu (posted 12:20) and gta6-1hari were moved to `out/wizzclip/uploaded/` on Windows. The sepatu caption is trimmed to the 5 campaign hashtags.
+
 **Changed on 19 Nov 2026, ~11:30-12:30 (Windows): new clip `windah-gtavi-sepatu` (recipe only, render on WSL).**
 - Running joke from the launch stream: viewers keep asking Windah to find a shoe store, even after he already bought shoes. Hook (user): "WINDAH UDAH BELI SEPATU / MASIH DISURUH LAGI WKWK" (Audex 76). 8 cuts, main 42.30 s + 4 s outro. It opens on the payoff, 20:13 "Kenapa jadi toko sepatu terus?", then goes in order: the promise (18:43), the shoe store (19:47), "udah gua penuhi" (19:48), "serba salah… gak enjoy" (21:02), the tattoo-logo mix-up (21:07), "misi pencarian sepatu gagal… asbun sotoy" (21:11). No swears and no guns. `asetpts` is already in the recipe. Section offsets are in the recipe description.
 - Source: 6 stream-copy sections joined, 195 MB, in Drive `G:\My Drive\GTA6\clip-src\windah-gtavi-sepatu.mp4`. Caption: `out/wizzclip/windah-gtavi-sepatu-caption.txt` (Windows, 244 chars):

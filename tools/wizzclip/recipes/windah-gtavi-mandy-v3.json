@@ -1,0 +1,121 @@
+{
+  "description": "v3 of windah-gtavi-mandy (19 Nov 2026, user): hook 'JADI TUKANG PIPA NYA MANDY' (Paper, Audex 56, left-aligned at x 96 so text + emoji are centred together; emoji at (878,452)) + fire emoji PNG (emoji-fire2.png scaled to 104x54) / 'GTAVI WINDAH' (Volt, Audex 92). Two additions asked by the user (times in stream-1944-2100.mp4; source local t = file t - 1770): (1) C now starts at file 34:10 = local 280.00 (was 285.20), so it runs local 280.00-293.15: Jason under the sink, Mandy walks behind him in a bikini at local 283.3-285.5, her torso blurred with a box (source px x380-700, y230-640, boxblur 24); face, arms and legs stay sharp, then the pause-menu bikini line. (2) New cut N1 file 36:40-36:46 = local 430.00-436.00 (WIB 20:20:40-20:20:46): Mandy in a bikini on the porch, so only her torso (shoulders to upper thighs) is blurred with moving boxes (keyframes every 0.5 s in KF, union of neighbouring keyframes per window, boxblur 24); face, arms and legs stay sharp (user); no close-up. Then N2 replays file 36:44-36:46.5 (local 434.00-436.50) as a facecam close-up (crop x1545 y765 350x315 scaled to 1200x1080, centred over the frame, whose torso boxes are blurred the same way, and the small original facecam behind it is blurred so only one face is sharp) for his reaction, from its own seeked input 4 (-ss 434 -t 3, trim 0-2.5) so input 0 stays in source order. Windah says nothing in N (game dialogue only), so there are no word captions there. Cuts (local -> output): 69.95-73.75 -> 0.00-3.80; 146.90-155.30 -> 3.80-12.20; 280.00-293.15 -> 12.20-25.35; 430.00-436.00 -> 25.35-31.35; 434.00-436.50 -> 31.35-33.85; 538.60-544.30 -> 33.85-39.55; 589.00-597.30 -> 39.55-47.85; 609.20-616.50 -> 47.85-55.15. Main 55.15 s + 4.0 s outro. Captions = v2 captions shifted (C +5.20 s; D, E, F +13.70 s). Source is input-seeked (-ss 65 -t 560), so trim times = local t - 65; cuts stay in source order. Rest as windah-gtavi-mandy-v2.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-mandy",
+    "youtube": "45r3OyaxvFE",
+    "url": "https://www.youtube.com/watch?v=45r3OyaxvFE",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-ss",
+        "65",
+        "-t",
+        "560",
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    },
+    {
+      "path": "campaign:../../recipes/emoji-fire2.png"
+    },
+    {
+      "path": "source",
+      "args": [
+        "-ss",
+        "434",
+        "-t",
+        "3",
+        "-threads",
+        "3"
+      ]
+    }
+  ],
+  "subtitles": "windah-gtavi-mandy-v3.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=4.95:8.75,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=81.90:90.30,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=215.00:228.15,setpts=PTS-STARTPTS,fps=30[c3a];",
+    "[c3a]split=2[c3b][c3c];",
+    "[c3c]crop=320:410:380:230,boxblur=luma_radius=24:luma_power=3[c3d];",
+    "[c3b][c3d]overlay=380:230:enable='between(t,3.25,5.55)'[v3];",
+    "[0:v]trim=365.00:371.00,setpts=PTS-STARTPTS,fps=30[n0];",
+    "[n0]split=13[nm][ns0][ns1][ns2][ns3][ns4][ns5][ns6][ns7][ns8][ns9][ns10][ns11];",
+    "[ns0]crop=360:580:880:340,boxblur=luma_radius=24:luma_power=3[nb0];",
+    "[nm][nb0]overlay=880:340:enable='between(t,0.00,0.50)'[no0];",
+    "[ns1]crop=640:560:940:370,boxblur=luma_radius=24:luma_power=3[nb1];",
+    "[no0][nb1]overlay=940:370:enable='between(t,0.50,1.00)'[no1];",
+    "[ns2]crop=450:560:1180:400,boxblur=luma_radius=24:luma_power=3[nb2];",
+    "[no1][nb2]overlay=1180:400:enable='between(t,1.00,1.50)'[no2];",
+    "[ns3]crop=470:540:1160:420,boxblur=luma_radius=24:luma_power=3[nb3];",
+    "[no2][nb3]overlay=1160:420:enable='between(t,1.50,2.00)'[no3];",
+    "[ns4]crop=410:540:1160:420,boxblur=luma_radius=24:luma_power=3[nb4];",
+    "[no3][nb4]overlay=1160:420:enable='between(t,2.00,2.50)'[no4];",
+    "[ns5]crop=410:550:1160:440,boxblur=luma_radius=24:luma_power=3[nb5];",
+    "[no4][nb5]overlay=1160:440:enable='between(t,2.50,3.00)'[no5];",
+    "[ns6]crop=370:550:1170:440,boxblur=luma_radius=24:luma_power=3[nb6];",
+    "[no5][nb6]overlay=1170:440:enable='between(t,3.00,3.50)'[no6];",
+    "[ns7]crop=370:580:1170:420,boxblur=luma_radius=24:luma_power=3[nb7];",
+    "[no6][nb7]overlay=1170:420:enable='between(t,3.50,4.00)'[no7];",
+    "[ns8]crop=410:580:1160:420,boxblur=luma_radius=24:luma_power=3[nb8];",
+    "[no7][nb8]overlay=1160:420:enable='between(t,4.00,4.50)'[no8];",
+    "[ns9]crop=420:590:1150:400,boxblur=luma_radius=24:luma_power=3[nb9];",
+    "[no8][nb9]overlay=1150:400:enable='between(t,4.50,5.00)'[no9];",
+    "[ns10]crop=610:540:820:360,boxblur=luma_radius=24:luma_power=3[nb10];",
+    "[no9][nb10]overlay=820:360:enable='between(t,5.00,5.50)'[no10];",
+    "[ns11]crop=260:520:790:360,boxblur=luma_radius=24:luma_power=3[nb11];",
+    "[no10][nb11]overlay=790:360:enable='between(t,5.50,6.00)'[v4];",
+    "[4:v]trim=0:2.50,setpts=PTS-STARTPTS,fps=30,split=2[r0][r1];",
+    "[r0]split=6[rm][rs0][rs1][rs2][rs3][rs4];",
+    "[rs0]crop=410:580:1160:420,boxblur=luma_radius=24:luma_power=3[rb0];",
+    "[rm][rb0]overlay=1160:420:enable='between(t,0.00,0.50)'[ro0];",
+    "[rs1]crop=420:590:1150:400,boxblur=luma_radius=24:luma_power=3[rb1];",
+    "[ro0][rb1]overlay=1150:400:enable='between(t,0.50,1.00)'[ro1];",
+    "[rs2]crop=610:540:820:360,boxblur=luma_radius=24:luma_power=3[rb2];",
+    "[ro1][rb2]overlay=820:360:enable='between(t,1.00,1.50)'[ro2];",
+    "[rs3]crop=260:520:790:360,boxblur=luma_radius=24:luma_power=3[rb3];",
+    "[ro2][rb3]overlay=790:360:enable='between(t,1.50,2.00)'[ro3];",
+    "[rs4]crop=230:530:770:400,boxblur=luma_radius=24:luma_power=3[rb4];",
+    "[ro3][rb4]overlay=770:400:enable='between(t,2.00,2.50)'[rb0];",
+    "[rb0]split=2[rb1][rb2];[rb2]crop=376:316:1544:764,boxblur=luma_radius=30:luma_power=3[rfc];[rb1][rfc]overlay=1544:764[rb];",
+    "[r1]crop=350:315:1545:765,scale=1200:1080:flags=lanczos[rz];",
+    "[rb][rz]overlay=360:0[v5];",
+    "[0:v]trim=473.60:479.30,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=524.00:532.30,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=544.20:551.50,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:a]atrim=4.95:8.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.70:d=0.1[a1];",
+    "[0:a]atrim=81.90:90.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.30:d=0.1[a2];",
+    "[0:a]atrim=215.00:228.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=13.05:d=0.1[a3];",
+    "[0:a]atrim=365.00:371.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.90:d=0.1[a4];",
+    "[4:a]atrim=0.00:2.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.40:d=0.1[a5];",
+    "[0:a]atrim=473.60:479.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.60:d=0.1[a6];",
+    "[0:a]atrim=524.00:532.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.20:d=0.1[a7];",
+    "[0:a]atrim=544.20:551.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.20:d=0.1[a8];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8]concat=n=8:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd0];",
+    "[3:v]scale=104:54[emo];",
+    "[subd0][emo]overlay=x=878:y=452:enable='lte(t,55.15)'[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-7.33:measured_TP=0.70:measured_LRA=10.00:measured_thresh=-18.51:offset=0.51:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-mandy-v3.mp4"
+}

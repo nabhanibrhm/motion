@@ -1,0 +1,52 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:55.15,Hook,,0,0,0,,{\an1\pos(96,508)\fs56\c&H00EFF3F4&}JADI TUKANG PIPA NYA MANDY
+Dialogue: 0,0:00:00.00,0:00:55.15,Hook,,0,0,0,,{\an2\pos(540,600)\c&H0029FCE6&}GTAVI WINDAH
+Dialogue: 0,0:00:00.00,0:00:55.15,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.00,0:00:01.20,Sub,,0,0,0,,{\an5\pos(540,960)}OH MY GOD,
+Dialogue: 1,0:00:01.20,0:00:02.45,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}MANDY{\c&H0029FCE6&} CAKEP
+Dialogue: 1,0:00:02.50,0:00:03.10,Sub,,0,0,0,,{\an5\pos(540,960)}MISINYA NAMANYA
+Dialogue: 1,0:00:03.10,0:00:03.78,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}PIPE WORK{\c&H0029FCE6&} YA
+Dialogue: 1,0:00:04.00,0:00:04.60,Sub,,0,0,0,,{\an5\pos(540,960)}GUA PERNAH NONTON
+Dialogue: 1,0:00:04.60,0:00:05.05,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}FILM{\c&H0029FCE6&}...
+Dialogue: 1,0:00:05.10,0:00:05.65,Sub,,0,0,0,,{\an5\pos(540,960)}INI, SORRY,
+Dialogue: 1,0:00:05.65,0:00:06.20,Sub,,0,0,0,,{\an5\pos(540,960)}GUA {\c&H00EFF3F4&}PAUSE{\c&H0029FCE6&} YA
+Dialogue: 1,0:00:06.40,0:00:07.60,Sub,,0,0,0,,{\an5\pos(540,960)}CEWEK YANG SURUH
+Dialogue: 1,0:00:07.65,0:00:09.65,Sub,,0,0,0,,{\an5\pos(540,960)}PIPANYA {\c&H00EFF3F4&}DIBETULIN
+Dialogue: 1,0:00:09.70,0:00:10.55,Sub,,0,0,0,,{\an5\pos(540,960)}SAMA {\c&H00EFF3F4&}TUKANG PIPA
+Dialogue: 1,0:00:10.60,0:00:11.20,Sub,,0,0,0,,{\an5\pos(540,960)}GUA PERNAH
+Dialogue: 1,0:00:11.20,0:00:12.15,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}NONTON{\c&H0029FCE6&}, GUYS
+Dialogue: 1,0:00:18.75,0:00:19.60,Sub,,0,0,0,,{\an5\pos(540,960)}LU KENAPA PAKE
+Dialogue: 1,0:00:19.60,0:00:20.50,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BIKINI{\c&H0029FCE6&}?
+Dialogue: 1,0:00:21.25,0:00:22.40,Sub,,0,0,0,,{\an5\pos(540,960)}KAN LAGI GAK
+Dialogue: 1,0:00:22.40,0:00:23.60,Sub,,0,0,0,,{\an5\pos(540,960)}DI {\c&H00EFF3F4&}PANTAI{\c&H0029FCE6&},
+Dialogue: 1,0:00:23.75,0:00:24.30,Sub,,0,0,0,,{\an5\pos(540,960)}GAK DI
+Dialogue: 1,0:00:24.30,0:00:25.30,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}KOLAM RENANG
+Dialogue: 1,0:00:34.20,0:00:35.50,Sub,,0,0,0,,{\an5\pos(540,960)}MANDY JUST CAME
+Dialogue: 1,0:00:35.50,0:00:36.90,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}THROUGH{\c&H0029FCE6&}, OKE
+Dialogue: 1,0:00:37.50,0:00:38.50,Sub,,0,0,0,,{\an5\pos(540,960)}OKE, MANDY UDAH
+Dialogue: 1,0:00:38.50,0:00:39.50,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}TRANSFER{\c&H0029FCE6&} DUITNYA
+Dialogue: 1,0:00:39.85,0:00:40.90,Sub,,0,0,0,,{\an5\pos(540,960)}GA BISA DIBUKA,
+Dialogue: 1,0:00:40.90,0:00:42.10,Sub,,0,0,0,,{\an5\pos(540,960)}DIA {\c&H00EFF3F4&}NGUMPET
+Dialogue: 1,0:00:42.15,0:00:43.40,Sub,,0,0,0,,{\an5\pos(540,960)}DIA {\c&H00EFF3F4&}BT{\c&H0029FCE6&} SAMA KITA, GUYS
+Dialogue: 1,0:00:43.75,0:00:44.70,Sub,,0,0,0,,{\an5\pos(540,960)}NGAPAIN DICARI?
+Dialogue: 1,0:00:44.70,0:00:46.00,Sub,,0,0,0,,{\an5\pos(540,960)}GUE PENGEN {\c&H00EFF3F4&}MINTA MAAF
+Dialogue: 1,0:00:46.00,0:00:47.00,Sub,,0,0,0,,{\an5\pos(540,960)}CUY, UDAH {\c&H00EFF3F4&}NYAKITIN
+Dialogue: 1,0:00:47.00,0:00:47.80,Sub,,0,0,0,,{\an5\pos(540,960)}PERASAAN DIA
+Dialogue: 1,0:00:48.00,0:00:49.30,Sub,,0,0,0,,{\an5\pos(540,960)}MENDING GUA MAKAN
+Dialogue: 1,0:00:49.30,0:00:50.60,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}APELNYA{\c&H0029FCE6&}, MANDY
+Dialogue: 1,0:00:51.35,0:00:53.00,Sub,,0,0,0,,{\an5\pos(540,960)}ENAK NIH, {\c&H00EFF3F4&}GRATISAN APEL
+Dialogue: 1,0:00:53.70,0:00:54.45,Sub,,0,0,0,,{\an5\pos(540,960)}HAH, GUA MAKAN
+Dialogue: 1,0:00:54.45,0:00:55.15,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}APEL DULU{\c&H0029FCE6&} LAH
