@@ -23,9 +23,10 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - **`windah-gtavi-mandy-v2`** (new recipe and .ass):
   - Hook "BENERIN PIPA NYA / MANDY??" plus 🔥🔥, drawn from `tools/wizzclip/recipes/emoji-fire2.png` and overlaid at (665,514).
   - Uses the mandy caption.
-- **Upload queue:** fishing-clean (~11:00), lucia-jason-clean-sensor-blur (~14:00), chase-sensor-blur (~17:00 if the earlier ones have slowed), mandy-v2 (20 Nov morning). Space posts ~3 h apart.
+- **Upload queue:** fishing-clean (~11:00), lucia-jason-clean-sensor-blur (~14:00), chase-sensor-blur (~17:00 if the earlier ones have slowed), mandy-v2 (20 Nov morning). Space posts ~3 h apart. **Changed 19 Nov 10:35 (user): Wizz Clip posts every 2 h** → **fishing-clean posted ~10:37** (user; master + caption moved to `out/wizzclip/uploaded/` on Windows, house-clean too), lucia-jason-clean-sensor-blur ~12:35, chase-sensor-blur ~14:35, mandy-v2 ~16:35.
 - **Posted:** `windah-gtavi-house-clean`, 19 Nov 07:51, moved to `out/wizzclip/uploaded/` on WSL. **Move the G:/Windows copy too.**
   - At 1.5 h (09:27): 41 views, 3 likes, avg watch 8.0 s of 41.9 s, 0% full, 0 followers.
+  - At 2.6 h (10:29): 211 views (114 in the last hour, still rising), 4 likes, 0 comments/shares/saves, avg watch 8.8 s (21%), 1.44% full, 0 followers.
   - It stalled in TikTok's first test audience. The opening line "OKE, KITA COBA" is setup, not a hook.
   - If fishing also stalls under ~100 views, post chase before lucia.
 
