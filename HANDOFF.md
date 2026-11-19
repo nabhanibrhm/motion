@@ -29,7 +29,7 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
   - Two added moments, as file times in `stream-1944-2100.mp4`. **Only Mandy's torso is blurred** (shoulders to upper thighs); her face, arms and legs stay sharp (user):
     - **34:10-34:22:** cut C now starts at local 280 instead of 285.2. Mandy walks behind Jason at local 283.3-285.5, and her torso is box-blurred.
     - **36:40-36:46** (local 430-436): new cut. Her torso is blurred with moving boxes, keyframed every 0.5 s (`KF` in the description).
-    - **Then 36:44-36:46.5 again** as a close-up of Windah's facecam for his reaction (output 31.35-33.85). It comes from its own seeked input 4 (`-ss 434 -t 3`). Behind it, the small original facecam is blurred.
+    - **Then 36:44-36:46.5 again** as a close-up of Windah's facecam for his reaction (output 31.35-33.85). It comes from its own seeked input 4 (`-ss 434 -t 3`). Behind it, the small original facecam is blurred. The "ahh" meme sound (`tools/wizzclip/sfx/ahh.mp3`, supplied by the user from TikTok) plays over the close-up, with the game audio ducked about 8 dB.
     - Windah is silent in both new parts (game dialogue only), so they have no captions.
   - Main clip 55.15 s + 4 s outro. Input 0 stays in source order (`-ss 65 -t 560`). Loudnorm is re-measured.
   - Source is unchanged: Drive `clip-src/windah-gtavi-mandy.mp4`.

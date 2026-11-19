@@ -1,5 +1,5 @@
 {
-  "description": "v3 of windah-gtavi-mandy (19 Nov 2026, user): hook 'JADI TUKANG PIPA NYA MANDY' (Paper, Audex 56, left-aligned at x 96 so text + emoji are centred together; emoji at (878,452)) + fire emoji PNG (emoji-fire2.png scaled to 104x54) / 'GTAVI WINDAH' (Volt, Audex 92). Two additions asked by the user (times in stream-1944-2100.mp4; source local t = file t - 1770): (1) C now starts at file 34:10 = local 280.00 (was 285.20), so it runs local 280.00-293.15: Jason under the sink, Mandy walks behind him in a bikini at local 283.3-285.5, her torso blurred with a box (source px x380-700, y230-640, boxblur 24); face, arms and legs stay sharp, then the pause-menu bikini line. (2) New cut N1 file 36:40-36:46 = local 430.00-436.00 (WIB 20:20:40-20:20:46): Mandy in a bikini on the porch, so only her torso (shoulders to upper thighs) is blurred with moving boxes (keyframes every 0.5 s in KF, union of neighbouring keyframes per window, boxblur 24); face, arms and legs stay sharp (user); no close-up. Then N2 replays file 36:44-36:46.5 (local 434.00-436.50) as a facecam close-up (crop x1545 y765 350x315 scaled to 1200x1080, centred over the frame, whose torso boxes are blurred the same way, and the small original facecam behind it is blurred so only one face is sharp) for his reaction, from its own seeked input 4 (-ss 434 -t 3, trim 0-2.5) so input 0 stays in source order. Windah says nothing in N (game dialogue only), so there are no word captions there. Cuts (local -> output): 69.95-73.75 -> 0.00-3.80; 146.90-155.30 -> 3.80-12.20; 280.00-293.15 -> 12.20-25.35; 430.00-436.00 -> 25.35-31.35; 434.00-436.50 -> 31.35-33.85; 538.60-544.30 -> 33.85-39.55; 589.00-597.30 -> 39.55-47.85; 609.20-616.50 -> 47.85-55.15. Main 55.15 s + 4.0 s outro. Captions = v2 captions shifted (C +5.20 s; D, E, F +13.70 s). Source is input-seeked (-ss 65 -t 560), so trim times = local t - 65; cuts stay in source order. Rest as windah-gtavi-mandy-v2.",
+  "description": "v3 of windah-gtavi-mandy (19 Nov 2026, user): hook 'JADI TUKANG PIPA NYA MANDY' (Paper, Audex 56, left-aligned at x 96 so text + emoji are centred together; emoji at (878,452)) + fire emoji PNG (emoji-fire2.png scaled to 104x54) / 'GTAVI WINDAH' (Volt, Audex 92). Two additions asked by the user (times in stream-1944-2100.mp4; source local t = file t - 1770): (1) C now starts at file 34:10 = local 280.00 (was 285.20), so it runs local 280.00-293.15: Jason under the sink, Mandy walks behind him in a bikini at local 283.3-285.5, her torso blurred with a box (source px x380-700, y230-640, boxblur 24); face, arms and legs stay sharp, then the pause-menu bikini line. (2) New cut N1 file 36:40-36:46 = local 430.00-436.00 (WIB 20:20:40-20:20:46): Mandy in a bikini on the porch, so only her torso (shoulders to upper thighs) is blurred with moving boxes (keyframes every 0.5 s in KF, union of neighbouring keyframes per window, boxblur 24); face, arms and legs stay sharp (user); no close-up. Then N2 replays file 36:44-36:46.5 (local 434.00-436.50) as a facecam close-up (crop x1545 y765 350x315 scaled to 1200x1080, centred over the frame, whose torso boxes are blurred the same way, and the small original facecam behind it is blurred so only one face is sharp) for his reaction, from its own seeked input 4 (-ss 434 -t 3, trim 0-2.5) so input 0 stays in source order. The 'ahh' meme sound (tools/wizzclip/sfx/ahh.mp3, user-supplied, 0.65-3.15 s of it) plays over the close-up, with the game audio ducked about 8 dB. Windah says nothing in N (game dialogue only), so there are no word captions there. Cuts (local -> output): 69.95-73.75 -> 0.00-3.80; 146.90-155.30 -> 3.80-12.20; 280.00-293.15 -> 12.20-25.35; 430.00-436.00 -> 25.35-31.35; 434.00-436.50 -> 31.35-33.85; 538.60-544.30 -> 33.85-39.55; 589.00-597.30 -> 39.55-47.85; 609.20-616.50 -> 47.85-55.15. Main 55.15 s + 4.0 s outro. Captions = v2 captions shifted (C +5.20 s; D, E, F +13.70 s). Source is input-seeked (-ss 65 -t 560), so trim times = local t - 65; cuts stay in source order. Rest as windah-gtavi-mandy-v2.",
   "campaign": "motionklip",
   "campaign_brief": "Windah GTA VI",
   "source": {
@@ -39,6 +39,9 @@
         "-threads",
         "3"
       ]
+    },
+    {
+      "path": "campaign:../../sfx/ahh.mp3"
     }
   ],
   "subtitles": "windah-gtavi-mandy-v3.ass",
@@ -101,7 +104,10 @@
     "[0:a]atrim=81.90:90.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.30:d=0.1[a2];",
     "[0:a]atrim=215.00:228.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=13.05:d=0.1[a3];",
     "[0:a]atrim=365.00:371.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.90:d=0.1[a4];",
-    "[4:a]atrim=0.00:2.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.40:d=0.1[a5];",
+    "[4:a]atrim=0.00:2.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.40:d=0.1[a5g];",
+    "[a5g]aresample=48000,aformat=channel_layouts=stereo,volume=0.8[a5d];",
+    "[5:a]atrim=0.65:3.15,asetpts=PTS-STARTPTS,afade=t=out:st=2.2:d=0.3,aresample=48000,aformat=channel_layouts=stereo,volume=2.8[sfx];",
+    "[a5d][sfx]amix=inputs=2:duration=first:dropout_transition=0[a5];",
     "[0:a]atrim=473.60:479.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.60:d=0.1[a6];",
     "[0:a]atrim=524.00:532.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.20:d=0.1[a7];",
     "[0:a]atrim=544.20:551.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.20:d=0.1[a8];",
@@ -115,7 +121,7 @@
     "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
     "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
     "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
-    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-7.33:measured_TP=0.70:measured_LRA=10.00:measured_thresh=-18.51:offset=0.51:linear=true,asetpts=N/SR/TB[a]"
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-7.31:measured_TP=1.12:measured_LRA=9.80:measured_thresh=-18.48:offset=0.47:linear=true,asetpts=N/SR/TB[a]"
   ],
   "output": "windah-gtavi-mandy-v3.mp4"
 }
