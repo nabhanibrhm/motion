@@ -1,5 +1,5 @@
 {
-  "description": "Windah keeps getting asked by viewers to find a shoe store, even after he already bought shoes (running joke across his own launch stream 45r3OyaxvFE, 18 Nov 2026). Source = .cache/wizzclip/windah-gtavi-sepatu/source.mp4 (also Drive clip-src/windah-gtavi-sepatu.mp4): SIX stream-copy sections joined with the concat demuxer, 320.0 s. sq = seconds since stream start 18:30:31 WIB. Part 1 local 0-21 = stream-1830-1944 t 744 (sq = t+744); part 2 local 21-109 = stream-1944-2100 t 174 (sq = t+4562); part 3 local 109-185 = stream-1944-2100 t 1764 (sq = t+6064); part 4 local 185-216 = stream-2100-2200 t 109 (sq = t+8893); part 5 local 216-246 = stream-2100-2200 t 428.0333 (sq = t+9181.03); part 6 local 246-320 = stream-2100-2200 t 598.0333 (sq = t+9321.03). All parts start on keyframes. Cuts (local -> output): 123.20-126.95 -> output 0.00-3.75; 128.65-130.55 -> output 3.75-5.65; 9.45-13.05 -> output 5.65-9.25; 30.70-35.95 -> output 9.25-14.50; 99.90-106.40 -> output 14.50-21.00; 199.40-207.25 -> output 21.00-28.85; 236.15-243.45 -> output 28.85-36.15; 310.95-317.10 -> output 36.15-42.30. Beats: 20:13:50 'Kenapa jadi toko sepatu terus? Udah tadi gua udah ke toko sepatu. Kenapa jadi toko sepatu lagi?' (opener, payoff first); 18:43:04 the promise 'Oke gua janji gua ke toko sepatu ntar'; 19:47:01 'Nah ini dia toko sepatu yang diidam-idamkan para bocil ya'; 19:48:10 'Itu sepatu udah gua iniin, request-nya udah gua penuhi'; 21:02:00 'ada yang nyuruh cari toko sepatu, ada yang nyuruh misi, gua serba salah... gak enjoy'; 21:07:27 'Sesat men, dari tadi bocil-bocil sepatu gitu gak ada, adanya tato'; 21:11:02 'Misi pencarian sepatu gagal... asbun sotoy, gua mau misi aja'. Main 42.30 s + 4.0 s outro. Clean layout (19 Nov 2026), same as windah-gtavi-chase. Hook (user, 19 Nov) line 1 Paper 'WINDAH UDAH BELI SEPATU', line 2 Volt 'MASIH DISURUH LAGI WKWK', Audex 76. No swears in the cuts (skipped the 19:16 bleep and 'mampus lu bocil'); no guns. Word timings from faster-whisper medium on boosted audio.",
+  "description": "Windah keeps getting asked by viewers to find a shoe store, even after he already bought shoes (running joke across his own launch stream 45r3OyaxvFE, 18 Nov 2026). Source = .cache/wizzclip/windah-gtavi-sepatu/source.mp4 (also Drive clip-src/windah-gtavi-sepatu.mp4): SIX stream-copy sections joined with the concat demuxer, 320.0 s. sq = seconds since stream start 18:30:31 WIB. Part 1 local 0-21 = stream-1830-1944 t 744 (sq = t+744); part 2 local 21-109 = stream-1944-2100 t 174 (sq = t+4562); part 3 local 109-185 = stream-1944-2100 t 1764 (sq = t+6064); part 4 local 185-216 = stream-2100-2200 t 109 (sq = t+8893); part 5 local 216-246 = stream-2100-2200 t 428.0333 (sq = t+9181.03); part 6 local 246-320 = stream-2100-2200 t 598.0333 (sq = t+9321.03). All parts start on keyframes. Cuts (local -> output): 123.20-126.95 -> output 0.00-3.75; 128.65-130.55 -> output 3.75-5.65; 9.45-13.05 -> output 5.65-9.25; 30.70-35.95 -> output 9.25-14.50; 99.90-106.40 -> output 14.50-21.00; 199.40-207.25 -> output 21.00-28.85; 236.15-243.45 -> output 28.85-36.15; 310.95-317.10 -> output 36.15-42.30. Beats: 20:13:50 'Kenapa jadi toko sepatu terus? Udah tadi gua udah ke toko sepatu. Kenapa jadi toko sepatu lagi?' (opener, payoff first); 18:43:04 the promise 'Oke gua janji gua ke toko sepatu ntar'; 19:47:01 'Nah ini dia toko sepatu yang diidam-idamkan para bocil ya'; 19:48:10 'Itu sepatu udah gua iniin, request-nya udah gua penuhi'; 21:02:00 'ada yang nyuruh cari toko sepatu, ada yang nyuruh misi, gua serba salah... gak enjoy'; 21:07:27 'Sesat men, dari tadi bocil-bocil sepatu gitu gak ada, adanya tato'; 21:11:02 'Misi pencarian sepatu gagal... asbun sotoy, gua mau misi aja'. Main 42.30 s + 4.0 s outro. Clean layout (19 Nov 2026), same as windah-gtavi-chase. Hook (user, 19 Nov) line 1 Paper 'WINDAH UDAH BELI SEPATU', line 2 Volt 'MASIH DISURUH LAGI WKWK', Audex 76. No swears in the cuts (skipped the 19:16 bleep and 'mampus lu bocil'); no guns. Word timings from faster-whisper medium on boosted audio. WSL 19 Nov: cuts 1-2 (source 120-132 s) come from a separate seeked input 3 (-ss 120 -t 12, trim times minus 120) so input 0 is read in order; the single-input version used 7 GB and was OOM-killed on the work laptop.",
   "campaign": "motionklip",
   "campaign_brief": "Windah GTA VI",
   "source": {
@@ -21,6 +21,17 @@
     },
     {
       "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    },
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3",
+        "-ss",
+        "120",
+        "-t",
+        "12"
+      ]
     }
   ],
   "subtitles": "windah-gtavi-sepatu.ass",
@@ -29,16 +40,16 @@
     "Audex-Regular.ttf"
   ],
   "filter_complex": [
-    "[0:v]trim=123.20:126.95,setpts=PTS-STARTPTS,fps=30[v1];",
-    "[0:v]trim=128.65:130.55,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[3:v]trim=3.20:6.95,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[3:v]trim=8.65:10.55,setpts=PTS-STARTPTS,fps=30[v2];",
     "[0:v]trim=9.45:13.05,setpts=PTS-STARTPTS,fps=30[v3];",
     "[0:v]trim=30.70:35.95,setpts=PTS-STARTPTS,fps=30[v4];",
     "[0:v]trim=99.90:106.40,setpts=PTS-STARTPTS,fps=30[v5];",
     "[0:v]trim=199.40:207.25,setpts=PTS-STARTPTS,fps=30[v6];",
     "[0:v]trim=236.15:243.45,setpts=PTS-STARTPTS,fps=30[v7];",
     "[0:v]trim=310.95:317.10,setpts=PTS-STARTPTS,fps=30[v8];",
-    "[0:a]atrim=123.20:126.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.65:d=0.1[a1];",
-    "[0:a]atrim=128.65:130.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.80:d=0.1[a2];",
+    "[3:a]atrim=3.20:6.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.65:d=0.1[a1];",
+    "[3:a]atrim=8.65:10.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.80:d=0.1[a2];",
     "[0:a]atrim=9.45:13.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.50:d=0.1[a3];",
     "[0:a]atrim=30.70:35.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.15:d=0.1[a4];",
     "[0:a]atrim=99.90:106.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.40:d=0.1[a5];",
@@ -53,7 +64,7 @@
     "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
     "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
     "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
-    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-4.40:measured_TP=3.07:measured_LRA=5.70:measured_thresh=-14.70:offset=-0.55,linear=true,asetpts=N/SR/TB[a]"
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-4.40:measured_TP=3.07:measured_LRA=5.70:measured_thresh=-14.70:offset=-0.55:linear=true,asetpts=N/SR/TB[a]"
   ],
   "output": "windah-gtavi-sepatu.mp4"
 }

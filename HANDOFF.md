@@ -8,6 +8,21 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **Research 18 Nov ~15:00 (WSL): RUU Perampasan Aset, next HotWizz candidate (not built).** Tingkat I approved Wed 18 Nov (Komisi III + pemerintah, all 8 fraksi); plenary planned **Thu 19 Nov** (may move if Bamus postpones). New title "RUU Perampasan Aset Terkait Tindak Pidana Korupsi dan Tindak Pidana Lainnya"; seizure without waiting for a criminal verdict, through court; scope includes investasi bodong / saham bodong; assets go back to victims, then public use; good-faith third parties protected; 397 DIM. Notes and source tags: `.cache/research/2026-11-18/perampasan-aset.md` (WSL only). Wording conflict: "tanpa putusan pidana" (CNBC, suara) vs "tanpa tuntutan pidana" (kumparan): say "tanpa menunggu putusan pidana" until the bill text is out. Not found anywhere: value threshold, unexplained wealth, objection rights, compensation mechanism, agency name. Plan: build as HotWizz, post right after the plenary (stamp DISAHKAN), comment question "Setuju aset koruptor disita tanpa nunggu vonis?"; keep 3-4 h from any GTA launch clip.
 
+**Changed on 19 Nov 2026, ~11:50-13:55 (WSL): sepatu rendered and posted; it's the first Windah clip to take off.**
+- **sepatu recipe fixes:**
+  - The loudnorm settings had a typo, `offset=-0.55,linear=true`. It is now `:linear=true`.
+  - The single-input graph opens on a late cut, so ffmpeg buffered every decoded frame up to it. It used about 7 GB and the work laptop's out-of-memory killer stopped it.
+  - Cuts 1-2 now come from a separate seeked input 3 (`-ss 120 -t 12`, trim times minus 120), so input 0 is read in order.
+  - **For future recipes:** keep cuts on one input in source order. Give any out-of-order cut its own seeked input.
+- **Render result:** `out/wizzclip/windah-gtavi-sepatu.mp4`, 46.4 s, -14.0 LUFS, copied to `G:\Other computers\My Laptop\out\wizzclip\`. The caption is written locally from the text below.
+  - The caption has 7 hashtags. The campaign rule allows at most 5, so `#GTA6 #fyp` should come off.
+- **sepatu posted 12:20** (moved to `uploaded/` on WSL; move the G: copy too).
+  - At 1.5 h (13:51): 1,277 views, 57 likes, 1 save, avg watch 11.1 s of 46.4 s (24%), 1.49% full, still climbing.
+- **fishing-clean at 3.2 h (13:51):** 177 views, 8 likes, avg watch 7.5 s, 0% full.
+- **Lesson:** joke or running-meme hooks ("udah beli sepatu, masih disuruh lagi wkwk", opening on the payoff line) beat "Windah's first X" hooks. house and fishing stalled at about 200 views.
+- **New order:** hold the next post while sepatu spikes, then post mandy-v2 (joke hook) before lucia and chase. Claim sepatu near 50K views, or when it stops growing, in `#claim-reward-windah-gtavi`. The claim is one-time, at the views counted on submission.
+- **Discord:** Claude in Chrome works from the WSL session with Windows Chrome. Clip links go in Motion Klip `#windah-gtavi-share-link`.
+
 **Changed on 19 Nov 2026, ~11:30-12:30 (Windows): new clip `windah-gtavi-sepatu` (recipe only, render on WSL).**
 - Running joke from the launch stream: viewers keep asking Windah to find a shoe store, even after he already bought shoes. Hook (user): "WINDAH UDAH BELI SEPATU / MASIH DISURUH LAGI WKWK" (Audex 76). 8 cuts, main 42.30 s + 4 s outro. It opens on the payoff, 20:13 "Kenapa jadi toko sepatu terus?", then goes in order: the promise (18:43), the shoe store (19:47), "udah gua penuhi" (19:48), "serba salah… gak enjoy" (21:02), the tattoo-logo mix-up (21:07), "misi pencarian sepatu gagal… asbun sotoy" (21:11). No swears and no guns. `asetpts` is already in the recipe. Section offsets are in the recipe description.
 - Source: 6 stream-copy sections joined, 195 MB, in Drive `G:\My Drive\GTA6\clip-src\windah-gtavi-sepatu.mp4`. Caption: `out/wizzclip/windah-gtavi-sepatu-caption.txt` (Windows, 244 chars):
