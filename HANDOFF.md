@@ -23,6 +23,18 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - **New order:** hold the next post while sepatu spikes, then post mandy-v2 (joke hook) before lucia and chase. Claim sepatu near 50K views, or when it stops growing, in `#claim-reward-windah-gtavi`. The claim is one-time, at the views counted on submission.
 - **Discord:** Claude in Chrome works from the WSL session with Windows Chrome. Clip links go in Motion Klip `#windah-gtavi-share-link`.
 
+**Changed on 19 Nov 2026, ~15:20-15:45 (WSL): mandy-v3 rendered; mandy-v3 and chase posted; the upload queue is empty.**
+- **mandy-v3 render:** `out/wizzclip/windah-gtavi-mandy-v3.mp4`, 59.2 s, -14.0 LUFS, copied to `G:\Other computers\My Laptop\out\wizzclip\`.
+  - Checked the torso blur at 15.6-17.4 s and 29.6-31.2 s (it covers her and follows her), the close-up at ~32 s, and the title with emoji. All good.
+- **Posted (user, ~15:40):** mandy-v3 and chase-sensor-blur.
+  - On WSL both are moved to `out/wizzclip/uploaded/`; the mandy caption was copied as `windah-gtavi-mandy-v3-caption.txt`.
+  - **On Windows, move the G: copies too.**
+- **Deleted (user):** `windah-gtavi-lucia-jason-clean-sensor-blur.mp4` ("we don't need it anymore").
+  - Deleted on WSL. The G: copy is still there; delete it on Windows.
+  - lucia-jason will not be posted.
+- **Nothing left to upload.** `out/wizzclip/` holds only older versions of chase, lucia and mandy.
+- **Next clips:** from tonight's 17:00 stream (`live_hourly.sh` on Windows). Use joke or meme hooks, as sepatu did.
+
 **Changed on 19 Nov 2026, ~14:30-15:30 (Windows): `windah-gtavi-mandy-v3` recipe (render on WSL); live recorder for tonight.**
 - **mandy-v3** (v2 kept). The user asked for this:
   - New hook: "JADI TUKANG PIPA NYA MANDY 🔥🔥 / GTAVI WINDAH". Line 1 is Audex 56 and left-aligned, so the text and the emoji PNG sit centred together.
