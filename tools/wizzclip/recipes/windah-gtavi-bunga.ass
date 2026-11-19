@@ -1,0 +1,39 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:28.30,Hook,,0,0,0,,{\an2\pos(540,600)\fs62}{\c&H00EFF3F4&}BUNGANYA KETINGGALAN, BANG\N{\c&H0029FCE6&}PADAHAL BUAT SURPRISE WKWK
+Dialogue: 0,0:00:00.00,0:00:28.30,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.09,0:00:01.07,Sub,,0,0,0,,{\an5\pos(540,960)}UDAH ADA KALUNG
+Dialogue: 1,0:00:01.21,0:00:02.39,Sub,,0,0,0,,{\an5\pos(540,960)}UDAH ADA BUNGA
+Dialogue: 1,0:00:03.05,0:00:03.55,Sub,,0,0,0,,{\an5\pos(540,960)}KALIAN NGGAK PERNAH
+Dialogue: 1,0:00:03.55,0:00:04.15,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}PACARAN{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.25,0:00:04.63,Sub,,0,0,0,,{\an5\pos(540,960)}GAK PERNAH BIKIN
+Dialogue: 1,0:00:04.63,0:00:05.15,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}SURPRISE{\c&H0029FCE6&}
+Dialogue: 1,0:00:05.23,0:00:06.10,Sub,,0,0,0,,{\an5\pos(540,960)}INI BOCIL-BOCIL!
+Dialogue: 1,0:00:06.30,0:00:07.56,Sub,,0,0,0,,{\an5\pos(540,960)}HA? BUNGANYA KENAPA?
+Dialogue: 1,0:00:07.70,0:00:09.00,Sub,,0,0,0,,{\an5\pos(540,960)}EH, BUNGANYA {\c&H00EFF3F4&}DIKIRIM{\c&H0029FCE6&}
+Dialogue: 1,0:00:09.14,0:00:10.22,Sub,,0,0,0,,{\an5\pos(540,960)}APASIH {\c&H00EFF3F4&}BOCIL BUNGA{\c&H0029FCE6&}
+Dialogue: 1,0:00:10.32,0:00:11.10,Sub,,0,0,0,,{\an5\pos(540,960)}BUNGANYA DIKIRIM
+Dialogue: 1,0:00:11.10,0:00:11.90,Sub,,0,0,0,,{\an5\pos(540,960)}KE RUMAH
+Dialogue: 1,0:00:12.00,0:00:13.28,Sub,,0,0,0,,{\an5\pos(540,960)}CAPER, NGGAK BACA TEKS
+Dialogue: 1,0:00:13.38,0:00:15.84,Sub,,0,0,0,,{\an5\pos(540,960)}INI BOCIL-BOCIL BUNGA
+Dialogue: 1,0:00:16.12,0:00:18.10,Sub,,0,0,0,,{\an5\pos(540,960)}SAMA KALUNGNYA DIKIRIM
+Dialogue: 1,0:00:18.22,0:00:19.30,Sub,,0,0,0,,{\an5\pos(540,960)}BUAT {\c&H00EFF3F4&}SURPRISE{\c&H0029FCE6&}
+Dialogue: 1,0:00:19.52,0:00:20.60,Sub,,0,0,0,,{\an5\pos(540,960)}BIAR {\c&H00EFF3F4&}SURPRISE{\c&H0029FCE6&}
+Dialogue: 1,0:00:20.74,0:00:22.54,Sub,,0,0,0,,{\an5\pos(540,960)}GITU AJA NGGAK PAHAM
+Dialogue: 1,0:00:23.38,0:00:24.04,Sub,,0,0,0,,{\an5\pos(540,960)}KALAU GUE BAWA SEKARANG
+Dialogue: 1,0:00:24.04,0:00:24.68,Sub,,0,0,0,,{\an5\pos(540,960)}KURANG {\c&H00EFF3F4&}SURPRISE{\c&H0029FCE6&}
+Dialogue: 1,0:00:24.74,0:00:25.40,Sub,,0,0,0,,{\an5\pos(540,960)}KAN LUCIA MAU KITA
+Dialogue: 1,0:00:25.40,0:00:26.60,Sub,,0,0,0,,{\an5\pos(540,960)}BAWA KE RUMAH KITA
+Dialogue: 1,0:00:27.10,0:00:28.25,Sub,,0,0,0,,{\an5\pos(540,960)}NAH, DIA NANTI {\c&H00EFF3F4&}SURPRISE{\c&H0029FCE6&}

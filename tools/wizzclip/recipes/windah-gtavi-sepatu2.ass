@@ -1,0 +1,38 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:24.33,Hook,,0,0,0,,{\an2\pos(540,600)\fs68}{\c&H00EFF3F4&}HARI KEDUA, MASIH DISURUH\N{\c&H0029FCE6&}KE TOKO SEPATU WKWK
+Dialogue: 0,0:00:00.00,0:00:24.33,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.10,0:00:00.62,Sub,,0,0,0,,{\an5\pos(540,960)}MENDING DISERANG
+Dialogue: 1,0:00:00.62,0:00:01.30,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BOCIL SEPATU{\c&H0029FCE6&}
+Dialogue: 1,0:00:01.30,0:00:02.80,Sub,,0,0,0,,{\an5\pos(540,960)}DARIPADA BOCIL LAGU
+Dialogue: 1,0:00:02.94,0:00:03.76,Sub,,0,0,0,,{\an5\pos(540,960)}SEPATU, SEPATU
+Dialogue: 1,0:00:03.80,0:00:04.42,Sub,,0,0,0,,{\an5\pos(540,960)}AKHIRAN DEH!
+Dialogue: 1,0:00:04.48,0:00:04.74,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}SEPATU!{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.83,0:00:06.05,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU
+Dialogue: 1,0:00:06.21,0:00:06.71,Sub,,0,0,0,,{\an5\pos(540,960)}COBA, SIAPA TUH
+Dialogue: 1,0:00:06.71,0:00:07.91,Sub,,0,0,0,,{\an5\pos(540,960)}UDAH LIAT {\c&H00EFF3F4&}SPOILER{\c&H0029FCE6&}
+Dialogue: 1,0:00:08.03,0:00:08.61,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU
+Dialogue: 1,0:00:08.63,0:00:10.17,Sub,,0,0,0,,{\an5\pos(540,960)}GUA COBA {\c&H00EFF3F4&}DI AKHIRAN{\c&H0029FCE6&} LAH
+Dialogue: 1,0:00:10.25,0:00:10.85,Sub,,0,0,0,,{\an5\pos(540,960)}SEBELUM GUE LIVE
+Dialogue: 1,0:00:10.85,0:00:11.77,Sub,,0,0,0,,{\an5\pos(540,960)}DI YOUTUBE RESMI, GUYS
+Dialogue: 1,0:00:11.90,0:00:12.90,Sub,,0,0,0,,{\an5\pos(540,960)}SEPATU ADA DI {\c&H00EFF3F4&}DOWNTOWN{\c&H0029FCE6&}
+Dialogue: 1,0:00:13.84,0:00:15.78,Sub,,0,0,0,,{\an5\pos(540,960)}GUE UDAH NYAMPE NIH
+Dialogue: 1,0:00:16.70,0:00:17.68,Sub,,0,0,0,,{\an5\pos(540,960)}DEKET KAN?
+Dialogue: 1,0:00:17.80,0:00:18.36,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU YA
+Dialogue: 1,0:00:18.38,0:00:18.80,Sub,,0,0,0,,{\an5\pos(540,960)}TOKO SEPATU
+Dialogue: 1,0:00:18.80,0:00:19.30,Sub,,0,0,0,,{\an5\pos(540,960)}BISA HARI INI
+Dialogue: 1,0:00:19.32,0:00:20.46,Sub,,0,0,0,,{\an5\pos(540,960)}BISA, BISA, {\c&H00EFF3F4&}BISA!{\c&H0029FCE6&}
+Dialogue: 1,0:00:20.60,0:00:22.30,Sub,,0,0,0,,{\an5\pos(540,960)}YA, DARIPADA GUE MATI
+Dialogue: 1,0:00:22.33,0:00:24.33,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}...DAN STREAMNYA{\c&H0029FCE6&}\NKEBURU SELESAI WKWK

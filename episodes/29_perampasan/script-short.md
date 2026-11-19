@@ -4,6 +4,15 @@ HotWizz Flash. Narrator: Nisa (wec, Cartesia). 6 lines, 784 chars (badak: 786 ch
 
 Angle: Komisi III DPR and the government finished tingkat I on the RUU Perampasan Aset Terkait Tindak Pidana Korupsi dan Tindak Pidana Lainnya (Wed 18 Nov, chaired by Wakil Ketua DPR Sufmi Dasco Ahmad, all 8 fraksi agreed without notes). Viewer stake: victims of investasi/saham bodong can be compensated directly from the sale of the perpetrators' assets (Habiburokhman). Keep the condition: non-conviction seizure still goes through a court and, per the draft discussed, applies when the suspect fled, died or is permanently ill. Neutral: "disetujui tingkat I / rencananya dibawa ke paripurna" until two outlets report the plenary vote. Legal topic: "Bukan nasihat hukum" on screen (tanya sub, cover footer) and in the caption. Loop: `introCover: true`.
 
+**Switched to variant A on Thu 19 Nov 2026 ~17:40 (Windows).** The paripurna (ke-13, Masa Sidang II 2026-2027, chaired by Ketua DPR Puan Maharani) passed the bill that day: detik, DDTC and Warta Ekonomi; Kompas headline. The hook person is now Puan (`people/puan.jpg`, plenary chair; Warta explicit, DDTC photo). The stamp cue is `mengesahkan`, and the cover title reads "*UU PERAMPASAN ASET*". New facts not used (one outlet each, so a second outlet is needed before use):
+- 74 pasal (DDTC)
+- pidana pajak dropped from the scope (DDTC)
+- illicit enrichment left out (DDTC headline)
+- "2 badan baru" (detik and DDTC headlines, articles not read)
+- 361 of 573 members present (Warta)
+
+The `syarat` line keeps "Di draf yang dibahas" because the final text's NCB triggers (kabur/meninggal/sakit permanen) are not yet reported by two outlets.
+
 ## Status switch (only the hook line, cover chip and stamp change)
 
 | | Variant B (now, true Wed 18 Nov evening) | Variant A (after paripurna passes it, Thu 19 Nov) |

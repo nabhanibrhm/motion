@@ -1,5 +1,5 @@
 {
-  "comment": "VARIANT B (pre-plenary, true on Wed 18 Nov evening) is in section 'hook'. After the Thu 19 Nov paripurna passes the bill (check two outlets), swap the hook text for VARIANT A in script-short.md. Only the hook line differs.",
+  "comment": "VARIANT A (post-plenary): DPR passed the bill at the Thu 19 Nov 2026 paripurna (detik, DDTC, Warta Ekonomi). Variant B text kept in script-short.md.",
   "source": "cartesia",
   "speakers": {
     "wec": {
@@ -32,7 +32,7 @@
       "lines": [
         {
           "speaker": "wec",
-          "text": "Aset koruptor bakal bisa dirampas tanpa menunggu putusan pidana. RUU Perampasan Aset disetujui semua fraksi, dan rencananya besok dibawa ke paripurna."
+          "text": "Aset koruptor bakal bisa dirampas tanpa menunggu putusan pidana. DPR resmi mengesahkan RUU Perampasan Aset jadi undang-undang di rapat paripurna."
         }
       ]
     },

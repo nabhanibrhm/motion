@@ -1,0 +1,55 @@
+{
+  "description": "Day 2 sequel to the posted sepatu clip: viewers still send Windah to the shoe store, he promises 'di akhiran', and the stream cuts off before he goes (idea B16). Source = .cache/wizzclip/windah-gtavi-sepatu2/source.mp4 (also Drive clip-src/windah-gtavi-sepatu2.mp4): SIX parts re-encoded to 1080p30 and joined with the concat demuxer, 35.25 s. Windah live QSPPyA1736U (19 Nov 2026, started 17:00:13 WIB). Part 1 local 0-6 = stream-1700-1800.mp4 t 62-68; part 2 local 6-11 = stream-1800-1852.mp4 t 1915-1920; part 3 local 11-20 = stream-1800-1852 t 2090-2099; part 4 local 20-28 = t 2257-2265; part 5 local 28-32 = t 2306-2310; part 6 local 32-35.23 = t 2992-2995.23 (the stream's last seconds; stream-1800-1852 t 0 = 18:00:13 WIB). Cuts: A62 t 64.30-67.15 = local 2.30-5.15 -> output 0.00-2.85; B1915 t 1916.85-1918.75 = local 7.85-9.75 -> output 2.85-4.75; B2090 t 2091.10-2098.15 = local 12.10-19.15 -> output 4.75-11.80; B2257 t 2258.50-2264.40 = local 21.50-27.40 -> output 11.80-17.70; B2306 t 2306.60-2309.40 = local 28.60-31.40 -> output 17.70-20.50; B2992 t 2993.00-2995.23 = local 33.00-35.23 -> output 20.50-22.73. Beats: 17:01:04 'mending diserang bocil sepatu daripada bocil lagu' (opener, callback to the posted windah-gtavi-sepatu clip); 18:32:10 chat line 'sepatu, sepatu, akhiran deh! sepatu!'; 18:35:04 'toko sepatu, coba siapa tuh udah liat spoiler, toko sepatu, gua coba di akhiran lah, sebelum gue live di YouTube resmi'; 18:37:51 reads chat 'sepatu ada di downtown', 'gue udah nyampe nih, deket kan?'; 18:38:39 'toko sepatu ya, toko sepatu bisa hari ini, bisa, bisa, bisa'; 18:49:46 'ya, daripada gue mati' and the stream cuts off (it ended unexpectedly), frozen 1.6 s with '...DAN STREAMNYA KEBURU SELESAI WKWK'. No swears, no guns in the cuts (skipped the drug-loot line at 18:49:40). Main 24.33 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Clean layout as windah-gtavi-sepatu; hook line 1 Paper 'HARI KEDUA, MASIH DISURUH', line 2 Volt 'KE TOKO SEPATU WKWK', Audex 68. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-sepatu2",
+    "youtube": "QSPPyA1736U",
+    "url": "https://www.youtube.com/watch?v=QSPPyA1736U",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-sepatu2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=2.30:5.15,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=7.85:9.75,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=12.10:19.15,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=21.50:27.40,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=28.60:31.40,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=33.00:35.23,setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration=1.6[v6];",
+    "[0:a]atrim=2.30:5.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.75:d=0.1[a1];",
+    "[0:a]atrim=7.85:9.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.80:d=0.1[a2];",
+    "[0:a]atrim=12.10:19.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.95:d=0.1[a3];",
+    "[0:a]atrim=21.50:27.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.80:d=0.1[a4];",
+    "[0:a]atrim=28.60:31.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.70:d=0.1[a5];",
+    "[0:a]atrim=33.00:35.23,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.13:d=0.1,apad=pad_dur=1.6[a6];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6]concat=n=6:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.77:measured_TP=0.45:measured_LRA=9.80:measured_thresh=-17.29:offset=0.27:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-sepatu2.mp4"
+}

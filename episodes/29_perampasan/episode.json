@@ -24,21 +24,21 @@
       "id": "hook",
       "template": "hw-hook",
       "props": {
-        "label": "TINGKAT I",
-        "kicker": "KOMISI III · RABU 18 NOV",
+        "label": "DISAHKAN",
+        "kicker": "PARIPURNA DPR · KAMIS 19 NOV",
         "headline": "ASET KORUPTOR\n*DIRAMPAS TANPA VONIS*",
         "claim": "Bisa dirampas *tanpa menunggu putusan pidana*, tetap lewat pengadilan",
-        "tag": "8 FRAKSI SETUJU · PARIPURNA RENCANANYA KAMIS",
+        "tag": "DISAHKAN JADI UU · TINGGAL DIUNDANGKAN",
         "person": {
-          "name": "Sufmi Dasco Ahmad",
-          "role": "Wakil Ketua DPR, pimpin rapat tingkat I",
-          "photo": "people/dasco.jpg",
+          "name": "Puan Maharani",
+          "role": "Ketua DPR, pimpin rapat paripurna",
+          "photo": "people/puan.jpg",
           "credit": "DPR RI (domain publik)"
         },
         "cue": "dirampas",
         "stamp": {
-          "text": "DISETUJUI TINGKAT I",
-          "cue": "fraksi"
+          "text": "DISAHKAN DPR",
+          "cue": "mengesahkan"
         },
         "introCover": true
       }
@@ -153,8 +153,8 @@
         ],
         "footer": "Bukan nasihat hukum",
         "cover": {
-          "title": "*RUU PERAMPASAN ASET*\nRAMPAS ASET\nTANPA VONIS",
-          "chip": "DISETUJUI TINGKAT I",
+          "title": "*UU PERAMPASAN ASET*\nRAMPAS ASET\nTANPA VONIS",
+          "chip": "DISAHKAN DPR",
           "person": {
             "name": "Habiburokhman",
             "photo": "people/habiburokhman.jpg",
