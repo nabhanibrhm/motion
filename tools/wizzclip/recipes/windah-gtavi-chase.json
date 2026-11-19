@@ -63,7 +63,7 @@
     "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
     "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
     "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
-    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-4.06:measured_TP=3.53:measured_LRA=3.40:measured_thresh=-14.31:offset=-0.30:linear=true[a]"
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-4.06:measured_TP=3.53:measured_LRA=3.40:measured_thresh=-14.31:offset=-0.30:linear=true,asetpts=N/SR/TB[a]"
   ],
   "output": "windah-gtavi-chase.mp4"
 }

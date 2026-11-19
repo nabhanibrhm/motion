@@ -8,6 +8,27 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **Research 18 Nov ~15:00 (WSL): RUU Perampasan Aset, next HotWizz candidate (not built).** Tingkat I approved Wed 18 Nov (Komisi III + pemerintah, all 8 fraksi); plenary planned **Thu 19 Nov** (may move if Bamus postpones). New title "RUU Perampasan Aset Terkait Tindak Pidana Korupsi dan Tindak Pidana Lainnya"; seizure without waiting for a criminal verdict, through court; scope includes investasi bodong / saham bodong; assets go back to victims, then public use; good-faith third parties protected; 397 DIM. Notes and source tags: `.cache/research/2026-11-18/perampasan-aset.md` (WSL only). Wording conflict: "tanpa putusan pidana" (CNBC, suara) vs "tanpa tuntutan pidana" (kumparan): say "tanpa menunggu putusan pidana" until the bill text is out. Not found anywhere: value threshold, unexplained wealth, objection rights, compensation mechanism, agency name. Plan: build as HotWizz, post right after the plenary (stamp DISAHKAN), comment question "Setuju aset koruptor disita tanpa nunggu vonis?"; keep 3-4 h from any GTA launch clip.
 
+**Changed on 19 Nov 2026, ~06:30-09:30 (WSL): all 5 Windah clips rendered; censored, blurred and Mandy v2 versions; house posted.**
+- **ffmpeg 4.4 fix (work laptop):** after `loudnorm ... linear=true`, ffmpeg 4.4 wrote AAC timestamps that left only 2.2 s of audio in the mp4. `,asetpts=N/SR/TB` is now appended before `[a]` in `windah-gtavi-{chase,mandy,house-clean,fishing-clean,lucia-jason-clean}.json`. Add it to new recipes, or move it into `wizzclip.py`. On this ffmpeg, libass can't draw colour emoji, so emoji go in as a PNG overlay.
+- **Rendered** to `out/wizzclip/` and copied to `G:\Other computers\My Laptop\out\wizzclip\`:
+  - `windah-gtavi-chase`, `mandy`, `house-clean`, `fishing-clean`, `lucia-jason-clean`.
+  - `-sensor` versions (1 kHz beep over the spoken swears, -14 LUFS):
+    - `chase` at 3.85-4.40, 16.45-16.85 and 20.32-20.80 s.
+    - `lucia-jason-clean` at 25.55-26.05 s.
+  - `-sensor-blur` versions (also mosaic the in-game subtitle swears; band y1192-1220):
+    - `chase` boxes x,w,start,end: 378,36,3.7,6.1; 532,48,15.2,18.1; 452,37,20.25,20.8; 602,71,39.8,40.45.
+    - `lucia` boxes: 517,36,25.1,27.3; 545,31,42.6,44.35.
+  - `mandy`, `house` and `fishing` have no swears.
+  - The sensor and blur passes are ffmpeg one-offs, not recipes.
+- **`windah-gtavi-mandy-v2`** (new recipe and .ass):
+  - Hook "BENERIN PIPA NYA / MANDY??" plus 🔥🔥, drawn from `tools/wizzclip/recipes/emoji-fire2.png` and overlaid at (665,514).
+  - Uses the mandy caption.
+- **Upload queue:** fishing-clean (~11:00), lucia-jason-clean-sensor-blur (~14:00), chase-sensor-blur (~17:00 if the earlier ones have slowed), mandy-v2 (20 Nov morning). Space posts ~3 h apart.
+- **Posted:** `windah-gtavi-house-clean`, 19 Nov 07:51, moved to `out/wizzclip/uploaded/` on WSL. **Move the G:/Windows copy too.**
+  - At 1.5 h (09:27): 41 views, 3 likes, avg watch 8.0 s of 41.9 s, 0% full, 0 followers.
+  - It stalled in TikTok's first test audience. The opening line "OKE, KITA COBA" is setup, not a hook.
+  - If fishing also stalls under ~100 views, post chase before lucia.
+
 **Changed on 19 Nov 2026, ~05:00-06:30 (Windows): new clean clip design; Windah `chase` + `mandy` recipes ready, RENDER THEM ON THE WORK LAPTOP.**
 - **Render on the work laptop (WSL).** This laptop is too slow, and the work laptop can't reach YouTube, so clip sources travel through Drive `G:\My Drive\GTA6\clip-src\`. That folder holds the exact sections each recipe uses, cut with stream copy: `windah-gtavi-chase.mp4` 201 MB, `windah-gtavi-mandy.mp4` 264 MB, and `GTAVI_OutroVideo.mov` (not in git). Set the big `stream-*.mp4` files to online-only there. Steps:
   ```bash

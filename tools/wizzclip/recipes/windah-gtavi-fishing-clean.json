@@ -43,7 +43,7 @@
     "[ra0]aformat=sample_rates=48000:channel_layouts=stereo[am];",
     "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
     "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][araw];",
-    "[araw]loudnorm=I=-14:TP=-1.0:LRA=20:measured_I=-4.07:measured_TP=3.57:measured_LRA=17.50:measured_thresh=-15.75:offset=-0.74:linear=true[a]"
+    "[araw]loudnorm=I=-14:TP=-1.0:LRA=20:measured_I=-4.07:measured_TP=3.57:measured_LRA=17.50:measured_thresh=-15.75:offset=-0.74:linear=true,asetpts=N/SR/TB[a]"
   ],
   "output": "windah-gtavi-fishing-clean.mp4"
 }

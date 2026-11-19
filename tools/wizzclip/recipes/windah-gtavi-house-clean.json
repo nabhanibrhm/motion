@@ -45,7 +45,7 @@
     "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
     "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
     "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
-    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.04:measured_TP=1.20:measured_LRA=5.60:measured_thresh=-16.85:offset=0.35:linear=true[a]"
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.04:measured_TP=1.20:measured_LRA=5.60:measured_thresh=-16.85:offset=0.35:linear=true,asetpts=N/SR/TB[a]"
   ],
   "output": "windah-gtavi-house-clean.mp4"
 }
