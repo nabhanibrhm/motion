@@ -6,6 +6,11 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**Changed on 19 Nov 2026, ~19:50-20:00 (WSL): bunga and sepatu2 rendered.**
+- Rendered `out/wizzclip/windah-gtavi-bunga.mp4` (32.3 s, -14.0 LUFS) and `windah-gtavi-sepatu2.mp4` (28.3 s, -13.9 LUFS) from Drive `clip-src` with no recipe changes. Frames checked.
+- Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The captions there already existed from Windows, so they were not overwritten; WSL copies are in `out/wizzclip/`.
+- Not posted yet. Suggested order: sepatu2 first (sequel to sepatu), then bunga at least 2 h later.
+
 **Changed on 19 Nov 2026, ~16:20-19:50 (Windows): day-2 stream recorded and scanned; two short Wizz Clip recipes; HotWizz #12 perampasan rendered.**
 - **Render on WSL:** `bunga` and `sepatu2`. Sources are already on Drive `GTA6/clip-src/`.
   ```
