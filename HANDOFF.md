@@ -11,6 +11,25 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The captions there already existed from Windows, so they were not overwritten; WSL copies are in `out/wizzclip/`.
 - Not posted yet. Suggested order: sepatu2 first (sequel to sepatu), then bunga at least 2 h later.
 
+**20 Nov 2026 ~10:30-11:30 (WSL; the Windows laptop is off, so work continues here): kakatua and bigfoot got 0 views; A13 checked.**
+- **Posted:**
+  - kakatua at 07:48 and bigfoot at 07:50 (2 min apart, which breaks the 2 h rule).
+  - At ~10:30 both had **0 views**. TikTok Studio and the app show no "under review" or "not eligible for For You" notice. Analytics only says "Your video data is being processed."
+  - The rest of the account is fine: sepatu2 (posted 20:04) 464 views, bunga 163.
+  - Likely cause: duplicate moments (other MotionKlip clippers posted the same scenes first) plus the back-to-back posting.
+  - Plan: if still 0 at ~12:00, set both to "Only me". Do not re-upload the same files.
+- **Lesson:** before posting a moment, check that other clippers haven't already posted it. Post one clip at a time, at least 2 h apart. Cut shots with a body or a weapon prompt instead of blurring them.
+- **Files:** moved kakatua, bigfoot and sepatu2 (videos and captions) to WSL `out/wizzclip/uploaded/`.
+- **Day-2 recording on WSL:** copied `stream-1700-1800.mp4` from Drive to WSL `.cache/wizzclip/windah-live2/`. `hour_scan.py` style whisper calls need a numpy array on WSL, because WSL's PyAV rejects `metadata_errors`.
+- **A13, transcribed on WSL:**
+  - Windah dresses Jason at a thrift clothes store for the Lucia surprise date, t ≈ 2650-2930 s (17:44:23-17:49).
+  - t 2658 is the bunga line, already used.
+  - From 2690 he tries a shirt ("Oh my god, aku suka. Kalian suka?") and picks brown leather shoes ("perpaduan biru dan coklat, klasik", 2767-2778).
+  - Pants from 2780: "skinny jeans masih jaman ga sih guys?" (2866), "udah cukup, udah ganteng" (2888), "jelek jelek, lu yang jelek" (2896), "si ganteng banget Jason kita" (2900).
+  - Watch, from 2910: "ga usah hedon-hedon banget" (2918), "hitam aja, klasik" (2926).
+  - There is no explicit "cowok vs cewek" line in this window.
+  - Suggested hook: "WINDAH JADI STYLIST JASON / BUAT KENCAN SAMA LUCIA", as a sequel to bunga. Not built yet; waiting on the user.
+
 **20 Nov 2026 ~07:45 (WSL): kakatua and bigfoot rendered.**
 - Rendered `out/wizzclip/windah-gtavi-kakatua.mp4` (30.2 s, -14.0 LUFS) and `windah-gtavi-bigfoot.mp4` (29.2 s, -14.0 LUFS) from Drive `clip-src` with no recipe changes. Frames checked: the bigfoot dock blur is in place, and the ending text overlaps the previous subtitle for only about one frame.
 - Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The Windows captions were already there; copied them byte-for-byte into WSL `out/wizzclip/`.
