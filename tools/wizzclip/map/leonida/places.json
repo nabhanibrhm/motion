@@ -1,0 +1,24 @@
+{
+ "_note": "Rockstar's official Leonida map poster (rockstargames.com/VI launch gallery, Leonida_Map_Poster, 2805x3840), local copy .cache/wizzclip/map/rockstar/leonida-map.jpg (not in git; `render.mjs fetch leonida`). Coordinates are poster pixels: x,y = pin, r = highlight ellipse radii, zoom = camera scale for that place. strike = the poster's own VICE CITY label (hook). thumbs = recap thumbnail centres.",
+ "image": ".cache/wizzclip/map/rockstar/leonida-map.jpg",
+ "url": "https://www.rockstargames.com/VI/_next/static/media/Leonida_Map_Poster.08ir77j-.26ny.jpg",
+ "width": 2805,
+ "height": 3840,
+ "overview": { "z": 0.33, "cx": 1402, "cy": 1920, "sy": 995 },
+ "placeSy": 1330,
+ "hook": { "cx": 1880, "cy": 1998, "z": 2.0, "sy": 1120 },
+ "strike": [1752, 2001, 256, 12],
+ "clip": [96, 96, 2709, 3745],
+ "places": {
+  "vice-city":     { "name": "VICE CITY",     "x": 1950, "y": 2150, "r": [360, 300], "zoom": 1.0 },
+  "leonida-keys":  { "name": "LEONIDA KEYS",  "x": 1250, "y": 3250, "r": [620, 170], "zoom": 0.75 },
+  "grassrivers":   { "name": "GRASSRIVERS",   "x": 1230, "y": 2470, "r": [330, 230], "zoom": 1.05 },
+  "port-gellhorn": { "name": "PORT GELLHORN", "x": 840,  "y": 1430, "r": [230, 230], "zoom": 1.15, "label": "below" },
+  "ambrosia":      { "name": "AMBROSIA",      "x": 1560, "y": 1400, "r": [230, 200], "zoom": 1.15, "label": "above" },
+  "kalaga":        { "name": "MOUNT KALAGA",  "x": 1330, "y": 880,  "r": [450, 260], "zoom": 0.9 }
+ },
+ "thumbs": {
+  "kalaga": [1100, 700], "port-gellhorn": [600, 1450], "ambrosia": [1800, 1250],
+  "vice-city": [2350, 2050], "grassrivers": [1720, 2620], "leonida-keys": [1900, 3250]
+ }
+}

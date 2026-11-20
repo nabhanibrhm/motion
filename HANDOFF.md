@@ -6,6 +6,26 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 ~00:00-02:20 (Windows): streams #3 and #4 downloaded and scanned; idea lists written; Leonida map video built.**
+- **Streams #3 and #4:**
+  - Downloaded in hourly batches with the new `tools/wizzclip/vod_hourly.sh`, which works on finished VODs and logs the same "batch NAME done" lines, so `scan_next.sh` works on it too.
+  - #3 is `B2Bon2X1jPQ`: 19 Nov from 22:15, 7333 s. It continues the day-2 stream that cut off.
+  - #4 is `03qhcshfeMY`: 20 Nov 18:32–22:24.
+  - Files are in `.cache/wizzclip/windah-live3/` and `windah-live4/` and on Drive `GTA6/live3-2026-11-19/` and `GTA6/live4-2026-11-20/`. Each hour has been scanned.
+- **Idea lists** (7 categories per hour, with timestamps and NSFW notes) are in `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live3-live4.md`.
+  - Top picks: **F1** Bigfoot found ("guys, clip, clip!", the payoff to our bigfoot clip; cut the rifle aim at about 216 s of `stream-2315-0015`), **D1** "membersihkan perahu, yay… lebih seru dari sepatu", **C2** "Jasonnya ganteng… clip that", **E1** Windah's love song for Jason and Lucia, **H1** "ayang gua sekarat… walaupun udah ditanggung BPJS".
+  - The user hasn't picked yet. Check that other clippers haven't posted a moment before cutting it.
+- **Windah says restreams of his live on TikTok are not OK** ("jangan gitu… ngambil terang-terangan", #4 hour 3 at 51:45). That's about restreaming the whole live, not campaign clips.
+- **New Wizz Clip video `map-leonida`** (own content, not MotionKlip):
+  - What it is: "6 LOKASI BESAR DI GTA VI", a camera tour over Rockstar's official Leonida map poster. Each region gets a Volt ring and Rockstar's official clip of it, then a recap and the cover card.
+  - It's inspired by youtube.com/shorts/QXmr8D9HNRk, which the user picked.
+  - **Tool:** `tools/wizzclip/map/render.mjs` (`fetch|build|check|stills|render <id>`). The data is in `tools/wizzclip/map/leonida/` (`video.json`, `places.json` with poster pixel coordinates).
+  - **Assets:** the poster and clips come from rockstargames.com/VI and are cached in `.cache/wizzclip/map/rockstar/`, not in git. `fetch` downloads them again.
+  - **Output:** `out/wizzclip/map-leonida.mp4` (30.4 s) plus `map-leonida-caption.txt` (5 hashtags, credit "Peta, nama lokasi & gambar: Rockstar Games").
+  - **Audio:** at the user's request (21 Nov) there's **no music bed**, only whoosh and pop effects, not loudness-normalised, peaking around −9 dBFS. The user adds the sound on the platform.
+  - Not posted yet.
+- **Moved to `out/wizzclip/uploaded/` on Windows:** sepatu2, kakatua and bigfoot, to match WSL.
+
 **Changed on 19 Nov 2026, ~19:50-20:00 (WSL): bunga and sepatu2 rendered.**
 - Rendered `out/wizzclip/windah-gtavi-bunga.mp4` (32.3 s, -14.0 LUFS) and `windah-gtavi-sepatu2.mp4` (28.3 s, -13.9 LUFS) from Drive `clip-src` with no recipe changes. Frames checked.
 - Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The captions there already existed from Windows, so they were not overwritten; WSL copies are in `out/wizzclip/`.

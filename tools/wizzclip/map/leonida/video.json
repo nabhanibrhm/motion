@@ -1,0 +1,32 @@
+{
+  "_note": "Wizz Clip map explainer (own content, not a campaign clip), inspired by youtube.com/shorts/QXmr8D9HNRk (map tour of the six regions). Region names and wording: Rockstar's GTA VI site 'Only in Leonida' places (Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, Mount Kalaga), quoted by Game Informer / PC Gamer / Beebom (see .cache/wizzclip/gta6-explore/research.md). Footage: the six official place loops from rockstargames.com/VI (urls below; 1 s, 60 fps, 1920x1280), slowed to half speed and ping-ponged. Map: Rockstar's official Leonida map poster (places.json).",
+  "out": "map-leonida",
+  "title": "6 LOKASI BESAR DI *GTA VI*",
+  "chip": "GAMING · FAKTA",
+  "credit": "PETA & GAMBAR: ROCKSTAR GAMES",
+  "hook": { "title": "ADA BERAPA LOKASI BESAR DI *GTA VI*?", "line": "BUKAN CUMA VICE CITY", "seconds": 3.2 },
+  "overview": { "big": "6", "line": "LOKASI BESAR DI LEONIDA", "seconds": 2.4 },
+  "places": [
+    { "key": "vice-city",     "tag": "KOTA PANTAI",            "line": "Glamor, sibuk, penuh godaan" },
+    { "key": "leonida-keys",  "tag": "KEPULAUAN TROPIS",       "line": "Pulau kecil, lautnya berbahaya" },
+    { "key": "grassrivers",   "tag": "RAWA LIAR",              "line": "Rawa luas, rumah aligator" },
+    { "key": "port-gellhorn", "tag": "PESISIR TERLUPAKAN",     "line": "Bekas kota wisata, motel murah" },
+    { "key": "ambrosia",      "tag": "KAWASAN INDUSTRI",       "line": "Pabrik, kilang, geng motor" },
+    { "key": "kalaga",        "tag": "TAMAN NASIONAL",         "line": "Hutan, sungai, jalur off-road" }
+  ],
+  "placeSeconds": 3.3,
+  "recap": { "line": "6 LOKASI, 6 SUASANA BEDA", "question": "KAMU MAU KE MANA DULUAN?", "seconds": 3.8 },
+  "cover": 1.2,
+  "music": false,
+  "footage": {
+    "dir": ".cache/wizzclip/map/rockstar",
+    "urls": {
+      "vice-city": "https://www.rockstargames.com/VI/_next/static/media/1920.0xz~021466suh.mp4",
+      "leonida-keys": "https://www.rockstargames.com/VI/_next/static/media/1920.16oyx_-wut8u~.mp4",
+      "grassrivers": "https://www.rockstargames.com/VI/_next/static/media/1920.0qrr5q0y~1k4n.mp4",
+      "port-gellhorn": "https://www.rockstargames.com/VI/_next/static/media/1920.0exv_.86d6~jf.mp4",
+      "ambrosia": "https://www.rockstargames.com/VI/_next/static/media/1920.0a4~zeaw4mqyj.mp4",
+      "kalaga": "https://www.rockstargames.com/VI/_next/static/media/1920.0o_q078aq12xn.mp4"
+    }
+  }
+}
