@@ -11,6 +11,11 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The captions there already existed from Windows, so they were not overwritten; WSL copies are in `out/wizzclip/`.
 - Not posted yet. Suggested order: sepatu2 first (sequel to sepatu), then bunga at least 2 h later.
 
+**20 Nov 2026 ~07:45 (WSL): kakatua and bigfoot rendered.**
+- Rendered `out/wizzclip/windah-gtavi-kakatua.mp4` (30.2 s, -14.0 LUFS) and `windah-gtavi-bigfoot.mp4` (29.2 s, -14.0 LUFS) from Drive `clip-src` with no recipe changes. Frames checked: the bigfoot dock blur is in place, and the ending text overlaps the previous subtitle for only about one frame.
+- Masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. The Windows captions were already there; copied them byte-for-byte into WSL `out/wizzclip/`.
+- Not posted yet. Order: kakatua now, bigfoot 2 h later (other clippers have the same moments); then sepatu2 if it is not up yet.
+
 **20 Nov 2026 ~06:20 (Windows): two more short day-2 recipes. Render on WSL; sources are on Drive `clip-src`.**
 - **Render:**
   ```
