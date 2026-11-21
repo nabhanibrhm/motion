@@ -6,6 +6,33 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 ~11:40-23:00 (WSL): kode, chapter2, vs5 and ganteng-face rendered; new `windah-gtavi-dc-face`; classic dc deleted.**
+- **Renders** (from Drive `clip-src`, copied to `G:\Other computers\My Laptop\out\wizzclip\`, Windows captions fetched):
+
+  | Clip | Length | Loudness |
+  |---|---|---|
+  | `kode` | 25.6 s | -14.0 LUFS |
+  | `chapter2` | 21.8 s | -13.4 LUFS (slightly hot; TikTok normalises it) |
+  | `vs5` | 30.1 s | -14.0 LUFS |
+  | `ganteng-face` | 21.8 s | -14.0 LUFS |
+
+- **ganteng-face:** the `live4` face crop (1480,560,440,330) shows a strip of gameplay (chairs, legs) on the left of the cam panel. Try shifting x by about +60-80 px before more `live4` face clips. ganteng-face has no caption of its own; use the ganteng caption.
+- **New spec `tools/wizzclip/specs/windah-gtavi-dc-face.py`:**
+  - dc in the facecam-below layout (`face = 'live3'`, `srcslug = 'windah-gtavi-dc'`). Generated with `windah_recipe.py windah-gtavi-dc-face <dc LN> 58`, so the hook is 58 px and "STREAM KEMARIN MATI MENDADAK" fits.
+  - Output: `out/wizzclip/windah-gtavi-dc-face.mp4`, 32.7 s, -14.0 LUFS, frames checked. It and its caption (a copy of the dc caption) are on G:.
+  - The game shows behind Windah in the cam panel because his stream #3 cam is keyed with no box. That's expected.
+- **Classic dc dropped by the user:** deleted `out/wizzclip/windah-gtavi-dc.mp4` and its caption on WSL. The G: copy `windah-gtavi-dc.mp4` is still there; delete it on Windows.
+- **Moved to `uploaded/` on WSL:** troll and vs5.
+- **Still to post:**
+  - dc-face
+  - bigfoot2
+  - kode
+  - ganteng or ganteng-face (one of them)
+  - chapter2
+  - bpjs
+  - lagu (pistol blurs)
+- **Old unposted versions** still in WSL `out/wizzclip/` (chase, chase-sensor, lucia-jason-clean(-sensor), mandy, mandy-v2): the user hasn't decided whether to delete them.
+
 **21 Nov 2026 15:47 (Windows): posted and stats.** `map-leonida`, `windah-gtavi-troll` and `windah-gtavi-vs5` are posted. They were moved to `out/wizzclip/uploaded/`, and the troll and vs5 Drive sources were deleted.
 - **Numbers so far:**
   - map-leonida: 1,528 views, 13.1 s avg watch, 7.08% full watch, 86 likes, 5 saves.

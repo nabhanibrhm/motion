@@ -1,0 +1,52 @@
+{
+  "description": "Stream #3 opens after the day-2 stream cut off: Windah insists it was just a disconnect, and his mod tells chat 'jangan caper lagi, nanti end stream lagi' (idea D2). Source = the dc source .cache/wizzclip/windah-gtavi-dc/source.mp4 (Drive clip-src/windah-gtavi-dc.mp4, shared with recipe windah-gtavi-dc): THREE parts of stream-2215-2315.mp4 (Windah live B2Bon2X1jPQ 'GAMEPLAY #3', t 0 = 19 Nov 2026 22:15:31 WIB) re-encoded to 1080p30 and joined IN OUTPUT ORDER: part 1 local 0-12 = t 36.5-48.5; part 2 local 12-17.5 = t 14.0-19.5; part 3 local 17.5-31.5 = t 1650.5-1664.5. Facecam-below layout (stream #3 cam, FACES['live3']). Cuts: P37 t 37.00-47.95 = local 0.50-11.45 -> output 0.00-10.95; P14 t 14.45-19.10 = local 12.45-17.10 -> output 10.95-15.60; P1650 t 1650.90-1663.95 = local 17.90-30.95 -> output 15.60-28.65. Beats: 22:16:08 Windah reads chat 'terlalu telat gak bang, kenapa tiba-tiba off?' and answers 'DC kocak, DC guys, emangnya gue mau tiba-tiba off? Disconnect guys, tau disconnect gak temen-temen' (opener); 22:15:46 'karena tadi sore DC bro, DC ya'; 22:43:02 reads chat 'Bang, tadi kenapa end stream?' and the mod's answer 'biar gue yang jawab aja, soalnya banyak yang caper… makanya jangan caper lagi, nanti end stream lagi, kata Ilham', 'makasih udah bantu jawabin'. Sequel to the posted windah-gtavi-sepatu2 (which ended on the stream cutting off). Frames: dock, map and boat washing (pressure washer), no guns; no swears. Main 28.65 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,686) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'STREAM KEMARIN MATI MENDADAK', line 2 Volt 'KATANYA CUMA DC WKWK', Audex 58, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-dc",
+    "youtube": "B2Bon2X1jPQ",
+    "url": "https://www.youtube.com/watch?v=B2Bon2X1jPQ",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-dc-face.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.50:11.45,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=12.45:17.10,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=17.90:30.95,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:a]atrim=0.50:11.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=10.85:d=0.1[a1];",
+    "[0:a]atrim=12.45:17.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.55:d=0.1[a2];",
+    "[0:a]atrim=17.90:30.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=12.95:d=0.1[a3];",
+    "[v1][a1][v2][a2][v3][a3]concat=n=3:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:686,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-11.98:measured_TP=0.37:measured_LRA=14.70:measured_thresh=-22.64:offset=-0.08:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-dc-face.mp4"
+}
