@@ -6,6 +6,15 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 15:47 (Windows): posted and stats.** `map-leonida`, `windah-gtavi-troll` and `windah-gtavi-vs5` are posted. They were moved to `out/wizzclip/uploaded/`, and the troll and vs5 Drive sources were deleted.
+- **Numbers so far:**
+  - map-leonida: 1,528 views, 13.1 s avg watch, 7.08% full watch, 86 likes, 5 saves.
+  - vs5 (about 1.7 h old): 674 views, 11.7 s, 1.84%.
+  - troll: 527 views, 8.0 s, 2.96%.
+  - sepatu2 (2 days old): 466 views, 8.3 s, 3.26%.
+- **Lesson:** visual-led clips (map, GTA V vs VI side-by-side) hold about 50% longer than Windah talk clips. Full watch is under 8% for every clip at about 30 s.
+- **Next:** make more comparisons, possibly a vs5 part 2 with the plane crash and sunset drive beats. Try talk clips at 15–20 s with the punchline in the first 3 s. In a beat list, put the strongest beat last as well as first.
+
 **21 Nov 2026 (Windows): facecam-below layout; Windah recipe generator moved into the repo.**
 - **Generator:** `tools/wizzclip/windah_recipe.py` (spec → recipe json+ass) and `tools/wizzclip/windah_src.py` (source builder) are the former scratchpad `mk_live.py`/`mk_src.py`, with the same output. Specs are in `tools/wizzclip/specs/`. Regenerating reproduces the committed recipes, except chapter2's `.ass`, whose subs were moved to y745 by hand.
 - **New `layout = 'face'` (the user's choice for future Windah clips).**
