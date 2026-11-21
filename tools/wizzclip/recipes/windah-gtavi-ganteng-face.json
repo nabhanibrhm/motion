@@ -1,0 +1,48 @@
+{
+  "description": "Windah brags that only in his stream Jason looks handsome (short hair, thin moustache) and literally says 'clip that' (idea C2). Source = the ganteng source .cache/wizzclip/windah-gtavi-ganteng/source.mp4 (Drive clip-src/windah-gtavi-ganteng.mp4, shared with recipe windah-gtavi-ganteng): TWO parts of stream-1832-1932.mp4 (Windah live 03qhcshfeMY 'GAMEPLAY #4', t 0 = 20 Nov 2026 18:32:03 WIB) re-encoded to 1080p30 and one part: local 0-19 = t 3374-3393. TEST of the facecam-below layout (stream #4 cam, FACES['live4']). Cuts: P3374 t 3374.65-3392.40 = local 0.65-18.40 -> output 0.00-17.75. Beats: 19:28:17 'Cuma di stream gue Jasonnya ganteng, setuju gak? Emang gue selera-selera laki, glow up kayaknya ada di gue guys. Liat, cukur, kumis tipis, rambut pendek. L semua yang bikin Jason gondrong. Clip that!' and 'bocil jenggot menyerang gak?' (over the pause menu and the Brian cutscene). The cutscene subtitle strip (source px x400-1520 y925-1005; one line reads 'Patron: Dickheads') lies below the gameplay crop (y64-901), so no blur is needed. Dropped the later 'Jason ganteng banget rambutnya begini' (19:28:53): it plays over Donnie, not Jason, and next to Donnie's subtitle swear. No guns, no Windah swears. Main 17.75 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1488x837 at (0,64) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,560) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'CUMA DI STREAM WINDAH', line 2 Volt 'JASON-NYA GANTENG WKWK', Audex 62, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ganteng",
+    "youtube": "03qhcshfeMY",
+    "url": "https://www.youtube.com/watch?v=03qhcshfeMY",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ganteng-face.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.65:18.40,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:a]atrim=0.65:18.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=17.65:d=0.1[a1];",
+    "[v1][a1]concat=n=1:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1488:837:0:64,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:560,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-10.26:measured_TP=0.12:measured_LRA=21.40:measured_thresh=-21.57:offset=-0.56:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ganteng-face.mp4"
+}

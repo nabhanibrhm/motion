@@ -6,6 +6,17 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 (Windows): facecam-below layout; Windah recipe generator moved into the repo.**
+- **Generator:** `tools/wizzclip/windah_recipe.py` (spec → recipe json+ass) and `tools/wizzclip/windah_src.py` (source builder) are the former scratchpad `mk_live.py`/`mk_src.py`, with the same output. Specs are in `tools/wizzclip/specs/`. Regenerating reproduces the committed recipes, except chapter2's `.ass`, whose subs were moved to y745 by hand.
+- **New `layout = 'face'` (the user's choice for future Windah clips).**
+  - Gameplay is cropped tighter (default source crop 1504x846 at 0,0) so the baked-in corner cam falls outside the frame, with no blur. It is scaled to 1080x608 at y364.
+  - Windah's facecam is cropped from the source (`face = 'live4'` (1480,560,440,330) or `'live3'` (1480,686,440,330), or an explicit 4:3 tuple) and enlarged to 520x390 in a 4 px Volt frame at x276 y994–1392, clear of TikTok's bottom caption zone (y>1400) and icon column (x>960).
+  - Hook sits at y318, tag at y326, subs at y905 over the gameplay. The banner and outro are unchanged.
+  - `game = (x,y,w)` overrides the crop for letterboxed cutscenes; `srcslug` reuses another clip's source.
+- **Test recipe `windah-gtavi-ganteng-face`** uses ganteng's Drive source; nothing new was uploaded. It could be posted instead of ganteng. Render with `python tools/wizzclip/wizzclip.py recipe windah-gtavi-ganteng-face`.
+  - The last sub was wrapped by hand onto two lines in the `.ass`, because "BOCIL JENGGOT MENYERANG GAK?" was clipped. The classic ganteng recipe still has this clipping.
+- **Drive clip-src cleanup:** sources of the 10 uploaded clips were deleted, so Drive now holds only the unposted ones. When a clip is posted, delete its source.
+
 **21 Nov 2026 (Windows): GTA V vs GTA VI comparison short `windah-gtavi-vs5`.**
 - **Format** follows a TikTok side-by-side reference by TAMRIX. The layout stacks two 1080x520 panels: GTA V on top (YouTube gameplay, muted) and Windah's GTA VI stream with facecam below (his audio only). A beat label sits in the gap, and the hook "GTA VI VS GTA V / BEDANYA GILA BANGET" uses roman numerals because Audex draws 5 as S. Main runs 25.9 s, plus the 4 s outro.
 - **Beats:**
