@@ -33,6 +33,20 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
   - lagu (pistol blurs)
 - **Old unposted versions** still in WSL `out/wizzclip/` (chase, chase-sensor, lucia-jason-clean(-sensor), mandy, mandy-v2): the user hasn't decided whether to delete them.
 
+**22 Nov 2026 ~01:40-02:00 (WSL): UFO 3-part series rendered.**
+- **Renders** (from Drive `clip-src`, no recipe changes):
+
+  | Clip | Length | Loudness |
+  |---|---|---|
+  | `ufo1` | 28.4 s | -13.9 LUFS |
+  | `ufo2` | 28.7 s | -14.1 LUFS |
+  | `ufo3` | 24.6 s | -13.1 LUFS (loud source, as flagged; left as is) |
+
+  Four frames of each checked.
+- **Facecam:** the `live5` rect sometimes shows game HUD labels ("PHOTO", "OFF") beside Windah, because his cam is keyed with no box. It's minor.
+- **Files:** masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. Captions fetched from G: into WSL `out/wizzclip/`.
+- **Not posted.** Order: ufo1 → ufo2 → ufo3, at least 2 h apart, ahead of the older queue (dc-face, bigfoot2, kode, ganteng/ganteng-face, chapter2, bpjs, lagu).
+
 **22 Nov 2026 ~01:30 (Windows): stream #5 recorded, UFO 3-part series built. Render these first, in order.**
 - **Recording:** stream #5 `lF_QYSm2T-Q` ("GTA VI MENUJU 100% KATANYA ADA UFO", 21 Nov 19:16–00:14 WIB) was recorded by `live_hourly.sh` into `.cache/wizzclip/windah-live5/` (Windows). Hours are also on Drive `G:\My Drive\GTA6\live5\`. Live chat was captured, and every hour was scanned with chat spikes.
 - **Ideas:** `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live5.md` holds the hour 1 list, the full UFO/alien arc timeline with ToC times, and short lists for hours 2–5.
