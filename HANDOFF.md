@@ -6,6 +6,19 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 (Windows): GTA V vs GTA VI comparison short `windah-gtavi-vs5`.**
+- **Format** follows a TikTok side-by-side reference by TAMRIX. The layout stacks two 1080x520 panels: GTA V on top (YouTube gameplay, muted) and Windah's GTA VI stream with facecam below (his audio only). A beat label sits in the gap, and the hook "GTA VI VS GTA V / BEDANYA GILA BANGET" uses roman numerals because Audex draws 5 as S. Main runs 25.9 s, plus the 4 s outro.
+- **Beats:**
+  - MAKAN DAN MINUM: vending soda vs Lucia's taco, "realistis banget cuy".
+  - AIR DAN OMBAK.
+  - MEDITASI DAN YOGA: Michael's yoga (720p upscaled) vs Jason meditating.
+  - OLAHRAGA: GTA Online chin-up bar vs Windah's pull-ups, "12 buat cowok sih GG ya".
+- **Dropped:** crash (no clean vanilla real-time GTA V clip) and police (GTA V traffic stops only exist in LSPDFR mods). There are no "GTA 5 gak ada" claim cards, because those get debunked in comments.
+- **Source:** pre-stacked 1920x2160 on Drive `G:\My Drive\GTA6\clip-src\windah-gtavi-vs5.mp4`. Render with `python tools/wizzclip/wizzclip.py recipe windah-gtavi-vs5`.
+- **Caption:** `out/wizzclip/windah-gtavi-vs5-caption.txt` (Windows; credits the GTA V channels, asks "Pilih 5 atau 6?"). Not posted.
+- **Check:** the hook sits close to the TikTok top bar.
+- **Pending on chat_spikes.py** (Kai Cenat live test, 1 h, worked): compute the p75/median only over the captured span (joining mid-stream makes them 0), and add English stopwords. Live capture only gets "Top chat", about 5.4k messages per hour.
+
 **21 Nov 2026 (Windows): chat capture wired into the stream pipeline.**
 - **New `tools/wizzclip/chat_capture.sh VIDEO_ID [START_EPOCH]`.** It runs in the background and always exits 0. It captures live chat with `--no-part`, so the file is readable while it grows, and writes `.cache/wizzclip/chat/<id>.start`. If the stream has ended it downloads the replay instead. If neither exists it logs "no chat replay".
 - **Who starts it:** `live_hourly.sh` and `vod_hourly.sh` start it automatically. Opt out with `--no-chat` or `CHAT=0`.

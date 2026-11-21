@@ -1,0 +1,31 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Lab,Audex,34,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,5,0,7,60,60,0,1
+Style: Beat,Audex,40,&H00EFF3F4,&H00EFF3F4,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:25.92,Hook,,0,0,0,,{\an2\pos(540,266)\fs66}{\c&H00EFF3F4&}GTA VI VS GTA V\N{\c&H0029FCE6&}BEDANYA GILA BANGET
+Dialogue: 1,0:00:00.00,0:00:25.92,Lab,,0,0,0,,{\an7\pos(24,299)}GTA V
+Dialogue: 1,0:00:00.00,0:00:25.92,Lab,,0,0,0,,{\an7\pos(24,879)}{\c&H0029FCE6&}GTA VI
+Dialogue: 0,0:00:00.00,0:00:06.50,Beat,,0,0,0,,{\an5\pos(540,835)}MAKAN DAN MINUM
+Dialogue: 0,0:00:06.50,0:00:13.10,Beat,,0,0,0,,{\an5\pos(540,835)}AIR DAN OMBAK
+Dialogue: 0,0:00:13.10,0:00:19.40,Beat,,0,0,0,,{\an5\pos(540,835)}MEDITASI DAN YOGA
+Dialogue: 0,0:00:19.40,0:00:25.92,Beat,,0,0,0,,{\an5\pos(540,835)}OLAHRAGA
+Dialogue: 2,0:00:00.26,0:00:01.20,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}GILA, {\c&H00EFF3F4&}REAL{\c&H0029FCE6&} BANGET
+Dialogue: 2,0:00:01.26,0:00:02.42,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}{\c&H00EFF3F4&}HIDUP BANGET{\c&H0029FCE6&}, MEN
+Dialogue: 2,0:00:02.54,0:00:03.72,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}{\c&H00EFF3F4&}REALISTIS{\c&H0029FCE6&} BANGET, CUY
+Dialogue: 2,0:00:06.84,0:00:08.84,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}UDAH ADA {\c&H00EFF3F4&}RADIONYA{\c&H0029FCE6&}, GUYS
+Dialogue: 2,0:00:11.12,0:00:13.08,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}MASIH BILANG {\c&H00EFF3F4&}GARING{\c&H0029FCE6&} YA
+Dialogue: 2,0:00:14.00,0:00:16.50,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}GILA, ADA {\c&H00EFF3F4&}MEKANIK{\c&H0029FCE6&}
+Dialogue: 2,0:00:17.08,0:00:18.90,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}{\c&H00EFF3F4&}MEKANIK MEDITASI{\c&H0029FCE6&}, GUYS
+Dialogue: 2,0:00:22.86,0:00:23.50,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}GILA, {\c&H00EFF3F4&}12{\c&H0029FCE6&}
+Dialogue: 2,0:00:23.50,0:00:25.50,Sub,,0,0,0,,{\an5\pos(540,1085)\fs62}BUAT COWOK SIH {\c&H00EFF3F4&}GG{\c&H0029FCE6&} YA

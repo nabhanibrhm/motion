@@ -1,0 +1,45 @@
+{
+  "description": "GTA 5 vs GTA 6 realism side-by-side, 4 beats (TikTok 'GTA 5 vs GTA 6' format). Source = .cache/wizzclip/windah-gtavi-vs5/source.mp4 (also Drive clip-src/windah-gtavi-vs5.mp4), a PRE-STACKED 1920x2160 30 fps video: top half = GTA 5 gameplay (muted, from YouTube), bottom half = Windah's GTA VI stream (facecam baked in; Windah's audio is the only audio). Beats (source time, GTA 5 | GTA 6): MAKAN DAN MINUM 0-6.5 = Franklin drinks a soda at a vending machine (GTA 5 Video Gaming Source, 1-Poqm6iJvo 15.6-22.1) | Lucia eats a taco, stream-2132-2224.mp4 t 2916.4-2922.9 (live4 'GAMEPLAY #4'; 'Gila real banget, hidup banget men, realistis banget cuy'); AIR DAN OMBAK 6.5-13.1 = sailing yacht in rough seas (Notorious Gamer, eEdRkjnQ7yw at 0:53.6-1:00.2) | boat wake, stream-1832-1932.mp4 t 380.4-387.0 ('udah ada radionya guys... masih bilang garing ya'); MEDITASI DAN YOGA 13.1-19.4 = Michael's yoga (Aejax88, -RSbKKKSm7Y 6:26.8-6:30.4 + 6:35.0-6:37.7, 720p60) | Jason meditating, stream-2215-2315.mp4 (live3 'GAMEPLAY #3') t 2786.9-2790.5 + 2793.5-2796.2 ('gila ada mekanik... mekanik meditasi guys'); OLAHRAGA 19.4-25.92 = GTA Online mansion gym chin-up bar (Captain, 7LOgkME7p0c 2:06-2:12.5) | pull-ups, stream-1832-1932.mp4 t 88.1-94.6 ('gila 12 buat cowok sih GG ya'). Dropped: TABRAKAN (no clean real-time vanilla GTA 5 crash found; the GTA 6 crash also has bodies just before 2926) and POLISI (GTA 5 has no vanilla traffic stop, only LSPDFR mod footage). Layout: Ink bg, hook Audex 66 line 1 Paper 'GTA VI VS GTA V' (Audex draws 5 like S, so roman numerals), line 2 Volt 'BEDANYA GILA BANGET' bottom-anchored at y266; two 1080x520 panels (crop 1920x1000 of each 1080p half, 40 px off top and bottom) GTA 5 y285-805, GTA 6 y865-1385, corner labels 'GTA V' Paper / 'GTA VI' Volt, beat label in the 60 px gap, Windah subs Audex 62 Volt over the GTA 6 panel at y1085; campaign banner (y1417-1596) stays clear. Main 25.92 s + 4.0 s outro. Word timings from faster-whisper medium on boosted audio. Source built with a scratch script (per-beat vstack, crf 15, 30 fps, afade 0.04/0.1 per beat).",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-vs5",
+    "youtube": "03qhcshfeMY",
+    "url": "https://www.youtube.com/watch?v=03qhcshfeMY",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-vs5.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]fps=30,split=2[s1][s2];",
+    "[s1]crop=1920:1000:0:40,scale=1080:520:flags=lanczos,pad=1080:580:0:0:color=0x0E0F12[tp];",
+    "[s2]crop=1920:1000:0:1120,scale=1080:520:flags=lanczos[bt];",
+    "[tp][bt]vstack=inputs=2,pad=1080:1920:0:285:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[0:a]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-10.87:measured_TP=0.18:measured_LRA=17.00:measured_thresh=-22.36:offset=-0.09:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-vs5.mp4"
+}
