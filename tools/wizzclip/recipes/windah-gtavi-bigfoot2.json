@@ -1,0 +1,57 @@
+{
+  "description": "Stream #3: after a whole day of asking for spoilers, Windah finally runs into Bigfoot, faints at a ritual totem and wakes up proud to be 'orang pertama yang ketemu Bigfoot' (idea F1). Source = .cache/wizzclip/windah-gtavi-bigfoot2/source.mp4 (also Drive clip-src/windah-gtavi-bigfoot2.mp4): SEVEN parts of stream-2315-0015.mp4 (Windah live B2Bon2X1jPQ 'GAMEPLAY #3', file t 0 = 19 Nov 2026 23:15:31 WIB) re-encoded to 1080p30 and joined IN OUTPUT ORDER: part 1 local 0-4 = t 309.5-313.5; part 2 local 4-7 = t 197.5-200.5; part 3 local 7-12 = t 207-212; part 4 local 12-17.5 = t 224.5-230; part 5 local 17.5-23 = t 277.5-283; part 6 local 23-28 = t 316.5-321.5; part 7 local 28-34 = t 328-334. Cuts: P310 t 310.00-312.75 = local 0.50-3.25 -> output 0.00-2.75; P197 t 197.95-199.75 = local 4.45-6.25 -> output 2.75-4.55; P207 t 207.65-211.90 = local 7.65-11.90 -> output 4.55-8.80; P224 t 224.80-228.90 = local 12.30-16.40 -> output 8.80-12.90; P277 t 277.95-282.05 = local 17.95-22.05 -> output 12.90-17.00; P316 t 316.90-321.15 = local 23.40-27.65 -> output 17.00-21.25; P328 t 328.50-333.95 = local 28.50-33.95 -> output 21.25-26.70. Beats: 23:20:41 'Gila guys, gue orang pertama yang ketemu Bigfoot' (opener, driving after waking up); 23:18:49 'What?! Bigfoot!'; 23:18:59 'jangan ditembak! nanti ending ditembak! GoFood? GoFoot sama Bigfoot!'; 23:19:16 'guys guys, clip clip! Windah orang pertama yang ketemu… bukan Bigfoot kok?'; 23:20:09 'gue pingsan tadi lihat totem ritual' (best guess from the hour scan; medium only heard 'totem ritual'); 23:20:48 'harusnya difoto, ya Allah lupa foto, gue mana tahu bakal pingsan'; 23:21:00 'tapi dia baik ya, gue jadi merasa bersalah nembak dia, serius'. Sequel/payoff to the posted windah-gtavi-bigfoot ('tetep gak ketemu'). Violence check: the rifle is only seen slung on Jason's back (cuts end before he raises anything); skipped the faint (t 237-256, black frames and an in-game 'Ugh… fuck' subtitle). No Windah swears. Main 26.70 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Clean layout as windah-gtavi-sepatu; hook line 1 Paper 'AKHIRNYA KETEMU BIGFOOT', line 2 Volt 'LANGSUNG PINGSAN WKWK', Audex 62. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-bigfoot2",
+    "youtube": "B2Bon2X1jPQ",
+    "url": "https://www.youtube.com/watch?v=B2Bon2X1jPQ",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-bigfoot2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.50:3.25,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=4.45:6.25,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=7.65:11.90,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=12.30:16.40,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=17.95:22.05,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=23.40:27.65,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=28.50:33.95,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:a]atrim=0.50:3.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.65:d=0.1[a1];",
+    "[0:a]atrim=4.45:6.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.70:d=0.1[a2];",
+    "[0:a]atrim=7.65:11.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.15:d=0.1[a3];",
+    "[0:a]atrim=12.30:16.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.00:d=0.1[a4];",
+    "[0:a]atrim=17.95:22.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.00:d=0.1[a5];",
+    "[0:a]atrim=23.40:27.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.15:d=0.1[a6];",
+    "[0:a]atrim=28.50:33.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.35:d=0.1[a7];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7]concat=n=7:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-8.28:measured_TP=1.86:measured_LRA=5.20:measured_thresh=-18.97:offset=0.58:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-bigfoot2.mp4"
+}

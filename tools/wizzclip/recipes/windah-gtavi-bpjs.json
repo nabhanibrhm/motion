@@ -1,0 +1,47 @@
+{
+  "description": "After Jason is shot and hospitalised (chapter 2), Windah narrates Lucia's lament and ends with 'walaupun udah ditanggung BPJS' (idea H1). Source = .cache/wizzclip/windah-gtavi-bpjs/source.mp4 (also Drive clip-src/windah-gtavi-bpjs.mp4): TWO parts of stream-2132-2224.mp4 (Windah live 03qhcshfeMY 'GAMEPLAY #4', file t 0 = 20 Nov 2026 21:32:03 WIB) re-encoded to 1080p30 and joined: part 1 local 0-18.5 = t 2952.0-2970.5; part 2 local 18.5-28.5 = t 2977.0-2987.0. Cuts: P2952 t 2952.95-2969.95 = local 0.95-17.95 -> output 0.00-17.00; P2977 t 2977.80-2986.05 = local 19.30-27.55 -> output 17.00-25.25. Beats: 22:21:16 Windah narrates over Lucia walking in Kelly County: 'kenapa ini semua terjadi kepada kita, kita cuma couple yang ingin hidup damai, bahagia, kita cuma pengen kerja sama Brian, tapi kenapa kita terlibat dengan semua kekacauan ini. Matia, especially Kat, kamu teman baik Lucia, kenapa kamu lakukan ini?'; skipped the bag/statue line (22:21:34-22:21:40); 22:21:40 'dan sekarang ayang gue di rumah sakit, harus nembak polisi dalam keadaan sekarat, walaupun udah ditanggung BPJS' (punchline at the end; the hook carries it on frame 0). 'kita cuma couple' is a best guess (whisper: 'kita nyala kapal'). Frames: Lucia walking in a parking lot, no guns, no swears. Main 25.25 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Clean layout as windah-gtavi-sepatu; hook line 1 Paper 'AYANG SEKARAT DI RUMAH SAKIT', line 2 Volt 'UNTUNG DITANGGUNG BPJS WKWK', Audex 58. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-bpjs",
+    "youtube": "03qhcshfeMY",
+    "url": "https://www.youtube.com/watch?v=03qhcshfeMY",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-bpjs.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.95:17.95,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=19.30:27.55,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:a]atrim=0.95:17.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=16.90:d=0.1[a1];",
+    "[0:a]atrim=19.30:27.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.15:d=0.1[a2];",
+    "[v1][a1][v2][a2]concat=n=2:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-14.87:measured_TP=0.00:measured_LRA=16.80:measured_thresh=-25.68:offset=0.12:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-bpjs.mp4"
+}

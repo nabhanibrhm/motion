@@ -6,6 +6,35 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 ~09:00-10:30 (Windows): six short recipes from streams #3/#4 built (the user's picks D2, F1, C2, E1, G2, H1). Render them on WSL.**
+- **Render:**
+  ```
+  git pull
+  for s in dc bigfoot2 ganteng lagu troll bpjs; do mkdir -p .cache/wizzclip/windah-gtavi-$s; cp "/mnt/g/My Drive/GTA6/clip-src/windah-gtavi-$s.mp4" .cache/wizzclip/windah-gtavi-$s/source.mp4; python tools/wizzclip/wizzclip.py recipe windah-gtavi-$s; done
+  ```
+- **The six clips:** each was test-rendered here, frames checked, then the test files were deleted. Every recipe's description has the cut map and beats.
+
+  | Recipe | Idea | Main length | Hook (line 1 / line 2) |
+  |---|---|---|---|
+  | `windah-gtavi-dc` | D2 | 28.65 s | STREAM KEMARIN MATI MENDADAK / KATANYA CUMA DC WKWK |
+  | `windah-gtavi-bigfoot2` | F1 | 26.7 s | AKHIRNYA KETEMU BIGFOOT / LANGSUNG PINGSAN WKWK |
+  | `windah-gtavi-ganteng` | C2 | 17.75 s | CUMA DI STREAM WINDAH / JASON-NYA GANTENG WKWK |
+  | `windah-gtavi-lagu` | E1 | 26.45 s | WINDAH BIKIN LAGU / BUAT JASON DAN LUCIA |
+  | `windah-gtavi-troll` | G2 | 27.0 s | STREAMER MANA YANG KUAT? / SATU LAWAN 17 RIBU TROLL |
+  | `windah-gtavi-bpjs` | H1 | 25.25 s | AYANG SEKARAT DI RUMAH SAKIT / UNTUNG DITANGGUNG BPJS WKWK |
+
+- **Sequels:** `dc` follows the posted sepatu2 (stream cut off), and `bigfoot2` pays off the posted bigfoot ("tetep gak ketemu").
+- **Content checks and blurs:**
+  - `ganteng` blurs the cutscene subtitle strip for the whole clip, because one line reads "Patron: Dickheads". I dropped its last line, which played over Donnie with his subtitle swear.
+  - `lagu` uses the verse 19:47:13–19:47:25 and skips 19:47:25–19:47:50, where Jason lifts Lucia onto the counter while they make out. The two short stretches where a pistol is handed over or held (2.4 s and 2.6 s) are blurred, except the facecam column. The handoff lesson says to cut weapons rather than blur, but those lines are the song's payoff. If the user objects, drop the last two cuts.
+  - `bigfoot2` shows the rifle only slung on Jason's back, and the faint (black frames plus an in-game "Ugh… fuck" subtitle) is cut.
+- **Best-guess words** (check by ear):
+  - `bigfoot2`: "gue pingsan tadi" (medium only heard "totem ritual").
+  - `bpjs`: "kita cuma couple" (whisper heard "kita nyala kapal").
+- **Sources:** on Drive `GTA6/clip-src/windah-gtavi-{dc,bigfoot2,ganteng,lagu,troll,bpjs}.mp4`. Each is a set of 1080p30 parts joined in output order.
+- **Captions:** `out/wizzclip/windah-gtavi-<s>-caption.txt` on Windows, each with the 5 campaign hashtags. WSL needs to copy them from `G:\Other computers\My Laptop\out\wizzclip\` or take them from this handoff. campaign.json lists the six recipes.
+- **Posting:** one clip at a time, at least 2 h apart. Check that the moment isn't already posted by other clippers.
+
 **21 Nov 2026 ~00:00-02:20 (Windows): streams #3 and #4 downloaded and scanned; idea lists written; Leonida map video built.**
 - **Streams #3 and #4:**
   - Downloaded in hourly batches with the new `tools/wizzclip/vod_hourly.sh`, which works on finished VODs and logs the same "batch NAME done" lines, so `scan_next.sh` works on it too.

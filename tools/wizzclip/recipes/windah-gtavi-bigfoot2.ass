@@ -1,0 +1,39 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:26.70,Hook,,0,0,0,,{\an2\pos(540,600)\fs62}{\c&H00EFF3F4&}AKHIRNYA KETEMU BIGFOOT\N{\c&H0029FCE6&}LANGSUNG PINGSAN WKWK
+Dialogue: 0,0:00:00.00,0:00:26.70,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.00,0:00:00.86,Sub,,0,0,0,,{\an5\pos(540,960)}GILA, GUYS
+Dialogue: 1,0:00:01.00,0:00:01.84,Sub,,0,0,0,,{\an5\pos(540,960)}GUE ORANG PERTAMA
+Dialogue: 1,0:00:01.84,0:00:02.72,Sub,,0,0,0,,{\an5\pos(540,960)}YANG KETEMU {\c&H00EFF3F4&}BIGFOOT{\c&H0029FCE6&}
+Dialogue: 1,0:00:02.86,0:00:03.70,Sub,,0,0,0,,{\an5\pos(540,960)}WHAT?!
+Dialogue: 1,0:00:03.98,0:00:04.52,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}BIGFOOT!{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.60,0:00:05.66,Sub,,0,0,0,,{\an5\pos(540,960)}JANGAN DITEMBAK!
+Dialogue: 1,0:00:05.94,0:00:06.98,Sub,,0,0,0,,{\an5\pos(540,960)}NANTI ENDING DITEMBAK
+Dialogue: 1,0:00:07.12,0:00:07.96,Sub,,0,0,0,,{\an5\pos(540,960)}GOFOOD? GOFOOT?
+Dialogue: 1,0:00:07.96,0:00:08.76,Sub,,0,0,0,,{\an5\pos(540,960)}SAMA {\c&H00EFF3F4&}BIGFOOT!{\c&H0029FCE6&}
+Dialogue: 1,0:00:08.82,0:00:10.08,Sub,,0,0,0,,{\an5\pos(540,960)}GUYS, GUYS, {\c&H00EFF3F4&}CLIP, CLIP!{\c&H0029FCE6&}
+Dialogue: 1,0:00:10.08,0:00:10.80,Sub,,0,0,0,,{\an5\pos(540,960)}WINDAH ORANG PERTAMA
+Dialogue: 1,0:00:10.80,0:00:11.74,Sub,,0,0,0,,{\an5\pos(540,960)}YANG KETEMU
+Dialogue: 1,0:00:11.92,0:00:12.86,Sub,,0,0,0,,{\an5\pos(540,960)}BUKAN BIGFOOT, KOK?
+Dialogue: 1,0:00:12.95,0:00:14.35,Sub,,0,0,0,,{\an5\pos(540,960)}GUE {\c&H00EFF3F4&}PINGSAN{\c&H0029FCE6&} TADI
+Dialogue: 1,0:00:14.37,0:00:16.95,Sub,,0,0,0,,{\an5\pos(540,960)}LIHAT TOTEM RITUAL
+Dialogue: 1,0:00:17.00,0:00:18.14,Sub,,0,0,0,,{\an5\pos(540,960)}HARUSNYA DIFOTO
+Dialogue: 1,0:00:18.46,0:00:19.48,Sub,,0,0,0,,{\an5\pos(540,960)}YA ALLAH, {\c&H00EFF3F4&}LUPA FOTO{\c&H0029FCE6&}
+Dialogue: 1,0:00:19.48,0:00:20.48,Sub,,0,0,0,,{\an5\pos(540,960)}GUE MANA TAHU
+Dialogue: 1,0:00:20.48,0:00:21.20,Sub,,0,0,0,,{\an5\pos(540,960)}BAKAL PINGSAN
+Dialogue: 1,0:00:21.27,0:00:22.23,Sub,,0,0,0,,{\an5\pos(540,960)}TAPI DIA BAIK, YA
+Dialogue: 1,0:00:22.31,0:00:23.17,Sub,,0,0,0,,{\an5\pos(540,960)}GUE JADI {\c&H00EFF3F4&}MERASA BERSALAH{\c&H0029FCE6&}
+Dialogue: 1,0:00:23.17,0:00:23.87,Sub,,0,0,0,,{\an5\pos(540,960)}NEMBAK DIA
+Dialogue: 1,0:00:24.63,0:00:26.65,Sub,,0,0,0,,{\an5\pos(540,960)}SERIUS, MERASA BERSALAH

@@ -1,0 +1,29 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:26.45,Hook,,0,0,0,,{\an2\pos(540,600)\fs68}{\c&H00EFF3F4&}WINDAH BIKIN LAGU\N{\c&H0029FCE6&}BUAT JASON DAN LUCIA
+Dialogue: 0,0:00:00.00,0:00:26.45,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.13,0:00:01.59,Sub,,0,0,0,,{\an5\pos(540,960)}KISAH CINTA
+Dialogue: 1,0:00:01.59,0:00:04.17,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}DUA SEJOLI{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.17,0:00:06.37,Sub,,0,0,0,,{\an5\pos(540,960)}MEREKA BERJUANG
+Dialogue: 1,0:00:06.37,0:00:08.55,Sub,,0,0,0,,{\an5\pos(540,960)}DARI NOL
+Dialogue: 1,0:00:08.55,0:00:10.65,Sub,,0,0,0,,{\an5\pos(540,960)}UNTUK MEMULAI
+Dialogue: 1,0:00:10.65,0:00:12.45,Sub,,0,0,0,,{\an5\pos(540,960)}KEHIDUPAN YANG {\c&H00EFF3F4&}LEBIH BAIK{\c&H0029FCE6&}
+Dialogue: 1,0:00:12.63,0:00:14.09,Sub,,0,0,0,,{\an5\pos(540,960)}TERPAKSA MEREKA
+Dialogue: 1,0:00:14.11,0:00:14.90,Sub,,0,0,0,,{\an5\pos(540,960)}MELAKUKAN
+Dialogue: 1,0:00:14.93,0:00:16.87,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}KRIMINAL{\c&H0029FCE6&}
+Dialogue: 1,0:00:16.87,0:00:18.47,Sub,,0,0,0,,{\an5\pos(540,960)}NAMUN INI
+Dialogue: 1,0:00:18.47,0:00:20.57,Sub,,0,0,0,,{\an5\pos(540,960)}SEMUA UNTUK
+Dialogue: 1,0:00:21.11,0:00:23.25,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}ANAK MEREKA{\c&H0029FCE6&}
+Dialogue: 1,0:00:23.95,0:00:26.35,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}JASON DAN LUCIA{\c&H0029FCE6&}

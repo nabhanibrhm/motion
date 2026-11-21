@@ -1,0 +1,33 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:25.25,Hook,,0,0,0,,{\an2\pos(540,600)\fs58}{\c&H00EFF3F4&}AYANG SEKARAT DI RUMAH SAKIT\N{\c&H0029FCE6&}UNTUNG DITANGGUNG BPJS WKWK
+Dialogue: 0,0:00:00.00,0:00:25.25,Tag,,0,0,0,,{\an8\pos(540,1290)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.09,0:00:01.19,Sub,,0,0,0,,{\an5\pos(540,960)}KENAPA INI SEMUA
+Dialogue: 1,0:00:01.19,0:00:02.23,Sub,,0,0,0,,{\an5\pos(540,960)}TERJADI KEPADA KITA
+Dialogue: 1,0:00:02.23,0:00:03.31,Sub,,0,0,0,,{\an5\pos(540,960)}KITA CUMA COUPLE
+Dialogue: 1,0:00:03.31,0:00:04.55,Sub,,0,0,0,,{\an5\pos(540,960)}YANG INGIN {\c&H00EFF3F4&}HIDUP DAMAI{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.85,0:00:05.87,Sub,,0,0,0,,{\an5\pos(540,960)}BAHAGIA
+Dialogue: 1,0:00:06.59,0:00:08.45,Sub,,0,0,0,,{\an5\pos(540,960)}KITA CUMA PENGEN KERJA SAMA BRIAN
+Dialogue: 1,0:00:08.63,0:00:10.21,Sub,,0,0,0,,{\an5\pos(540,960)}TAPI KENAPA KITA TERLIBAT
+Dialogue: 1,0:00:10.21,0:00:11.55,Sub,,0,0,0,,{\an5\pos(540,960)}DENGAN SEMUA {\c&H00EFF3F4&}KEKACAUAN{\c&H0029FCE6&} INI
+Dialogue: 1,0:00:12.67,0:00:14.19,Sub,,0,0,0,,{\an5\pos(540,960)}MATIA, ESPECIALLY KAT
+Dialogue: 1,0:00:14.29,0:00:15.71,Sub,,0,0,0,,{\an5\pos(540,960)}KAT, KAMU TEMAN BAIK LUCIA
+Dialogue: 1,0:00:15.85,0:00:16.95,Sub,,0,0,0,,{\an5\pos(540,960)}KENAPA KAMU LAKUKAN INI?
+Dialogue: 1,0:00:17.12,0:00:18.44,Sub,,0,0,0,,{\an5\pos(540,960)}DAN SEKARANG {\c&H00EFF3F4&}AYANG GUE{\c&H0029FCE6&}
+Dialogue: 1,0:00:18.44,0:00:20.24,Sub,,0,0,0,,{\an5\pos(540,960)}DI RUMAH SAKIT
+Dialogue: 1,0:00:20.24,0:00:21.38,Sub,,0,0,0,,{\an5\pos(540,960)}HARUS NEMBAK POLISI
+Dialogue: 1,0:00:21.38,0:00:22.78,Sub,,0,0,0,,{\an5\pos(540,960)}DALAM KEADAAN {\c&H00EFF3F4&}SEKARAT{\c&H0029FCE6&}
+Dialogue: 1,0:00:22.78,0:00:23.96,Sub,,0,0,0,,{\an5\pos(540,960)}WALAUPUN UDAH
+Dialogue: 1,0:00:23.96,0:00:25.20,Sub,,0,0,0,,{\an5\pos(540,960)}{\c&H00EFF3F4&}DITANGGUNG BPJS{\c&H0029FCE6&}

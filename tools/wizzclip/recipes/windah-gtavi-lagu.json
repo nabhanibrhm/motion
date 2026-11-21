@@ -1,0 +1,55 @@
+{
+  "description": "Windah makes up a love song for Jason and Lucia ('kisah cinta dua sejoli… terpaksa melakukan kriminal, namun ini semua untuk anak mereka') during a home cutscene (idea E1). Source = .cache/wizzclip/windah-gtavi-lagu/source.mp4 (also Drive clip-src/windah-gtavi-lagu.mp4): TWO parts of stream-1932-2032.mp4 (Windah live 03qhcshfeMY 'GAMEPLAY #4', file t 0 = 20 Nov 2026 19:32:03 WIB) re-encoded to 1080p30 and joined: part 1 local 0-13.5 = t 909.5-923; part 2 local 13.5-28.5 = t 947-962. Cuts: P910 t 909.95-922.45 = local 0.45-12.95 -> output 0.00-12.50; P947 t 947.55-949.95 = local 14.05-16.45 -> output 12.50-14.90; P947 t 949.95-958.90 = local 16.45-25.40 -> output 14.90-23.85; P947 t 958.90-961.50 = local 25.40-28.00 -> output 23.85-26.45. Beats: Windah improvises a love song over the Jason/Lucia home cutscene: 19:47:13 'kisah cinta dua sejoli, mereka berjuang dari nol, untuk memulai kehidupan yang lebih baik' (opening verse); skipped 19:47:25-19:47:50 ('ada anak yang harus ditanggung… inilah kisah cinta dua sejoli' and the 'uuu yeee' run) because the cutscene there shows Jason lifting Lucia onto the counter while they make out (t 926-933); 19:47:50 'terpaksa mereka melakukan kriminal, namun ini semua untuk anak mereka, Jason dan Lucia'. Stopped before 19:48:03 (the cutscene turns to a kiss on the floor and a pistol, t 971-979). Violence check: a pistol is handed over at t 947.5-950 and held at t 959-961, so the picture (source px x0-1500, the whole frame except the facecam column) is box-blurred for those two cuts; t 941-942 (pistol on the table) is outside the cuts. No swears. Main 26.45 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Clean layout as windah-gtavi-sepatu; hook line 1 Paper 'WINDAH BIKIN LAGU', line 2 Volt 'BUAT JASON DAN LUCIA', Audex 68. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-lagu",
+    "youtube": "03qhcshfeMY",
+    "url": "https://www.youtube.com/watch?v=03qhcshfeMY",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-lagu.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.45:12.95,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=14.05:16.45,setpts=PTS-STARTPTS,fps=30,split=2[b2a][b2b];",
+    "[b2b]crop=1500:1080:0:0,boxblur=luma_radius=30:luma_power=3[b2c];",
+    "[b2a][b2c]overlay=0:0:enable='gte(t,0.00)'[v2];",
+    "[0:v]trim=16.45:25.40,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=25.40:28.00,setpts=PTS-STARTPTS,fps=30,split=2[b4a][b4b];",
+    "[b4b]crop=1500:1080:0:0,boxblur=luma_radius=30:luma_power=3[b4c];",
+    "[b4a][b4c]overlay=0:0:enable='gte(t,0.00)'[v4];",
+    "[0:a]atrim=0.45:12.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=12.40:d=0.1[a1];",
+    "[0:a]atrim=14.05:16.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.30:d=0.1[a2];",
+    "[0:a]atrim=16.45:25.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.85:d=0.1[a3];",
+    "[0:a]atrim=25.40:28.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.50:d=0.1[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-13.10:measured_TP=-0.43:measured_LRA=16.40:measured_thresh=-24.29:offset=-1.41:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-lagu.mp4"
+}
