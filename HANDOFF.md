@@ -6,6 +6,25 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 ~10:10-10:40 (WSL): the six stream #3/#4 clips rendered.**
+- **Renders** (`out/wizzclip/`, from Drive `clip-src`, no recipe changes):
+
+  | Clip | Length | Loudness |
+  |---|---|---|
+  | `dc` | 32.7 s | -14.0 LUFS |
+  | `bigfoot2` | 30.7 s | -14.0 LUFS |
+  | `ganteng` | 21.8 s | -14.0 LUFS |
+  | `lagu` | 30.5 s | -13.9 LUFS |
+  | `troll` | 31.0 s | -14.0 LUFS |
+  | `bpjs` | 29.3 s | -14.0 LUFS |
+
+  I checked one frame of each.
+- **Files:** masters copied to `G:\Other computers\My Laptop\out\wizzclip\`. Captions copied from G: into WSL `out/wizzclip/`.
+- **Not posted yet.** Suggested order: dc first (sequel to sepatu2), then bigfoot2, then the rest. One clip at a time, at least 2 h apart.
+- **Open items:**
+  - `lagu`'s pistol blur needs the user's OK; otherwise drop its last two cuts.
+  - Check the best-guess words in bigfoot2 and bpjs by ear.
+
 **21 Nov 2026 ~09:00-10:30 (Windows): six short recipes from streams #3/#4 built (the user's picks D2, F1, C2, E1, G2, H1). Render them on WSL.**
 - **Render:**
   ```
