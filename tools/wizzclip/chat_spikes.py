@@ -1,15 +1,44 @@
 #!/usr/bin/env python3
-"""Find live-chat spikes in a YouTube chat-replay download and map them to clip sources.
+"""Find live-chat spikes in a YouTube chat download and map them to clip sources.
 
 Usage:
+  # whole stream (finished VOD with chat replay)
   python tools/wizzclip/chat_spikes.py CHAT_JSON OUT_DIR \
       --hours "0:stream-2215-2315,3600:stream-2315-0015,7200:stream-0015-0017" \
       [--dir .cache/wizzclip/windah-live3] [--top 25] [--gap 45]
 
-CHAT_JSON is a yt-dlp `<id>.live_chat.json` (JSON lines; replayChatItemAction with
-videoOffsetTimeMsec). --hours maps VOD start seconds to hour-file stems (the stem of
-`<stem>.mp4`); if --dir is given, Windah's speech is read from
+  # one hour only (VOD seconds START:END; END may be empty = to the end of the chat)
+  python tools/wizzclip/chat_spikes.py CHAT_JSON OUT_DIR --window 0:3600 \
+      [--name stream-1832-1932] [--dir .cache/wizzclip/windah-live4] [--top 12] [--gap 45]
+
+  # chat captured while the stream was live (timestamps only, see below)
+  python tools/wizzclip/chat_spikes.py CHAT_JSON OUT_DIR --window 3600:7200 --start EPOCH_OR_FILE ...
+
+CHAT_JSON is a yt-dlp `<id>.live_chat.json` (JSON lines). If it does not exist but
+`<CHAT_JSON>.part` does, the .part file is read. --hours maps VOD start seconds to hour-file
+stems (the stem of `<stem>.mp4`); if --dir is given, Windah's speech is read from
 `<dir>/scan-<stem>/transcript.txt` (lines "[h:mm:ss] text", local to that hour file).
+
+Time base. Two kinds of file exist:
+  * replay (downloaded after the stream ended): each line is `replayChatItemAction` with
+    `videoOffsetTimeMsec` = VOD seconds. Default; nothing else is needed.
+  * live capture (yt-dlp run while the stream was live; lines carry "isLive": true): the
+    offset is only relative to when yt-dlp started, NOT the VOD. Every message does carry a
+    wall-clock `timestampUsec`, so pass --start = the stream start (unix seconds, yt-dlp
+    `release_timestamp`) or a file holding it (vod_hourly.sh writes `<id>.start` next to the
+    chat file). VOD second = timestamp - start. --start also works on replay files (about
+    +-3 s of the offsets). A live file without --start is refused.
+
+--window START:END analyses one hour but keeps the stream-wide context: the per-second counts,
+the +-150 s baseline and the 75th-percentile threshold are computed from ALL chat read so far
+(so a window near its edge still sees the neighbouring hour, and a spike scores the same as in
+a whole-stream run); only spikes whose peak second lies in [START, END) are listed, ranked
+inside the window. Output names carry --name (default: the stem of the --hours entry that
+starts at START, else wSTART-END). Without --hours, local times are relative to START.
+
+The file may still be growing: it is re-read from the start on every run, malformed lines (a
+truncated last line, a cut multi-byte character) are skipped. Near the live edge the last
+seconds are under-counted; that never creates a spike.
 
 Method: per-second message bins -> 10 s rolling count (window centred on the peak second)
 -> baseline = median of the rolling count over +-150 s -> score = count / max(baseline, 1).
@@ -19,7 +48,7 @@ Chat lags the on-stream moment by ~5-15 s, so the transcript excerpt runs from
 35 s before to 5 s after the peak.
 
 Writes OUT_DIR/<id>-spikes.md and OUT_DIR/<id>-spikes.json (id = CHAT_JSON name before the
-first dot). Stdlib only.
+first dot); in window mode OUT_DIR/<id>-<name>-spikes.md/.json. Stdlib only.
 """
 import argparse
 import json
@@ -56,9 +85,18 @@ def runs_to_text(runs):
     return " ".join(p.strip() for p in parts if p.strip()), toks
 
 
-def load_chat(path):
-    msgs, paid = [], []  # (t_sec, text, tokens)
-    with open(path, encoding="utf-8") as f:
+def load_chat(path, start=None):
+    """Return (msgs, paid, is_live): lists of (t_sec, text, tokens) on the VOD clock.
+
+    start=None: t = videoOffsetTimeMsec (replay files). start=EPOCH: t = timestampUsec/1e6 - start.
+    The offset sits inside replayChatItemAction in a replay file but at the top level of a
+    live-capture line ("isLive": true), where it is relative to the capture start.
+    """
+    msgs, paid, is_live = [], [], False
+    p = Path(path)
+    if not p.exists() and Path(str(p) + ".part").exists():
+        p = Path(str(p) + ".part")
+    with open(p, encoding="utf-8", errors="replace") as f:
         for line in f:
             line = line.strip()
             if not line:
@@ -66,26 +104,48 @@ def load_chat(path):
             try:
                 o = json.loads(line)
             except json.JSONDecodeError:
-                continue  # truncated final line
+                continue  # truncated final line of a file that is still being written
             rc = o.get("replayChatItemAction")
             if not rc:
                 continue
+            if o.get("isLive"):
+                is_live = True
             try:
-                t = int(rc.get("videoOffsetTimeMsec", "0")) / 1000.0
+                t0 = int(rc.get("videoOffsetTimeMsec", o.get("videoOffsetTimeMsec", "0"))) / 1000.0
             except ValueError:
                 continue
             for a in rc.get("actions", []):
                 item = a.get("addChatItemAction", {}).get("item", {})
+                r = item.get("liveChatTextMessageRenderer") or item.get("liveChatPaidMessageRenderer")
+                if not r:
+                    continue
+                t = t0
+                if start is not None:
+                    try:
+                        t = int(r["timestampUsec"]) / 1e6 - start
+                    except (KeyError, ValueError):
+                        continue
+                text, toks = runs_to_text(r.get("message", {}).get("runs"))
                 if "liveChatTextMessageRenderer" in item:
-                    text, toks = runs_to_text(item["liveChatTextMessageRenderer"].get("message", {}).get("runs"))
                     if text:
                         msgs.append((t, text, toks))
-                elif "liveChatPaidMessageRenderer" in item:
-                    r = item["liveChatPaidMessageRenderer"]
-                    text, toks = runs_to_text(r.get("message", {}).get("runs"))
+                else:
                     amt = r.get("purchaseAmountText", {}).get("simpleText", "")
                     paid.append((t, f"[{amt}] {text}".strip(), toks))
-    return msgs, paid
+    return msgs, paid, is_live
+
+
+def read_start(v):
+    """--start value: unix seconds, or a file whose first token is unix seconds."""
+    try:
+        return float(v)
+    except ValueError:
+        return float(Path(v).read_text().split()[0])
+
+
+def parse_window(spec):
+    a, _, b = spec.partition(":")
+    return int(a or 0), (int(b) if b.strip() else None)
 
 
 def parse_hours(spec):
@@ -134,15 +194,22 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("chat_json")
     ap.add_argument("out_dir")
-    ap.add_argument("--hours", required=True, help='"0:stem-a,3600:stem-b,..." VOD start seconds : hour-file stem')
+    ap.add_argument("--hours", help='"0:stem-a,3600:stem-b,..." VOD start seconds : hour-file stem (required without --window)')
+    ap.add_argument("--window", help="START:END in VOD seconds; only spikes in this window are listed (END empty = end of chat)")
+    ap.add_argument("--name", help="window mode: hour name used in the output file names (default: hour stem or wSTART-END)")
+    ap.add_argument("--start", help="stream start, unix seconds or a file holding it; use timestampUsec instead of the offset (live captures)")
     ap.add_argument("--dir", help="folder holding scan-<stem>/transcript.txt")
-    ap.add_argument("--top", type=int, default=25)
+    ap.add_argument("--top", type=int, help="spikes to keep (default 25, or 12 with --window)")
     ap.add_argument("--gap", type=int, default=45)
     a = ap.parse_args()
+    if not a.window and not a.hours:
+        ap.error("--hours is required unless --window is given")
 
     cid = Path(a.chat_json).name.split(".")[0]
-    hours = parse_hours(a.hours)
-    msgs, paid = load_chat(a.chat_json)
+    start = read_start(a.start) if a.start else None
+    msgs, paid, is_live = load_chat(a.chat_json, start)
+    if is_live and start is None:
+        sys.exit("live-capture file: its offsets are relative to the capture start; pass --start EPOCH_OR_FILE")
     if not msgs:
         sys.exit("no text messages found")
     n = int(max(m[0] for m in msgs)) + 2
@@ -163,14 +230,26 @@ def main():
     score = [cnt[i] / max(base[i], 1) for i in range(n)]
     p75 = percentile(cnt, 0.75)
 
-    order = sorted(range(n), key=lambda i: (-score[i], -cnt[i]))
+    lo, hi, name = 0, n, None
+    if a.window:
+        lo, hi = parse_window(a.window)
+        hi = n if hi is None else min(hi, n)
+        if lo >= n:
+            sys.exit(f"window starts at {lo} s but the chat read so far only reaches {n} s")
+        hours = parse_hours(a.hours) if a.hours else [(lo, a.name or f"w{lo}-{hi}")]
+        name = a.name or next((st for s0, st in hours if s0 == lo), f"w{lo}-{hi}")
+    else:
+        hours = parse_hours(a.hours)
+    top = a.top or (12 if a.window else 25)
+
+    order = sorted(range(lo, hi), key=lambda i: (-score[i], -cnt[i]))
     picked = []
     for i in order:
         if cnt[i] <= p75:
             continue
         if all(abs(i - j) >= a.gap for j in picked):
             picked.append(i)
-            if len(picked) >= a.top:
+            if len(picked) >= top:
                 break
 
     trans = {}
@@ -205,11 +284,13 @@ def main():
 
     out = Path(a.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    (out / f"{cid}-spikes.json").write_text(json.dumps(
-        {"id": cid, "messages": len(msgs), "paid_messages": len(paid), "duration_s": n,
-         "p75_msgs_10s": p75, "spikes": spikes}, ensure_ascii=False, indent=1), encoding="utf-8")
+    stem_out = f"{cid}-{name}" if name else cid
+    (out / f"{stem_out}-spikes.json").write_text(json.dumps(
+        {"id": cid, "window": [lo, hi] if name else None, "name": name, "messages": len(msgs),
+         "paid_messages": len(paid), "duration_s": n, "p75_msgs_10s": p75, "spikes": spikes},
+        ensure_ascii=False, indent=1), encoding="utf-8")
 
-    md = [f"# Chat spikes {cid}", "",
+    md = [f"# Chat spikes {cid}" + (f" {name} (VOD {mmss(lo)}-{mmss(hi)})" if name else ""), "",
           f"{len(msgs)} text messages, {len(paid)} paid, {n} s; 75th percentile of msgs/10s = {p75}; "
           f"median msgs/10s = {statistics.median(cnt):.1f}.", "",
           "| # | VOD | hour file | local | score | msgs/10s | base | top tokens |", "|---|---|---|---|---|---|---|---|"]
@@ -228,8 +309,8 @@ def main():
         md += ["", "Windah (-35 s .. +5 s):", ""]
         md += [f"    {x}" for x in s["transcript"]] or ["    (no transcript)"]
         md.append("")
-    (out / f"{cid}-spikes.md").write_text("\n".join(md), encoding="utf-8")
-    print(f"{cid}: {len(msgs)} msgs, {len(spikes)} spikes -> {out / (cid + '-spikes.md')}")
+    (out / f"{stem_out}-spikes.md").write_text("\n".join(md), encoding="utf-8")
+    print(f"{cid}: {len(msgs)} msgs, {len(spikes)} spikes -> {out / (stem_out + '-spikes.md')}")
 
 
 if __name__ == "__main__":

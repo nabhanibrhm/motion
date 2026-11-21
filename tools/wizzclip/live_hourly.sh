@@ -3,9 +3,13 @@
 # Waits until the stream is live, then, once each full hour has passed, downloads fragments
 # [k*3600, (k+1)*3600) (sq N = N seconds after the actual start) as stream-HHMM-HHMM.mp4.
 # After the stream ends, it downloads the remaining part. Each file is copied to DRIVE.
-# Usage: bash tools/wizzclip/live_hourly.sh VIDEO_ID OUT_DIR DRIVE_DIR
+# Chat: once the stream is live, chat_capture.sh runs in the background (nohup, ends with the stream)
+# and saves .cache/wizzclip/chat/<id>.live_chat.json + <id>.start (stream start epoch, because live
+# chat has timestamps only); scan_next.sh then runs chat_spikes.py per hour. Opt out: CHAT=0 or --no-chat.
+# Usage: bash tools/wizzclip/live_hourly.sh VIDEO_ID OUT_DIR DRIVE_DIR [--no-chat]
 # Example: bash tools/wizzclip/live_hourly.sh QSPPyA1736U .cache/wizzclip/windah-live2 "/g/My Drive/GTA6/live2"
 ID="$1"; OUT="$2"; DRIVE="$3"
+[ "$4" = "--no-chat" ] && CHAT=0
 URL="https://www.youtube.com/watch?v=$ID"
 ROOT="/d/Dev/motion"
 PY="$ROOT/.venv/Scripts/python"
@@ -28,6 +32,11 @@ done
 START=$("${YT[@]}" --print release_timestamp "$URL" 2>/dev/null | tail -1)
 [[ "$START" =~ ^[0-9]+$ ]] || START=$(date +%s)
 log "live; actual start $(date -d @"$START" '+%F %T') (epoch $START), format $FORMAT"
+if [ "${CHAT:-1}" != 0 ]; then
+  echo "$ID" > "$OUT/chat.id"
+  nohup bash tools/wizzclip/chat_capture.sh "$ID" "$START" >/dev/null 2>&1 &
+  log "chat capture started in background (pid $!), log .cache/wizzclip/chat/$ID.log"
+fi
 
 grab(){ # $1=start sq  $2=end sq  $3=name
   local tries=0

@@ -6,6 +6,13 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 (Windows): chat capture wired into the stream pipeline.**
+- **New `tools/wizzclip/chat_capture.sh VIDEO_ID [START_EPOCH]`.** It runs in the background and always exits 0. It captures live chat with `--no-part`, so the file is readable while it grows, and writes `.cache/wizzclip/chat/<id>.start`. If the stream has ended it downloads the replay instead. If neither exists it logs "no chat replay".
+- **Who starts it:** `live_hourly.sh` and `vod_hourly.sh` start it automatically. Opt out with `--no-chat` or `CHAT=0`.
+- **Per-hour spike report:** after each hour's scan, `scan_next.sh OUT_DIR [VIDEO_ID]` runs `chat_spikes.py --window A:B --start <id>.start`. The report goes to `OUT/scan-NAME/chat-spikes.md`. Cite "chat spike #N" in the hourly idea list; spikes are hints only, so check the transcript and frames.
+- **Two chat formats:** live-captured chat carries `timestampUsec`, not VOD offsets, so a live file needs `--start`. Replay files work as before, and full-VOD mode output is unchanged.
+- **Not yet tested on a real live stream.** On the first live run, confirm that the spike times line up with the video to within about 1 s.
+
 **21 Nov 2026 (Windows): chat-spike pass + two new clips (kode, chapter2).**
 - **New tool** `tools/wizzclip/chat_spikes.py` (stdlib). Input is a yt-dlp live_chat JSON. It finds spikes in the 10 s chat rate against a ±150 s median baseline and writes `.cache/wizzclip/chat/<id>-spikes.md/.json`, with ROLLCALL tags. Download the chat with `yt-dlp --skip-download --write-subs --sub-langs live_chat`.
   - Stream #3 (`B2Bon2X1jPQ`) has no chat replay.

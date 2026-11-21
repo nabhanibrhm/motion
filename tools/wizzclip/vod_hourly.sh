@@ -3,9 +3,15 @@
 # stream-HHMM-HHMM.mp4 (local WIB time from the stream start). Logs "batch NAME done" to
 # OUT/hourly.log, the same lines live_hourly.sh writes, so scan_next.sh works on it.
 # Each file is copied to DRIVE.
-# Usage: bash tools/wizzclip/vod_hourly.sh VIDEO_ID OUT_DIR DRIVE_DIR
+# Chat: at the start, chat_capture.sh runs in the background (live stream: captures live chat;
+# ended stream: downloads the chat replay; none: logs "no chat replay") into
+# .cache/wizzclip/chat/<id>.live_chat.json + <id>.log. It never blocks or fails the batches; after
+# the last batch this script waits for a still-running replay download. Opt out: CHAT=0 or --no-chat.
+# OUT/chat.id remembers the id so scan_next.sh can run the per-hour chat spikes.
+# Usage: bash tools/wizzclip/vod_hourly.sh VIDEO_ID OUT_DIR DRIVE_DIR [--no-chat]
 # Example: bash tools/wizzclip/vod_hourly.sh 03qhcshfeMY .cache/wizzclip/windah-live4 "/g/My Drive/GTA6/live4-2026-11-20"
 ID="$1"; OUT="$2"; DRIVE="$3"
+[ "$4" = "--no-chat" ] && CHAT=0
 URL="https://www.youtube.com/watch?v=$ID"
 ROOT="/d/Dev/motion"
 YTDLP="$ROOT/.venv/Scripts/yt-dlp.exe"
@@ -15,8 +21,15 @@ mkdir -p "$OUT" "$DRIVE"; cd "$ROOT" || exit 1
 LOG="$OUT/hourly.log"
 log(){ echo "$(date '+%F %T') $*" | tee -a "$LOG"; }
 
+CHATPID=""
+if [ "${CHAT:-1}" != 0 ]; then
+  echo "$ID" > "$OUT/chat.id"
+  nohup bash tools/wizzclip/chat_capture.sh "$ID" >/dev/null 2>&1 &
+  CHATPID=$!; log "chat capture started in background (pid $CHATPID), log .cache/wizzclip/chat/$ID.log"
+fi
+
 read -r START DUR < <("${YT[@]}" --print "%(release_timestamp)s %(duration)s" "$URL" 2>/dev/null | tail -1)
-[[ "$START" =~ ^[0-9]+$ && "$DUR" =~ ^[0-9]+$ ]] || { log "could not read start/duration"; exit 1; }
+[[ "$START" =~ ^[0-9]+$ && "$DUR" =~ ^[0-9]+$ ]] || { log "could not read start/duration (live stream? chat capture, if any, keeps running; use live_hourly.sh for the video)"; exit 1; }
 # Git Bash on Windows has no tzdata, so shift to WIB (UTC+7) by hand.
 hm(){ date -u -d @$((START+$1+7*3600)) +%H%M; }
 log "VOD $ID start $(date -u -d @$((START+7*3600)) '+%F %T') WIB, duration $DUR s, format $FORMAT"
@@ -44,3 +57,5 @@ while [ $((k*3600)) -lt "$DUR" ]; do
   k=$((k+1))
 done
 log "done"
+if [ -n "$CHATPID" ] && kill -0 "$CHATPID" 2>/dev/null; then log "waiting for chat download (pid $CHATPID)"; wait "$CHATPID"; fi
+if [ -n "$CHATPID" ]; then log "$(grep "chat $ID:" ".cache/wizzclip/chat/$ID.log" 2>/dev/null | tail -1 | cut -c1-140)"; fi
