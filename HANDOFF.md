@@ -33,6 +33,29 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
   - lagu (pistol blurs)
 - **Old unposted versions** still in WSL `out/wizzclip/` (chase, chase-sensor, lucia-jason-clean(-sensor), mandy, mandy-v2): the user hasn't decided whether to delete them.
 
+**22 Nov 2026 ~01:30 (Windows): stream #5 recorded, UFO 3-part series built. Render these first, in order.**
+- **Recording:** stream #5 `lF_QYSm2T-Q` ("GTA VI MENUJU 100% KATANYA ADA UFO", 21 Nov 19:16–00:14 WIB) was recorded by `live_hourly.sh` into `.cache/wizzclip/windah-live5/` (Windows). Hours are also on Drive `G:\My Drive\GTA6\live5\`. Live chat was captured, and every hour was scanned with chat spikes.
+- **Ideas:** `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live5.md` holds the hour 1 list, the full UFO/alien arc timeline with ToC times, and short lists for hours 2–5.
+  - The UFO and the alien are real gameplay. Lucia's dream (h5 24:45–33:40) gives the clue code 3241, which opens the "Restricted area" door.
+- **Facecam:** `windah_recipe.py` gets a `'live5'` face rect (1480,538,440,330). All three parts use `layout='face'`.
+- **Render, in order:**
+  1. `python tools/wizzclip/wizzclip.py recipe windah-gtavi-ufo1`
+     - "AKHIRNYA UFO MUNCUL / SETELAH MISI-MISI DULU", 24.35 s main.
+     - Beam, then "misteri UFO di akhiran", then Google says night only, then "ideal buat ketemu misteri UFO", then the disc zoom.
+  2. `python tools/wizzclip/wizzclip.py recipe windah-gtavi-ufo2`
+     - "KODE DARI MIMPI LUCIA / TERNYATA BUKA PINTU", 24.65 s.
+     - The 3241 door with "kode yang di alien di mimpi", then the dream: portal, eggs, Earth.
+  3. `python tools/wizzclip/wizzclip.py recipe windah-gtavi-ufo3`
+     - "ALIEN KETEMU DI GTA VI / WINDAH: BUKAN AI!", 20.6 s.
+     - "Viralin guys, alien nyata di bumi… bukan AI… eh? dia bayi."
+- **Sources and captions:** sources are on Drive `clip-src/windah-gtavi-ufo{1,2,3}.mp4`. Captions are in `out/wizzclip/windah-gtavi-ufo{1,2,3}-caption.txt` on Windows ("Part X/3"). After rendering, copy each master and caption to G: as usual.
+- **Posting:** post ufo1, then ufo2, then ufo3, at least 2 h apart.
+- **Check by ear:**
+  - ufo1: the beam shots carry only game audio; the cut ends before the "what the f…" at h4 28:08.
+  - ufo2: the "DUNIA FUTURISTIK" caption against the audio, and no "anjir" at the start.
+  - ufo3: "viralin" (not "viralkan"), no "anak-anak" tail, and the loud source level.
+- **ToC:** cut, not blurred, everywhere: Lucia's bra top and shirtless Jason, swears and swear subtitles, the weapon wheel and rifle, and Windah's "motion clip" line (self-promo).
+
 **21 Nov 2026 15:47 (Windows): posted and stats.** `map-leonida`, `windah-gtavi-troll` and `windah-gtavi-vs5` are posted. They were moved to `out/wizzclip/uploaded/`, and the troll and vs5 Drive sources were deleted.
 - **Numbers so far:**
   - map-leonida: 1,528 views, 13.1 s avg watch, 7.08% full watch, 86 likes, 5 saves.

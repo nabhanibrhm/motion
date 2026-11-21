@@ -1,0 +1,56 @@
+{
+  "description": "UFO arc part 1/3: the UFO beam appears in the forest after hours of 'misi dulu' (running gag), payoff first. Source = .cache/wizzclip/windah-gtavi-ufo1/source.mp4 (also Drive clip-src/windah-gtavi-ufo1.mp4): five pieces of the stream #5 hour files in output order (windah-live5/stream-2216-2316.mp4 = h4 t1667-1676, stream-1916-2016.mp4 = h1 t326-334, h4 t1031-1039, h4 t1520-1526, h4 t1679.5-1688), 1080p30 re-encoded and joined. Cuts: A t 1667.90-1674.40 = local 0.90-7.40 -> output 0.00-6.50; B t 328.30-332.20 = local 11.30-15.20 -> output 6.50-10.40; C t 1032.90-1037.00 = local 18.90-23.00 -> output 10.40-14.50; D t 1521.25-1524.50 = local 26.25-29.50 -> output 14.50-17.75; E t 1681.00-1687.60 = local 32.50-39.10 -> output 17.75-24.35. Beats: opens on the payoff (22:43 WIB, h4 27:48): glow behind the trees, the beam, Windah's in-game phone camera, photo mode; then the running gag in three short rewinds: h1 5:28 'misteri UFO di akhiran, kita misi-misi dulu lah' (chat spammed UFO from the start), h4 17:13 'harus malem kalau UFO? yaudah google aja deh', h4 25:21 '12 AM, ideal buat ketemu misteri UFO itu?'; back to the UFO with the photo-mode zoom on the disc and a figure in the beam (h4 28:01-28:07.6). Windah says nothing in the beam shots (short VAD runs of faster-whisper medium found no speech in h4 27:44-28:08); the hour transcripts' 'Aduh, apaan ini?' lines are not there, so no caption is claimed for them. CUT: h4 28:08.3-28:09.4 'Hey, what the f...' (swear, found by VAD at 1688.3-1689.4); the 26:20 swear and the 28:40 in-game subtitle swear are outside the cuts; Lucia's bra top and shirtless Jason (h4 24:00-24:50, 31:50+) are not used. Frames: forest, silhouette, phone, photo mode, two maps, Lucia running with a box; no guns, no gore, no drugs. Main 24.35 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,538) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'AKHIRNYA UFO MUNCUL', line 2 Volt 'SETELAH MISI-MISI DULU', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ufo1",
+    "youtube": "lF_QYSm2T-Q",
+    "url": "https://www.youtube.com/watch?v=lF_QYSm2T-Q",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ufo1.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.90:7.40,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=11.30:15.20,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=18.90:23.00,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=26.25:29.50,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=32.50:39.10,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:a]atrim=0.90:7.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.40:d=0.1[a1];",
+    "[0:a]atrim=11.30:15.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.80:d=0.1[a2];",
+    "[0:a]atrim=18.90:23.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.00:d=0.1[a3];",
+    "[0:a]atrim=26.25:29.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.15:d=0.1[a4];",
+    "[0:a]atrim=32.50:39.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.50:d=0.1[a5];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5]concat=n=5:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:538,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-11.77:measured_TP=0.05:measured_LRA=21.70:measured_thresh=-22.61:offset=-0.45:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ufo1.mp4"
+}

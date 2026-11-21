@@ -1,0 +1,50 @@
+{
+  "description": "UFO arc part 3/3: Windah finds the alien on a slab, takes photos ('viralin, alien nyata di bumi, bukan AI') and realises it is a baby, payoff first. Source = .cache/wizzclip/windah-gtavi-ufo3/source.mp4 (also Drive clip-src/windah-gtavi-ufo3.mp4): two pieces of stream-2316-0014.mp4 (stream #5 hour 5, file t 0 = 23:16 WIB) in output order, 1080p30 re-encoded and joined: h5 t2861-2879 and t2881-2887.5. Cuts: A t 2863.00-2878.60 = local 2.00-17.60 -> output 0.00-15.60; B t 2881.90-2886.90 = local 18.90-23.90 -> output 15.60-20.60. Beats: h5 47:42 (00:02 WIB) Windah raises the phone camera on the alien lying on a slab in an old cryo chamber (photo mode, 4:5 picture with blurred side bars): 'viralin guys, alien nyata di bumi' (47:45.6-47:49.9), 'kasih filter' (47:51.6), 'bukan AI' x4 (47:53.7-47:56), the filters cycle (silent, 47:56-47:58.6), photo mode closes, 'viralin!' (48:02), 'eh? dia bayi.' (48:05-48:06.8). Word timings from short VAD runs (the hour transcript put 'viralin' at 47:35, about 10 s early). Outside the cuts: the 'No fucking way' in-game line at 47:28 (clip starts at 47:43), the weapon wheel at 47:13, 'motion clip' self-promo at 46:41, the grey-alien tail h5 49:34-49:45 (Lucia's tank-top chest in close-up, and 49:32 'what the fu-' just before), the rifle from 53:20. Frames: alien on slab, photo filters, Lucia from behind in the lab; no guns, no gore, no drugs. Main 20.60 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,538) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'ALIEN KETEMU DI GTA VI', line 2 Volt 'WINDAH: BUKAN AI!', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ufo3",
+    "youtube": "lF_QYSm2T-Q",
+    "url": "https://www.youtube.com/watch?v=lF_QYSm2T-Q",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ufo3.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=2.00:17.60,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=18.90:23.90,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:a]atrim=2.00:17.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=15.50:d=0.1[a1];",
+    "[0:a]atrim=18.90:23.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.90:d=0.1[a2];",
+    "[v1][a1][v2][a2]concat=n=2:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:538,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-6.40:measured_TP=0.97:measured_LRA=15.40:measured_thresh=-19.76:offset=0.36:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ufo3.mp4"
+}

@@ -1,0 +1,56 @@
+{
+  "description": "UFO arc part 2/3: the code from Lucia's dream opens a restricted-area door, then a look back at the dream (portal, eggs, Earth), payoff first. Source = .cache/wizzclip/windah-gtavi-ufo2/source.mp4 (also Drive clip-src/windah-gtavi-ufo2.mp4): four pieces of stream-2316-0014.mp4 (stream #5 hour 5, file t 0 = 23:16 WIB) in output order, 1080p30 re-encoded and joined: h5 t2515-2529, t1500-1508, t1613-1621, t1685.5-1692.5. Cuts: A t 2516.50-2522.40 = local 1.50-7.40 -> output 0.00-5.90; A t 2523.90-2528.20 = local 8.90-13.20 -> output 5.90-10.20; B t 1502.00-1506.25 = local 16.00-20.25 -> output 10.20-14.45; C t 1614.10-1619.20 = local 23.10-28.20 -> output 14.45-19.55; D t 1686.60-1691.70 = local 31.10-36.20 -> output 19.55-24.65. Beats: opens on the payoff (h5 41:56, 23:57 WIB): the 'Restricted area' keypad door, the phone note shows 3241, Windah: 'tiga dua empat satu, gue dapet note, dari mana gue dapet notenya? wait a minute, dari mana gue dapet kode itu? ... kode yang di alien, di mimpi, guys'; then the dream (Lucia asleep, h5 24:45-33:40) in three beats: the black portal 'lubang' (25:04), the egg hall 'jangan lari, kalau lari dia marah telurnya' (26:54), the solar-system room and Earth zoom 'bumi bumi bumi ... rumah siapa tuh?' (28:07). Word timings from short VAD runs (the hour transcripts drift by up to ~10 s). Outside the cuts: h5 41:45 'anjir', the 41:42-41:56 basement walk, the 'Uranus/meganus' line (h5 28:01), 'oh s**t' at h5 27:13, Lucia in a bra top at h5 24:20-24:45 and 33:50-34:25. In the dream Lucia wears a white tee and light trousers (checked on brightened frames). Frames: basement door, dream void, eggs, planets, Earth; no guns, no gore, no drugs. Main 24.65 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,538) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'KODE DARI MIMPI LUCIA', line 2 Volt 'TERNYATA BUKA PINTU', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ufo2",
+    "youtube": "lF_QYSm2T-Q",
+    "url": "https://www.youtube.com/watch?v=lF_QYSm2T-Q",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ufo2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=1.50:7.40,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=8.90:13.20,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=16.00:20.25,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=23.10:28.20,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=31.10:36.20,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:a]atrim=1.50:7.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.80:d=0.1[a1];",
+    "[0:a]atrim=8.90:13.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.20:d=0.1[a2];",
+    "[0:a]atrim=16.00:20.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.15:d=0.1[a3];",
+    "[0:a]atrim=23.10:28.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.00:d=0.1[a4];",
+    "[0:a]atrim=31.10:36.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.00:d=0.1[a5];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5]concat=n=5:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:538,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-11.40:measured_TP=0.13:measured_LRA=17.60:measured_thresh=-22.72:offset=3.02:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ufo2.mp4"
+}

@@ -40,10 +40,15 @@ person extent in source px (x0-x1, head top - bottom edge):
              (black polo; person reaches the frame bottom; hand/arm
              gestures reach x1420 near the bottom; cutscene letterbox bars
              cover y1018-1080, so the crop stops at y1016)
-  Both crops are 4:3 (440x330 -> 520x390, x1.18). Position inside a recording drifts a little (he leans); 48 + 30 spot
-  checks across the recordings kept head and shoulders inside both crops. Stream #4 moved the cam up and in compared with
-  stream #3 (head top y570-650 vs y690-780). The default game crop (0,0,1504,846) is clear of both cams (left edge x1550/x1420,
-  the left-most hand gestures stay right of x1520).
+  live5      windah-live5/stream-1916-2016, -2016-2116, -2116-2216,    x1550-1920, y560-868      (1480, 538, 440, 330)
+             -2216-2316, -2316-0014 (black tee; same spot as stream #4,
+             but the flat bottom edge of the cam box is at y868, not 890,
+             so the crop is moved up 22 px to stop on it; head top y570-600)
+  All crops are 4:3 (440x330 -> 520x390, x1.18). Position inside a recording drifts a little (he leans); 48 + 30 spot
+  checks across the recordings kept head and shoulders inside live3/live4, and 60 stills (12 per hour, all 5 hours of stream #5,
+  22 Nov 2026) did for live5. Stream #4 moved the cam up and in compared with stream #3 (head top y570-650 vs y690-780).
+  The default game crop (0,0,1504,846) is clear of all three cams (left edge x1550/x1420/x1550, the left-most hand gestures
+  stay right of x1520; raised hands on his head can reach y~500 above the live5 crop, which is rare and cropped, not blurred).
 """
 import json, sys, subprocess, re, os
 from pathlib import Path
@@ -52,7 +57,7 @@ HERE = Path(__file__).resolve().parent
 R = os.environ.get('WINDAH_OUT') or (HERE / 'recipes').as_posix()
 R = R.rstrip('/') + '/'
 SPECS = os.environ.get('WINDAH_SPECS') or (HERE / 'specs').as_posix()
-FACES = {'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330)}
+FACES = {'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5': (1480, 538, 440, 330)}
 # 'face' layout geometry (output px)
 GAME_Y, FACE_X, FACE_Y, FACE_IW, FACE_IH, FACE_B = 364, 276, 994, 520, 390, 4
 HOOK_Y, TAG_Y, SUB_Y = 318, 326, 905
@@ -68,7 +73,7 @@ if FACE_LAYOUT:
     if isinstance(face, str):
         face = FACES[face]
     if not face or len(face) != 4:
-        raise SystemExit("layout 'face' needs face = (x,y,w,h) in source px or a FACES key (live3/live4)")
+        raise SystemExit("layout 'face' needs face = (x,y,w,h) in source px or a FACES key (live3/live4/live5)")
     gx, gy, gw = game or (0, 0, 1504); gh = gw * 9 // 16
     if gw * 9 % 16:
         raise SystemExit('game crop width must be a multiple of 16')
