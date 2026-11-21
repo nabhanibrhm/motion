@@ -1,0 +1,72 @@
+{
+  "description": "UFO mini-story part 3/4: the dream (eggs, planets, Earth, the doors), then the real compound and the 3241 door from the dream. Source = .cache/wizzclip/windah-gtavi-ufoarc3/source.mp4 (also Drive clip-src/windah-gtavi-ufoarc3.mp4): thirteen pieces (0.6 s padding each) of windah-live5/stream-2316-0014.mp4 (stream #5 hour 5, file t 0 = 23:16 WIB) in output order, 1080p30 re-encoded and joined. Cuts: T t 1618.40-1619.60 = local 0.60-1.80 -> output 0.00-1.20; A t 1521.90-1524.00 = local 3.00-5.10 -> output 1.20-3.30; B t 1614.10-1619.20 = local 6.30-11.40 -> output 3.30-8.40; C t 1669.60-1671.00 = local 12.60-14.00 -> output 8.40-9.80; D t 1686.60-1691.70 = local 15.20-20.30 -> output 9.80-14.90; E t 1745.00-1748.00 = local 21.50-24.50 -> output 14.90-17.90; F t 1834.10-1837.45 = local 25.70-29.05 -> output 17.90-21.25; G t 1862.90-1864.80 = local 30.25-32.15 -> output 21.25-23.15; H t 2333.00-2337.10 = local 33.35-37.45 -> output 23.15-27.25; I t 2381.00-2384.00 = local 38.65-41.65 -> output 27.25-30.25; J t 2496.30-2498.50 = local 42.85-45.05 -> output 30.25-32.45; K t 2516.50-2522.40 = local 46.25-52.15 -> output 32.45-38.35; L t 2523.90-2528.20 = local 53.35-57.65 -> output 38.35-42.65. Beats in stream order: frame-0 teaser (h5 26:58, glowing teal and gold egg pods, 1.2 s); the dream (h5 25-31 min): hall of lights 'ini apa guys?' (25:22), eggs 'jangan lari, kalau lari dia marah telurnya' (26:54), solar system 'interstellar' (27:50), Earth zoom 'bumi bumi bumi... rumah siapa tuh?' (28:07), keypad 'apaan itu?' (29:05), the three doors 'tengah UFO, voting deh... gue takut bad ending cuy' (30:34), the middle door into the blue burst (31:03); label SETELAH BANGUN, then the real compound by day, 'kenapa mimpi alien itu mengarahkan kesini?' (38:53), the tower stairs (39:41), the dark stairs 'kenapa jadi horror ya?' (41:36) and the restricted-area door: '3241, gue dapet note, dari mana gue dapet kode itu? wait a minute... kode yang di alien, di mimpi, guys' (41:56-42:08). Word timings from short-window faster-whisper medium with VAD (the 3241 line reuses the ufo2 timings). CUT: 27:12-27:17 'oh s**t', 28:01 'Uranus' wordplay (the cut skips 27:51-28:06), the browser window with chat names (h5 30:46-30:56, between F and G), 'anjeng virus' at ~30:57-31:05 (G ends 31:04.8 before the voice; check by ear), 33:50-34:25 Lucia in a bra top, the ride-share app screens (36:36-38:00), the body on the ground at 39:50, 41:45.7 'anjir', the in-game subtitles 'The hell..?' (25:49-25:52, outside the cuts) and 'Where am I'. In-game subtitles sit below source y846 and are cropped away by the face layout. No guns, gore, drugs in these frames. Main 42.65 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,538) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'PART 3 · KODE DARI MIMPI', line 2 Volt 'TERNYATA BUKA PINTU', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ufoarc3",
+    "youtube": "lF_QYSm2T-Q",
+    "url": "https://www.youtube.com/watch?v=lF_QYSm2T-Q",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ufoarc3.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:5.10,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=6.30:11.40,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=12.60:14.00,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=15.20:20.30,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=21.50:24.50,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=25.70:29.05,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=30.25:32.15,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=33.35:37.45,setpts=PTS-STARTPTS,fps=30[v9];",
+    "[0:v]trim=38.65:41.65,setpts=PTS-STARTPTS,fps=30[v10];",
+    "[0:v]trim=42.85:45.05,setpts=PTS-STARTPTS,fps=30[v11];",
+    "[0:v]trim=46.25:52.15,setpts=PTS-STARTPTS,fps=30[v12];",
+    "[0:v]trim=53.35:57.65,setpts=PTS-STARTPTS,fps=30[v13];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:5.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.00:d=0.1[a2];",
+    "[0:a]atrim=6.30:11.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.00:d=0.1[a3];",
+    "[0:a]atrim=12.60:14.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.30:d=0.1[a4];",
+    "[0:a]atrim=15.20:20.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.00:d=0.1[a5];",
+    "[0:a]atrim=21.50:24.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.90:d=0.1[a6];",
+    "[0:a]atrim=25.70:29.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.25:d=0.1[a7];",
+    "[0:a]atrim=30.25:32.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.80:d=0.1[a8];",
+    "[0:a]atrim=33.35:37.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.00:d=0.1[a9];",
+    "[0:a]atrim=38.65:41.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.90:d=0.1[a10];",
+    "[0:a]atrim=42.85:45.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.10:d=0.1[a11];",
+    "[0:a]atrim=46.25:52.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.80:d=0.1[a12];",
+    "[0:a]atrim=53.35:57.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.20:d=0.1[a13];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9][v10][a10][v11][a11][v12][a12][v13][a13]concat=n=13:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:538,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-11.29:measured_TP=0.33:measured_LRA=17.50:measured_thresh=-23.15:offset=-1.25:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ufoarc3.mp4"
+}

@@ -10,7 +10,9 @@ Env: WINDAH_SPECS (specs dir, default tools/wizzclip/specs), WINDAH_OUT (output 
 
 A spec defines: yt, base, cuts, hook, subs, freeze, endcap, srcdesc, beats, what, optional blurs.
 Optional: srcslug (reuse another clip's .cache/wizzclip/<srcslug>/source.mp4, default = slug),
-          layout ('classic' default | 'face'), face, game.
+          layout ('classic' default | 'face'), face, game,
+          tag (credit line, default 'WINDAH BASUDARA · GTA VI'),
+          labels = [(cutkey, start, end, 'TEXT'), ...] small Paper bridge labels (Audex 52 at y450, over the gameplay panel; same timing rules as subs).
 
 Layouts (1080x1920 canvas, Ink #0E0F12 background, Volt/Paper text, campaign banner at y1417-1596, 4 s outro):
   classic  whole 16:9 source frame scaled to 1080x608 at y656 (Windah's corner facecam stays inside it);
@@ -61,10 +63,12 @@ FACES = {'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5'
 # 'face' layout geometry (output px)
 GAME_Y, FACE_X, FACE_Y, FACE_IW, FACE_IH, FACE_B = 364, 276, 994, 520, 390, 4
 HOOK_Y, TAG_Y, SUB_Y = 318, 326, 905
+LABEL_Y = 450
 P = r'{\c&H00EFF3F4&}'; V = r'{\c&H0029FCE6&}'
 slug = sys.argv[1]; arg = sys.argv[2] if len(sys.argv) > 2 else None
 HS = int(sys.argv[3]) if len(sys.argv) > 3 else 68
 blurs = {}; layout = 'classic'; face = None; game = None; srcslug = slug
+tag = 'WINDAH BASUDARA · GTA VI'; labels = []
 exec(open(os.path.join(SPECS, slug + '.py'), encoding='utf-8').read())
 FACE_LAYOUT = layout == 'face'
 if layout not in ('classic', 'face'):
@@ -122,7 +126,7 @@ Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,{t(0)},{t(main)},Hook,,0,0,0,,{{{B}an2{B}pos(540,{hook_y}){B}fs{HS}}}{{{B}c&H00EFF3F4&}}{hook[0]}{B}N{{{B}c&H0029FCE6&}}{hook[1]}
-Dialogue: 0,{t(0)},{t(main)},Tag,,0,0,0,,{{{B}an8{B}pos(540,{tag_y})}}WINDAH BASUDARA · GTA VI
+Dialogue: 0,{t(0)},{t(main)},Tag,,0,0,0,,{{{B}an8{B}pos(540,{tag_y})}}{tag}
 """
 for k, s, e, x in subs:
     for i, (ck, cs, ce) in enumerate(cuts):
@@ -131,6 +135,13 @@ for k, s, e, x in subs:
             ass += f"Dialogue: 1,{t(os_)},{t(oe)},Sub,,0,0,0,,{{{B}an5{B}pos(540,{sub_y})}}{x}\n"; break
     else:
         raise SystemExit(f'caption outside cuts: {x}')
+for k, s, e, x in labels:
+    for i, (ck, cs, ce) in enumerate(cuts):
+        if ck == k and cs - 0.05 <= s < ce:
+            os_ = outs[i] + max(0, s - cs); oe = outs[i] + min(e, ce) - cs
+            ass += f"Dialogue: 2,{t(os_)},{t(oe)},Sub,,0,0,0,,{{{B}an5{B}pos(540,{LABEL_Y}){B}fs52}}{{{B}c&H00EFF3F4&}}{x}\n"; break
+    else:
+        raise SystemExit(f'label outside cuts: {x}')
 if endcap:
     ass += f"Dialogue: 1,{t(main - freeze - 0.4)},{t(main)},Sub,,0,0,0,,{{{B}an5{B}pos(540,{sub_y})}}{endcap}\n"
 open(R + slug + '.ass', 'w', encoding='utf-8', newline='\n').write(ass)

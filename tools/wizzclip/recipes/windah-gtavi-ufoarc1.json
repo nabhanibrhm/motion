@@ -1,0 +1,68 @@
+{
+  "description": "UFO mini-story part 1/4: the wait, the night drive, the beam in the forest, and a figure descending in the light. Source = .cache/wizzclip/windah-gtavi-ufoarc1/source.mp4 (also Drive clip-src/windah-gtavi-ufoarc1.mp4): eleven pieces (0.6 s padding each) of the stream #5 hour files in output order (windah-live5/stream-2216-2316.mp4 = h4, stream-1916-2016.mp4 = h1), 1080p30 re-encoded and joined. Cuts: T t 1685.20-1686.40 = local 0.60-1.80 -> output 0.00-1.20; A t 328.30-332.20 = local 3.00-6.90 -> output 1.20-5.10; B t 1032.90-1037.00 = local 8.10-12.20 -> output 5.10-9.20; C t 1521.25-1524.25 = local 13.40-16.40 -> output 9.20-12.20; D t 1527.52-1530.12 = local 17.60-20.20 -> output 12.20-14.80; E t 1561.00-1566.00 = local 21.40-26.40 -> output 14.80-19.80; F t 1613.80-1619.90 = local 27.60-33.70 -> output 19.80-25.90; G t 1645.45-1647.60 = local 34.90-37.05 -> output 25.90-28.05; H t 1665.00-1675.00 = local 38.25-48.25 -> output 28.05-38.05; I t 1681.40-1685.00 = local 49.45-53.05 -> output 38.05-41.65; J t 1716.00-1722.05 = local 54.25-60.30 -> output 41.65-47.70. Beats in stream order: frame-0 teaser (h4 28:05, the glowing disc in photo mode, 1.2 s), then the running gag (h1 5:28 'misteri UFO di akhiran, kita misi-misi dulu lah'; chat spams UFO from VOD 2:04), h4 17:13 Google says UFO only at night, h4 25:21 '12 AM, ideal buat ketemu misteri UFO' and 'go now', label MALAM INI over the night drive (h4 26:01), the dark forest road 'ada orang di luar sana?' (26:54), 'ke tengah hutan, ada apa ini?' (27:25), the glow, the beam and the phone camera (27:45-27:55), the photo-mode zoom (28:01-28:05), and the cliffhanger: a figure descends in the beam and Windah says 'itu kenapa ada ibu-ibu gemoy?' (28:36-28:42). Word timings from short-window faster-whisper medium with VAD. CUT: h4 26:20 'what the f...' and 26:41 'anjir' (outside the cuts), 27:39-27:42 'hell no', 28:08.3-28:09.4 'what the f' (swear), the in-game subtitle 'Lucia: What... the fuck?' (28:41-28:45; it sits below source y846, which the face layout crops away, and the cut ends at 28:42.05 before the voice line); 27:25.4 first word is 'anjing/anjir?' by medium (cut starts after it; check by ear). No guns, gore, drugs, bra top or shirtless Jason in these frames. Main 47.70 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,538) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'PART 1 · UFO DI GTA VI', line 2 Volt 'CHAT NAGIH UFO 3 JAM', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ufoarc1",
+    "youtube": "lF_QYSm2T-Q",
+    "url": "https://www.youtube.com/watch?v=lF_QYSm2T-Q",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ufoarc1.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:6.90,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=8.10:12.20,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=13.40:16.40,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=17.60:20.20,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=21.40:26.40,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=27.60:33.70,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=34.90:37.05,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=38.25:48.25,setpts=PTS-STARTPTS,fps=30[v9];",
+    "[0:v]trim=49.45:53.05,setpts=PTS-STARTPTS,fps=30[v10];",
+    "[0:v]trim=54.25:60.30,setpts=PTS-STARTPTS,fps=30[v11];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:6.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.80:d=0.1[a2];",
+    "[0:a]atrim=8.10:12.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.00:d=0.1[a3];",
+    "[0:a]atrim=13.40:16.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.90:d=0.1[a4];",
+    "[0:a]atrim=17.60:20.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.50:d=0.1[a5];",
+    "[0:a]atrim=21.40:26.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.90:d=0.1[a6];",
+    "[0:a]atrim=27.60:33.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.00:d=0.1[a7];",
+    "[0:a]atrim=34.90:37.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.05:d=0.1[a8];",
+    "[0:a]atrim=38.25:48.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=9.90:d=0.1[a9];",
+    "[0:a]atrim=49.45:53.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.50:d=0.1[a10];",
+    "[0:a]atrim=54.25:60.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.95:d=0.1[a11];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9][v10][a10][v11][a11]concat=n=11:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:538,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-11.90:measured_TP=0.14:measured_LRA=12.70:measured_thresh=-22.64:offset=2.05:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ufoarc1.mp4"
+}

@@ -1,0 +1,39 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:42.65,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}PART 3 · KODE DARI MIMPI\N{\c&H0029FCE6&}TERNYATA BUKA PINTU
+Dialogue: 0,0:00:00.00,0:00:42.65,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI · PART 3 DARI 4
+Dialogue: 1,0:00:01.26,0:00:02.24,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS, TAPI LIHAT INI
+Dialogue: 1,0:00:02.24,0:00:03.25,Sub,,0,0,0,,{\an5\pos(540,905)}INI {\c&H00EFF3F4&}APA{\c&H0029FCE6&} GUYS?
+Dialogue: 1,0:00:03.44,0:00:05.30,Sub,,0,0,0,,{\an5\pos(540,905)}JANGAN LARI, CUY
+Dialogue: 1,0:00:06.34,0:00:06.95,Sub,,0,0,0,,{\an5\pos(540,905)}KALAU LARI,
+Dialogue: 1,0:00:06.95,0:00:08.35,Sub,,0,0,0,,{\an5\pos(540,905)}DIA MARAH {\c&H00EFF3F4&}TELURNYA{\c&H0029FCE6&}
+Dialogue: 1,0:00:08.67,0:00:09.70,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}INTERSTELLAR{\c&H0029FCE6&}
+Dialogue: 1,0:00:09.98,0:00:11.10,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}BUMI{\c&H0029FCE6&}, BUMI, BUMI
+Dialogue: 1,0:00:14.00,0:00:14.80,Sub,,0,0,0,,{\an5\pos(540,905)}RUMAH SIAPA TUH?
+Dialogue: 1,0:00:14.95,0:00:17.20,Sub,,0,0,0,,{\an5\pos(540,905)}APAAN {\c&H00EFF3F4&}ITU{\c&H0029FCE6&}?
+Dialogue: 1,0:00:17.99,0:00:19.67,Sub,,0,0,0,,{\an5\pos(540,905)}TENGAH UFO, VOTING DEH
+Dialogue: 1,0:00:19.75,0:00:21.20,Sub,,0,0,0,,{\an5\pos(540,905)}TAKUT {\c&H00EFF3F4&}BAD ENDING{\c&H0029FCE6&}, CUY
+Dialogue: 1,0:00:23.71,0:00:24.85,Sub,,0,0,0,,{\an5\pos(540,905)}ADA APA DI SINI?
+Dialogue: 1,0:00:24.95,0:00:26.15,Sub,,0,0,0,,{\an5\pos(540,905)}KENAPA {\c&H00EFF3F4&}MIMPI ALIEN{\c&H0029FCE6&}
+Dialogue: 1,0:00:26.15,0:00:27.20,Sub,,0,0,0,,{\an5\pos(540,905)}NGARAH KE SINI?
+Dialogue: 1,0:00:30.35,0:00:32.25,Sub,,0,0,0,,{\an5\pos(540,905)}KENAPA JADI {\c&H00EFF3F4&}HORROR{\c&H0029FCE6&} YA?
+Dialogue: 1,0:00:32.95,0:00:34.00,Sub,,0,0,0,,{\an5\pos(540,905)}3241, GUE DAPET {\c&H00EFF3F4&}NOTE{\c&H0029FCE6&}
+Dialogue: 1,0:00:34.07,0:00:35.05,Sub,,0,0,0,,{\an5\pos(540,905)}DARI MANA NOTENYA?
+Dialogue: 1,0:00:35.39,0:00:35.90,Sub,,0,0,0,,{\an5\pos(540,905)}WAIT A MINUTE
+Dialogue: 1,0:00:36.61,0:00:37.40,Sub,,0,0,0,,{\an5\pos(540,905)}DARI MANA GUE
+Dialogue: 1,0:00:37.40,0:00:38.30,Sub,,0,0,0,,{\an5\pos(540,905)}DAPET {\c&H00EFF3F4&}KODE{\c&H0029FCE6&} ITU?
+Dialogue: 1,0:00:38.57,0:00:40.13,Sub,,0,0,0,,{\an5\pos(540,905)}KODE YANG DI {\c&H00EFF3F4&}ALIEN{\c&H0029FCE6&}
+Dialogue: 1,0:00:40.17,0:00:41.05,Sub,,0,0,0,,{\an5\pos(540,905)}DI {\c&H00EFF3F4&}MIMPI{\c&H0029FCE6&}, GUYS!
+Dialogue: 2,0:00:23.15,0:00:25.45,Sub,,0,0,0,,{\an5\pos(540,450)\fs52}{\c&H00EFF3F4&}SETELAH BANGUN

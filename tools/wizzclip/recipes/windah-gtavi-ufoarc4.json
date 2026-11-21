@@ -1,0 +1,70 @@
+{
+  "description": "UFO mini-story part 4/4: inside the compound, the alien baby on the slab, Lucia rescues it, the UFO arrives and Windah's closing line. Source = .cache/wizzclip/windah-gtavi-ufoarc4/source.mp4 (also Drive clip-src/windah-gtavi-ufoarc4.mp4): twelve pieces (0.6 s padding each) of windah-live5/stream-2316-0014.mp4 (stream #5 hour 5, file t 0 = 23:16 WIB) in output order, 1080p30 re-encoded and joined. Cuts: T t 3027.40-3028.60 = local 0.60-1.80 -> output 0.00-1.20; A t 2595.60-2598.00 = local 3.00-5.40 -> output 1.20-3.60; R t 2732.20-2736.50 = local 6.60-10.90 -> output 3.60-7.90; B1 t 2864.90-2870.20 = local 12.10-17.40 -> output 7.90-13.20; B2 t 2871.40-2876.20 = local 18.60-23.40 -> output 13.20-18.00; B3 t 2884.30-2886.95 = local 24.60-27.25 -> output 18.00-20.65; S t 2963.00-2972.00 = local 28.45-37.45 -> output 20.65-29.65; S2 t 2983.00-2985.30 = local 38.65-40.95 -> output 29.65-31.95; S3 t 2987.00-2989.30 = local 42.15-44.45 -> output 31.95-34.25; U t 3022.00-3030.00 = local 45.65-53.65 -> output 34.25-42.25; C1 t 3366.00-3368.80 = local 54.85-57.65 -> output 42.25-45.05; C2 t 3377.00-3379.90 = local 58.85-61.75 -> output 45.05-47.95. Beats in stream order: frame-0 teaser (h5 50:27, the UFO over the tower, 1.2 s); label MASUK KE DALAM, the red-lit control room 'guys, ini kayak di mimpi guys' (43:16); the radiation door 'mimpi itu pertanda... peneliti mati semua di ruang radiasi' (45:32); the alien baby on the slab in photo mode 'viralin guys! alien nyata di bumi... kasih filter... bukan AI' (47:45-47:56) and 'eh? dia bayi.' (48:05); the rescue (49:23-49:49): Lucia 'let me get you out of here, little boy', Windah 'hah? cutscene? eh, sebenernya kita selamatin', Lucia carries the baby, it floats up in the light, Lucia is lifted toward the orbs; the UFO over the tower with burning vans (50:22-50:30); closing words after he reloads and watches a walkthrough: 'manusia jahat, alien baik' (56:06) and 'kita udah berhasil nolongin anak bayi aliennya' (56:17). Word timings from short-window faster-whisper medium with VAD (the ufo3 timings for the slab; 'little boy' and 'hah? cutscene?' are Lucia and Windah as heard). CUT: h5 46:35-46:50 and 54:05 'motion clip' promo, 47:13 weapon wheel, 47:22-47:31 subtitles incl. 'No fucking way', 49:33-49:35 'what the f...', 49:36-49:42 the tank-top chest close-up with the grey alien and 'oh, s...' (49:39), 49:50 'Lucia: Fuck.' (S3 ends at 49:49.3), the 50:21 vehicle explosion flash (U starts 50:22), the YouTube walkthrough (51:36-53:20) and the rifle (53:20-55:20). In-game subtitles sit below source y846 and are cropped away by the face layout. Frames: dark control room, radiation door with a hazmat suit in the tunnel (45:33-45:36), the alien baby, Lucia carrying it, fire and the UFO, a biplane at night; no guns, no shooting. Main 47.95 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,538) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'PART 4 · ALIEN BAYI', line 2 Volt 'LUCIA SELAMATIN ANAK ALIEN', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ufoarc4",
+    "youtube": "lF_QYSm2T-Q",
+    "url": "https://www.youtube.com/watch?v=lF_QYSm2T-Q",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ufoarc4.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:5.40,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=6.60:10.90,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=12.10:17.40,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=18.60:23.40,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=24.60:27.25,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=28.45:37.45,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=38.65:40.95,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=42.15:44.45,setpts=PTS-STARTPTS,fps=30[v9];",
+    "[0:v]trim=45.65:53.65,setpts=PTS-STARTPTS,fps=30[v10];",
+    "[0:v]trim=54.85:57.65,setpts=PTS-STARTPTS,fps=30[v11];",
+    "[0:v]trim=58.85:61.75,setpts=PTS-STARTPTS,fps=30[v12];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:5.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.30:d=0.1[a2];",
+    "[0:a]atrim=6.60:10.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.20:d=0.1[a3];",
+    "[0:a]atrim=12.10:17.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.20:d=0.1[a4];",
+    "[0:a]atrim=18.60:23.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.70:d=0.1[a5];",
+    "[0:a]atrim=24.60:27.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.55:d=0.1[a6];",
+    "[0:a]atrim=28.45:37.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.90:d=0.1[a7];",
+    "[0:a]atrim=38.65:40.95,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.20:d=0.1[a8];",
+    "[0:a]atrim=42.15:44.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.20:d=0.1[a9];",
+    "[0:a]atrim=45.65:53.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.90:d=0.1[a10];",
+    "[0:a]atrim=54.85:57.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.70:d=0.1[a11];",
+    "[0:a]atrim=58.85:61.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.80:d=0.1[a12];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9][v10][a10][v11][a11][v12][a12]concat=n=12:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:538,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-8.68:measured_TP=1.32:measured_LRA=12.20:measured_thresh=-19.85:offset=-0.40:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ufoarc4.mp4"
+}

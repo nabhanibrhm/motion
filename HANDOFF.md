@@ -6,6 +6,37 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**22 Nov 2026 ~03:00 (Windows): UFO arc rebuilt as 4 parts in stream order (`windah-gtavi-ufoarc1..4`). RENDER THESE FIRST, in order. The old `ufo1/2/3` are superseded: do not post them.**
+- **Why:** the user rejected the 3-part version because its cuts jumped out of stream order. The new parts tell the arc chronologically, ≤50 s each. Each opens on a ~1.2 s teaser of that part's most striking shot under the hook, then plays in order.
+- **Render on WSL** (sources are in Drive `clip-src` as `windah-gtavi-ufoarc1..4.mp4`; LN values are stored in each recipe):
+  ```
+  python tools/wizzclip/wizzclip.py recipe windah-gtavi-ufoarc1
+  python tools/wizzclip/wizzclip.py recipe windah-gtavi-ufoarc2
+  python tools/wizzclip/wizzclip.py recipe windah-gtavi-ufoarc3
+  python tools/wizzclip/wizzclip.py recipe windah-gtavi-ufoarc4
+  ```
+- **The parts** (layout `face`, face `live5`):
+
+  | Part | Main length | Hook | Covers | Frame 0 |
+  |---|---|---|---|---|
+  | P1 | 47.7 s | UFO DI GTA VI / CHAT NAGIH UFO 3 JAM | chat asks for the UFO → night → forest → beam → a figure lowered in the beam ("ibu-ibu gemoy?") | disc in the beam |
+  | P2 | 40.65 s | MIMPI ALIEN / LUCIA MASUK LUBANG HITAM | the woman ("bring me my car") → spam sleeping → sleeping with Jason → portal | portal |
+  | P3 | 42.65 s | KODE DARI MIMPI / TERNYATA BUKA PINTU | eggs, Earth, keypad, doors → after waking → tower → code 3241 opens the door | eggs |
+  | P4 | 47.95 s | ALIEN BAYI / LUCIA SELAMATIN ANAK ALIEN | control room → radiation room → baby alien → rescue and lift → UFO over the tower → "manusia jahat, alien baik" | UFO over the tower |
+
+- **Hooks have no "/":** Audex has no "/" glyph, so the hooks read "PART N · …" and the tag reads "PART N DARI 4". The captions say "Part N/4".
+- **Captions:** Windows only, at `out/wizzclip/windah-gtavi-ufoarc1..4-caption.txt` (382–432 chars, exact 5 hashtags). Fetch them for posting.
+- **windah_recipe.py:** two new optional spec fields, `tag` (the credit line) and `labels` (small Paper bridge labels at y450, e.g. "MALAM INI", "SETELAH BANGUN"). Defaults are unchanged.
+- **Posting:** P1 → P4 in order, ≥2 h apart.
+- **Check by ear before posting** (cuts sit next to swears):
+  - P1 h4 27:25.4: "anjir" just before "ke tengah hutan".
+  - P1 end h4 28:42: Lucia's "what the f…".
+  - P3 h5 ~31:00: "anjeng virus" (the cut ends at 31:04.8).
+  - P4 h5 49:32 and 49:49: "what the f…" and "Fuck".
+  - All teasers' audio.
+  - The P2 in-game lines ("oh Tuhan…") are paraphrased.
+- **Drive:** delete the old `windah-gtavi-ufo1/2/3.mp4` sources from Drive `clip-src` only when the user says so.
+
 **21 Nov 2026 ~11:40-23:00 (WSL): kode, chapter2, vs5 and ganteng-face rendered; new `windah-gtavi-dc-face`; classic dc deleted.**
 - **Renders** (from Drive `clip-src`, copied to `G:\Other computers\My Laptop\out\wizzclip\`, Windows captions fetched):
 

@@ -1,0 +1,68 @@
+{
+  "description": "UFO mini-story part 2/4: Lucia helps the woman from the beam, the sleep spam does nothing, Jason is healed and the dream begins. Source = .cache/wizzclip/windah-gtavi-ufoarc2/source.mp4 (also Drive clip-src/windah-gtavi-ufoarc2.mp4): eleven pieces (0.6 s padding each) of the stream #5 hour files in output order (windah-live5/stream-2216-2316.mp4 = h4, stream-2316-0014.mp4 = h5), 1080p30 re-encoded and joined. Cuts: T t 1510.00-1511.20 = local 0.60-1.80 -> output 0.00-1.20; A t 1727.40-1731.40 = local 3.00-7.00 -> output 1.20-5.20; B t 1746.90-1751.30 = local 8.20-12.60 -> output 5.20-9.60; C t 1766.30-1772.00 = local 13.80-19.50 -> output 9.60-15.30; D t 1795.50-1797.90 = local 20.70-23.10 -> output 15.30-17.70; E t 1890.00-1892.60 = local 24.30-26.90 -> output 17.70-20.30; F t 1895.45-1897.25 = local 28.10-29.90 -> output 20.30-22.10; G t 2324.90-2328.00 = local 31.10-34.20 -> output 22.10-25.20; H t 1445.45-1452.10 = local 35.40-42.05 -> output 25.20-31.85; I t 1455.85-1459.05 = local 43.25-46.45 -> output 31.85-35.05; J t 1500.70-1506.30 = local 47.65-53.25 -> output 35.05-40.65. Beats in stream order: frame-0 teaser (h5 25:10, the black portal in the white dream void, 1.2 s); the woman from the beam (h4 28:46-29:32): Lucia runs through the dark forest, presses HELP on the dazed woman, 'kau tak apa-apa? kau ingat apa-apa?', she asks Lucia to bring her car ('ya, oke, tunggu disini'); Windah tries to reach the UFO (29:55 'bisa gue deketin UFO-nya pas?'); he finds a sleep-skip lead (31:30 'ada lanjutan questnya: spam tidur?', 31:35 'coba gue spam tidur ya'); label SPAM TIDUR, GAK ADA MIMPI over the gym (38:45, after eight sleeps nothing happened: 'kita kombo sama aktivitas'); h5 24:05 'gue ajak tidur Jason, apakah teori mimpi itu nyata? teori UFO?' and 24:16 'karena kita akan tidur dalam keadaan Jason udah sembuh'; the dream begins: white void, 'dunia futuristik... hah? lubang' (25:01) and the portal opens (25:05). Word timings from short-window faster-whisper medium with VAD (in-game voices lines 'oh Tuhan', 'ya oke' etc. are captioned as heard, in Indonesian). CUT: h4 28:57.5-29:04 (Lucia's 'Oh... the fuck?', whisper 'Sial!' at 29:02.3-29:03), the in-game subtitle 'Lucia: What... the fuck?' at 28:41-28:45 (clip starts 28:45.7), h4 29:14-29:22 (woman close-ups and Lucia's cleavage at ~29:20), the sleep scenes with Lucia in a bra top and shirtless Jason (h4 31:50-37:50, 41:00-41:50, h5 24:20-24:45), the bench-press shots at 38:10-38:40, the dream's 'Where the hell is this?' subtitle (h5 24:48-24:55). Woman scene: only the dark wide shots of her. No guns, gore, drugs in these frames. Main 40.65 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,538) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'PART 2 · MIMPI ALIEN', line 2 Volt 'LUCIA MASUK LUBANG HITAM', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ufoarc2",
+    "youtube": "lF_QYSm2T-Q",
+    "url": "https://www.youtube.com/watch?v=lF_QYSm2T-Q",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ufoarc2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:7.00,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=8.20:12.60,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=13.80:19.50,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=20.70:23.10,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=24.30:26.90,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=28.10:29.90,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=31.10:34.20,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=35.40:42.05,setpts=PTS-STARTPTS,fps=30[v9];",
+    "[0:v]trim=43.25:46.45,setpts=PTS-STARTPTS,fps=30[v10];",
+    "[0:v]trim=47.65:53.25,setpts=PTS-STARTPTS,fps=30[v11];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:7.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.90:d=0.1[a2];",
+    "[0:a]atrim=8.20:12.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.30:d=0.1[a3];",
+    "[0:a]atrim=13.80:19.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.60:d=0.1[a4];",
+    "[0:a]atrim=20.70:23.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.30:d=0.1[a5];",
+    "[0:a]atrim=24.30:26.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.50:d=0.1[a6];",
+    "[0:a]atrim=28.10:29.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.70:d=0.1[a7];",
+    "[0:a]atrim=31.10:34.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.00:d=0.1[a8];",
+    "[0:a]atrim=35.40:42.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.55:d=0.1[a9];",
+    "[0:a]atrim=43.25:46.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.10:d=0.1[a10];",
+    "[0:a]atrim=47.65:53.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.50:d=0.1[a11];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9][v10][a10][v11][a11]concat=n=11:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:538,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-13.94:measured_TP=0.81:measured_LRA=15.00:measured_thresh=-25.13:offset=-0.73:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ufoarc2.mp4"
+}
