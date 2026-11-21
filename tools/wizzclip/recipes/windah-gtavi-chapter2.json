@@ -1,0 +1,49 @@
+{
+  "description": "Windah reaches Chapter II of GTA VI and claims he is the first, comparing Lucia and Jason to Brando and Agnes (idea H4). Source = .cache/wizzclip/windah-gtavi-chapter2/source.mp4 (also Drive clip-src/windah-gtavi-chapter2.mp4): ONE part of stream-2132-2224.mp4 (Windah live 03qhcshfeMY 'GAMEPLAY #4', file t 0 = 20 Nov 2026 21:32:03 WIB) re-encoded to 1080p30: local 0-21.5 = t 2369.0-2390.5. Cuts: P2369 t 2369.45-2371.15 = local 0.45-2.15 -> output 0.00-1.70; P2369 t 2372.60-2385.55 = local 3.60-16.55 -> output 1.70-14.65; P2369 t 2386.72-2389.85 = local 17.72-20.85 -> output 14.65-17.78. Beats: 22:11:32-22:11:59 after the hospital cutscene Jason wakes up in the motel ('Where are we?'), the 'CHAPTER II' and 'Paradise Lost' title cards, Windah: 'Haaah... guys, gue orang pertama yang chapter 2, kak. Gila, Lucia, Jason ibarat Brando dan Agnes, men. Paradise Lost.' (Brando = Windah's real name), then 'kayak San Andreas pindah kota kah?'. Cut: the 'Anjay' before it (t 2385.55-2386.72, muted and removed, not in the subs), the idle bed shot (t 2371.15-2372.60), the hospital-gown cutscene before 39:24 (blood) and the gunfights at 30:00-38:26. Windah says 'gue orang pertama yang chapter 2' (his own claim, hook says 'WINDAH KLAIM'). Frames: Jason in bed, title cards, Lucia in the motel office, no guns, no swears. Main 17.78 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Clean layout as windah-gtavi-sepatu; hook line 1 Paper 'WINDAH KLAIM ORANG PERTAMA', line 2 Volt 'SAMPAI CHAPTER 2 GTA VI', Audex 66. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-chapter2",
+    "youtube": "03qhcshfeMY",
+    "url": "https://www.youtube.com/watch?v=03qhcshfeMY",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-chapter2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.45:2.15,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.60:16.55,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=17.72:20.85,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:a]atrim=0.45:2.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.60:d=0.1[a1];",
+    "[0:a]atrim=3.60:16.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=12.85:d=0.1[a2];",
+    "[0:a]atrim=17.72:20.85,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.03:d=0.1[a3];",
+    "[v1][a1][v2][a2][v3][a3]concat=n=3:v=1:a=1[cv][ca];",
+    "[cv]scale=1080:608:flags=lanczos,pad=1080:1920:0:656:color=0x0E0F12,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-14.27:measured_TP=0.04:measured_LRA=18.40:measured_thresh=-26.86:offset=-0.34:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-chapter2.mp4"
+}

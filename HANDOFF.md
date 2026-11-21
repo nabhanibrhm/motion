@@ -6,6 +6,29 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**21 Nov 2026 (Windows): chat-spike pass + two new clips (kode, chapter2).**
+- **New tool** `tools/wizzclip/chat_spikes.py` (stdlib). Input is a yt-dlp live_chat JSON. It finds spikes in the 10 s chat rate against a ±150 s median baseline and writes `.cache/wizzclip/chat/<id>-spikes.md/.json`, with ROLLCALL tags. Download the chat with `yt-dlp --skip-download --write-subs --sub-langs live_chat`.
+  - Stream #3 (`B2Bon2X1jPQ`) has no chat replay.
+  - Stream #4 (`03qhcshfeMY`): 168,906 messages, weak spikes (top score 2.34).
+- **Verdict on the six clips:**
+  - `ganteng` sits on spike #20, the "clip that" moment.
+  - `lagu`, `troll` and `bpjs` are away from spikes but fine; nothing changed.
+  - `dc` and `bigfoot2` have no chat data.
+- **Two new recipes** from spikes that match unbuilt ideas. Sources are on Drive `GTA6/clip-src/`. Captions are in `out/wizzclip/<slug>-caption.txt` (not in git).
+  - `windah-gtavi-kode` (idea C1, spike #7, chat spams 4017): safe code, 21.54 s main. Hook "CHAT LEBIH JELI DARI WINDAH / KODE BRANKAS KETEMU WKWK", fs66.
+    - "anjing" at 14:33 is cut. The "PLANT EXPLOSIVE / ENTER CODE" prompt is blurred.
+    - The HUD pistol icon and ammo count stay visible at top right.
+    - The "Ayolah ayolok" chant in the transcript was a whisper hallucination.
+  - `windah-gtavi-chapter2` (idea H4, spike #11): "gue orang pertama yang chapter 2… Brando dan Agnes", 17.78 s main. Hook "WINDAH KLAIM ORANG PERTAMA / SAMPAI CHAPTER 2 GTA VI", fs66.
+    - "anjay" is cut. Five subs were moved to y745 by hand in the .ass; redo this if the .ass is regenerated.
+- **WSL render:**
+  ```
+  for s in kode chapter2; do mkdir -p .cache/wizzclip/windah-gtavi-$s; cp "/mnt/g/My Drive/GTA6/clip-src/windah-gtavi-$s.mp4" .cache/wizzclip/windah-gtavi-$s/source.mp4; python tools/wizzclip/wizzclip.py recipe windah-gtavi-$s; done
+  ```
+  Then copy each master and its caption to G: as the existing block describes.
+- **Check by ear:** kode's "anjing" join at about 5.9–7.2 s, and the words "kebuka sendiri" and "Laki Mafia". **By eye:** whether kode's HUD pistol icon needs a blur.
+- **Not posted yet.**
+
 **21 Nov 2026 ~10:10-10:40 (WSL): the six stream #3/#4 clips rendered.**
 - **Renders** (`out/wizzclip/`, from Drive `clip-src`, no recipe changes):
 
