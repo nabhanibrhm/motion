@@ -6,6 +6,22 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**22 Nov 2026 ~18:20-22:00 (Windows): stream #6 recorded and scanned; `windah-gtavi-segel` built. RENDER IT FIRST.**
+- **Stream #6** (u_Lb6sh9N0M, 13:15-16:12 WIB, mostly racing):
+  - Hour files are in `.cache/wizzclip/windah-live6/` and Drive `G:\My Drive\GTA6\live6\`.
+  - A connection reset cut hour 2 at 37:41. The rest was refetched as `stream-1452-1515.mp4` (VOD 5855 s).
+  - Chat: `.cache/wizzclip/chat/u_Lb6sh9N0M.*`; stream-wide spikes in `windah-live6/u_Lb6sh9N0M-spikes.md`.
+  - Idea lists for all 3 hours: `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live6.md`.
+- **scan_next.sh bug:** it greps hourly.log without `-a`. yt-dlp progress output makes the log look binary, so a batch line appended late is never seen. I scanned the gap file by hand. Fix: use `grep -a` in scan_next.sh.
+- **`windah-gtavi-segel`** ("Segelnya Windah kebuka🤣"):
+  - **Content:** 25 s main plus outro. Windah's swears during the races, **uncensored**, including "ngentot" (h2 A 25:01) and "memek" (h2 B 6:44).
+  - **USER DECISION:** the user explicitly chose raw swears for MotionKlip, knowing it breaks the campaign's no-swear rule and TikTok's rules. This is a one-off; don't apply it to other clips.
+  - **Layout:** face, with new `FACES['live6'] = (1520,552,400,300)`. The source is in Drive `clip-src`.
+  - **Render:** `python tools/wizzclip/wizzclip.py recipe windah-gtavi-segel`
+  - **Caption:** Windows only, `out/wizzclip/windah-gtavi-segel-caption.txt`.
+  - **Check by ear:** the start of K4, the end of K3, and the end of K6 (just before an in-game "Ha!").
+- **Next race clips:** recommended order `scripted` (h1 win), `kebalik`, a crash montage, then `last`. None are built.
+
 **22 Nov 2026 ~03:00 (Windows): UFO arc rebuilt as 4 parts in stream order (`windah-gtavi-ufoarc1..4`). RENDER THESE FIRST, in order. The old `ufo1/2/3` are superseded: do not post them.**
 - **Why:** the user rejected the 3-part version because its cuts jumped out of stream order. The new parts tell the arc chronologically, ≤50 s each. Each opens on a ~1.2 s teaser of that part's most striking shot under the hook, then plays in order.
 - **Render on WSL** (sources are in Drive `clip-src` as `windah-gtavi-ufoarc1..4.mp4`; LN values are stored in each recipe):

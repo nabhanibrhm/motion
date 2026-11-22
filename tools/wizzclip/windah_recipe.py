@@ -59,7 +59,7 @@ HERE = Path(__file__).resolve().parent
 R = os.environ.get('WINDAH_OUT') or (HERE / 'recipes').as_posix()
 R = R.rstrip('/') + '/'
 SPECS = os.environ.get('WINDAH_SPECS') or (HERE / 'specs').as_posix()
-FACES = {'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5': (1480, 538, 440, 330)}
+FACES = {'live6': (1520, 552, 400, 300), 'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5': (1480, 538, 440, 330)}
 # 'face' layout geometry (output px)
 GAME_Y, FACE_X, FACE_Y, FACE_IW, FACE_IH, FACE_B = 364, 276, 994, 520, 390, 4
 HOOK_Y, TAG_Y, SUB_Y = 318, 326, 905
