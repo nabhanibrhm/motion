@@ -6,6 +6,21 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**22 Nov 2026 ~03:15 and ~21:50 (WSL): UFO arc and segel rendered.** Sources came from Drive `clip-src`. Each master was copied to `G:\Other computers\My Laptop\out\wizzclip\` (none existed there before), and the Windows captions were fetched into `out/wizzclip/`.
+
+| Clip | Length | Loudness | Caption |
+|---|---|---|---|
+| `windah-gtavi-ufoarc1` | 51.7 s | -14.0 LUFS | 432 chars |
+| `windah-gtavi-ufoarc2` | 44.7 s | -13.8 LUFS | 382 chars |
+| `windah-gtavi-ufoarc3` | 46.7 s | -13.6 LUFS | 389 chars |
+| `windah-gtavi-ufoarc4` | 52.0 s | -14.0 LUFS | 394 chars |
+| `windah-gtavi-segel` | 29.0 s | -14.0 LUFS | 397 chars |
+
+- **ufoarc contact sheets (P1, P4):** the hook, the "PART N DARI 4" tag, the subtitles and the face layout look right.
+  - In P1 at 0 s and ~43 s, the game's photo-mode menu ("PHOTO … OFF") shows at the right edge of the facecam box: the `live5` crop catches some game screen. It's minor; to fix it, move the crop left a little.
+- **segel:** the `live6` facecam crop is clean, and the outro card is right.
+- **Still to do:** check the swear spots by ear before posting (listed in the Windows entries below). The old `ufo1/2/3` are still in `out/wizzclip/` and on G:, unposted and replaced.
+
 **22 Nov 2026 ~18:20-22:00 (Windows): stream #6 recorded and scanned; `windah-gtavi-segel` built. RENDER IT FIRST.**
 - **Stream #6** (u_Lb6sh9N0M, 13:15-16:12 WIB, mostly racing):
   - Hour files are in `.cache/wizzclip/windah-live6/` and Drive `G:\My Drive\GTA6\live6\`.
