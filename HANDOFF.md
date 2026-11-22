@@ -6,6 +6,14 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**23 Nov 2026 00:08: Windah stream #7 recorded and scanned (no clips yet).** The stream is `MWQtXTTAgeM` ("GTA VI SIAP TAMAT 100%..."). It ran live from 21:59 to about 00:01 WIB and was recorded by `live_hourly.sh` through the detached runner `.cache/wizzclip/windah-live7/run.sh`. There are two full hour files, with no gaps:
+- `stream-2159-2259.mp4`, 3600 s
+- `stream-2259-0001.mp4`, 3688 s
+
+Both files are in `.cache/wizzclip/windah-live7/` and in Drive `G:\My Drive\GTA6\live7\`. Each has a `scan-*` folder with a transcript, contact sheets, peaks and `chat-spikes.md`. The chat replay is in `.cache/wizzclip/chat/MWQtXTTAgeM.*`. The idea lists are not written yet; the user will ask for them.
+
+`scan_next.sh` now uses `grep -a`, because yt-dlp progress output made `hourly.log` look binary. Before this fix, scan_next silently missed batches, as happened with stream #6's gap refetch.
+
 **22 Nov 2026 ~03:15 and ~21:50 (WSL): UFO arc and segel rendered.** Sources came from Drive `clip-src`. Each master was copied to `G:\Other computers\My Laptop\out\wizzclip\` (none existed there before), and the Windows captions were fetched into `out/wizzclip/`.
 
 | Clip | Length | Loudness | Caption |
