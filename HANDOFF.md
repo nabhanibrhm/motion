@@ -6,6 +6,21 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**23 Nov 2026: stream #7 idea lists and two clips built (not rendered).** The idea list is `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live7.md`. The "SIAP TAMAT" title has no finale or credits, and most of the stream is NSFW (guns, heists, strip club, the Red Hulk fight).
+
+The user picked two clips. Both use the facecam-below layout with the new face rect `FACES['live7'] = (1480, 516, 440, 330)` in `windah_recipe.py`. Specs and recipes are in git. The sources are in Drive `GTA6/clip-src/<slug>.mp4`, and the captions are in `out/wizzclip/<slug>-caption.txt`.
+
+| Clip | Length | Hook | Source cuts (hour 2, `stream-2259-0001.mp4`, WIB = local + 22:59) |
+|---|---|---|---|
+| `windah-gtavi-mending-balap` | 22.6 s + outro | RAMPOK CAPEK-CAPEK / MENDING BALAP | teaser 30:40, then 20:26-20:32, 29:25-29:35, 30:05.8-30:10.85, 30:38-30:41.5 |
+| `windah-gtavi-hulk` | 22.7 s + outro | RED HULK / BENERAN ADA DI GTA VI | teaser 52:13.5 (giant at the barn, no hit), then 53:03.6-53:19.9, 56:13.9-56:29.7 |
+
+Before posting:
+- Check the dollar amount by ear. Medium hears "lima ratus dolar", small heard "50", and the subs say LIMA RATUS. Times: 20:28, 29:28, 30:09, 30:40.
+- Eyeball hulk frame 0. The giant has red stains on his leg; if it reads as gore, swap the teaser.
+
+Render on WSL with `python tools/wizzclip/wizzclip.py recipe <slug>`.
+
 **23 Nov 2026 00:08: Windah stream #7 recorded and scanned (no clips yet).** The stream is `MWQtXTTAgeM` ("GTA VI SIAP TAMAT 100%..."). It ran live from 21:59 to about 00:01 WIB and was recorded by `live_hourly.sh` through the detached runner `.cache/wizzclip/windah-live7/run.sh`. There are two full hour files, with no gaps:
 - `stream-2159-2259.mp4`, 3600 s
 - `stream-2259-0001.mp4`, 3688 s

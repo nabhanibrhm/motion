@@ -1,0 +1,60 @@
+{
+  "description": "Windah Basudara's running joke in GTA VI: the heist barely pays, so he would rather race (mending balap). Source = .cache/wizzclip/windah-gtavi-mending-balap/source.mp4 (also Drive clip-src/windah-gtavi-mending-balap.mp4): seven pieces (0.6 s padding each) of the stream #7 hour-2 recording (windah-live7/stream-2259-0001.mp4, WIB = local + 22:59) in output order, 1080p30 re-encoded and joined. Cuts: T t 1840.00-1841.50 = local 0.60-2.10 -> output 0.00-1.50; K1 t 1226.30-1232.00 = local 3.30-9.00 -> output 1.50-7.20; K2 t 1765.20-1770.00 = local 10.20-15.00 -> output 7.20-12.00; K2b t 1771.80-1775.00 = local 16.20-19.40 -> output 12.00-15.20; K3 t 1805.80-1808.00 = local 20.60-22.80 -> output 15.20-17.40; K4 t 1809.00-1810.85 = local 24.00-25.85 -> output 17.40-19.25; K5 t 1838.20-1841.50 = local 27.05-30.35 -> output 19.25-22.55. Running joke: heists pay next to nothing, so Windah would rather race. Frame-0 teaser = the punchline shot (30:40 'bintang empat, lima ratus dolar', 1.5 s), then stream order: 20:26 on the boat after the getaway, 'mending gua balap ga sih guys? cuma lima ratus dolar' with the 'Non-Lethal' and 'Clean Getaway' toasts (cut ends 20:32, before the character status page that starts ~20:39); 29:25 'mending go balap, ga harus muter-muter ga jelas gini, dapet lima ribu' and 29:32 'dapet dua ribu, ini udah dikejar polisi' (white sedan, 4-star chase, no gunfire or people on screen); 30:06 'balap gue juara satu terus, Joy', 30:09 'lima ratus dolar? What?', and the closing 30:38 'udah capek-capek bintang empat, lima ratus dolar'. Word timings from faster-whisper medium with VAD on short windows (+-5 s). CUT: 20:09 'anjir, cuma 500 dolar', 20:22 in-game 'mereka membunuh anakmu', 20:40-20:55 Lucia bikini status page, 29:22-29:24 'mending go balap, anjir' (swear), the two 'bullshit' lines at 29:59-30:03, 30:42 'babi-babi', 29:35-30:05 filler. Amounts are what medium hears ('500 dolar' x3, 'Rp5.000', 'Rp2.000'); the small model heard '50 dolar'. Check by ear before posting. Digits are avoided in subs (Audex draws 5 like S). No guns, gore, bikini, gambling, real brand or self-promo in the played frames. Main 22.55 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'RAMPOK CAPEK-CAPEK', line 2 Volt 'MENDING BALAP', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-mending-balap",
+    "youtube": "MWQtXTTAgeM",
+    "url": "https://www.youtube.com/watch?v=MWQtXTTAgeM",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-mending-balap.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:2.10,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.30:9.00,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=10.20:15.00,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=16.20:19.40,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=20.60:22.80,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=24.00:25.85,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=27.05:30.35,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:a]atrim=0.60:2.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.40:d=0.1[a1];",
+    "[0:a]atrim=3.30:9.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.60:d=0.1[a2];",
+    "[0:a]atrim=10.20:15.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.70:d=0.1[a3];",
+    "[0:a]atrim=16.20:19.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.10:d=0.1[a4];",
+    "[0:a]atrim=20.60:22.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.10:d=0.1[a5];",
+    "[0:a]atrim=24.00:25.85,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.75:d=0.1[a6];",
+    "[0:a]atrim=27.05:30.35,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.20:d=0.1[a7];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7]concat=n=7:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-8.51:measured_TP=1.84:measured_LRA=9.30:measured_thresh=-19.03:offset=-0.21:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-mending-balap.mp4"
+}

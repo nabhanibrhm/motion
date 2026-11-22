@@ -1,0 +1,56 @@
+{
+  "description": "Windah Basudara meets the Red Hulk in GTA VI: 'Gila, Red Hulk, nyata!', then 'dia Hulk Jump' over the bench press. Source = .cache/wizzclip/windah-gtavi-hulk/source.mp4 (also Drive clip-src/windah-gtavi-hulk.mp4): five pieces (0.6 s padding each) of the stream #7 hour-2 recording (windah-live7/stream-2259-0001.mp4, WIB = local + 22:59) in output order, 1080p30 re-encoded and joined. Cuts: T t 3133.50-3135.00 = local 0.60-2.10 -> output 0.00-1.50; B1 t 3183.60-3190.50 = local 3.30-10.20 -> output 1.50-8.40; B1b t 3197.60-3199.90 = local 11.40-13.70 -> output 8.40-10.70; B2 t 3373.90-3383.40 = local 14.90-24.40 -> output 10.70-20.20; B3 t 3387.20-3389.70 = local 25.60-28.10 -> output 20.20-22.70. Windah meets the giant red character (the Kyle side quest). Frame-0 teaser = the red giant standing at the barn door after the fight (52:13.5, 1.5 s, nobody hit in the shot), then stream order: 53:03.6 'Gila, Red Hulk, nyata, Joy!' and 'kali ini gue ngalah sama polisi, gue pulang' while driving away from the cops (3 stars, no gunfire on screen), 53:17.6 'kali ini gue ngalah segala-galanya ya', then 56:14 at the motel bench press, 'ada cutscene guys pas Red Hulk? eh dia lompat kocak, dia terbang ke atas ... terus dia Hulk Jump' (56:27). Word timings from faster-whisper medium with VAD on short windows. CUT: the whole fight 50:00-52:10 (throws, burning car, blood, bear hug at 52:00-52:08), the 52:37 swear ('anjir, beneran red'), 52:27-52:48 'polisi, babi', 53:24 whisper 'Red Bull' (misheard Hulk, brand), 53:11-53:17 repeated 'gue pulang' over a menu, 56:30 onward ('nonton youtube doang', platform name, then the third-party video). 'Hulk' is a character nickname only. Teaser check: the giant's skin is red with some scars/stains and torn jeans; it stands still and nobody is hit in 52:13.5-52:15 (a bear hug on Jason happens at 52:10-52:12, just before). Main 22.70 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'RED HULK', line 2 Volt 'BENERAN ADA DI GTA VI', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-hulk",
+    "youtube": "MWQtXTTAgeM",
+    "url": "https://www.youtube.com/watch?v=MWQtXTTAgeM",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-hulk.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:2.10,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.30:10.20,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=11.40:13.70,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=14.90:24.40,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=25.60:28.10,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:a]atrim=0.60:2.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.40:d=0.1[a1];",
+    "[0:a]atrim=3.30:10.20,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.80:d=0.1[a2];",
+    "[0:a]atrim=11.40:13.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.20:d=0.1[a3];",
+    "[0:a]atrim=14.90:24.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=9.40:d=0.1[a4];",
+    "[0:a]atrim=25.60:28.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.40:d=0.1[a5];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5]concat=n=5:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-8.51:measured_TP=0.56:measured_LRA=12.30:measured_thresh=-19.34:offset=1.61:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-hulk.mp4"
+}

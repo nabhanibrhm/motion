@@ -1,0 +1,37 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:22.55,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}RAMPOK CAPEK-CAPEK\N{\c&H0029FCE6&}MENDING BALAP
+Dialogue: 0,0:00:00.00,0:00:22.55,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.05,0:00:00.70,Sub,,0,0,0,,{\an5\pos(540,905)}BINTANG EMPAT
+Dialogue: 1,0:00:00.76,0:00:01.48,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}LIMA RATUS DOLAR{\c&H0029FCE6&}
+Dialogue: 1,0:00:01.94,0:00:03.36,Sub,,0,0,0,,{\an5\pos(540,905)}MENDING GUA {\c&H00EFF3F4&}BALAP{\c&H0029FCE6&}
+Dialogue: 1,0:00:03.36,0:00:03.92,Sub,,0,0,0,,{\an5\pos(540,905)}GA SIH, GUYS?
+Dialogue: 1,0:00:03.96,0:00:04.60,Sub,,0,0,0,,{\an5\pos(540,905)}CUMA {\c&H00EFF3F4&}LIMA RATUS{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.62,0:00:06.06,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}NON-LETHAL{\c&H0029FCE6&}, NICE!
+Dialogue: 1,0:00:06.08,0:00:07.18,Sub,,0,0,0,,{\an5\pos(540,905)}CLEAN GETAWAY, NICE!
+Dialogue: 1,0:00:07.56,0:00:08.64,Sub,,0,0,0,,{\an5\pos(540,905)}MENDING GO {\c&H00EFF3F4&}BALAP{\c&H0029FCE6&}
+Dialogue: 1,0:00:08.66,0:00:09.82,Sub,,0,0,0,,{\an5\pos(540,905)}GA HARUS MUTER-MUTER
+Dialogue: 1,0:00:09.84,0:00:10.66,Sub,,0,0,0,,{\an5\pos(540,905)}GA JELAS GINI,
+Dialogue: 1,0:00:10.68,0:00:11.95,Sub,,0,0,0,,{\an5\pos(540,905)}DAPET {\c&H00EFF3F4&}LIMA RIBU{\c&H0029FCE6&}
+Dialogue: 1,0:00:12.08,0:00:13.10,Sub,,0,0,0,,{\an5\pos(540,905)}YA, DAPET {\c&H00EFF3F4&}DUA RIBU{\c&H0029FCE6&}
+Dialogue: 1,0:00:13.12,0:00:14.60,Sub,,0,0,0,,{\an5\pos(540,905)}INI UDAH DIKEJAR POLISI
+Dialogue: 1,0:00:14.62,0:00:15.18,Sub,,0,0,0,,{\an5\pos(540,905)}SANA, SINI
+Dialogue: 1,0:00:15.28,0:00:16.32,Sub,,0,0,0,,{\an5\pos(540,905)}BALAP GUE {\c&H00EFF3F4&}JUARA SATU{\c&H0029FCE6&}
+Dialogue: 1,0:00:16.34,0:00:17.35,Sub,,0,0,0,,{\an5\pos(540,905)}TERUS, JOY!
+Dialogue: 1,0:00:17.56,0:00:18.80,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}LIMA RATUS DOLAR{\c&H0029FCE6&}?
+Dialogue: 1,0:00:18.84,0:00:19.20,Sub,,0,0,0,,{\an5\pos(540,905)}WHAT?
+Dialogue: 1,0:00:19.35,0:00:21.07,Sub,,0,0,0,,{\an5\pos(540,905)}ADUH, UDAH CAPEK-CAPEK
+Dialogue: 1,0:00:21.09,0:00:21.77,Sub,,0,0,0,,{\an5\pos(540,905)}BINTANG EMPAT
+Dialogue: 1,0:00:21.81,0:00:22.53,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}LIMA RATUS DOLAR{\c&H0029FCE6&}

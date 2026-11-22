@@ -1,0 +1,34 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:22.70,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}RED HULK\N{\c&H0029FCE6&}BENERAN ADA DI GTA VI
+Dialogue: 0,0:00:00.00,0:00:22.70,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.05,0:00:01.45,Sub,,0,0,0,,{\an5\pos(540,905)}RED HULK ITU {\c&H00EFF3F4&}NYATA{\c&H0029FCE6&}
+Dialogue: 1,0:00:01.90,0:00:02.88,Sub,,0,0,0,,{\an5\pos(540,905)}GILA, {\c&H00EFF3F4&}RED HULK{\c&H0029FCE6&},
+Dialogue: 1,0:00:02.88,0:00:04.30,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}NYATA{\c&H0029FCE6&}, JOY!
+Dialogue: 1,0:00:04.32,0:00:05.02,Sub,,0,0,0,,{\an5\pos(540,905)}PULANG DULU,
+Dialogue: 1,0:00:05.06,0:00:06.20,Sub,,0,0,0,,{\an5\pos(540,905)}KALI INI GUE {\c&H00EFF3F4&}NGALAH{\c&H0029FCE6&}
+Dialogue: 1,0:00:06.20,0:00:06.70,Sub,,0,0,0,,{\an5\pos(540,905)}SAMA POLISI
+Dialogue: 1,0:00:06.98,0:00:08.35,Sub,,0,0,0,,{\an5\pos(540,905)}GUE PULANG
+Dialogue: 1,0:00:08.48,0:00:09.46,Sub,,0,0,0,,{\an5\pos(540,905)}KALI INI GUE {\c&H00EFF3F4&}NGALAH{\c&H0029FCE6&},
+Dialogue: 1,0:00:09.48,0:00:10.65,Sub,,0,0,0,,{\an5\pos(540,905)}SEGALA-GALANYA YA
+Dialogue: 1,0:00:10.80,0:00:12.60,Sub,,0,0,0,,{\an5\pos(540,905)}ADA CUTSCENE GAK
+Dialogue: 1,0:00:12.60,0:00:14.38,Sub,,0,0,0,,{\an5\pos(540,905)}PAS {\c&H00EFF3F4&}RED HULK{\c&H0029FCE6&}?
+Dialogue: 1,0:00:14.38,0:00:15.90,Sub,,0,0,0,,{\an5\pos(540,905)}EH, DIA {\c&H00EFF3F4&}LOMPAT{\c&H0029FCE6&} KOCAK
+Dialogue: 1,0:00:15.92,0:00:16.66,Sub,,0,0,0,,{\an5\pos(540,905)}TERBANG KE ATAS
+Dialogue: 1,0:00:16.68,0:00:18.10,Sub,,0,0,0,,{\an5\pos(540,905)}APA SIH, NGADA-NGADA MULU
+Dialogue: 1,0:00:18.10,0:00:19.30,Sub,,0,0,0,,{\an5\pos(540,905)}ORANG DIA BILANG CARI GUE
+Dialogue: 1,0:00:19.32,0:00:20.15,Sub,,0,0,0,,{\an5\pos(540,905)}TERUS DIA TERBANG
+Dialogue: 1,0:00:20.30,0:00:21.40,Sub,,0,0,0,,{\an5\pos(540,905)}ORANG DIA BILANG CARI GUE,
+Dialogue: 1,0:00:21.45,0:00:22.65,Sub,,0,0,0,,{\an5\pos(540,905)}TERUS DIA {\c&H00EFF3F4&}HULK JUMP{\c&H0029FCE6&}
