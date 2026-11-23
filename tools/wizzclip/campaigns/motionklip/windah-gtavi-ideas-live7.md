@@ -6,7 +6,7 @@ This follows the hourly format of `windah-gtavi-ideas-live6.md`. The user picks 
   - Hour 1 is `stream-2159-2259.mp4`: WIB = local + 21:59.
   - Hour 2 is `stream-2259-0001.mp4` (61:28 long): WIB = local + 22:59.
   - Times can drift up to ~10 s, so check by ear before cutting.
-- The recording and scans are in `.cache/wizzclip/windah-live7/` (not in git) and in Drive `GTA6/live7`. The chat replay is `.cache/wizzclip/chat/MWQtXTTAgeM.*`.
+- The recording and scans are in `.cache/wizzclip/windah-live7/` (not in git) and in Drive `GTA6/live7-2026-11-22`. The chat replay is `.cache/wizzclip/chat/MWQtXTTAgeM.*`.
 - These clips are already built, so they're skipped: kode, chapter2, ganteng, sepatu/sepatu2, troll, bigfoot, UFO arc, map-leonida, vs5, segel.
 - Transcript caveat: whisper `small` only hears Windah's own voice reliably. Quotes below are Windah's lines only. Each hour section lists its gaps and garbled runs.
 - The stream ran 22 Nov 2026, 21:59 to about 00:01 WIB. The title says "SIAP TAMAT 100%", but there is **no finale and no credits**. Chapter 2 is unfinished, and the Red Hulk mystery is left "next episode" (h2 1:01:25).

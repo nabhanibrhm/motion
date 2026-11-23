@@ -7,7 +7,7 @@
 # and saves .cache/wizzclip/chat/<id>.live_chat.json + <id>.start (stream start epoch, because live
 # chat has timestamps only); scan_next.sh then runs chat_spikes.py per hour. Opt out: CHAT=0 or --no-chat.
 # Usage: bash tools/wizzclip/live_hourly.sh VIDEO_ID OUT_DIR DRIVE_DIR [--no-chat]
-# Example: bash tools/wizzclip/live_hourly.sh QSPPyA1736U .cache/wizzclip/windah-live2 "/g/My Drive/GTA6/live2"
+# Example: bash tools/wizzclip/live_hourly.sh QSPPyA1736U .cache/wizzclip/windah-live2 "/g/My Drive/GTA6/live2-2026-11-19"
 ID="$1"; OUT="$2"; DRIVE="$3"
 [ "$4" = "--no-chat" ] && CHAT=0
 URL="https://www.youtube.com/watch?v=$ID"

@@ -6,6 +6,18 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**23 Nov 2026 ~06:30 (WSL): mending-balap and hulk rendered; Drive stream folders renamed.**
+
+| Clip | Length | Loudness | Caption |
+|---|---|---|---|
+| `windah-gtavi-mending-balap.mp4` | 26.6 s | -14.0 LUFS | 364 chars |
+| `windah-gtavi-hulk.mp4` | 26.7 s | -14.0 LUFS | 363 chars |
+
+- Both masters were copied to `G:\Other computers\My Laptop\out\wizzclip\` (neither existed there before), and the captions were fetched into `out/wizzclip/`. Each caption has only the 5 campaign hashtags.
+- The live7 face crop is clean. Hulk frame 0 was checked at full size: the red on the giant's leg reads as dirt, not gore, so the teaser stays.
+- Still to do before posting: check the mending-balap dollar amount by ear (20:28, 29:28, 30:09, 30:40).
+- **Drive stream folders are now `live[n]-[yyyy-mm-dd]`:** `live1-2026-11-18` (new, holds stream #1's 4 files that were in the `GTA6` root), `live2-2026-11-19`, `live3-2026-11-19`, `live4-2026-11-20`, `live5-2026-11-21`, `live6-2026-11-22`, `live7-2026-11-22`. File names (`stream-HHMM-HHMM.mp4`) and `clip-src` are unchanged. Older entries below that say stream #1 is in the `GTA6` root or use `live5`/`live6`/`live7` without a date are out of date. On Windows, point any recorder or `run.sh` at the new folder names.
+
 **23 Nov 2026: stream #7 idea lists and two clips built (not rendered).** The idea list is `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live7.md`. The "SIAP TAMAT" title has no finale or credits, and most of the stream is NSFW (guns, heists, strip club, the Red Hulk fight).
 
 The user picked two clips. Both use the facecam-below layout with the new face rect `FACES['live7'] = (1480, 516, 440, 330)` in `windah_recipe.py`. Specs and recipes are in git. The sources are in Drive `GTA6/clip-src/<slug>.mp4`, and the captions are in `out/wizzclip/<slug>-caption.txt`.
@@ -25,7 +37,7 @@ Render on WSL with `python tools/wizzclip/wizzclip.py recipe <slug>`.
 - `stream-2159-2259.mp4`, 3600 s
 - `stream-2259-0001.mp4`, 3688 s
 
-Both files are in `.cache/wizzclip/windah-live7/` and in Drive `G:\My Drive\GTA6\live7\`. Each has a `scan-*` folder with a transcript, contact sheets, peaks and `chat-spikes.md`. The chat replay is in `.cache/wizzclip/chat/MWQtXTTAgeM.*`. The idea lists are not written yet; the user will ask for them.
+Both files are in `.cache/wizzclip/windah-live7/` and in Drive `G:\My Drive\GTA6\live7-2026-11-22\`. Each has a `scan-*` folder with a transcript, contact sheets, peaks and `chat-spikes.md`. The chat replay is in `.cache/wizzclip/chat/MWQtXTTAgeM.*`. The idea lists are not written yet; the user will ask for them.
 
 `scan_next.sh` now uses `grep -a`, because yt-dlp progress output made `hourly.log` look binary. Before this fix, scan_next silently missed batches, as happened with stream #6's gap refetch.
 
@@ -46,7 +58,7 @@ Both files are in `.cache/wizzclip/windah-live7/` and in Drive `G:\My Drive\GTA6
 
 **22 Nov 2026 ~18:20-22:00 (Windows): stream #6 recorded and scanned; `windah-gtavi-segel` built. RENDER IT FIRST.**
 - **Stream #6** (u_Lb6sh9N0M, 13:15-16:12 WIB, mostly racing):
-  - Hour files are in `.cache/wizzclip/windah-live6/` and Drive `G:\My Drive\GTA6\live6\`.
+  - Hour files are in `.cache/wizzclip/windah-live6/` and Drive `G:\My Drive\GTA6\live6-2026-11-22\`.
   - A connection reset cut hour 2 at 37:41. The rest was refetched as `stream-1452-1515.mp4` (VOD 5855 s).
   - Chat: `.cache/wizzclip/chat/u_Lb6sh9N0M.*`; stream-wide spikes in `windah-live6/u_Lb6sh9N0M-spikes.md`.
   - Idea lists for all 3 hours: `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live6.md`.
@@ -133,7 +145,7 @@ Both files are in `.cache/wizzclip/windah-live7/` and in Drive `G:\My Drive\GTA6
 - **Not posted.** Order: ufo1 → ufo2 → ufo3, at least 2 h apart, ahead of the older queue (dc-face, bigfoot2, kode, ganteng/ganteng-face, chapter2, bpjs, lagu).
 
 **22 Nov 2026 ~01:30 (Windows): stream #5 recorded, UFO 3-part series built. Render these first, in order.**
-- **Recording:** stream #5 `lF_QYSm2T-Q` ("GTA VI MENUJU 100% KATANYA ADA UFO", 21 Nov 19:16–00:14 WIB) was recorded by `live_hourly.sh` into `.cache/wizzclip/windah-live5/` (Windows). Hours are also on Drive `G:\My Drive\GTA6\live5\`. Live chat was captured, and every hour was scanned with chat spikes.
+- **Recording:** stream #5 `lF_QYSm2T-Q` ("GTA VI MENUJU 100% KATANYA ADA UFO", 21 Nov 19:16–00:14 WIB) was recorded by `live_hourly.sh` into `.cache/wizzclip/windah-live5/` (Windows). Hours are also on Drive `G:\My Drive\GTA6\live5-2026-11-21\`. Live chat was captured, and every hour was scanned with chat spikes.
 - **Ideas:** `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live5.md` holds the hour 1 list, the full UFO/alien arc timeline with ToC times, and short lists for hours 2–5.
   - The UFO and the alien are real gameplay. Lucia's dream (h5 24:45–33:40) gives the clue code 3241, which opens the "Restricted area" door.
 - **Facecam:** `windah_recipe.py` gets a `'live5'` face rect (1480,538,440,330). All three parts use `layout='face'`.
