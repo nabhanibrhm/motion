@@ -231,6 +231,28 @@
       "commonsUrl": "https://commons.wikimedia.org/wiki/File:DPR_Habiburokhman.jpg",
       "author": "KPU (General Election Commission)",
       "licence": "Public domain"
+    },
+    {
+      "slug": "sugiono",
+      "file": "people/sugiono.jpg",
+      "name": "Sugiono",
+      "role": "Menko PMK, Sekjen Partai Gerindra; calon wapres usulan Presiden (23 Nov 2026)",
+      "roleAsOf": "2026-11",
+      "credit": "Kemlu RI (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Sugiono,_Menteri_Luar_Negeri_Indonesia_(2024).jpg",
+      "author": "Ministry of Foreign Affairs of Indonesia",
+      "licence": "Public domain"
+    },
+    {
+      "slug": "amran",
+      "file": "people/amran.jpg",
+      "name": "Andi Amran Sulaiman",
+      "role": "Menteri Pertanian; calon wapres usulan Presiden (23 Nov 2026)",
+      "roleAsOf": "2026-11",
+      "credit": "Badan Pangan Nasional (domain publik)",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Amran_Sulaiman_(2025).png",
+      "author": "Badan Pangan Nasional",
+      "licence": "Public domain"
     }
   ]
 }

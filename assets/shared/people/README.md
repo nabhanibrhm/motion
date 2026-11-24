@@ -42,6 +42,8 @@ Portraits for the `hw-hook` and `hw-quote` templates, referenced from `episode.j
 | andra-soni.jpg | Andra Soni | https://commons.wikimedia.org/wiki/File:Andra_Soni,_Gubernur_Banten_(2025).png | Pemerintah Provinsi Banten | Public domain (official 2025 governor portrait, transparent background flattened to white) |
 | badak-jawa.jpg | Badak jawa (Rhinoceros sondaicus), not a person | https://commons.wikimedia.org/wiki/File:Rhinoceros_sondaicus_in_London_Zoo.jpg | T. Dixon, The Zoological Society of London | Public domain (1884 photo of a live Javan rhino captured near Jakarta, London Zoo 1874-1885; 550x360 original, crop upscaled ~1.7x) |
 | habiburokhman.jpg | Habiburokhman | https://commons.wikimedia.org/wiki/File:DPR_Habiburokhman.jpg | KPU (General Election Commission) | Public domain (2023 KPU DPR-candidate portrait, UU 28/2014 Pasal 43; 960x1440 Commons thumbnail cropped to 3:4) |
+| sugiono.jpg | Sugiono | https://commons.wikimedia.org/wiki/File:Sugiono,_Menteri_Luar_Negeri_Indonesia_(2024).jpg | Ministry of Foreign Affairs of Indonesia (Kemlu RI) | Public domain (official Nov 2024 Menlu portrait, 720x1080 original, crop 540x720 scaled to 450x600; now Menko PMK) |
+| amran.jpg | Andi Amran Sulaiman | https://commons.wikimedia.org/wiki/File:Amran_Sulaiman_(2025).png | Badan Pangan Nasional | Public domain (official Oct 2025 portrait, 1288x1600 PNG, crop 780x1040 scaled to 450x600) |
 
 Roles and on-screen `credit` strings per file: `people.json`. Roles as of Nov 2026 (Kapolri changed 1 Oct 2026; Listyo Sigit is now Kepala Staf Kepresidenan). Not included: Roy Suryo (only a 2017 DPR portrait, 550 px, formal costume, framing inconsistent with the rest) and Tifauzia Tyassuma (only a video screenshot); both use the silhouette.
 

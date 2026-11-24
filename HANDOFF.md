@@ -6,6 +6,26 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**24 Nov 2026: stream #8 recorded, scanned and idea-listed; HotWizz #30 cawapres posted; segel and hulk posted.**
+
+- **Stream #8:** the video ID is `z6sBvvg_004`, with a lowercase z. Tool output can show it as `Z6s…`, and the wrong case makes YouTube say "unavailable".
+  - It ran from 19:04 to 23:46 WIB on 23 Nov.
+  - Pieces: `stream-1904-2004`, `-2004-2104`, `-2104-2204` and `-2204-2304` (3600 s each), plus `stream-2304-2346` (2484 s). The last piece was refetched from the VOD after the live recorder failed at the end.
+  - All five are in `.cache/wizzclip/windah-live8/` and in Drive `G:\My Drive\GTA6\live8-2026-11-23\`. Each has a full scan, including `chat-spikes.md` built from the full chat replay (`.cache/wizzclip/chat/z6sBvvg_004.*`).
+- **Stream #8 idea list:** `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live8.md`.
+  - It's a weak stream, and there is no ending: it stops on a "satu misteri lagi" cliffhanger.
+  - Top picks: misteri → rumah-nanas (a 2-part arc), nitro, vice-city, patung and grafiti.
+  - The user hasn't picked any yet. Stream #8 still needs a `FACES['live8']` rect when the first clip is built.
+- **`LIVE_URL` override:** `live_hourly.sh` and `chat_capture.sh` now accept an optional `LIVE_URL` env var (for example the channel `/live` URL). Without it they behave as before. It wasn't needed in the end, because the real fault was the ID case.
+- **HotWizz #30 `cawapres` (case #13):**
+  - Covers Prabowo's letter naming the two vice-president candidates, Amran first, plus public opinion on both names.
+  - `out/uploaded/30-cawapres-short.mp4` (57.7 s) is posted.
+  - New three-photo cover: `cover.people` with 3 entries, rendered by `coverTrio()` in `hotwizz-kit.js`. It's validated in `hotwizz.mjs` and covered by a test. The other 27 episodes produce identical output.
+  - New public-domain photos: `assets/shared/people/amran.jpg` and `sugiono.jpg`.
+  - Cartesia reads raw "MPR" correctly, so there's no respelling. `hw-split` headlines don't support `*emphasis*`, and a stamp longer than about 12 characters overflows.
+- **Posted Wizz Clips:** segel and hulk were moved to `out/wizzclip/uploaded/`, and their Drive `clip-src` files were deleted.
+- **Research:** KASUS/HotWizz topics are in `.cache/research/2026-11-23/hotwizz-kasus.md` (not in git). Top pick: UMP 2027. Others: pemutihan pajak kendaraan (ends 30 Nov) and PPN DTP on Nataru flight tickets.
+
 **23 Nov 2026 ~06:30 (WSL): mending-balap and hulk rendered; Drive stream folders renamed.**
 
 | Clip | Length | Loudness | Caption |

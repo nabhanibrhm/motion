@@ -433,11 +433,35 @@ ${[0, 1, 2].map((i) => `<rect ${S_} x="${170 + i * 24}" y="${300 - i * 60}" widt
       chip: (t) => `<span style="display:inline-block;padding:8px 32px;border-radius:14px;border:4px solid ${TX};font-family:${osw};font-weight:700;font-size:50px;letter-spacing:3px;color:${TX};white-space:nowrap">${rich(t)}</span>`,
       cta: (t) => `<span style="display:inline-block;padding:8px 40px;border-radius:14px;background:${TX};font-family:${osw};font-weight:700;font-size:52px;letter-spacing:4px;color:${BG};white-space:nowrap">${esc(plain(t))}</span>`,
     };
+    /** Multi-person cover (cover.people = [proposer, left candidate, right candidate]): proposer large behind, the two
+     * candidates as equal-size portraits side by side, all in the same B&W grade. Content stays in x 72..960, y < 1632. */
+    const coverTrio = (c, cv) => {
+      if (cv <= 0) return "";
+      const [lead, a, b] = c.people;
+      const m = /#s*d+/.exec(String(c.stamp));
+      const num = m ? m[0].replace(/s+/g, "") : String(c.stamp);
+      const brand = m ? String(c.stamp).slice(0, m.index).trim() : "";
+      const label = [brand, c.chip ? plain(c.chip) : null].filter(Boolean).join(" · ");
+      const ts = fit(c.title, 900, 400, 130, 64, { lh: 0.98, cw: 0.5 });
+      const CW = (WIDE - 40) / 2, CY = 600, CH = 440;
+      const img = (o) => (o.photo ? `<img src=${JSON.stringify(o.photo)} alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:${GRADE_BW}">` : silhouette());
+      const card = (o, x) =>
+        `<div style="position:absolute;left:${x}px;top:${CY}px;width:${CW}px;height:${CH}px;border-radius:24px;overflow:hidden;background:#1c1c1e;border:4px solid ${TX};box-sizing:border-box">${img(o)}<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0) 55%,rgba(11,11,12,0.92))"></div><div style="position:absolute;left:20px;right:12px;bottom:16px;font-family:${osw};font-weight:700;font-size:${fit(o.name, CW - 40, 80, 44, 28, { lh: 1.04, cw: 0.5 })}px;line-height:1.04;color:${TX};text-transform:uppercase">${esc(plain(o.name))}</div></div>`;
+      const credits = [...new Set(c.people.map((o) => o.credit).filter(Boolean))];
+      return `<div style="position:absolute;inset:0;z-index:50;background:${BG};opacity:${n(cv, 3)}"><div style="position:absolute;left:0;top:0;width:1080px;height:800px;overflow:hidden">${img(lead)}</div><div style="position:absolute;left:0;top:0;width:1080px;height:800px;background:linear-gradient(180deg,rgba(11,11,12,0.55) 0%,rgba(11,11,12,0) 26%,rgba(11,11,12,0.2) 50%,${BG} 100%)"></div>
+<div style="position:absolute;left:${X0}px;top:270px;font-family:${osw};font-weight:700;font-size:150px;line-height:1;color:transparent;-webkit-text-stroke:4px ${TX}">${esc(num)}</div>
+<div style="position:absolute;left:${X0}px;top:540px;font-family:${mono};font-weight:600;font-size:26px;letter-spacing:3px;color:${TX};white-space:nowrap">${esc(plain(lead.name).toUpperCase())}${lead.role ? ` · ${esc(lead.role.toUpperCase())}` : ""}</div>
+${card(a, X0)}${card(b, X0 + CW + 40)}
+${label ? `<div style="position:absolute;left:${X0}px;top:1068px;font-family:${mono};font-weight:600;font-size:28px;letter-spacing:3px;color:${TX};white-space:nowrap"><span style="color:${RED}">●</span> ${esc(label)}</div>` : ""}
+<div style="position:absolute;left:${X0 - 4}px;top:1118px;width:900px;font-family:${osw};font-weight:700;font-size:${ts}px;line-height:0.98;letter-spacing:1px;color:${TX};text-transform:uppercase">${rich(c.title)}</div>
+${credits.length ? `<div style="position:absolute;left:${X0}px;top:1560px;width:${WIDE}px;font-family:${mono};font-weight:500;font-size:16px;line-height:1.3;color:${DIM}">Foto: ${esc(credits.join(" · "))}</div>` : ""}</div>`;
+    };
     /** Title-only cover card (z 50, over everything, inside the centred 3:4 crop y 240-1680) at opacity cv; shared by
      * hw-cover's tail and hw-hook's introCover. Big B&W face (when cover.person), outlined episode number, one red word. */
     const coverCard = (c, cv) => {
       if (cv <= 0) return "";
       const cp = c.person;
+      if (c.people) return coverTrio(c, cv);
       const m = /#\s*\d+/.exec(String(c.stamp));
       const num = m ? m[0].replace(/\s+/g, "") : String(c.stamp);
       const brand = m ? String(c.stamp).slice(0, m.index).trim() : "";

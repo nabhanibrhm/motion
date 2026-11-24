@@ -10,7 +10,7 @@
 # Example: bash tools/wizzclip/live_hourly.sh QSPPyA1736U .cache/wizzclip/windah-live2 "/g/My Drive/GTA6/live2-2026-11-19"
 ID="$1"; OUT="$2"; DRIVE="$3"
 [ "$4" = "--no-chat" ] && CHAT=0
-URL="https://www.youtube.com/watch?v=$ID"
+URL="${LIVE_URL:-https://www.youtube.com/watch?v=$ID}"  # LIVE_URL overrides it, e.g. https://www.youtube.com/@windahbasudara/live when the watch URL says "unavailable"
 ROOT="/d/Dev/motion"
 PY="$ROOT/.venv/Scripts/python"
 YTDLP="$ROOT/.venv/Scripts/yt-dlp.exe"

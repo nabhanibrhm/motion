@@ -160,6 +160,10 @@ test('the browser kit draws every template deterministically at 30 and fractiona
   const cardHtml=h=>h.slice(h.indexOf('<div style="position:absolute;inset:0;z-index:50'));
   assert.ok(cardHtml(tail).startsWith(cardHtml(head).slice(0,600)),'hook frame 0 shows the cover card');
   assert.doesNotMatch(hw.draw('hook',40,{S,D},intro),/z-index:50/);
+  // cover.people: proposer + two candidates, equal-size candidate cards; the single-person cover is unchanged
+  const ppl=['a','b','c'].map(k=>({name:k.toUpperCase(),photo:`public/people/${k}.jpg`,credit:`cr-${k}`}));
+  const trio=hw.draw('cover',D-1,{S,D},{...props.cover,cover:{...card,people:ppl}});
+  assert.match(trio,/z-index:50/);assert.equal((trio.match(/public\/people\//g)||[]).length,3);assert.match(trio,/Foto: cr-a · cr-b · cr-c/);
   // Merah Putih is fixed solid red over white in every flag icon
   for(const art of ['istana','dpr']) {const h=hw.draw('art',D-1,{S,D},props[`art-${art}`]);assert.match(h,/fill="#e70011"/);assert.match(h,/fill="#ffffff"/);}
   // the search bar types the query; RESMI/BELUM JELAS keeps tick vs "?", other side pairs get the same neutral mark

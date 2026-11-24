@@ -122,13 +122,13 @@ export const HOTWIZZ_TEMPLATES={
         if(!Array.isArray(v)||v.length>6) return err('lines must list 0-6 items');
         v.forEach((l,i)=>{if(!obj(l)) return err(`lines[${i}] must be {text, cue?, style?}`);for(const key of Object.keys(l)) if(!['text','cue','style'].includes(key)) err(`lines[${i}].${key} is not supported`);text(l.text,`lines[${i}].text`,true);cue(l.cue,`lines[${i}].cue`);if(l.style!==undefined&&!COVER_STYLES.includes(l.style)) err(`lines[${i}].style must be ${COVER_STYLES.join('|')}`);});
       },
-      cover:(v,{err,text,personCheck})=>{if(v===undefined) return;if(!obj(v)) return err('cover must be {title, stamp?, chip?, person?}');for(const key of Object.keys(v)) if(!['title','stamp','chip','person'].includes(key)) err(`cover.${key} is not supported`);text(v.title,'cover.title',true);text(v.stamp,'cover.stamp');text(v.chip,'cover.chip');if(v.person!==undefined) personCheck(v.person,'cover.person');}},
+      cover:(v,{err,text,personCheck})=>{if(v===undefined) return;if(!obj(v)) return err('cover must be {title, stamp?, chip?, person?, people?}');for(const key of Object.keys(v)) if(!['title','stamp','chip','person','people'].includes(key)) err(`cover.${key} is not supported`);if(v.people!==undefined){if(v.person!==undefined) err('cover: use person or people, not both');if(!Array.isArray(v.people)||v.people.length!==3) err('cover.people must list 3 people: the proposer, then two candidates (left, right)');else v.people.forEach((q,i)=>{personCheck(q,`cover.people[${i}]`);if(obj(q)&&!q.photo) err(`cover.people[${i}].photo is required`);});}text(v.title,'cover.title',true);text(v.stamp,'cover.stamp');text(v.chip,'cover.chip');if(v.person!==undefined) personCheck(v.person,'cover.person');}},
     normalize:(p,ctx)=>({label:'PENUTUP',footer:`${ctx.config.runtime.case.id} · SUMBER DI DESKRIPSI`,...p,lines:(p.lines||[]).map(l=>({style:'big',...l,cue:cueSpec(l.cue)})),coverAt:cueSpec(p.coverAt),cover:p.cover?coverCard(p.cover,ctx):null,loopHook:p.loop?loopHook(ctx):null}),
     sfx:p=>[{at:'0',file:SFX.swoosh,volume:.18},...p.lines.filter(l=>l.cue).map(l=>({at:l.cue,file:SFX.pop,volume:.14}))],
   },
 };
 
-const coverCard=(c,ctx)=>({stamp:ctx.config.runtime.case.id,...c,person:c.person?photo(c.person):null});
+const coverCard=(c,ctx)=>({stamp:ctx.config.runtime.case.id,...c,person:c.person?photo(c.person):null,...(c.people?{people:c.people.map(photo)}:{})});
 /** introCover: the hw-hook opens on the episode's hw-cover title card (same card as the last frame), then reveals the
  * hook layout, so frame 0 = last frame = the TikTok cover. */
 function introCover(ctx) {

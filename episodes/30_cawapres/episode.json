@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "id": "cawapres",
+  "number": 30,
+  "title": "Dua Nama Cawapres Prabowo",
+  "category": "Berita",
+  "theme": "hotwizz",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "HOTWIZZ #13",
+      "steps": 6
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hw-hook",
+      "props": {
+        "label": "2 NAMA",
+        "kicker": "SURAT PRESIDEN · SENIN 23 NOV",
+        "headline": "AMRAN\n*ATAU SUGIONO*",
+        "claim": "Prabowo usulkan *dua calon wapres* pengganti Gibran ke MPR",
+        "tag": "DIBACAKAN KETUA MPR AHMAD MUZANI",
+        "person": {
+          "name": "Prabowo Subianto",
+          "role": "Presiden RI, pengusul",
+          "photo": "people/prabowo.jpg",
+          "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+        },
+        "cue": "Amran",
+        "stamp": {
+          "text": "DIUSULKAN",
+          "cue": "menyerahkan"
+        },
+        "introCover": true
+      }
+    },
+    {
+      "id": "calon",
+      "template": "hw-split",
+      "props": {
+        "label": "DUA CALON",
+        "kicker": "DUA CALON WAPRES",
+        "headline": "KATA PRABOWO:\nPRESTASI, KESETIAAN",
+        "source": "Antara, Suara, IDN Times, liputan6 (23 Nov)",
+        "left": {
+          "title": "AMRAN SULAIMAN",
+          "items": [
+            {
+              "text": "Menteri *Pertanian*",
+              "cue": "Menteri"
+            },
+            {
+              "text": "Juga Mentan *2014-2019*",
+              "cue": "Sugiono"
+            }
+          ]
+        },
+        "right": {
+          "title": "SUGIONO",
+          "items": [
+            {
+              "text": "Menko *PMK*",
+              "cue": "Menko"
+            },
+            {
+              "text": "Sekjen *Gerindra*",
+              "cue": "Sekjen"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tanya",
+      "template": "hw-art",
+      "props": {
+        "label": "KAMU PILIH?",
+        "kicker": "TULIS DI KOMENTAR",
+        "art": "kotak-suara",
+        "headline": "AMRAN\n*ATAU SUGIONO*?",
+        "sub": "Yang memilih nanti MPR",
+        "cue": "pilih"
+      }
+    },
+    {
+      "id": "opini",
+      "template": "hw-split",
+      "props": {
+        "label": "KATA PENGAMAT",
+        "kicker": "KATA PENGAMAT",
+        "headline": "REAKSI PARTAI\nMASIH SEDIKIT",
+        "source": "CNN Indonesia, IDN Times, Sindonews, Pojoksatu, RRI",
+        "left": {
+          "title": "AMRAN SULAIMAN",
+          "items": [
+            {
+              "text": "Dinilai *kuat* di sektor pangan",
+              "cue": "pangan"
+            },
+            {
+              "text": "Klaim swasembada *dipertanyakan*",
+              "cue": "swasembadanya"
+            }
+          ]
+        },
+        "right": {
+          "title": "SUGIONO",
+          "items": [
+            {
+              "text": "Dinilai *dekat* dengan Prabowo",
+              "cue": "dekat"
+            },
+            {
+              "text": "Pengalaman *dipertanyakan*",
+              "cue": "pengalamannya"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "jadwal",
+      "template": "hw-resmi",
+      "props": {
+        "label": "LANGKAH MPR",
+        "kicker": "MPR · 23 NOV",
+        "title": "LANGKAH BERIKUTNYA",
+        "items": [
+          {
+            "text": "Verifikasi syarat, *termasuk kesehatan*",
+            "source": "detik, IDN Times, liputan6 (23 Nov)",
+            "cue": "memverifikasi"
+          },
+          {
+            "text": "Paripurna MPR *Jumat 11 Des*",
+            "source": "detik, CNN Indonesia, IDN Times (23 Nov)",
+            "cue": "sebelas"
+          },
+          {
+            "text": "Digeser dari 9 Des: *hitung hari kerja*",
+            "source": "detik (23 Nov), Mahfud MD via detik (20 Nov)",
+            "cue": "kerja"
+          }
+        ]
+      }
+    },
+    {
+      "id": "penutup",
+      "template": "hw-cover",
+      "props": {
+        "label": "UPDATE",
+        "lines": [
+          {
+            "text": "JAWAB DI KOMENTAR",
+            "style": "kicker",
+            "cue": "Jadi"
+          },
+          {
+            "text": "AMRAN *ATAU SUGIONO*?",
+            "cue": "pilih"
+          },
+          {
+            "text": "FOLLOW UNTUK UPDATE",
+            "style": "cta",
+            "cue": "follow"
+          }
+        ],
+        "cover": {
+          "title": "*2 CAWAPRES*\nAMRAN\nATAU SUGIONO?",
+          "chip": "DIUSULKAN PRABOWO",
+          "people": [
+            {
+              "name": "Prabowo Subianto",
+              "role": "Presiden RI, pengusul",
+              "photo": "people/prabowo.jpg",
+              "credit": "Darwis Triadi / Kemensetneg (domain publik)"
+            },
+            {
+              "name": "Amran Sulaiman",
+              "photo": "people/amran.jpg",
+              "credit": "Badan Pangan Nasional (domain publik)"
+            },
+            {
+              "name": "Sugiono",
+              "photo": "people/sugiono.jpg",
+              "credit": "Kemlu RI (domain publik)"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

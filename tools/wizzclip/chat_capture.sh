@@ -11,7 +11,7 @@
 # Usage: bash tools/wizzclip/chat_capture.sh VIDEO_ID [STREAM_START_EPOCH]
 # Called in the background by vod_hourly.sh and live_hourly.sh (opt out there with CHAT=0).
 ID="$1"; START="$2"
-URL="https://www.youtube.com/watch?v=$ID"
+URL="${LIVE_URL:-https://www.youtube.com/watch?v=$ID}"  # LIVE_URL overrides it, e.g. https://www.youtube.com/@windahbasudara/live when the watch URL says "unavailable"
 ROOT="/d/Dev/motion"
 YT=("$ROOT/.venv/Scripts/yt-dlp.exe" --cookies-from-browser firefox --js-runtimes node --remote-components ejs:github --ignore-no-formats-error)
 cd "$ROOT" || exit 0
