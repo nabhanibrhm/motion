@@ -6,6 +6,21 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**24 Nov 2026 ~16:30 (WSL): misteriarc1/2 rendered and on G:.**
+
+| Clip | Length | Loudness | Caption |
+|---|---|---|---|
+| `windah-gtavi-misteriarc1.mp4` | 39.6 s | -14.0 LUFS | 367 chars |
+| `windah-gtavi-misteriarc2.mp4` | 30.3 s | -13.8 LUFS | 319 chars |
+
+- Captions were fetched from G:; each has only the 5 campaign hashtags. Frames checked: teaser at frame 0, live8 face crop, blurs, PART tags, outro.
+- **An earlier short version existed on this laptop.** Untracked specs and recipes from about 07:55 today used opaque cards over the full frame, with no outro or watermark, at about 15 s and 7 s. They blocked the pull, so they were moved, not deleted:
+  - specs, recipes and the build script: `.cache/wizzclip/misteriarc-local-backup-20261124/`
+  - renders and captions: `out/wizzclip/windah-gtavi-misteriarc{1,2}-local.mp4` and `-local-caption.txt`
+  - sources: `.cache/wizzclip/windah-gtavi-misteriarc{1,2}/source-local-1627.mp4`
+- Its 07:51 masters were on G: under the final names. With the user's OK, they were replaced by the new renders (14.1 MB and 16.3 MB).
+- Still to check by ear before posting: the name joins (P2 ~39:41 and 37:17, P1 29:33) and whether P2's teaser clips "nanas". Post P1, then P2 at least 2 h later.
+
 **24 Nov 2026: stream #8 arc `misteriarc1`/`misteriarc2` built (not rendered).** The user picked the misteri → rumah-nanas idea. It's a 2-part story in stream order, with the facecam-below layout and `FACES['live8'] = (1480, 516, 440, 330)` (same as live7). Specs and recipes are in git; the sources are in Drive `GTA6/clip-src/<slug>.mp4` and the captions in `out/wizzclip/<slug>-caption.txt`.
 
 | Clip | Length | Hook | Cuts |
