@@ -21,6 +21,32 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 - Its 07:51 masters were on G: under the final names. With the user's OK, they were replaced by the new renders (14.1 MB and 16.3 MB).
 - Still to check by ear before posting: the name joins (P2 ~39:41 and 37:17, P1 29:33) and whether P2's teaser clips "nanas". Post P1, then P2 at least 2 h later.
 
+**25 Nov 2026: streams #9 and #10 recorded, idea-listed, and 7 clips built (not rendered).** The user deleted every unposted clip on 24 Nov (to start clean), so these 7 are the only unposted Wizz Clip builds.
+
+- **Stream #9** (`zYTPbx83wCQ`, ritual satanis), 19:59–21:06 WIB on 24 Nov: `stream-1959-2059` (3600 s) and `stream-2059-2124` (387 s). The stream really ended at ~21:06 (VOD 3989 s), so nothing is missing.
+- **Stream #10** (`wJVeWiqMJ-M`, portal masa lalu), 22:08–01:21 WIB: `stream-2208-2308`, `-2308-0008`, `-0008-0108` (3600 s each), `-0108-0122` (771.6 s). Hour 3 and the tail failed live ("No video formats found") and were refetched from the VOD with `.cache/wizzclip/windah-live10/gap.sh`.
+- Both are in `.cache/wizzclip/windah-live9/` and `-live10/`, in Drive `live9-2026-11-24` and `live10-2026-11-24`, fully scanned with chat spikes from full chat logs.
+- **Idea lists:** `tools/wizzclip/campaigns/motionklip/windah-gtavi-ideas-live9.md` and `-live10.md`.
+- **Facecam:** `FACES['live9']` and `['live10']` = `(1568, 516, 352, 264)`, tighter so the shirt's chest logo stays out.
+- **NSFW extras:** the user now allows separate clips that break the MotionKlip ToC: raw swears, and nudity/sex/gore only if blurred. They must be labelled as ToC-breaking.
+
+| Clip | Stream | Type | Length | Hook |
+|---|---|---|---|---|
+| `windah-gtavi-lompat` | #9 | clean | 22.9 s | MISTERI LOMPAT MOTOR / SALTO DI UDARA |
+| `windah-gtavi-ventilasi` | #9 | clean (weakest) | 15.4 s | TANPA BANTUAN VIEWER / KATA WINDAH |
+| `windah-gtavi-rajaiblis` | #9 | **NSFW** | 16.3 s | GUA JADI RAJA IBLIS / SERIUS |
+| `windah-gtavi-portalarc1` | #10 | clean, part 1 | 42.7 s | IT'S BETTER BE WORTH IT / MISTERI TERSULIT DI DUNIA |
+| `windah-gtavi-portalarc2` | #10 | clean, part 2 | 31.3 s | PORTAL ITU NYATA / AKHIRNYA TERBUKA |
+| `windah-gtavi-email-masuk` | #10 | clean | 20.6 s | BELUM ADA EMAIL GUE NIH / AKHIRNYA MASUK |
+| `windah-gtavi-portalan` | #10 | **NSFW**, raw swears | 32.2 s | PORTAL-PORTALAN?! / ...ADA, NYATA |
+
+Sources are in Drive `GTA6/clip-src/`; captions (5 hashtags each) in `out/wizzclip/`. Post the portal arc in order. On the first WSL render, check:
+- `rajaiblis`: shotgun blur over the whole first cut; a small demon figure is unblurred in the background; the gore boss shot was cut.
+- `portalan`: pistol edges outside the blur in cut 3; no subtitle in the first second.
+- `portalarc2`: possible licensed club music in the 3.4 s club cut.
+- `portalarc1`: teaser audio and countdown numbers. `lompat`: the "NGGAK BISA 2X" subtitle. `email-masuk`: sign blur.
+- All hooks and subtitles are Claude's wording.
+
 **24 Nov 2026: stream #8 arc `misteriarc1`/`misteriarc2` built (not rendered).** The user picked the misteri → rumah-nanas idea. It's a 2-part story in stream order, with the facecam-below layout and `FACES['live8'] = (1480, 516, 440, 330)` (same as live7). Specs and recipes are in git; the sources are in Drive `GTA6/clip-src/<slug>.mp4` and the captions in `out/wizzclip/<slug>-caption.txt`.
 
 | Clip | Length | Hook | Cuts |
