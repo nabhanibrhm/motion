@@ -1,0 +1,29 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:26.20,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}MISTERI SEPANJANG LIVE\N{\c&H0029FCE6&}CUMA ADA RUMAH NANAS
+Dialogue: 0,0:00:00.00,0:00:26.20,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI · PART 2 DARI 2
+Dialogue: 1,0:00:01.29,0:00:02.37,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS, {\c&H00EFF3F4&}THIS IS IT{\c&H0029FCE6&}, GUYS
+Dialogue: 1,0:00:02.61,0:00:03.14,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}KITA DI SINI!{\c&H0029FCE6&}
+Dialogue: 1,0:00:03.35,0:00:04.59,Sub,,0,0,0,,{\an5\pos(540,905)}TERIMA KASIH KERJANYA!
+Dialogue: 1,0:00:10.67,0:00:11.94,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}DI BAWAH{\c&H0029FCE6&} COBA-COBA
+Dialogue: 1,0:00:12.03,0:00:12.64,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}GAK ADA{\c&H0029FCE6&}
+Dialogue: 1,0:00:12.65,0:00:14.34,Sub,,0,0,0,,{\an5\pos(540,905)}ITU CUMA HALTE YANG
+Dialogue: 1,0:00:14.34,0:00:15.69,Sub,,0,0,0,,{\an5\pos(540,905)}BERBENTUK {\c&H00EFF3F4&}NANAS{\c&H0029FCE6&} YA
+Dialogue: 1,0:00:15.85,0:00:17.51,Sub,,0,0,0,,{\an5\pos(540,905)}ADUH, JAM {\c&H00EFF3F4&}9.55{\c&H0029FCE6&} CUY
+Dialogue: 1,0:00:19.03,0:00:20.86,Sub,,0,0,0,,{\an5\pos(540,905)}NGAPAIN JUGA {\c&H00EFF3F4&}NAIK BUS{\c&H0029FCE6&}?
+Dialogue: 1,0:00:20.92,0:00:22.51,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS, {\c&H00EFF3F4&}SERIUSAN{\c&H0029FCE6&}
+Dialogue: 1,0:00:22.59,0:00:24.35,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}CUMA RUMAHNYA DOANG!{\c&H0029FCE6&}
+Dialogue: 1,0:00:24.38,0:00:26.15,Sub,,0,0,0,,{\an5\pos(540,905)}CUMA RUMAHNYA {\c&H00EFF3F4&}DOANG!{\c&H0029FCE6&}
+Dialogue: 2,0:00:02.44,0:00:04.54,Sub,,0,0,0,,{\an5\pos(540,450)\fs52}{\c&H00EFF3F4&}SAMPAI DI MISTERINYA

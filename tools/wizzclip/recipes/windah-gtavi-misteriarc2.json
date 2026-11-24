@@ -1,0 +1,70 @@
+{
+  "description": "Mystery arc part 2/2: the ride to the mystery, the search at the pineapple bus stop and the letdown: just the house. Source = .cache/wizzclip/windah-gtavi-misteriarc2/source.mp4 (also Drive clip-src/windah-gtavi-misteriarc2.mp4): ten pieces (0.6 s padding each) of windah-live8/stream-2304-2346.mp4 (p5, file t 0 = 23:04 WIB) in output order, 1080p30 re-encoded and joined. Cuts: T t 2361.00-2362.22 = local 0.60-1.82 -> output 0.00-1.22; A t 2236.35-2237.52 = local 3.02-4.19 -> output 1.22-2.39; B t 2260.55-2262.80 = local 5.39-7.64 -> output 2.39-4.64; C t 2262.80-2266.30 = local 8.84-12.34 -> output 4.64-8.14; D t 2275.00-2277.50 = local 13.54-16.04 -> output 8.14-10.64; E t 2347.05-2348.40 = local 17.24-18.59 -> output 10.64-11.99; F t 2358.45-2362.22 = local 19.79-23.56 -> output 11.99-15.76; G t 2369.75-2374.85 = local 24.76-29.86 -> output 15.76-20.86; H1 t 2378.95-2380.64 = local 31.06-32.75 -> output 20.86-22.55; H2 t 2381.30-2384.95 = local 34.08-37.73 -> output 22.55-26.20. Beats in stream order: frame-0 teaser (p5 39:21, the pineapple-shaped bus stop up close, 1.2 s); 'guys, this is it' (37:16); the ride drops him off 'kita di sini, terima kasih kerjanya' (37:40); the bus stop comes into view and the search (37:42-37:57); 'di bawah coba-coba' (39:07); 'gak ada, itu cuma halte yang berbentuk nanas ya' (39:18); 'jam 9.55, ngapain naik bus' (39:30); payoff 'seriusan gak ada... cuma rumahnya doang!' (39:39-39:45). Word timings from short-window faster-whisper medium with VAD. CUT: every spoken cartoon character name in 37:16-39:44 (the payoff is cut around the name: 'seriusan' + 'cuma rumahnya doang', the 'gak ada' next to the name goes too); 'anjir' at 33:48 and 30:08 (outside the cuts); the 'taksi instan' sentence (ride-app idea). The game crop (700,0,800) keeps only the upper part of the frame, so Lucia's purple top (below y480) is out of frame and her face is the only part visible. Main 26.20 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 800x450 at (700,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 440x330 at (1480,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'MISTERI SEPANJANG LIVE', line 2 Volt 'CUMA ADA RUMAH NANAS', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-misteriarc2",
+    "youtube": "z6sBvvg_004",
+    "url": "https://www.youtube.com/watch?v=z6sBvvg_004",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-misteriarc2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.82,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.02:4.19,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=5.39:7.64,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=8.84:12.34,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=13.54:16.04,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=17.24:18.59,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=19.79:23.56,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=24.76:29.86,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=31.06:32.75,setpts=PTS-STARTPTS,fps=30,split=2[b9a][b9b];",
+    "[b9b]crop=130:170:1310:250,boxblur=luma_radius=30:luma_power=3[b9c];",
+    "[b9a][b9c]overlay=1310:250:enable='gte(t,0.00)'[v9];",
+    "[0:v]trim=34.08:37.73,setpts=PTS-STARTPTS,fps=30,split=2[b10a][b10b];",
+    "[b10b]crop=130:170:1310:250,boxblur=luma_radius=30:luma_power=3[b10c];",
+    "[b10a][b10c]overlay=1310:250:enable='gte(t,0.00)'[v10];",
+    "[0:a]atrim=0.60:1.82,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.12:d=0.1[a1];",
+    "[0:a]atrim=3.02:4.19,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.07:d=0.1[a2];",
+    "[0:a]atrim=5.39:7.64,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.15:d=0.1[a3];",
+    "[0:a]atrim=8.84:12.34,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.40:d=0.1[a4];",
+    "[0:a]atrim=13.54:16.04,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.40:d=0.1[a5];",
+    "[0:a]atrim=17.24:18.59,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.25:d=0.1[a6];",
+    "[0:a]atrim=19.79:23.56,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.67:d=0.1[a7];",
+    "[0:a]atrim=24.76:29.86,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.00:d=0.1[a8];",
+    "[0:a]atrim=31.06:32.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.59:d=0.1[a9];",
+    "[0:a]atrim=34.08:37.73,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.55:d=0.1[a10];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9][v10][a10]concat=n=10:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=800:450:700:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=440:330:1480:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-13.29:measured_TP=0.04:measured_LRA=21.00:measured_thresh=-24.37:offset=-0.57:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-misteriarc2.mp4"
+}

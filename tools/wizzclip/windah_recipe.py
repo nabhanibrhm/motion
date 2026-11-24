@@ -50,6 +50,10 @@ person extent in source px (x0-x1, head top - bottom edge):
              stream #7, 22 Nov 2026; 8 stills over both hours; the cam
              box ends in a flat edge at y848 with game footage and HUD
              below, so the crop stops at y846; head top y552-570)
+  live8      windah-live8/stream-1904-2004, -2004-2104, -2104-2204,    x1550-1920, y570-848      (1480, 516, 440, 330)
+             -2204-2304, -2304-2346 (black tee, stream #8, 23 Nov
+             2026; 9 stills over hours 4 and 5; same spot as live7: the
+             cam box ends in a flat edge at y848, head top y570-600)
   All crops are 4:3 (440x330 -> 520x390, x1.18). Position inside a recording drifts a little (he leans); 48 + 30 spot
   checks across the recordings kept head and shoulders inside live3/live4, and 60 stills (12 per hour, all 5 hours of stream #5,
   22 Nov 2026) did for live5. Stream #4 moved the cam up and in compared with stream #3 (head top y570-650 vs y690-780).
@@ -63,7 +67,7 @@ HERE = Path(__file__).resolve().parent
 R = os.environ.get('WINDAH_OUT') or (HERE / 'recipes').as_posix()
 R = R.rstrip('/') + '/'
 SPECS = os.environ.get('WINDAH_SPECS') or (HERE / 'specs').as_posix()
-FACES = {'live7': (1480, 516, 440, 330), 'live6': (1520, 552, 400, 300), 'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5': (1480, 538, 440, 330)}
+FACES = {'live8': (1480, 516, 440, 330), 'live7': (1480, 516, 440, 330), 'live6': (1520, 552, 400, 300), 'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5': (1480, 538, 440, 330)}
 # 'face' layout geometry (output px)
 GAME_Y, FACE_X, FACE_Y, FACE_IW, FACE_IH, FACE_B = 364, 276, 994, 520, 390, 4
 HOOK_Y, TAG_Y, SUB_Y = 318, 326, 905
@@ -81,7 +85,7 @@ if FACE_LAYOUT:
     if isinstance(face, str):
         face = FACES[face]
     if not face or len(face) != 4:
-        raise SystemExit("layout 'face' needs face = (x,y,w,h) in source px or a FACES key (live3/live4/live5/live6/live7)")
+        raise SystemExit("layout 'face' needs face = (x,y,w,h) in source px or a FACES key (live3/live4/live5/live6/live7/live8)")
     gx, gy, gw = game or (0, 0, 1504); gh = gw * 9 // 16
     if gw * 9 % 16:
         raise SystemExit('game crop width must be a multiple of 16')

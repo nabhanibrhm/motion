@@ -1,0 +1,40 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:35.60,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}SATU MISI LAGI, SUMPAH\N{\c&H0029FCE6&}HABIS ITU MISTERI
+Dialogue: 0,0:00:00.00,0:00:35.60,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI · PART 1 DARI 2
+Dialogue: 1,0:00:01.31,0:00:02.23,Sub,,0,0,0,,{\an5\pos(540,905)}OKE, {\c&H00EFF3F4&}SATU MISI LAGI{\c&H0029FCE6&}
+Dialogue: 1,0:00:02.23,0:00:03.20,Sub,,0,0,0,,{\an5\pos(540,905)}KITA {\c&H00EFF3F4&}MISTERI{\c&H0029FCE6&}, SETUJU?
+Dialogue: 1,0:00:03.36,0:00:04.55,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS, {\c&H00EFF3F4&}SATU MISI LAGI{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.55,0:00:05.75,Sub,,0,0,0,,{\an5\pos(540,905)}ABIS ITU GUE {\c&H00EFF3F4&}MISTERI{\c&H0029FCE6&}
+Dialogue: 1,0:00:06.62,0:00:07.95,Sub,,0,0,0,,{\an5\pos(540,905)}SUMPAH, ABIS ITU {\c&H00EFF3F4&}MISTERI{\c&H0029FCE6&}
+Dialogue: 1,0:00:08.20,0:00:08.80,Sub,,0,0,0,,{\an5\pos(540,905)}GITU AJA YA
+Dialogue: 1,0:00:08.95,0:00:10.13,Sub,,0,0,0,,{\an5\pos(540,905)}EH, MISTERI YA,
+Dialogue: 1,0:00:10.17,0:00:11.15,Sub,,0,0,0,,{\an5\pos(540,905)}MISTERI {\c&H00EFF3F4&}KODE LAPTOP{\c&H0029FCE6&}
+Dialogue: 1,0:00:11.15,0:00:12.65,Sub,,0,0,0,,{\an5\pos(540,905)}GIMANA GUYS, AYO PECAHKAN
+Dialogue: 1,0:00:12.67,0:00:14.30,Sub,,0,0,0,,{\an5\pos(540,905)}ABIS INI GUE PECAHKAN {\c&H00EFF3F4&}KODE{\c&H0029FCE6&}
+Dialogue: 1,0:00:14.33,0:00:15.47,Sub,,0,0,0,,{\an5\pos(540,905)}ABIS ITU {\c&H00EFF3F4&}MISTERI SETAN-SETANAN{\c&H0029FCE6&}
+Dialogue: 1,0:00:15.68,0:00:16.70,Sub,,0,0,0,,{\an5\pos(540,905)}MAKANYA DICARI DULU, BANG
+Dialogue: 1,0:00:16.76,0:00:18.05,Sub,,0,0,0,,{\an5\pos(540,905)}KALAU DICARI TERUS {\c&H00EFF3F4&}MISINYA BERAT{\c&H0029FCE6&}
+Dialogue: 1,0:00:18.16,0:00:20.00,Sub,,0,0,0,,{\an5\pos(540,905)}GUE {\c&H00EFF3F4&}MATI KOCAK{\c&H0029FCE6&}, HILANG SEMUA
+Dialogue: 1,0:00:20.07,0:00:22.55,Sub,,0,0,0,,{\an5\pos(540,905)}YAUDAH, {\c&H00EFF3F4&}VOTING{\c&H0029FCE6&}!
+Dialogue: 1,0:00:22.61,0:00:24.10,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}MISTERI APA{\c&H0029FCE6&}? VOTING
+Dialogue: 1,0:00:24.27,0:00:25.61,Sub,,0,0,0,,{\an5\pos(540,905)}OKE, KITA {\c&H00EFF3F4&}HITUNG{\c&H0029FCE6&} SAMA-SAMA
+Dialogue: 1,0:00:25.63,0:00:27.85,Sub,,0,0,0,,{\an5\pos(540,905)}SATU, DUA,
+Dialogue: 1,0:00:28.19,0:00:28.95,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}TIGA{\c&H0029FCE6&}
+Dialogue: 1,0:00:29.08,0:00:30.10,Sub,,0,0,0,,{\an5\pos(540,905)}DELAPAN,
+Dialogue: 1,0:00:30.20,0:00:31.10,Sub,,0,0,0,,{\an5\pos(540,905)}SEMBILAN,
+Dialogue: 1,0:00:31.20,0:00:32.35,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}SEPULUH!{\c&H0029FCE6&}
+Dialogue: 1,0:00:32.46,0:00:33.65,Sub,,0,0,0,,{\an5\pos(540,905)}YA UDAH, GUE {\c&H00EFF3F4&}PECAHIN{\c&H0029FCE6&}
+Dialogue: 1,0:00:33.72,0:00:35.55,Sub,,0,0,0,,{\an5\pos(540,905)}GUE GOOGLE, TAPI {\c&H00EFF3F4&}GAK SPOILER{\c&H0029FCE6&}

@@ -6,6 +6,26 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**24 Nov 2026: stream #8 arc `misteriarc1`/`misteriarc2` built (not rendered).** The user picked the misteri → rumah-nanas idea. It's a 2-part story in stream order, with the facecam-below layout and `FACES['live8'] = (1480, 516, 440, 330)` (same as live7). Specs and recipes are in git; the sources are in Drive `GTA6/clip-src/<slug>.mp4` and the captions in `out/wizzclip/<slug>-caption.txt`.
+
+| Clip | Length | Hook | Cuts |
+|---|---|---|---|
+| `windah-gtavi-misteriarc1` | 35.6 s + outro | SATU MISI LAGI, SUMPAH / HABIS ITU MISTERI | teaser p5 37:43.7 (pineapple stop from afar), h4 32:23, 32:36, 34:28, 54:23, p5 29:02-29:51 (vote, count to ten, "gue Google tapi gue gak spoiler") |
+| `windah-gtavi-misteriarc2` | 26.2 s + outro | MISTERI SEPANJANG LIVE / CUMA ADA RUMAH NANAS | teaser p5 39:21, then p5 37:16-37:57 (arrival), 39:07-39:44 (search, "cuma halte berbentuk nanas", "cuma rumahnya doang!") |
+
+h4 = `stream-2204-2304.mp4` (WIB = local + 22:04); p5 = `stream-2304-2346.mp4` (+ 23:04).
+
+- **Spoken cartoon names (company IP):** every one is cut out, including one inside the payoff line. Subtitles, hooks and captions say only "rumah nanas".
+- **Game crops:** `(656,0,864)` for part 1 and `(700,0,800)` for part 2. They keep Lucia's top, the chat poll window (usernames) and the taskbar out of frame.
+- **Blurs:** the "MEET BRIAN & LORI" tooltip in part 1, and the bus-company sign in part 2.
+- **Dropped shots:** h4 34:56 for an adult-entertainment sign; h4 54:21-54:23 for a van with "WTF" on its door.
+
+On the first WSL render, check:
+- each join around a removed name, listening for a stray name syllable (part 2 about 39:41 and 37:17, part 1 at 29:33)
+- whether part 2's teaser clips the end of "nanas"
+- the blurs and subtitle placement on rendered frames
+- a "LEONIDA INTERCITY BUS SERVICE" plate visible for about 2 s near 39:30 (judged a public service name, not a brand)
+
 **24 Nov 2026: `AGENTS.md` added for Codex.** Codex reads `AGENTS.md`, not `CLAUDE.md`. The new file points Codex to `CLAUDE.md`, `HANDOFF.md` and `ai-routing.md` (its Codex tiers). It also restates the commit, two-laptop, output and privacy rules, and the Wizz Clip/MotionKlip rules, which until now lived only in Claude's private memory: ToC, the 5 hashtags, 2 h posting gap, look, cut order and idea lists. `ai-routing.md` now says that Codex gets its instructions from `AGENTS.md`. Keep `AGENTS.md` in step when those rules change.
 
 **24 Nov 2026: stream #8 recorded, scanned and idea-listed; HotWizz #30 cawapres posted; segel and hulk posted.**
