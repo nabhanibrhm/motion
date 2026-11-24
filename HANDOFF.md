@@ -6,6 +6,8 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**24 Nov 2026: `AGENTS.md` added for Codex.** Codex reads `AGENTS.md`, not `CLAUDE.md`. The new file points Codex to `CLAUDE.md`, `HANDOFF.md` and `ai-routing.md` (its Codex tiers). It also restates the commit, two-laptop, output and privacy rules, and the Wizz Clip/MotionKlip rules, which until now lived only in Claude's private memory: ToC, the 5 hashtags, 2 h posting gap, look, cut order and idea lists. `ai-routing.md` now says that Codex gets its instructions from `AGENTS.md`. Keep `AGENTS.md` in step when those rules change.
+
 **24 Nov 2026: stream #8 recorded, scanned and idea-listed; HotWizz #30 cawapres posted; segel and hulk posted.**
 
 - **Stream #8:** the video ID is `z6sBvvg_004`, with a lowercase z. Tool output can show it as `Z6s…`, and the wrong case makes YouTube say "unavailable".

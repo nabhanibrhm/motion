@@ -1,6 +1,6 @@
 # AI model routing
 
-**Provider scope:** Claude agents follow the Claude mapping below. ChatGPT/Codex agents follow the Codex mapping. Shared project rules apply to both providers. Explicit user instructions and host capabilities take precedence.
+**Provider scope:** Claude agents follow the Claude mapping below. ChatGPT/Codex agents follow the Codex mapping; they get project instructions from `AGENTS.md`, which points to `CLAUDE.md`, `HANDOFF.md` and this file. Shared project rules apply to both providers. Explicit user instructions and host capabilities take precedence.
 
 Before changing files, identify the targets and use the lowest approved tier covering their actual responsibility. Raise the tier if scope or risk expands.
 
