@@ -1,0 +1,56 @@
+{
+  "description": "Running joke: Windah keeps saying 'belum ada email gue nih', then 'Email masuk!' and thanks the chat. Source = .cache/wizzclip/windah-gtavi-email-masuk/source.mp4 (also Drive clip-src/windah-gtavi-email-masuk.mp4): Source = .cache/wizzclip/windah-gtavi-email-masuk/source.mp4 (also Drive clip-src/windah-gtavi-email-masuk.mp4): four pieces (0.6 s padding each) of windah-live10/stream-2208-2308.mp4 (h1, file t 0 = 22:08 WIB) in output order, 1080p30 re-encoded and joined. Cuts: A t 152.60-155.70 = local 0.60-3.70 -> output 0.00-3.10; B t 164.15-165.70 = local 4.90-6.45 -> output 3.10-4.65; C t 236.00-240.00 = local 7.65-11.65 -> output 4.65-8.65; D t 1577.50-1589.45 = local 12.85-24.80 -> output 8.65-20.60. Beats in stream order: the running joke 'belum ada yang email gue nih' x2 on the trail (h1 2:32-2:35); 'sebentar, belum ada yang email gue nih' (2:44); 'letaknya dimana, kalian ngasih tau dong, misteri portal' (3:56-4:00); payoff 'email masuk! ... oh my god guys, thank you ... pas banget bro' (26:17-26:29). Word timings from short-window faster-whisper medium (VAD on, and off for silent stretches). Viewer names, platform and brand names are not in any cut. CUT: the 3:44-3:55 phone close-ups (the app grid shows app-name labels; notifications from an in-game ride app), 26:09-26:17 (a browser window with a search-engine logo overlays the game at 26:14-26:15). The game crop (176,0,1328) keeps only the upper 747 px, so the in-game car-maker card (bottom-left) and the bottom-right in-game notifications are out of frame; a shop sign (a restaurant name, source x700-1030 y300-430) is blurred for the payoff cut (cut 4). No guns, gore or swearing. Main 20.60 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1328x747 at (176,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'BELUM ADA EMAIL GUE NIH', line 2 Volt 'AKHIRNYA MASUK', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-email-masuk",
+    "youtube": "wJVeWiqMJ-M",
+    "url": "https://www.youtube.com/watch?v=wJVeWiqMJ-M",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-email-masuk.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:3.70,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=4.90:6.45,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=7.65:11.65,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=12.85:24.80,setpts=PTS-STARTPTS,fps=30,split=2[b4a][b4b];",
+    "[b4b]crop=330:130:700:300,boxblur=luma_radius=30:luma_power=3[b4c];",
+    "[b4a][b4c]overlay=700:300:enable='gte(t,0.00)'[v4];",
+    "[0:a]atrim=0.60:3.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.00:d=0.1[a1];",
+    "[0:a]atrim=4.90:6.45,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.45:d=0.1[a2];",
+    "[0:a]atrim=7.65:11.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.90:d=0.1[a3];",
+    "[0:a]atrim=12.85:24.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=11.85:d=0.1[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1328:747:176:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-12.82:measured_TP=0.45:measured_LRA=20.30:measured_thresh=-23.28:offset=0.76:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-email-masuk.mp4"
+}

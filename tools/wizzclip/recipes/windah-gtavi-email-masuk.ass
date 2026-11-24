@@ -1,0 +1,30 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:20.60,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}BELUM ADA EMAIL GUE NIH\N{\c&H0029FCE6&}AKHIRNYA MASUK
+Dialogue: 0,0:00:00.00,0:00:20.60,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.26,0:00:01.02,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}BELUM ADA{\c&H0029FCE6&} EMAIL GUE NIH
+Dialogue: 1,0:00:01.04,0:00:01.95,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}BELUM ADA{\c&H0029FCE6&} EMAIL GUE NIH
+Dialogue: 1,0:00:01.92,0:00:03.05,Sub,,0,0,0,,{\an5\pos(540,905)}NGOMONG-NGOMONG
+Dialogue: 1,0:00:03.15,0:00:04.55,Sub,,0,0,0,,{\an5\pos(540,905)}SEBENTAR, {\c&H00EFF3F4&}BELUM ADA EMAIL{\c&H0029FCE6&}
+Dialogue: 1,0:00:04.65,0:00:05.65,Sub,,0,0,0,,{\an5\pos(540,905)}LETAKNYA DIMANA
+Dialogue: 1,0:00:05.67,0:00:06.65,Sub,,0,0,0,,{\an5\pos(540,905)}KALIAN NGASIH TAU DONG
+Dialogue: 1,0:00:06.67,0:00:08.60,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}MISTERI PORTAL{\c&H0029FCE6&}
+Dialogue: 1,0:00:08.77,0:00:10.45,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}EMAIL MASUK!{\c&H0029FCE6&}
+Dialogue: 1,0:00:11.01,0:00:12.45,Sub,,0,0,0,,{\an5\pos(540,905)}OH MY GOD, GUYS
+Dialogue: 1,0:00:12.49,0:00:14.00,Sub,,0,0,0,,{\an5\pos(540,905)}THANK YOU, THANK YOU
+Dialogue: 1,0:00:14.03,0:00:15.35,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}EMAIL MASUK!{\c&H0029FCE6&}
+Dialogue: 1,0:00:15.71,0:00:17.05,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS, PAS BANGET
+Dialogue: 1,0:00:17.11,0:00:18.15,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}EMAIL MASUK{\c&H0029FCE6&}
+Dialogue: 1,0:00:18.19,0:00:20.55,Sub,,0,0,0,,{\an5\pos(540,905)}PAS BANGET, BRO

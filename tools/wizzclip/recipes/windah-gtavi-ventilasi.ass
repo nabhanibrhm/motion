@@ -1,0 +1,26 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:15.35,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}TANPA BANTUAN VIEWER\N{\c&H0029FCE6&}KATA WINDAH
+Dialogue: 0,0:00:00.00,0:00:15.35,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI
+Dialogue: 1,0:00:00.14,0:00:01.95,Sub,,0,0,0,,{\an5\pos(540,905)}CABUT NIH GUA, {\c&H00EFF3F4&}LUMAYAN 3000 DOLAR{\c&H0029FCE6&}
+Dialogue: 1,0:00:02.02,0:00:03.55,Sub,,0,0,0,,{\an5\pos(540,905)}OH, BERARTI UANG
+Dialogue: 1,0:00:03.58,0:00:04.95,Sub,,0,0,0,,{\an5\pos(540,905)}YANG DIMAKSUD DETEKTIF TADI
+Dialogue: 1,0:00:04.98,0:00:05.80,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}3000 DOLAR{\c&H0029FCE6&} ITU
+Dialogue: 1,0:00:05.87,0:00:07.50,Sub,,0,0,0,,{\an5\pos(540,905)}UDAH {\c&H00EFF3F4&}RAME{\c&H0029FCE6&} BANGET PADAHAL
+Dialogue: 1,0:00:07.83,0:00:08.70,Sub,,0,0,0,,{\an5\pos(540,905)}GUE SENDIRI,
+Dialogue: 1,0:00:09.30,0:00:11.15,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}TANPA BANTUAN VIEWER{\c&H0029FCE6&}, NEMU
+Dialogue: 1,0:00:11.21,0:00:13.55,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}VENTILASI{\c&H0029FCE6&} ITU, CUY
+Dialogue: 1,0:00:13.70,0:00:15.30,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}NICE, NICE, NICE{\c&H0029FCE6&}
+Dialogue: 2,0:00:00.05,0:00:02.00,Sub,,0,0,0,,{\an5\pos(540,450)\fs52}{\c&H00EFF3F4&}CHAT: VENTILASI!

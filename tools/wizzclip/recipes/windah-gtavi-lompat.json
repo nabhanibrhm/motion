@@ -1,0 +1,54 @@
+{
+  "description": "Windah rides a dirt bike to the 'lompat dengan motor' mystery and launches off a ramp over a valley: the cinematic-cam jump, 'epic', 'nice'. Source = .cache/wizzclip/windah-gtavi-lompat/source.mp4 (also Drive clip-src/windah-gtavi-lompat.mp4): four pieces (0.6 s padding each) of windah-live9/stream-2059-2124.mp4 (p2, file t 0 = 20:59 WIB) in output order, 1080p30 re-encoded and joined. Cuts: T t 209.30-210.50 = local 0.60-1.80 -> output 0.00-1.20; A t 201.35-206.90 = local 3.00-8.55 -> output 1.20-6.75; B t 207.40-214.55 = local 9.75-16.90 -> output 6.75-13.90; C t 215.30-224.25 = local 18.10-27.05 -> output 13.90-22.85. Beats in stream order: frame-0 teaser (p2 3:29, the bike in the air, cinematic cam, 1.2 s); 'misteri lompat dengan motor dan salto...' over the run-up (3:21); the jump from the cinematic cam and the landing, 'gak bisa 2x' (3:27-3:34); 'epic', 'yes', 'stunt jumps 5 of 130', 'nice' (3:35-3:44). Word timings from medium faster-whisper (the 'gak bisa 2x' line is a low-confidence transcription: check by ear). NOT USED: the run-up tail 5:45-6:27 (the recording ends mid run-up, no result) and the 'ritual setan' remarks (5:56). The game crop (704,410,800) leaves out the on-screen hint boxes and counters; no brand text, guns or revealing outfits in frame. The facecam crop (1568,516,352,264) stops above the chest logo on his shirt. Main 22.85 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 800x450 at (704,410) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'MISTERI LOMPAT MOTOR', line 2 Volt 'SALTO DI UDARA', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-lompat",
+    "youtube": "zYTPbx83wCQ",
+    "url": "https://www.youtube.com/watch?v=zYTPbx83wCQ",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-lompat.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:8.55,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=9.75:16.90,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=18.10:27.05,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:8.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.45:d=0.1[a2];",
+    "[0:a]atrim=9.75:16.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.05:d=0.1[a3];",
+    "[0:a]atrim=18.10:27.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.85:d=0.1[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=800:450:704:410,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-5.29:measured_TP=0.49:measured_LRA=7.40:measured_thresh=-16.65:offset=0.16:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-lompat.mp4"
+}

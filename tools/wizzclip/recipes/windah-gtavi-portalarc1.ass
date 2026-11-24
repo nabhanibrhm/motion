@@ -1,0 +1,43 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:42.70,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}IT'S BETTER BE WORTH IT\N{\c&H0029FCE6&}MISTERI TERSULIT DI DUNIA
+Dialogue: 0,0:00:00.00,0:00:42.70,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI · PART 1 DARI 2
+Dialogue: 1,0:00:01.25,0:00:02.70,Sub,,0,0,0,,{\an5\pos(540,905)}IT'S BETTER BE {\c&H00EFF3F4&}WORTH IT{\c&H0029FCE6&}
+Dialogue: 1,0:00:02.84,0:00:04.65,Sub,,0,0,0,,{\an5\pos(540,905)}SUMPAH, {\c&H00EFF3F4&}MISTERI TERSULIT{\c&H0029FCE6&} INI
+Dialogue: 1,0:00:04.70,0:00:06.50,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}MISTERI TERSULIT DI DUNIA{\c&H0029FCE6&}
+Dialogue: 1,0:00:06.60,0:00:07.75,Sub,,0,0,0,,{\an5\pos(540,905)}IT'S BETTER BE {\c&H00EFF3F4&}WORTH IT{\c&H0029FCE6&}
+Dialogue: 1,0:00:07.90,0:00:09.80,Sub,,0,0,0,,{\an5\pos(540,905)}KALAU BERHASIL {\c&H00EFF3F4&}MEMBUKA PORTAL{\c&H0029FCE6&}
+Dialogue: 1,0:00:09.82,0:00:10.60,Sub,,0,0,0,,{\an5\pos(540,905)}ITU, GUYS
+Dialogue: 1,0:00:10.65,0:00:11.50,Sub,,0,0,0,,{\an5\pos(540,905)}MENURUT GUE
+Dialogue: 1,0:00:11.52,0:00:12.30,Sub,,0,0,0,,{\an5\pos(540,905)}MISTERI {\c&H00EFF3F4&}TERGILA{\c&H0029FCE6&}
+Dialogue: 1,0:00:12.35,0:00:13.35,Sub,,0,0,0,,{\an5\pos(540,905)}DAN {\c&H00EFF3F4&}ANNOYING{\c&H0029FCE6&}
+Dialogue: 1,0:00:13.45,0:00:15.60,Sub,,0,0,0,,{\an5\pos(540,905)}SEMOGA {\c&H00EFF3F4&}WORTH IT{\c&H0029FCE6&} AND EPIC
+Dialogue: 1,0:00:15.75,0:00:17.30,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}IT'S BETTER BE WORTH IT!{\c&H0029FCE6&}
+Dialogue: 1,0:00:19.40,0:00:21.15,Sub,,0,0,0,,{\an5\pos(540,905)}4,
+Dialogue: 1,0:00:21.19,0:00:22.55,Sub,,0,0,0,,{\an5\pos(540,905)}3,
+Dialogue: 1,0:00:22.61,0:00:24.25,Sub,,0,0,0,,{\an5\pos(540,905)}2,
+Dialogue: 1,0:00:24.35,0:00:26.25,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}1{\c&H0029FCE6&}
+Dialogue: 1,0:00:26.35,0:00:26.90,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}YEAH!{\c&H0029FCE6&}
+Dialogue: 1,0:00:27.20,0:00:28.60,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS, GUE {\c&H00EFF3F4&}DAPET SMS{\c&H0029FCE6&}
+Dialogue: 1,0:00:28.69,0:00:29.90,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS, {\c&H00EFF3F4&}SUMPAH{\c&H0029FCE6&}
+Dialogue: 1,0:00:29.97,0:00:30.95,Sub,,0,0,0,,{\an5\pos(540,905)}GUE {\c&H00EFF3F4&}DAPET SMS{\c&H0029FCE6&}
+Dialogue: 1,0:00:31.20,0:00:33.00,Sub,,0,0,0,,{\an5\pos(540,905)}HAH? {\c&H00EFF3F4&}BERHASIL?{\c&H0029FCE6&}
+Dialogue: 1,0:00:34.15,0:00:36.00,Sub,,0,0,0,,{\an5\pos(540,905)}TERUS GIMANA? {\c&H00EFF3F4&}APA MAKSUDNYA{\c&H0029FCE6&}?
+Dialogue: 1,0:00:36.75,0:00:37.70,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}KOORDINAT?{\c&H0029FCE6&}
+Dialogue: 1,0:00:37.90,0:00:40.00,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}U-235, 19:06{\c&H0029FCE6&}
+Dialogue: 1,0:00:40.30,0:00:41.30,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}TUNGGU MALAM?{\c&H0029FCE6&}
+Dialogue: 1,0:00:41.45,0:00:42.65,Sub,,0,0,0,,{\an5\pos(540,905)}GUE UDAH BOLEH {\c&H00EFF3F4&}TIDUR{\c&H0029FCE6&} BERARTI?
+Dialogue: 2,0:00:17.45,0:00:19.35,Sub,,0,0,0,,{\an5\pos(540,450)\fs52}{\c&H00EFF3F4&}TOMBOL TERAKHIR
+Dialogue: 2,0:00:31.10,0:00:35.90,Sub,,0,0,0,,{\an5\pos(540,450)\fs52}{\c&H00EFF3F4&}PESAN MISTERIUS

@@ -1,0 +1,60 @@
+{
+  "description": "Chat spams 'ventilasi' while Windah hunts for the hidden money; he then claims he found it alone, 'tanpa bantuan viewer, nemu. Ventilasi itu, cuy.' Source = .cache/wizzclip/windah-gtavi-ventilasi/source.mp4 (also Drive clip-src/windah-gtavi-ventilasi.mp4): four pieces (0.6 s padding each) of windah-live9/stream-1959-2059.mp4 (h1, file t 0 = 19:59 WIB) in output order, 1080p30 re-encoded and joined. Cuts: A t 2651.00-2653.00 = local 0.60-2.60 -> output 0.00-2.00; B t 2666.70-2670.55 = local 3.80-7.65 -> output 2.00-5.85; C t 2673.00-2680.80 = local 8.85-16.65 -> output 5.85-13.65; D t 2681.20-2682.90 = local 17.85-19.55 -> output 13.65-15.35. Beats in stream order: Windah leaves the apartment yard with 3000 dollars ('cabut nih gua', h1 44:11); 'the money the detective meant, that was the 3000' (44:26); then, after the missed-it swear, the claim 'gue sendiri, tanpa bantuan viewer, nemu. Ventilasi itu, cuy' (44:33-44:40) and 'nice nice nice' (44:41). Chat had spammed 'ventilasi' for minutes before (chat spike #1 43:13) and roasts the claim right after (#6 44:46); no chat is audible or on screen, the label and hook carry it. Word timings from medium faster-whisper, no VAD ('tiduran' before 'gue sendiri' at 44:34.7 is a doubtful word and is not subtitled: check by ear). CUT: 'gak nemu, anjir, goblok banget' (44:30.8-44:32.4) and the two 'anjir' right after it (cut C starts at 44:33.0); 44:19-44:27 'kita gak perlu takedown dua polisi itu' (violence mention); the in-game vehicle name pop-up (lower left, 44:26-44:30) is blurred and a building sign with a company name at the top of the frame (44:39+) is blurred. No viewer names on screen, no guns or gore, no brand text spoken. The car is a plain pink sports car, no badge readable. Main 15.35 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'TANPA BANTUAN VIEWER', line 2 Volt 'KATA WINDAH', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-ventilasi",
+    "youtube": "zYTPbx83wCQ",
+    "url": "https://www.youtube.com/watch?v=zYTPbx83wCQ",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-ventilasi.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:2.60,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.80:7.65,setpts=PTS-STARTPTS,fps=30,split=2[b2a][b2b];",
+    "[b2b]crop=300:100:20:675,boxblur=luma_radius=24:luma_power=3[b2c];",
+    "[b2a][b2c]overlay=20:675:enable='gte(t,0.00)'[v2];",
+    "[0:v]trim=8.85:16.65,setpts=PTS-STARTPTS,fps=30,split=2[b3a][b3b];",
+    "[b3b]crop=560:140:480:20,boxblur=luma_radius=30:luma_power=3[b3c];",
+    "[b3a][b3c]overlay=480:20:enable='gte(t,6.00)'[v3];",
+    "[0:v]trim=17.85:19.55,setpts=PTS-STARTPTS,fps=30,split=2[b4a][b4b];",
+    "[b4b]crop=560:140:480:20,boxblur=luma_radius=30:luma_power=3[b4c];",
+    "[b4a][b4c]overlay=480:20:enable='gte(t,0.00)'[v4];",
+    "[0:a]atrim=0.60:2.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.90:d=0.1[a1];",
+    "[0:a]atrim=3.80:7.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.75:d=0.1[a2];",
+    "[0:a]atrim=8.85:16.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.70:d=0.1[a3];",
+    "[0:a]atrim=17.85:19.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.60:d=0.1[a4];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4]concat=n=4:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-9.42:measured_TP=0.37:measured_LRA=22.30:measured_thresh=-19.93:offset=0.30:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-ventilasi.mp4"
+}

@@ -1,0 +1,62 @@
+{
+  "description": "Portal arc part 1/2: the hardest mystery in the world, the last substation button, a text message with coordinates, and 'wait for night' (cliffhanger). Source = .cache/wizzclip/windah-gtavi-portalarc1/source.mp4 (also Drive clip-src/windah-gtavi-portalarc1.mp4): Source = .cache/wizzclip/windah-gtavi-portalarc1/source.mp4 (also Drive clip-src/windah-gtavi-portalarc1.mp4): eight pieces (0.6 s padding each) of windah-live10/stream-2308-0008.mp4 (h2) and stream-0008-0108.mp4 (h3) in output order, 1080p30 re-encoded and joined. Cuts: T t 3058.00-3059.20 = local 0.60-1.80 -> output 0.00-1.20; A t 2592.00-2598.60 = local 3.00-9.60 -> output 1.20-7.80; B t 3106.70-3112.30 = local 10.80-16.40 -> output 7.80-13.40; C t 3118.00-3121.95 = local 17.60-21.55 -> output 13.40-17.35; D t 1968.00-1977.60 = local 22.75-32.35 -> output 17.35-26.95; E t 1989.95-1994.00 = local 33.55-37.60 -> output 26.95-31.00; F t 2018.50-2027.60 = local 38.80-47.90 -> output 31.00-40.10; G t 2036.20-2038.80 = local 49.10-51.70 -> output 40.10-42.70. Beats in stream order: frame-0 teaser (h3 50:58, the purple lightning ring from afar, 1.2 s); the running joke 'it's better be worth it' / 'misteri tersulit di dunia' (h2 43:12-43:19); 'kalau berhasil membuka portal... misteri tergila dan terannoying' (h2 51:46-51:52); 'semoga it's better be worth it and epic' (h2 51:58-52:02); the last substation countdown (h3 32:48-32:57); 'guys gue dapet sms' (h3 33:10-33:14); 'berhasil? ... koordinat? U-235' (h3 33:38-33:47); cliffhanger 'tunggu malam, gue udah boleh tidur berarti?' (h3 33:56-33:58). Word timings from short-window faster-whisper medium (VAD on, and off for silent stretches). Viewer names, platform and brand names are not in any cut. CUT: h2 51:36-51:47 and 51:52-51:57 (a platform name and the Bigfoot name), the swears at h3 34:22/34:35, every spoken viewer name and 'youtube' (h3 32:45 is before the first cut). The phone shows only a generic 'Unknown' thread, no app name. No guns, gore or revealing outfits in frame. Main 42.70 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'IT'S BETTER BE WORTH IT', line 2 Volt 'MISTERI TERSULIT DI DUNIA', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-portalarc1",
+    "youtube": "wJVeWiqMJ-M",
+    "url": "https://www.youtube.com/watch?v=wJVeWiqMJ-M",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-portalarc1.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:9.60,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=10.80:16.40,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=17.60:21.55,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=22.75:32.35,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=33.55:37.60,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=38.80:47.90,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=49.10:51.70,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:9.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.50:d=0.1[a2];",
+    "[0:a]atrim=10.80:16.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.50:d=0.1[a3];",
+    "[0:a]atrim=17.60:21.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.85:d=0.1[a4];",
+    "[0:a]atrim=22.75:32.35,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=9.50:d=0.1[a5];",
+    "[0:a]atrim=33.55:37.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.95:d=0.1[a6];",
+    "[0:a]atrim=38.80:47.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=9.00:d=0.1[a7];",
+    "[0:a]atrim=49.10:51.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.50:d=0.1[a8];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8]concat=n=8:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-9.75:measured_TP=0.22:measured_LRA=12.40:measured_thresh=-21.27:offset=0.06:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-portalarc1.mp4"
+}

@@ -1,0 +1,68 @@
+{
+  "description": "NSFW extra: Windah rages while hunting the portal ('portal-portalan, tai'), then the portal opens: 'portal itu nyata'. Source = .cache/wizzclip/windah-gtavi-portalan/source.mp4 (also Drive clip-src/windah-gtavi-portalan.mp4): Source = .cache/wizzclip/windah-gtavi-portalan/source.mp4 (also Drive clip-src/windah-gtavi-portalan.mp4): nine pieces (0.6 s padding each) of windah-live10/stream-0008-0108.mp4 (h3, file t 0 = 00:08 WIB) in output order, 1080p30 re-encoded and joined. Cuts: T t 3085.00-3086.20 = local 0.60-1.80 -> output 0.00-1.20; A t 2763.30-2767.00 = local 3.00-6.70 -> output 1.20-4.90; B t 2775.30-2778.00 = local 7.90-10.60 -> output 4.90-7.60; C t 2959.90-2968.20 = local 11.80-20.10 -> output 7.60-15.90; D t 2972.45-2973.50 = local 21.30-22.35 -> output 15.90-16.95; E t 3060.50-3064.50 = local 23.55-27.55 -> output 16.95-20.95; F t 3099.95-3104.20 = local 28.75-33.00 -> output 20.95-25.20; G t 3110.90-3113.95 = local 34.20-37.25 -> output 25.20-28.25; H t 3133.00-3136.90 = local 38.45-42.35 -> output 28.25-32.15. NSFW EXTRA (raw swearing, police chase, user-approved): frame-0 teaser (h3 51:25, the portal ring, 1.2 s); the rage in stream order: 'anjing, gua ga ada armor lagi' (h3 46:04-46:07, the inventory screen) and 'portal-portalan tai' (46:15-46:18); 'bocil ini pagi nih anjing, sesat banget ... reaktor 2, reaktor 1 nih' over the map (49:19-49:28) and 'idiot, anjir' (49:32); then the reveal: he walks up to the ring (51:00-51:04), 'we did it bro, oh my god guys' (51:40-51:44), 'portal itu nyata' (51:51-51:54) and photo mode 'portal mengerikan itu nyata' (52:13-52:17). The raw swears are kept raw (like the posted 'segel'); the on-screen subtitles spell them out too, and the caption censors them. Word timings from faster-whisper medium; 'mana si portalnya bro' at ~46:03 was NOT picked up by the transcript, so the first 1 s of cut 2 has no subtitle: check by ear. BLURRED: cut 2 (the inventory menu with weapon icons: box source x620-1350, y40-800); cut 3 (the pistol he holds at the hip while running: box x620-1060, y700-1030, covers the lower body). CUT: the arrest at h3 49:34-49:45 ('jangan bergerak, hands behind your back'; the cut ends at 49:33.5), the weapon wheel at 46:00-46:03, the armed guards (42:36-43:33) and every spoken viewer name. Main 32.15 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'PORTAL-PORTALAN?!', line 2 Volt '...ADA, NYATA', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-portalan",
+    "youtube": "wJVeWiqMJ-M",
+    "url": "https://www.youtube.com/watch?v=wJVeWiqMJ-M",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-portalan.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:6.70,setpts=PTS-STARTPTS,fps=30,split=2[b2a][b2b];",
+    "[b2b]crop=730:760:620:40,boxblur=luma_radius=30:luma_power=3[b2c];",
+    "[b2a][b2c]overlay=620:40:enable='gte(t,0.00)'[v2];",
+    "[0:v]trim=7.90:10.60,setpts=PTS-STARTPTS,fps=30,split=2[b3a][b3b];",
+    "[b3b]crop=440:330:620:700,boxblur=luma_radius=30:luma_power=3[b3c];",
+    "[b3a][b3c]overlay=620:700:enable='gte(t,0.00)'[v3];",
+    "[0:v]trim=11.80:20.10,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=21.30:22.35,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=23.55:27.55,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=28.75:33.00,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=34.20:37.25,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=38.45:42.35,setpts=PTS-STARTPTS,fps=30[v9];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:6.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.60:d=0.1[a2];",
+    "[0:a]atrim=7.90:10.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.60:d=0.1[a3];",
+    "[0:a]atrim=11.80:20.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.20:d=0.1[a4];",
+    "[0:a]atrim=21.30:22.35,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=0.95:d=0.1[a5];",
+    "[0:a]atrim=23.55:27.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.90:d=0.1[a6];",
+    "[0:a]atrim=28.75:33.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.15:d=0.1[a7];",
+    "[0:a]atrim=34.20:37.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.95:d=0.1[a8];",
+    "[0:a]atrim=38.45:42.35,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.80:d=0.1[a9];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9]concat=n=9:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-8.81:measured_TP=0.72:measured_LRA=20.70:measured_thresh=-20.93:offset=-1.10:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-portalan.mp4"
+}

@@ -1,0 +1,28 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:31.30,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}PORTAL ITU NYATA\N{\c&H0029FCE6&}AKHIRNYA TERBUKA
+Dialogue: 0,0:00:00.00,0:00:31.30,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI · PART 2 DARI 2
+Dialogue: 1,0:00:05.55,0:00:06.95,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}WE DID IT{\c&H0029FCE6&}, BRO
+Dialogue: 1,0:00:07.53,0:00:09.70,Sub,,0,0,0,,{\an5\pos(540,905)}OH MY GOD, {\c&H00EFF3F4&}GUYS{\c&H0029FCE6&}
+Dialogue: 1,0:00:10.03,0:00:12.45,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}"I WAS HERE"{\c&H0029FCE6&}
+Dialogue: 1,0:00:12.95,0:00:14.05,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}PORTAL ITU NYATA{\c&H0029FCE6&}
+Dialogue: 1,0:00:14.15,0:00:15.55,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}PORTAL ITU NYATA!{\c&H0029FCE6&}
+Dialogue: 1,0:00:15.70,0:00:17.05,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}PORTAL ITU NYATA{\c&H0029FCE6&}
+Dialogue: 1,0:00:17.10,0:00:19.35,Sub,,0,0,0,,{\an5\pos(540,905)}PORTAL {\c&H00EFF3F4&}MENGERIKAN{\c&H0029FCE6&} ITU NYATA
+Dialogue: 1,0:00:25.15,0:00:27.10,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}MASUK, MASUK, MASUK!{\c&H0029FCE6&}
+Dialogue: 1,0:00:28.15,0:00:29.75,Sub,,0,0,0,,{\an5\pos(540,905)}OH, ORDER {\c&H00EFF3F4&}MINUM DOANG{\c&H0029FCE6&}
+Dialogue: 1,0:00:29.80,0:00:31.20,Sub,,0,0,0,,{\an5\pos(540,905)}GUYS
+Dialogue: 2,0:00:01.30,0:00:05.40,Sub,,0,0,0,,{\an5\pos(540,450)\fs52}{\c&H00EFF3F4&}PORTAL TERBUKA
+Dialogue: 2,0:00:28.00,0:00:31.20,Sub,,0,0,0,,{\an5\pos(540,450)\fs52}{\c&H00EFF3F4&}DI BALIK PORTAL: CLUB

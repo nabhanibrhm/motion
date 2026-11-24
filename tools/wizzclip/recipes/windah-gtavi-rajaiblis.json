@@ -1,0 +1,54 @@
+{
+  "description": "NSFW extra: Windah wins the demon-realm fight and, over the throne, says 'Gua jadi raja Iblis, serius.' Source = .cache/wizzclip/windah-gtavi-rajaiblis/source.mp4 (also Drive clip-src/windah-gtavi-rajaiblis.mp4): three pieces (0.6 s padding each) of windah-live9/stream-1959-2059.mp4 (h1, file t 0 = 19:59 WIB) in output order, 1080p30 re-encoded and joined. Cuts: A t 3500.20-3508.00 = local 0.60-8.40 -> output 0.00-7.80; B t 3530.30-3534.30 = local 9.60-13.60 -> output 7.80-11.80; C t 3534.40-3538.88 = local 14.80-19.28 -> output 11.80-16.28. NSFW EXTRA (violence/horror theme, user-approved): demon-realm finale in stream order: Jason fires into the fire cave, 'item gendut, hati-hati' (h1 58:20-58:28); after the boss dies and the black screen, the cutscene 'oke oke, we won ... mystery Iblis, ga?' (58:50-58:54); 'iya bener, berarti yang one-hit kill itu yang gendut item tuh. Gua jadi raja Iblis, serius.' over the throne shot (58:54-58:59). Word timings from medium faster-whisper (chat spike #9 58:52 'gg' x91, loudest audio peak of the stream at 58:47 is in the dropped boss cut). BLURRED: the shotgun, Jason's raised arms and the muzzle flash in cut A (box source x480-960, y330-660 for the whole cut); the creature bodies at the left edge of the cave are cropped out (game crop starts at x256). DROPPED: the red horned boss and its gore close-ups (58:41-58:47: bodies and claws fill the frame, blur cannot hide it) and the black screen (58:47-58:50); the clip ends before Jason turns (58:59), whose shirt print reads 'Horny Devil Tour' and a tour list; 'oke what now' (59:01-59:04 afterwards) is left out. No swearing in the cuts; no nudity. The facecam is sharp, its crop stops above the chest logo. Main 16.28 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1248x702 at (256,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'GUA JADI RAJA IBLIS', line 2 Volt 'SERIUS', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-rajaiblis",
+    "youtube": "zYTPbx83wCQ",
+    "url": "https://www.youtube.com/watch?v=zYTPbx83wCQ",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-rajaiblis.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:8.40,setpts=PTS-STARTPTS,fps=30,split=2[b1a][b1b];",
+    "[b1b]crop=480:330:480:330,boxblur=luma_radius=30:luma_power=3[b1c];",
+    "[b1a][b1c]overlay=480:330:enable='gte(t,0.00)'[v1];",
+    "[0:v]trim=9.60:13.60,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=14.80:19.28,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:a]atrim=0.60:8.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.70:d=0.1[a1];",
+    "[0:a]atrim=9.60:13.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.90:d=0.1[a2];",
+    "[0:a]atrim=14.80:19.28,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.38:d=0.1[a3];",
+    "[v1][a1][v2][a2][v3][a3]concat=n=3:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1248:702:256:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-8.47:measured_TP=0.91:measured_LRA=8.10:measured_thresh=-19.40:offset=0.14:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-rajaiblis.mp4"
+}

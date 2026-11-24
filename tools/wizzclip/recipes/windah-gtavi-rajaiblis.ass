@@ -1,0 +1,25 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Audex,92,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+Style: Sub,Audex,72,&H0029FCE6,&H0029FCE6,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Tag,Audex,30,&H0099908C,&H0099908C,&H00120F0E,&H00120F0E,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:16.28,Hook,,0,0,0,,{\an2\pos(540,318)\fs68}{\c&H00EFF3F4&}GUA JADI RAJA IBLIS\N{\c&H0029FCE6&}SERIUS
+Dialogue: 0,0:00:00.00,0:00:16.28,Tag,,0,0,0,,{\an8\pos(540,326)}WINDAH BASUDARA · GTA VI · NSFW
+Dialogue: 1,0:00:05.16,0:00:06.35,Sub,,0,0,0,,{\an5\pos(540,905)}GENDUT ITEM,
+Dialogue: 1,0:00:06.36,0:00:07.60,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}HATI-HATI{\c&H0029FCE6&}
+Dialogue: 1,0:00:07.92,0:00:09.40,Sub,,0,0,0,,{\an5\pos(540,905)}OKE, OKE, {\c&H00EFF3F4&}WE WON{\c&H0029FCE6&}
+Dialogue: 1,0:00:09.50,0:00:11.75,Sub,,0,0,0,,{\an5\pos(540,905)}MISTERI {\c&H00EFF3F4&}IBLIS{\c&H0029FCE6&}, GA?
+Dialogue: 1,0:00:11.90,0:00:12.68,Sub,,0,0,0,,{\an5\pos(540,905)}IYA BENER, BERARTI
+Dialogue: 1,0:00:12.70,0:00:13.38,Sub,,0,0,0,,{\an5\pos(540,905)}YANG ONE-HIT KILL
+Dialogue: 1,0:00:13.40,0:00:14.65,Sub,,0,0,0,,{\an5\pos(540,905)}YANG GENDUT ITEM TUH
+Dialogue: 1,0:00:14.68,0:00:15.95,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}GUA JADI RAJA IBLIS,{\c&H0029FCE6&}
+Dialogue: 1,0:00:15.96,0:00:16.26,Sub,,0,0,0,,{\an5\pos(540,905)}{\c&H00EFF3F4&}SERIUS{\c&H0029FCE6&}

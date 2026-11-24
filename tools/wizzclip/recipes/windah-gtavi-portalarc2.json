@@ -1,0 +1,62 @@
+{
+  "description": "Portal arc part 2/2: the portal opens, 'portal itu nyata!', photo mode, he walks in, and behind it is only a bar: 'oh, order minum doang guys'. Source = .cache/wizzclip/windah-gtavi-portalarc2/source.mp4 (also Drive clip-src/windah-gtavi-portalarc2.mp4): Source = .cache/wizzclip/windah-gtavi-portalarc2/source.mp4 (also Drive clip-src/windah-gtavi-portalarc2.mp4): eight pieces (0.6 s padding each) of windah-live10/stream-0008-0108.mp4 (h3, file t 0 = 00:08 WIB) in output order, 1080p30 re-encoded and joined. Cuts: T t 3085.00-3086.20 = local 0.60-1.80 -> output 0.00-1.20; A t 3060.50-3064.80 = local 3.00-7.30 -> output 1.20-5.50; B t 3099.95-3104.20 = local 8.50-12.75 -> output 5.50-9.75; C t 3105.00-3107.80 = local 13.95-16.75 -> output 9.75-12.55; D t 3110.90-3113.95 = local 17.95-21.00 -> output 12.55-15.60; E t 3133.00-3136.90 = local 22.20-26.10 -> output 15.60-19.50; F t 3164.00-3172.40 = local 27.30-35.70 -> output 19.50-27.90; G t 3464.20-3467.60 = local 36.90-40.30 -> output 27.90-31.30. Beats in stream order: frame-0 teaser (h3 51:25, the ring crackling up close, 1.2 s); he walks up to the ring (h3 51:00-51:05, silent); 'we did it bro, oh my god guys' (51:40-51:44); 'I was here' x5 (51:45-51:48); 'portal itu nyata, portal itu nyata' (51:51-51:54); photo mode in front of the ring 'portal itu nyata, portal mengerikan itu nyata' (52:13-52:17); selfie poses and he walks in 'masuk, masuk, masuk!' (52:44-53:12); the letdown behind it: the club, 'oh, order minum doang guys' (57:44-57:47). Word timings from short-window faster-whisper medium (VAD on, and off for silent stretches). Viewer names, platform and brand names are not in any cut. CUT: the 4-star chase and the arrest (h3 39:40-50:50, armed guards), the club's dance floor and the screen-share with a platform name at 57:38-58:20 (this cut is the game window only, 57:44-57:47), 'what the f' at 53:48. The permanent chopper bike (piece 4) is left out to keep the arc short. Music: the club may play licensed-sounding tracks; the cut is 3.4 s, check by ear. No guns, gore or revealing outfits in frame (the club cut shows one NPC from behind in a pink top). Main 31.30 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'PORTAL ITU NYATA', line 2 Volt 'AKHIRNYA TERBUKA', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-portalarc2",
+    "youtube": "wJVeWiqMJ-M",
+    "url": "https://www.youtube.com/watch?v=wJVeWiqMJ-M",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-portalarc2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:7.30,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=8.50:12.75,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=13.95:16.75,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=17.95:21.00,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=22.20:26.10,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=27.30:35.70,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=36.90:40.30,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:7.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.20:d=0.1[a2];",
+    "[0:a]atrim=8.50:12.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.15:d=0.1[a3];",
+    "[0:a]atrim=13.95:16.75,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.70:d=0.1[a4];",
+    "[0:a]atrim=17.95:21.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.95:d=0.1[a5];",
+    "[0:a]atrim=22.20:26.10,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.80:d=0.1[a6];",
+    "[0:a]atrim=27.30:35.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.30:d=0.1[a7];",
+    "[0:a]atrim=36.90:40.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.30:d=0.1[a8];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8]concat=n=8:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-8.53:measured_TP=0.72:measured_LRA=21.40:measured_thresh=-20.45:offset=1.71:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-portalarc2.mp4"
+}
