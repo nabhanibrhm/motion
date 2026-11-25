@@ -6,14 +6,16 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
-**25 Nov 2026: KASUS #18 `cpns` (episode 31) voiced and rendered; stream #11 recording.**
+**25–26 Nov 2026: KASUS #18 `cpns` (episode 31) voiced and rendered; stream #11 recorded; yt-dlp bumped.**
 
 - **`cpns`:** "CPNS 2026 Dibuka Jumat: Kamu Bisa Daftar?", researched and built the day Panselnas announced the selection (25 Nov). `out/31-cpns-short.mp4`, 59.0 s, -14.0 LUFS; caption `out/caption/31-cpns-caption.txt` (515 chars).
   - Hook (the user's wording): "Kamu nunggu lama CPNS? Mulai Jumat ini kamu bisa daftar, dan tujuh puluh ribu kursinya ada di kehutanan."
   - Facts: registration opens Fri 27 Nov via SSCASN; 154.052 formasi; kehutanan 70.000 (60.000 polisi kehutanan, SMA/SMK–S1); age 18-35; closing date not announced. Sources and a "jangan dipakai" list (167.133, closing date, NIP 1 Juni 2027, unverified minister quote) are in `episodes/31_cpns/script-short.md`.
   - The first voice ran 70.4 s; four lines were trimmed and re-voiced (Cartesia).
   - Not posted yet. Post by Friday morning while searches peak. Follow up the same day the closing date or the full formasi list is published.
-- **Stream #11** (`5m-Xi8lgvWY`, "GTA VI MENUJU 100%"): live from 19:26:04 WIB. The recorder and scan loop run from `.cache/wizzclip/windah-live11/run.sh` to Drive `live11-2026-11-25`, with chat capture. After it ends, check the last piece (it failed live in #8 and #10; refetch from the VOD like `windah-live10/gap.sh`).
+- **Stream #11** (`5m-Xi8lgvWY`, "GTA VI MENUJU 100%"): 19:26:04 to 00:11 WIB, fully recorded and scanned in `.cache/wizzclip/windah-live11/` and on Drive `live11-2026-11-25`: stream-1926-2026, -2026-2126, -2126-2226, -2226-2326 (3600 s each) and stream-2326-0011 (2634 s; VOD 17034 s). Chat in `.cache/wizzclip/chat/5m-Xi8lgvWY.live_chat.json`. No idea list or clips yet.
+  - Hours 1 and 2 failed live: yt-dlp 2026.10.26 fails the n challenge for player b485e332 ("No video formats found"). The recorder was restarted (`run2.sh`) with 2026.11.23 from an isolated `.cache/wizzclip/ytdlp-2026.11.23` via `PYTHONPATH` and refetched both. The last piece failed right after the stream ended (post_live) and was refetched from the VOD by `windah-live11/gap.sh`.
+- **yt-dlp bumped to 2026.11.23** in `requirements-lock.txt` (the user's OK) and installed in the Windows `.venv`; the `PYTHONPATH` workaround is no longer needed. On WSL run `.venv/bin/pip install yt-dlp==2026.11.23`. Web/DASH formats still need `--cookies-from-browser firefox` (without cookies only m3u8 comes back).
 
 **25 Nov 2026 (WSL): the 7 stream #9/#10 clips rendered and on G:; old unposted clips deleted here.**
 
