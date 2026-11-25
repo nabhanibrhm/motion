@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "cpns",
+  "number": 31,
+  "title": "CPNS 2026 Dibuka Jumat: Kamu Bisa Daftar?",
+  "category": "Ketenagakerjaan",
+  "theme": "casefile",
+  "narration": "narration.json",
+  "script": "script-short.md",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "runtime": {
+    "profile": "modern",
+    "case": {
+      "id": "KASUS #18",
+      "steps": 4,
+      "name": "CPNS 2026 DIBUKA JUMAT"
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "scenes/hook.js",
+      "sfx": [
+        {
+          "at": "0",
+          "file": "pop-in",
+          "vol": 0.2
+        },
+        {
+          "at": "word:Jumat",
+          "file": "click",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "file": "scenes/fakta.js",
+      "sfx": [
+        {
+          "at": "word:umur",
+          "file": "tick",
+          "vol": 0.2
+        },
+        {
+          "at": "word:akun",
+          "file": "tick",
+          "vol": 0.2
+        },
+        {
+          "at": "word:komentar",
+          "file": "tick",
+          "vol": 0.2
+        },
+        {
+          "at": "word:Totalnya",
+          "file": "tick",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "sisi",
+      "file": "scenes/sisi.js",
+      "sfx": [
+        {
+          "at": "word:belum",
+          "file": "pop-in",
+          "vol": 0.2
+        },
+        {
+          "at": "word:penipuan",
+          "file": "pop-in",
+          "vol": 0.2
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "file": "scenes/vonis.js",
+      "sfx": [
+        {
+          "at": "word:ditutup",
+          "file": "stamp",
+          "vol": 0.45
+        },
+        {
+          "at": "word:Tulis",
+          "file": "pop-in",
+          "vol": 0.1
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "bed": null,
+    "bedGain": 0.3,
+    "loudness": {
+      "integrated": -14,
+      "truePeak": -1,
+      "range": 11
+    }
+  }
+}

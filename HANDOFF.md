@@ -6,6 +6,15 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**25 Nov 2026: KASUS #18 `cpns` (episode 31) voiced and rendered; stream #11 recording.**
+
+- **`cpns`:** "CPNS 2026 Dibuka Jumat: Kamu Bisa Daftar?", researched and built the day Panselnas announced the selection (25 Nov). `out/31-cpns-short.mp4`, 59.0 s, -14.0 LUFS; caption `out/caption/31-cpns-caption.txt` (515 chars).
+  - Hook (the user's wording): "Kamu nunggu lama CPNS? Mulai Jumat ini kamu bisa daftar, dan tujuh puluh ribu kursinya ada di kehutanan."
+  - Facts: registration opens Fri 27 Nov via SSCASN; 154.052 formasi; kehutanan 70.000 (60.000 polisi kehutanan, SMA/SMK–S1); age 18-35; closing date not announced. Sources and a "jangan dipakai" list (167.133, closing date, NIP 1 Juni 2027, unverified minister quote) are in `episodes/31_cpns/script-short.md`.
+  - The first voice ran 70.4 s; four lines were trimmed and re-voiced (Cartesia).
+  - Not posted yet. Post by Friday morning while searches peak. Follow up the same day the closing date or the full formasi list is published.
+- **Stream #11** (`5m-Xi8lgvWY`, "GTA VI MENUJU 100%"): live from 19:26:04 WIB. The recorder and scan loop run from `.cache/wizzclip/windah-live11/run.sh` to Drive `live11-2026-11-25`, with chat capture. After it ends, check the last piece (it failed live in #8 and #10; refetch from the VOD like `windah-live10/gap.sh`).
+
 **25 Nov 2026 (WSL): the 7 stream #9/#10 clips rendered and on G:; old unposted clips deleted here.**
 
 | Clip | Length | Loudness | Caption |

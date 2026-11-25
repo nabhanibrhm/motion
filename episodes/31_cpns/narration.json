@@ -1,0 +1,110 @@
+{
+  "comment": "KASUS #18 'CPNS 2026 Dibuka Jumat: Kamu Bisa Daftar?' (script-short.md, sources there). Say map under cartesia.say: top-level say is only read by Supertonic.",
+  "source": "cartesia",
+  "cartesia": {
+    "say": {
+      "CPNS": "ce pe en es",
+      "SSCASN": "es es ce a es en",
+      "SMA": "es em a"
+    }
+  },
+  "speakers": {
+    "mog": {
+      "supertonic": {
+        "voice": "M1",
+        "speed": 1,
+        "range": 1.5
+      },
+      "cartesia": {
+        "speed": 1.08
+      }
+    },
+    "wec": {
+      "supertonic": {
+        "voice": "F2",
+        "speed": 1,
+        "range": 1.4
+      }
+    },
+    "bog": {
+      "supertonic": {
+        "voice": "M4",
+        "speed": 1,
+        "range": 1.4
+      },
+      "cartesia": {
+        "speed": 1
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "kasus",
+      "title": "CPNS 2026 Dibuka Jumat: Kamu Bisa Daftar?"
+    }
+  ],
+  "defaults": {
+    "lead": 0.15,
+    "tail": 0.1,
+    "gapSameSpeaker": 0.1,
+    "gapNewSpeaker": 0.1,
+    "firstLead": 0.2,
+    "chapterLead": 0.1,
+    "chapterEndTail": 0.1
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kamu nunggu lama CPNS? Mulai Jumat ini kamu bisa daftar, dan tujuh puluh ribu kursinya ada di kehutanan."
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "mog",
+          "text": "Syarat umumnya, umur delapan belas sampai tiga puluh lima tahun saat melamar. Daftarnya cuma lewat portal resmi SSCASN. Ingat, bikin akun saja belum berarti kamu sudah mendaftar."
+        },
+        {
+          "speaker": "wec",
+          "text": "Kamu mau daftar formasi apa? Tulis di komentar."
+        },
+        {
+          "speaker": "mog",
+          "text": "Totalnya ada lebih dari seratus lima puluh empat ribu formasi. Kehutanan paling banyak, enam puluh ribu di antaranya polisi kehutanan."
+        }
+      ]
+    },
+    {
+      "id": "sisi",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Tapi tanggal tutup pendaftarannya belum diumumkan. Seleksi administrasi direncanakan minggu pertama Desember."
+        },
+        {
+          "speaker": "mog",
+          "text": "Hati-hati penipuan berkedok CPNS. Yang menjanjikan lulus asal transfer, jangan percaya."
+        }
+      ]
+    },
+    {
+      "id": "vonis",
+      "chapter": "kasus",
+      "lines": [
+        {
+          "speaker": "wec",
+          "text": "Kasus ditutup: CPNS dibuka Jumat lewat SSCASN, dan kursi terbanyak di kehutanan. Mau daftar formasi apa? Tulis di komentar ya!",
+          "after": 1.2
+        }
+      ]
+    }
+  ]
+}
