@@ -6,6 +6,23 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**25 Nov 2026 (WSL): the 7 stream #9/#10 clips rendered and on G:; old unposted clips deleted here.**
+
+| Clip | Length | Loudness | Caption |
+|---|---|---|---|
+| `windah-gtavi-lompat.mp4` | 26.9 s | -13.9 LUFS | 374 chars |
+| `windah-gtavi-ventilasi.mp4` | 19.4 s | -14.0 LUFS | 385 chars |
+| `windah-gtavi-rajaiblis.mp4` (NSFW) | 20.3 s | -14.0 LUFS | 372 chars |
+| `windah-gtavi-portalarc1.mp4` | 46.7 s | -14.0 LUFS | 372 chars |
+| `windah-gtavi-portalarc2.mp4` | 35.3 s | -13.4 LUFS | 335 chars |
+| `windah-gtavi-email-masuk.mp4` | 24.6 s | -14.0 LUFS | 299 chars |
+| `windah-gtavi-portalan.mp4` (NSFW) | 36.2 s | -14.0 LUFS | 423 chars |
+
+- All 7 masters were copied to `G:\Other computers\My Laptop\out\wizzclip\` (none existed there before), and the captions (5 hashtags each) were fetched into `out/wizzclip/`.
+- Contact sheets look right: NSFW tags on rajaiblis and portalan, and the rajaiblis first-cut blur is in place. In portalan cut 3 (about 5 s), something small in the man's hand may be the pistol edge, so check it at full size before posting.
+- The ear and eye checks listed in the entry below are still to do.
+- With the user's OK, the 26 older unposted masters and their captions (ufo, ufoarc, chase, mandy, mending-balap, misteriarc and others) were deleted from `out/wizzclip/` on this laptop, matching the Windows cleanup on 24 Nov. The `.cache/wizzclip/<slug>/` build folders and the misteriarc local backup are kept.
+
 **24 Nov 2026 ~16:30 (WSL): misteriarc1/2 rendered and on G:.**
 
 | Clip | Length | Loudness | Caption |
