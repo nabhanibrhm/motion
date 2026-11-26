@@ -14,11 +14,12 @@
 //
 // news.json fields
 //   title     cover title; *word* = Volt accent
-//   category  "GAMING" | "SPORT"          kind  "BERITA" | "FAKTA"
+//   category  "GAMING" | "SPORT"          kind  "BERITA" | "FAKTA" | "CERITA" (story recap)
 //   beats[]   { text (*word* = Volt accent), big?, image?, sub?, seconds, sfx? , subAt? }
 //             text: main line (Audex). big: huge number/time (Volt). image: path (repo-root or news dir relative).
 //             video: { src, start, dim?, focusX? } muted footage behind the beat (pre-cut to .cache/.../clips, video only).
-//               src repo-root relative; start = seconds into the source; dim = Ink overlay opacity (default 0.55); focusX 0..1 = horizontal crop (default 0.5).
+//               src repo-root relative; start = seconds into the source; dim = Ink overlay opacity (default 0.55); focusX 0..1 = horizontal crop (default 0.5);
+//               zoom 1..2 (default 1) scales past full height and crops at focusY 0..1 (default 0.5), e.g. zoom 1.15 + focusY 0.2 hides burned-in subtitles.
 //             split: { top: {src,start,speed?,dim?,focusX?,win?}, bottom: {...}, labels?: [top, bottom] }  two stacked halves
 //               (1080x960 each), label pill on each, text on an Ink box over the seam. speed 0.25..1 slows a short shot
 //               (0.5 = half speed: a 1.2 s shot fills 2.4 s); win = clean shot length in SOURCE seconds. No big/image/video with split.
@@ -84,7 +85,10 @@ function parseVideo(v, label, defDim, need) {
   need(focusX >= 0 && focusX <= 1, `${label}.focusX must be 0..1`);
   const speed = Number(v.speed ?? 1);
   need(speed >= 0.25 && speed <= 1, `${label}.speed must be 0.25..1`);
-  return { src, start, dim, focusX, speed, win: v.win === undefined ? null : Number(v.win) };
+  const zoom = Number(v.zoom ?? 1), focusY = Number(v.focusY ?? 0.5);
+  need(zoom >= 1 && zoom <= 2, `${label}.zoom must be 1..2`);
+  need(focusY >= 0 && focusY <= 1, `${label}.focusY must be 0..1`);
+  return { src, start, dim, focusX, speed, zoom, focusY, win: v.win === undefined ? null : Number(v.win) };
 }
 function parseSplit(s, label, defDim, need, defLabels) {
   const labels = s.labels ?? defLabels ?? ['DULU', 'SEKARANG'];
@@ -100,13 +104,16 @@ function cutClip(v, dur, clipsDir, label, w = W, h = H) {
   const speed = v.speed ?? 1, need = dur * speed;
   if (!(v.start + need <= srcDur - 0.05)) throw new Error(`${label}: needs ${v.start}s + ${r3(need)}s but ${basename(v.src)} is only ${srcDur.toFixed(2)}s long`);
   // full-frame cuts keep their old cache key; split halves and slowed shots get their own
-  const key = createHash('sha1').update(JSON.stringify(w === W && h === H && speed === 1 ? [v.src, statSync(v.src).size, v.start, dur, v.focusX, 'v2'] : [v.src, statSync(v.src).size, v.start, dur, v.focusX, speed, w, h, 'v3'])).digest('hex').slice(0, 12);
+  const zoom = v.zoom ?? 1, focusY = v.focusY ?? 0.5;
+  const key = createHash('sha1').update(JSON.stringify(w === W && h === H && speed === 1 && zoom === 1 ? [v.src, statSync(v.src).size, v.start, dur, v.focusX, 'v2'] : [v.src, statSync(v.src).size, v.start, dur, v.focusX, speed, w, h, zoom, focusY, 'v4'])).digest('hex').slice(0, 12);
   const file = join(clipsDir, `${key}.mp4`);
   if (existsSync(file)) return file;
   mkdirSync(clipsDir, { recursive: true });
   // full frame: scale to 1920 high, crop at focusX. Split half (1080x960): cover-fit, crop the overflow at focusX, centred
   // vertically. speed < 1 = slow motion (setpts before fps, so frames are repeated, not blended).
-  const fitVf = w === W && h === H ? `scale=-2:${H}:flags=lanczos,crop=${W}:${H}:(iw-${W})*${v.focusX}:0`
+  // zoom > 1 (full frame only) scales past 1920 high and crops at focusY, e.g. zoom 1.15 + focusY 0.2 hides burned-in subtitles.
+  const ZH = Math.round(H * zoom / 2) * 2;
+  const fitVf = w === W && h === H ? `scale=-2:${ZH}:flags=lanczos,crop=${W}:${H}:(iw-${W})*${v.focusX}:(ih-${H})*${focusY}`
     : `scale=w='max(${w},iw*${h}/ih)':h='max(${h},ih*${w}/iw)':flags=lanczos,crop=${w}:${h}:(iw-${w})*${v.focusX}:(ih-${h})/2`;
   const vf = `${speed !== 1 ? `setpts=PTS/${speed},` : ''}${fitVf},fps=${FPS},setsar=1,format=yuv420p`;
   const tmp = file + '.part.mp4';
@@ -126,7 +133,7 @@ function load(id) {
   const need = (c, m) => { if (!c) throw new Error(`${id}/news.json: ${m}`); };
   need(typeof d.title === 'string' && d.title.trim(), 'title is required');
   need(['GAMING', 'SPORT'].includes(d.category), 'category must be GAMING or SPORT');
-  need(['BERITA', 'FAKTA'].includes(d.kind), 'kind must be BERITA or FAKTA');
+  need(['BERITA', 'FAKTA', 'CERITA'].includes(d.kind), 'kind must be BERITA, FAKTA or CERITA');
   need(Array.isArray(d.beats) && d.beats.length >= 2 && d.beats.length <= 18, 'beats must hold 2 to 18 entries');
   const music = d.music === false ? null : { src: 'assets/shared/music/bed.mp3', volume: 0.35, ...(d.music || {}) };
   const sfxDefault = d.sfxDefault === undefined ? 'whoosh' : d.sfxDefault;

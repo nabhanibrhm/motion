@@ -1,0 +1,144 @@
+{
+  "_note": "26 Nov 2026. GTA 6 storyline explained, part 1 of 3. Plot sources (2+ per line): GTABase, Gfinity, Overdrive Brasil, Fextralife, FandomWire, Beebom, SVG (research: tools/wizzclip/news/gta6story1/research.md). Footage (not in git, video only): .cache/wizzclip/gta6story/src/*.mp4 cut from Perfect Score chapter walkthroughs, Ben-Gun / MELOO / FoxPlay ending videos, and Rockstar trailers. Voice: Nisa (wec), Cartesia.",
+  "title": "CERITA *GTA 6* · PART 1",
+  "category": "GAMING",
+  "kind": "CERITA",
+  "music": false,
+  "sfxDefault": false,
+  "coverSfx": false,
+  "narration": {
+    "speaker": "wec",
+    "tail": 0.25,
+    "say": {
+      "GTA": "ji ti ei",
+      "Jason": "Jeisen",
+      "Lucia": "Lusia",
+      "Tomás": "Tomas",
+      "Méndez": "Mendes",
+      "Gellhorn": "Gelhorn",
+      "Keys": "Kis",
+      "Vice": "Vais",
+      "City": "Siti",
+      "Raul": "Ra-ul",
+      "Giorgio": "Jorjo",
+      "Gallo": "Galo"
+    }
+  },
+  "beats": [
+    {
+      "text": "JASON & LUCIA *PUNYA ANAK?*",
+      "say": "Spoiler GTA 6! Ternyata Jason dan Lucia punya anak, namanya Tomás.",
+      "sub": "PART 1 DARI 3 · SPOILER",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-805.mp4",
+        "start": 9.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Lucia *dipenjara*",
+      "say": "Lucia dipenjara gara-gara merampok, dan bayinya diambil dinas sosial.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-221.mp4",
+        "start": 7.2,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Jason, *mantan tentara*",
+      "say": "Di Leonida Keys, Jason, mantan tentara, kerja buat penyelundup.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-911.mp4",
+        "start": 5.6,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Cinta lama *bersemi lagi*",
+      "say": "Begitu Lucia bebas, Jason yang jemput. Cinta lama bersemi lagi.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-9491.mp4",
+        "start": 13.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Kerjaan *gampang*",
+      "say": "Lalu ada tawaran kerjaan gampang: ambil tas dari loker.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-21334.mp4",
+        "start": 12.6,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Ternyata *jebakan*",
+      "say": "Ternyata jebakan. Kapten Méndez, polisi korup, mau tas itu. Anak buahnya menembak, dan Jason kena.",
+      "sub": "Kapten Méndez, polisi korup",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-21482.mp4",
+        "start": 6.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Kabur ke *Port Gellhorn*",
+      "say": "Lucia bawa Jason kabur naik perahu, lalu sembunyi di motel Port Gellhorn.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-21946.mp4",
+        "start": 2.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Isinya *hard disk*",
+      "say": "Tasnya dibuka: isinya hard disk. Méndez malah menuduh mereka di TV.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/PONwxNK7Hss-166.mp4",
+        "start": 5.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Apa isi *hard disk* itu?",
+      "say": "Apa isi hard disk itu? Lanjut di part dua, ya. Kamu udah sampai chapter berapa? Tulis di komen!",
+      "sub": "Kamu udah sampai chapter berapa? Tulis di komen",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/PONwxNK7Hss-166.mp4",
+        "start": 22.5,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    }
+  ],
+  "sources": [
+    "Perfect Score",
+    "Rockstar Games",
+    "GTABase",
+    "Gfinity"
+  ],
+  "coverVideo": {
+    "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-9491.mp4",
+    "start": 17.5,
+    "dim": 0.6,
+    "zoom": 1.22,
+    "focusY": 0.15
+  }
+}

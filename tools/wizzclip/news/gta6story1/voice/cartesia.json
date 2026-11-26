@@ -1,0 +1,56 @@
+{
+ "b0-0.wav": {
+  "key": "20af91d9fb83e670ab6c065dd2e210e30730364ff953da81e95a6c38b07ab75d",
+  "sha256": "35301b772bbc8850442ff5262824878434cd6661989a54f0d8b6824a8663bed2",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 72
+ },
+ "b1-0.wav": {
+  "key": "a1f2fc7eae7e9e2ccc3082eb88ffa9b570dfcb12bb9f861cc0c97f82e0e24618",
+  "sha256": "6fd70a81fc176fa56aa074b1fe817a7eb630b58b348fba6c658f76583468f84c",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 69
+ },
+ "b2-0.wav": {
+  "key": "1496a42b99b1b0d822b569cb49e4945f7281ce08c1d53d07eed18fdc60e70b62",
+  "sha256": "850623f84020b3e8b34645de091ae35dcc7e15767fa30bcf200c09a5ec2d02d4",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 63
+ },
+ "b3-0.wav": {
+  "key": "688d3a7768e5e1298ec2e681ad0a487248c73ef92c874448ba40ee7fcbe84bad",
+  "sha256": "137168b8085cdc25160ef12c2d41a6c1bf5605a4ec80efd46f48a84f49fe6cf3",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 64
+ },
+ "b4-0.wav": {
+  "key": "fd580f8e5f2f0ea31c3c56f442e642b4b865ad80092c3cf74f710780fc65d55f",
+  "sha256": "eb0cca306f2f990df0d759509b5b0dd0485590c07f1f80aebaec7ebd3e0c5830",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 55
+ },
+ "b5-0.wav": {
+  "key": "ce7f108099520ca1c771cd88a3967924befdbcf44c170704938af44ed01c50a0",
+  "sha256": "0f7017e411b29e52fb36381519c8ef75bb8d99b427367695a630d0077855590e",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 99
+ },
+ "b6-0.wav": {
+  "key": "f2bea88c1ad7cb5d13e0b7b9d6564c431c442b5605618efd1799a4d77153ea5b",
+  "sha256": "c444cabd170976b16801299622c5aaea1302ca8c7580d56b8d97760c9d8d0184",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 73
+ },
+ "b7-0.wav": {
+  "key": "ea9d3928101f25e4b2dda500251fd9ed6fba0550d8786dad543abf7f8593dda1",
+  "sha256": "3ad1082bdcc852ba716c139605d4b6fe60af237dd4e7717e1e5fa7896a791103",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 67
+ },
+ "b8-0.wav": {
+  "key": "04e6596877b1892551226f22d9b591ca6e165faef4a4ffd5306381e35ffa42e4",
+  "sha256": "579b1df87663a1aabda4794f79cdc6c5dc25bcc60f481945dfb6d2b2b052a0e3",
+  "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90",
+  "chars": 95
+ }
+}

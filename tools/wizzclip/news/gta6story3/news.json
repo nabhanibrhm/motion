@@ -1,0 +1,147 @@
+{
+  "_note": "26 Nov 2026. GTA 6 storyline explained, part 3 of 3. Plot sources (2+ per line): GTABase, Gfinity, Overdrive Brasil, Fextralife, FandomWire, Beebom, SVG (research: tools/wizzclip/news/gta6story1/research.md). Footage (not in git, video only): .cache/wizzclip/gta6story/src/*.mp4 cut from Perfect Score chapter walkthroughs, Ben-Gun / MELOO / FoxPlay ending videos, and Rockstar trailers. Voice: Nisa (wec), Cartesia.",
+  "title": "ENDING *GTA 6* · PART 3",
+  "category": "GAMING",
+  "kind": "CERITA",
+  "music": false,
+  "sfxDefault": false,
+  "coverSfx": false,
+  "narration": {
+    "speaker": "wec",
+    "tail": 0.25,
+    "say": {
+      "GTA": "ji ti ei",
+      "Jason": "Jeisen",
+      "Lucia": "Lusia",
+      "Tomás": "Tomas",
+      "Méndez": "Mendes",
+      "Gellhorn": "Gelhorn",
+      "Keys": "Kis",
+      "Vice": "Vais",
+      "City": "Siti",
+      "Raul": "Ra-ul",
+      "Giorgio": "Jorjo",
+      "Gallo": "Galo"
+    }
+  },
+  "beats": [
+    {
+      "text": "SPOILER *ENDING*",
+      "say": "Spoiler ending GTA 6! Giorgio pakai hard disk itu buat memeras seorang senator, dan Jason dan Lucia jadi tukang kerjanya.",
+      "sub": "PART 3 DARI 3 · SATU PILIHAN DI JEMBATAN",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/wXaYuJRQjsg-1389.mp4",
+        "start": 11.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Giorgio *berkhianat*",
+      "say": "Tapi Giorgio berkhianat. Mereka ditangkap terpisah.",
+      "video": {
+        "src": ".cache/wizzclip/gta6-trailer/trailer1.mp4",
+        "start": 5.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Lucia *menolak*",
+      "say": "Jaksa menawarkan Lucia bebas, asal menyerahkan hard disk dan Jason. Lucia menolak, kabur, dan membebaskan Jason.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-818.mp4",
+        "start": 11.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Tembak atau *terima tawaran?*",
+      "say": "Kapten Méndez terpojok: tembak dia, atau terima tawarannya?",
+      "sub": "Kapten Méndez terpojok",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/ubomimJd6eY-21528.mp4",
+        "start": 11.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Serbu *menara Giorgio*",
+      "say": "Mereka menyerbu menara Giorgio dan merebut hard disk-nya.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/wXaYuJRQjsg-66.mp4",
+        "start": 7.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Lompat atau *tidak menyerah?*",
+      "say": "Tapi polisi mengepung mereka di jembatan. Pilihan terakhir: lompat ke laut, atau tidak menyerah.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/CXsSTUHr8ww-178.mp4",
+        "start": 5.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Dua ending *di jembatan*",
+      "say": "Tidak menyerah: dua-duanya tewas. Lompat: Jason berkorban dan masuk penjara, Lucia membesarkan Tomás.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/CXsSTUHr8ww-278.mp4",
+        "start": 11.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Keluarga *kumpul lagi*",
+      "say": "Tapi kalau tabungan keluarga cukup, Jason bisa bebas, dan mereka kumpul lagi.",
+      "sub": "Ending terbaik",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/CXsSTUHr8ww-579.mp4",
+        "start": 11.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Kamu pilih *yang mana?*",
+      "say": "Kamu pilih lompat, atau tidak menyerah? Tulis di komen!",
+      "sub": "Tulis di komen",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/CXsSTUHr8ww-278.mp4",
+        "start": 5.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    }
+  ],
+  "sources": [
+    "MELOO",
+    "Ben-Gun",
+    "Perfect Score",
+    "Rockstar Games",
+    "GTABase",
+    "Fextralife"
+  ],
+  "coverVideo": {
+    "src": ".cache/wizzclip/gta6story/src/CXsSTUHr8ww-278.mp4",
+    "start": 17.0,
+    "dim": 0.6,
+    "zoom": 1.22,
+    "focusY": 0.15
+  }
+}

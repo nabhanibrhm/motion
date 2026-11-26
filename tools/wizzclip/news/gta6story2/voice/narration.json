@@ -1,0 +1,100 @@
+{
+ "source": "cartesia",
+ "cartesia": {
+  "say": {
+   "GTA": "ji ti ei",
+   "Jason": "Jeisen",
+   "Lucia": "Lusia",
+   "Tomás": "Tomas",
+   "Méndez": "Mendes",
+   "Gellhorn": "Gelhorn",
+   "Keys": "Kis",
+   "Vice": "Vais",
+   "City": "Siti",
+   "Raul": "Ra-ul",
+   "Giorgio": "Jorjo",
+   "Gallo": "Galo"
+  }
+ },
+ "speakers": {
+  "wec": {
+   "cartesia": {
+    "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90"
+   }
+  }
+ },
+ "sections": [
+  {
+   "id": "b0",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Orang bertopeng menemukan motel mereka, jadi Jason dan Lucia kabur ke Vice City."
+    }
+   ]
+  },
+  {
+   "id": "b1",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Di sana mereka ketemu Raul Bautista, perampok bank veteran yang jadi mentor mereka."
+    }
+   ]
+  },
+  {
+   "id": "b2",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Target pertama: bank yang mencuci uang kartel."
+    }
+   ]
+  },
+  {
+   "id": "b3",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Lalu perampokan bandara. Rencananya kacau, polisi di mana-mana, sampai pesawatnya mendarat darurat di teluk."
+    }
+   ]
+  },
+  {
+   "id": "b4",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Valentina diam-diam menjual hard disk itu, dan mengkhianati Raul."
+    }
+   ]
+  },
+  {
+   "id": "b5",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Mereka menemukan Raul di kapalnya, dihajar sampai sekarat."
+    }
+   ]
+  },
+  {
+   "id": "b6",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Kehilangan semuanya, mereka dibawa ke pemilik asli hard disk: Giorgio Gallo."
+    }
+   ]
+  },
+  {
+   "id": "b7",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Dan orang yang barangnya mereka curi, malah menawarkan kerjaan. Menurut kamu, Giorgio bisa dipercaya? Endingnya di part tiga, ya!"
+    }
+   ]
+  }
+ ]
+}

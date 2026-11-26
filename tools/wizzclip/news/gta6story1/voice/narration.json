@@ -1,0 +1,109 @@
+{
+ "source": "cartesia",
+ "cartesia": {
+  "say": {
+   "GTA": "ji ti ei",
+   "Jason": "Jeisen",
+   "Lucia": "Lusia",
+   "Tomás": "Tomas",
+   "Méndez": "Mendes",
+   "Gellhorn": "Gelhorn",
+   "Keys": "Kis",
+   "Vice": "Vais",
+   "City": "Siti",
+   "Raul": "Ra-ul",
+   "Giorgio": "Jorjo",
+   "Gallo": "Galo"
+  }
+ },
+ "speakers": {
+  "wec": {
+   "cartesia": {
+    "voice": "f3b7c445-d015-40f7-a665-9595e0bc0c90"
+   }
+  }
+ },
+ "sections": [
+  {
+   "id": "b0",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Spoiler GTA 6! Ternyata Jason dan Lucia punya anak, namanya Tomás."
+    }
+   ]
+  },
+  {
+   "id": "b1",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Lucia dipenjara gara-gara merampok, dan bayinya diambil dinas sosial."
+    }
+   ]
+  },
+  {
+   "id": "b2",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Di Leonida Keys, Jason, mantan tentara, kerja buat penyelundup."
+    }
+   ]
+  },
+  {
+   "id": "b3",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Begitu Lucia bebas, Jason yang jemput. Cinta lama bersemi lagi."
+    }
+   ]
+  },
+  {
+   "id": "b4",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Lalu ada tawaran kerjaan gampang: ambil tas dari loker."
+    }
+   ]
+  },
+  {
+   "id": "b5",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Ternyata jebakan. Kapten Méndez, polisi korup, mau tas itu. Anak buahnya menembak, dan Jason kena."
+    }
+   ]
+  },
+  {
+   "id": "b6",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Lucia bawa Jason kabur naik perahu, lalu sembunyi di motel Port Gellhorn."
+    }
+   ]
+  },
+  {
+   "id": "b7",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Tasnya dibuka: isinya hard disk. Méndez malah menuduh mereka di TV."
+    }
+   ]
+  },
+  {
+   "id": "b8",
+   "lines": [
+    {
+     "speaker": "wec",
+     "text": "Apa isi hard disk itu? Lanjut di part dua, ya. Kamu udah sampai chapter berapa? Tulis di komen!"
+    }
+   ]
+  }
+ ]
+}

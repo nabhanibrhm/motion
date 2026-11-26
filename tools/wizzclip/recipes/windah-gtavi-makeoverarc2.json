@@ -1,0 +1,70 @@
+{
+  "description": "Makeover arc part 2/2: the girls in chat vote on Jason's long hair (7, 'kaya pangeran', then a beard) and Lucia's hair (6); ends on the finished couple. Source = .cache/wizzclip/windah-gtavi-makeoverarc2/source.mp4 (also Drive clip-src/windah-gtavi-makeoverarc2.mp4): 10 pieces (0.6 s padding each) of windah-live11/stream-2126-2226.mp4 (h3) and stream-2226-2326.mp4 (h4) in output order, 1080p30 re-encoded and joined. Cuts: T t 1250.60-1251.80 = local 0.60-1.80 -> output 0.00-1.20; A t 1162.00-1166.00 = local 3.00-7.00 -> output 1.20-5.20; C t 1183.20-1188.50 = local 8.20-13.50 -> output 5.20-10.50; D t 1197.80-1203.60 = local 14.70-20.50 -> output 10.50-16.30; E t 1214.90-1219.25 = local 21.70-26.05 -> output 16.30-20.65; F t 1244.00-1250.30 = local 27.25-33.55 -> output 20.65-26.95; G t 1254.60-1257.40 = local 34.75-37.55 -> output 26.95-29.75; H t 1304.00-1308.50 = local 38.75-43.25 -> output 29.75-34.25; J t 1356.40-1364.60 = local 44.45-52.65 -> output 34.25-42.45; K t 1442.10-1448.10 = local 53.85-59.85 -> output 42.45-48.45. Beats in stream order: frame-0 teaser (h4 20:50.6, Jason's long hair and beard); 'gondrong gini suka gak cewe-cewe?' (h4 19:22); the vote '6 atau 7' (h4 19:43); 'cewe suka nomor 7, kasih nuansa baru' (h4 19:58); 'pirangin dikit ... anjir kaya pangeran' (h4 20:15-20:19); 'clean shave ... bagus brewok' (h4 20:44-20:50); 'cewek-cewek suka gak?' (h4 20:55); Lucia's turn '6 atau 8' (h4 21:44); 'cewek-cewek jawab nomor 6' (h4 22:36-22:44); payoff, the finished couple walking, 'anjay cantik dan ganteng' (h4 24:02-24:08). Word timings from faster-whisper medium on short windows. The streamer's chat/poll window (usernames) is blurred in cuts D and J; the Windows taskbar at source y>1060 is outside the game crop. CUT: a game-character name at h4 21:12 and the swears around h4 21:41. No guns, gore or revealing outfits in frame. Main 48.45 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1504x846 at (0,0) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'RAMBUT JASON DIVOTING', line 2 Volt 'HASILNYA KAYA PANGERAN', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-makeoverarc2",
+    "youtube": "5m-Xi8lgvWY",
+    "url": "https://www.youtube.com/watch?v=5m-Xi8lgvWY",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-makeoverarc2.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=3.00:7.00,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=8.20:13.50,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=14.70:20.50,setpts=PTS-STARTPTS,fps=30,split=2[b4a][b4b];",
+    "[b4b]crop=620:720:40:60,boxblur=luma_radius=30:luma_power=3[b4c];",
+    "[b4a][b4c]overlay=40:60:enable='gte(t,0.00)'[v4];",
+    "[0:v]trim=21.70:26.05,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=27.25:33.55,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=34.75:37.55,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:v]trim=38.75:43.25,setpts=PTS-STARTPTS,fps=30[v8];",
+    "[0:v]trim=44.45:52.65,setpts=PTS-STARTPTS,fps=30,split=2[b9a][b9b];",
+    "[b9b]crop=620:720:40:60,boxblur=luma_radius=30:luma_power=3[b9c];",
+    "[b9a][b9c]overlay=40:60:enable='gte(t,0.00)'[v9];",
+    "[0:v]trim=53.85:59.85,setpts=PTS-STARTPTS,fps=30[v10];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=3.00:7.00,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.90:d=0.1[a2];",
+    "[0:a]atrim=8.20:13.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.20:d=0.1[a3];",
+    "[0:a]atrim=14.70:20.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.70:d=0.1[a4];",
+    "[0:a]atrim=21.70:26.05,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.25:d=0.1[a5];",
+    "[0:a]atrim=27.25:33.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.20:d=0.1[a6];",
+    "[0:a]atrim=34.75:37.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.70:d=0.1[a7];",
+    "[0:a]atrim=38.75:43.25,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.40:d=0.1[a8];",
+    "[0:a]atrim=44.45:52.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.10:d=0.1[a9];",
+    "[0:a]atrim=53.85:59.85,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.90:d=0.1[a10];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7][v8][a8][v9][a9][v10][a10]concat=n=10:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1504:846:0:0,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-11.24:measured_TP=0.72:measured_LRA=9.20:measured_thresh=-22.39:offset=0.19:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-makeoverarc2.mp4"
+}

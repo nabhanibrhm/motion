@@ -1,0 +1,134 @@
+{
+  "_note": "26 Nov 2026. GTA 6 storyline explained, part 2 of 3. Plot sources (2+ per line): GTABase, Gfinity, Overdrive Brasil, Fextralife, FandomWire, Beebom, SVG (research: tools/wizzclip/news/gta6story1/research.md). Footage (not in git, video only): .cache/wizzclip/gta6story/src/*.mp4 cut from Perfect Score chapter walkthroughs, Ben-Gun / MELOO / FoxPlay ending videos, and Rockstar trailers. Voice: Nisa (wec), Cartesia.",
+  "title": "CERITA *GTA 6* · PART 2",
+  "category": "GAMING",
+  "kind": "CERITA",
+  "music": false,
+  "sfxDefault": false,
+  "coverSfx": false,
+  "narration": {
+    "speaker": "wec",
+    "tail": 0.25,
+    "say": {
+      "GTA": "ji ti ei",
+      "Jason": "Jeisen",
+      "Lucia": "Lusia",
+      "Tomás": "Tomas",
+      "Méndez": "Mendes",
+      "Gellhorn": "Gelhorn",
+      "Keys": "Kis",
+      "Vice": "Vais",
+      "City": "Siti",
+      "Raul": "Ra-ul",
+      "Giorgio": "Jorjo",
+      "Gallo": "Galo"
+    }
+  },
+  "beats": [
+    {
+      "text": "MENTOR MEREKA *DIKHIANATI*",
+      "say": "Orang bertopeng menemukan motel mereka, jadi Jason dan Lucia kabur ke Vice City.",
+      "sub": "PART 2 DARI 3 · SPOILER",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/PONwxNK7Hss-10025.mp4",
+        "start": 10.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Raul *Bautista*",
+      "say": "Di sana mereka ketemu Raul Bautista, perampok bank veteran yang jadi mentor mereka.",
+      "sub": "Perampok bank veteran",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/qYBCLhD0eH0-27632.mp4",
+        "start": 6.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Rampok *bank kartel*",
+      "say": "Target pertama: bank yang mencuci uang kartel.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/Su4Th6NDrLA-27411.mp4",
+        "start": 11.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Perampokan *bandara*",
+      "say": "Lalu perampokan bandara. Rencananya kacau, polisi di mana-mana, sampai pesawatnya mendarat darurat di teluk.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/qYBCLhD0eH0-27549.mp4",
+        "start": 11.5,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Valentina *berkhianat*",
+      "say": "Valentina diam-diam menjual hard disk itu, dan mengkhianati Raul.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/qYBCLhD0eH0-28781.mp4",
+        "start": 16.5,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Raul *sekarat*",
+      "say": "Mereka menemukan Raul di kapalnya, dihajar sampai sekarat.",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/qYBCLhD0eH0-28781.mp4",
+        "start": 8.5,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Giorgio *Gallo*",
+      "say": "Kehilangan semuanya, mereka dibawa ke pemilik asli hard disk: Giorgio Gallo.",
+      "sub": "Pemilik asli hard disk",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/qYBCLhD0eH0-30645.mp4",
+        "start": 18.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    },
+    {
+      "text": "Bisa *dipercaya?*",
+      "say": "Dan orang yang barangnya mereka curi, malah menawarkan kerjaan. Menurut kamu, Giorgio bisa dipercaya? Endingnya di part tiga, ya!",
+      "sub": "Menurut kamu? Tulis di komen",
+      "video": {
+        "src": ".cache/wizzclip/gta6story/src/qYBCLhD0eH0-30645.mp4",
+        "start": 90.0,
+        "dim": 0.45,
+        "zoom": 1.22,
+        "focusY": 0.15
+      }
+    }
+  ],
+  "sources": [
+    "Perfect Score",
+    "Rockstar Games",
+    "GTABase",
+    "Gfinity"
+  ],
+  "coverVideo": {
+    "src": ".cache/wizzclip/gta6story/src/qYBCLhD0eH0-30645.mp4",
+    "start": 24.0,
+    "dim": 0.6,
+    "zoom": 1.22,
+    "focusY": 0.15
+  }
+}

@@ -6,6 +6,26 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**26 Nov 2026 (Windows): Wizz Clip "Cerita GTA 6" 3-part story series rendered; makeover arc built; stream #12 recording; disk cleanup.**
+
+- **"Cerita GTA 6" (storyline explained, full story + ending, the user's choice), news template, Nisa voice (~2,020 Cartesia credits, user OK).** Not posted. Post parts 1 → 2 → 3, at least 2 h apart (part 3 = ending spoiler).
+
+  | File (`out/wizzclip/`) | Length | Frame 0 |
+  |---|---|---|
+  | `news-gta6story1.mp4` | 51.4 s | JASON & LUCIA PUNYA ANAK? (baby Tomás, prologue → locker trap → hard drive) |
+  | `news-gta6story2.mp4` | 49.0 s | MENTOR MEREKA DIKHIANATI (motel → Raul → bank vault → plane in the bay → Valentina → Giorgio) |
+  | `news-gta6story3.mp4` | 55.0 s | SPOILER ENDING (Giorgio's betrayal → Méndez → tower → bridge: jump / no surrender / best ending) |
+
+  - All -14.0 LUFS, narration only (source audio never used). Captions `out/wizzclip/news-gta6story{1,2,3}-caption.txt` (439–467 chars, 5 hashtags, footage + plot credits).
+  - Specs `tools/wizzclip/news/gta6story{1,2,3}/news.json`, voice committed in each `voice/`. Plot research (2+ sources per line; mid-tier outlets GTABase, Gfinity, Fextralife, Overdrive, FandomWire; big outlets unreachable) in `tools/wizzclip/news/gta6story1/research.md`. Single-source details were left out; no dollar thresholds.
+  - Footage (not in git): 1080p video-only sections in `.cache/wizzclip/gta6story/src/<videoid>-<start>.mp4` from Perfect Score's no-commentary chapter walkthroughs (Ch1 `ubomimJd6eY`, Ch2 `PONwxNK7Hss`, Ch3 `Su4Th6NDrLA`, Ch4 `qYBCLhD0eH0`), Ben-Gun True Ending `CXsSTUHr8ww`, MELOO final mission `wXaYuJRQjsg`, plus Rockstar trailer 1. Fetch script `.cache/wizzclip/gta6story/hd.sh`. None of these creators states clipping permission: credit is shown, but a claim is possible.
+  - Burned-in cutscene subtitles (one had "coño") are hidden with the new `video.zoom` / `video.focusY` options (zoom 1.22, focusY 0.15). Gore avoided (FoxPlay's bloody bad ending not used; Raul's beating shown in shadow; Jason bleeding on the boat in part 1).
+  - Check by ear: "gara-gara", "Tasnya", "motel" (part 1), "teluk" (part 2). Part 3 is 55 s (over the 50 s arc rule; kept to fit the ending).
+- **News template (`tools/wizzclip/news/render.mjs`):** `kind` may now be `CERITA`; `video.zoom` (1..2) + `video.focusY` (0..1) scale past full height and crop vertically (new cache key `v4`; zoom 1 keeps the old keys).
+- **Makeover arc (stream #11), built, not posted:** `out/wizzclip/windah-gtavi-makeoverarc1.mp4` (45.0 s) and `-arc2.mp4` (52.5 s), -14.0 LUFS, captions next to them; specs/recipes `windah-gtavi-makeoverarc{1,2}`; sources on Drive `GTA6/clip-src/`. Cut: "polo", a TV lawyer's name, a film-title line, swears. Part 2 blurs the chat/poll window (usernames). `windah_recipe.py` gained `FACES['live11']` (same crop as live10). Windows renders of recipe clips take ~40 s each now.
+- **Stream #12** (`WnVFoAGVftc`, "GTA VI MENUJU 100% STORY ATAU MISTERI", scheduled 26 Nov 19:00 WIB): detached runner `.cache/wizzclip/windah-live12/run.sh` (recorder + scan loop) → Drive `GTA6/live12-2026-11-26`.
+- **Disk cleanup (user's OK; D: 13 → 62 GB free):** local stream recordings of #2–#9 deleted after a byte-size match with Drive (scan folders and chat kept); `.cache/wizzclip` folders of posted clips and their superseded versions, `gta6story/scout`, old news builds, `.cache/build`, `.cache/stills`, `%TEMP%\motion-stills` deleted. Streams #10/#11 and unposted clip folders kept.
+
 **25–26 Nov 2026: KASUS #18 `cpns` (episode 31) voiced and rendered; stream #11 recorded; yt-dlp bumped.**
 
 - **`cpns`:** "CPNS 2026 Dibuka Jumat: Kamu Bisa Daftar?", researched and built the day Panselnas announced the selection (25 Nov). `out/31-cpns-short.mp4`, 59.0 s, -14.0 LUFS; caption `out/caption/31-cpns-caption.txt` (515 chars).
