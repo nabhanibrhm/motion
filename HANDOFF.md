@@ -6,6 +6,18 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**27 Nov 2026 (Windows): stream #12 fully recorded and scanned; 3 Wizz Clip clips built from it; Cerita GTA 6 Part 1 flopped.**
+
+- **Stream #12** (`WnVFoAGVftc`), live 19:04–00:00 WIB: `windah-live12/stream-1904-2004`, `-2004-2104`, `-2104-2204`, `-2204-2304` (3600 s each) and `-2304-0000` (3292 s), all on Drive `GTA6/live12-2026-11-26/` and scanned (transcript, sheets, chat spikes). The last live batch failed 3 times right after the stream ended (post_live) and was refetched from the VOD by `windah-live12/gap.sh` (waits for `was_live`, which came at 01:29, ~1.5 h after the end). The broken video-only partial was deleted (user OK). `windah_recipe.py` gained `FACES['live12']` (same crop as live11).
+- **Clips built, not posted** (`out/wizzclip/`, captions next to them, sources on Drive `GTA6/clip-src/`, specs/recipes in git):
+  - `windah-gtavi-wibu.mp4` (30.8 s, h1 19:09–19:57): Yago secretly wraps Jason's freshly painted white car in an anime livery, "Yago wibu, kocak!". Cut: both "mampus", the hood close-up (the hood girl shows cleavage), and the mod-shop shot (the facecam moves into the mod-shop menu, so the face panel showed HUD).
+  - `windah-gtavi-maafortu.mp4` (34.4 s, h4): a parent in chat complains about the adult scenes; Windah pauses and apologizes to parents ("gamenya 18+"). The film shoot is fully blurred, the chat window (usernames) blurred, the spoken username cut. Borderline for the ToC because of the 18+ theme; the user decides.
+  - `windah-gtavi-stylist.mp4` (35.9 s, h3): Windah styles Lucia's casual outfit, chat calls it "jamet". Cut: two "anjir", the shorts/legs close-ups. Some store previews show tube/crop tops (mid shots): flagged to the user.
+- **Hour 5 pick pending:** the user's "crocodile" pick was my misreading; the spike is Lucia holding Halifax at gunpoint (shoot or spare), after a dark adult scene. Offered: (a) NSFW ToC-breaking clip with the adult scene blurred, (b) only "percaya dia atau enggak? gua udah capek dibohongin" (chat: JANGAN PERCAYA, the stream's biggest spike, h5 34:10–34:31) ending before the gun, (c) skip.
+- **Idea lists** for all 5 hours were given in chat (hour 1 → wibu; hours 2–5 → the user picked the three above).
+- **Cerita GTA 6 Part 1** (posted 26 Nov 18:46): 23 views / 7.2 s avg / 0% full at 1 h 40 min, 42 views at ~3 h. Parts 2 and 3 held; narrated story explainers lose to Windah stream clips on this account.
+- **faster-whisper on Windows:** passing a file path fails (`av.open()` got `metadata_errors`, PyAV version mismatch); feed a float32 numpy array from ffmpeg s16le instead. For Windah's own words under loud game audio, transcribe the scan's `boost.wav`, not the stream file.
+
 **26 Nov 2026 (Windows): Wizz Clip "Cerita GTA 6" 3-part story series rendered; makeover arc built; stream #12 recording; disk cleanup.**
 
 - **"Cerita GTA 6" (storyline explained, full story + ending, the user's choice), news template, Nisa voice (~2,020 Cartesia credits, user OK).** Not posted. Post parts 1 → 2 → 3, at least 2 h apart (part 3 = ending spoiler).

@@ -1,0 +1,60 @@
+{
+  "description": "Jason's freshly painted white car gets secretly wrapped in an anime livery by Yago: 'Yago wibu, kocak!' Source = .cache/wizzclip/windah-gtavi-wibu/source.mp4 (also Drive clip-src/windah-gtavi-wibu.mp4): 6 pieces (0.6 s padding each; piece A, the mod shop at h1 18:45, is unused: the facecam moves into the mod-shop menu there) of windah-live12/stream-1904-2004.mp4 (h1) in output order, 1080p30 re-encoded and joined. Cuts: T t 1176.20-1177.40 = local 0.60-1.80 -> output 0.00-1.20; B t 1149.50-1156.60 = local 6.60-13.70 -> output 1.20-8.30; C t 1159.80-1162.45 = local 14.90-17.55 -> output 8.30-10.95; C t 1163.15-1166.40 = local 18.25-21.50 -> output 10.95-14.20; C t 1168.75-1175.60 = local 23.85-30.70 -> output 14.20-21.05; D t 1180.60-1183.00 = local 31.90-34.30 -> output 21.05-23.45; E t 1194.05-1197.40 = local 35.50-38.85 -> output 23.45-26.80. Beats in stream order: frame-0 teaser (h1 19:36, the wrapped car); Yago 'missing one little thing' over the plain white car, 'apa yang belum ada?' (h1 19:09); the reveal and 'bocil ganti-ganti desain ... Yago wibu, kocak' (h1 19:19-19:35); 'gila, Yago wibu rupanya' (h1 19:40); driving off, 'gak ada gunanya gue cat putih tadi' (h1 19:54). Word timings from faster-whisper medium on a short window. CUT: both 'mampus' (h1 19:22.6, 19:26.5) and the hood close-up from ~19:43 (the anime girl on the hood shows cleavage); the wide side shots keep the livery small. Shop and livery logos are the game's own fictional brands. No guns, gore or revealing outfits in frame. Main 26.80 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1488x837 at (0,64) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'MOBIL GUE DIUBAH', line 2 Volt 'JADI MOBIL WIBU', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-wibu",
+    "youtube": "WnVFoAGVftc",
+    "url": "https://www.youtube.com/watch?v=WnVFoAGVftc",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-wibu.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.80,setpts=PTS-STARTPTS,fps=30[v1];",
+    "[0:v]trim=6.60:13.70,setpts=PTS-STARTPTS,fps=30[v2];",
+    "[0:v]trim=14.90:17.55,setpts=PTS-STARTPTS,fps=30[v3];",
+    "[0:v]trim=18.25:21.50,setpts=PTS-STARTPTS,fps=30[v4];",
+    "[0:v]trim=23.85:30.70,setpts=PTS-STARTPTS,fps=30[v5];",
+    "[0:v]trim=31.90:34.30,setpts=PTS-STARTPTS,fps=30[v6];",
+    "[0:v]trim=35.50:38.85,setpts=PTS-STARTPTS,fps=30[v7];",
+    "[0:a]atrim=0.60:1.80,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.10:d=0.1[a1];",
+    "[0:a]atrim=6.60:13.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=7.00:d=0.1[a2];",
+    "[0:a]atrim=14.90:17.55,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.55:d=0.1[a3];",
+    "[0:a]atrim=18.25:21.50,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.15:d=0.1[a4];",
+    "[0:a]atrim=23.85:30.70,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=6.75:d=0.1[a5];",
+    "[0:a]atrim=31.90:34.30,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=2.30:d=0.1[a6];",
+    "[0:a]atrim=35.50:38.85,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=3.25:d=0.1[a7];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5][v6][a6][v7][a7]concat=n=7:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1488:837:0:64,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-10.41:measured_TP=-0.03:measured_LRA=18.30:measured_thresh=-21.20:offset=-1.78:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-wibu.mp4"
+}

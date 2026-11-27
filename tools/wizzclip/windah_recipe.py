@@ -69,6 +69,9 @@ person extent in source px (x0-x1, head top - bottom edge):
   live11     windah-live11/stream-1926-2026 ... -2326-0011 (black tee with  x1550-1920, y540-848      (1568, 516, 352, 264)
              a chest logo at y~790-840, stream #11, 25-26 Nov 2026; 4 stills
              in hours 3 and 4; same spot and crop as live10)
+  live12     windah-live12/stream-1904-2004, -2004-2104 (black tee with   x1550-1920, y545-848      (1568, 516, 352, 264)
+             chest logo, stream #12, 26 Nov 2026; stills in hours 1 and 2;
+             same spot and crop as live11)
   All crops are 4:3 (440x330 -> 520x390, x1.18). Position inside a recording drifts a little (he leans); 48 + 30 spot
   checks across the recordings kept head and shoulders inside live3/live4, and 60 stills (12 per hour, all 5 hours of stream #5,
   22 Nov 2026) did for live5. Stream #4 moved the cam up and in compared with stream #3 (head top y570-650 vs y690-780).
@@ -82,7 +85,7 @@ HERE = Path(__file__).resolve().parent
 R = os.environ.get('WINDAH_OUT') or (HERE / 'recipes').as_posix()
 R = R.rstrip('/') + '/'
 SPECS = os.environ.get('WINDAH_SPECS') or (HERE / 'specs').as_posix()
-FACES = {'live11': (1568, 516, 352, 264), 'live10': (1568, 516, 352, 264), 'live9': (1568, 516, 352, 264), 'live8': (1480, 516, 440, 330), 'live7': (1480, 516, 440, 330), 'live6': (1520, 552, 400, 300), 'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5': (1480, 538, 440, 330)}
+FACES = {'live12': (1568, 516, 352, 264), 'live11': (1568, 516, 352, 264), 'live10': (1568, 516, 352, 264), 'live9': (1568, 516, 352, 264), 'live8': (1480, 516, 440, 330), 'live7': (1480, 516, 440, 330), 'live6': (1520, 552, 400, 300), 'live4': (1480, 560, 440, 330), 'live3': (1480, 686, 440, 330), 'live5': (1480, 538, 440, 330)}
 # 'face' layout geometry (output px)
 GAME_Y, FACE_X, FACE_Y, FACE_IW, FACE_IH, FACE_B = 364, 276, 994, 520, 390, 4
 HOOK_Y, TAG_Y, SUB_Y = 318, 326, 905

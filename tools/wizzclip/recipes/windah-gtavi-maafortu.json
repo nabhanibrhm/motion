@@ -1,0 +1,66 @@
+{
+  "description": "A parent in chat complains about the adult scenes; Windah pauses GTA VI and apologizes to parents ('dari awal gua udah bilang, gamenya 18+'). Source = .cache/wizzclip/windah-gtavi-maafortu/source.mp4 (also Drive clip-src/windah-gtavi-maafortu.mp4): 2 pieces (0.6 s padding each) of windah-live12/stream-2204-2304.mp4 (h4) in output order, 1080p30 re-encoded and joined. Cuts: A t 1540.30-1541.60 = local 0.60-1.90 -> output 0.00-1.30; C t 2147.80-2157.35 = local 3.10-12.65 -> output 1.30-10.85; C t 2157.42-2162.30 = local 12.72-17.60 -> output 10.85-15.73; C t 2165.85-2171.85 = local 21.15-27.15 -> output 15.73-21.73; C t 2174.45-2183.10 = local 29.75-38.40 -> output 21.73-30.38. Beats in stream order: 'sexy yoga, guys' over the in-game adult film shoot, fully blurred (h4 25:40); game paused, Windah reads a parent's chat line and apologizes to parents (h4 35:48-36:23). Word timings from faster-whisper medium on a short window. CUT: Jason's in-game swear (~25:39), the film shoot itself (blurred), the TV adult film before the pause, the viewer's username he reads out (h4 36:12.9-36:14.0) and the chat window (blurred). The pause-menu background is the game's own blur. Main 30.38 s + 4.0 s outro. Short format (user, 19 Nov: clips 45-60 s lost viewers at ~10 s, so aim for 20-30 s, payoff first). Facecam-below layout (windah_recipe.py layout 'face'): gameplay = source crop 1488x837 at (0,64) scaled to 1080x608 at y364 (the corner facecam is outside the crop, no blur), Windah's facecam = source crop 352x264 at (1568,516) scaled to 520x390 in a 4 px Volt frame, centred at x276, y994-1392, clear of TikTok's bottom caption area and right icon column; hook line 1 Paper 'ADA ORTU PROTES', line 2 Volt 'WINDAH MINTA MAAF', Audex 68, bottom-anchored at y318; credit tag y326; subs at y905 over the lower gameplay panel. Word timings from faster-whisper medium on boosted audio. Cuts on input 0 stay in source order; an earlier-shown later moment has its own seeked input.",
+  "campaign": "motionklip",
+  "campaign_brief": "Windah GTA VI",
+  "source": {
+    "slug": "windah-gtavi-maafortu",
+    "youtube": "WnVFoAGVftc",
+    "url": "https://www.youtube.com/watch?v=WnVFoAGVftc",
+    "section": null
+  },
+  "inputs": [
+    {
+      "path": "source",
+      "args": [
+        "-threads",
+        "3"
+      ]
+    },
+    {
+      "path": "campaign:watermark-windah-gtavi.png"
+    },
+    {
+      "path": "campaign:../../../../.cache/wizzclip/windah-gtavi/GTAVI_OutroVideo.mov"
+    }
+  ],
+  "subtitles": "windah-gtavi-maafortu.ass",
+  "fontsdir": "tools/wizzclip/fonts",
+  "fonts": [
+    "Audex-Regular.ttf"
+  ],
+  "filter_complex": [
+    "[0:v]trim=0.60:1.90,setpts=PTS-STARTPTS,fps=30,split=2[b1a][b1b];",
+    "[b1b]crop=1488:836:0:64,boxblur=luma_radius=30:luma_power=3[b1c];",
+    "[b1a][b1c]overlay=0:64:enable='gte(t,0.00)'[v1];",
+    "[0:v]trim=3.10:12.65,setpts=PTS-STARTPTS,fps=30,split=2[b2a][b2b];",
+    "[b2b]crop=470:540:266:362,boxblur=luma_radius=30:luma_power=3[b2c];",
+    "[b2a][b2c]overlay=266:362:enable='gte(t,0.00)'[v2];",
+    "[0:v]trim=12.72:17.60,setpts=PTS-STARTPTS,fps=30,split=2[b3a][b3b];",
+    "[b3b]crop=470:540:266:362,boxblur=luma_radius=30:luma_power=3[b3c];",
+    "[b3a][b3c]overlay=266:362:enable='gte(t,0.00)'[v3];",
+    "[0:v]trim=21.15:27.15,setpts=PTS-STARTPTS,fps=30,split=2[b4a][b4b];",
+    "[b4b]crop=470:540:266:362,boxblur=luma_radius=30:luma_power=3[b4c];",
+    "[b4a][b4c]overlay=266:362:enable='gte(t,0.00)'[v4];",
+    "[0:v]trim=29.75:38.40,setpts=PTS-STARTPTS,fps=30,split=2[b5a][b5b];",
+    "[b5b]crop=470:540:266:362,boxblur=luma_radius=30:luma_power=3[b5c];",
+    "[b5a][b5c]overlay=266:362:enable='gte(t,0.00)'[v5];",
+    "[0:a]atrim=0.60:1.90,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=1.20:d=0.1[a1];",
+    "[0:a]atrim=3.10:12.65,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=9.45:d=0.1[a2];",
+    "[0:a]atrim=12.72:17.60,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=4.78:d=0.1[a3];",
+    "[0:a]atrim=21.15:27.15,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=5.90:d=0.1[a4];",
+    "[0:a]atrim=29.75:38.40,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.04,afade=t=out:st=8.55:d=0.1[a5];",
+    "[v1][a1][v2][a2][v3][a3][v4][a4][v5][a5]concat=n=5:v=1:a=1[cv][ca];",
+    "[cv]split=2[cg][cf];",
+    "[cg]crop=1488:837:0:64,scale=1080:608:flags=lanczos,pad=1080:1920:0:364:color=0x0E0F12,format=yuv420p[gm];",
+    "[cf]crop=352:264:1568:516,scale=520:390:flags=lanczos,pad=528:398:4:4:color=0xE6FC29,format=yuv420p[fc];",
+    "[gm][fc]overlay=276:994:shortest=1,format=yuv420p[stk];",
+    "[stk]subtitles={ass}:fontsdir={fontsdir}[subd];",
+    "[subd][1:v]overlay=0:0,format=yuv420p,setsar=1[vm];",
+    "[2:v]scale=1080:1920,fps=30,setsar=1,format=yuv420p[vo];",
+    "[ca]aresample=48000,aformat=channel_layouts=stereo[am];",
+    "[2:a]atrim=0:4.0,asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo[ao];",
+    "[vm][am][vo][ao]concat=n=2:v=1:a=1[v][ra];",
+    "[ra]loudnorm=I=-14:TP=-1.0:LRA=11:measured_I=-14.94:measured_TP=-0.16:measured_LRA=16.20:measured_thresh=-25.76:offset=0.32:linear=true,asetpts=N/SR/TB[a]"
+  ],
+  "output": "windah-gtavi-maafortu.mp4"
+}
