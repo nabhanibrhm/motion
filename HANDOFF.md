@@ -6,6 +6,27 @@ Commit only when requested. Before changes, read `ai-routing.md` and route by th
 
 **The shared application is implemented, all seven original episodes are migrated, and episodes 08 (`ump`), 09 (`sadap`) and 10 (`ksp`) were produced on it end to end. Continue from it; do not repeat the migration or copy an old episode project.** The branch is `hyperframes` (refactor committed as `1f67202`, later work on top), pushed to `origin/hyperframes` up to this handoff. Preserve existing modified and untracked work.
 
+**28 Nov 2026 (Windows): stream #13 recorded and scanned (hours 1-5); idea list saved on Drive. No clips built yet.**
+
+- **Stream #13** (`Qi_ySF2S3ms`, "MISI PALING EPIC MERAMPOK BANK TERBESAR"; it was scheduled for 19:15 but went live at 19:47 and ran to 01:28 WIB):
+  - Recorded by the detached runner `.cache/wizzclip/windah-live13/run.sh`.
+  - Hours `stream-1947-2047` through `-2347-0047` (3600 s each) are on Drive `GTA6/live13-2026-11-27/` and scanned.
+  - The last 41 min (`stream-0047-0128`) failed post_live again, as on #11/#12.
+- **New: automatic tail refetch.** `run.sh` now does the gap.sh step itself:
+  - If the final batch FAILED, it polls every 10 min for `was_live`, then fetches `*A-<duration>` from the VOD and copies it to Drive.
+  - The scan loop stops once every done batch is scanned.
+  - It is still a per-stream copy in `.cache`, not folded into `tools/wizzclip/live_hourly.sh`. Copy `windah-live13/run.sh` for the next stream and change the ID, the folder and the Drive dir.
+  - At 02:05 the VOD was still `post_live`, so check `windah-live13/hourly.log` for the tail.
+- **New rule (user, 28 Nov):** idea lists are saved as `.md` in the stream's Drive folder (`G:\My Drive\GTA6\liveN-YYYY-MM-DD\ideas-liveN.md`). Write them straight away once all hours are scanned.
+- **`ideas-live13.md`:**
+  - Covers hours 1-5, with 7 headings per hour, ★ top 2 per hour and a picks table.
+  - Suggested: a two-part Nicole heist arc (h4 34:28 replay decision → h5 47:40 perfect cable, still "She's gone").
+  - Clean singles: h3 16:10 Lucia salon makeover, h2 37:57 pool jump wasted.
+  - The tail section is still to add.
+  - The user hasn't picked yet.
+  - Contact sheets are 1 frame/20 s, so verify footage before cutting.
+- **Still open from #12:** the hour 5 choice (a/b/c), and moving posted clips to `uploaded/` once the user reports them.
+
 **27 Nov 2026 (Windows): stream #12 fully recorded and scanned; 3 Wizz Clip clips built from it; Cerita GTA 6 Part 1 flopped.**
 
 - **Stream #12** (`WnVFoAGVftc`), live 19:04–00:00 WIB: `windah-live12/stream-1904-2004`, `-2004-2104`, `-2104-2204`, `-2204-2304` (3600 s each) and `-2304-0000` (3292 s), all on Drive `GTA6/live12-2026-11-26/` and scanned (transcript, sheets, chat spikes). The last live batch failed 3 times right after the stream ended (post_live) and was refetched from the VOD by `windah-live12/gap.sh` (waits for `was_live`, which came at 01:29, ~1.5 h after the end). The broken video-only partial was deleted (user OK). `windah_recipe.py` gained `FACES['live12']` (same crop as live11).
